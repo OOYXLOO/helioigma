@@ -25,6 +25,8 @@ jobs:
             judge.html \
             smoke.html \
             proof-verifier.html \
+            publish-assistant.html \
+            public-preflight.ps1 \
             dev-submit-console.html \
             dev-article-final.md \
             verification.html \
@@ -49,6 +51,7 @@ jobs:
           grep -q "solstice-cipher-demo.mp4" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
+          grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
 
       - name: Verify judge and smoke links
@@ -60,6 +63,7 @@ jobs:
           grep -q "PASS - Longest day held" verification-report.md
           grep -q "SC-4P-2893-62-1I4Y0G" verification-report.md
           grep -q "SC-4P-2893-62-1I4Y0G" proof-verifier.html
+          grep -q "No-go gate" publish-assistant.html
           grep -q "nodeButtons" index.html
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "devchallenge" verification.html

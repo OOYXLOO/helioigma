@@ -60,8 +60,10 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status plus the completion proof code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
+- `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
+- `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 
 ## Public Publishing

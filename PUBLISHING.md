@@ -43,6 +43,7 @@ After the push, the `Verify Solstice Cipher` workflow should pass before the DEV
 Do not submit on DEV until the public try link works. Use:
 
 - Copy console: `dev-submit-console.html`
+- Publish assistant: `publish-assistant.html`
 - Draft: `dev-post-draft.md`
 - Cover image: `cover.png`
 - Demo video: `solstice-cipher-demo.mp4`
@@ -59,12 +60,14 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 ## Final Pre-Submit Check
 
 - [ ] `node --check game.js`
+- [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
 - [ ] GitHub Actions `Verify Solstice Cipher` passes after the public push.
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
 - [ ] Public proof verifier accepts `SC-4P-2893-62-1I4Y0G`.
+- [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run proof.

@@ -12,6 +12,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Run proof verifier: `proof-verifier.html`.
 - Node-control buttons below the canvas for mobile and accessibility-friendly play.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
+- Copy-ready publish assistant: `publish-assistant.html`.
+- Local/public preflight script: `public-preflight.ps1`.
 - DEV post draft: `dev-post-draft.md`.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
@@ -26,6 +28,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Local package ZIP: `solstice-cipher-dev-package.zip`.
 - Verification:
   - `node --check game.js`
+  - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
@@ -40,6 +43,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Confirm GitHub Actions `Verify Solstice Cipher` passes after push.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, media order, public links, and no-go gate.
+- Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
 - Use official DEV tags: `devchallenge`, `gamechallenge`, `gamedev`.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
