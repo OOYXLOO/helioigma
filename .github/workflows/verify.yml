@@ -66,16 +66,21 @@ jobs:
           grep -q "Run Smoke Test" judge.html
           grep -q "verification.html" judge.html
           grep -q "PASS - Longest day held" verification-report.md
-          grep -q "SC-4P-2893-62-1I4Y0G" verification-report.md
-          grep -q "SC-4P-2893-62-1I4Y0G" proof-verifier.html
+          grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
+          grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
           grep -q "demoButton" index.html
+          grep -q "judge-links" index.html
+          grep -q "proofSummary" index.html
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "demo solve button is present" smoke.html
+          grep -q "judge shortcut links are present" smoke.html
+          grep -q "demo solve reaches a deterministic judge proof" smoke.html
+          grep -q "demo solve releases manual controls" smoke.html
           grep -q "four-phase progress track is present" smoke.html
           grep -q "shift counter records the completed run" smoke.html
           grep -q "devchallenge" verification.html

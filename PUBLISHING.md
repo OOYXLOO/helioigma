@@ -67,7 +67,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
-- [ ] Public proof verifier accepts `SC-4P-2893-62-1I4Y0G`.
+- [ ] Public proof verifier accepts stable Demo Solve proof `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.

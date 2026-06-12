@@ -25,7 +25,7 @@ http://127.0.0.1:8781/
 
 Solstice Cipher is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing wheel of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, so judges can play on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, judge shortcut links, and a stable `Demo Solve` proof path, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 ## Controls
 
@@ -42,7 +42,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
-- `Demo Solve` provides a one-click judge path through all four phases and the final proof state.
+- `Demo Solve` provides a one-click judge path through all four phases and the final proof state; its timer drift is paused so the sample proof is stable: `SC-4P-2907-62-Y5VFX1`.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run proof instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 
@@ -60,7 +60,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 ## Judge Proof
 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
-- `smoke.html`: browser self-test that starts the game in an iframe, checks the demo-solve control, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
+- `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve proof, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.

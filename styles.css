@@ -156,6 +156,35 @@ body {
   margin-top: 12px;
 }
 
+.judge-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.judge-links a {
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--ink);
+  background: rgba(9, 14, 24, 0.72);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+
+.judge-links a:hover,
+.judge-links a:focus-visible {
+  outline: 2px solid rgba(247, 201, 72, 0.5);
+  outline-offset: 2px;
+  background: rgba(247, 201, 72, 0.14);
+}
+
 .node-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
@@ -211,6 +240,13 @@ h1 {
   font-weight: 800;
   letter-spacing: 0;
   overflow-wrap: anywhere;
+}
+
+.proof-summary {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 canvas {
@@ -330,6 +366,10 @@ button:focus-visible {
   }
 
   .phase-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .judge-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

@@ -10,7 +10,7 @@
   <meta property="og:image" content="cover.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=20260613-demo-solve">
+  <link rel="stylesheet" href="styles.css?v=20260613-judge-demo">
 </head>
 <body>
   <main class="shell">
@@ -48,15 +48,23 @@
         <div id="statusLine" class="status">Align the ring before nightfall.</div>
       </div>
 
+      <nav class="judge-links" aria-label="Judge shortcuts">
+        <a href="judge.html">Judge pack</a>
+        <a href="smoke.html">Smoke test</a>
+        <a href="proof-verifier.html">Proof verifier</a>
+        <a href="solstice-cipher-demo.mp4">Demo video</a>
+      </nav>
+
       <section id="proofPanel" class="proof-panel" aria-live="polite" hidden>
         <div>
           <p class="kicker">Run proof</p>
           <p id="proofCode" class="proof-code"></p>
+          <p id="proofSummary" class="proof-summary"></p>
         </div>
         <button id="copyProofButton" type="button">Copy proof</button>
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-demo-solve"></script>
+  <script src="game.js?v=20260613-judge-demo"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ cover_image: ./cover.png
 
 Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired ring of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each node matches the target cipher before nightfall ends the run.
 
-It is designed to be playable in a quick judging pass: a visible four-phase progress strip, score carry-over, streak bonuses, shift counting, keyboard/touch controls, explicit node-control buttons for mobile play, a one-click demo solve, a local best score, and a deterministic run proof at the end.
+It is designed to be playable in a quick judging pass: a visible four-phase progress strip, score carry-over, streak bonuses, shift counting, keyboard/touch controls, explicit node-control buttons for mobile play, a one-click demo solve with a stable proof, a local best score, and a deterministic run proof at the end.
 
 Public links to add only after hosting is live:
 
@@ -22,7 +22,7 @@ Public links to add only after hosting is live:
 
 ## Judge in 60 Seconds
 
-1. Open the play link and press `Demo Solve` for the full loop, or press `Start` to play manually.
+1. Open the play link and press `Demo Solve` for the full loop and stable proof `SC-4P-2907-62-Y5VFX1`, or press `Start` to play manually.
 2. Watch the short MP4 demo or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Paste the sample proof into `proof-verifier.html` to confirm the checksum loop.
@@ -103,6 +103,6 @@ Before publishing, I verified the local package with:
 - `node --check game.js`
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
-- `smoke.html`: 17 checks passed, including the demo-solve control, shift counter, phase track, final status, and run proof.
+- `smoke.html`: 23 checks passed, including deterministic demo proof, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
 
 Do not publish this draft until the public play link, source repo, judge page, proof verifier, and smoke test are live.

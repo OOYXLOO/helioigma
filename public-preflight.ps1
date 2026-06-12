@@ -86,11 +86,16 @@ try {
   Assert-Contains "index.html" "phaseTrack"
   Assert-Contains "index.html" "shiftLabel"
   Assert-Contains "index.html" "demoButton"
+  Assert-Contains "index.html" "judge-links"
+  Assert-Contains "index.html" "proofSummary"
   Assert-Contains "smoke.html" "first-phase node buttons are present"
   Assert-Contains "smoke.html" "demo solve button is present"
+  Assert-Contains "smoke.html" "judge shortcut links are present"
+  Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "smoke.html" "demo solve releases manual controls"
   Assert-Contains "smoke.html" "four-phase progress track is present"
   Assert-Contains "smoke.html" "shift counter records the completed run"
-  Assert-Contains "proof-verifier.html" "SC-4P-2893-62-1I4Y0G"
+  Assert-Contains "proof-verifier.html" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
 
   $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md -Recurse |

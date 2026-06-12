@@ -14,6 +14,7 @@
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
+  const proofSummary = document.querySelector("#proofSummary");
   const copyProofButton = document.querySelector("#copyProofButton");
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
@@ -109,6 +110,11 @@
     if (proofPanel && proofCode && copyProofButton) {
       proofPanel.hidden = !state.complete;
       proofCode.textContent = state.finalProof;
+      if (proofSummary) {
+        proofSummary.textContent = state.finalProof
+          ? `Verified loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts.`
+          : "";
+      }
       copyProofButton.disabled = !state.finalProof;
     }
   }
@@ -447,7 +453,7 @@
     });
     state.particles = state.particles.filter((particle) => particle.life > 0);
 
-    if (state.running) {
+    if (state.running && !state.demoing) {
       state.timeLeft -= delta;
       if (state.timeLeft <= 0) {
         state.running = false;
@@ -504,7 +510,8 @@
     if (state.demoing) return;
     startGame();
     state.demoing = true;
-    state.message = "Demo solve is tracing the longest day.";
+    state.lastTick = 0;
+    state.message = "Demo solve is tracing the longest day with a stable judge proof.";
     updateHud();
     await sleep(260);
     while (state.running && !state.complete) {

@@ -34,10 +34,10 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
-- Demo Solve: visible in the controls row and completes the loop to a run proof during browser verification.
+- Demo Solve: visible in the controls row and completes the loop to stable proof `SC-4P-2907-62-Y5VFX1` during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
-- Proof verifier check: `proof-verifier.html` accepts sample proof `SC-4P-2893-62-1I4Y0G`.
+- Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

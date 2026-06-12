@@ -103,7 +103,7 @@
 <body>
   <main>
     <h1>Solstice Cipher smoke test</h1>
-    <p>This page runs the real game in an iframe, starts a run, solves all four phases through keyboard controls, and checks that the final status reports a completed longest-day solve.</p>
+    <p>This page runs the real game in an iframe, checks the one-click judge demo proof, then solves all four phases through keyboard controls and checks that the final status reports a completed longest-day solve.</p>
     <div id="status" class="status">Running...</div>
 
     <section class="grid">
@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-        <iframe id="gameFrame" src="./?v=20260613-phase-track" title="Solstice Cipher game under smoke test"></iframe>
+        <iframe id="gameFrame" src="./?v=20260613-judge-demo" title="Solstice Cipher game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -134,6 +134,15 @@
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function waitFor(predicate, label, timeout = 9000) {
+      const started = performance.now();
+      while (performance.now() - started < timeout) {
+        if (predicate()) return;
+        await sleep(80);
+      }
+      throw new Error(label);
     }
 
     function press(win, key) {
@@ -162,8 +171,10 @@
       const win = frame.contentWindow;
       const canvas = doc.querySelector("#game");
       const startButton = doc.querySelector("#startButton");
+      const resetButton = doc.querySelector("#resetButton");
       const demoButton = doc.querySelector("#demoButton");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
+      const judgeLinks = doc.querySelectorAll(".judge-links a");
       const statusLine = doc.querySelector("#statusLine");
       const scoreLabel = doc.querySelector("#scoreLabel");
       const bestLabel = doc.querySelector("#bestLabel");
@@ -171,16 +182,30 @@
       const phaseSteps = doc.querySelectorAll("#phaseTrack .phase-step");
       const proofPanel = doc.querySelector("#proofPanel");
       const proofCode = doc.querySelector("#proofCode");
+      const proofSummary = doc.querySelector("#proofSummary");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
+      addCheck("reset button is present", Boolean(resetButton));
       addCheck("demo solve button is present", Boolean(demoButton));
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
+      addCheck("judge shortcut links are present", judgeLinks.length === 4);
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
       addCheck("run proof panel is present", Boolean(proofPanel));
+      addCheck("run proof summary is present", Boolean(proofSummary));
+
+      demoButton.click();
+      await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a proof");
+      addCheck("demo solve reaches a deterministic judge proof", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
+      addCheck("demo proof summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
+      await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
+      addCheck("demo solve releases manual controls", demoButton.disabled === false);
+
+      resetButton.click();
+      await sleep(120);
 
       startButton.click();
       await sleep(120);

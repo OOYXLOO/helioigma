@@ -55,16 +55,25 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
 - Mobile 390x844: no horizontal overflow; phase progress strip wraps cleanly and canvas is visible.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
-- Sample smoke proof: `SC-4P-2893-62-1I4Y0G`
+- Stable Demo Solve proof: `SC-4P-2907-62-Y5VFX1`
+- Keyboard smoke proof format: `SC-4P-score-shifts-checksum`
 - `proof-verifier.html` recomputes the proof checksum locally.
-- The playable page exposes a four-step phase progress strip, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include:
+- The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
+- Smoke checks include 23 PASS assertions:
   - canvas present
   - start button present
+  - reset button present
   - demo solve button present
   - first-phase node buttons present
+  - judge shortcut links present
+  - status line present
+  - best score label present
   - shift counter present
   - four-phase progress track present
+  - run proof panel and summary present
+  - stable demo proof matches `SC-4P-2907-62-Y5VFX1`
+  - demo proof summary reports score and shifts
+  - demo solve releases manual controls
   - run starts through public button
   - four phases reach final state
   - final score is positive
@@ -85,7 +94,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - intended public play URL
 - judge page demo-video link
 - smoke proof pattern
-- proof verifier page and sample checksum copy
+- proof verifier page and stable demo checksum copy
 
 ## Human Gates
 
