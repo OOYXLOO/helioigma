@@ -24,11 +24,13 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 
 - Cover image: `cover.png`
 - Animated gameplay preview: `solstice-cipher-demo.gif`
+- Demo video: `solstice-cipher-demo.mp4`
+- WebM demo fallback: `solstice-cipher-demo.webm`
 - Desktop screenshot: `desktop-check-v5.png`
 - Mobile screenshot: `mobile-check-v6.png`
 - Completion screenshot: `desktop-complete-v4.png`
 
-The GIF was generated from local browser screenshots. If the final DEV post needs a hosted video instead of a GIF, this asset can guide a short screen recording after public hosting is authorized.
+The GIF was generated from local browser screenshots and converted into MP4/WebM demo video assets for the DEV post media requirement.
 
 ## Links
 
@@ -52,5 +54,4 @@ The game uses a single canvas and deterministic level definitions. The target ci
 
 - Add a public try link after user authorizes publishing.
 - Use `dev-submit-console.html` for the final copy pass, media order, and no-go gate.
-- Convert the local GIF into a short hosted video if the final DEV post would benefit from video.
 - Polish level balance after mobile playtesting.

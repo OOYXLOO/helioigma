@@ -44,6 +44,8 @@ Do not submit on DEV until the public try link works. Use:
 - Copy console: `dev-submit-console.html`
 - Draft: `dev-post-draft.md`
 - Cover image: `cover.png`
+- Demo video: `solstice-cipher-demo.mp4`
+- WebM fallback: `solstice-cipher-demo.webm`
 - Demo GIF: `solstice-cipher-demo.gif`
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
@@ -61,6 +63,8 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run proof.
+- [ ] DEV article uses the official tags: `devchallenge`, `gamechallenge`, `gamedev`.
+- [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] No account secrets, API keys, payment details, tax data, KYC data, or private contact details are included.
