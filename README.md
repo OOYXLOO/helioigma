@@ -50,6 +50,11 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - `desktop-complete-v3.png`: current final-score screenshot with solved phases and shift count.
 - `solstice-cipher-dev-package.zip`: local review/transfer package containing source files and final media assets.
 
+## Judge Proof
+
+- `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
+- `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status.
+
 ## Public Publishing
 
 Use `PUBLISHING.md` when the account owner is ready to create or approve the public GitHub repository. Recommended public URLs:

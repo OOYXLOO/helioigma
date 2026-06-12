@@ -7,6 +7,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Static game files: `index.html`, `styles.css`, `game.js`.
 - GitHub Pages marker: `.nojekyll`.
 - Publishing gate: `PUBLISHING.md`.
+- Judge pack: `judge.html`.
+- Browser smoke test: `smoke.html`.
 - DEV post draft: `dev-post-draft.md`.
 - Local README: `README.md`.
 - Desktop screenshot: `desktop-check-v4.png`.
@@ -42,5 +44,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 
 - Try link: to be filled after public hosting.
 - Source link: to be filled after repo/public hosting is authorized.
+- Judge pack link: `https://ooyxloo.github.io/solstice-cipher/judge.html` after public hosting.
+- Smoke test link: `https://ooyxloo.github.io/solstice-cipher/smoke.html` after public hosting.
 - Screenshots/media: use `cover.png`, `solstice-cipher-demo.gif`, `desktop-check-v4.png`, `mobile-check-v5.png`, and `desktop-complete-v3.png`.
 - Package: use `solstice-cipher-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.

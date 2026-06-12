@@ -34,6 +34,8 @@ The GIF was generated from local browser screenshots. If the final DEV post need
 
 - Play: `https://ooyxloo.github.io/solstice-cipher/`
 - Source: `https://github.com/OOYXLOO/solstice-cipher`
+- Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
+- Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 

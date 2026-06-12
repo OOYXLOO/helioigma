@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solstice Cipher Smoke Test</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f7f3df;
+      --muted: #aeb8c5;
+      --line: rgba(255, 255, 255, 0.16);
+      --panel: rgba(9, 14, 24, 0.86);
+      --accent: #f7c948;
+      --ok: #b8f2c8;
+      --bad: #ff7a59;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(135deg, #07131b 0%, #15121f 48%, #201018 100%);
+    }
+
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    p, li {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .status.pass { color: var(--ok); }
+    .status.fail { color: var(--bad); }
+
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #071018;
+    }
+
+    code {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    @media (max-width: 780px) {
+      .grid { grid-template-columns: 1fr; }
+      iframe { aspect-ratio: 4 / 5; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Solstice Cipher smoke test</h1>
+    <p>This page runs the real game in an iframe, starts a run, solves all four phases through keyboard controls, and checks that the final status reports a completed longest-day solve.</p>
+    <div id="status" class="status">Running...</div>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Checks</h2>
+        <ul id="checks"></ul>
+        <p><a href="./">Open the playable game</a></p>
+      </div>
+      <div class="panel">
+        <iframe id="gameFrame" src="./" title="Solstice Cipher game under smoke test"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const levelLengths = [6, 7, 8, 9];
+    const checks = document.querySelector("#checks");
+    const status = document.querySelector("#status");
+    const frame = document.querySelector("#gameFrame");
+
+    function addCheck(text, ok) {
+      const li = document.createElement("li");
+      li.textContent = `${ok ? "PASS" : "FAIL"} - ${text}`;
+      li.style.color = ok ? "var(--ok)" : "var(--bad)";
+      checks.appendChild(li);
+      if (!ok) throw new Error(text);
+    }
+
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function press(win, key) {
+      win.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
+    }
+
+    async function solvePhase(win, length) {
+      for (let index = 0; index < length; index += 1) {
+        const rotations = (4 - (1 + (index % 3))) % 4;
+        for (let count = 0; count < rotations; count += 1) {
+          press(win, String(index + 1));
+          await sleep(18);
+        }
+      }
+      await sleep(80);
+    }
+
+    async function run() {
+      await new Promise((resolve) => {
+        if (frame.contentDocument?.readyState === "complete") resolve();
+        frame.addEventListener("load", resolve, { once: true });
+      });
+      await sleep(200);
+
+      const doc = frame.contentDocument;
+      const win = frame.contentWindow;
+      const canvas = doc.querySelector("#game");
+      const startButton = doc.querySelector("#startButton");
+      const statusLine = doc.querySelector("#statusLine");
+      const scoreLabel = doc.querySelector("#scoreLabel");
+
+      addCheck("canvas is present", Boolean(canvas));
+      addCheck("start button is present", Boolean(startButton));
+      addCheck("status line is present", Boolean(statusLine));
+
+      startButton.click();
+      await sleep(120);
+      addCheck("run starts through the public button", statusLine.textContent.includes("Turing wheel is live"));
+
+      for (const length of levelLengths) {
+        await solvePhase(win, length);
+      }
+
+      const finalText = statusLine.textContent;
+      const finalScore = Number(scoreLabel.textContent);
+      addCheck("four phases reach final state", finalText.includes("Longest day held"));
+      addCheck("final score is positive", Number.isFinite(finalScore) && finalScore > 0);
+      addCheck("final status reports shift count", finalText.includes("shifts"));
+
+      status.textContent = `PASS - ${finalText}`;
+      status.classList.add("pass");
+    }
+
+    run().catch((error) => {
+      status.textContent = `FAIL - ${error.message}`;
+      status.classList.add("fail");
+    });
+  </script>
+</body>
+</html>

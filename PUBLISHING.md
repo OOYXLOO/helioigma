@@ -44,6 +44,8 @@ Do not submit on DEV until the public try link works. Use:
 - Draft: `dev-post-draft.md`
 - Cover image: `cover.png`
 - Demo GIF: `solstice-cipher-demo.gif`
+- Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
+- Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
 - Source link: `https://github.com/OOYXLOO/solstice-cipher`
 
@@ -54,6 +56,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] `node --check game.js`
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
+- [ ] Public smoke test returns `PASS`.
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
