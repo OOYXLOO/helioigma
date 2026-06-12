@@ -11,6 +11,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Browser smoke test: `smoke.html`.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - DEV post draft: `dev-post-draft.md`.
+- Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
 - Desktop screenshot: `desktop-check-v5.png`.
 - Mobile screenshot: `mobile-check-v6.png`.

@@ -26,6 +26,8 @@ jobs:
             smoke.html \
             dev-submit-console.html \
             dev-article-final.md \
+            verification.html \
+            verification-report.md \
             cover.png \
             solstice-cipher-demo.mp4 \
             solstice-cipher-demo.webm \
@@ -52,4 +54,7 @@ jobs:
           set -euo pipefail
           grep -q "solstice-cipher-demo.mp4" judge.html
           grep -q "Run Smoke Test" judge.html
+          grep -q "verification.html" judge.html
+          grep -q "PASS - Longest day held" verification-report.md
+          grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html
