@@ -55,6 +55,8 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow and no page console errors.
 - Mobile 390x844: no horizontal overflow and no page console errors.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
+- Sample smoke proof: `SC-4P-2893-62-1I4Y0G`
+- `proof-verifier.html` recomputes the proof checksum locally.
 - Smoke checks include:
   - canvas present
   - start button present
@@ -77,6 +79,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - intended public play URL
 - judge page demo-video link
 - smoke proof pattern
+- proof verifier page and sample checksum copy
 
 ## Human Gates
 

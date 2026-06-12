@@ -50,6 +50,7 @@ Do not submit on DEV until the public try link works. Use:
 - Demo GIF: `solstice-cipher-demo.gif`
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
+- Proof verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
 - Source link: `https://github.com/OOYXLOO/solstice-cipher`
 
@@ -62,6 +63,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
 - [ ] Public smoke test returns `PASS`.
+- [ ] Public proof verifier accepts `SC-4P-2893-62-1I4Y0G`.
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run proof.

@@ -9,6 +9,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
 - Browser smoke test: `smoke.html`.
+- Run proof verifier: `proof-verifier.html`.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - DEV post draft: `dev-post-draft.md`.
 - Verification report: `verification.html` and `verification-report.md`.
@@ -28,6 +29,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
+- Proof verifier check: `proof-verifier.html` accepts sample proof `SC-4P-2893-62-1I4Y0G`.
 
 ## Before Publishing
 

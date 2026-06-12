@@ -18,6 +18,7 @@ Public links to add only after hosting is live:
 - Source: https://github.com/OOYXLOO/solstice-cipher
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
+- Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
 
 ## Demo Video
 
@@ -62,6 +63,7 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 - Four timed phases with score carry-over and streak bonuses.
 - Mouse, touch, and number-key controls.
 - Final screen with solved phase count, total shifts, local best score, and copyable `SC-4P-...` run proof.
+- A proof verifier that recomputes completion checksums locally.
 - A judge page and smoke test so reviewers can verify the full loop quickly.
 - DEV-ready media: cover image, MP4/WebM demo, GIF preview, desktop screenshot, mobile screenshot, and completion screenshot.
 
@@ -78,4 +80,4 @@ Before publishing, I verified the local package with:
 - 390px mobile browser check: no console errors, no horizontal overflow.
 - `smoke.html`: all checks passed, including the final run proof.
 
-Do not publish this draft until the public play link, source repo, judge page, and smoke test are live.
+Do not publish this draft until the public play link, source repo, judge page, proof verifier, and smoke test are live.

@@ -57,6 +57,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
 - `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status plus the completion proof code.
+- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
