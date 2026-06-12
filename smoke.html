@@ -162,6 +162,7 @@
       const win = frame.contentWindow;
       const canvas = doc.querySelector("#game");
       const startButton = doc.querySelector("#startButton");
+      const demoButton = doc.querySelector("#demoButton");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
       const statusLine = doc.querySelector("#statusLine");
       const scoreLabel = doc.querySelector("#scoreLabel");
@@ -173,6 +174,7 @@
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
+      addCheck("demo solve button is present", Boolean(demoButton));
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));

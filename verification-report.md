@@ -57,10 +57,11 @@ Expected local URLs:
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Sample smoke proof: `SC-4P-2893-62-1I4Y0G`
 - `proof-verifier.html` recomputes the proof checksum locally.
-- The playable page exposes a four-step phase progress strip and node-control buttons below the canvas for mobile and accessibility-friendly play.
+- The playable page exposes a four-step phase progress strip, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include:
   - canvas present
   - start button present
+  - demo solve button present
   - first-phase node buttons present
   - shift counter present
   - four-phase progress track present

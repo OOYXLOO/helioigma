@@ -9,6 +9,7 @@
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
   const resetButton = document.querySelector("#resetButton");
+  const demoButton = document.querySelector("#demoButton");
   const phaseTrack = document.querySelector("#phaseTrack");
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
@@ -42,6 +43,7 @@
     nodes: [],
     particles: [],
     lastTick: 0,
+    demoing: false,
     message: "Decode the Turing wheel before nightfall.",
   };
 
@@ -100,6 +102,8 @@
     shiftLabel.textContent = String(state.shifts);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
+    startButton.disabled = state.demoing;
+    demoButton.disabled = state.demoing;
     syncPhaseTrack();
     syncNodeButtons();
     if (proofPanel && proofCode && copyProofButton) {
@@ -162,7 +166,7 @@
       const value = state.ring[index];
       const targetValue = state.target[index];
       const locked = value === targetValue;
-      button.disabled = !state.running || state.complete;
+      button.disabled = !state.running || state.complete || state.demoing;
       button.classList.toggle("locked", locked);
       button.setAttribute(
         "aria-label",
@@ -403,7 +407,7 @@
 
   function handlePointer(event) {
     event.preventDefault();
-    if (!state.running) return;
+    if (!state.running || state.demoing) return;
     const point = pointerToCanvas(event);
     const hit = state.nodes.find((node) => Math.hypot(point.x - node.x, point.y - node.y) <= node.radius * 1.25);
     if (!hit) return;
@@ -459,6 +463,7 @@
   }
 
   function startGame() {
+    state.demoing = false;
     state.running = true;
     state.level = 0;
     state.score = 0;
@@ -475,6 +480,7 @@
   }
 
   function resetGame() {
+    state.demoing = false;
     state.running = false;
     state.level = 0;
     state.score = 0;
@@ -490,6 +496,37 @@
     draw();
   }
 
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function demoSolve() {
+    if (state.demoing) return;
+    startGame();
+    state.demoing = true;
+    state.message = "Demo solve is tracing the longest day.";
+    updateHud();
+    await sleep(260);
+    while (state.running && !state.complete) {
+      const phaseLength = state.ring.length;
+      for (let index = 0; index < phaseLength && state.running && !state.complete; index += 1) {
+        let guard = 0;
+        while (state.ring[index] !== state.target[index] && guard < glyphs.length && state.running) {
+          rotateNode(index);
+          guard += 1;
+          await sleep(90);
+        }
+      }
+      await sleep(220);
+    }
+    state.demoing = false;
+    if (state.complete) {
+      state.message = `Demo solve complete. Final score ${state.score} across ${state.shifts} shifts.`;
+    }
+    updateHud();
+    draw();
+  }
+
   window.addEventListener("resize", () => {
     resizeCanvas();
     draw();
@@ -498,12 +535,14 @@
   canvas.addEventListener("touchstart", handlePointer, { passive: false });
   if (nodeButtons) {
     nodeButtons.addEventListener("click", (event) => {
+      if (state.demoing) return;
       const button = event.target.closest("button[data-index]");
       if (!button) return;
       rotateNode(Number(button.dataset.index));
     });
   }
   window.addEventListener("keydown", (event) => {
+    if (state.demoing) return;
     if (event.key === "Enter") {
       startGame();
       return;
@@ -520,6 +559,7 @@
   });
   startButton.addEventListener("click", startGame);
   resetButton.addEventListener("click", resetGame);
+  demoButton.addEventListener("click", demoSolve);
   copyProofButton.addEventListener("click", async () => {
     if (!state.finalProof) return;
     try {

@@ -306,6 +306,11 @@ button:focus-visible {
   color: #171006;
 }
 
+#demoButton {
+  border-color: rgba(139, 211, 255, 0.42);
+  background: rgba(139, 211, 255, 0.12);
+}
+
 .status {
   flex: 1;
   text-align: right;
@@ -330,7 +335,7 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .status {

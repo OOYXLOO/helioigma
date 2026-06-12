@@ -31,6 +31,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 
 - Click or tap ring nodes to rotate their phase.
 - Use the node-control buttons below the canvas.
+- Use `Demo Solve` to watch the complete four-phase loop without manual input.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
 - `Escape` resets the board.
@@ -41,6 +42,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
+- `Demo Solve` provides a one-click judge path through all four phases and the final proof state.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run proof instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 
@@ -58,7 +60,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 ## Judge Proof
 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
-- `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
+- `smoke.html`: browser self-test that starts the game in an iframe, checks the demo-solve control, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.

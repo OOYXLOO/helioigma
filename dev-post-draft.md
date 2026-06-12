@@ -2,7 +2,7 @@
 
 Solstice Cipher is a small browser puzzle game about balancing daylight, nightfall, and code-breaking. Each round shows a target cipher above a Turing wheel of glyph nodes. Click, tap, or press number keys to rotate their phase before the timer reaches zero.
 
-Fast judge path: play the live game, watch the short demo, run the smoke test, then verify a sample `SC-4P-...` proof in the proof verifier.
+Fast judge path: press `Demo Solve` in the live game, watch the short demo, run the smoke test, then verify a sample `SC-4P-...` proof in the proof verifier.
 
 ## How to Play
 
@@ -17,6 +17,7 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 - A static HTML/CSS/JavaScript game.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, node-button, and number-key controls.
+- A `Demo Solve` button that shows the complete four-phase loop without manual play.
 - Multiple timed phases with a visible progress strip and score carry-over.
 - Time pressure, per-signal points, streak bonuses, small time penalties for exploratory shifts, and a final score state after four phases.
 - Four named phases, shift counting, explicit node-control buttons for mobile play, a local best-score readout, a deterministic run proof code, and an end screen that summarizes the run for quick judging.
