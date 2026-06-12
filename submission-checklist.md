@@ -10,7 +10,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Judge pack: `judge.html`.
 - Browser smoke test: `smoke.html`.
 - Run proof verifier: `proof-verifier.html`.
-- Node-control buttons below the canvas for mobile and accessibility-friendly play.
+- Phase progress strip and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
@@ -33,6 +33,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `.github/workflows/verify.yml`
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
+- Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
 - Proof verifier check: `proof-verifier.html` accepts sample proof `SC-4P-2893-62-1I4Y0G`.

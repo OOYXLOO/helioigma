@@ -74,6 +74,61 @@ body {
   margin-bottom: 12px;
 }
 
+.phase-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.phase-step {
+  min-width: 0;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: rgba(9, 14, 24, 0.72);
+  color: var(--muted);
+}
+
+.phase-index {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.phase-name {
+  min-width: 0;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.18;
+}
+
+.phase-step.active {
+  border-color: rgba(247, 201, 72, 0.58);
+  background: rgba(247, 201, 72, 0.12);
+  color: var(--accent);
+}
+
+.phase-step.complete {
+  border-color: rgba(184, 242, 200, 0.58);
+  background: rgba(184, 242, 200, 0.1);
+  color: #b8f2c8;
+}
+
 .brief {
   margin-bottom: 12px;
   color: var(--muted);
@@ -267,6 +322,10 @@ button:focus-visible {
 
   .stats {
     justify-content: flex-start;
+  }
+
+  .phase-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .controls {

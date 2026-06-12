@@ -10,7 +10,7 @@
   <meta property="og:image" content="cover.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=20260613-node-controls">
+  <link rel="stylesheet" href="styles.css?v=20260613-phase-track">
 </head>
 <body>
   <main class="shell">
@@ -24,9 +24,12 @@
           <span><strong id="levelLabel">1</strong> phase</span>
           <span><strong id="scoreLabel">0</strong> score</span>
           <span><strong id="bestLabel">0</strong> best</span>
+          <span><strong id="shiftLabel">0</strong> shifts</span>
           <span><strong id="timeLabel">45</strong>s</span>
         </div>
       </div>
+
+      <ol id="phaseTrack" class="phase-track" aria-label="Phase progress"></ol>
 
       <div class="brief" aria-label="Challenge fit">
         <span>Daylight is the clock.</span>
@@ -53,6 +56,6 @@
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-node-controls"></script>
+  <script src="game.js?v=20260613-phase-track"></script>
 </body>
 </html>

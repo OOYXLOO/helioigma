@@ -52,20 +52,23 @@ Expected local URLs:
 
 ## Browser Checks
 
-- Desktop 1280x900: no horizontal overflow and no page console errors.
-- Mobile 390x844: no horizontal overflow and no page console errors.
+- Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
+- Mobile 390x844: no horizontal overflow; phase progress strip wraps cleanly and canvas is visible.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Sample smoke proof: `SC-4P-2893-62-1I4Y0G`
 - `proof-verifier.html` recomputes the proof checksum locally.
-- The playable page exposes node-control buttons below the canvas for mobile and accessibility-friendly play.
+- The playable page exposes a four-step phase progress strip and node-control buttons below the canvas for mobile and accessibility-friendly play.
 - Smoke checks include:
   - canvas present
   - start button present
   - first-phase node buttons present
+  - shift counter present
+  - four-phase progress track present
   - run starts through public button
   - four phases reach final state
   - final score is positive
   - local best score records the completed run
+  - shift counter records the completed run
   - final status reports shift count
   - run proof is visible
   - run proof matches `SC-4P-...`

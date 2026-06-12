@@ -15,7 +15,7 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 - A static HTML/CSS/JavaScript game.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, node-button, and number-key controls.
-- Multiple timed phases with score carry-over.
+- Multiple timed phases with a visible progress strip and score carry-over.
 - Time pressure, per-signal points, streak bonuses, small time penalties for exploratory shifts, and a final score state after four phases.
 - Four named phases, shift counting, explicit node-control buttons for mobile play, a local best-score readout, a deterministic run proof code, and an end screen that summarizes the run for quick judging.
 - No backend, API key, account integration, or private data.

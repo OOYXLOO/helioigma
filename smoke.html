@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-        <iframe id="gameFrame" src="./?v=20260613-node-controls" title="Solstice Cipher game under smoke test"></iframe>
+        <iframe id="gameFrame" src="./?v=20260613-phase-track" title="Solstice Cipher game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -166,6 +166,8 @@
       const statusLine = doc.querySelector("#statusLine");
       const scoreLabel = doc.querySelector("#scoreLabel");
       const bestLabel = doc.querySelector("#bestLabel");
+      const shiftLabel = doc.querySelector("#shiftLabel");
+      const phaseSteps = doc.querySelectorAll("#phaseTrack .phase-step");
       const proofPanel = doc.querySelector("#proofPanel");
       const proofCode = doc.querySelector("#proofCode");
 
@@ -174,6 +176,8 @@
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));
+      addCheck("shift counter is present", Boolean(shiftLabel));
+      addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
       addCheck("run proof panel is present", Boolean(proofPanel));
 
       startButton.click();
@@ -187,9 +191,11 @@
       const finalText = statusLine.textContent;
       const finalScore = Number(scoreLabel.textContent);
       const bestScore = Number(bestLabel.textContent);
+      const shiftCount = Number(shiftLabel.textContent);
       addCheck("four phases reach final state", finalText.includes("Longest day held"));
       addCheck("final score is positive", Number.isFinite(finalScore) && finalScore > 0);
       addCheck("best score records the completed run", Number.isFinite(bestScore) && bestScore >= finalScore);
+      addCheck("shift counter records the completed run", Number.isFinite(shiftCount) && shiftCount > 0);
       addCheck("final status reports shift count", finalText.includes("shifts"));
       addCheck("completion reveals run proof", proofPanel.hidden === false);
       addCheck("run proof encodes phases, score, shifts, and checksum", /^SC-4P-\d+-\d+-[0-9A-Z]{6}$/.test(proofCode.textContent));

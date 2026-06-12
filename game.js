@@ -4,10 +4,12 @@
   const levelLabel = document.querySelector("#levelLabel");
   const scoreLabel = document.querySelector("#scoreLabel");
   const bestLabel = document.querySelector("#bestLabel");
+  const shiftLabel = document.querySelector("#shiftLabel");
   const timeLabel = document.querySelector("#timeLabel");
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
   const resetButton = document.querySelector("#resetButton");
+  const phaseTrack = document.querySelector("#phaseTrack");
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
@@ -95,14 +97,46 @@
     levelLabel.textContent = String(Math.min(state.level + 1, levels.length));
     scoreLabel.textContent = String(state.score);
     bestLabel.textContent = String(state.bestScore);
+    shiftLabel.textContent = String(state.shifts);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
+    syncPhaseTrack();
     syncNodeButtons();
     if (proofPanel && proofCode && copyProofButton) {
       proofPanel.hidden = !state.complete;
       proofCode.textContent = state.finalProof;
       copyProofButton.disabled = !state.finalProof;
     }
+  }
+
+  function syncPhaseTrack() {
+    if (!phaseTrack) return;
+    if (phaseTrack.children.length !== levels.length) {
+      phaseTrack.textContent = "";
+      phaseNames.forEach((name, index) => {
+        const item = document.createElement("li");
+        const indexLabel = document.createElement("span");
+        const nameLabel = document.createElement("span");
+        item.className = "phase-step";
+        indexLabel.className = "phase-index";
+        nameLabel.className = "phase-name";
+        indexLabel.textContent = String(index + 1);
+        nameLabel.textContent = name;
+        item.append(indexLabel, nameLabel);
+        phaseTrack.append(item);
+      });
+    }
+    [...phaseTrack.children].forEach((item, index) => {
+      const done = state.solvedPhases > index;
+      const active = state.running && state.level === index && !state.complete;
+      item.classList.toggle("complete", done);
+      item.classList.toggle("active", active);
+      if (active) {
+        item.setAttribute("aria-current", "step");
+      } else {
+        item.removeAttribute("aria-current");
+      }
+    });
   }
 
   function syncNodeButtons() {

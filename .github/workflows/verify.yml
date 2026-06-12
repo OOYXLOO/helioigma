@@ -67,6 +67,10 @@ jobs:
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
           grep -q "nodeButtons" index.html
+          grep -q "phaseTrack" index.html
+          grep -q "shiftLabel" index.html
           grep -q "first-phase node buttons are present" smoke.html
+          grep -q "four-phase progress track is present" smoke.html
+          grep -q "shift counter records the completed run" smoke.html
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html

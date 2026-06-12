@@ -79,7 +79,11 @@ try {
   Assert-Contains "publish-after-repo.ps1" "-Push"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "index.html" "nodeButtons"
+  Assert-Contains "index.html" "phaseTrack"
+  Assert-Contains "index.html" "shiftLabel"
   Assert-Contains "smoke.html" "first-phase node buttons are present"
+  Assert-Contains "smoke.html" "four-phase progress track is present"
+  Assert-Contains "smoke.html" "shift counter records the completed run"
   Assert-Contains "proof-verifier.html" "SC-4P-2893-62-1I4Y0G"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
 

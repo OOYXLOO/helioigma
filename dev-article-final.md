@@ -10,7 +10,7 @@ cover_image: ./cover.png
 
 Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. The player rotates a Turing-inspired ring of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each node matches the target cipher before nightfall ends the run.
 
-It is designed to be playable in a quick judging pass: four named phases, score carry-over, streak bonuses, shift counting, keyboard/touch controls, explicit node-control buttons for mobile play, a local best score, and a deterministic run proof at the end.
+It is designed to be playable in a quick judging pass: a visible four-phase progress strip, score carry-over, streak bonuses, shift counting, keyboard/touch controls, explicit node-control buttons for mobile play, a local best score, and a deterministic run proof at the end.
 
 Public links to add only after hosting is live:
 
@@ -63,7 +63,7 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 
 - A self-contained static HTML/CSS/JavaScript game.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
-- Four timed phases with score carry-over and streak bonuses.
+- Four timed phases with a visible progress strip, score carry-over, and streak bonuses.
 - Mouse, touch, node-button, and number-key controls.
 - Final screen with solved phase count, total shifts, local best score, and copyable `SC-4P-...` run proof.
 - A proof verifier that recomputes completion checksums locally.
