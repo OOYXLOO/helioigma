@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solstice Cipher DEV Submit Console</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #536273;
+      --line: #d7dde5;
+      --paper: #ffffff;
+      --wash: #f4f7fa;
+      --blue: #2563eb;
+      --green: #047857;
+      --amber: #b45309;
+      --red: #b42318;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--wash); }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 64px; }
+    h1 { max-width: 860px; margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.06; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: 24px; line-height: 1.2; letter-spacing: 0; }
+    p, li { color: var(--muted); font-size: 16px; line-height: 1.58; }
+    a { color: var(--blue); font-weight: 700; }
+    .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0; }
+    .dek { max-width: 820px; margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .status { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+    .status div, .panel { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 18px; }
+    .status strong { display: block; color: var(--green); font-size: 22px; margin-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+    .panel strong { color: var(--ink); }
+    .danger { border-left: 5px solid var(--red); }
+    .warn { border-left: 5px solid var(--amber); }
+    .copy-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    textarea {
+      width: 100%;
+      min-height: 104px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+      color: var(--ink);
+      padding: 12px;
+      font: 14px/1.45 Consolas, Monaco, monospace;
+    }
+    textarea.short { min-height: 52px; }
+    button {
+      flex: 0 0 auto;
+      border: 0;
+      background: var(--blue);
+      color: white;
+      padding: 8px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .links a { display: block; padding: 12px; background: var(--paper); border: 1px solid var(--line); text-decoration: none; }
+    code { padding: 2px 5px; background: #eaf0f7; color: #1d2a39; }
+
+    @media (max-width: 780px) {
+      .status, .grid, .links { grid-template-columns: 1fr; }
+      .copy-row { align-items: flex-start; flex-direction: column; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">DEV June Solstice Game Jam final post console</p>
+    <h1>Solstice Cipher is ready to publish after the public hosting gate.</h1>
+    <p class="dek">Use this page after the GitHub repository and GitHub Pages try link are live. It keeps the DEV post short, consistent, and honest: no public URL, no DEV submit.</p>
+
+    <section class="status" aria-label="Current status">
+      <div><strong>Ready local package</strong><p>Static game, judge page, smoke page, GIF, cover, screenshots, and ZIP are prepared.</p></div>
+      <div><strong>Human gate</strong><p>Public GitHub repo/Pages plus DEV login/posting remain account-owner actions.</p></div>
+      <div><strong>$200 target</strong><p>DEV challenge has five USD 200 winner slots; this route is a backup, not a submitted claim.</p></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="copy-row"><h2>Title</h2><button type="button" data-copy="title">Copy</button></div>
+        <textarea id="title" class="short" readonly>Solstice Cipher: a Turing-wheel puzzle for holding the longest day</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>Tags</h2><button type="button" data-copy="tags">Copy</button></div>
+        <textarea id="tags" class="short" readonly>#junechallenge #gamedev #javascript #webdev</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>Opening</h2><button type="button" data-copy="opening">Copy</button></div>
+        <textarea id="opening" readonly>Solstice Cipher is a small browser puzzle for the June Solstice Game Jam. You rotate a Turing-inspired ring of sun, XOR, light, and binary glyphs to match each target cipher before nightfall. The game is intentionally compact: four phases, keyboard and touch controls, streak scoring, a local best score, and a deterministic run proof at the end.</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>Try Links</h2><button type="button" data-copy="links">Copy</button></div>
+        <textarea id="links" readonly>Play: https://ooyxloo.github.io/solstice-cipher/
+Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
+Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
+Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>What I Built</h2><button type="button" data-copy="built">Copy</button></div>
+        <textarea id="built" readonly>- A self-contained static JavaScript/canvas game.
+- Four named phases with score carry-over, streak bonuses, and shift counting.
+- A finale screen with final score, local best score, solved phase count, total shifts, and copyable run proof.
+- A judge page and smoke test so reviewers can verify the full loop quickly.
+- DEV-ready media: cover image, GIF, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>Media Order</h2><button type="button" data-copy="media">Copy</button></div>
+        <textarea id="media" readonly>1. cover.png
+2. solstice-cipher-demo.gif
+3. desktop-check-v5.png
+4. mobile-check-v6.png
+5. desktop-complete-v4.png</textarea>
+      </div>
+      <div class="panel warn">
+        <div class="copy-row"><h2>Pre-Submit Checks</h2><button type="button" data-copy="checks">Copy</button></div>
+        <textarea id="checks" readonly>Before pressing Publish on DEV:
+- GitHub repository exists publicly at https://github.com/OOYXLOO/solstice-cipher.
+- GitHub Pages play link opens logged-out.
+- /judge.html and /smoke.html return HTTP 200.
+- smoke.html shows all PASS checks.
+- DEV post includes the play link, source link, and screenshots/GIF.
+- No password, token, payout, tax, KYC, or private account data is included.</textarea>
+      </div>
+      <div class="panel danger">
+        <div class="copy-row"><h2>No-Go Gate</h2><button type="button" data-copy="nogo">Copy</button></div>
+        <textarea id="nogo" readonly>DO NOT submit the DEV post if the public play link, judge page, source repository, or smoke test is not live yet. This page is a copy aid only; it is not proof of public submission or prize eligibility.</textarea>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Local Review Links</h2>
+      <div class="links">
+        <a href="index.html">Play Local Game</a>
+        <a href="judge.html">Open Judge Page</a>
+        <a href="smoke.html">Run Smoke Test</a>
+        <a href="dev-post-draft.md">Open Markdown Draft</a>
+        <a href="PUBLISHING.md">Open Publishing Runbook</a>
+        <a href="submission-checklist.md">Open Submission Checklist</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    for (const button of document.querySelectorAll("[data-copy]")) {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copy);
+        if (!target) return;
+        try {
+          await navigator.clipboard.writeText(target.value);
+          button.textContent = "Copied";
+          setTimeout(() => { button.textContent = "Copy"; }, 1200);
+        } catch (error) {
+          target.focus();
+          target.select();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

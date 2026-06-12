@@ -36,6 +36,7 @@ The GIF was generated from local browser screenshots. If the final DEV post need
 - Source: `https://github.com/OOYXLOO/solstice-cipher`
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
+- Final post console: `https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html`
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 
@@ -50,5 +51,6 @@ The game uses a single canvas and deterministic level definitions. The target ci
 ## Next
 
 - Add a public try link after user authorizes publishing.
+- Use `dev-submit-console.html` for the final copy pass, media order, and no-go gate.
 - Convert the local GIF into a short hosted video if the final DEV post would benefit from video.
 - Polish level balance after mobile playtesting.

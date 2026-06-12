@@ -41,6 +41,7 @@ Then enable GitHub Pages from `main` / root. If the repository settings page is 
 
 Do not submit on DEV until the public try link works. Use:
 
+- Copy console: `dev-submit-console.html`
 - Draft: `dev-post-draft.md`
 - Cover image: `cover.png`
 - Demo GIF: `solstice-cipher-demo.gif`
@@ -60,5 +61,6 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run proof.
+- [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] No account secrets, API keys, payment details, tax data, KYC data, or private contact details are included.
