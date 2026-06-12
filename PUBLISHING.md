@@ -36,6 +36,7 @@ git push -u origin main
 ```
 
 Then enable GitHub Pages from `main` / root. If the repository settings page is available, use Settings -> Pages -> Build and deployment -> Deploy from a branch -> `main` -> `/root`.
+After the push, the `Verify Solstice Cipher` workflow should pass before the DEV article is published.
 
 ## DEV Post Gate
 
@@ -57,6 +58,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 ## Final Pre-Submit Check
 
 - [ ] `node --check game.js`
+- [ ] GitHub Actions `Verify Solstice Cipher` passes after the public push.
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
 - [ ] Public smoke test returns `PASS`.

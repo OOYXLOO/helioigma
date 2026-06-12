@@ -23,6 +23,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Local package ZIP: `solstice-cipher-dev-package.zip`.
 - Verification:
   - `node --check game.js`
+  - `.github/workflows/verify.yml`
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
@@ -31,6 +32,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 
 - Create or approve a public GitHub repository named `OOYXLOO/solstice-cipher`.
 - Push the prepared local `main` branch to that repository.
+- Confirm GitHub Actions `Verify Solstice Cipher` passes after push.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, media order, public links, and no-go gate.
 - Use official DEV tags: `devchallenge`, `gamechallenge`, `gamedev`.

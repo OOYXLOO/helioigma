@@ -40,6 +40,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run proof instead of looping forever.
+- `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 
 ## Local Media Assets
 
@@ -58,6 +59,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status plus the completion proof code.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
+- `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 
 ## Public Publishing
 

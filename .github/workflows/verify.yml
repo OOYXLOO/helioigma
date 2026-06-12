@@ -1,0 +1,55 @@
+name: Verify Solstice Cipher
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Check JavaScript syntax
+        run: node --check game.js
+
+      - name: Verify required public package files
+        run: |
+          set -euo pipefail
+          for file in \
+            index.html \
+            styles.css \
+            game.js \
+            judge.html \
+            smoke.html \
+            dev-submit-console.html \
+            dev-article-final.md \
+            cover.png \
+            solstice-cipher-demo.mp4 \
+            solstice-cipher-demo.webm \
+            solstice-cipher-demo.gif \
+            desktop-check-v5.png \
+            mobile-check-v6.png \
+            desktop-complete-v4.png \
+            PUBLISHING.md \
+            submission-checklist.md
+          do
+            test -s "$file"
+          done
+
+      - name: Verify DEV challenge submission copy
+        run: |
+          set -euo pipefail
+          grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
+          grep -q "solstice-cipher-demo.mp4" dev-article-final.md
+          grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
+          grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
+
+      - name: Verify judge and smoke links
+        run: |
+          set -euo pipefail
+          grep -q "solstice-cipher-demo.mp4" judge.html
+          grep -q "Run Smoke Test" judge.html
+          grep -q "SC-4P" smoke.html
