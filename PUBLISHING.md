@@ -31,8 +31,8 @@ The account owner should create the public GitHub repository, or approve Codex t
 After that, run:
 
 ```powershell
-git remote add origin https://github.com/OOYXLOO/solstice-cipher.git
-git push -u origin main
+powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1
+powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push
 ```
 
 Then enable GitHub Pages from `main` / root. If the repository settings page is available, use Settings -> Pages -> Build and deployment -> Deploy from a branch -> `main` -> `/root`.
@@ -44,6 +44,7 @@ Do not submit on DEV until the public try link works. Use:
 
 - Copy console: `dev-submit-console.html`
 - Publish assistant: `publish-assistant.html`
+- Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
 - Cover image: `cover.png`
 - Demo video: `solstice-cipher-demo.mp4`

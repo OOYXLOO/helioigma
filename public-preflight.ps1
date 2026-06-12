@@ -50,6 +50,7 @@ try {
     "dev-article-final.md",
     "dev-post-draft.md",
     "publish-assistant.html",
+    "publish-after-repo.ps1",
     "verification.html",
     "verification-report.md",
     "cover.png",
@@ -74,6 +75,8 @@ try {
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
+  Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
+  Assert-Contains "publish-after-repo.ps1" "-Push"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "index.html" "nodeButtons"
   Assert-Contains "smoke.html" "first-phase node buttons are present"

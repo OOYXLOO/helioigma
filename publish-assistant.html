@@ -153,8 +153,8 @@ Initialize with README/license/gitignore: no</textarea>
 
       <article class="panel">
         <div class="copy-row"><h2>Push commands</h2><button type="button" data-copy="push">Copy</button></div>
-        <textarea id="push" readonly>git remote add origin https://github.com/OOYXLOO/solstice-cipher.git
-git push -u origin main</textarea>
+        <textarea id="push" readonly>powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1
+powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push</textarea>
       </article>
 
       <article class="panel">

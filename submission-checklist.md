@@ -14,6 +14,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
+- Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - DEV post draft: `dev-post-draft.md`.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
@@ -44,6 +45,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, media order, public links, and no-go gate.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
+- Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
 - Use official DEV tags: `devchallenge`, `gamechallenge`, `gamedev`.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.

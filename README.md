@@ -61,6 +61,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
+- `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.

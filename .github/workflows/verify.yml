@@ -26,6 +26,7 @@ jobs:
             smoke.html \
             proof-verifier.html \
             publish-assistant.html \
+            publish-after-repo.ps1 \
             public-preflight.ps1 \
             dev-submit-console.html \
             dev-article-final.md \
@@ -64,6 +65,7 @@ jobs:
           grep -q "SC-4P-2893-62-1I4Y0G" verification-report.md
           grep -q "SC-4P-2893-62-1I4Y0G" proof-verifier.html
           grep -q "No-go gate" publish-assistant.html
+          grep -q "publish-after-repo helper" publish-after-repo.ps1
           grep -q "nodeButtons" index.html
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "devchallenge" verification.html
