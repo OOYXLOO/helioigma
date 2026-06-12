@@ -20,6 +20,8 @@ Public links to add only after hosting is live:
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 - Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
 
+Prize-category note: this submission is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and a quick verifier loop. It does not claim the Best Google AI Usage category.
+
 ## Demo Video
 
 Upload or embed `solstice-cipher-demo.mp4` in the DEV post media area. If DEV prefers another format, use `solstice-cipher-demo.webm`; keep `solstice-cipher-demo.gif` as the animated fallback.
@@ -67,6 +69,10 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 - A proof verifier that recomputes completion checksums locally.
 - A judge page and smoke test so reviewers can verify the full loop quickly.
 - DEV-ready media: cover image, MP4/WebM demo, GIF preview, desktop screenshot, mobile screenshot, and completion screenshot.
+
+## Originality and Build Window
+
+The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
 
 ## Technical Notes
 

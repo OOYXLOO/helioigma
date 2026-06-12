@@ -42,6 +42,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Use `dev-submit-console.html` for the final title, tags, media order, public links, and no-go gate.
 - Use official DEV tags: `devchallenge`, `gamechallenge`, `gamedev`.
 - Review the DEV post draft for tone and personal voice.
+- Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
+- Include the originality/build-window note in the final DEV post.
 - Confirm the challenge rules and eligibility on the official DEV pages.
 
 ## Human Gates

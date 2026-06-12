@@ -42,6 +42,8 @@ The GIF was generated from local browser screenshots and converted into MP4/WebM
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 
+Prize-category note: this is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and the proof verifier. It does not claim the Best Google AI Usage category.
+
 ## Why It Fits The Theme
 
 The June solstice is the longest day in the northern hemisphere. The game turns that into a tension loop: daylight gives the player time, nightfall ends the round, and the puzzle is solved by balancing solar and lunar glyph states.
@@ -49,6 +51,8 @@ The June solstice is the longest day in the northern hemisphere. The game turns 
 ## Technical Notes
 
 The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards time-weighted score, with a streak bonus for consecutive solved phases. The final screen reports solved phases, local best score, total shifts, and a copyable run proof code so a judge can tell whether the run was a clean solve or a scrappy late save.
+
+This is a new static game package for the jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package for review.
 
 ## Next
 
