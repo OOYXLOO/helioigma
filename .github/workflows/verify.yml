@@ -60,5 +60,7 @@ jobs:
           grep -q "PASS - Longest day held" verification-report.md
           grep -q "SC-4P-2893-62-1I4Y0G" verification-report.md
           grep -q "SC-4P-2893-62-1I4Y0G" proof-verifier.html
+          grep -q "nodeButtons" index.html
+          grep -q "first-phase node buttons are present" smoke.html
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html

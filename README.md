@@ -25,11 +25,12 @@ http://127.0.0.1:8781/
 
 Solstice Cipher is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing wheel of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has four named phases, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has four named phases, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, so judges can play on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 ## Controls
 
 - Click or tap ring nodes to rotate their phase.
+- Use the node-control buttons below the canvas.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
 - `Escape` resets the board.

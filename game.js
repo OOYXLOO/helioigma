@@ -8,6 +8,7 @@
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
   const resetButton = document.querySelector("#resetButton");
+  const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
   const copyProofButton = document.querySelector("#copyProofButton");
@@ -96,11 +97,47 @@
     bestLabel.textContent = String(state.bestScore);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
+    syncNodeButtons();
     if (proofPanel && proofCode && copyProofButton) {
       proofPanel.hidden = !state.complete;
       proofCode.textContent = state.finalProof;
       copyProofButton.disabled = !state.finalProof;
     }
+  }
+
+  function syncNodeButtons() {
+    if (!nodeButtons) return;
+    if (nodeButtons.children.length !== state.ring.length) {
+      nodeButtons.textContent = "";
+      state.ring.forEach((_, index) => {
+        const button = document.createElement("button");
+        const nodeIndex = document.createElement("span");
+        const current = document.createElement("span");
+        const target = document.createElement("span");
+        button.type = "button";
+        button.className = "node-button";
+        button.dataset.index = String(index);
+        nodeIndex.className = "node-index";
+        current.className = "node-current";
+        target.className = "node-target";
+        button.append(nodeIndex, current, target);
+        nodeButtons.append(button);
+      });
+    }
+    [...nodeButtons.children].forEach((button, index) => {
+      const value = state.ring[index];
+      const targetValue = state.target[index];
+      const locked = value === targetValue;
+      button.disabled = !state.running || state.complete;
+      button.classList.toggle("locked", locked);
+      button.setAttribute(
+        "aria-label",
+        `Rotate node ${index + 1}; current ${glyphs[value]}; target ${glyphs[targetValue]}`
+      );
+      button.querySelector(".node-index").textContent = String(index + 1);
+      button.querySelector(".node-current").textContent = glyphs[value];
+      button.querySelector(".node-target").textContent = `target ${glyphs[targetValue]}`;
+    });
   }
 
   function resizeCanvas() {
@@ -425,6 +462,13 @@
   });
   canvas.addEventListener("click", handlePointer);
   canvas.addEventListener("touchstart", handlePointer, { passive: false });
+  if (nodeButtons) {
+    nodeButtons.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-index]");
+      if (!button) return;
+      rotateNode(Number(button.dataset.index));
+    });
+  }
   window.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       startGame();

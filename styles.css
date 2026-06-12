@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   min-height: 100%;
@@ -97,6 +101,13 @@ body {
   margin-top: 12px;
 }
 
+.node-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
 .proof-panel {
   margin-top: 12px;
   min-height: 82px;
@@ -175,6 +186,64 @@ button:focus-visible {
   outline: 2px solid rgba(247, 201, 72, 0.5);
   outline-offset: 2px;
   background: rgba(247, 201, 72, 0.18);
+}
+
+.node-button {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "index current"
+    "index target";
+  align-items: center;
+  column-gap: 9px;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.node-button .node-index {
+  grid-area: index;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.node-button .node-current {
+  grid-area: current;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.15;
+}
+
+.node-button .node-target {
+  grid-area: target;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.node-button.locked {
+  border-color: rgba(184, 242, 200, 0.58);
+  background: rgba(184, 242, 200, 0.12);
+}
+
+.node-button.locked .node-index,
+.node-button.locked .node-current {
+  color: #b8f2c8;
+}
+
+.node-button:disabled {
+  cursor: default;
+  opacity: 0.72;
 }
 
 #startButton {
