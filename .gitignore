@@ -1,0 +1,10 @@
+# Local-only package artifacts
+demo-frames-v3/
+solstice-cipher-dev-package.zip
+desktop-check-v3.png
+desktop-complete-v2.png
+mobile-check-v4.png
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,403 @@
+(() => {
+  const canvas = document.querySelector("#game");
+  const ctx = canvas.getContext("2d");
+  const levelLabel = document.querySelector("#levelLabel");
+  const scoreLabel = document.querySelector("#scoreLabel");
+  const timeLabel = document.querySelector("#timeLabel");
+  const statusLine = document.querySelector("#statusLine");
+  const startButton = document.querySelector("#startButton");
+  const resetButton = document.querySelector("#resetButton");
+
+  const glyphs = ["SOL", "XOR", "LUX", "BIN"];
+  const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
+  const phaseNames = ["First light", "Meridian lock", "Blue-hour carry", "Nightfall proof"];
+  const levels = [
+    { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
+    { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },
+    { target: [1, 3, 0, 2, 1, 0, 3, 2], seconds: 38 },
+    { target: [2, 1, 3, 0, 2, 3, 1, 0, 1], seconds: 35 },
+  ];
+
+  const state = {
+    running: false,
+    level: 0,
+    score: 0,
+    timeLeft: levels[0].seconds,
+    streak: 0,
+    shifts: 0,
+    solvedPhases: 0,
+    complete: false,
+    ring: [],
+    target: levels[0].target,
+    nodes: [],
+    particles: [],
+    lastTick: 0,
+    message: "Decode the Turing wheel before nightfall.",
+  };
+
+  function seedLevel(index) {
+    const level = levels[index];
+    if (!level) {
+      state.complete = true;
+      state.running = false;
+      state.timeLeft = 0;
+      state.message = `Longest day held. Final score ${state.score} across ${state.shifts} shifts.`;
+      updateHud();
+      return;
+    }
+    state.target = level.target.slice();
+    state.ring = state.target.map((value, i) => (value + 1 + (i % 3)) % glyphs.length);
+    state.timeLeft = level.seconds;
+    state.message = index === 0 ? "Decode the Turing wheel before nightfall." : `${phaseNames[index]} unlocked.`;
+    updateHud();
+  }
+
+  function updateHud() {
+    levelLabel.textContent = String(Math.min(state.level + 1, levels.length));
+    scoreLabel.textContent = String(state.score);
+    timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
+    statusLine.textContent = state.message;
+  }
+
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.round(rect.width * ratio);
+    canvas.height = Math.round(rect.height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  }
+
+  function drawGlyph(x, y, radius, value, label) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = "rgba(255,255,255,0.06)";
+    ctx.strokeStyle = palette[value];
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = palette[value];
+    ctx.font = `700 ${Math.max(12, radius * 0.38)}px ui-sans-serif, system-ui`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(glyphs[value], 0, 0);
+
+    if (label) {
+      ctx.fillStyle = "rgba(247,243,223,0.75)";
+      ctx.font = `700 ${Math.max(10, radius * 0.22)}px ui-sans-serif, system-ui`;
+      ctx.fillText(label, 0, radius + 18);
+    }
+    ctx.restore();
+  }
+
+  function draw() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    const cx = w / 2;
+    const topBand = Math.max(92, h * 0.18);
+    const cy = topBand + (h - topBand) * 0.52;
+    const ringRadius = Math.min(w * 0.32, (h - topBand) * 0.36);
+    const nodeRadius = Math.max(22, Math.min(w, h) * 0.05);
+    state.nodes = [];
+
+    const levelSeconds = levels[Math.min(state.level, levels.length - 1)].seconds;
+    const nightfall = state.complete ? 0 : 1 - Math.max(0, state.timeLeft) / levelSeconds;
+    const sky = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.max(w, h) * 0.72);
+    sky.addColorStop(0, `rgba(247,201,72,${0.16 - nightfall * 0.08})`);
+    sky.addColorStop(0.46, `rgba(139,211,255,${0.1 - nightfall * 0.03})`);
+    sky.addColorStop(1, `rgba(0,0,0,${0.18 + nightfall * 0.22})`);
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.save();
+    ctx.fillStyle = "rgba(255,255,255,0.045)";
+    ctx.strokeStyle = "rgba(255,255,255,0.1)";
+    ctx.lineWidth = 1;
+    roundRect(ctx, w * 0.08, 18, w * 0.84, topBand - 32, 18);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.strokeStyle = "rgba(247,243,223,0.22)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, ringRadius, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(247,243,223,0.84)";
+    ctx.font = `700 ${Math.max(14, w * 0.018)}px ui-sans-serif, system-ui`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("TURING TARGET CIPHER", cx, Math.max(34, topBand * 0.33));
+    ctx.fillStyle = "rgba(174,184,197,0.92)";
+    ctx.font = `700 ${Math.max(12, w * 0.014)}px ui-sans-serif, system-ui`;
+    ctx.fillText((phaseNames[state.level] || "Solstice proof").toUpperCase(), cx, Math.max(52, topBand * 0.48));
+
+    const targetGap = Math.min(72, (w * 0.76) / Math.max(1, state.target.length - 1));
+    const targetY = Math.max(70, topBand * 0.72);
+    const targetStart = cx - ((state.target.length - 1) * targetGap) / 2;
+    ctx.save();
+    ctx.strokeStyle = "rgba(247,243,223,0.14)";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(targetStart, targetY);
+    ctx.lineTo(targetStart + (state.target.length - 1) * targetGap, targetY);
+    ctx.stroke();
+    ctx.restore();
+    state.target.forEach((value, i) => {
+      drawGlyph(targetStart + i * targetGap, targetY, Math.min(23, nodeRadius * 0.52), value, "");
+    });
+
+    state.ring.forEach((value, i) => {
+      const angle = -Math.PI / 2 + (Math.PI * 2 * i) / state.ring.length;
+      const x = cx + Math.cos(angle) * ringRadius;
+      const y = cy + Math.sin(angle) * ringRadius;
+      const matched = value === state.target[i];
+      state.nodes.push({ x, y, radius: nodeRadius, index: i });
+
+      ctx.save();
+      ctx.strokeStyle = matched ? "rgba(184,242,200,0.55)" : "rgba(255,255,255,0.09)";
+      ctx.lineWidth = matched ? 6 : 3;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.restore();
+
+      drawGlyph(x, y, nodeRadius, value, String(i + 1));
+    });
+
+    const matched = state.ring.filter((value, i) => value === state.target[i]).length;
+    const progress = matched / state.target.length;
+    ctx.save();
+    ctx.strokeStyle = "rgba(255,255,255,0.08)";
+    ctx.lineWidth = 14;
+    ctx.beginPath();
+    ctx.arc(cx, cy, ringRadius * 0.48, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.strokeStyle = progress === 1 ? "#b8f2c8" : "#f7c948";
+    ctx.beginPath();
+    ctx.arc(cx, cy, ringRadius * 0.48, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * progress);
+    ctx.stroke();
+    ctx.fillStyle = "rgba(247,243,223,0.92)";
+    ctx.font = `800 ${Math.max(36, Math.min(w, h) * 0.09)}px ui-sans-serif, system-ui`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(`${matched}/${state.target.length}`, cx, cy - 4);
+    ctx.font = `700 ${Math.max(12, Math.min(w, h) * 0.022)}px ui-sans-serif, system-ui`;
+    ctx.fillStyle = "rgba(174,184,197,0.9)";
+    const centerStatus = state.complete ? `${state.solvedPhases}/${levels.length} PHASES` : state.running ? `STREAK ${state.streak}` : "MATCH";
+    ctx.fillText(centerStatus, cx, cy + Math.max(34, h * 0.07));
+    ctx.font = `600 ${Math.max(11, Math.min(w, h) * 0.018)}px ui-sans-serif, system-ui`;
+    ctx.fillStyle = "rgba(174,184,197,0.78)";
+    ctx.fillText(`${state.shifts} shifts`, cx, cy + Math.max(54, h * 0.105));
+    ctx.restore();
+
+    if (state.complete) {
+      drawFinale(cx, cy, ringRadius);
+    }
+
+    state.particles.forEach((particle) => {
+      ctx.globalAlpha = particle.life;
+      ctx.fillStyle = particle.color;
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  function burst(x, y, color) {
+    for (let i = 0; i < 18; i += 1) {
+      const angle = (Math.PI * 2 * i) / 18;
+      state.particles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * (1.4 + Math.random() * 1.8),
+        vy: Math.sin(angle) * (1.4 + Math.random() * 1.8),
+        size: 2 + Math.random() * 3,
+        life: 0.9,
+        color,
+      });
+    }
+  }
+
+  function roundRect(context, x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    context.beginPath();
+    context.moveTo(x + r, y);
+    context.arcTo(x + width, y, x + width, y + height, r);
+    context.arcTo(x + width, y + height, x, y + height, r);
+    context.arcTo(x, y + height, x, y, r);
+    context.arcTo(x, y, x + width, y, r);
+    context.closePath();
+  }
+
+  function drawFinale(cx, cy, ringRadius) {
+    ctx.save();
+    ctx.fillStyle = "rgba(7,16,24,0.82)";
+    ctx.strokeStyle = "rgba(247,201,72,0.45)";
+    ctx.lineWidth = 2;
+    roundRect(ctx, cx - ringRadius * 0.86, cy - ringRadius * 0.34, ringRadius * 1.72, ringRadius * 0.68, 18);
+    ctx.fill();
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#f7c948";
+    ctx.font = `800 ${Math.max(22, ringRadius * 0.14)}px ui-sans-serif, system-ui`;
+    ctx.fillText("SOLSTICE HELD", cx, cy - ringRadius * 0.12);
+    ctx.fillStyle = "rgba(247,243,223,0.9)";
+    ctx.font = `700 ${Math.max(14, ringRadius * 0.075)}px ui-sans-serif, system-ui`;
+    ctx.fillText(`Final score ${state.score}`, cx, cy + ringRadius * 0.08);
+    ctx.fillStyle = "rgba(174,184,197,0.9)";
+    ctx.font = `600 ${Math.max(12, ringRadius * 0.055)}px ui-sans-serif, system-ui`;
+    ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.22);
+    ctx.fillStyle = "rgba(174,184,197,0.78)";
+    ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
+    ctx.fillText("Press Enter or Start to replay.", cx, cy + ringRadius * 0.34);
+    ctx.restore();
+  }
+
+  function checkWin() {
+    if (!state.running) return;
+    const complete = state.ring.every((value, i) => value === state.target[i]);
+    if (!complete) return;
+    state.streak += 1;
+    state.solvedPhases += 1;
+    const phaseScore = Math.ceil(state.timeLeft * 10) + state.target.length * 25 + state.streak * 50;
+    state.score += phaseScore;
+    state.level += 1;
+    burst(canvas.clientWidth / 2, canvas.clientHeight / 2, "#b8f2c8");
+    seedLevel(state.level);
+    if (!state.complete) {
+      state.message = `${phaseNames[state.level - 1]} complete. +${phaseScore}`;
+    }
+    updateHud();
+  }
+
+  function pointerToCanvas(event) {
+    const rect = canvas.getBoundingClientRect();
+    const source = event.touches ? event.touches[0] : event;
+    return { x: source.clientX - rect.left, y: source.clientY - rect.top };
+  }
+
+  function handlePointer(event) {
+    event.preventDefault();
+    if (!state.running) return;
+    const point = pointerToCanvas(event);
+    const hit = state.nodes.find((node) => Math.hypot(point.x - node.x, point.y - node.y) <= node.radius * 1.25);
+    if (!hit) return;
+    rotateNode(hit.index, hit.x, hit.y);
+  }
+
+  function rotateNode(index, x = null, y = null) {
+    if (!state.running || index < 0 || index >= state.ring.length) return;
+    state.shifts += 1;
+    state.ring[index] = (state.ring[index] + 1) % glyphs.length;
+    const node = state.nodes[index] || {};
+    const px = x ?? node.x ?? canvas.clientWidth / 2;
+    const py = y ?? node.y ?? canvas.clientHeight / 2;
+    const locked = state.ring[index] === state.target[index];
+    if (locked) {
+      state.score += 5 + state.streak;
+    } else {
+      state.timeLeft = Math.max(0, state.timeLeft - 0.45);
+    }
+    burst(px, py, palette[state.ring[index]]);
+    state.message = locked ? `Signal ${index + 1} locked.` : `Phase ${index + 1} shifted.`;
+    updateHud();
+    checkWin();
+    draw();
+  }
+
+  function tick(time) {
+    if (!state.lastTick) state.lastTick = time;
+    const delta = Math.min(0.05, (time - state.lastTick) / 1000);
+    state.lastTick = time;
+
+    state.particles.forEach((particle) => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += 0.02;
+      particle.life -= delta * 1.5;
+    });
+    state.particles = state.particles.filter((particle) => particle.life > 0);
+
+    if (state.running) {
+      state.timeLeft -= delta;
+      if (state.timeLeft <= 0) {
+        state.running = false;
+        state.streak = 0;
+        state.timeLeft = 0;
+        state.message = "Nightfall sealed the Turing wheel.";
+      }
+      updateHud();
+    }
+
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  function startGame() {
+    state.running = true;
+    state.level = 0;
+    state.score = 0;
+    state.streak = 0;
+    state.shifts = 0;
+    state.solvedPhases = 0;
+    state.complete = false;
+    state.particles = [];
+    state.lastTick = 0;
+    seedLevel(0);
+    state.message = "Turing wheel is live.";
+    updateHud();
+  }
+
+  function resetGame() {
+    state.running = false;
+    state.level = 0;
+    state.score = 0;
+    state.streak = 0;
+    state.shifts = 0;
+    state.solvedPhases = 0;
+    state.complete = false;
+    state.particles = [];
+    seedLevel(0);
+    state.message = "Decode the Turing wheel before nightfall.";
+    updateHud();
+    draw();
+  }
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    draw();
+  });
+  canvas.addEventListener("click", handlePointer);
+  canvas.addEventListener("touchstart", handlePointer, { passive: false });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      startGame();
+      return;
+    }
+    if (event.key === "Escape") {
+      resetGame();
+      return;
+    }
+    const index = Number(event.key) - 1;
+    if (Number.isInteger(index) && index >= 0 && index < state.ring.length) {
+      event.preventDefault();
+      rotateNode(index);
+    }
+  });
+  startButton.addEventListener("click", startGame);
+  resetButton.addEventListener("click", resetGame);
+
+  resizeCanvas();
+  seedLevel(0);
+  updateHud();
+  requestAnimationFrame(tick);
+})();
