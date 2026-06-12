@@ -2,6 +2,8 @@
 
 Solstice Cipher is a small browser puzzle game about balancing daylight, nightfall, and code-breaking. Each round shows a target cipher above a Turing wheel of glyph nodes. Click, tap, or press number keys to rotate their phase before the timer reaches zero.
 
+Fast judge path: play the live game, watch the short demo, run the smoke test, then verify a sample `SC-4P-...` proof in the proof verifier.
+
 ## How to Play
 
 Start the run, then rotate each ring glyph until it matches the target cipher above it. Correct locks earn points. Exploratory shifts cost a sliver of time. Clear all four phases to hold the longest day and reveal the final score.
@@ -47,6 +49,13 @@ Prize-category note: this is aimed at the Best Ode to Alan Turing category throu
 ## Why It Fits The Theme
 
 The June solstice is the longest day in the northern hemisphere. The game turns that into a tension loop: daylight gives the player time, nightfall ends the round, and the puzzle is solved by balancing solar and lunar glyph states.
+
+## Rubric Fit
+
+- Theme relevance: daylight is the timer, nightfall is the fail state, and the win condition is holding the longest day.
+- Creativity: the solstice theme is expressed as a code-breaking wheel rather than a literal calendar demo.
+- Technical execution: one static canvas game with keyboard/touch/node controls, scoring, proof generation, and a smoke test.
+- Optional category: Best Ode to Alan Turing through rotor-like alignment, XOR/binary language, and proof verification.
 
 ## Technical Notes
 

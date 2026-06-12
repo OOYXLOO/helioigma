@@ -51,9 +51,13 @@ jobs:
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
           grep -q "solstice-cipher-demo.mp4" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
+          grep -q "Judge in 60 Seconds" dev-article-final.md
+          grep -q "Rubric Fit" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
+          grep -q "Judge in 60 Seconds" dev-submit-console.html
+          grep -q "Rubric Fit" dev-submit-console.html
 
       - name: Verify judge and smoke links
         run: |

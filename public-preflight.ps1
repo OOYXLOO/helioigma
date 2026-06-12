@@ -70,9 +70,13 @@ try {
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
+  Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
+  Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
+  Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
+  Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
