@@ -52,6 +52,7 @@ body {
 }
 
 .hud,
+.brief,
 .controls,
 .proof-panel {
   display: flex;
@@ -67,6 +68,29 @@ body {
 
 .hud {
   margin-bottom: 12px;
+}
+
+.brief {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.brief span {
+  min-width: 0;
+}
+
+.brief span::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(247, 201, 72, 0.6);
+  vertical-align: 1px;
 }
 
 .controls {
@@ -165,6 +189,7 @@ button:focus-visible {
 
 @media (max-width: 720px) {
   .hud,
+  .brief,
   .controls,
   .proof-panel {
     align-items: flex-start;
