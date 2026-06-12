@@ -59,5 +59,6 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public smoke test returns `PASS`.
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
+- [ ] Completed public run reveals a copyable `SC-4P-...` run proof.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] No account secrets, API keys, payment details, tax data, KYC data, or private contact details are included.

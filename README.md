@@ -25,7 +25,7 @@ http://127.0.0.1:8781/
 
 Solstice Cipher is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing wheel of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has four named phases, score carry-over, streak scoring, shift counting, a local best-score readout, and a final replay screen that summarizes the run. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has four named phases, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 ## Controls
 
@@ -39,7 +39,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - Desktop and 390px mobile browser checks pass with no console errors or horizontal overflow.
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
-- A four-phase ending state shows final score, local best score, solved phase count, and total shifts instead of looping forever.
+- A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run proof instead of looping forever.
 
 ## Local Media Assets
 
@@ -53,7 +53,7 @@ The current build now has four named phases, score carry-over, streak scoring, s
 ## Judge Proof
 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
-- `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status.
+- `smoke.html`: browser self-test that starts the game in an iframe, solves all four phases through public keyboard controls, and verifies the final score/status plus the completion proof code.
 
 ## Public Publishing
 

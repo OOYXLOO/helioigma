@@ -8,6 +8,9 @@
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
   const resetButton = document.querySelector("#resetButton");
+  const proofPanel = document.querySelector("#proofPanel");
+  const proofCode = document.querySelector("#proofCode");
+  const copyProofButton = document.querySelector("#copyProofButton");
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
@@ -30,6 +33,7 @@
     shifts: 0,
     solvedPhases: 0,
     complete: false,
+    finalProof: "",
     ring: [],
     target: levels[0].target,
     nodes: [],
@@ -55,6 +59,17 @@
     }
   }
 
+  function buildRunProof() {
+    const payload = `solstice|${levels.length}|${state.score}|${state.shifts}|${state.solvedPhases}`;
+    let hash = 2166136261;
+    for (const char of payload) {
+      hash ^= char.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    const suffix = (hash >>> 0).toString(36).toUpperCase().padStart(6, "0").slice(0, 6);
+    return `SC-${state.solvedPhases}P-${state.score}-${state.shifts}-${suffix}`;
+  }
+
   function seedLevel(index) {
     const level = levels[index];
     if (!level) {
@@ -62,6 +77,7 @@
       state.running = false;
       state.timeLeft = 0;
       storeBestScore(state.score);
+      state.finalProof = buildRunProof();
       state.message = `Longest day held. Final score ${state.score} across ${state.shifts} shifts.`;
       updateHud();
       return;
@@ -69,6 +85,7 @@
     state.target = level.target.slice();
     state.ring = state.target.map((value, i) => (value + 1 + (i % 3)) % glyphs.length);
     state.timeLeft = level.seconds;
+    state.finalProof = "";
     state.message = index === 0 ? "Decode the Turing wheel before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
   }
@@ -79,6 +96,11 @@
     bestLabel.textContent = String(state.bestScore);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
+    if (proofPanel && proofCode && copyProofButton) {
+      proofPanel.hidden = !state.complete;
+      proofCode.textContent = state.finalProof;
+      copyProofButton.disabled = !state.finalProof;
+    }
   }
 
   function resizeCanvas() {
@@ -264,23 +286,24 @@
     ctx.fillStyle = "rgba(7,16,24,0.82)";
     ctx.strokeStyle = "rgba(247,201,72,0.45)";
     ctx.lineWidth = 2;
-    roundRect(ctx, cx - ringRadius * 0.86, cy - ringRadius * 0.34, ringRadius * 1.72, ringRadius * 0.68, 18);
+    roundRect(ctx, cx - ringRadius * 0.88, cy - ringRadius * 0.4, ringRadius * 1.76, ringRadius * 0.88, 18);
     ctx.fill();
     ctx.stroke();
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "#f7c948";
     ctx.font = `800 ${Math.max(22, ringRadius * 0.14)}px ui-sans-serif, system-ui`;
-    ctx.fillText("SOLSTICE HELD", cx, cy - ringRadius * 0.12);
+    ctx.fillText("SOLSTICE HELD", cx, cy - ringRadius * 0.18);
     ctx.fillStyle = "rgba(247,243,223,0.9)";
     ctx.font = `700 ${Math.max(14, ringRadius * 0.075)}px ui-sans-serif, system-ui`;
-    ctx.fillText(`Final score ${state.score}`, cx, cy + ringRadius * 0.08);
+    ctx.fillText(`Final score ${state.score}`, cx, cy + ringRadius * 0.02);
     ctx.fillStyle = "rgba(174,184,197,0.9)";
     ctx.font = `600 ${Math.max(12, ringRadius * 0.055)}px ui-sans-serif, system-ui`;
-    ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.22);
+    ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.16);
     ctx.fillStyle = "rgba(174,184,197,0.78)";
     ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
-    ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.34);
+    ctx.fillText(`Proof ${state.finalProof}`, cx, cy + ringRadius * 0.29);
+    ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.41);
     ctx.restore();
   }
 
@@ -372,6 +395,7 @@
     state.shifts = 0;
     state.solvedPhases = 0;
     state.complete = false;
+    state.finalProof = "";
     state.particles = [];
     state.lastTick = 0;
     seedLevel(0);
@@ -387,6 +411,7 @@
     state.shifts = 0;
     state.solvedPhases = 0;
     state.complete = false;
+    state.finalProof = "";
     state.particles = [];
     seedLevel(0);
     state.message = "Decode the Turing wheel before nightfall.";
@@ -417,6 +442,16 @@
   });
   startButton.addEventListener("click", startGame);
   resetButton.addEventListener("click", resetGame);
+  copyProofButton.addEventListener("click", async () => {
+    if (!state.finalProof) return;
+    try {
+      await navigator.clipboard.writeText(state.finalProof);
+      state.message = "Run proof copied.";
+    } catch {
+      state.message = `Run proof ready: ${state.finalProof}`;
+    }
+    updateHud();
+  });
 
   resizeCanvas();
   seedLevel(0);

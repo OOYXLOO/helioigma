@@ -165,11 +165,14 @@
       const statusLine = doc.querySelector("#statusLine");
       const scoreLabel = doc.querySelector("#scoreLabel");
       const bestLabel = doc.querySelector("#bestLabel");
+      const proofPanel = doc.querySelector("#proofPanel");
+      const proofCode = doc.querySelector("#proofCode");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));
+      addCheck("run proof panel is present", Boolean(proofPanel));
 
       startButton.click();
       await sleep(120);
@@ -186,6 +189,8 @@
       addCheck("final score is positive", Number.isFinite(finalScore) && finalScore > 0);
       addCheck("best score records the completed run", Number.isFinite(bestScore) && bestScore >= finalScore);
       addCheck("final status reports shift count", finalText.includes("shifts"));
+      addCheck("completion reveals run proof", proofPanel.hidden === false);
+      addCheck("run proof encodes phases, score, shifts, and checksum", /^SC-4P-\d+-\d+-[0-9A-Z]{6}$/.test(proofCode.textContent));
 
       status.textContent = `PASS - ${finalText}`;
       status.classList.add("pass");

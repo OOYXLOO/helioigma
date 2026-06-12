@@ -52,7 +52,8 @@ body {
 }
 
 .hud,
-.controls {
+.controls,
+.proof-panel {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,6 +71,11 @@ body {
 
 .controls {
   margin-top: 12px;
+}
+
+.proof-panel {
+  margin-top: 12px;
+  min-height: 82px;
 }
 
 .kicker {
@@ -105,6 +111,16 @@ h1 {
 .stats strong {
   color: var(--ink);
   font-size: 18px;
+}
+
+.proof-code {
+  margin: 0;
+  color: var(--accent);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(16px, 3vw, 24px);
+  font-weight: 800;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 canvas {
@@ -149,7 +165,8 @@ button:focus-visible {
 
 @media (max-width: 720px) {
   .hud,
-  .controls {
+  .controls,
+  .proof-panel {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -167,6 +184,10 @@ button:focus-visible {
     grid-column: 1 / -1;
     width: 100%;
     text-align: left;
+  }
+
+  .proof-panel button {
+    width: 100%;
   }
 
   canvas {

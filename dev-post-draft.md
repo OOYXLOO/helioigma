@@ -17,7 +17,7 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 - Mouse, touch, and number-key controls.
 - Multiple timed phases with score carry-over.
 - Time pressure, per-signal points, streak bonuses, small time penalties for exploratory shifts, and a final score state after four phases.
-- Four named phases, shift counting, a local best-score readout, and an end screen that summarizes the run for quick judging.
+- Four named phases, shift counting, a local best-score readout, a deterministic run proof code, and an end screen that summarizes the run for quick judging.
 - No backend, API key, account integration, or private data.
 
 ## Demo Assets
@@ -45,7 +45,7 @@ The June solstice is the longest day in the northern hemisphere. The game turns 
 
 ## Technical Notes
 
-The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards time-weighted score, with a streak bonus for consecutive solved phases. The final screen reports solved phases, local best score, and total shifts so a judge can tell whether the run was a clean solve or a scrappy late save.
+The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards time-weighted score, with a streak bonus for consecutive solved phases. The final screen reports solved phases, local best score, total shifts, and a copyable run proof code so a judge can tell whether the run was a clean solve or a scrappy late save.
 
 ## Next
 
