@@ -3,6 +3,7 @@
   const ctx = canvas.getContext("2d");
   const levelLabel = document.querySelector("#levelLabel");
   const scoreLabel = document.querySelector("#scoreLabel");
+  const bestLabel = document.querySelector("#bestLabel");
   const timeLabel = document.querySelector("#timeLabel");
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
@@ -11,6 +12,7 @@
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
   const phaseNames = ["First light", "Meridian lock", "Blue-hour carry", "Nightfall proof"];
+  const bestScoreKey = "solstice-cipher-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
     { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },
@@ -22,6 +24,7 @@
     running: false,
     level: 0,
     score: 0,
+    bestScore: loadBestScore(),
     timeLeft: levels[0].seconds,
     streak: 0,
     shifts: 0,
@@ -35,12 +38,30 @@
     message: "Decode the Turing wheel before nightfall.",
   };
 
+  function loadBestScore() {
+    try {
+      return Number(localStorage.getItem(bestScoreKey)) || 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  function storeBestScore(score) {
+    state.bestScore = Math.max(state.bestScore, score);
+    try {
+      localStorage.setItem(bestScoreKey, String(state.bestScore));
+    } catch {
+      // Local storage can be unavailable in privacy-restricted contexts.
+    }
+  }
+
   function seedLevel(index) {
     const level = levels[index];
     if (!level) {
       state.complete = true;
       state.running = false;
       state.timeLeft = 0;
+      storeBestScore(state.score);
       state.message = `Longest day held. Final score ${state.score} across ${state.shifts} shifts.`;
       updateHud();
       return;
@@ -55,6 +76,7 @@
   function updateHud() {
     levelLabel.textContent = String(Math.min(state.level + 1, levels.length));
     scoreLabel.textContent = String(state.score);
+    bestLabel.textContent = String(state.bestScore);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
   }
@@ -194,7 +216,7 @@
     ctx.fillText(centerStatus, cx, cy + Math.max(34, h * 0.07));
     ctx.font = `600 ${Math.max(11, Math.min(w, h) * 0.018)}px ui-sans-serif, system-ui`;
     ctx.fillStyle = "rgba(174,184,197,0.78)";
-    ctx.fillText(`${state.shifts} shifts`, cx, cy + Math.max(54, h * 0.105));
+    ctx.fillText(`best ${state.bestScore} / ${state.shifts} shifts`, cx, cy + Math.max(54, h * 0.105));
     ctx.restore();
 
     if (state.complete) {
@@ -258,7 +280,7 @@
     ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.22);
     ctx.fillStyle = "rgba(174,184,197,0.78)";
     ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
-    ctx.fillText("Press Enter or Start to replay.", cx, cy + ringRadius * 0.34);
+    ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.34);
     ctx.restore();
   }
 

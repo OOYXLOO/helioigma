@@ -25,7 +25,7 @@ http://127.0.0.1:8781/
 
 Solstice Cipher is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing wheel of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has four named phases, score carry-over, streak scoring, shift counting, and a final replay screen that summarizes the run. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has four named phases, score carry-over, streak scoring, shift counting, a local best-score readout, and a final replay screen that summarizes the run. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 ## Controls
 
@@ -39,15 +39,15 @@ The current build now has four named phases, score carry-over, streak scoring, s
 - Desktop and 390px mobile browser checks pass with no console errors or horizontal overflow.
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
-- A four-phase ending state shows final score, solved phase count, and total shifts instead of looping forever.
+- A four-phase ending state shows final score, local best score, solved phase count, and total shifts instead of looping forever.
 
 ## Local Media Assets
 
 - `cover.png`: 1200x630 social/DEV cover image.
 - `solstice-cipher-demo.gif`: six-frame local gameplay demo, from ready state through final score.
-- `desktop-check-v4.png`: current desktop gameplay screenshot.
-- `mobile-check-v5.png`: current mobile gameplay screenshot.
-- `desktop-complete-v3.png`: current final-score screenshot with solved phases and shift count.
+- `desktop-check-v5.png`: current desktop gameplay screenshot.
+- `mobile-check-v6.png`: current mobile gameplay screenshot.
+- `desktop-complete-v4.png`: current final-score screenshot with solved phases, best score, and shift count.
 - `solstice-cipher-dev-package.zip`: local review/transfer package containing source files and final media assets.
 
 ## Judge Proof

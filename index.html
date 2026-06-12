@@ -23,11 +23,13 @@
         <div class="stats">
           <span><strong id="levelLabel">1</strong> phase</span>
           <span><strong id="scoreLabel">0</strong> score</span>
+          <span><strong id="bestLabel">0</strong> best</span>
           <span><strong id="timeLabel">45</strong>s</span>
         </div>
       </div>
 
-      <canvas id="game" width="960" height="640" tabindex="0" aria-label="Solstice Cipher playfield"></canvas>
+      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered cipher node until it matches the target glyph above it.</p>
+      <canvas id="game" width="960" height="640" tabindex="0" aria-label="Solstice Cipher playfield" aria-describedby="srHelp"></canvas>
 
       <div class="controls">
         <button id="startButton" type="button">Start</button>

@@ -164,10 +164,12 @@
       const startButton = doc.querySelector("#startButton");
       const statusLine = doc.querySelector("#statusLine");
       const scoreLabel = doc.querySelector("#scoreLabel");
+      const bestLabel = doc.querySelector("#bestLabel");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
       addCheck("status line is present", Boolean(statusLine));
+      addCheck("best score label is present", Boolean(bestLabel));
 
       startButton.click();
       await sleep(120);
@@ -179,8 +181,10 @@
 
       const finalText = statusLine.textContent;
       const finalScore = Number(scoreLabel.textContent);
+      const bestScore = Number(bestLabel.textContent);
       addCheck("four phases reach final state", finalText.includes("Longest day held"));
       addCheck("final score is positive", Number.isFinite(finalScore) && finalScore > 0);
+      addCheck("best score records the completed run", Number.isFinite(bestScore) && bestScore >= finalScore);
       addCheck("final status reports shift count", finalText.includes("shifts"));
 
       status.textContent = `PASS - ${finalText}`;

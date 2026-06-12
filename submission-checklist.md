@@ -11,9 +11,9 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Browser smoke test: `smoke.html`.
 - DEV post draft: `dev-post-draft.md`.
 - Local README: `README.md`.
-- Desktop screenshot: `desktop-check-v4.png`.
-- Mobile screenshot: `mobile-check-v5.png`.
-- Completion screenshot: `desktop-complete-v3.png`.
+- Desktop screenshot: `desktop-check-v5.png`.
+- Mobile screenshot: `mobile-check-v6.png`.
+- Completion screenshot: `desktop-complete-v4.png`.
 - Cover image: `cover.png`.
 - Animated gameplay preview: `solstice-cipher-demo.gif`.
 - Source frames: `demo-frames-v3/`.
@@ -22,7 +22,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
-  - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases plus total shifts.
+- Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, and total shifts.
 
 ## Before Publishing
 
@@ -46,5 +46,5 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Source link: to be filled after repo/public hosting is authorized.
 - Judge pack link: `https://ooyxloo.github.io/solstice-cipher/judge.html` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/solstice-cipher/smoke.html` after public hosting.
-- Screenshots/media: use `cover.png`, `solstice-cipher-demo.gif`, `desktop-check-v4.png`, `mobile-check-v5.png`, and `desktop-complete-v3.png`.
+- Screenshots/media: use `cover.png`, `solstice-cipher-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
 - Package: use `solstice-cipher-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.
