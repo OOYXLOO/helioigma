@@ -236,6 +236,8 @@ try {
   Assert-Contains "judge.html" "solstice-cipher-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Ode With Restraint"
+  Assert-Contains "judge.html" "Judge-Verifiable Loop"
+  Assert-Contains "judge.html" "not only a solstice skin over a puzzle"
   Assert-Contains "judge.html" "Rotor Trace"
   Assert-Contains "judge.html" "state, logic, verification"
   Assert-Contains "judge.html" "Run Receipt"
