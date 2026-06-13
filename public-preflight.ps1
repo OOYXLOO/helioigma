@@ -128,8 +128,8 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 54) { throw "judge-manifest smoke count mismatch" }
-  if (-not ($manifest.proof.judge_run_summary -like "Completion panel includes*")) { throw "judge-manifest judge run summary mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 56) { throw "judge-manifest smoke count mismatch" }
+  if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
@@ -237,7 +237,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "publish-assistant.html" "54 smoke checks"
+  Assert-Contains "publish-assistant.html" "56 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
@@ -257,7 +257,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 54 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 56 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -279,7 +279,7 @@ try {
   Assert-Contains "judge.html" "tactile node pulse"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
-  Assert-Contains "judge.html" "Verify the browser path reaches 54 checks"
+  Assert-Contains "judge.html" "Verify the browser path reaches 56 checks"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
@@ -321,6 +321,12 @@ try {
   Assert-Contains "index.html" "Judge run summary"
   Assert-Contains "index.html" "Copy judge summary"
   Assert-Contains "styles.css" ".judge-run-summary"
+  Assert-Contains "styles.css" ".award-signals"
+  Assert-Contains "index.html" "awardSignals"
+  Assert-Contains "index.html" "Award signals"
+  Assert-Contains "game.js" "Award signals: solstice loop, Turing ode, judge proof"
+  Assert-Contains "smoke.html" "award signals are present"
+  Assert-Contains "smoke.html" "demo award signals name solstice, Turing, and judge proof"
   Assert-Contains "game.js" "proof-verifier.html?receipt="
   Assert-Contains "game.js" 'get("demo") === "1"'
   Assert-NotContains "game.js" "Run proof"
@@ -351,14 +357,14 @@ try {
   Assert-Contains "index.html" "verifyProofLink"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
-  Assert-Contains "index.html" "20260614-first-move-coach"
+  Assert-Contains "index.html" "20260614-award-signals"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""H"""
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
-  Assert-Contains "smoke.html" "20260614-first-move-coach"
+  Assert-Contains "smoke.html" "20260614-award-signals"
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "hint shortcut is exposed"
   Assert-Contains "smoke.html" "start button shows the first-move coach"

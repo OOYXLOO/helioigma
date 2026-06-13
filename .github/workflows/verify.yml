@@ -143,7 +143,8 @@ jobs:
           grep -q "tactile node pulse" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
-          grep -q "Verify the browser path reaches 54 checks" judge.html
+          grep -q "Verify the browser path reaches 56 checks" judge.html
+          grep -q "award signals" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
@@ -164,7 +165,8 @@ jobs:
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q "54" judge-manifest.json
+          grep -q "56" judge-manifest.json
+          grep -q "award signals" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
@@ -189,7 +191,8 @@ jobs:
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
           grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
-          grep -q "expected 54 smoke checks" tools/browser-smoke-check.mjs
+          grep -q "expected 56 smoke checks" tools/browser-smoke-check.mjs
+          grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
           grep -q "helioigma-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
@@ -211,12 +214,15 @@ jobs:
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
           grep -q "Decode the solstice rotor" index.html
-          grep -q "20260613-objective-strip" index.html
+          grep -q "20260614-award-signals" index.html
+          grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260613-objective-strip" smoke.html
+          grep -q "20260614-award-signals" smoke.html
+          grep -q "award signals are present" smoke.html
+          grep -q "demo award signals name solstice, Turing, and judge proof" smoke.html
           grep -q "hint button is present" smoke.html
           grep -q "hint shortcut is exposed" smoke.html
           grep -q "hint shortcut names the next mismatched node" smoke.html

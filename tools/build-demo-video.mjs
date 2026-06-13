@@ -167,8 +167,8 @@ async function main() {
 
     await setCaption(
       page,
-      "4/5 - A completed run leaves a local receipt and judge summary",
-      "SC-4P-2907-62-Y5VFX1 records phases, score, shifts, checksum suffix, and a readable run card."
+      "4/5 - A completed run leaves a receipt, judge summary, and award signals",
+      "SC-4P-2907-62-Y5VFX1 records phases, score, shifts, checksum suffix, and the solstice/Turing/proof fit."
     );
     await page.waitForTimeout(6500);
 

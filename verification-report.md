@@ -65,7 +65,7 @@ Expected local URLs:
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 54 PASS assertions:
+- Smoke checks include 56 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -77,26 +77,38 @@ Expected local URLs:
   - hint shortcut exposed
   - demo shortcut exposed
   - number-key node shortcuts exposed
+  - phase objective strip present
+  - phase objective names the first phase
+  - phase objective shows target glyphs and alignment
   - first-screen judge path present
   - first-phase node buttons present
-  - judge shortcut links present
+  - judge shortcut links include the auto demo route
   - status line present
   - best score label present
   - shift counter present
   - four-phase progress track present
   - phase announcer is present
-  - phase announcer names the active phase
   - rotor trace panel present
   - rotor trace reports the first phase
-  - run receipt panel and summary present
-- phase scoring ledger present
-- Judge run summary present and populated
+  - run receipt panel present
+  - run receipt summary present
+  - phase scoring ledger present
+  - run receipt verifier link present
+  - Judge run summary present
+  - award signals present
+  - copy judge summary button present
   - stable demo receipt matches `SC-4P-2907-62-Y5VFX1`
   - demo receipt summary reports score and shifts
   - demo receipt includes four phase ledger entries
+  - demo receipt verifier link carries the receipt
+  - demo Judge run summary reports phases and score
+  - demo Judge run facts include receipt and Turing fit
+  - demo award signals name solstice, Turing, and judge proof
+  - copy judge summary button is enabled
   - demo solve releases manual controls
   - reset shortcut returns to idle
-  - run starts through public button
+  - start button shows the first-move coach
+  - phase announcer names the active phase
   - hint shortcut names the next mismatched node
   - hint highlights a node button
   - rotor trace records hint action
@@ -108,7 +120,8 @@ Expected local URLs:
   - final status reports shift count
   - run receipt is visible
   - completion preserves four phase ledger entries
-  - run receipt matches `SC-4P-...`
+  - run receipt encodes phases, score, shifts, and checksum
+  - completion verifier link carries the final receipt
 
 ## Rubric Snapshot
 
@@ -131,7 +144,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 54 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 56 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

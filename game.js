@@ -204,7 +204,7 @@
 
   function buildJudgeRunSummaryText() {
     if (!state.finalProof) return "";
-    return `Held ${state.solvedPhases}/${levels.length} solstice phases with ${state.score} score and ${state.shifts} shifts. The run is judge-readable: watch the same Demo Solve route, inspect Rotor Trace, then verify receipt ${state.finalProof}.`;
+    return `Held ${state.solvedPhases}/${levels.length} solstice phases with ${state.score} score and ${state.shifts} shifts. The award signal is visible in play: solstice timer, Turing-style state alignment, and the same Demo Solve route verified by receipt ${state.finalProof}.`;
   }
 
   function buildJudgeRunSummaryClipboardText() {
@@ -215,6 +215,7 @@
       `Score: ${state.score}`,
       `Shifts: ${state.shifts}`,
       `Receipt: ${state.finalProof}`,
+      "Award signals: solstice loop, Turing ode, judge proof",
       "Verification: open proof-verifier.html with the receipt query link",
       "Turing fit: state alignment, XOR/binary glyphs, pressure, and checksum reasoning",
     ].join("\n");
@@ -231,6 +232,7 @@
       ["Shifts", `${state.shifts} node shifts`],
       ["Receipt", state.finalProof],
       ["Verify", "Linked local receipt verifier"],
+      ["Award signal", "solstice loop + Turing ode + judge proof"],
       ["Turing fit", "state alignment + checksum reasoning"],
     ];
     facts.forEach(([label, value]) => {

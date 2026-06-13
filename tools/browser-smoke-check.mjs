@@ -188,6 +188,7 @@ async function main() {
       verifyHref: document.querySelector("#verifyProofLink")?.getAttribute("href"),
       judgeRunSummary: document.querySelector("#judgeRunSummaryText")?.textContent.trim(),
       judgeRunFacts: document.querySelector("#judgeRunFacts")?.textContent.trim(),
+      awardSignals: document.querySelector("#awardSignals")?.textContent.trim(),
       copyRunSummaryDisabled: document.querySelector("#copyRunSummaryButton")?.disabled,
       status: document.querySelector("#statusLine")?.textContent.trim(),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -197,6 +198,7 @@ async function main() {
     assert(autoDemo.verifyHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "auto demo route did not build a verifier link");
     assert(autoDemo.judgeRunSummary.includes("4/4 solstice phases") && autoDemo.judgeRunSummary.includes("2907 score"), "auto demo route did not build the judge run summary");
     assert(autoDemo.judgeRunFacts.includes("state alignment + checksum reasoning"), "auto demo route did not build the judge run facts");
+    assert(autoDemo.awardSignals.includes("Solstice loop") && autoDemo.awardSignals.includes("Turing ode") && autoDemo.awardSignals.includes("Judge proof"), "auto demo route did not expose award signals");
     assert(autoDemo.copyRunSummaryDisabled === false, "auto demo route did not enable the judge summary copy button");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
@@ -208,6 +210,9 @@ async function main() {
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
+    assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
+    assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
+    assert(mobile.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "mobile Judge path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.canvasTop < 844, "mobile game canvas does not begin in the first viewport");
 
@@ -277,7 +282,7 @@ async function main() {
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 54, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 56, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
@@ -323,7 +328,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 54, `expected 54 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 56, `expected 56 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

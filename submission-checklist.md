@@ -37,7 +37,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 54 PASS checks including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
+- `smoke.html`: 56 PASS checks including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.

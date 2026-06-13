@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260614-first-move-coach" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260614-award-signals" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -202,6 +202,7 @@
       const judgeRunSummary = doc.querySelector("#judgeRunSummary");
       const judgeRunSummaryText = doc.querySelector("#judgeRunSummaryText");
       const judgeRunFacts = doc.querySelector("#judgeRunFacts");
+      const awardSignals = doc.querySelector("#awardSignals");
       const copyRunSummaryButton = doc.querySelector("#copyRunSummaryButton");
 
       addCheck("canvas is present", Boolean(canvas));
@@ -233,6 +234,7 @@
       addCheck("phase scoring ledger is present", Boolean(phaseLedger));
       addCheck("run receipt verifier link is present", Boolean(verifyProofLink));
       addCheck("judge run summary is present", Boolean(judgeRunSummary && judgeRunSummaryText && judgeRunFacts));
+      addCheck("award signals are present", Boolean(awardSignals) && awardSignals.querySelectorAll("li").length === 3);
       addCheck("copy judge summary button is present", Boolean(copyRunSummaryButton));
 
       press(win, "d");
@@ -243,6 +245,7 @@
       addCheck("demo receipt verifier link carries the receipt", verifyProofLink.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1");
       addCheck("demo judge run summary reports phases and score", judgeRunSummaryText.textContent.includes("4/4 solstice phases") && judgeRunSummaryText.textContent.includes("2907 score"));
       addCheck("demo judge run facts include receipt and Turing fit", judgeRunFacts.textContent.includes("SC-4P-2907-62-Y5VFX1") && judgeRunFacts.textContent.includes("state alignment + checksum reasoning"));
+      addCheck("demo award signals name solstice, Turing, and judge proof", awardSignals.textContent.includes("Solstice loop") && awardSignals.textContent.includes("Turing ode") && awardSignals.textContent.includes("Judge proof"));
       addCheck("copy judge summary button is enabled", copyRunSummaryButton.disabled === false);
       await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
       addCheck("demo solve releases manual controls", demoButton.disabled === false);

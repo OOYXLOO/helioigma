@@ -522,6 +522,47 @@ h1 {
   color: var(--ink);
 }
 
+.award-signals {
+  margin-top: 12px;
+}
+
+.award-signals ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.award-signals li {
+  min-width: 0;
+  border: 1px solid rgba(247, 201, 72, 0.2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(247, 201, 72, 0.06);
+}
+
+.award-signals strong,
+.award-signals span {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.award-signals strong {
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.award-signals span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
 .phase-ledger {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -846,7 +887,6 @@ button:focus-visible {
   }
 
   .judge-path {
-    order: 10;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -892,6 +932,10 @@ button:focus-visible {
   }
 
   .phase-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  .award-signals ul {
     grid-template-columns: 1fr;
   }
 
