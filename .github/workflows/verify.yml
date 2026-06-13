@@ -78,6 +78,9 @@ jobs:
           grep -q "I chose a cipher wheel" dev-article-final.md
           grep -q "biggest tradeoff" dev-article-final.md
           grep -q "only browser storage is a local numeric best-score key" dev-article-final.md
+          grep -q "Originality and Build Window" dev-article-final.md
+          grep -q "not a wrapper around a prior game template" dev-article-final.md
+          grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-article-final.md
           grep -q "public-preflight.ps1 -Public" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
@@ -92,9 +95,14 @@ jobs:
           grep -q "WebM video" dev-submit-console.html
           grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
+          grep -q "Originality Note" dev-submit-console.html
+          grep -q "not a wrapper around a prior game template" dev-submit-console.html
+          grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
+          grep -q "Originality and Review Transparency" README.md
+          grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" README.md
           grep -q "Rotor Trace" README.md
           grep -q "final run receipt ledger" README.md
           grep -q "?demo=1" README.md
@@ -132,6 +140,9 @@ jobs:
           grep -q "Best Ode to Alan Turing" judge-manifest.json
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
+          grep -q "originality" judge-manifest.json
+          grep -q "template_boundary" judge-manifest.json
+          grep -q "asset_boundary" judge-manifest.json
           grep -q "46" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json

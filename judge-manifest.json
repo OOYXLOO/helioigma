@@ -36,6 +36,21 @@
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used."
   },
+  "originality": {
+    "build_window": "New static game package for the DEV June Solstice Game Jam period.",
+    "template_boundary": "Not a wrapper around a prior game template or third-party game kit.",
+    "asset_boundary": "Public media is generated from this build's browser UI and checked-in demo frames, not from a stock-art pack.",
+    "review_surface": [
+      "game.js",
+      "proof-verifier.html",
+      "judge.html",
+      "judge-manifest.json",
+      "smoke.html",
+      "demo-frames-v3",
+      "helioigma-demo.webm",
+      "helioigma-demo.gif"
+    ]
+  },
   "public_urls": {
     "play": "https://ooyxloo.github.io/helioigma/",
     "auto_demo": "https://ooyxloo.github.io/helioigma/?demo=1",

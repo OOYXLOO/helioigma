@@ -32,6 +32,12 @@ The Turing ode is intentionally restrained: the game does not pretend to recreat
 
 The playable first screen now includes the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
+## Originality and Review Transparency
+
+Helioigma is a new static game package for this jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, manifest, smoke test, screenshots, and demo media are included so reviewers can inspect the build directly.
+
+The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the submission.
+
 ## Controls
 
 - Click or tap ring nodes to rotate their phase.

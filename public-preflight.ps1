@@ -131,6 +131,10 @@ try {
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
+  if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
+  if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
+  if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
+  if ($manifest.originality.review_surface.Count -lt 8) { throw "judge-manifest originality review-surface mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
@@ -155,6 +159,9 @@ try {
   Assert-Contains "dev-article-final.md" "careful reasoning about machines and proof"
   Assert-Contains "dev-article-final.md" "After Publishing"
   Assert-Contains "dev-article-final.md" "not spam or fake engagement"
+  Assert-Contains "dev-article-final.md" "Originality and Build Window"
+  Assert-Contains "dev-article-final.md" "not a wrapper around a prior game template"
+  Assert-Contains "dev-article-final.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
   Assert-Contains "dev-article-final.md" "Helioigma"
   Assert-Contains "dev-article-final.md" "solar rotor"
@@ -186,6 +193,9 @@ try {
   Assert-Contains "dev-submit-console.html" "Ode With Restraint"
   Assert-Contains "dev-submit-console.html" "Rotor Trace"
   Assert-Contains "dev-submit-console.html" "Post-Publish Share Note"
+  Assert-Contains "dev-submit-console.html" "Originality Note"
+  Assert-Contains "dev-submit-console.html" "not a wrapper around a prior game template"
+  Assert-Contains "dev-submit-console.html" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "dev-submit-console.html" "static solved cipher"
   Assert-Contains "dev-submit-console.html" "How I Built It"
   Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/helioigma"
@@ -196,6 +206,9 @@ try {
   Assert-Contains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
+  Assert-Contains "README.md" "Originality and Review Transparency"
+  Assert-Contains "README.md" "not a wrapper around a prior game template"
+  Assert-Contains "README.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "README.md" "Rotor Trace"
   Assert-Contains "README.md" "final run receipt ledger"
   Assert-Contains "README.md" "phase banner"
@@ -351,6 +364,9 @@ try {
   Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "judge-manifest.json" "public_repo_gate"
   Assert-Contains "judge-manifest.json" "dev_article_gate"
+  Assert-Contains "judge-manifest.json" "originality"
+  Assert-Contains "judge-manifest.json" "template_boundary"
+  Assert-Contains "judge-manifest.json" "asset_boundary"
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"

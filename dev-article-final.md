@@ -163,6 +163,8 @@ After the DEV post is public, I will share the live post with a short, honest no
 
 The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, judge manifest, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
 
+The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the entry.
+
 ## Verification
 
 I verified the package with:
