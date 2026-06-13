@@ -34,7 +34,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
-  - `smoke.html`: 28 PASS checks including shortcut exposure, D-to-Demo-Solve, R-to-reset, final status, and proof format.
+  - `smoke.html`: 29 PASS checks including shortcut exposure, D-to-Demo-Solve, R-to-reset, final status, and proof format.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.

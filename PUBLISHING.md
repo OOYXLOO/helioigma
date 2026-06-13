@@ -65,7 +65,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] GitHub Actions `Verify Solstice Cipher` passes after the public push.
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
-- [ ] Smoke test reports 28 PASS checks.
+- [ ] Smoke test reports 29 PASS checks.
 - [ ] Keyboard shortcuts work: Enter starts, D runs Demo Solve, R/Escape resets, and number keys rotate matching nodes.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.

@@ -12,7 +12,7 @@ Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. 
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
 
-The build is meant to be judged quickly: open the game, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
+The build is meant to be judged quickly: the first screen now has a three-step Judge Path strip, so a reviewer can play, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
 
 Links:
 
@@ -34,10 +34,11 @@ Core features:
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run proof.
 - Proof verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
+- First-screen Judge Path cards for Play, Demo Solve, and Verify.
 
 ## Judge in 60 Seconds
 
-1. Open the play link and press `Demo Solve` for the full loop and stable proof `SC-4P-2907-62-Y5VFX1`, or press `Start` to play manually.
+1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable proof `SC-4P-2907-62-Y5VFX1`, then verify the receipt.
 2. Watch the current GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, proof receipt, public links, and human gate summary.
@@ -137,4 +138,4 @@ I verified the package with:
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
 - `smoke.html`: 28 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 28 smoke checks, public links, stable proof `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 29 smoke checks, public links, stable proof `SC-4P-2907-62-Y5VFX1`, and human gates.

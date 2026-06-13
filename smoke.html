@@ -173,6 +173,7 @@
       const startButton = doc.querySelector("#startButton");
       const resetButton = doc.querySelector("#resetButton");
       const demoButton = doc.querySelector("#demoButton");
+      const judgePathCards = doc.querySelectorAll(".judge-path article");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
       const judgeLinks = doc.querySelectorAll(".judge-links a");
       const statusLine = doc.querySelector("#statusLine");
@@ -192,6 +193,7 @@
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");
       addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
+      addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links are present", judgeLinks.length === 4);
       addCheck("status line is present", Boolean(statusLine));

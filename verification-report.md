@@ -61,11 +61,16 @@ Expected local URLs:
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
 - `proof-verifier.html` recomputes the proof checksum locally and shows parsed proof facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 28 PASS assertions:
+- Smoke checks include 29 PASS assertions:
   - canvas present
   - start button present
   - reset button present
   - demo solve button present
+  - start shortcut exposed
+  - reset shortcut exposed
+  - demo shortcut exposed
+  - number-key node shortcuts exposed
+  - first-screen judge path present
   - first-phase node buttons present
   - judge shortcut links present
   - status line present
@@ -98,7 +103,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke proof pattern
 - proof verifier page and stable demo checksum copy
 - proof verifier parsed proof facts
-- browser smoke script that opens the real pages, checks the WebM video response, and waits for 28 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, and waits for 29 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

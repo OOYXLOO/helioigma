@@ -169,6 +169,41 @@ body {
   font-weight: 800;
 }
 
+.judge-path {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.judge-path article {
+  min-width: 0;
+  min-height: 74px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: rgba(9, 14, 24, 0.72);
+}
+
+.judge-path strong,
+.judge-path span {
+  display: block;
+}
+
+.judge-path strong {
+  color: var(--accent);
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.judge-path span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .controls {
   margin-top: 12px;
 }
@@ -392,6 +427,24 @@ button:focus-visible {
 
   .judge-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .judge-path {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .judge-path article {
+    min-height: 64px;
+    padding: 8px;
+  }
+
+  .judge-path strong {
+    font-size: 11px;
+  }
+
+  .judge-path span {
+    font-size: 10px;
+    line-height: 1.25;
   }
 
   .controls {

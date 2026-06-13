@@ -45,6 +45,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
+- A first-screen Judge Path strip makes the review sequence explicit: play, run Demo Solve, then verify proof `SC-4P-2907-62-Y5VFX1`.
 - `Demo Solve` provides a one-click judge path through all four phases and the final proof state; its timer drift is paused so the sample proof is stable: `SC-4P-2907-62-Y5VFX1`.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run proof instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
@@ -73,7 +74,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 28 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Judge Path and Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 29 PASS checks.
 - `tools/build-demo-webm.mjs`: reproducible video builder for `solstice-cipher-demo.webm`.
 
 ## Public Publishing

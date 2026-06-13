@@ -122,7 +122,7 @@ try {
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 28) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 29) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
@@ -159,7 +159,7 @@ try {
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
-  Assert-Contains "publish-assistant.html" "28 smoke checks"
+  Assert-Contains "publish-assistant.html" "29 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
@@ -168,7 +168,7 @@ try {
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 28 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 29 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-webm.mjs" "solstice-cipher-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
@@ -187,6 +187,10 @@ try {
   Assert-Contains "index.html" "shiftLabel"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "quick-controls"
+  Assert-Contains "index.html" "judge-path"
+  Assert-Contains "index.html" "1. Play"
+  Assert-Contains "index.html" "2. Demo Solve"
+  Assert-Contains "index.html" "3. Verify"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "Match each numbered ring node"
@@ -195,6 +199,7 @@ try {
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
+  Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"
   Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge proof"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
@@ -220,7 +225,7 @@ try {
 
   $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md,*.json -Recurse |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
-  $secretHits = $scanFiles | Select-String -Pattern "sk-[A-Za-z0-9._-]{12,}|AKIA[0-9A-Z]{16}|BEGIN PRIVATE KEY|安全码|银行卡|password:" -ErrorAction SilentlyContinue
+  $secretHits = $scanFiles | Select-String -Pattern "sk-[A-Za-z0-9._-]{12,}|AKIA[0-9A-Z]{16}|BEGIN PRIVATE KEY|password:|secret:|bank account|card number" -ErrorAction SilentlyContinue
   if ($secretHits) {
     $secretHits | ForEach-Object { Write-Output "Potential secret hit: $($_.Path):$($_.LineNumber)" }
     throw "Potential secret-like content found"
