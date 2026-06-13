@@ -68,7 +68,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
 - Include the originality/build-window note in the final DEV post.
 - Include the differentiation note: the Turing/code-breaking fit is inside the interaction, not only in the title.
-- After publishing, share the DEV post only with honest feedback/reaction requests; no spam, bought reactions, or fake engagement.
+- After publishing, share the DEV post only with honest feedback/reaction requests. Positive DEV reactions can matter as a challenge tie-breaker, but the ask must stay clean: real play, real feedback, no spam, no bought reactions, and no fake engagement.
 - Confirm the challenge rules and eligibility on the official DEV pages.
 
 ## Human Gates

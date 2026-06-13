@@ -64,7 +64,7 @@ Do not submit on DEV until the public try link works. Use:
 - Try link: `https://ooyxloo.github.io/helioigma/`
 - Auto demo link: `https://ooyxloo.github.io/helioigma/?demo=1`
 - Source link: `https://github.com/OOYXLOO/helioigma`
-- Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game; do not spam, buy reactions, or ask for fake engagement.
+- Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game; mention that positive reactions can matter as a challenge tie-breaker only as an honest context note. Do not spam, buy reactions, or ask for fake engagement.
 
 The account owner handles DEV login, final post, prize claim, payout, tax, and KYC directly.
 
@@ -92,5 +92,5 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.
-- [ ] If sharing after publication, ask for real play/feedback only; do not spam, buy reactions, or ask for fake engagement.
+- [ ] If sharing after publication, ask for real play/feedback only; mention DEV reactions only as honest tie-breaker context; do not spam, buy reactions, or ask for fake engagement.
 - [ ] No account secrets, API keys, payment details, tax data, KYC data, or private contact details are included.

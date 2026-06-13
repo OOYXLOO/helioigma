@@ -169,7 +169,7 @@ The jam theme makes daylight, calendars, and code-breaking natural starting poin
 
 ## After Publishing
 
-After the DEV post is public, I will share the live post with a short, honest note asking people to try the game and leave feedback if they enjoy it. The goal is real review traffic and reactions from people who actually open the game, not spam or fake engagement.
+After the DEV post is public, I will share the live post with a short, honest note asking people to try the game and leave feedback if they enjoy it. Because challenge ties can use positive reactions as a tie-breaker, the ask will be explicit and clean: real play, real comments, and real reactions only from people who actually open the game, not spam or fake engagement.
 
 ## Originality and Build Window
 
