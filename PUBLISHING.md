@@ -21,7 +21,7 @@ Purpose: make the DEV June Solstice Game Jam package publishable with minimal hu
 
 The account owner should create the public GitHub repository, or approve Codex to do so through an already logged-in browser/CLI session:
 
-1. Open https://github.com/new
+1. Open https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public
 2. Repository owner: `OOYXLOO`
 3. Repository name: `solstice-cipher`
 4. Visibility: public
@@ -64,6 +64,8 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] GitHub Actions `Verify Solstice Cipher` passes after the public push.
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
+- [ ] Smoke test reports 28 PASS checks.
+- [ ] Keyboard shortcuts work: Enter starts, D runs Demo Solve, R/Escape resets, and number keys rotate matching nodes.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
 - [ ] Public proof verifier accepts stable Demo Solve proof `SC-4P-2907-62-Y5VFX1`.

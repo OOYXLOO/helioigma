@@ -118,6 +118,8 @@ try {
   Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
+  Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
+  Assert-Contains "publish-assistant.html" "28 smoke checks"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"

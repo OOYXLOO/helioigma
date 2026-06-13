@@ -32,6 +32,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
+  - `smoke.html`: 28 PASS checks including shortcut exposure, D-to-Demo-Solve, R-to-reset, final status, and proof format.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
@@ -44,6 +45,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 ## Before Publishing
 
 - Create or approve a public GitHub repository named `OOYXLOO/solstice-cipher`.
+  - Fast path: `https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public`
+  - Keep it empty: no README, no license, no `.gitignore`.
 - Push the prepared local `main` branch to that repository.
 - Confirm GitHub Actions `Verify Solstice Cipher` passes after push.
 - Enable GitHub Pages from the `main` branch root.
