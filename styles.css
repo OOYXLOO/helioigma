@@ -258,6 +258,63 @@ body {
   line-height: 1.35;
 }
 
+@media (min-width: 721px) {
+  .hud,
+  .brief,
+  .controls,
+  .proof-panel {
+    padding: 10px 14px;
+  }
+
+  .hud,
+  .phase-track,
+  .brief,
+  .day-meter,
+  .play-rule,
+  .judge-path,
+  .quick-controls {
+    margin-bottom: 8px;
+  }
+
+  .phase-step {
+    min-height: 38px;
+    padding: 6px 9px;
+  }
+
+  .brief {
+    padding: 9px 12px;
+  }
+
+  .day-meter {
+    padding: 8px 10px;
+  }
+
+  .play-rule {
+    padding: 9px 12px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .judge-path {
+    gap: 6px;
+  }
+
+  .judge-path article {
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .judge-path span {
+    margin-top: 0;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+}
+
 .controls {
   margin-top: 12px;
 }

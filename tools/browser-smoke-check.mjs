@@ -114,6 +114,7 @@ async function main() {
     assert(desktop.overflowX === 0, "desktop has horizontal overflow");
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
     assert(desktop.hintVisible, "desktop Hint is not visible in the first viewport");
+    assert(desktop.canvasTop < 520, `desktop game canvas starts too low: ${desktop.canvasTop}`);
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.dayMeterVisible, "desktop daylight meter is not visible in the first viewport");

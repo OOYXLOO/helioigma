@@ -266,6 +266,7 @@ try {
   Assert-NotContains "judge.html" "DEV Console"
   Assert-NotContains "judge.html" "Publish Assistant"
   Assert-Contains "styles.css" "linear-gradient(105deg"
+  Assert-Contains "tools/browser-smoke-check.mjs" "desktop game canvas starts too low"
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
   Assert-Contains "game.js" "proof-verifier.html?receipt="
