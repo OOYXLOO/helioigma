@@ -3,7 +3,7 @@ title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
 published: false
 description: "A small browser game for the DEV June Solstice Game Jam: decode a Turing-inspired solar rotor before nightfall."
 tags: devchallenge, gamechallenge, gamedev
-cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png
+cover_image: https://ooyxloo.github.io/helioigma/cover.png
 ---
 
 ## The Longest Day as a Countdown Machine
@@ -16,7 +16,7 @@ That is why the first action is not a lore screen or a menu. The game puts the d
 
 Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
 
-Helioigma is the game title; `solstice-cipher` is only the repository slug for the public build.
+Helioigma is the game title and the public build slug, chosen so the submission is easy to distinguish from other similarly named solstice puzzle entries.
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
 
@@ -26,26 +26,26 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
 
-![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
+![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
 
-![Helioigma desktop gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
+![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png)
 
-Watch the current captioned WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
 
-Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
 
 ## Quick Links
 
-- Play: https://ooyxloo.github.io/solstice-cipher/
-- Auto demo: https://ooyxloo.github.io/solstice-cipher/?demo=1
-- Source: https://github.com/OOYXLOO/solstice-cipher
+- Play: https://ooyxloo.github.io/helioigma/
+- Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
+- Source: https://github.com/OOYXLOO/helioigma
 
 Detailed judge links:
 
-- Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
-- Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
-- Receipt verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
-- Judge manifest: https://ooyxloo.github.io/solstice-cipher/judge-manifest.json
+- Judge page: https://ooyxloo.github.io/helioigma/judge.html
+- Smoke test: https://ooyxloo.github.io/helioigma/smoke.html
+- Receipt verifier: https://ooyxloo.github.io/helioigma/proof-verifier.html
+- Judge manifest: https://ooyxloo.github.io/helioigma/judge-manifest.json
 
 Core features:
 
@@ -70,16 +70,16 @@ Core features:
 
 Public media links:
 
-1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
-2. WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
-3. GIF fallback: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
-4. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
-5. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
-6. Completion screenshot with receipt ledger: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
+1. Cover: https://ooyxloo.github.io/helioigma/cover.png
+2. WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
+3. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
+4. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
+5. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
+6. Completion screenshot with receipt ledger: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
 
 ## Code
 
-The source is hosted at https://github.com/OOYXLOO/solstice-cipher. The project is deliberately small:
+The source is hosted at https://github.com/OOYXLOO/helioigma. The project is deliberately small:
 
 - `index.html`: playable Helioigma game shell and first-screen judge path.
 - `styles.css`: responsive game UI.

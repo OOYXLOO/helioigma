@@ -88,9 +88,9 @@ try {
     "verification.html",
     "verification-report.md",
     "cover.png",
-    "solstice-cipher-demo.mp4",
-    "solstice-cipher-demo.webm",
-    "solstice-cipher-demo.gif",
+    "helioigma-demo.mp4",
+    "helioigma-demo.webm",
+    "helioigma-demo.gif",
     "desktop-check-v5.png",
     "mobile-check-v6.png",
     "desktop-complete-v4.png",
@@ -116,7 +116,7 @@ try {
   )) {
     Assert-PngSignature $png
   }
-  Assert-WebmSignature "solstice-cipher-demo.webm"
+  Assert-WebmSignature "helioigma-demo.webm"
 
   $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
   if ($manifest.project -ne "Helioigma") { throw "judge-manifest project mismatch" }
@@ -126,12 +126,12 @@ try {
   if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
-  if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
+  if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 46) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
-  if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
+  if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
   }
@@ -161,10 +161,10 @@ try {
   Assert-Contains "dev-article-final.md" "biggest tradeoff"
   Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
-  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
-  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
-  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
-  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm"
+  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
@@ -187,7 +187,7 @@ try {
   Assert-Contains "dev-submit-console.html" "Post-Publish Share Note"
   Assert-Contains "dev-submit-console.html" "static solved cipher"
   Assert-Contains "dev-submit-console.html" "How I Built It"
-  Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/solstice-cipher"
+  Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-submit-console.html" "WebM video"
   Assert-Contains "dev-submit-console.html" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
@@ -202,10 +202,10 @@ try {
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
   Assert-Contains "publish-assistant.html" "No-go gate"
-  Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
-  Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
+  Assert-Contains "publish-assistant.html" "OOYXLOO/helioigma"
+  Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
-  Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
+  Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
   Assert-Contains "publish-assistant.html" "46 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
@@ -214,11 +214,11 @@ try {
   Assert-Contains "submission-checklist.md" "no spam, bought reactions, or fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
-  Assert-Contains "PUBLISHING.md" "gh repo create OOYXLOO/solstice-cipher"
+  Assert-Contains "PUBLISHING.md" "gh repo create OOYXLOO/helioigma"
   Assert-Contains "PUBLISHING.md" "do not spam, buy reactions, or ask for fake engagement"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
-  Assert-Contains "publish-after-repo.ps1" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
+  Assert-Contains "publish-after-repo.ps1" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-after-repo.ps1" "Optional GitHub CLI command"
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
@@ -230,9 +230,9 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
-  Assert-Contains "tools/build-demo-webm.mjs" "solstice-cipher-demo.webm"
+  Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
-  Assert-Contains ".gitignore" "solstice-cipher-dev-package.zip"
+  Assert-Contains ".gitignore" "helioigma-dev-package.zip"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "judge.html" "60-second review path"
   Assert-Contains "judge.html" "Verify the browser path reaches 46 checks"
@@ -242,8 +242,8 @@ try {
   Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
-  Assert-Contains "judge.html" "solstice-cipher-demo.gif"
-  Assert-Contains "judge.html" "solstice-cipher-demo.webm"
+  Assert-Contains "judge.html" "helioigma-demo.gif"
+  Assert-Contains "judge.html" "helioigma-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Ode With Restraint"
   Assert-Contains "judge.html" "Rubric snapshot"
@@ -289,7 +289,7 @@ try {
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
   Assert-Contains "index.html" "20260613-ledger-polish"
-  Assert-Contains "index.html" "https://ooyxloo.github.io/solstice-cipher/cover.png"
+  Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""H"""
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
@@ -337,7 +337,7 @@ try {
   Assert-Contains "verification-report.md" "Technical execution"
   Assert-Contains "verification-report.md" "Turing category"
   Assert-Contains "verification.html" "Score variance is expected"
-  Assert-Contains "verification.html" "solstice-cipher-demo.webm"
+  Assert-Contains "verification.html" "helioigma-demo.webm"
   Assert-Contains "verification.html" "Rubric Snapshot"
   Assert-Contains "verification.html" "Theme relevance"
   Assert-Contains "verification.html" "Technical execution"
@@ -347,7 +347,7 @@ try {
   Assert-Contains "judge-manifest.json" "dev_article_gate"
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "ode_note"
-  Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/solstice-cipher/"
+  Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
 
   $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md,*.json -Recurse |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
@@ -359,15 +359,15 @@ try {
 
   if ($Public) {
     $urls = @(
-      "https://ooyxloo.github.io/solstice-cipher/",
-      "https://ooyxloo.github.io/solstice-cipher/judge.html",
-      "https://ooyxloo.github.io/solstice-cipher/smoke.html",
-      "https://ooyxloo.github.io/solstice-cipher/proof-verifier.html",
-      "https://ooyxloo.github.io/solstice-cipher/judge-manifest.json",
-      "https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html",
-      "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm",
-      "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif",
-      "https://github.com/OOYXLOO/solstice-cipher"
+      "https://ooyxloo.github.io/helioigma/",
+      "https://ooyxloo.github.io/helioigma/judge.html",
+      "https://ooyxloo.github.io/helioigma/smoke.html",
+      "https://ooyxloo.github.io/helioigma/proof-verifier.html",
+      "https://ooyxloo.github.io/helioigma/judge-manifest.json",
+      "https://ooyxloo.github.io/helioigma/dev-submit-console.html",
+      "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
+      "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
+      "https://github.com/OOYXLOO/helioigma"
     )
     foreach ($url in $urls) {
       Assert-Http200 $url

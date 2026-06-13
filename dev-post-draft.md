@@ -26,11 +26,11 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 ## Demo Assets
 
 - Cover image: `cover.png`
-- Animated gameplay preview: `solstice-cipher-demo.gif`
-- Current GIF demo: `solstice-cipher-demo.gif`
-- WebM video: `solstice-cipher-demo.webm`
-- GIF fallback: `solstice-cipher-demo.gif`
-- Optional legacy MP4 asset: `solstice-cipher-demo.mp4`
+- Animated gameplay preview: `helioigma-demo.gif`
+- Current GIF demo: `helioigma-demo.gif`
+- WebM video: `helioigma-demo.webm`
+- GIF fallback: `helioigma-demo.gif`
+- Optional legacy MP4 asset: `helioigma-demo.mp4`
 - Desktop screenshot: `desktop-check-v5.png`
 - Mobile screenshot: `mobile-check-v6.png`
 - Completion screenshot: `desktop-complete-v4.png`
@@ -39,11 +39,11 @@ The GIF was generated from current local browser screenshots and is the canonica
 
 ## Links
 
-- Play: `https://ooyxloo.github.io/solstice-cipher/`
-- Source: `https://github.com/OOYXLOO/solstice-cipher`
-- Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
-- Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
-- Final post console: `https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html`
+- Play: `https://ooyxloo.github.io/helioigma/`
+- Source: `https://github.com/OOYXLOO/helioigma`
+- Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
+- Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
+- Final post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html`
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 

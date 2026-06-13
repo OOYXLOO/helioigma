@@ -8,7 +8,7 @@ const { chromium } = require("playwright");
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const frameDir = join(root, "demo-frames-v3");
-const outputPath = join(root, "solstice-cipher-demo.webm");
+const outputPath = join(root, "helioigma-demo.webm");
 const frameFiles = readdirSync(frameDir)
   .filter((name) => /^\d{2}-.+\.png$/.test(name))
   .sort();

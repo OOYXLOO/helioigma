@@ -57,13 +57,13 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 ## Local Media Assets
 
 - `cover.png`: 1200x630 social/DEV cover image.
-- `solstice-cipher-demo.webm`: current captioned WebM video recorded from the real browser game path, including Hint, phase banner, Rotor Trace, Demo Solve, final receipt, and verifier.
-- `solstice-cipher-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt ledger.
-- `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
+- `helioigma-demo.webm`: current captioned WebM video recorded from the real browser game path, including Hint, phase banner, Rotor Trace, Demo Solve, final receipt, and verifier.
+- `helioigma-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt ledger.
+- `helioigma-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
 - `desktop-complete-v4.png`: current completion screenshot with final score, run receipt, verifier link, and phase scoring ledger.
-- `solstice-cipher-dev-package.zip`: local review/transfer package containing source files and final media assets.
+- `helioigma-dev-package.zip`: local review/transfer package containing source files and final media assets.
 
 ## License
 
@@ -83,16 +83,16 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint and Demo Solve controls, daylight meter, desktop Judge Path, phase announcer, phase scoring ledger, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 46 PASS checks.
-- `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `solstice-cipher-demo.webm`.
+- `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 
 ## Public Publishing
 
 Use `PUBLISHING.md` when the account owner is ready to create or approve the public GitHub repository. Recommended public URLs:
 
-- Source: `https://github.com/OOYXLOO/solstice-cipher`
-- Try link: `https://ooyxloo.github.io/solstice-cipher/`
-- Auto demo: `https://ooyxloo.github.io/solstice-cipher/?demo=1`
+- Source: `https://github.com/OOYXLOO/helioigma`
+- Try link: `https://ooyxloo.github.io/helioigma/`
+- Auto demo: `https://ooyxloo.github.io/helioigma/?demo=1`
 
 The package includes `.nojekyll` and social metadata so GitHub Pages can serve the game from the repository root.
 

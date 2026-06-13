@@ -10,7 +10,7 @@ const { chromium } = require("playwright");
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const workDir = "C:/Users/YXL/.codex/tmp/hks-yxl/solstice-video-capture";
-const outputPath = join(root, "solstice-cipher-demo.webm");
+const outputPath = join(root, "helioigma-demo.webm");
 const mimeTypes = new Map([
   [".css", "text/css"],
   [".gif", "image/gif"],

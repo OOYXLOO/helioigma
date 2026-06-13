@@ -12,18 +12,18 @@ Purpose: make the DEV June Solstice Game Jam package publishable with minimal hu
 ## Recommended Public Repository
 
 - Owner: `OOYXLOO`
-- Repository name: `solstice-cipher`
+- Repository name: `helioigma`
 - Visibility: public
 - Pages source: `main` branch, root folder
-- Public try link after Pages is enabled: `https://ooyxloo.github.io/solstice-cipher/`
+- Public try link after Pages is enabled: `https://ooyxloo.github.io/helioigma/`
 
 ## One-Minute Human Gate
 
 The account owner should create the public GitHub repository, or approve Codex to do so through an already logged-in browser/CLI session:
 
-1. Open https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public
+1. Open https://github.com/new?owner=OOYXLOO&name=helioigma&visibility=public
 2. Repository owner: `OOYXLOO`
-3. Repository name: `solstice-cipher`
+3. Repository name: `helioigma`
 4. Visibility: public
 5. Do not initialize with README, license, or `.gitignore`; this prepared package already includes the tracked README, MIT `LICENSE`, and `.gitignore`
 6. Create repository
@@ -31,7 +31,7 @@ The account owner should create the public GitHub repository, or approve Codex t
 Optional GitHub CLI path, only when the account owner is present and `gh` is already authenticated:
 
 ```powershell
-gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"
+gh repo create OOYXLOO/helioigma --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/helioigma/"
 ```
 
 Do not add `--add-readme`, `--license`, or `--gitignore`; this repository needs to start empty so the prepared local `main` branch can push cleanly.
@@ -54,16 +54,16 @@ Do not submit on DEV until the public try link works. Use:
 - Publish assistant: `publish-assistant.html`
 - Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
-- Cover image after Pages is live: `https://ooyxloo.github.io/solstice-cipher/cover.png`
-- Current GIF demo after Pages is live: `https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif`
+- Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`
+- Current GIF demo after Pages is live: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
 - The WebM is the canonical captioned browser-recorded demo video; the GIF remains as a fallback preview, and the MP4 is a legacy optional asset.
-- Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
-- Judge manifest: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json`
-- Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
-- Receipt verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
-- Try link: `https://ooyxloo.github.io/solstice-cipher/`
-- Auto demo link: `https://ooyxloo.github.io/solstice-cipher/?demo=1`
-- Source link: `https://github.com/OOYXLOO/solstice-cipher`
+- Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
+- Judge manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
+- Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
+- Receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html`
+- Try link: `https://ooyxloo.github.io/helioigma/`
+- Auto demo link: `https://ooyxloo.github.io/helioigma/?demo=1`
+- Source link: `https://github.com/OOYXLOO/helioigma`
 - Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game; do not spam, buy reactions, or ask for fake engagement.
 
 The account owner handles DEV login, final post, prize claim, payout, tax, and KYC directly.

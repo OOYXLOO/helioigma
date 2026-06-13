@@ -190,7 +190,7 @@ async function main() {
     assert((manifestResponse.headers()["content-type"] || "").includes("application/json"), "judge manifest did not return application/json");
     const manifest = JSON.parse(await page.textContent("body"));
     assert(manifest.project === "Helioigma", "judge manifest project changed");
-    assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/solstice-cipher/?demo=1", "judge manifest auto demo URL changed");
+    assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/helioigma/?demo=1", "judge manifest auto demo URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
@@ -198,7 +198,7 @@ async function main() {
     assert(manifest.verification?.expected_smoke_checks === 46, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
-    const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
+    const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
     assert(videoResponse?.ok(), "WebM demo did not return HTTP 200");
     assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 

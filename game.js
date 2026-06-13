@@ -38,7 +38,7 @@
     "Hold twilight long enough for the binary carry.",
     "Close the checksum before nightfall seals the rotor.",
   ];
-  const bestScoreKey = "solstice-cipher-best-score";
+  const bestScoreKey = "helioigma-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
     { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },

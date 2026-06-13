@@ -3,10 +3,10 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$repoUrl = "https://github.com/OOYXLOO/solstice-cipher.git"
-$repoPage = "https://github.com/OOYXLOO/solstice-cipher"
-$repoCreateUrl = "https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
-$repoCreateCommand = 'gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"'
+$repoUrl = "https://github.com/OOYXLOO/helioigma.git"
+$repoPage = "https://github.com/OOYXLOO/helioigma"
+$repoCreateUrl = "https://github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
+$repoCreateCommand = 'gh repo create OOYXLOO/helioigma --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/helioigma/"'
 
 function Run {
   param([string]$Command)
@@ -84,7 +84,7 @@ Write-Output "Helioigma publish-after-repo helper"
     Write-Output "Push complete. Next human/browser gate:"
     Write-Output "1. Open $repoPage/settings/pages"
     Write-Output "2. Set Pages source to Deploy from a branch -> main -> /root"
-    Write-Output "3. Wait for https://ooyxloo.github.io/solstice-cipher/"
+    Write-Output "3. Wait for https://ooyxloo.github.io/helioigma/"
     Write-Output "4. Run: powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public"
     Write-Output "5. Publish DEV article only after public preflight passes."
   }

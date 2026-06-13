@@ -2,15 +2,15 @@
 
 Generated for the local DEV June Solstice Game Jam package on 2026-06-13.
 
-This report records the public-package checks that can be repeated after `OOYXLOO/solstice-cipher` is published. It does not use account data, private user data, API keys, payout data, tax data, or KYC data.
+This report records the public-package checks that can be repeated after `OOYXLOO/helioigma` is published. It does not use account data, private user data, API keys, payout data, tax data, or KYC data.
 
 ## Public Package Status
 
 - Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-13.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
-- Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`
-- Intended source URL after publication: `https://github.com/OOYXLOO/solstice-cipher`
+- Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
+- Intended source URL after publication: `https://github.com/OOYXLOO/helioigma`
 - Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`
 
 ## Verified Assets
@@ -21,9 +21,9 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
-- `solstice-cipher-demo.gif`: current animated GIF preview ending on the receipt ledger
-- `solstice-cipher-demo.mp4`: optional legacy MP4 asset
+- `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
+- `helioigma-demo.gif`: current animated GIF preview ending on the receipt ledger
+- `helioigma-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
 - `desktop-complete-v4.png`: completion screenshot with final receipt and phase scoring ledger
@@ -48,8 +48,8 @@ Expected local URLs:
 - `http://127.0.0.1:8781/smoke.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-submit-console.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-article-final.md`: HTTP 200
-- `http://127.0.0.1:8781/solstice-cipher-demo.webm`: HTTP 200
-- `http://127.0.0.1:8781/solstice-cipher-demo.gif`: HTTP 200
+- `http://127.0.0.1:8781/helioigma-demo.webm`: HTTP 200
+- `http://127.0.0.1:8781/helioigma-demo.gif`: HTTP 200
 
 ## Browser Checks
 
@@ -137,7 +137,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 
 These are intentionally not automated:
 
-- Create or approve public GitHub repository `OOYXLOO/solstice-cipher`.
+- Create or approve public GitHub repository `OOYXLOO/helioigma`.
 - Enable GitHub Pages from `main` root.
 - Publish the DEV article with the user account.
 - Handle any prize claim, payout, tax, or KYC workflow if selected.

@@ -25,14 +25,14 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Desktop screenshot: `desktop-check-v5.png`.
 - Mobile screenshot: `mobile-check-v6.png`.
 - Completion screenshot: `desktop-complete-v4.png`.
-- Cover image after Pages is live: `https://ooyxloo.github.io/solstice-cipher/cover.png`.
-- Current captioned WebM demo video: `solstice-cipher-demo.webm`.
-- Current GIF demo: `solstice-cipher-demo.gif`.
-- Optional legacy MP4 asset: `solstice-cipher-demo.mp4`.
+- Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`.
+- Current captioned WebM demo video: `helioigma-demo.webm`.
+- Current GIF demo: `helioigma-demo.gif`.
+- Optional legacy MP4 asset: `helioigma-demo.mp4`.
 - Source frames: `demo-frames-v3/`.
 - Rebuild captioned WebM from a live browser session with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-video.mjs`.
 - Rebuild the fallback frame-based WebM with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-webm.mjs`.
-- Local package ZIP: `solstice-cipher-dev-package.zip`.
+- Local package ZIP: `helioigma-dev-package.zip`.
 - Verification:
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
@@ -52,9 +52,9 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 
 ## Before Publishing
 
-- Create or approve a public GitHub repository named `OOYXLOO/solstice-cipher`.
-  - Fast path: `https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public`
-  - Optional GitHub CLI path, only when the account owner is present and `gh` is already authenticated: `gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"`
+- Create or approve a public GitHub repository named `OOYXLOO/helioigma`.
+  - Fast path: `https://github.com/new?owner=OOYXLOO&name=helioigma&visibility=public`
+  - Optional GitHub CLI path, only when the account owner is present and `gh` is already authenticated: `gh repo create OOYXLOO/helioigma --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/helioigma/"`
 - Keep it empty: no README, no license template, no `.gitignore`; the prepared package already includes the tracked `README.md`, MIT `LICENSE`, and `.gitignore`.
 - Push the prepared local `main` branch to that repository.
 - Confirm GitHub Actions `Verify Helioigma` passes after push.
@@ -80,11 +80,11 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 ## Suggested DEV Post Links
 
 - Try link: to be filled after public hosting.
-- Auto demo link: `https://ooyxloo.github.io/solstice-cipher/?demo=1` after public hosting.
+- Auto demo link: `https://ooyxloo.github.io/helioigma/?demo=1` after public hosting.
 - Source link: to be filled after repo/public hosting is authorized.
-- Judge pack link: `https://ooyxloo.github.io/solstice-cipher/judge.html` after public hosting.
-- Judge manifest link: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json` after public hosting.
-- Smoke test link: `https://ooyxloo.github.io/solstice-cipher/smoke.html` after public hosting.
-- DEV post console: `https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html` after public hosting.
-- Screenshots/media: use the public Pages URLs for `cover.png`, `solstice-cipher-demo.webm`, `solstice-cipher-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
-- Package: use `solstice-cipher-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.
+- Judge pack link: `https://ooyxloo.github.io/helioigma/judge.html` after public hosting.
+- Judge manifest link: `https://ooyxloo.github.io/helioigma/judge-manifest.json` after public hosting.
+- Smoke test link: `https://ooyxloo.github.io/helioigma/smoke.html` after public hosting.
+- DEV post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html` after public hosting.
+- Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
+- Package: use `helioigma-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.
