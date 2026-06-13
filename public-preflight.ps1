@@ -128,7 +128,8 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 59) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 60) { throw "judge-manifest smoke count mismatch" }
+  if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
@@ -187,6 +188,7 @@ try {
   Assert-Contains "dev-article-final.md" "Optional default-off Web Audio cues"
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
   Assert-Contains "dev-article-final.md" "default-off Audio control"
+  Assert-Contains "dev-article-final.md" "Score rewards held daylight, streaks, and fewer wasted shifts"
   Assert-Contains "dev-article-final.md" "On mobile the cards collapse to compact labels"
   Assert-NotContains "dev-article-final.md" "moved after the playfield on mobile"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
@@ -237,6 +239,7 @@ try {
   Assert-Contains "README.md" "optional default-off Web Audio cues"
   Assert-Contains "README.md" 'Use `Audio` or press `S`'
   Assert-Contains "README.md" "generated Web Audio tones"
+  Assert-Contains "README.md" "Score rewards held daylight, streaks, and fewer wasted shifts"
   Assert-Contains "README.md" "Originality and Review Transparency"
   Assert-Contains "README.md" "not a wrapper around a prior game template"
   Assert-Contains "README.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
@@ -251,14 +254,14 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "publish-assistant.html" "59 smoke checks"
+  Assert-Contains "publish-assistant.html" "60 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
   Assert-Contains "submission-checklist.md" "Optional auto-demo route"
   Assert-Contains "submission-checklist.md" "Optional default-off Audio cue toggle"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
-  Assert-Contains "submission-checklist.md" "59 expected smoke checks"
+  Assert-Contains "submission-checklist.md" "60 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, bought reactions, or fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
@@ -279,7 +282,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport shows too little gameplay canvas"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 59 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 60 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer explains score and receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "audio cues should default off"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
@@ -304,7 +308,7 @@ try {
   Assert-Contains "judge.html" "tactile node pulse"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
-  Assert-Contains "judge.html" "Verify the browser path reaches 59 checks"
+  Assert-Contains "judge.html" "Verify the browser path reaches 60 checks"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
@@ -391,7 +395,8 @@ try {
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
   Assert-Contains "index.html" "Helioigma"
-  Assert-Contains "index.html" "Decode the solstice rotor"
+  Assert-Contains "index.html" "Match numbered nodes before nightfall"
+  Assert-Contains "index.html" "Score rewards held daylight, streaks, and fewer wasted shifts"
   Assert-Contains "index.html" "20260614-award-signals"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
@@ -403,6 +408,7 @@ try {
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "audio cue button is present"
   Assert-Contains "smoke.html" "audio cues default off"
+  Assert-Contains "smoke.html" "play rule explains score and receipt"
   Assert-Contains "smoke.html" "hint shortcut is exposed"
   Assert-Contains "smoke.html" "start button shows the first-move coach"
   Assert-Contains "smoke.html" "hint shortcut names the next mismatched node"
@@ -467,6 +473,7 @@ try {
   Assert-Contains "judge-manifest.json" "asset_boundary"
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "award_thesis"
+  Assert-Contains "judge-manifest.json" "score_basis"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "judge-manifest.json" "sample_receipt_verifier"

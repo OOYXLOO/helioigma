@@ -116,6 +116,8 @@ Controls:
 - Press `Enter` to start a fresh run.
 - Press `Escape` or `R` to reset the board.
 
+Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the same run path without trusting a hidden backend.
+
 ## How I Built It
 
 I built Helioigma as a no-backend canvas game so the public demo can run from GitHub Pages. The level data is deterministic: every phase has a target array, the player ring starts offset from that target, and every click/tap/key/button press rotates one node through the `SOL`, `XOR`, `LUX`, and `BIN` states.
@@ -183,5 +185,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 59 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 59 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 60 checks passed, including daylight meter, score/receipt explanation, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 60 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

@@ -66,7 +66,7 @@ Expected local URLs:
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The first-screen judge shortcuts and judge pack expose the stable sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 59 PASS assertions:
+- Smoke checks include 60 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -74,6 +74,7 @@ Expected local URLs:
   - demo solve button present
   - audio cue button present
   - daylight meter present
+  - play rule explains score and receipt
   - start shortcut exposed
   - reset shortcut exposed
   - hint shortcut exposed
@@ -148,7 +149,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 59 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 60 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

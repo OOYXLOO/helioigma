@@ -89,6 +89,7 @@ async function readGameFacts(page) {
         target: document.querySelector("#phaseTargetLine")?.textContent.trim(),
         alignment: document.querySelector("#phaseAlignment")?.textContent.trim(),
       },
+      playRule: document.querySelector(".play-rule")?.textContent.trim(),
       canvasTop: canvasRect?.top,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       trace: {
@@ -141,6 +142,7 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
+    assert(desktop.playRule?.includes("Score rewards held daylight") && desktop.playRule?.includes("final receipt lets judges verify the path"), "play rule no longer explains score and receipt");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -304,7 +306,8 @@ async function main() {
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 59, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 60, "judge manifest smoke count changed");
+    assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
@@ -350,7 +353,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 59, `expected 59 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 60, `expected 60 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

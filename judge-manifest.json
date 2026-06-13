@@ -88,12 +88,13 @@
     "score": 2907,
     "shifts": 62,
     "checksum": "Y5VFX1",
+    "score_basis": "Score rewards held daylight, streaks, and fewer wasted shifts before the final receipt checksum is built.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
     "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
   },
   "verification": {
-    "expected_smoke_checks": 59,
+    "expected_smoke_checks": 60,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"

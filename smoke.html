@@ -178,6 +178,7 @@
       const dayMeter = doc.querySelector("#dayMeter");
       const dayMeterFill = doc.querySelector("#dayMeterFill");
       const dayMeterLabel = doc.querySelector("#dayMeterLabel");
+      const playRule = doc.querySelector(".play-rule");
       const phaseObjective = doc.querySelector("#phaseObjective");
       const phaseTargetLine = doc.querySelector("#phaseTargetLine");
       const phaseAlignment = doc.querySelector("#phaseAlignment");
@@ -213,6 +214,7 @@
       addCheck("demo solve button is present", Boolean(demoButton));
       addCheck("audio cue button is present", Boolean(soundButton));
       addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
+      addCheck("play rule explains score and receipt", playRule.textContent.includes("Score rewards held daylight") && playRule.textContent.includes("final receipt lets judges verify the path"));
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");

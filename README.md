@@ -47,6 +47,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Use `Hint` or press `H` during manual play to highlight the next mismatched node.
 - Use `Demo Solve` or press `D` to watch the complete four-phase loop without manual input.
 - Use `Audio` or press `S` to enable optional short Web Audio cues. Audio is off by default.
+- Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the same run path.
 - Open `?demo=1` to start the same deterministic judge route automatically.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
@@ -90,7 +91,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, and default-off Audio controls, daylight meter, desktop Judge Path, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 59 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, and score/receipt explanation, daylight meter, desktop Judge Path, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 60 PASS checks.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 
