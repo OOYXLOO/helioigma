@@ -124,6 +124,12 @@ For the Alan Turing angle, Helioigma borrows the feeling of rotor alignment and 
 - `LUX` for light.
 - `BIN` for binary state.
 
+## An Ode with Restraint
+
+I wanted the Turing reference to be respectful instead of decorative. Helioigma is not a biography game, and it does not try to recreate the Bombe or any real wartime machine. It keeps the tribute inside the things a browser game can honestly express: state, logic, alignment, verification, pressure, and a small act of holding light against a timer.
+
+That is also why the verifier matters to the theme. Turing's legacy is not only "secret codes"; it is careful reasoning about machines and proof. The receipt is modest, but it makes the solve inspectable instead of asking the judge to trust a screenshot.
+
 ## Why It Is Not Just a Cipher Demo
 
 I wanted the Turing reference to live in the interaction, not only in the title. The player does not read a solved cipher; they manipulate the rotor state under a daylight timer, build a score through phase solves, and leave behind a receipt that can be checked independently. The smoke test and receipt verifier are part of that design: they make the code-breaking loop visible and reproducible for judges without turning the game into a static worksheet.
@@ -136,7 +142,7 @@ I wanted the Turing reference to live in the interaction, not only in the title.
 | Creativity | The solstice theme is combined with a code-breaking wheel instead of a literal platformer or trivia page. |
 | Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, scoring, local best score, receipt generation, and a browser smoke test. |
 | Writing quality | The post, judge page, judge manifest, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
-| Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, and receipt verification. |
+| Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, receipt verification, and a restrained tribute that avoids pretending to simulate a real historical machine. |
 
 ## After Publishing
 

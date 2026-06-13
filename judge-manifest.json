@@ -5,7 +5,8 @@
     "challenge_url": "https://dev.to/challenges/june-game-jam-2026-06-03",
     "target_prize_usd": 200,
     "target_category": "Best Ode to Alan Turing",
-    "required_tags": ["devchallenge", "gamechallenge", "gamedev"]
+    "required_tags": ["devchallenge", "gamechallenge", "gamedev"],
+    "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography."
   },
   "status": {
     "public_repo_created": false,

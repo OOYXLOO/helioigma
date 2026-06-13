@@ -67,6 +67,9 @@ jobs:
           grep -q "Code" dev-article-final.md
           grep -q "How I Built It" dev-article-final.md
           grep -q "Prize Category" dev-article-final.md
+          grep -q "An Ode with Restraint" dev-article-final.md
+          grep -q "not a biography game" dev-article-final.md
+          grep -q "careful reasoning about machines and proof" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
           grep -q "judge-manifest.json" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
@@ -81,10 +84,12 @@ jobs:
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "judge-manifest.json" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
+          grep -q "Ode With Restraint" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
+          grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "MIT license" README.md
           grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
@@ -103,12 +108,15 @@ jobs:
           grep -q "Run Smoke Test" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
+          grep -q "Ode With Restraint" judge.html
+          grep -q "state, logic, verification" judge.html
           ! grep -q "DEV Console" judge.html
           ! grep -q "Publish Assistant" judge.html
           grep -q "PASS - Longest day held" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" judge-manifest.json
           grep -q "Best Ode to Alan Turing" judge-manifest.json
+          grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
