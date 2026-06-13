@@ -442,6 +442,17 @@ button:focus-visible {
   color: #b8f2c8;
 }
 
+.node-button.hinted {
+  border-color: rgba(247, 201, 72, 0.72);
+  background: rgba(247, 201, 72, 0.16);
+  box-shadow: 0 0 0 2px rgba(247, 201, 72, 0.12);
+}
+
+.node-button.hinted .node-index,
+.node-button.hinted .node-current {
+  color: var(--accent);
+}
+
 .node-button:disabled {
   cursor: default;
   opacity: 0.72;
@@ -455,6 +466,11 @@ button:focus-visible {
 #demoButton {
   border-color: rgba(139, 211, 255, 0.42);
   background: rgba(139, 211, 255, 0.12);
+}
+
+#hintButton {
+  border-color: rgba(247, 201, 72, 0.42);
+  background: rgba(247, 201, 72, 0.12);
 }
 
 .status {
@@ -573,7 +589,7 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     padding: 8px;
   }
 

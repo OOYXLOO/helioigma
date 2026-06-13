@@ -138,6 +138,7 @@ jobs:
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
+          grep -q "hintButton" index.html
           grep -q "demoButton" index.html
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
@@ -146,7 +147,12 @@ jobs:
           grep -q "Decode the solstice rotor" index.html
           grep -q "https://ooyxloo.github.io/solstice-cipher/cover.png" index.html
           grep -q "twitter:image" index.html
+          grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
+          grep -q "hint button is present" smoke.html
+          grep -q "hint shortcut is exposed" smoke.html
+          grep -q "hint shortcut names the next mismatched node" smoke.html
+          grep -q "hint highlights a node button" smoke.html
           grep -q "demo solve button is present" smoke.html
           grep -q "judge shortcut links are present" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html

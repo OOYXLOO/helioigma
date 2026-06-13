@@ -26,7 +26,7 @@ http://127.0.0.1:8781/
 
 Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, judge shortcut links, and a stable `Demo Solve` receipt path, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a manual `Hint` path, judge shortcut links, and a stable `Demo Solve` receipt path, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
@@ -36,6 +36,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 
 - Click or tap ring nodes to rotate their phase.
 - Use the node-control buttons below the canvas.
+- Use `Hint` or press `H` during manual play to highlight the next mismatched node.
 - Use `Demo Solve` to watch the complete four-phase loop without manual input.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
@@ -80,7 +81,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve, daylight meter, desktop Judge Path, mobile canvas visibility, validates the run receipt, and waits for `smoke.html` to reach 30 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint and Demo Solve controls, daylight meter, desktop Judge Path, mobile canvas visibility, validates the run receipt, and waits for `smoke.html` to reach 34 PASS checks.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `solstice-cipher-demo.webm`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 

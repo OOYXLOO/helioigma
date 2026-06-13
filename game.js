@@ -9,6 +9,7 @@
   const statusLine = document.querySelector("#statusLine");
   const startButton = document.querySelector("#startButton");
   const resetButton = document.querySelector("#resetButton");
+  const hintButton = document.querySelector("#hintButton");
   const demoButton = document.querySelector("#demoButton");
   const phaseTrack = document.querySelector("#phaseTrack");
   const dayMeter = document.querySelector("#dayMeter");
@@ -48,6 +49,7 @@
     particles: [],
     lastTick: 0,
     demoing: false,
+    hintedIndex: -1,
     message: "Decode the Helioigma rotor before nightfall.",
   };
 
@@ -99,6 +101,7 @@
     state.ring = state.target.map((value, i) => (value + 1 + (i % 3)) % glyphs.length);
     state.timeLeft = level.seconds;
     state.finalProof = "";
+    state.hintedIndex = -1;
     state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
   }
@@ -111,6 +114,9 @@
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
     startButton.disabled = state.demoing;
+    if (hintButton) {
+      hintButton.disabled = !state.running || state.complete || state.demoing;
+    }
     demoButton.disabled = state.demoing;
     syncDayMeter();
     syncPhaseTrack();
@@ -192,6 +198,7 @@
       const locked = value === targetValue;
       button.disabled = !state.running || state.complete || state.demoing;
       button.classList.toggle("locked", locked);
+      button.classList.toggle("hinted", index === state.hintedIndex && !locked);
       button.setAttribute(
         "aria-label",
         `Rotate node ${index + 1}; current ${glyphs[value]}; target ${glyphs[targetValue]}`
@@ -300,16 +307,28 @@
       const x = cx + Math.cos(angle) * ringRadius;
       const y = cy + Math.sin(angle) * ringRadius;
       const matched = value === state.target[i];
+      const hinted = i === state.hintedIndex && !matched;
       state.nodes.push({ x, y, radius: nodeRadius, index: i });
 
       ctx.save();
-      ctx.strokeStyle = matched ? "rgba(184,242,200,0.55)" : "rgba(255,255,255,0.09)";
-      ctx.lineWidth = matched ? 6 : 3;
+      ctx.strokeStyle = matched ? "rgba(184,242,200,0.55)" : hinted ? "rgba(247,201,72,0.82)" : "rgba(255,255,255,0.09)";
+      ctx.lineWidth = matched ? 6 : hinted ? 7 : 3;
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(x, y);
       ctx.stroke();
       ctx.restore();
+
+      if (hinted) {
+        ctx.save();
+        ctx.strokeStyle = "rgba(247,201,72,0.9)";
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8, 6]);
+        ctx.beginPath();
+        ctx.arc(x, y, nodeRadius + 9, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
 
       drawGlyph(x, y, nodeRadius, value, String(i + 1));
     });
@@ -440,6 +459,9 @@
 
   function rotateNode(index, x = null, y = null) {
     if (!state.running || index < 0 || index >= state.ring.length) return;
+    if (state.hintedIndex === index) {
+      state.hintedIndex = -1;
+    }
     state.shifts += 1;
     state.ring[index] = (state.ring[index] + 1) % glyphs.length;
     const node = state.nodes[index] || {};
@@ -455,6 +477,21 @@
     state.message = locked ? `Signal ${index + 1} locked.` : `Phase ${index + 1} shifted.`;
     updateHud();
     checkWin();
+    draw();
+  }
+
+  function showHint() {
+    if (!state.running || state.complete || state.demoing) return;
+    const index = state.ring.findIndex((value, i) => value !== state.target[i]);
+    if (index === -1) {
+      state.hintedIndex = -1;
+      state.message = "All visible signals are aligned.";
+      updateHud();
+      return;
+    }
+    state.hintedIndex = index;
+    state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
+    updateHud();
     draw();
   }
 
@@ -477,7 +514,7 @@
         state.running = false;
         state.streak = 0;
         state.timeLeft = 0;
-      state.message = "Nightfall sealed the Helioigma rotor.";
+        state.message = "Nightfall sealed the Helioigma rotor.";
       }
       updateHud();
     }
@@ -496,6 +533,7 @@
     state.solvedPhases = 0;
     state.complete = false;
     state.finalProof = "";
+    state.hintedIndex = -1;
     state.particles = [];
     state.lastTick = 0;
     seedLevel(0);
@@ -513,6 +551,7 @@
     state.solvedPhases = 0;
     state.complete = false;
     state.finalProof = "";
+    state.hintedIndex = -1;
     state.particles = [];
     seedLevel(0);
     state.message = "Decode the Helioigma rotor before nightfall.";
@@ -537,7 +576,7 @@
     startGame();
     state.demoing = true;
     state.lastTick = 0;
-    state.message = "Demo solve is tracing the longest day with a stable judge proof.";
+    state.message = "Demo solve is tracing the longest day with a stable judge receipt.";
     updateHud();
     await sleep(260);
     while (state.running && !state.complete) {
@@ -597,6 +636,11 @@
       demoSolve();
       return;
     }
+    if (event.key.toLowerCase() === "h") {
+      event.preventDefault();
+      showHint();
+      return;
+    }
     if (event.key === "Escape") {
       event.preventDefault();
       resetGame();
@@ -621,6 +665,12 @@
     resetGame();
     focusPlayfield();
   });
+  if (hintButton) {
+    hintButton.addEventListener("click", () => {
+      showHint();
+      focusPlayfield();
+    });
+  }
   demoButton.addEventListener("click", () => {
     demoSolve();
     focusPlayfield();

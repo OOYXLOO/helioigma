@@ -11,7 +11,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
 - Run receipt verifier: `proof-verifier.html` with parsed receipt facts.
-- Phase progress strip, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
+- Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
@@ -36,16 +36,17 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 30 PASS checks including daylight meter, shortcut exposure, D-to-Demo-Solve, R-to-reset, final status, and receipt format.
+- `smoke.html`: 34 PASS checks including daylight meter, H-to-Hint behavior, D-to-Demo-Solve, R-to-reset, final status, and receipt format.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
 - First-screen rule: visible text explains that the player should decode the solstice rotor by matching each numbered node to the target glyph before nightfall.
+- Hint: visible in the controls row, exposed with shortcut `H`, and highlights the next mismatched node during browser verification without changing the stable Demo Solve receipt.
 - Demo Solve: visible in the controls row and completes the loop to stable receipt `SC-4P-2907-62-Y5VFX1` during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 30 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 34 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

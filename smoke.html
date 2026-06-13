@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260613-receipt-polish" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260613-hint-polish" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -172,6 +172,7 @@
       const canvas = doc.querySelector("#game");
       const startButton = doc.querySelector("#startButton");
       const resetButton = doc.querySelector("#resetButton");
+      const hintButton = doc.querySelector("#hintButton");
       const demoButton = doc.querySelector("#demoButton");
       const dayMeter = doc.querySelector("#dayMeter");
       const dayMeterFill = doc.querySelector("#dayMeterFill");
@@ -191,10 +192,12 @@
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
       addCheck("reset button is present", Boolean(resetButton));
+      addCheck("hint button is present", Boolean(hintButton));
       addCheck("demo solve button is present", Boolean(demoButton));
       addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
+      addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");
       addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");
       addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
@@ -221,6 +224,10 @@
       startButton.click();
       await sleep(120);
       addCheck("run starts through the public button", statusLine.textContent.includes("Helioigma rotor is live"));
+      press(win, "h");
+      await sleep(80);
+      addCheck("hint shortcut names the next mismatched node", statusLine.textContent.includes("Hint: rotate node"));
+      addCheck("hint highlights a node button", Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);

@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://ooyxloo.github.io/solstice-cipher/cover.png">
-  <link rel="stylesheet" href="styles.css?v=20260613-receipt-polish">
+  <link rel="stylesheet" href="styles.css?v=20260613-hint-polish">
 </head>
 <body>
   <main class="shell">
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <p class="play-rule"><strong>Goal:</strong> Decode the solstice rotor by matching each numbered node to the target glyph before nightfall. Press <span>Demo Solve</span> for the fastest judge path.</p>
+      <p class="play-rule"><strong>Goal:</strong> Decode the solstice rotor by matching each numbered node to the target glyph before nightfall. Press <span>Hint</span> while playing to reveal the next mismatch, or <span>Demo Solve</span> for the fastest judge path.</p>
 
       <section class="judge-path" aria-label="Judge path">
         <article>
@@ -68,11 +68,12 @@
       <div class="controls quick-controls">
         <button id="startButton" type="button" aria-keyshortcuts="Enter">Start</button>
         <button id="resetButton" type="button" aria-keyshortcuts="Escape R">Reset</button>
+        <button id="hintButton" type="button" aria-keyshortcuts="H">Hint</button>
         <button id="demoButton" type="button" aria-keyshortcuts="D">Demo Solve</button>
         <div id="statusLine" class="status" role="status">Decode the Helioigma rotor before nightfall.</div>
       </div>
 
-      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered rotor node until it matches the target glyph above it. Enter starts, D runs the demo solve, Escape or R resets, and number keys rotate matching numbered nodes.</p>
+      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered rotor node until it matches the target glyph above it. Enter starts, H gives a hint for the next mismatched node, D runs the demo solve, Escape or R resets, and number keys rotate matching numbered nodes.</p>
       <canvas id="game" width="960" height="640" tabindex="0" aria-keyshortcuts="1 2 3 4 5 6 7 8 9" aria-label="Helioigma playfield" aria-describedby="srHelp"></canvas>
       <div id="nodeButtons" class="node-buttons" aria-label="Cipher node controls"></div>
 
@@ -93,6 +94,6 @@
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-receipt-polish"></script>
+  <script src="game.js?v=20260613-hint-polish"></script>
 </body>
 </html>

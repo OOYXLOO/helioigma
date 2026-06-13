@@ -128,16 +128,18 @@ async function main() {
     await setCaption(
       page,
       "1/5 - First screen: play path, timer, rotor, and receipt goal",
-      "Judges can start manually or use Demo Solve without hunting through a menu."
+      "Judges can start manually, ask for a Hint, or use Demo Solve without hunting through a menu."
     );
     await page.waitForTimeout(4200);
 
     await page.click("#startButton");
     await setCaption(
       page,
-      "2/5 - Manual play uses numbered rotor controls",
-      "Clicks, taps, and keys 1-9 rotate the SOL/XOR/LUX/BIN wheel under daylight pressure."
+      "2/5 - Manual play has a visible hint path",
+      "Hint highlights the next mismatch; clicks, taps, and keys 1-9 rotate the SOL/XOR/LUX/BIN wheel."
     );
+    await page.keyboard.press("H");
+    await page.waitForTimeout(700);
     for (const key of ["1", "2", "3"]) {
       await page.keyboard.press(key);
       await page.waitForTimeout(500);

@@ -124,7 +124,7 @@ try {
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 30) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 34) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
@@ -180,7 +180,7 @@ try {
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
-  Assert-Contains "publish-assistant.html" "30 smoke checks"
+  Assert-Contains "publish-assistant.html" "34 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "no spam, bought reactions, or fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
@@ -191,7 +191,7 @@ try {
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 30 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 34 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -221,6 +221,7 @@ try {
   Assert-Contains "index.html" "nodeButtons"
   Assert-Contains "index.html" "phaseTrack"
   Assert-Contains "index.html" "shiftLabel"
+  Assert-Contains "index.html" "hintButton"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
@@ -233,13 +234,18 @@ try {
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
-  Assert-Contains "index.html" "20260613-receipt-polish"
+  Assert-Contains "index.html" "20260613-hint-polish"
   Assert-Contains "index.html" "https://ooyxloo.github.io/solstice-cipher/cover.png"
   Assert-Contains "index.html" "twitter:image"
+  Assert-Contains "index.html" "aria-keyshortcuts=""H"""
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
-  Assert-Contains "smoke.html" "20260613-receipt-polish"
+  Assert-Contains "smoke.html" "20260613-hint-polish"
+  Assert-Contains "smoke.html" "hint button is present"
+  Assert-Contains "smoke.html" "hint shortcut is exposed"
+  Assert-Contains "smoke.html" "hint shortcut names the next mismatched node"
+  Assert-Contains "smoke.html" "hint highlights a node button"
   Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"
   Assert-Contains "smoke.html" "daylight meter is present"

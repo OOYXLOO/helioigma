@@ -64,6 +64,7 @@ function startStaticServer() {
 async function readGameFacts(page) {
   return page.evaluate(() => {
     const demo = document.querySelector("#demoButton")?.getBoundingClientRect();
+    const hint = document.querySelector("#hintButton")?.getBoundingClientRect();
     const judgePath = document.querySelector(".judge-path")?.getBoundingClientRect();
     const dayMeter = document.querySelector("#dayMeter")?.getBoundingClientRect();
     const ordered = [...document.querySelectorAll("body *")];
@@ -73,6 +74,7 @@ async function readGameFacts(page) {
     return {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
+      hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
       judgePathBeforeCanvas: Boolean(judgePath && ordered.indexOf(document.querySelector(".judge-path")) >= 0 && ordered.indexOf(document.querySelector(".judge-path")) < ordered.indexOf(canvas)),
       judgePathVisible: Boolean(judgePath && judgePath.top >= 0 && judgePath.bottom <= innerHeight),
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
@@ -82,6 +84,7 @@ async function readGameFacts(page) {
       shortcutMap: {
         start: document.querySelector("#startButton")?.getAttribute("aria-keyshortcuts"),
         reset: document.querySelector("#resetButton")?.getAttribute("aria-keyshortcuts"),
+        hint: document.querySelector("#hintButton")?.getAttribute("aria-keyshortcuts"),
         demo: document.querySelector("#demoButton")?.getAttribute("aria-keyshortcuts"),
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
       },
@@ -102,6 +105,7 @@ async function main() {
     const desktop = await readGameFacts(page);
     assert(desktop.overflowX === 0, "desktop has horizontal overflow");
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
+    assert(desktop.hintVisible, "desktop Hint is not visible in the first viewport");
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.dayMeterVisible, "desktop daylight meter is not visible in the first viewport");
@@ -110,6 +114,7 @@ async function main() {
     assert(desktop.judgePathCards.join("|") === "1. Play|2. Rotor Trace|3. Receipt", "Judge path cards changed");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
+    assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
@@ -119,6 +124,7 @@ async function main() {
     const mobile = await readGameFacts(page);
     assert(mobile.overflowX === 0, "mobile has horizontal overflow");
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
+    assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.canvasTop < 844, "mobile game canvas does not begin in the first viewport");
 
@@ -156,7 +162,7 @@ async function main() {
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 30, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 34, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
@@ -189,7 +195,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 30, `expected 30 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 34, `expected 34 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 
