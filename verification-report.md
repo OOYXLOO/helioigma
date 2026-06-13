@@ -6,7 +6,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `ab9c6bf`.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `894a06f`.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`

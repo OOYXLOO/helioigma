@@ -43,7 +43,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
 - Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 28 expected smoke checks, and stable proof `SC-4P-2907-62-Y5VFX1`.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 29 expected smoke checks, and stable proof `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

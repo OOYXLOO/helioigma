@@ -137,5 +137,5 @@ I verified the package with:
 - `node --check game.js`
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
-- `smoke.html`: 28 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
+- `smoke.html`: 29 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
 - `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 29 smoke checks, public links, stable proof `SC-4P-2907-62-Y5VFX1`, and human gates.
