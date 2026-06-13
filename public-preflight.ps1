@@ -138,6 +138,7 @@ try {
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
   Assert-Contains "dev-article-final.md" "What I Built"
+  Assert-Contains "dev-article-final.md" "The first thing I want a judge to see is the machine itself"
   Assert-Contains "dev-article-final.md" "longest day into a countdown machine"
   Assert-Contains "dev-article-final.md" "Video Demo"
   Assert-Contains "dev-article-final.md" "Code"

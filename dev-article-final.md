@@ -8,13 +8,13 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png
 
 ## The Longest Day as a Countdown Machine
 
-The solstice is a strange clock: one day stretches farther than the rest, and then the light starts leaving again. I wanted the game to feel like that exact moment, so Helioigma turns the longest day into a countdown machine. You get a bright window of time, a rotor full of code-like glyphs, and one job: align the signal before nightfall takes the board.
+The first thing I want a judge to see is the machine itself: a solar rotor under a 45-second daylight bar. Every click shifts `SOL`, `XOR`, `LUX`, and `BIN` around the ring; every phase asks you to pull the board back into alignment before nightfall. The solstice is a strange clock, so Helioigma turns the longest day into a countdown machine.
 
-That is why the first action is not a lore screen or a menu. The game puts the daylight meter, the target rotor, and the `Demo Solve` path in front of the player immediately. A judge can play manually, or watch the deterministic solve and verify the final receipt without guessing what counts as success.
+That is why the first action is not a lore screen or a menu. The game opens on the daylight meter, target rotor, and playable controls. A judge can start manually, use `Hint` when a node is off, or press `Demo Solve` to watch the full four-phase run in under a minute. The receipt/verifier path is there after the play loop, so the review stays fast without turning the entry into a static proof page.
 
 ## What I Built
 
-Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
+Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor until each numbered node matches the target cipher before nightfall ends the run.
 
 Helioigma is the game title and the public build slug, chosen so the submission is easy to distinguish from other similarly named solstice puzzle entries.
 
