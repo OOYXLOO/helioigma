@@ -38,9 +38,9 @@ jobs:
             verification.html \
             verification-report.md \
             cover.png \
-            solstice-cipher-demo.mp4 \
-            solstice-cipher-demo.webm \
-            solstice-cipher-demo.gif \
+            helioigma-demo.mp4 \
+            helioigma-demo.webm \
+            helioigma-demo.gif \
             desktop-check-v5.png \
             mobile-check-v6.png \
             desktop-complete-v4.png \
@@ -57,13 +57,13 @@ jobs:
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
           grep -q "solar rotor" dev-article-final.md
-          grep -q "solstice-cipher-demo.gif" dev-article-final.md
-          grep -q "solstice-cipher-demo.webm" dev-article-final.md
+          grep -q "helioigma-demo.gif" dev-article-final.md
+          grep -q "helioigma-demo.webm" dev-article-final.md
           grep -q "Completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
-          grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
-          grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" dev-article-final.md
+          grep -q "https://ooyxloo.github.io/helioigma/" dev-article-final.md
+          grep -q "https://ooyxloo.github.io/helioigma/?demo=1" dev-article-final.md
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
           grep -q "Code" dev-article-final.md
@@ -106,8 +106,8 @@ jobs:
       - name: Verify judge and smoke links
         run: |
           set -euo pipefail
-          grep -q "solstice-cipher-demo.gif" judge.html
-          grep -q "solstice-cipher-demo.webm" judge.html
+          grep -q "helioigma-demo.gif" judge.html
+          grep -q "helioigma-demo.webm" judge.html
           grep -q "Helioigma" judge.html
           grep -q "Verify Receipt" judge.html
           grep -q "judge-manifest.json" judge.html
@@ -133,8 +133,8 @@ jobs:
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
           grep -q "46" judge-manifest.json
-          grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
-          grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" judge-manifest.json
+          grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
+          grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
           grep -q "Parsed receipt facts" proof-verifier.html
@@ -142,7 +142,7 @@ jobs:
           grep -q 'get("receipt")' proof-verifier.html
           grep -q "not anti-cheat or identity proof" proof-verifier.html
           grep -q "parsed receipt facts" verification-report.md
-          grep -q "solstice-cipher-demo.webm" verification-report.md
+          grep -q "helioigma-demo.webm" verification-report.md
           grep -q "Score variance is expected" verification-report.md
           grep -q "Score variance is expected" verification.html
           grep -q "No-go gate" publish-assistant.html
@@ -153,7 +153,7 @@ jobs:
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
-          grep -q "solstice-cipher-dev-package.zip" .gitignore
+          grep -q "helioigma-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
@@ -170,7 +170,7 @@ jobs:
           grep -q "Helioigma" index.html
           grep -q "Decode the solstice rotor" index.html
           grep -q "20260613-ledger-polish" index.html
-          grep -q "https://ooyxloo.github.io/solstice-cipher/cover.png" index.html
+          grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
