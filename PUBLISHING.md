@@ -55,6 +55,7 @@ Do not submit on DEV until the public try link works. Use:
 - Receipt verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
 - Source link: `https://github.com/OOYXLOO/solstice-cipher`
+- Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game; do not spam, buy reactions, or ask for fake engagement.
 
 The account owner handles DEV login, final post, prize claim, payout, tax, and KYC directly.
 
@@ -79,4 +80,6 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
+- [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.
+- [ ] If sharing after publication, ask for real play/feedback only; do not spam, buy reactions, or ask for fake engagement.
 - [ ] No account secrets, API keys, payment details, tax data, KYC data, or private contact details are included.

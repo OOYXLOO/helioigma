@@ -123,6 +123,10 @@ For the Alan Turing angle, Helioigma borrows the feeling of rotor alignment and 
 - `LUX` for light.
 - `BIN` for binary state.
 
+## Why It Is Not Just a Cipher Demo
+
+I wanted the Turing reference to live in the interaction, not only in the title. The player does not read a solved cipher; they manipulate the rotor state under a daylight timer, build a score through phase solves, and leave behind a receipt that can be checked independently. The smoke test and receipt verifier are part of that design: they make the code-breaking loop visible and reproducible for judges without turning the game into a static worksheet.
+
 ## Rubric Fit
 
 | Criterion | How Helioigma addresses it |
@@ -132,6 +136,10 @@ For the Alan Turing angle, Helioigma borrows the feeling of rotor alignment and 
 | Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, scoring, local best score, receipt generation, and a browser smoke test. |
 | Writing quality | The post, judge page, judge manifest, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
 | Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, and receipt verification. |
+
+## After Publishing
+
+After the DEV post is public, I will share the live post with a short, honest note asking people to try the game and leave feedback if they enjoy it. The goal is real review traffic and reactions from people who actually open the game, not spam or fake engagement.
 
 ## Originality and Build Window
 

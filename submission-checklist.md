@@ -61,6 +61,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
 - Include the originality/build-window note in the final DEV post.
+- Include the differentiation note: the Turing/code-breaking fit is inside the interaction, not only in the title.
+- After publishing, share the DEV post only with honest feedback/reaction requests; no spam, bought reactions, or fake engagement.
 - Confirm the challenge rules and eligibility on the official DEV pages.
 
 ## Human Gates
