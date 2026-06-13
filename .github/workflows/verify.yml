@@ -68,6 +68,9 @@ jobs:
           grep -q "PASS - Longest day held" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
+          grep -q "proofFacts" proof-verifier.html
+          grep -q "Parsed proof facts" proof-verifier.html
+          grep -q "parsed proof facts" verification-report.md
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
           grep -q "nodeButtons" index.html

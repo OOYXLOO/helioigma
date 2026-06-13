@@ -118,6 +118,41 @@
 
     .result.ok { color: var(--ok); }
     .result.bad { color: var(--bad); }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .fact-grid div {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .fact-grid dt {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fact-grid dd {
+      margin: 6px 0 0;
+      color: var(--ink);
+      font: 800 18px/1.2 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 720px) {
+      .fact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -131,6 +166,7 @@
       <input id="proofInput" value="SC-4P-2907-62-Y5VFX1" spellcheck="false" autocomplete="off">
       <button id="verifyButton" type="button">Verify proof</button>
       <div id="result" class="result" aria-live="polite"></div>
+      <dl id="proofFacts" class="fact-grid" aria-label="Parsed proof facts"></dl>
     </section>
 
     <section class="panel">
@@ -142,6 +178,7 @@
     const input = document.querySelector("#proofInput");
     const button = document.querySelector("#verifyButton");
     const result = document.querySelector("#result");
+    const facts = document.querySelector("#proofFacts");
 
     function suffixFor(score, shifts, solvedPhases) {
       const payload = `solstice|4|${score}|${shifts}|${solvedPhases}`;
@@ -157,6 +194,7 @@
       const value = input.value.trim().toUpperCase();
       const match = /^SC-(\d+)P-(\d+)-(\d+)-([0-9A-Z]{6})$/.exec(value);
       result.className = "result";
+      facts.textContent = "";
       if (!match) {
         result.textContent = "Invalid format. Expected SC-4P-score-shifts-checksum.";
         result.classList.add("bad");
@@ -168,6 +206,21 @@
       const shifts = Number(match[3]);
       const suffix = match[4];
       const expected = suffixFor(score, shifts, solved);
+      [
+        ["Phases", `${solved}/4`],
+        ["Score", String(score)],
+        ["Shifts", String(shifts)],
+        ["Checksum", expected],
+      ].forEach(([label, value]) => {
+        const block = document.createElement("div");
+        const term = document.createElement("dt");
+        const detail = document.createElement("dd");
+        term.textContent = label;
+        detail.textContent = value;
+        block.append(term, detail);
+        facts.append(block);
+      });
+
       if (solved === 4 && suffix === expected) {
         result.textContent = `Valid proof: ${score} points across ${shifts} shifts.`;
         result.classList.add("ok");

@@ -9,7 +9,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
 - Browser smoke test: `smoke.html`.
-- Run proof verifier: `proof-verifier.html`.
+- Run proof verifier: `proof-verifier.html` with parsed proof facts.
 - Phase progress strip, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
@@ -37,7 +37,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Demo Solve: visible in the controls row and completes the loop to stable proof `SC-4P-2907-62-Y5VFX1` during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
-- Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1`.
+- Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
 
 ## Before Publishing
 

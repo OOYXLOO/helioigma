@@ -61,7 +61,7 @@ The current build now has a visible four-phase progress strip, score carry-over,
 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve proof, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
-- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs.
+- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs, with parsed phases, score, shifts, and checksum facts.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.

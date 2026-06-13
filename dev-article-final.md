@@ -84,7 +84,7 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 - Four timed phases with a visible progress strip, score carry-over, and streak bonuses.
 - Mouse, touch, node-button, demo-solve, and number-key controls.
 - Final screen with solved phase count, total shifts, local best score, and copyable `SC-4P-...` run proof.
-- A proof verifier that recomputes completion checksums locally.
+- A proof verifier that recomputes completion checksums locally and shows parsed phases, score, shifts, and checksum facts.
 - A judge page and smoke test so reviewers can verify the full loop quickly.
 - DEV-ready media: cover image, MP4/WebM demo, GIF preview, desktop screenshot, mobile screenshot, and completion screenshot.
 

@@ -96,7 +96,11 @@ try {
   Assert-Contains "smoke.html" "four-phase progress track is present"
   Assert-Contains "smoke.html" "shift counter records the completed run"
   Assert-Contains "proof-verifier.html" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "proof-verifier.html" "proofFacts"
+  Assert-Contains "proof-verifier.html" "Parsed proof facts"
+  Assert-Contains "proof-verifier.html" "Checksum"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
+  Assert-Contains "verification-report.md" "parsed proof facts"
 
   $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md -Recurse |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
