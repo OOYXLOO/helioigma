@@ -137,12 +137,14 @@ That is also why the verifier matters to the theme. Turing's legacy is not only 
 
 I wanted the Turing reference to live in the interaction, not only in the title. The player does not read a solved cipher; they manipulate the rotor state under a daylight timer, build a score through phase solves, and leave behind a receipt that can be checked independently. The smoke test and receipt verifier are part of that design: they make the code-breaking loop visible and reproducible for judges without turning the game into a static worksheet.
 
+The jam theme makes daylight, calendars, and code-breaking natural starting points. I tried to make Helioigma stand apart by turning those ideas into a judge-verifiable loop: the live Rotor Trace shows the state machine changing, `Demo Solve` uses the same public controls as manual play, and the completed run links directly into the receipt verifier. The result is meant to be a small playable system with an audit trail, not only a solstice skin over a puzzle.
+
 ## Rubric Fit
 
 | Criterion | How Helioigma addresses it |
 | --- | --- |
 | Theme relevance | Daylight is the timer, nightfall is the fail state, and the final solve is framed as holding the longest day. |
-| Creativity | The solstice theme is combined with a code-breaking wheel instead of a literal platformer or trivia page. |
+| Creativity | The solstice theme is combined with a code-breaking wheel, live Rotor Trace, deterministic demo route, and verifiable run receipt instead of a literal platformer or trivia page. |
 | Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, scoring, local best score, receipt generation, and a browser smoke test. |
 | Writing quality | The post, judge page, judge manifest, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
 | Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, receipt verification, and a restrained tribute that avoids pretending to simulate a real historical machine. |
