@@ -124,6 +124,7 @@ try {
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
+  if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 38) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
@@ -155,6 +156,7 @@ try {
   Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
@@ -163,6 +165,7 @@ try {
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "dev-submit-console.html" 'plus a `D` shortcut'
+  Assert-Contains "dev-submit-console.html" 'Optional `?demo=1` route'
   Assert-Contains "dev-submit-console.html" "Helioigma"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
@@ -180,15 +183,18 @@ try {
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Rotor Trace"
+  Assert-Contains "README.md" "?demo=1"
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
+  Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
   Assert-Contains "publish-assistant.html" "38 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
+  Assert-Contains "submission-checklist.md" "Optional auto-demo route"
   Assert-Contains "submission-checklist.md" "no spam, bought reactions, or fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "gh repo create OOYXLOO/solstice-cipher"
@@ -199,6 +205,8 @@ try {
   Assert-Contains "publish-after-repo.ps1" "Optional GitHub CLI command"
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
+  Assert-Contains "tools/browser-smoke-check.mjs" "?demo=1"
+  Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 38 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
@@ -211,6 +219,7 @@ try {
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
+  Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
@@ -227,6 +236,7 @@ try {
   Assert-Contains "styles.css" "linear-gradient(105deg"
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
+  Assert-Contains "game.js" 'get("demo") === "1"'
   Assert-NotContains "game.js" "Run proof"
   Assert-Contains "index.html" "nodeButtons"
   Assert-Contains "index.html" "phaseTrack"
@@ -265,7 +275,7 @@ try {
   Assert-Contains "smoke.html" "daylight meter is present"
   Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
-  Assert-Contains "smoke.html" "judge shortcut links are present"
+  Assert-Contains "smoke.html" "judge shortcut links include the auto demo route"
   Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "smoke.html" "demo solve releases manual controls"
   Assert-Contains "smoke.html" "four-phase progress track is present"

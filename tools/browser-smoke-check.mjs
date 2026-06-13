@@ -128,7 +128,20 @@ async function main() {
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
+    assert(desktop.judgeLinks.includes("Auto demo"), "first screen does not link the auto demo route");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
+
+    await page.goto(`${baseUrl}?demo=1`, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    await page.waitForFunction(() => document.querySelector("#demoButton")?.disabled === false, { timeout: 5000 });
+    const autoDemo = await page.evaluate(() => ({
+      receipt: document.querySelector("#proofCode")?.textContent.trim(),
+      status: document.querySelector("#statusLine")?.textContent.trim(),
+      overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    }));
+    assert(autoDemo.overflowX === 0, "auto demo route has horizontal overflow");
+    assert(autoDemo.receipt === "SC-4P-2907-62-Y5VFX1", "auto demo route did not reach the stable receipt");
+    assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
@@ -161,6 +174,7 @@ async function main() {
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
     assert(!judge.hasPublishAssistant, "judge page exposes Publish Assistant");
     assert(judge.actions.includes("Watch Video"), "judge page is missing video action");
+    assert(judge.actions.includes("Auto Demo"), "judge page is missing auto demo action");
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
@@ -170,6 +184,7 @@ async function main() {
     assert((manifestResponse.headers()["content-type"] || "").includes("application/json"), "judge manifest did not return application/json");
     const manifest = JSON.parse(await page.textContent("body"));
     assert(manifest.project === "Helioigma", "judge manifest project changed");
+    assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/solstice-cipher/?demo=1", "judge manifest auto demo URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");

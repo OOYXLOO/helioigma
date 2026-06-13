@@ -62,6 +62,7 @@ Do not submit on DEV until the public try link works. Use:
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
 - Receipt verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
+- Auto demo link: `https://ooyxloo.github.io/solstice-cipher/?demo=1`
 - Source link: `https://github.com/OOYXLOO/solstice-cipher`
 - Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game; do not spam, buy reactions, or ask for fake engagement.
 
@@ -83,6 +84,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
+- [ ] Public auto-demo link starts Demo Solve and reaches receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run receipt.
 - [ ] DEV article uses the official tags: `devchallenge`, `gamechallenge`, `gamedev`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.

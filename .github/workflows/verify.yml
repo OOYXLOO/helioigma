@@ -62,6 +62,7 @@ jobs:
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
+          grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" dev-article-final.md
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
           grep -q "Code" dev-article-final.md
@@ -88,10 +89,12 @@ jobs:
           grep -q "Rotor Trace" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
+          grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "Rotor Trace" README.md
+          grep -q "?demo=1" README.md
           grep -q "MIT license" README.md
           grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
@@ -107,6 +110,7 @@ jobs:
           grep -q "judge-manifest.json" judge.html
           grep -q "Open Manifest" judge.html
           grep -q "Watch Video" judge.html
+          grep -q "Auto Demo" judge.html
           grep -q "Run Smoke Test" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
@@ -122,6 +126,7 @@ jobs:
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
+          grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
           grep -q "Parsed receipt facts" proof-verifier.html
@@ -137,6 +142,7 @@ jobs:
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
+          grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "solstice-cipher-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
@@ -161,7 +167,7 @@ jobs:
           grep -q "rotor trace panel is present" smoke.html
           grep -q "rotor trace records hint action" smoke.html
           grep -q "demo solve button is present" smoke.html
-          grep -q "judge shortcut links are present" smoke.html
+          grep -q "judge shortcut links include the auto demo route" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "demo solve releases manual controls" smoke.html
           grep -q "four-phase progress track is present" smoke.html

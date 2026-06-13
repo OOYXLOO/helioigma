@@ -43,6 +43,7 @@ python -m http.server 8781 --bind 127.0.0.1
 Expected local URLs:
 
 - `http://127.0.0.1:8781/`: HTTP 200
+- `http://127.0.0.1:8781/?demo=1`: HTTP 200 and starts the deterministic Demo Solve route
 - `http://127.0.0.1:8781/judge.html`: HTTP 200
 - `http://127.0.0.1:8781/smoke.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-submit-console.html`: HTTP 200
@@ -58,11 +59,12 @@ Expected local URLs:
 - Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls and Rotor Trace through verifier validation.
 - `smoke.html` result: `PASS - Longest day held. Final score 2892 across 62 shifts.`
 - Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
+- Auto-demo URL `?demo=1` reaches the same stable receipt.
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally and shows parsed receipt facts for phases, score, shifts, and expected checksum.
-- The playable page exposes a four-step phase progress strip, judge shortcut links, Hint, Rotor Trace, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
+- The playable page exposes a four-step phase progress strip, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 38 PASS assertions:
   - canvas present
   - start button present

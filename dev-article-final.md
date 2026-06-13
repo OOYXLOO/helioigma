@@ -23,6 +23,7 @@ The build is meant to be judged quickly without losing the game premise: the fir
 Links:
 
 - Play: https://ooyxloo.github.io/solstice-cipher/
+- Auto demo: https://ooyxloo.github.io/solstice-cipher/?demo=1
 - Source: https://github.com/OOYXLOO/solstice-cipher
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
@@ -43,7 +44,7 @@ Core features:
 
 ## Judge in 60 Seconds
 
-1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, then verify it.
+1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, run receipt, public links, and human gate summary.
@@ -94,7 +95,7 @@ Controls:
 - Click or tap ring nodes to rotate them.
 - Use the node-control buttons below the canvas.
 - Press `Hint` or `H` to highlight the next mismatched node during manual play.
-- Press `Demo Solve` or `D` to watch all four phases complete automatically.
+- Press `Demo Solve` or `D` to watch all four phases complete automatically, or open `?demo=1` to start that judge path immediately.
 - Press number keys `1` through `9` to rotate matching node positions.
 - Press `Enter` to start a fresh run.
 - Press `Escape` or `R` to reset the board.

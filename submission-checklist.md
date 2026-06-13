@@ -12,6 +12,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Browser smoke test: `smoke.html`.
 - Run receipt verifier: `proof-verifier.html` with parsed receipt facts.
 - Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
+- Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
@@ -43,6 +44,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - First-screen rule: visible text explains that the player should decode the solstice rotor by matching each numbered node to the target glyph before nightfall.
 - Hint: visible in the controls row, exposed with shortcut `H`, and highlights the next mismatched node during browser verification without changing the stable Demo Solve receipt.
 - Demo Solve: visible in the controls row and completes the loop to stable receipt `SC-4P-2907-62-Y5VFX1` during browser verification.
+- Auto demo: `/?demo=1` completes to the same stable receipt during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
@@ -78,6 +80,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 ## Suggested DEV Post Links
 
 - Try link: to be filled after public hosting.
+- Auto demo link: `https://ooyxloo.github.io/solstice-cipher/?demo=1` after public hosting.
 - Source link: to be filled after repo/public hosting is authorized.
 - Judge pack link: `https://ooyxloo.github.io/solstice-cipher/judge.html` after public hosting.
 - Judge manifest link: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json` after public hosting.

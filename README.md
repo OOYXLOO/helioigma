@@ -26,7 +26,7 @@ http://127.0.0.1:8781/
 
 Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
 
-The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a manual `Hint` path, a live Rotor Trace panel, judge shortcut links, and a stable `Demo Solve` receipt path, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a manual `Hint` path, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
@@ -38,6 +38,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 - Use the node-control buttons below the canvas.
 - Use `Hint` or press `H` during manual play to highlight the next mismatched node.
 - Use `Demo Solve` or press `D` to watch the complete four-phase loop without manual input.
+- Open `?demo=1` to start the same deterministic judge route automatically.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
 - `Escape` or `R` resets the board.
@@ -91,6 +92,7 @@ Use `PUBLISHING.md` when the account owner is ready to create or approve the pub
 
 - Source: `https://github.com/OOYXLOO/solstice-cipher`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
+- Auto demo: `https://ooyxloo.github.io/solstice-cipher/?demo=1`
 
 The package includes `.nojekyll` and social metadata so GitHub Pages can serve the game from the repository root.
 

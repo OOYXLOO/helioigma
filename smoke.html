@@ -207,7 +207,7 @@
       addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
-      addCheck("judge shortcut links are present", judgeLinks.length === 4);
+      addCheck("judge shortcut links include the auto demo route", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")));
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));

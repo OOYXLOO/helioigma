@@ -722,4 +722,10 @@
   seedLevel(0);
   updateHud();
   requestAnimationFrame(tick);
+
+  if (new URLSearchParams(window.location.search).get("demo") === "1") {
+    window.setTimeout(() => {
+      demoSolve();
+    }, 350);
+  }
 })();
