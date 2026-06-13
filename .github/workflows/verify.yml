@@ -96,6 +96,8 @@ jobs:
           grep -q "live objective strip tells you what the rotor wants next" dev-submit-console.html
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "judge-manifest.json" dev-submit-console.html
+          grep -q "Sample receipt verifier" dev-submit-console.html
+          grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
           grep -q "Ode With Restraint" dev-submit-console.html
           grep -q "Rotor Trace" dev-submit-console.html
@@ -119,6 +121,8 @@ jobs:
           grep -q "MIT license" README.md
           grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
+          grep -q "sample receipt verifier URL" submission-checklist.md
+          grep -q "56 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
 
       - name: Verify judge and smoke links
@@ -148,6 +152,8 @@ jobs:
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
+          grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" judge.html
+          grep -q "prefilled sample verifier" judge.html
           grep -q "Ode With Restraint" judge.html
           grep -q "Rotor Trace" judge.html
           grep -q "state, logic, verification" judge.html
@@ -169,6 +175,8 @@ jobs:
           grep -q "award signals" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json
+          grep -q "sample_receipt_verifier" judge-manifest.json
+          grep -q "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
           grep -q "Parsed receipt facts" proof-verifier.html
@@ -184,12 +192,17 @@ jobs:
           grep -q "Score variance is expected" verification.html
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
+          grep -q "Assert-CleanWorktreeForPush" publish-after-repo.ps1
+          grep -q "Commit the verified Helioigma package before pushing" publish-after-repo.ps1
           grep -q "live browser recording" tools/build-demo-video.mjs
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
+          grep -q "first screen sample verifier link is not prefilled" tools/browser-smoke-check.mjs
+          grep -q "judge page verifier action is not prefilled" tools/browser-smoke-check.mjs
+          grep -q "mobile first viewport shows too little gameplay canvas" tools/browser-smoke-check.mjs
           grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
           grep -q "expected 56 smoke checks" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
@@ -209,6 +222,8 @@ jobs:
           grep -q "Demo Solve full judge route" index.html
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
+          grep -q "Verify sample" index.html
+          grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" index.html
           grep -q "proofSummary" index.html
           grep -q "phaseLedger" index.html
           grep -q "verifyProofLink" index.html

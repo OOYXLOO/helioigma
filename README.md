@@ -59,6 +59,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
 - A first-screen Judge Path strip makes the review sequence explicit: play, run Demo Solve, then verify receipt `SC-4P-2907-62-Y5VFX1`.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
+- The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 
@@ -82,7 +83,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `judge.html`: one-page judge pack with a 60-second review path, rubric snapshot, play link, smoke-test link, theme fit, and publication boundary.
 - `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and human gates.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
-- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, and `?receipt=` deep-link support from completed runs.
+- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, a prefilled sample receipt link, and `?receipt=` deep-link support from completed runs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.

@@ -1,12 +1,12 @@
 # Helioigma Verification Report
 
-Generated for the local DEV June Solstice Game Jam package on 2026-06-13.
+Generated for the local DEV June Solstice Game Jam package on 2026-06-14.
 
 This report records the public-package checks that can be repeated after `OOYXLOO/helioigma` is published. It does not use account data, private user data, API keys, payout data, tax data, or KYC data.
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-13.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-14.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
@@ -64,6 +64,7 @@ Expected local URLs:
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
+- The first-screen judge shortcuts and judge pack expose the stable sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 56 PASS assertions:
   - canvas present

@@ -47,8 +47,8 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Auto demo: `/?demo=1` completes to the same stable receipt during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
-- Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, accepts `?receipt=SC-4P-2907-62-Y5VFX1`, and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 54 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, the first-screen/judge-pack sample link opens `?receipt=SC-4P-2907-62-Y5VFX1`, and the verifier shows phases, score, shifts, and checksum facts.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 56 expected smoke checks, sample receipt verifier URL, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

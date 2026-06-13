@@ -50,7 +50,7 @@ Detailed judge links:
 
 - Judge page: https://ooyxloo.github.io/helioigma/judge.html
 - Smoke test: https://ooyxloo.github.io/helioigma/smoke.html
-- Receipt verifier: https://ooyxloo.github.io/helioigma/proof-verifier.html
+- Sample receipt verifier: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Judge manifest: https://ooyxloo.github.io/helioigma/judge-manifest.json
 
 Core features:
@@ -74,7 +74,7 @@ Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finish
 2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
-5. Paste the sample receipt into `proof-verifier.html`, or use the completed-run Verify receipt link, to confirm the checksum loop.
+5. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 
 Public media links:
 

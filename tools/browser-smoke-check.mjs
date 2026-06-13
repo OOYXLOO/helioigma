@@ -88,6 +88,7 @@ async function readGameFacts(page) {
         alignment: document.querySelector("#phaseAlignment")?.textContent.trim(),
       },
       canvasTop: canvasRect?.top,
+      canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       trace: {
         phase: document.querySelector("#tracePhase")?.textContent.trim(),
         match: document.querySelector("#traceMatch")?.textContent.trim(),
@@ -106,6 +107,7 @@ async function readGameFacts(page) {
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
       },
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
+      judgeLinkHrefs: [...document.querySelectorAll(".judge-links a")].map((link) => link.getAttribute("href")),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     };
   });
@@ -145,6 +147,8 @@ async function main() {
     assert(desktop.shortcutMap.demoPrimary === true, "demo button is not marked as the primary judge control");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.judgeLinks.includes("Auto demo"), "first screen does not link the auto demo route");
+    assert(desktop.judgeLinks.includes("Verify sample"), "first screen does not link the sample receipt verifier");
+    assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "first screen sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
 
     await page.click("#startButton");
@@ -215,6 +219,7 @@ async function main() {
     assert(mobile.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "mobile Judge path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.canvasTop < 844, "mobile game canvas does not begin in the first viewport");
+    assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
@@ -236,6 +241,7 @@ async function main() {
       hasRunProofCopy: document.body.innerText.includes("run proof"),
       hasOldPublicPageCopy: document.body.innerText.includes("Watch the public page complete all four phases"),
       hasPlayablePageCopy: document.body.innerText.includes("Watch the playable page complete all four phases"),
+      hasPrefilledVerifierCopy: document.body.innerText.includes("pre-filled sample verifier") || document.body.innerText.includes("prefilled sample verifier"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
       hasAwardThesis: document.body.innerText.toLowerCase().includes("award thesis"),
       verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
@@ -243,6 +249,7 @@ async function main() {
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.hasGif, "judge page does not point to the current GIF");
@@ -251,6 +258,8 @@ async function main() {
     assert(!judge.hasRunProofCopy, "judge page still exposes run proof wording");
     assert(!judge.hasOldPublicPageCopy, "judge page still calls the prelaunch route a public page");
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
+    assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
+    assert(judge.verifyReceiptHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge page verifier action is not prefilled");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
     assert(judge.hasAwardThesis, "judge page is missing the award thesis");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
@@ -277,6 +286,7 @@ async function main() {
     const manifest = JSON.parse(await page.textContent("body"));
     assert(manifest.project === "Helioigma", "judge manifest project changed");
     assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/helioigma/?demo=1", "judge manifest auto demo URL changed");
+    assert(manifest.public_urls?.sample_receipt_verifier === "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge manifest sample receipt verifier URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");

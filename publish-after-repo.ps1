@@ -43,6 +43,25 @@ function Invoke-GitCapture {
   }
 }
 
+function Assert-CleanWorktreeForPush {
+  if (-not $Push) {
+    return
+  }
+
+  $statusCheck = Invoke-GitCapture @("status", "--porcelain")
+  if ($statusCheck.ExitCode -ne 0) {
+    Write-Output $statusCheck.Output
+    Write-Output "BLOCKED: Could not read git status before push."
+    exit 1
+  }
+
+  if ($statusCheck.Output) {
+    Write-Output "BLOCKED: Working tree has uncommitted changes. Commit the verified Helioigma package before pushing so public Pages receives the same build that passed local checks."
+    Write-Output $statusCheck.Output
+    exit 1
+  }
+}
+
 Push-Location $PSScriptRoot
 try {
 Write-Output "Helioigma publish-after-repo helper"
@@ -73,6 +92,7 @@ Write-Output "Helioigma publish-after-repo helper"
     Write-Output "origin already points to $repoUrl"
   }
 
+  Assert-CleanWorktreeForPush
   Run "git push -u origin main"
 
   if (-not $Push) {
