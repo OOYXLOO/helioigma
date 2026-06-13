@@ -2,7 +2,7 @@
 title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
 published: false
 description: "A small browser game for the DEV June Solstice Game Jam: decode a Turing-inspired solar rotor before nightfall."
-tags: devchallenge, gamechallenge, gamedev
+tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png
 ---
 
@@ -30,13 +30,15 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 ## Video Demo
 
-The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
+The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The WebM is the primary captioned video; the GIF below is a quick inline fallback, and the MP4 link is available if the DEV editor asks for a conventional video file.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
 
 ![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png)
 
 Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
+
+MP4 fallback for DEV video upload fields: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
 
 Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
 
@@ -81,14 +83,19 @@ Public media links:
 
 1. Cover: https://ooyxloo.github.io/helioigma/cover.png
 2. WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
-3. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
-4. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
-5. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
-6. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
+3. MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
+4. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
+5. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
+6. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
+7. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
 
 ## Code
 
-The source is hosted at https://github.com/OOYXLOO/helioigma. The project is deliberately small:
+The source is hosted at https://github.com/OOYXLOO/helioigma. If the DEV editor renders GitHub cards, this repository URL can stand alone as the code embed for review:
+
+https://github.com/OOYXLOO/helioigma
+
+The project is deliberately small:
 
 - `index.html`: playable Helioigma game shell and first-screen judge path.
 - `styles.css`: responsive game UI.
@@ -169,7 +176,7 @@ The jam theme makes daylight, calendars, and code-breaking natural starting poin
 
 ## After Publishing
 
-After the DEV post is public, I will share the live post with a short, honest note asking people to try the game and leave feedback if they enjoy it. Because challenge ties can use positive reactions as a tie-breaker, the ask will be explicit and clean: real play, real comments, and real reactions only from people who actually open the game, not spam or fake engagement.
+After the DEV post is public, I will share the live post with a short, honest note asking people to try the game and leave feedback if they enjoy it. The goal is real review traffic from people who actually open the game, not spam or fake engagement.
 
 ## Originality and Build Window
 

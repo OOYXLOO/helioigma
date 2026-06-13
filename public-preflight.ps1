@@ -143,7 +143,7 @@ try {
     Assert-File $artifact
   }
 
-  Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
+  Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev, javascript"
   Assert-Contains "dev-article-final.md" "What I Built"
   Assert-Contains "dev-article-final.md" "You get 45 seconds of daylight"
   Assert-Contains "dev-article-final.md" "little daylight machine"
@@ -168,7 +168,7 @@ try {
   Assert-Contains "dev-article-final.md" "careful reasoning about machines and proof"
   Assert-Contains "dev-article-final.md" "After Publishing"
   Assert-Contains "dev-article-final.md" "not spam or fake engagement"
-  Assert-Contains "dev-article-final.md" "positive reactions as a tie-breaker"
+  Assert-NotContains "dev-article-final.md" "positive reactions as a tie-breaker"
   Assert-Contains "dev-article-final.md" "Originality and Build Window"
   Assert-Contains "dev-article-final.md" "not a wrapper around a prior game template"
   Assert-Contains "dev-article-final.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
@@ -183,6 +183,8 @@ try {
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
+  Assert-Contains "dev-article-final.md" "MP4 fallback for DEV video upload fields"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
@@ -226,6 +228,7 @@ try {
   Assert-Contains "dev-submit-console.html" "How I Built It"
   Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-submit-console.html" "WebM video"
+  Assert-Contains "dev-submit-console.html" "MP4 fallback"
   Assert-Contains "dev-submit-console.html" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
@@ -264,6 +267,8 @@ try {
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
   Assert-Contains "submission-checklist.md" "Optional auto-demo route"
   Assert-Contains "submission-checklist.md" "Optional default-off Audio cue toggle"
+  Assert-Contains "submission-checklist.md" '`devchallenge`, `gamechallenge`, `gamedev`, `javascript`'
+  Assert-Contains "submission-checklist.md" "MP4 fallback for DEV video upload fields"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
   Assert-Contains "submission-checklist.md" "60 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, and no fake engagement"

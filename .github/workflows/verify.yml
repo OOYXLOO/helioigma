@@ -54,7 +54,7 @@ jobs:
       - name: Verify DEV challenge submission copy
         run: |
           set -euo pipefail
-          grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
+          grep -q "tags: devchallenge, gamechallenge, gamedev, javascript" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
           grep -q "solar rotor" dev-article-final.md
           grep -q "You get 45 seconds of daylight" dev-article-final.md
@@ -63,6 +63,8 @@ jobs:
           grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
+          grep -q "helioigma-demo.mp4" dev-article-final.md
+          grep -q "MP4 fallback for DEV video upload fields" dev-article-final.md
           grep -q "Completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
@@ -94,7 +96,7 @@ jobs:
           grep -q "Score rewards held daylight, streaks, and fewer wasted shifts" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
-          grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
+          grep -q "devchallenge, gamechallenge, gamedev, javascript" dev-submit-console.html
           grep -q "Helioigma" dev-submit-console.html
           grep -q "You get 45 seconds of daylight" dev-submit-console.html
           grep -q "live objective strip tells you what the rotor wants next" dev-submit-console.html
@@ -107,6 +109,7 @@ jobs:
           grep -q "Rotor Trace" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
+          grep -q "MP4 fallback" dev-submit-console.html
           grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "Originality Note" dev-submit-console.html

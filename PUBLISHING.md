@@ -56,7 +56,7 @@ Do not submit on DEV until the public try link works. Use:
 - Draft: `dev-post-draft.md`
 - Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`
 - Current GIF demo after Pages is live: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
-- The WebM is the canonical captioned browser-recorded demo video; the GIF remains as a fallback preview, and the MP4 is a legacy optional asset.
+- The WebM is the canonical captioned browser-recorded demo video; the MP4 is available for DEV video upload fields, and the GIF remains as an inline fallback preview.
 - Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 - Judge manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
 - Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
@@ -87,7 +87,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public try link starts the game.
 - [ ] Public auto-demo link starts Demo Solve and reaches receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run receipt.
-- [ ] DEV article uses the official tags: `devchallenge`, `gamechallenge`, `gamedev`.
+- [ ] DEV article uses the official tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.

@@ -29,7 +29,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`.
 - Current captioned WebM demo video: `helioigma-demo.webm`.
 - Current GIF demo: `helioigma-demo.gif`.
-- Optional legacy MP4 asset: `helioigma-demo.mp4`.
+- MP4 fallback for DEV video upload fields: `helioigma-demo.mp4`.
 - Source frames: `demo-frames-v3/`.
 - Rebuild captioned WebM from a live browser session with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-video.mjs`.
 - Rebuild the fallback frame-based WebM with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-webm.mjs`.
@@ -63,7 +63,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
-- Use official DEV tags: `devchallenge`, `gamechallenge`, `gamedev`.
+- Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
 - Include the originality/build-window note in the final DEV post.
@@ -87,5 +87,5 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Judge manifest link: `https://ooyxloo.github.io/helioigma/judge-manifest.json` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/helioigma/smoke.html` after public hosting.
 - DEV post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html` after public hosting.
-- Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
+- Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.mp4`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
 - Package: use `helioigma-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.
