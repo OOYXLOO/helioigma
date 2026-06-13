@@ -109,6 +109,14 @@ Expected local URLs:
   - completion preserves four phase ledger entries
   - run receipt matches `SC-4P-...`
 
+## Rubric Snapshot
+
+- Theme relevance: daylight is the timer, nightfall is the fail state, and the final receipt marks a completed longest-day run.
+- Creativity: the solstice prompt becomes a rotor puzzle with a visible state trace rather than a static calendar or trivia screen.
+- Technical execution: the package is a static canvas game with keyboard/touch controls, stable demo route, checksum receipt, smoke test, and Pages-ready CI.
+- Writing quality: the DEV article, README, judge page, manifest, screenshots, and media give a short review path with clear boundaries.
+- Turing category: rotor-like alignment, target checking, XOR/binary language, and local verification carry the ode through mechanics.
+
 ## GitHub Actions Preflight
 
 After the public repository exists, `.github/workflows/verify.yml` should pass. It checks:
