@@ -21,8 +21,9 @@ Links:
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 - Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
+- Judge manifest: https://ooyxloo.github.io/solstice-cipher/judge-manifest.json
 
-Launch gate: I will only publish this post after the public repo, Pages play link, judge page, smoke page, proof verifier, WebM video, and GIF fallback pass `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`.
+Launch gate: I will only publish this post after the public repo, Pages play link, judge page, judge manifest, smoke page, proof verifier, WebM video, and GIF fallback pass `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`.
 
 Core features:
 
@@ -32,14 +33,15 @@ Core features:
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run proof.
 - Proof verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
-- Judge page and browser smoke test for a fast review path.
+- Judge page, judge manifest, and browser smoke test for a fast review path.
 
 ## Judge in 60 Seconds
 
 1. Open the play link and press `Demo Solve` for the full loop and stable proof `SC-4P-2907-62-Y5VFX1`, or press `Start` to play manually.
 2. Watch the current GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
-4. Paste the sample proof into `proof-verifier.html` to confirm the checksum loop.
+4. Open `judge-manifest.json` for the machine-readable prize target, proof receipt, public links, and human gate summary.
+5. Paste the sample proof into `proof-verifier.html` to confirm the checksum loop.
 
 ## Video Demo
 
@@ -70,6 +72,7 @@ The source is hosted at https://github.com/OOYXLOO/solstice-cipher after publica
 - `proof-verifier.html`: local proof checksum verifier.
 - `smoke.html`: browser smoke test that solves the public game path in an iframe.
 - `judge.html`: one-page review hub.
+- `judge-manifest.json`: machine-readable judge manifest for the prize target, public links, stable proof receipt, media, verification steps, and human gates.
 - `tools/build-demo-webm.mjs`: reproduces the current WebM video from the checked-in demo frames.
 
 ## How to Play
@@ -119,12 +122,12 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 | Theme relevance | Daylight is the timer, nightfall is the fail state, and the final solve is framed as holding the longest day. |
 | Creativity | The solstice theme is combined with a code-breaking wheel instead of a literal platformer or trivia page. |
 | Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, scoring, local best score, proof generation, and a browser smoke test. |
-| Writing quality | The post, judge page, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
+| Writing quality | The post, judge page, judge manifest, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
 | Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, and proof verification. |
 
 ## Originality and Build Window
 
-The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
+The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, judge manifest, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
 
 ## Verification
 
@@ -134,3 +137,4 @@ I verified the package with:
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
 - `smoke.html`: 28 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 28 smoke checks, public links, stable proof `SC-4P-2907-62-Y5VFX1`, and human gates.

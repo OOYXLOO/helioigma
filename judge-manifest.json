@@ -1,0 +1,64 @@
+{
+  "project": "Solstice Cipher",
+  "challenge": {
+    "name": "DEV June Solstice Game Jam",
+    "challenge_url": "https://dev.to/challenges/june-game-jam-2026-06-03",
+    "target_prize_usd": 200,
+    "target_category": "Best Ode to Alan Turing",
+    "required_tags": ["devchallenge", "gamechallenge", "gamedev"]
+  },
+  "status": {
+    "public_repo_created": false,
+    "dev_article_submitted": false,
+    "no_secrets": true,
+    "browser_storage": "Only a local numeric best-score key is used."
+  },
+  "public_urls": {
+    "play": "https://ooyxloo.github.io/solstice-cipher/",
+    "judge": "https://ooyxloo.github.io/solstice-cipher/judge.html",
+    "smoke": "https://ooyxloo.github.io/solstice-cipher/smoke.html",
+    "proof_verifier": "https://ooyxloo.github.io/solstice-cipher/proof-verifier.html",
+    "verification": "https://ooyxloo.github.io/solstice-cipher/verification.html",
+    "manifest": "https://ooyxloo.github.io/solstice-cipher/judge-manifest.json",
+    "demo_webm": "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm",
+    "demo_gif": "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif",
+    "source": "https://github.com/OOYXLOO/solstice-cipher"
+  },
+  "local_artifacts": [
+    "index.html",
+    "judge.html",
+    "smoke.html",
+    "proof-verifier.html",
+    "verification.html",
+    "verification-report.md",
+    "dev-article-final.md",
+    "cover.png",
+    "solstice-cipher-demo.webm",
+    "solstice-cipher-demo.gif",
+    "desktop-check-v5.png",
+    "mobile-check-v6.png",
+    "desktop-complete-v4.png"
+  ],
+  "proof": {
+    "stable_receipt": "SC-4P-2907-62-Y5VFX1",
+    "phases": 4,
+    "score": 2907,
+    "shifts": 62,
+    "checksum": "Y5VFX1",
+    "verifier": "proof-verifier.html",
+    "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
+  },
+  "verification": {
+    "expected_smoke_checks": 28,
+    "local_preflight": "public-preflight.ps1",
+    "browser_smoke": "tools/browser-smoke-check.mjs",
+    "ci_workflow": ".github/workflows/verify.yml"
+  },
+  "human_gates": [
+    "Create public GitHub repository OOYXLOO/solstice-cipher",
+    "Enable GitHub Pages from main/root",
+    "Run public-preflight.ps1 -Public",
+    "Publish DEV article after public links pass",
+    "Handle any prize, tax, or payout steps personally"
+  ]
+}

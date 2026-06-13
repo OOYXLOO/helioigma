@@ -50,6 +50,7 @@ Do not submit on DEV until the public try link works. Use:
 - Current GIF demo after Pages is live: `https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif`
 - The WebM is the canonical current demo video; the GIF remains as a fallback preview, and the MP4 is a legacy optional asset.
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
+- Judge manifest: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
 - Proof verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
@@ -68,6 +69,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Keyboard shortcuts work: Enter starts, D runs Demo Solve, R/Escape resets, and number keys rotate matching nodes.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
+- [ ] Public judge manifest returns HTTP 200 and records the stable proof `SC-4P-2907-62-Y5VFX1`.
 - [ ] Public proof verifier accepts stable Demo Solve proof `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
 - [ ] Public try link returns HTTP 200.

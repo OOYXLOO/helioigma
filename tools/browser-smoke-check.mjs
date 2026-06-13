@@ -13,6 +13,7 @@ const mimeTypes = new Map([
   [".gif", "image/gif"],
   [".html", "text/html"],
   [".js", "text/javascript"],
+  [".json", "application/json"],
   [".md", "text/markdown"],
   [".mp4", "video/mp4"],
   [".png", "image/png"],
@@ -123,6 +124,18 @@ async function main() {
     assert(judge.actions.includes("Watch Video"), "judge page is missing video action");
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Proof"), "judge page is missing verifier action");
+    assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
+
+    const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
+    assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");
+    assert((manifestResponse.headers()["content-type"] || "").includes("application/json"), "judge manifest did not return application/json");
+    const manifest = JSON.parse(await page.textContent("body"));
+    assert(manifest.project === "Solstice Cipher", "judge manifest project changed");
+    assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
+    assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
+    assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
+    assert(manifest.verification?.expected_smoke_checks === 28, "judge manifest smoke count changed");
+    assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
     assert(videoResponse?.ok(), "WebM demo did not return HTTP 200");

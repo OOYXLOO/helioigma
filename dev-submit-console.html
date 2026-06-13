@@ -106,7 +106,8 @@ The game is intentionally compact: a visible four-phase progress strip, keyboard
 1. Open the play link and press Demo Solve for the full loop and stable proof SC-4P-2907-62-Y5VFX1, or press Start to play manually.
 2. Watch the current WebM video or GIF fallback.
 3. Run smoke.html to see the game solve all four phases automatically.
-4. Paste the sample proof into proof-verifier.html to confirm the checksum loop.</textarea>
+4. Open judge-manifest.json for the machine-readable prize target, proof receipt, public links, and human gate summary.
+5. Paste the sample proof into proof-verifier.html to confirm the checksum loop.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Try Links</h2><button type="button" data-copy="links">Copy</button></div>
@@ -114,6 +115,7 @@ The game is intentionally compact: a visible four-phase progress strip, keyboard
 Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
+Judge manifest: https://ooyxloo.github.io/solstice-cipher/judge-manifest.json
 Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
       </div>
       <div class="panel">
@@ -136,7 +138,8 @@ Key files:
 - game.js: deterministic levels, canvas rendering, controls, scoring, proof generation, and Demo Solve.
 - proof-verifier.html: local proof checksum verifier.
 - smoke.html: browser smoke test that solves the public game path in an iframe.
-- judge.html: one-page review hub.</textarea>
+- judge.html: one-page review hub.
+- judge-manifest.json: machine-readable judge manifest for the prize target, public links, stable proof receipt, media, verification steps, and human gates.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>How I Built It</h2><button type="button" data-copy="howbuilt">Copy</button></div>
@@ -172,7 +175,7 @@ The biggest tradeoff was keeping the canvas interaction playful while making the
 - GitHub repository exists publicly at https://github.com/OOYXLOO/solstice-cipher.
 - GitHub Pages play link opens logged-out.
 - /judge.html and /smoke.html return HTTP 200.
-- /proof-verifier.html, /solstice-cipher-demo.webm, and /solstice-cipher-demo.gif return HTTP 200.
+- /proof-verifier.html, /judge-manifest.json, /solstice-cipher-demo.webm, and /solstice-cipher-demo.gif return HTTP 200.
 - smoke.html shows all PASS checks.
 - Demo Solve completes the full loop and reveals a run proof.
 - The live page shows node-control buttons below the canvas.

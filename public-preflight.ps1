@@ -73,6 +73,7 @@ try {
     "styles.css",
     "game.js",
     "judge.html",
+    "judge-manifest.json",
     "smoke.html",
     "proof-verifier.html",
     "dev-submit-console.html",
@@ -115,6 +116,19 @@ try {
   }
   Assert-WebmSignature "solstice-cipher-demo.webm"
 
+  $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
+  if ($manifest.project -ne "Solstice Cipher") { throw "judge-manifest project mismatch" }
+  if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
+  if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
+  if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
+  if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 28) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
+  if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
+  foreach ($artifact in $manifest.local_artifacts) {
+    Assert-File $artifact
+  }
+
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
   Assert-Contains "dev-article-final.md" "What I Built"
   Assert-Contains "dev-article-final.md" "Video Demo"
@@ -122,6 +136,7 @@ try {
   Assert-Contains "dev-article-final.md" "How I Built It"
   Assert-Contains "dev-article-final.md" "Prize Category"
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
+  Assert-Contains "dev-article-final.md" "judge-manifest.json"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
   Assert-Contains "dev-article-final.md" "I chose a cipher wheel"
@@ -134,6 +149,7 @@ try {
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
+  Assert-Contains "dev-submit-console.html" "judge-manifest.json"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "dev-submit-console.html" "How I Built It"
   Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/solstice-cipher"
@@ -144,6 +160,8 @@ try {
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
   Assert-Contains "publish-assistant.html" "28 smoke checks"
+  Assert-Contains "submission-checklist.md" "judge-manifest.json"
+  Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
   Assert-Contains "publish-after-repo.ps1" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
@@ -156,6 +174,8 @@ try {
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
   Assert-Contains ".gitignore" "solstice-cipher-dev-package.zip"
   Assert-Contains "judge.html" "Run Smoke Test"
+  Assert-Contains "judge.html" "Open Manifest"
+  Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
   Assert-Contains "judge.html" "solstice-cipher-demo.webm"
@@ -194,8 +214,11 @@ try {
   Assert-Contains "verification-report.md" "Score variance is expected"
   Assert-Contains "verification.html" "Score variance is expected"
   Assert-Contains "verification.html" "solstice-cipher-demo.webm"
+  Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
+  Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/solstice-cipher/"
 
-  $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md -Recurse |
+  $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md,*.json -Recurse |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
   $secretHits = $scanFiles | Select-String -Pattern "sk-[A-Za-z0-9._-]{12,}|AKIA[0-9A-Z]{16}|BEGIN PRIVATE KEY|安全码|银行卡|password:" -ErrorAction SilentlyContinue
   if ($secretHits) {
@@ -209,6 +232,7 @@ try {
       "https://ooyxloo.github.io/solstice-cipher/judge.html",
       "https://ooyxloo.github.io/solstice-cipher/smoke.html",
       "https://ooyxloo.github.io/solstice-cipher/proof-verifier.html",
+      "https://ooyxloo.github.io/solstice-cipher/judge-manifest.json",
       "https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html",
       "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm",
       "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif",

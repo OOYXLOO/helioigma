@@ -8,6 +8,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - GitHub Pages marker: `.nojekyll`.
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
+- Judge manifest: `judge-manifest.json` with prize target, public links, stable proof receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
 - Run proof verifier: `proof-verifier.html` with parsed proof facts.
 - Phase progress strip, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
@@ -42,6 +43,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
 - Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 28 expected smoke checks, and stable proof `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 
@@ -72,6 +74,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Try link: to be filled after public hosting.
 - Source link: to be filled after repo/public hosting is authorized.
 - Judge pack link: `https://ooyxloo.github.io/solstice-cipher/judge.html` after public hosting.
+- Judge manifest link: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/solstice-cipher/smoke.html` after public hosting.
 - DEV post console: `https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html` after public hosting.
 - Screenshots/media: use the public Pages URLs for `cover.png`, `solstice-cipher-demo.webm`, `solstice-cipher-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
