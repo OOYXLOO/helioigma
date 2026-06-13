@@ -190,7 +190,7 @@ async function main() {
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 41, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 43, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
@@ -232,7 +232,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 41, `expected 41 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 43, `expected 43 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

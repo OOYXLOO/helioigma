@@ -125,7 +125,7 @@ try {
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 41) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 43) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
@@ -164,6 +164,7 @@ try {
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
+  Assert-Contains "dev-article-final.md" "phase banner"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
@@ -177,6 +178,7 @@ try {
   Assert-Contains "dev-submit-console.html" "judge-manifest.json"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "dev-submit-console.html" "live Rotor Trace, deterministic Demo Solve, and a verifiable run receipt"
+  Assert-Contains "dev-submit-console.html" "phase banner"
   Assert-Contains "dev-submit-console.html" "Ode With Restraint"
   Assert-Contains "dev-submit-console.html" "Rotor Trace"
   Assert-Contains "dev-submit-console.html" "Post-Publish Share Note"
@@ -190,6 +192,7 @@ try {
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Rotor Trace"
+  Assert-Contains "README.md" "phase banner"
   Assert-Contains "README.md" "?demo=1"
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
@@ -198,7 +201,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
-  Assert-Contains "publish-assistant.html" "41 smoke checks"
+  Assert-Contains "publish-assistant.html" "43 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
@@ -218,7 +221,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 41 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 43 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -257,6 +260,7 @@ try {
   Assert-Contains "index.html" "hintButton"
   Assert-Contains "index.html" "tracePanel"
   Assert-Contains "index.html" "traceNext"
+  Assert-Contains "index.html" "phaseAnnouncer"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
@@ -284,6 +288,8 @@ try {
   Assert-Contains "smoke.html" "hint shortcut names the next mismatched node"
   Assert-Contains "smoke.html" "hint highlights a node button"
   Assert-Contains "smoke.html" "rotor trace panel is present"
+  Assert-Contains "smoke.html" "phase announcer is present"
+  Assert-Contains "smoke.html" "phase announcer names the active phase"
   Assert-Contains "smoke.html" "rotor trace records hint action"
   Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"

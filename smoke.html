@@ -185,6 +185,7 @@
       const bestLabel = doc.querySelector("#bestLabel");
       const shiftLabel = doc.querySelector("#shiftLabel");
       const phaseSteps = doc.querySelectorAll("#phaseTrack .phase-step");
+      const phaseAnnouncer = doc.querySelector("#phaseAnnouncer");
       const tracePanel = doc.querySelector("#tracePanel");
       const tracePhase = doc.querySelector("#tracePhase");
       const traceMatch = doc.querySelector("#traceMatch");
@@ -213,6 +214,7 @@
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
+      addCheck("phase announcer is present", Boolean(phaseAnnouncer));
       addCheck("rotor trace panel is present", Boolean(tracePanel && tracePhase && traceMatch && traceNext && traceLast));
       addCheck("rotor trace reports the first phase", tracePhase.textContent.includes("Crib dawn"));
       addCheck("run receipt panel is present", Boolean(proofPanel));
@@ -234,6 +236,7 @@
       startButton.click();
       await sleep(120);
       addCheck("run starts through the public button", statusLine.textContent.includes("Helioigma rotor is live"));
+      addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
       press(win, "h");
       await sleep(80);
       addCheck("hint shortcut names the next mismatched node", statusLine.textContent.includes("Hint: rotate node"));

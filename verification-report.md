@@ -21,7 +21,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session
+- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner
 - `solstice-cipher-demo.gif`: current animated GIF preview
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
@@ -56,7 +56,7 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
 - Mobile 390x844: no horizontal overflow; phase progress strip stays compact and the canvas begins in the first viewport.
 - Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
-- Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls and Rotor Trace through verifier validation.
+- Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held. Latest live-timer score 2892 across 62 shifts.`
 - Auto-demo URL `?demo=1` reaches the same stable receipt.
@@ -64,8 +64,8 @@ Expected local URLs:
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
-- The playable page exposes a four-step phase progress strip, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 41 PASS assertions:
+- The playable page exposes a four-step phase progress strip, phase announcer, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- Smoke checks include 43 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -84,6 +84,8 @@ Expected local URLs:
   - best score label present
   - shift counter present
   - four-phase progress track present
+  - phase announcer is present
+  - phase announcer names the active phase
   - rotor trace panel present
   - rotor trace reports the first phase
   - run receipt panel and summary present
@@ -117,7 +119,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 41 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 43 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

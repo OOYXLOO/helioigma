@@ -26,10 +26,17 @@
   const traceMatch = document.querySelector("#traceMatch");
   const traceNext = document.querySelector("#traceNext");
   const traceLast = document.querySelector("#traceLast");
+  const phaseAnnouncer = document.querySelector("#phaseAnnouncer");
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
   const phaseNames = ["Crib dawn", "XOR meridian", "Carry twilight", "Checksum night"];
+  const phaseMottos = [
+    "Find the daylight crib before the wheel starts to drift.",
+    "Carry the XOR signal through the longest noon.",
+    "Hold twilight long enough for the binary carry.",
+    "Close the checksum before nightfall seals the rotor.",
+  ];
   const bestScoreKey = "solstice-cipher-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
@@ -56,6 +63,7 @@
     lastTick: 0,
     demoing: false,
     hintedIndex: -1,
+    phaseBanner: { title: "", detail: "", life: 0 },
     lastAction: "Awaiting start.",
     message: "Decode the Helioigma rotor before nightfall.",
   };
@@ -110,9 +118,21 @@
     state.timeLeft = level.seconds;
     state.finalProof = "";
     state.hintedIndex = -1;
+    if (state.running) {
+      showPhaseBanner(index);
+    }
     state.lastAction = index === 0 ? "Awaiting start." : `${phaseNames[index]} seeded.`;
     state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
+  }
+
+  function showPhaseBanner(index) {
+    const title = `Phase ${index + 1}: ${phaseNames[index]}`;
+    const detail = phaseMottos[index];
+    state.phaseBanner = { title, detail, life: 1.65 };
+    if (phaseAnnouncer) {
+      phaseAnnouncer.textContent = `${title}. ${detail}`;
+    }
   }
 
   function updateHud() {
@@ -394,6 +414,8 @@
       drawFinale(cx, cy, ringRadius);
     }
 
+    drawPhaseBanner(cx, topBand, ringRadius, w);
+
     state.particles.forEach((particle) => {
       ctx.globalAlpha = particle.life;
       ctx.fillStyle = particle.color;
@@ -402,6 +424,33 @@
       ctx.fill();
       ctx.globalAlpha = 1;
     });
+  }
+
+  function drawPhaseBanner(cx, topBand, ringRadius, width) {
+    if (!state.phaseBanner.life || state.complete) return;
+    const fade = Math.min(1, state.phaseBanner.life / 0.28);
+    const alpha = Math.max(0, Math.min(1, fade));
+    const panelWidth = Math.min(width * 0.72, 560);
+    const panelHeight = Math.max(58, ringRadius * 0.34);
+    const x = cx - panelWidth / 2;
+    const y = topBand + 18;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = "rgba(7,16,24,0.9)";
+    ctx.strokeStyle = "rgba(247,201,72,0.48)";
+    ctx.lineWidth = 2;
+    roundRect(ctx, x, y, panelWidth, panelHeight, 16);
+    ctx.fill();
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#f7c948";
+    ctx.font = `800 ${Math.max(16, Math.min(width, ringRadius * 2) * 0.052)}px ui-sans-serif, system-ui`;
+    ctx.fillText(state.phaseBanner.title.toUpperCase(), cx, y + panelHeight * 0.38);
+    ctx.fillStyle = "rgba(247,243,223,0.86)";
+    ctx.font = `700 ${Math.max(11, Math.min(width, ringRadius * 2) * 0.028)}px ui-sans-serif, system-ui`;
+    ctx.fillText(state.phaseBanner.detail, cx, y + panelHeight * 0.67);
+    ctx.restore();
   }
 
   function burst(x, y, color) {
@@ -543,6 +592,9 @@
       particle.life -= delta * 1.5;
     });
     state.particles = state.particles.filter((particle) => particle.life > 0);
+    if (state.phaseBanner.life > 0) {
+      state.phaseBanner.life = Math.max(0, state.phaseBanner.life - delta);
+    }
 
     if (state.running && !state.demoing) {
       state.timeLeft -= delta;
@@ -570,6 +622,7 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.phaseBanner = { title: "", detail: "", life: 0 };
     state.lastAction = "Run started. Align the first visible mismatch.";
     state.particles = [];
     state.lastTick = 0;
@@ -589,6 +642,7 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.phaseBanner = { title: "", detail: "", life: 0 };
     state.lastAction = "Awaiting start.";
     state.particles = [];
     seedLevel(0);

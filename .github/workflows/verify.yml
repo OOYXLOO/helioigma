@@ -125,13 +125,13 @@ jobs:
           grep -q "Best Ode to Alan Turing" judge-manifest.json
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
-          grep -q "41" judge-manifest.json
+          grep -q "43" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
           grep -q "Parsed receipt facts" proof-verifier.html
-          grep -q "Valid run receipt" proof-verifier.html
+          grep -q "Checksum-valid receipt" proof-verifier.html
           grep -q 'get("receipt")' proof-verifier.html
           grep -q "not anti-cheat or identity proof" proof-verifier.html
           grep -q "parsed receipt facts" verification-report.md
@@ -153,6 +153,7 @@ jobs:
           grep -q "hintButton" index.html
           grep -q "tracePanel" index.html
           grep -q "traceNext" index.html
+          grep -q "phaseAnnouncer" index.html
           grep -q "demoButton" index.html
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
@@ -177,6 +178,8 @@ jobs:
           grep -q "completion verifier link carries the final receipt" smoke.html
           grep -q "demo solve releases manual controls" smoke.html
           grep -q "four-phase progress track is present" smoke.html
+          grep -q "phase announcer is present" smoke.html
+          grep -q "phase announcer names the active phase" smoke.html
           grep -q "shift counter records the completed run" smoke.html
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html

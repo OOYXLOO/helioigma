@@ -24,7 +24,7 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 ## Video Demo
 
-The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
+The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
 
@@ -52,6 +52,7 @@ Core features:
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, on-screen buttons, hint, demo-solve, and number-key controls.
+- Short phase banner and screen-reader phase announcer when each phase starts.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run receipt.
@@ -170,5 +171,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 41 checks passed, including daylight meter, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 41 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 43 checks passed, including daylight meter, phase announcer, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 43 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
