@@ -123,6 +123,8 @@ try {
   if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
+  if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
+  if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 46) { throw "judge-manifest smoke count mismatch" }
@@ -244,6 +246,11 @@ try {
   Assert-Contains "judge.html" "solstice-cipher-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Ode With Restraint"
+  Assert-Contains "judge.html" "Rubric snapshot"
+  Assert-Contains "judge.html" "Theme relevance"
+  Assert-Contains "judge.html" "Technical execution"
+  Assert-Contains "judge.html" "Writing quality"
+  Assert-Contains "judge.html" "Turing category"
   Assert-Contains "judge.html" "Judge-Verifiable Loop"
   Assert-Contains "judge.html" "not only a solstice skin over a puzzle"
   Assert-Contains "judge.html" "Rotor Trace"

@@ -163,6 +163,8 @@ async function main() {
       hasWebm: document.body.innerText.includes("WebM"),
       hasRunReceiptCopy: document.body.innerText.includes("run receipt"),
       hasRunProofCopy: document.body.innerText.includes("run proof"),
+      hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
+      rubricItems: [...document.querySelectorAll(".rubric-item strong")].map((node) => node.textContent.trim()),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -172,6 +174,8 @@ async function main() {
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
     assert(!judge.hasRunProofCopy, "judge page still exposes run proof wording");
+    assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
+    assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
     assert(!judge.hasPublishAssistant, "judge page exposes Publish Assistant");
@@ -189,6 +193,7 @@ async function main() {
     assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/solstice-cipher/?demo=1", "judge manifest auto demo URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
+    assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
     assert(manifest.verification?.expected_smoke_checks === 46, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");

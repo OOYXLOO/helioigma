@@ -65,7 +65,7 @@ Core features:
 1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
-4. Open `judge-manifest.json` for the machine-readable prize target, run receipt, public links, and human gate summary.
+4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
 5. Paste the sample receipt into `proof-verifier.html`, or use the completed-run Verify receipt link, to confirm the checksum loop.
 
 Public media links:
