@@ -132,6 +132,7 @@ try {
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
   Assert-Contains "dev-article-final.md" "What I Built"
+  Assert-Contains "dev-article-final.md" "longest day into a countdown machine"
   Assert-Contains "dev-article-final.md" "Video Demo"
   Assert-Contains "dev-article-final.md" "Code"
   Assert-Contains "dev-article-final.md" "How I Built It"
@@ -155,6 +156,7 @@ try {
   Assert-Contains "dev-submit-console.html" "Helioigma"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
+  Assert-Contains "dev-submit-console.html" "longest day into a countdown machine"
   Assert-Contains "dev-submit-console.html" "judge-manifest.json"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "dev-submit-console.html" "How I Built It"

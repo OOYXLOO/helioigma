@@ -6,6 +6,12 @@ tags: devchallenge, gamechallenge, gamedev
 cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png
 ---
 
+## The Longest Day as a Countdown Machine
+
+The solstice is a strange clock: one day stretches farther than the rest, and then the light starts leaving again. I wanted the game to feel like that exact moment, so Helioigma turns the longest day into a countdown machine. You get a bright window of time, a rotor full of code-like glyphs, and one job: align the signal before nightfall takes the board.
+
+That is why the first action is not a lore screen or a menu. The game puts the daylight meter, the target rotor, and the `Demo Solve` path in front of the player immediately. A judge can play manually, or watch the deterministic solve and verify the final receipt without guessing what counts as success.
+
 ## What I Built
 
 Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
@@ -32,7 +38,7 @@ Core features:
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run receipt.
 - Receipt verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen Judge Path cards for Play, Demo Solve, and Verify.
+- First-screen Judge Path cards for Play, Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
 
 ## Judge in 60 Seconds
 
@@ -138,6 +144,6 @@ I verified the package with:
 - `node --check game.js`
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
-- 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
-- `smoke.html`: 29 checks passed, including deterministic demo receipt through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run receipt.
+- 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
+- `smoke.html`: 30 checks passed, including daylight meter, deterministic demo receipt through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run receipt.
 - `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 30 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
