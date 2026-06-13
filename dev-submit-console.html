@@ -125,6 +125,7 @@ Judge page: https://ooyxloo.github.io/helioigma/judge.html
 Smoke test: https://ooyxloo.github.io/helioigma/smoke.html
 Sample receipt verifier: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 Judge manifest: https://ooyxloo.github.io/helioigma/judge-manifest.json
+Challenge compliance: https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md
 Source: https://github.com/OOYXLOO/helioigma</textarea>
       </div>
       <div class="panel">
@@ -156,6 +157,7 @@ Key files:
 - smoke.html: browser smoke test that solves the public game path in an iframe.
 - judge.html: one-page review hub.
 - judge-manifest.json: machine-readable judge manifest for the prize target, public links, stable run receipt, media, verification steps, and human gates.
+- CHALLENGE_COMPLIANCE.md: official-route checklist for tags, demo media, code link, build notes, Turing category boundary, public launch no-go gate, and prize-claim boundary.
 - tools/build-demo-video.mjs: reproducible browser-recording builder for the captioned WebM demo.
 - LICENSE: MIT license for the game package.</textarea>
       </div>
@@ -197,6 +199,14 @@ I would love real feedback on the feel of the puzzle loop, mobile controls, and 
 The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the entry.</textarea>
       </div>
       <div class="panel">
+        <div class="copy-row"><h2>Challenge Compliance</h2><button type="button" data-copy="compliance">Copy</button></div>
+        <textarea id="compliance" readonly>The repo includes CHALLENGE_COMPLIANCE.md as a compact official-route checklist. It maps the DEV tags, playable game, demo media, code link, build notes, solstice theme, Best Ode to Alan Turing fit, originality statement, no-account review path, and prize-claim boundary to concrete files in the package.
+
+Category boundary: Helioigma targets Best Ode to Alan Turing and does not claim Best Google AI Usage. There is no Google AI dependency, backend API, cloud credential, private dataset, or hidden account console required to review it.
+
+Public launch gate: before this DEV article goes live, the GitHub repo must be public, GitHub Pages must return HTTP 200, and public-preflight.ps1 -Public must pass.</textarea>
+      </div>
+      <div class="panel">
         <div class="copy-row"><h2>Media Order</h2><button type="button" data-copy="media">Copy</button></div>
         <textarea id="media" readonly>1. Cover: https://ooyxloo.github.io/helioigma/cover.png
 2. Captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
@@ -213,6 +223,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - GitHub Pages play link opens logged-out.
 - /judge.html and /smoke.html return HTTP 200.
 - /proof-verifier.html, /judge-manifest.json, /helioigma-demo.webm, and /helioigma-demo.gif return HTTP 200.
+- /CHALLENGE_COMPLIANCE.md returns HTTP 200 and still states the Best Ode to Alan Turing category boundary.
 - smoke.html shows all PASS checks.
 - Demo Solve completes the full loop and reveals a run receipt.
 - The live page shows node-control buttons below the canvas.

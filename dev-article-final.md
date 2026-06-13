@@ -184,6 +184,14 @@ The package is a new static game build for this jam period, not a wrapper around
 
 The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the entry.
 
+## Challenge Compliance
+
+The submission package includes `CHALLENGE_COMPLIANCE.md` as a compact official-route checklist. It maps the DEV tags, playable game, demo media, code link, build notes, solstice theme, Best Ode to Alan Turing fit, originality statement, no-account review path, and prize-claim boundary to concrete files in the repo.
+
+The important boundary is deliberate: Helioigma targets Best Ode to Alan Turing and does not claim Best Google AI Usage. There is no Google AI dependency, backend API, cloud credential, private dataset, or hidden account console required to review the game.
+
+Before publication, the public launch gate is simple: the GitHub repo must be live, GitHub Pages must return HTTP 200, and `public-preflight.ps1 -Public` must pass against the live URLs.
+
 ## Verification
 
 I verified the package with:

@@ -74,6 +74,7 @@ try {
     "game.js",
     "LICENSE",
     "JUDGE_REVIEW_CARD.md",
+    "CHALLENGE_COMPLIANCE.md",
     "judge.html",
     "judge-manifest.json",
     "smoke.html",
@@ -140,6 +141,11 @@ try {
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
   if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
   if ($manifest.originality.review_surface.Count -lt 8) { throw "judge-manifest originality review-surface mismatch" }
+  if ($manifest.challenge_compliance.file -ne "CHALLENGE_COMPLIANCE.md") { throw "judge-manifest challenge-compliance file mismatch" }
+  if ($manifest.challenge_compliance.cash_per_winner_usd -ne 200) { throw "judge-manifest challenge-compliance prize mismatch" }
+  if ($manifest.challenge_compliance.winner_slots -ne 5) { throw "judge-manifest challenge-compliance winner-slot mismatch" }
+  if (-not ($manifest.challenge_compliance.submission_checks -contains "demo video and fallback media")) { throw "judge-manifest challenge-compliance submission-check mismatch" }
+  if (-not ($manifest.challenge_compliance.public_launch_gate -contains "GitHub Pages returns HTTP 200")) { throw "judge-manifest challenge-compliance launch-gate mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
@@ -172,6 +178,9 @@ try {
   Assert-Contains "dev-article-final.md" "not spam or fake engagement"
   Assert-NotContains "dev-article-final.md" "positive reactions as a tie-breaker"
   Assert-Contains "dev-article-final.md" "Originality and Build Window"
+  Assert-Contains "dev-article-final.md" "Challenge Compliance"
+  Assert-Contains "dev-article-final.md" "official-route checklist"
+  Assert-Contains "dev-article-final.md" "Helioigma targets Best Ode to Alan Turing and does not claim Best Google AI Usage"
   Assert-Contains "dev-article-final.md" "not a wrapper around a prior game template"
   Assert-Contains "dev-article-final.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
@@ -216,6 +225,12 @@ try {
   Assert-Contains "dev-launch-brief.md" "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
+  Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "dev-submit-console.html" 'plus a `D` shortcut'
   Assert-Contains "dev-submit-console.html" 'Optional `?demo=1` route'
   Assert-Contains "dev-submit-console.html" "Helioigma"
@@ -229,6 +244,9 @@ try {
   Assert-Contains "dev-submit-console.html" "first-move coach on Start"
   Assert-Contains "dev-submit-console.html" "tactile pulse feedback after hints or shifts"
   Assert-Contains "dev-submit-console.html" "judge-manifest.json"
+  Assert-Contains "dev-submit-console.html" "CHALLENGE_COMPLIANCE.md"
+  Assert-Contains "dev-submit-console.html" "Challenge Compliance"
+  Assert-Contains "dev-submit-console.html" "Public launch gate"
   Assert-Contains "dev-submit-console.html" "Sample receipt verifier"
   Assert-Contains "dev-submit-console.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"

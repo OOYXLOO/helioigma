@@ -54,6 +54,34 @@
       "helioigma-demo.gif"
     ]
   },
+  "challenge_compliance": {
+    "file": "CHALLENGE_COMPLIANCE.md",
+    "public_url": "https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md",
+    "official_rules_url": "https://dev.to/challenges/june-game-jam-2026-06-03",
+    "official_announcement_url": "https://dev.to/devteam/join-the-june-solstice-game-jam-1000-in-prizes-3jla",
+    "deadline": "2026-06-21 23:59 PDT",
+    "winner_announcement": "2026-07-09",
+    "winner_slots": 5,
+    "cash_per_winner_usd": 200,
+    "submission_checks": [
+      "DEV challenge tags present",
+      "playable static game",
+      "demo video and fallback media",
+      "code link",
+      "how-built explanation",
+      "solstice theme evidence",
+      "Best Ode to Alan Turing boundary",
+      "originality statement",
+      "no-account review path"
+    ],
+    "public_launch_gate": [
+      "public GitHub repo exists",
+      "GitHub Pages returns HTTP 200",
+      "public-preflight.ps1 -Public passes",
+      "article still includes tags, demo, code, build notes, category, and no-secret boundary"
+    ],
+    "prize_claim_boundary": "Eligibility, release, tax, payment, and payout paperwork are account-owner steps if DEV selects the project."
+  },
   "public_urls": {
     "play": "https://ooyxloo.github.io/helioigma/",
     "auto_demo": "https://ooyxloo.github.io/helioigma/?demo=1",
@@ -62,6 +90,7 @@
     "proof_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html",
     "sample_receipt_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
     "verification": "https://ooyxloo.github.io/helioigma/verification.html",
+    "challenge_compliance": "https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md",
     "manifest": "https://ooyxloo.github.io/helioigma/judge-manifest.json",
     "demo_webm": "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
     "demo_gif": "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
@@ -75,6 +104,7 @@
     "proof-verifier.html",
     "verification.html",
     "verification-report.md",
+    "CHALLENGE_COMPLIANCE.md",
     "dev-article-final.md",
     "LICENSE",
     "cover.png",
