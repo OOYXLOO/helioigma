@@ -1,6 +1,6 @@
 # Helioigma
 
-Static browser game package for the DEV June Solstice Game Jam backup route.
+Static browser game package for the DEV June Solstice Game Jam.
 
 ## Status
 

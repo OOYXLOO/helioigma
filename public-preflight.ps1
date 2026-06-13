@@ -184,6 +184,7 @@ try {
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
+  Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Rotor Trace"
   Assert-Contains "README.md" "?demo=1"
