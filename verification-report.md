@@ -64,8 +64,8 @@ Expected local URLs:
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
-- The playable page exposes a four-step phase progress strip, phase announcer, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 43 PASS assertions:
+- The playable page exposes a four-step phase progress strip, phase announcer, phase scoring ledger, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- Smoke checks include 46 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -89,8 +89,10 @@ Expected local URLs:
   - rotor trace panel present
   - rotor trace reports the first phase
   - run receipt panel and summary present
+  - phase scoring ledger present
   - stable demo receipt matches `SC-4P-2907-62-Y5VFX1`
   - demo receipt summary reports score and shifts
+  - demo receipt includes four phase ledger entries
   - demo solve releases manual controls
   - reset shortcut returns to idle
   - run starts through public button
@@ -104,6 +106,7 @@ Expected local URLs:
   - shift counter records the completed run
   - final status reports shift count
   - run receipt is visible
+  - completion preserves four phase ledger entries
   - run receipt matches `SC-4P-...`
 
 ## GitHub Actions Preflight
@@ -119,7 +122,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 43 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 46 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

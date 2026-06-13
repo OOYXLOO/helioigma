@@ -125,7 +125,7 @@ jobs:
           grep -q "Best Ode to Alan Turing" judge-manifest.json
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
-          grep -q "43" judge-manifest.json
+          grep -q "46" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/solstice-cipher/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
@@ -158,6 +158,7 @@ jobs:
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
           grep -q "proofSummary" index.html
+          grep -q "phaseLedger" index.html
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
           grep -q "Decode the solstice rotor" index.html
@@ -180,6 +181,8 @@ jobs:
           grep -q "four-phase progress track is present" smoke.html
           grep -q "phase announcer is present" smoke.html
           grep -q "phase announcer names the active phase" smoke.html
+          grep -q "phase scoring ledger is present" smoke.html
+          grep -q "four phase ledger entries" smoke.html
           grep -q "shift counter records the completed run" smoke.html
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html

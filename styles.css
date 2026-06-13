@@ -397,6 +397,43 @@ h1 {
   line-height: 1.35;
 }
 
+.phase-ledger {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.phase-ledger li {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.phase-ledger strong,
+.phase-ledger span {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.phase-ledger strong {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.phase-ledger span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
 .receipt-link {
   min-height: 44px;
   display: inline-grid;
@@ -680,6 +717,10 @@ button:focus-visible {
   .proof-panel button,
   .proof-panel .receipt-link {
     width: 100%;
+  }
+
+  .phase-ledger {
+    grid-template-columns: 1fr;
   }
 
   canvas {

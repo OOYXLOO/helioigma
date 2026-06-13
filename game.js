@@ -21,6 +21,7 @@
   const proofSummary = document.querySelector("#proofSummary");
   const verifyProofLink = document.querySelector("#verifyProofLink");
   const copyProofButton = document.querySelector("#copyProofButton");
+  const phaseLedger = document.querySelector("#phaseLedger");
   const tracePanel = document.querySelector("#tracePanel");
   const tracePhase = document.querySelector("#tracePhase");
   const traceMatch = document.querySelector("#traceMatch");
@@ -60,6 +61,7 @@
     target: levels[0].target,
     nodes: [],
     particles: [],
+    ledger: [],
     lastTick: 0,
     demoing: false,
     hintedIndex: -1,
@@ -164,8 +166,23 @@
           ? `proof-verifier.html?receipt=${encodeURIComponent(state.finalProof)}`
           : "proof-verifier.html";
       }
+      syncPhaseLedger();
       copyProofButton.disabled = !state.finalProof;
     }
+  }
+
+  function syncPhaseLedger() {
+    if (!phaseLedger) return;
+    phaseLedger.textContent = "";
+    state.ledger.forEach((entry) => {
+      const item = document.createElement("li");
+      const phase = document.createElement("strong");
+      const facts = document.createElement("span");
+      phase.textContent = entry.phase;
+      facts.textContent = `+${entry.points} score | ${entry.daylight}s daylight | ${entry.shifts} shifts`;
+      item.append(phase, facts);
+      phaseLedger.append(item);
+    });
   }
 
   function syncDayMeter() {
@@ -512,6 +529,12 @@
     state.streak += 1;
     state.solvedPhases += 1;
     const phaseScore = Math.ceil(state.timeLeft * 10) + state.target.length * 25 + state.streak * 50;
+    state.ledger.push({
+      phase: phaseNames[state.level],
+      points: phaseScore,
+      daylight: Math.max(0, Math.ceil(state.timeLeft)),
+      shifts: state.shifts,
+    });
     state.score += phaseScore;
     state.level += 1;
     burst(canvas.clientWidth / 2, canvas.clientHeight / 2, "#b8f2c8");
@@ -623,6 +646,7 @@
     state.finalProof = "";
     state.hintedIndex = -1;
     state.phaseBanner = { title: "", detail: "", life: 0 };
+    state.ledger = [];
     state.lastAction = "Run started. Align the first visible mismatch.";
     state.particles = [];
     state.lastTick = 0;
@@ -643,6 +667,7 @@
     state.finalProof = "";
     state.hintedIndex = -1;
     state.phaseBanner = { title: "", detail: "", life: 0 };
+    state.ledger = [];
     state.lastAction = "Awaiting start.";
     state.particles = [];
     seedLevel(0);

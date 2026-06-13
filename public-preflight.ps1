@@ -125,7 +125,7 @@ try {
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 43) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 46) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
@@ -201,7 +201,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
-  Assert-Contains "publish-assistant.html" "43 smoke checks"
+  Assert-Contains "publish-assistant.html" "46 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
@@ -221,7 +221,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 43 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 46 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -272,6 +272,7 @@ try {
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"
   Assert-Contains "index.html" "proofSummary"
+  Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
@@ -290,6 +291,8 @@ try {
   Assert-Contains "smoke.html" "rotor trace panel is present"
   Assert-Contains "smoke.html" "phase announcer is present"
   Assert-Contains "smoke.html" "phase announcer names the active phase"
+  Assert-Contains "smoke.html" "phase scoring ledger is present"
+  Assert-Contains "smoke.html" "four phase ledger entries"
   Assert-Contains "smoke.html" "rotor trace records hint action"
   Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"
