@@ -6,19 +6,29 @@ tags: devchallenge, gamechallenge, gamedev
 cover_image: ./cover.png
 ---
 
-## Overview
+## What I Built
 
-Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired ring of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each node matches the target cipher before nightfall ends the run.
+Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired ring of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
 
-It is designed to be playable in a quick judging pass: a visible four-phase progress strip, score carry-over, streak bonuses, shift counting, keyboard/touch controls, explicit node-control buttons for mobile play, a one-click demo solve with a stable proof, a local best score, and a deterministic run proof at the end.
+The build is meant to be judged quickly: open the game, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data.
 
-Public links to add only after hosting is live:
+Links:
 
 - Play: https://ooyxloo.github.io/solstice-cipher/
 - Source: https://github.com/OOYXLOO/solstice-cipher
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 - Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
+
+Core features:
+
+- Four timed phases with a visible progress strip.
+- Canvas-rendered glyphs, beams, progress ring, and particle feedback.
+- Mouse, touch, node-button, demo-solve, and number-key controls.
+- Score carry-over, streak bonuses, shift counting, and a local best score.
+- Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run proof.
+- Proof verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
+- Judge page and browser smoke test for a fast review path.
 
 ## Judge in 60 Seconds
 
@@ -27,11 +37,9 @@ Public links to add only after hosting is live:
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Paste the sample proof into `proof-verifier.html` to confirm the checksum loop.
 
-Prize-category note: this submission is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and a quick verifier loop. It does not claim the Best Google AI Usage category.
+## Video Demo
 
-## Demo Video
-
-Upload or embed `solstice-cipher-demo.mp4` in the DEV post media area. If DEV prefers another format, use `solstice-cipher-demo.webm`; keep `solstice-cipher-demo.gif` as the animated fallback.
+The demo video shows the current four-phase interface, node controls, and final proof flow.
 
 Media order:
 
@@ -43,9 +51,20 @@ Media order:
 6. `mobile-check-v6.png`
 7. `desktop-complete-v4.png`
 
+## Code
+
+The source is hosted at https://github.com/OOYXLOO/solstice-cipher after publication. The project is deliberately small:
+
+- `index.html`: playable game shell and first-screen judge path.
+- `styles.css`: responsive game UI.
+- `game.js`: deterministic levels, canvas rendering, controls, scoring, proof generation, and Demo Solve.
+- `proof-verifier.html`: local proof checksum verifier.
+- `smoke.html`: browser smoke test that solves the public game path in an iframe.
+- `judge.html`: one-page review hub.
+
 ## How to Play
 
-Start the run, then rotate each ring glyph until it matches the target cipher above it. Correct locks earn points, streaks reward clean phase solves, and exploratory shifts cost a little time. Clear all four phases to hold the longest day and reveal the final score.
+Start the run, then match each numbered ring node to the target glyph above it before time runs out. Correct locks earn points, streaks reward clean phase solves, and exploratory shifts cost a little time. Clear all four phases to hold the longest day and reveal the final score.
 
 Controls:
 
@@ -56,11 +75,25 @@ Controls:
 - Press `Enter` to start a fresh run.
 - Press `Escape` to reset the board.
 
-## How It Fits the Challenge
+## How I Built It
+
+I built Solstice Cipher as a no-backend canvas game so the public demo can run from GitHub Pages. The level data is deterministic: every phase has a target array, the player ring starts offset from that target, and every click/tap/key/button press rotates one node through the `SOL`, `XOR`, `LUX`, and `BIN` states.
+
+The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during `Demo Solve` so judges get the same stable proof every time. Completed runs generate a checksum from:
+
+```text
+solstice|4|score|shifts|4
+```
+
+The verifier recomputes that checksum in the browser and displays the parsed proof facts. It is not anti-cheat infrastructure; it is a reproducible run checksum that makes the demo path inspectable.
+
+## Prize Category
+
+This submission is aimed at the Best Ode to Alan Turing category. It does not claim the Best Google AI Usage category.
 
 The June solstice is the longest day in the northern hemisphere. I turned that into the game's pressure loop: daylight is the time resource, nightfall is the fail state, and the win condition is a clean final cipher before the longest day slips away.
 
-For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignment and target checking without pretending to simulate a historical machine. The glyph language mixes solstice imagery with code-breaking cues:
+For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignment and target checking without pretending to simulate a historical machine. The mechanics are intentionally computational: deterministic state, target matching, rotor-like cycling, binary/XOR language, and local verification of the final proof. The glyph language mixes solstice imagery with code-breaking cues:
 
 - `SOL` for daylight.
 - `XOR` for logic.
@@ -77,32 +110,15 @@ For the Alan Turing angle, Solstice Cipher borrows the feeling of rotor alignmen
 | Writing quality | The post, judge page, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
 | Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, and proof verification. |
 
-## What I Built
-
-- A self-contained static HTML/CSS/JavaScript game.
-- Canvas-rendered glyphs, beams, progress ring, and particle feedback.
-- Four timed phases with a visible progress strip, score carry-over, and streak bonuses.
-- Mouse, touch, node-button, demo-solve, and number-key controls.
-- Final screen with solved phase count, total shifts, local best score, and copyable `SC-4P-...` run proof.
-- A proof verifier that recomputes completion checksums locally and shows parsed phases, score, shifts, and checksum facts.
-- A judge page and smoke test so reviewers can verify the full loop quickly.
-- DEV-ready media: cover image, MP4/WebM demo, GIF preview, desktop screenshot, mobile screenshot, and completion screenshot.
-
 ## Originality and Build Window
 
 The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
 
-## Technical Notes
-
-The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards a time-weighted score. The browser smoke test starts the game inside an iframe, solves all four phases using public keyboard controls, and checks the final status plus run proof format.
-
 ## Verification
 
-Before publishing, I verified the local package with:
+I verified the package with:
 
 - `node --check game.js`
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
 - `smoke.html`: 23 checks passed, including deterministic demo proof, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
-
-Do not publish this draft until the public play link, source repo, judge page, proof verifier, and smoke test are live.

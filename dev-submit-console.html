@@ -122,6 +122,24 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 - DEV-ready media: cover image, MP4/WebM demo, GIF, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
       </div>
       <div class="panel">
+        <div class="copy-row"><h2>Code</h2><button type="button" data-copy="code">Copy</button></div>
+        <textarea id="code" readonly>Source: https://github.com/OOYXLOO/solstice-cipher
+
+Key files:
+- index.html: playable game shell and first-screen judge path.
+- styles.css: responsive game UI.
+- game.js: deterministic levels, canvas rendering, controls, scoring, proof generation, and Demo Solve.
+- proof-verifier.html: local proof checksum verifier.
+- smoke.html: browser smoke test that solves the public game path in an iframe.
+- judge.html: one-page review hub.</textarea>
+      </div>
+      <div class="panel">
+        <div class="copy-row"><h2>How I Built It</h2><button type="button" data-copy="howbuilt">Copy</button></div>
+        <textarea id="howbuilt" readonly>I built Solstice Cipher as a no-backend canvas game so the public demo can run from GitHub Pages. Each phase has a deterministic target array; the player ring starts offset from that target, and every click, tap, keypress, or node button rotates one node through SOL, XOR, LUX, and BIN states.
+
+The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during Demo Solve so judges get the same stable proof every time. Completed runs generate a reproducible checksum from solstice|4|score|shifts|4. The verifier recomputes that checksum in the browser and displays the parsed proof facts.</textarea>
+      </div>
+      <div class="panel">
         <div class="copy-row"><h2>Rubric Fit</h2><button type="button" data-copy="rubric">Copy</button></div>
         <textarea id="rubric" readonly>- Theme relevance: daylight is the timer, nightfall is the fail state, and the win condition is holding the longest day.
 - Creativity: the solstice theme is expressed as a code-breaking wheel rather than a literal calendar demo.

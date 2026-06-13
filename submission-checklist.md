@@ -16,6 +16,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Local/public preflight script: `public-preflight.ps1`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - DEV post draft: `dev-post-draft.md`.
+- DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
 - Desktop screenshot: `desktop-check-v5.png`.
@@ -34,6 +35,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
+- First-screen rule: visible text explains that the player should match each numbered ring node to the target glyph before time runs out.
 - Demo Solve: visible in the controls row and completes the loop to stable proof `SC-4P-2907-62-Y5VFX1` during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.

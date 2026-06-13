@@ -90,6 +90,11 @@ try {
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
+  Assert-Contains "dev-article-final.md" "What I Built"
+  Assert-Contains "dev-article-final.md" "Video Demo"
+  Assert-Contains "dev-article-final.md" "Code"
+  Assert-Contains "dev-article-final.md" "How I Built It"
+  Assert-Contains "dev-article-final.md" "Prize Category"
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
@@ -97,6 +102,8 @@ try {
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
+  Assert-Contains "dev-submit-console.html" "How I Built It"
+  Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
@@ -108,6 +115,7 @@ try {
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "proofSummary"
+  Assert-Contains "index.html" "Match each numbered ring node"
   Assert-Contains "smoke.html" "first-phase node buttons are present"
   Assert-Contains "smoke.html" "demo solve button is present"
   Assert-Contains "smoke.html" "judge shortcut links are present"

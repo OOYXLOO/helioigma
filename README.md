@@ -27,6 +27,8 @@ Solstice Cipher is a compact browser puzzle game for the June solstice theme and
 
 The current build now has a visible four-phase progress strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion proof code, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, judge shortcut links, and a stable `Demo Solve` proof path, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
+The playable first screen now includes the plain rule: match each numbered ring node to the target glyph above it before time runs out. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
+
 ## Controls
 
 - Click or tap ring nodes to rotate their phase.
