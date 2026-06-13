@@ -11,6 +11,9 @@
   const resetButton = document.querySelector("#resetButton");
   const demoButton = document.querySelector("#demoButton");
   const phaseTrack = document.querySelector("#phaseTrack");
+  const dayMeter = document.querySelector("#dayMeter");
+  const dayMeterLabel = document.querySelector("#dayMeterLabel");
+  const dayMeterFill = document.querySelector("#dayMeterFill");
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
@@ -19,7 +22,7 @@
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
-  const phaseNames = ["Rotor dawn", "XOR meridian", "Carry twilight", "Checksum night"];
+  const phaseNames = ["Crib dawn", "XOR meridian", "Carry twilight", "Checksum night"];
   const bestScoreKey = "solstice-cipher-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
@@ -66,7 +69,7 @@
   }
 
   function buildRunProof() {
-    const payload = `solstice|${levels.length}|${state.score}|${state.shifts}|${state.solvedPhases}`;
+    const payload = buildReceiptPayload();
     let hash = 2166136261;
     for (const char of payload) {
       hash ^= char.charCodeAt(0);
@@ -74,6 +77,10 @@
     }
     const suffix = (hash >>> 0).toString(36).toUpperCase().padStart(6, "0").slice(0, 6);
     return `SC-${state.solvedPhases}P-${state.score}-${state.shifts}-${suffix}`;
+  }
+
+  function buildReceiptPayload() {
+    return `solstice|${levels.length}|${state.score}|${state.shifts}|${state.solvedPhases}`;
   }
 
   function seedLevel(index) {
@@ -105,6 +112,7 @@
     statusLine.textContent = state.message;
     startButton.disabled = state.demoing;
     demoButton.disabled = state.demoing;
+    syncDayMeter();
     syncPhaseTrack();
     syncNodeButtons();
     if (proofPanel && proofCode && copyProofButton) {
@@ -112,11 +120,21 @@
       proofCode.textContent = state.finalProof;
       if (proofSummary) {
         proofSummary.textContent = state.finalProof
-      ? `Receipt loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts.`
+      ? `Receipt loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts. FNV-1a payload ${buildReceiptPayload()} -> ${state.finalProof.split("-").at(-1)}.`
           : "";
       }
       copyProofButton.disabled = !state.finalProof;
     }
+  }
+
+  function syncDayMeter() {
+    if (!dayMeter || !dayMeterLabel || !dayMeterFill) return;
+    const level = levels[Math.min(state.level, levels.length - 1)];
+    const ratio = state.complete ? 1 : Math.max(0, Math.min(1, state.timeLeft / level.seconds));
+    dayMeterFill.style.transform = `scaleX(${ratio})`;
+    dayMeter.classList.toggle("low", !state.complete && ratio <= 0.25);
+    dayMeter.classList.toggle("held", state.complete);
+    dayMeterLabel.textContent = state.complete ? "held" : `${Math.max(0, Math.ceil(state.timeLeft))}s`;
   }
 
   function syncPhaseTrack() {

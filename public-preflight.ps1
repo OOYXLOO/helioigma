@@ -123,7 +123,7 @@ try {
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 29) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 30) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
@@ -167,7 +167,7 @@ try {
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
-  Assert-Contains "publish-assistant.html" "29 smoke checks"
+  Assert-Contains "publish-assistant.html" "30 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
@@ -176,7 +176,7 @@ try {
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 29 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 30 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-webm.mjs" "solstice-cipher-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
@@ -202,6 +202,8 @@ try {
   Assert-Contains "index.html" "2. Rotor Trace"
   Assert-Contains "index.html" "3. Receipt"
   Assert-Contains "index.html" "judge-links"
+  Assert-Contains "index.html" "dayMeter"
+  Assert-Contains "index.html" "dayMeterFill"
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
@@ -212,6 +214,7 @@ try {
   Assert-Contains "smoke.html" "first-phase node buttons are present"
   Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"
+  Assert-Contains "smoke.html" "daylight meter is present"
   Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
   Assert-Contains "smoke.html" "judge shortcut links are present"

@@ -173,6 +173,9 @@
       const startButton = doc.querySelector("#startButton");
       const resetButton = doc.querySelector("#resetButton");
       const demoButton = doc.querySelector("#demoButton");
+      const dayMeter = doc.querySelector("#dayMeter");
+      const dayMeterFill = doc.querySelector("#dayMeterFill");
+      const dayMeterLabel = doc.querySelector("#dayMeterLabel");
       const judgePathCards = doc.querySelectorAll(".judge-path article");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
       const judgeLinks = doc.querySelectorAll(".judge-links a");
@@ -189,6 +192,7 @@
       addCheck("start button is present", Boolean(startButton));
       addCheck("reset button is present", Boolean(resetButton));
       addCheck("demo solve button is present", Boolean(demoButton));
+      addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");

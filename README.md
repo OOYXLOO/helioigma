@@ -78,7 +78,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Judge Path and Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 29 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve, daylight meter, desktop Judge Path, mobile canvas visibility, validates the run receipt, and waits for `smoke.html` to reach 30 PASS checks.
 - `tools/build-demo-webm.mjs`: reproducible video builder for `solstice-cipher-demo.webm`.
 
 ## Public Publishing

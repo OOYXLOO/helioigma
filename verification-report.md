@@ -53,7 +53,7 @@ Expected local URLs:
 ## Browser Checks
 
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
-- Mobile 390x844: no horizontal overflow; phase progress strip wraps cleanly and canvas is visible.
+- Mobile 390x844: no horizontal overflow; phase progress strip stays compact and the canvas begins in the first viewport.
 - Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
@@ -62,11 +62,12 @@ Expected local URLs:
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
 - `proof-verifier.html` recomputes the receipt checksum locally and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 29 PASS assertions:
+- Smoke checks include 30 PASS assertions:
   - canvas present
   - start button present
   - reset button present
   - demo solve button present
+  - daylight meter present
   - start shortcut exposed
   - reset shortcut exposed
   - demo shortcut exposed
@@ -104,7 +105,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, and waits for 29 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, and waits for 30 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates
