@@ -1,8 +1,8 @@
-# Solstice Cipher
+# Helioigma
 
-Solstice Cipher is a small browser puzzle game about balancing daylight, nightfall, and code-breaking. Each round shows a target cipher above a Turing wheel of glyph nodes. Click, tap, or press number keys to rotate their phase before the timer reaches zero.
+Helioigma is a small browser puzzle game about balancing daylight, nightfall, and code-breaking. Each round shows a target cipher above a Turing-inspired solar rotor of glyph nodes. Click, tap, or press number keys to rotate their phase before the timer reaches zero.
 
-Fast judge path: press `Demo Solve` in the live game, watch the short demo, run the smoke test, then verify the stable sample proof `SC-4P-2907-62-Y5VFX1` in the proof verifier.
+Fast judge path: press `Demo Solve` in the live game, watch the short demo, run the smoke test, then verify the stable sample receipt `SC-4P-2907-62-Y5VFX1` in the receipt verifier.
 
 ## How to Play
 
@@ -17,10 +17,10 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 - A static HTML/CSS/JavaScript game.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, node-button, and number-key controls.
-- A `Demo Solve` button that shows the complete four-phase loop without manual play and produces a stable judge proof.
+- A `Demo Solve` button that shows the complete four-phase loop without manual play and produces a stable judge receipt.
 - Multiple timed phases with a visible progress strip and score carry-over.
 - Time pressure, per-signal points, streak bonuses, small time penalties for exploratory shifts, and a final score state after four phases.
-- Four named phases, shift counting, explicit node-control buttons for mobile play, a local best-score readout, a deterministic run proof code, and an end screen that summarizes the run for quick judging.
+- Four named phases, shift counting, explicit node-control buttons for mobile play, a local best-score readout, a deterministic run receipt code, and an end screen that summarizes the run for quick judging.
 - No backend, API key, account integration, or private data.
 
 ## Demo Assets
@@ -47,7 +47,7 @@ The GIF was generated from current local browser screenshots and is the canonica
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 
-Prize-category note: this is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and the proof verifier. It does not claim the Best Google AI Usage category.
+Prize-category note: this is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and the receipt verifier. It does not claim the Best Google AI Usage category.
 
 ## Why It Fits The Theme
 
@@ -57,14 +57,14 @@ The June solstice is the longest day in the northern hemisphere. The game turns 
 
 - Theme relevance: daylight is the timer, nightfall is the fail state, and the win condition is holding the longest day.
 - Creativity: the solstice theme is expressed as a code-breaking wheel rather than a literal calendar demo.
-- Technical execution: one static canvas game with keyboard/touch/node controls, scoring, proof generation, and a smoke test.
-- Optional category: Best Ode to Alan Turing through rotor-like alignment, XOR/binary language, and proof verification.
+- Technical execution: one static canvas game with keyboard/touch/node controls, scoring, receipt generation, and a smoke test.
+- Optional category: Best Ode to Alan Turing through rotor-like alignment, XOR/binary language, and receipt verification.
 
 ## Technical Notes
 
-The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards time-weighted score, with a streak bonus for consecutive solved phases. The final screen reports solved phases, local best score, total shifts, and a copyable run proof code so a judge can tell whether the run was a clean solve or a scrappy late save.
+The game uses a single canvas and deterministic level definitions. The target cipher and player ring are arrays of phase values. Matching all phase values advances the game and awards time-weighted score, with a streak bonus for consecutive solved phases. The final screen reports solved phases, local best score, total shifts, and a copyable run receipt code so a judge can tell whether the run was a clean solve or a scrappy late save.
 
-This is a new static game package for the jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package for review.
+This is a new static game package for the jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, smoke test, screenshots, demo media, and MIT license are included with the source package for review.
 
 ## Next
 

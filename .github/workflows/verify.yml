@@ -1,4 +1,4 @@
-name: Verify Solstice Cipher
+name: Verify Helioigma
 
 on:
   push:
@@ -22,6 +22,7 @@ jobs:
             index.html \
             styles.css \
             game.js \
+            LICENSE \
             judge.html \
             judge-manifest.json \
             smoke.html \
@@ -53,8 +54,12 @@ jobs:
         run: |
           set -euo pipefail
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
+          grep -q "Helioigma" dev-article-final.md
+          grep -q "solar rotor" dev-article-final.md
           grep -q "solstice-cipher-demo.gif" dev-article-final.md
           grep -q "solstice-cipher-demo.webm" dev-article-final.md
+          grep -q "Helioigma four-phase demo solve" dev-article-final.md
+          grep -q "MIT license for the game package" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
@@ -71,6 +76,7 @@ jobs:
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
+          grep -q "Helioigma" dev-submit-console.html
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "judge-manifest.json" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
@@ -78,6 +84,8 @@ jobs:
           grep -q "WebM video" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
+          grep -q "MIT license" README.md
+          grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
 
@@ -86,6 +94,8 @@ jobs:
           set -euo pipefail
           grep -q "solstice-cipher-demo.gif" judge.html
           grep -q "solstice-cipher-demo.webm" judge.html
+          grep -q "Helioigma" judge.html
+          grep -q "Verify Receipt" judge.html
           grep -q "judge-manifest.json" judge.html
           grep -q "Open Manifest" judge.html
           grep -q "Watch Video" judge.html
@@ -102,10 +112,10 @@ jobs:
           grep -q "https://ooyxloo.github.io/solstice-cipher/" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
-          grep -q "Parsed proof facts" proof-verifier.html
+          grep -q "Parsed receipt facts" proof-verifier.html
           grep -q "Valid run receipt" proof-verifier.html
           grep -q "not anti-cheat or identity proof" proof-verifier.html
-          grep -q "parsed proof facts" verification-report.md
+          grep -q "parsed receipt facts" verification-report.md
           grep -q "solstice-cipher-demo.webm" verification-report.md
           grep -q "Score variance is expected" verification-report.md
           grep -q "Score variance is expected" verification.html
@@ -121,13 +131,14 @@ jobs:
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
           grep -q "proofSummary" index.html
-          grep -q "Match each numbered ring node" index.html
+          grep -q "Helioigma" index.html
+          grep -q "Decode the solstice rotor" index.html
           grep -q "https://ooyxloo.github.io/solstice-cipher/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "demo solve button is present" smoke.html
           grep -q "judge shortcut links are present" smoke.html
-          grep -q "demo shortcut reaches a deterministic judge proof" smoke.html
+          grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "demo solve releases manual controls" smoke.html
           grep -q "four-phase progress track is present" smoke.html
           grep -q "shift counter records the completed run" smoke.html

@@ -44,7 +44,7 @@ function Invoke-GitCapture {
 
 Push-Location $PSScriptRoot
 try {
-  Write-Output "Solstice Cipher publish-after-repo helper"
+Write-Output "Helioigma publish-after-repo helper"
   Write-Output "Repository: $repoUrl"
   Write-Output "Mode: $(if ($Push) { 'PUSH ENABLED' } else { 'dry run' })"
 

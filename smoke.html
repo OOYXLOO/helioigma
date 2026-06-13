@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Solstice Cipher Smoke Test</title>
+  <title>Helioigma Smoke Test</title>
   <style>
     :root {
       color-scheme: dark;
@@ -102,8 +102,8 @@
 </head>
 <body>
   <main>
-    <h1>Solstice Cipher smoke test</h1>
-    <p>This page runs the real game in an iframe, checks the one-click judge demo proof, then solves all four phases through keyboard controls and checks that the final status reports a completed longest-day solve.</p>
+    <h1>Helioigma smoke test</h1>
+    <p>This page runs the real game in an iframe, checks the one-click judge demo receipt, then solves all four phases through keyboard controls and checks that the final status reports a completed longest-day solve.</p>
     <div id="status" class="status">Running...</div>
 
     <section class="grid">
@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260613-input-polish" title="Solstice Cipher game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260613-input-polish" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -200,23 +200,23 @@
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
-      addCheck("run proof panel is present", Boolean(proofPanel));
-      addCheck("run proof summary is present", Boolean(proofSummary));
+      addCheck("run receipt panel is present", Boolean(proofPanel));
+      addCheck("run receipt summary is present", Boolean(proofSummary));
 
       press(win, "d");
-      await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a proof");
-      addCheck("demo shortcut reaches a deterministic judge proof", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
-      addCheck("demo proof summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
+      await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a receipt");
+      addCheck("demo shortcut reaches a deterministic judge receipt", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
+      addCheck("demo receipt summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
       await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
       addCheck("demo solve releases manual controls", demoButton.disabled === false);
 
       press(win, "r");
       await sleep(120);
-      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("Decode the Turing wheel"));
+      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("Decode the Helioigma rotor"));
 
       startButton.click();
       await sleep(120);
-      addCheck("run starts through the public button", statusLine.textContent.includes("Turing wheel is live"));
+      addCheck("run starts through the public button", statusLine.textContent.includes("Helioigma rotor is live"));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);
@@ -231,8 +231,8 @@
       addCheck("best score records the completed run", Number.isFinite(bestScore) && bestScore >= finalScore);
       addCheck("shift counter records the completed run", Number.isFinite(shiftCount) && shiftCount > 0);
       addCheck("final status reports shift count", finalText.includes("shifts"));
-      addCheck("completion reveals run proof", proofPanel.hidden === false);
-      addCheck("run proof encodes phases, score, shifts, and checksum", /^SC-4P-\d+-\d+-[0-9A-Z]{6}$/.test(proofCode.textContent));
+      addCheck("completion reveals run receipt", proofPanel.hidden === false);
+      addCheck("run receipt encodes phases, score, shifts, and checksum", /^SC-4P-\d+-\d+-[0-9A-Z]{6}$/.test(proofCode.textContent));
 
       status.textContent = `PASS - ${finalText}`;
       status.classList.add("pass");

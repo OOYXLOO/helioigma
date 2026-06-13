@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Solstice Cipher Proof Verifier</title>
+  <title>Helioigma Receipt Verifier</title>
   <style>
     :root {
       color-scheme: dark;
@@ -157,16 +157,16 @@
 </head>
 <body>
   <main>
-    <p class="eyebrow">Run proof verifier</p>
-    <h1>Check a Solstice Cipher completion proof.</h1>
+    <p class="eyebrow">Run receipt verifier</p>
+    <h1>Check a Helioigma completion receipt.</h1>
     <p>Completed runs expose a run receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published scoring formula. The default receipt is the stable one-click Demo Solve result.</p>
 
     <section class="panel">
-      <label for="proofInput">Proof code</label>
+      <label for="proofInput">Receipt code</label>
       <input id="proofInput" value="SC-4P-2907-62-Y5VFX1" spellcheck="false" autocomplete="off">
       <button id="verifyButton" type="button">Verify receipt</button>
       <div id="result" class="result" aria-live="polite"></div>
-      <dl id="proofFacts" class="fact-grid" aria-label="Parsed proof facts"></dl>
+      <dl id="proofFacts" class="fact-grid" aria-label="Parsed receipt facts"></dl>
     </section>
 
     <section class="panel">

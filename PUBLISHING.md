@@ -1,4 +1,4 @@
-# Solstice Cipher Publishing Gate
+# Helioigma Publishing Gate
 
 Purpose: make the DEV June Solstice Game Jam package publishable with minimal human work while keeping account, payout, tax, and identity gates under the account owner's control.
 
@@ -25,7 +25,7 @@ The account owner should create the public GitHub repository, or approve Codex t
 2. Repository owner: `OOYXLOO`
 3. Repository name: `solstice-cipher`
 4. Visibility: public
-5. Do not initialize with README, license, or `.gitignore`
+5. Do not initialize with README, license, or `.gitignore`; this prepared package already includes the tracked README, MIT `LICENSE`, and `.gitignore`
 6. Create repository
 
 After that, run:
@@ -36,7 +36,7 @@ powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push
 ```
 
 Then enable GitHub Pages from `main` / root. If the repository settings page is available, use Settings -> Pages -> Build and deployment -> Deploy from a branch -> `main` -> `/root`.
-After the push, the `Verify Solstice Cipher` workflow should pass before the DEV article is published.
+After the push, the `Verify Helioigma` workflow should pass before the DEV article is published.
 
 ## DEV Post Gate
 
@@ -52,7 +52,7 @@ Do not submit on DEV until the public try link works. Use:
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Judge manifest: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
-- Proof verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
+- Receipt verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/solstice-cipher/`
 - Source link: `https://github.com/OOYXLOO/solstice-cipher`
 
@@ -62,19 +62,19 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 
 - [ ] `node --check game.js`
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
-- [ ] GitHub Actions `Verify Solstice Cipher` passes after the public push.
+- [ ] GitHub Actions `Verify Helioigma` passes after the public push.
 - [ ] Desktop browser check has no console errors or horizontal overflow.
 - [ ] 390px mobile browser check has no console errors or horizontal overflow.
 - [ ] Smoke test reports 29 PASS checks.
 - [ ] Keyboard shortcuts work: Enter starts, D runs Demo Solve, R/Escape resets, and number keys rotate matching nodes.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
-- [ ] Public judge manifest returns HTTP 200 and records the stable proof `SC-4P-2907-62-Y5VFX1`.
-- [ ] Public proof verifier accepts stable Demo Solve proof `SC-4P-2907-62-Y5VFX1`.
+- [ ] Public judge manifest returns HTTP 200 and records the stable receipt `SC-4P-2907-62-Y5VFX1`.
+- [ ] Public receipt verifier accepts stable Demo Solve receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
 - [ ] Public try link returns HTTP 200.
 - [ ] Public try link starts the game.
-- [ ] Completed public run reveals a copyable `SC-4P-...` run proof.
+- [ ] Completed public run reveals a copyable `SC-4P-...` run receipt.
 - [ ] DEV article uses the official tags: `devchallenge`, `gamechallenge`, `gamedev`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.

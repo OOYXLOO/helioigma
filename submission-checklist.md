@@ -1,4 +1,4 @@
-# Solstice Cipher Submission Checklist
+# Helioigma Submission Checklist
 
 Status: local package is GitHub Pages-ready. Not published and not submitted.
 
@@ -8,9 +8,9 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - GitHub Pages marker: `.nojekyll`.
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
-- Judge manifest: `judge-manifest.json` with prize target, public links, stable proof receipt, required assets, verification steps, and human gates.
+- Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
-- Run proof verifier: `proof-verifier.html` with parsed proof facts.
+- Run receipt verifier: `proof-verifier.html` with parsed receipt facts.
 - Phase progress strip, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
@@ -20,6 +20,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
+- License: `LICENSE`.
 - Desktop screenshot: `desktop-check-v5.png`.
 - Mobile screenshot: `mobile-check-v6.png`.
 - Completion screenshot: `desktop-complete-v4.png`.
@@ -38,20 +39,20 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
-- First-screen rule: visible text explains that the player should match each numbered ring node to the target glyph before time runs out.
-- Demo Solve: visible in the controls row and completes the loop to stable proof `SC-4P-2907-62-Y5VFX1` during browser verification.
+- First-screen rule: visible text explains that the player should decode the solstice rotor by matching each numbered node to the target glyph before nightfall.
+- Demo Solve: visible in the controls row and completes the loop to stable receipt `SC-4P-2907-62-Y5VFX1` during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
-- Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run proof.
-- Proof verifier check: `proof-verifier.html` accepts stable demo proof `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 29 expected smoke checks, and stable proof `SC-4P-2907-62-Y5VFX1`.
+- Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
+- Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 29 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 
 - Create or approve a public GitHub repository named `OOYXLOO/solstice-cipher`.
   - Fast path: `https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public`
-  - Keep it empty: no README, no license, no `.gitignore`.
+- Keep it empty: no README, no license template, no `.gitignore`; the prepared package already includes the tracked `README.md`, MIT `LICENSE`, and `.gitignore`.
 - Push the prepared local `main` branch to that repository.
-- Confirm GitHub Actions `Verify Solstice Cipher` passes after push.
+- Confirm GitHub Actions `Verify Helioigma` passes after push.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.

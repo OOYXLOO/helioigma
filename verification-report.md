@@ -1,4 +1,4 @@
-# Solstice Cipher Verification Report
+# Helioigma Verification Report
 
 Generated for the local DEV June Solstice Game Jam package on 2026-06-13.
 
@@ -56,11 +56,11 @@ Expected local URLs:
 - Mobile 390x844: no horizontal overflow; phase progress strip wraps cleanly and canvas is visible.
 - Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
-- Stable Demo Solve proof: `SC-4P-2907-62-Y5VFX1`
-- Keyboard smoke proof format: `SC-4P-score-shifts-checksum`
+- Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
+- Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2893, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
-- `proof-verifier.html` recomputes the proof checksum locally and shows parsed proof facts for phases, score, shifts, and expected checksum.
+- `proof-verifier.html` recomputes the receipt checksum locally and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 29 PASS assertions:
   - canvas present
@@ -78,9 +78,9 @@ Expected local URLs:
   - best score label present
   - shift counter present
   - four-phase progress track present
-  - run proof panel and summary present
-  - stable demo proof matches `SC-4P-2907-62-Y5VFX1`
-  - demo proof summary reports score and shifts
+  - run receipt panel and summary present
+  - stable demo receipt matches `SC-4P-2907-62-Y5VFX1`
+  - demo receipt summary reports score and shifts
   - demo solve releases manual controls
   - run starts through public button
   - four phases reach final state
@@ -88,8 +88,8 @@ Expected local URLs:
   - local best score records the completed run
   - shift counter records the completed run
   - final status reports shift count
-  - run proof is visible
-  - run proof matches `SC-4P-...`
+  - run receipt is visible
+  - run receipt matches `SC-4P-...`
 
 ## GitHub Actions Preflight
 
@@ -101,9 +101,9 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - current WebM video and GIF fallback references
 - intended public play URL
 - judge page current WebM/GIF links
-- smoke proof pattern
-- proof verifier page and stable demo checksum copy
-- proof verifier parsed proof facts
+- smoke receipt pattern
+- receipt verifier page and stable demo checksum copy
+- receipt verifier parsed receipt facts
 - browser smoke script that opens the real pages, checks the WebM video response, and waits for 29 PASS checks
 - reproducible WebM demo builder and WebM media link
 

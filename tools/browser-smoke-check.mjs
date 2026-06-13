@@ -100,7 +100,7 @@ async function main() {
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
-    assert(desktop.judgePathCards.join("|") === "1. Play|2. Demo Solve|3. Verify", "Judge path cards changed");
+    assert(desktop.judgePathCards.join("|") === "1. Play|2. Rotor Trace|3. Receipt", "Judge path cards changed");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
@@ -131,14 +131,14 @@ async function main() {
     assert(!judge.hasPublishAssistant, "judge page exposes Publish Assistant");
     assert(judge.actions.includes("Watch Video"), "judge page is missing video action");
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
-    assert(judge.actions.includes("Verify Proof"), "judge page is missing verifier action");
+    assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
     assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");
     assert((manifestResponse.headers()["content-type"] || "").includes("application/json"), "judge manifest did not return application/json");
     const manifest = JSON.parse(await page.textContent("body"));
-    assert(manifest.project === "Solstice Cipher", "judge manifest project changed");
+    assert(manifest.project === "Helioigma", "judge manifest project changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");

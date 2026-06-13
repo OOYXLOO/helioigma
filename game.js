@@ -19,7 +19,7 @@
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
-  const phaseNames = ["First light", "Meridian lock", "Blue-hour carry", "Nightfall proof"];
+  const phaseNames = ["Rotor dawn", "XOR meridian", "Carry twilight", "Checksum night"];
   const bestScoreKey = "solstice-cipher-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
@@ -45,7 +45,7 @@
     particles: [],
     lastTick: 0,
     demoing: false,
-    message: "Decode the Turing wheel before nightfall.",
+    message: "Decode the Helioigma rotor before nightfall.",
   };
 
   function loadBestScore() {
@@ -92,7 +92,7 @@
     state.ring = state.target.map((value, i) => (value + 1 + (i % 3)) % glyphs.length);
     state.timeLeft = level.seconds;
     state.finalProof = "";
-    state.message = index === 0 ? "Decode the Turing wheel before nightfall." : `${phaseNames[index]} unlocked.`;
+    state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
   }
 
@@ -112,7 +112,7 @@
       proofCode.textContent = state.finalProof;
       if (proofSummary) {
         proofSummary.textContent = state.finalProof
-          ? `Verified loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts.`
+      ? `Receipt loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts.`
           : "";
       }
       copyProofButton.disabled = !state.finalProof;
@@ -257,10 +257,10 @@
     ctx.font = `700 ${Math.max(14, w * 0.018)}px ui-sans-serif, system-ui`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("TURING TARGET CIPHER", cx, Math.max(34, topBand * 0.33));
+    ctx.fillText("HELIOIGMA TARGET ROTOR", cx, Math.max(34, topBand * 0.33));
     ctx.fillStyle = "rgba(174,184,197,0.92)";
     ctx.font = `700 ${Math.max(12, w * 0.014)}px ui-sans-serif, system-ui`;
-    ctx.fillText((phaseNames[state.level] || "Solstice proof").toUpperCase(), cx, Math.max(52, topBand * 0.48));
+    ctx.fillText((phaseNames[state.level] || "Solstice receipt").toUpperCase(), cx, Math.max(52, topBand * 0.48));
 
     const targetGap = Math.min(72, (w * 0.76) / Math.max(1, state.target.length - 1));
     const targetY = Math.max(70, topBand * 0.72);
@@ -383,7 +383,7 @@
     ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.16);
     ctx.fillStyle = "rgba(174,184,197,0.78)";
     ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
-    ctx.fillText(`Proof ${state.finalProof}`, cx, cy + ringRadius * 0.29);
+    ctx.fillText(`Receipt ${state.finalProof}`, cx, cy + ringRadius * 0.29);
     ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.41);
     ctx.restore();
   }
@@ -459,7 +459,7 @@
         state.running = false;
         state.streak = 0;
         state.timeLeft = 0;
-        state.message = "Nightfall sealed the Turing wheel.";
+      state.message = "Nightfall sealed the Helioigma rotor.";
       }
       updateHud();
     }
@@ -481,7 +481,7 @@
     state.particles = [];
     state.lastTick = 0;
     seedLevel(0);
-    state.message = "Turing wheel is live.";
+    state.message = "Helioigma rotor is live.";
     updateHud();
   }
 
@@ -497,7 +497,7 @@
     state.finalProof = "";
     state.particles = [];
     seedLevel(0);
-    state.message = "Decode the Turing wheel before nightfall.";
+    state.message = "Decode the Helioigma rotor before nightfall.";
     updateHud();
     draw();
   }

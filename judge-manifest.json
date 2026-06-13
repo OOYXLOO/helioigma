@@ -1,5 +1,5 @@
 {
-  "project": "Solstice Cipher",
+  "project": "Helioigma",
   "challenge": {
     "name": "DEV June Solstice Game Jam",
     "challenge_url": "https://dev.to/challenges/june-game-jam-2026-06-03",
@@ -32,6 +32,7 @@
     "verification.html",
     "verification-report.md",
     "dev-article-final.md",
+    "LICENSE",
     "cover.png",
     "solstice-cipher-demo.webm",
     "solstice-cipher-demo.gif",

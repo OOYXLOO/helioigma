@@ -72,6 +72,7 @@ try {
     "index.html",
     "styles.css",
     "game.js",
+    "LICENSE",
     "judge.html",
     "judge-manifest.json",
     "smoke.html",
@@ -117,7 +118,7 @@ try {
   Assert-WebmSignature "solstice-cipher-demo.webm"
 
   $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
-  if ($manifest.project -ne "Solstice Cipher") { throw "judge-manifest project mismatch" }
+  if ($manifest.project -ne "Helioigma") { throw "judge-manifest project mismatch" }
   if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
@@ -139,6 +140,8 @@ try {
   Assert-Contains "dev-article-final.md" "judge-manifest.json"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
+  Assert-Contains "dev-article-final.md" "Helioigma"
+  Assert-Contains "dev-article-final.md" "solar rotor"
   Assert-Contains "dev-article-final.md" "I chose a cipher wheel"
   Assert-Contains "dev-article-final.md" "biggest tradeoff"
   Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
@@ -146,7 +149,10 @@ try {
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm"
+  Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
+  Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
+  Assert-Contains "dev-submit-console.html" "Helioigma"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
   Assert-Contains "dev-submit-console.html" "judge-manifest.json"
@@ -156,6 +162,8 @@ try {
   Assert-Contains "dev-submit-console.html" "WebM video"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
+  Assert-Contains "README.md" "MIT license"
+  Assert-Contains "LICENSE" "MIT License"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
@@ -177,6 +185,8 @@ try {
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
+  Assert-Contains "judge.html" "Helioigma"
+  Assert-Contains "judge.html" "Verify Receipt"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
   Assert-Contains "judge.html" "solstice-cipher-demo.webm"
   Assert-Contains "judge.html" "Run Receipt"
@@ -189,11 +199,12 @@ try {
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
   Assert-Contains "index.html" "1. Play"
-  Assert-Contains "index.html" "2. Demo Solve"
-  Assert-Contains "index.html" "3. Verify"
+  Assert-Contains "index.html" "2. Rotor Trace"
+  Assert-Contains "index.html" "3. Receipt"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "proofSummary"
-  Assert-Contains "index.html" "Match each numbered ring node"
+  Assert-Contains "index.html" "Helioigma"
+  Assert-Contains "index.html" "Decode the solstice rotor"
   Assert-Contains "index.html" "https://ooyxloo.github.io/solstice-cipher/cover.png"
   Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
@@ -201,7 +212,7 @@ try {
   Assert-Contains "smoke.html" "first-phase node buttons are present"
   Assert-Contains "smoke.html" "first-screen judge path is present"
   Assert-Contains "smoke.html" "demo solve button is present"
-  Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge proof"
+  Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
   Assert-Contains "smoke.html" "judge shortcut links are present"
   Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
@@ -210,12 +221,12 @@ try {
   Assert-Contains "smoke.html" "shift counter records the completed run"
   Assert-Contains "proof-verifier.html" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "proof-verifier.html" "proofFacts"
-  Assert-Contains "proof-verifier.html" "Parsed proof facts"
+  Assert-Contains "proof-verifier.html" "Parsed receipt facts"
   Assert-Contains "proof-verifier.html" "Checksum"
   Assert-Contains "proof-verifier.html" "Valid run receipt"
   Assert-Contains "proof-verifier.html" "not anti-cheat or identity proof"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
-  Assert-Contains "verification-report.md" "parsed proof facts"
+  Assert-Contains "verification-report.md" "parsed receipt facts"
   Assert-Contains "verification-report.md" "Score variance is expected"
   Assert-Contains "verification.html" "Score variance is expected"
   Assert-Contains "verification.html" "solstice-cipher-demo.webm"
@@ -248,7 +259,7 @@ try {
     }
   }
 
-  Write-Output "PASS Solstice Cipher preflight"
+  Write-Output "PASS Helioigma preflight"
 } finally {
   Pop-Location
 }

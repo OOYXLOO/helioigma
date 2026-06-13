@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Solstice Cipher DEV Submit Console</title>
+  <title>Helioigma DEV Submit Console</title>
   <style>
     :root {
       color-scheme: light;
@@ -69,7 +69,7 @@
 <body>
   <main>
     <p class="eyebrow">DEV June Solstice Game Jam final post console</p>
-    <h1>Solstice Cipher is ready to publish after the public hosting gate.</h1>
+    <h1>Helioigma is ready to publish after the public hosting gate.</h1>
     <p class="dek">Use this page after the GitHub repository and GitHub Pages try link are live. It keeps the DEV post short, consistent, and honest: no public URL, no DEV submit.</p>
     <p class="dek"><strong>No-go gate:</strong> publish only after <code>powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public</code> confirms the public play link, source repo, judge page, smoke page, proof verifier, WebM video, and GIF fallback are live.</p>
 
@@ -82,7 +82,7 @@
     <section class="grid">
       <div class="panel">
         <div class="copy-row"><h2>Title</h2><button type="button" data-copy="title">Copy</button></div>
-        <textarea id="title" class="short" readonly>Solstice Cipher: a Turing-wheel puzzle for holding the longest day</textarea>
+        <textarea id="title" class="short" readonly>Helioigma: a Turing-wheel puzzle for holding the longest day</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Tags</h2><button type="button" data-copy="tags">Copy</button></div>
@@ -90,24 +90,24 @@
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Opening</h2><button type="button" data-copy="opening">Copy</button></div>
-<textarea id="opening" readonly>Solstice Cipher is a small browser puzzle for the June Solstice Game Jam. You rotate a Turing-inspired ring of sun, XOR, light, and binary glyphs to match each target cipher before nightfall.
+<textarea id="opening" readonly>Helioigma is a small browser puzzle for the June Solstice Game Jam. You rotate a Turing-inspired solar rotor of sun, XOR, light, and binary glyphs to match each target cipher before nightfall.
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference.
 
-The game is intentionally compact: a visible four-phase progress strip, keyboard, touch, node-button controls, one-click Demo Solve with a stable proof, streak scoring, a local best score, and a deterministic run proof at the end.</textarea>
+The game is intentionally compact: a visible four-phase progress strip, keyboard, touch, node-button controls, one-click Demo Solve with a stable receipt, streak scoring, a local best score, and a deterministic run receipt at the end.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Prize Category</h2><button type="button" data-copy="category">Copy</button></div>
-        <textarea id="category" readonly>This submission is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and a local proof verifier. It does not claim the Best Google AI Usage category.</textarea>
+        <textarea id="category" readonly>This submission is aimed at the Best Ode to Alan Turing category through code-breaking mechanics, rotor-like alignment, binary/XOR language, and a local receipt verifier. It does not claim the Best Google AI Usage category.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Judge in 60 Seconds</h2><button type="button" data-copy="judgepath">Copy</button></div>
         <textarea id="judgepath" readonly>If you are judging in a hurry:
-1. Open the play link and press Demo Solve for the full loop and stable proof SC-4P-2907-62-Y5VFX1, or press Start to play manually.
+1. Open the play link and press Demo Solve for the full loop and stable receipt SC-4P-2907-62-Y5VFX1, or press Start to play manually.
 2. Watch the current WebM video or GIF fallback.
 3. Run smoke.html to see the game solve all four phases automatically.
-4. Open judge-manifest.json for the machine-readable prize target, proof receipt, public links, and human gate summary.
-5. Paste the sample proof into proof-verifier.html to confirm the checksum loop.</textarea>
+4. Open judge-manifest.json for the machine-readable prize target, run receipt, public links, and human gate summary.
+5. Paste the sample receipt into proof-verifier.html to confirm the checksum loop.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Try Links</h2><button type="button" data-copy="links">Copy</button></div>
@@ -124,8 +124,8 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 - Four named phases with a visible progress strip, score carry-over, streak bonuses, and shift counting.
 - Explicit node-control buttons for mobile and accessibility-friendly play.
 - One-click Demo Solve for judges who want to see the full loop immediately.
-- A finale screen with final score, local best score, solved phase count, total shifts, and copyable run proof.
-- A judge page, smoke test, and proof verifier with parsed proof facts so reviewers can verify the full loop quickly.
+- A finale screen with final score, local best score, solved phase count, total shifts, and copyable run receipt.
+- A judge page, smoke test, and receipt verifier with parsed receipt facts so reviewers can verify the full loop quickly.
 - DEV-ready media: cover image, current WebM video, GIF fallback, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
       </div>
       <div class="panel">
@@ -135,30 +135,31 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 Key files:
 - index.html: playable game shell and first-screen judge path.
 - styles.css: responsive game UI.
-- game.js: deterministic levels, canvas rendering, controls, scoring, proof generation, and Demo Solve.
-- proof-verifier.html: local proof checksum verifier.
+- game.js: deterministic levels, canvas rendering, controls, scoring, receipt generation, and Demo Solve.
+- proof-verifier.html: local receipt checksum verifier.
 - smoke.html: browser smoke test that solves the public game path in an iframe.
 - judge.html: one-page review hub.
-- judge-manifest.json: machine-readable judge manifest for the prize target, public links, stable proof receipt, media, verification steps, and human gates.</textarea>
+- judge-manifest.json: machine-readable judge manifest for the prize target, public links, stable run receipt, media, verification steps, and human gates.
+- LICENSE: MIT license for the game package.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>How I Built It</h2><button type="button" data-copy="howbuilt">Copy</button></div>
-        <textarea id="howbuilt" readonly>I built Solstice Cipher as a no-backend canvas game so the public demo can run from GitHub Pages. Each phase has a deterministic target array; the player ring starts offset from that target, and every click, tap, keypress, or node button rotates one node through SOL, XOR, LUX, and BIN states.
+        <textarea id="howbuilt" readonly>I built Helioigma as a no-backend canvas game so the public demo can run from GitHub Pages. Each phase has a deterministic target array; the player ring starts offset from that target, and every click, tap, keypress, or node button rotates one node through SOL, XOR, LUX, and BIN states.
 
-The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during Demo Solve so judges get the same stable proof every time. Completed runs generate a reproducible checksum from solstice|4|score|shifts|4. The verifier recomputes that checksum in the browser and displays the parsed proof facts.
+The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during Demo Solve so judges get the same stable receipt every time. Completed runs generate a reproducible checksum from solstice|4|score|shifts|4. The verifier recomputes that checksum in the browser and displays the parsed receipt facts.
 
-The biggest tradeoff was keeping the canvas interaction playful while making the review path deterministic. Manual play keeps the live timer and normal keyboard/touch controls, but Demo Solve pauses timer drift and uses the same node-rotation path, so the judge can inspect one stable run without a hidden test mode.</textarea>
+The biggest tradeoff was keeping the canvas interaction playful while making the review path deterministic. Manual play keeps the live timer and normal keyboard/touch controls, but Demo Solve pauses timer drift and uses the same node-rotation path, so the judge can inspect one stable run receipt without a hidden test mode.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Rubric Fit</h2><button type="button" data-copy="rubric">Copy</button></div>
         <textarea id="rubric" readonly>- Theme relevance: daylight is the timer, nightfall is the fail state, and the win condition is holding the longest day.
 - Creativity: the solstice theme is expressed as a code-breaking wheel rather than a literal calendar demo.
-- Technical execution: one static canvas game with keyboard/touch/node controls, scoring, proof generation, and a smoke test.
-- Optional category: Best Ode to Alan Turing through rotor-like alignment, XOR/binary language, and proof verification.</textarea>
+- Technical execution: one static canvas game with keyboard/touch/node controls, scoring, receipt generation, and a smoke test.
+- Optional category: Best Ode to Alan Turing through rotor-like alignment, XOR/binary language, and receipt verification.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Originality Note</h2><button type="button" data-copy="originality">Copy</button></div>
-        <textarea id="originality" readonly>This is a new static game package for the jam period, not a wrapper around a prior game template. The gameplay code, proof verifier, judge page, smoke test, screenshots, and demo media are included with the source package for review.</textarea>
+        <textarea id="originality" readonly>This is a new static game package for the jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, smoke test, screenshots, demo media, and MIT license are included with the source package for review.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Media Order</h2><button type="button" data-copy="media">Copy</button></div>
@@ -177,11 +178,12 @@ The biggest tradeoff was keeping the canvas interaction playful while making the
 - /judge.html and /smoke.html return HTTP 200.
 - /proof-verifier.html, /judge-manifest.json, /solstice-cipher-demo.webm, and /solstice-cipher-demo.gif return HTTP 200.
 - smoke.html shows all PASS checks.
-- Demo Solve completes the full loop and reveals a run proof.
+- Demo Solve completes the full loop and reveals a run receipt.
 - The live page shows node-control buttons below the canvas.
 - DEV post uses tags: devchallenge, gamechallenge, gamedev.
 - DEV post includes the play link, source link, public cover image, current WebM video, GIF fallback, and screenshots.
 - DEV post mentions the only browser storage is a local numeric best score key.
+- Source package includes the MIT LICENSE file.
 - No password, token, payout, tax, KYC, or private account data is included.</textarea>
       </div>
       <div class="panel danger">
