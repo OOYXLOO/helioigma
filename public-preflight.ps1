@@ -273,6 +273,8 @@ try {
   Assert-Contains "judge.html" "Judge-verifiable"
   Assert-Contains "judge.html" "Finished surface"
   Assert-Contains "judge.html" "Primary judge actions"
+  Assert-Contains "judge.html" "Play First."
+  Assert-Contains "judge.html" "tactile node pulse"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
   Assert-Contains "judge.html" "Verify the browser path reaches 54 checks"

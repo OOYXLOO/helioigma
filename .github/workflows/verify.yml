@@ -138,6 +138,8 @@ jobs:
           grep -q "Judge-verifiable" judge.html
           grep -q "Finished surface" judge.html
           grep -q "Primary judge actions" judge.html
+          grep -q "Play First." judge.html
+          grep -q "tactile node pulse" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
           grep -q "Verify the browser path reaches 54 checks" judge.html

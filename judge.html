@@ -155,7 +155,7 @@
 
     .review-flow ol {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
       gap: 10px;
       margin: 0;
       padding: 0;
@@ -314,10 +314,11 @@
       </div>
       <div class="review-focus">
         <section class="primary-actions" aria-label="Primary judge actions">
+          <a class="action primary" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch buttons, Hint, tactile node pulses, stable Demo Solve, and number-key controls.</span></a>
           <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Open the playable page with the deterministic Demo Solve route already running.</span></a>
-          <a class="action primary" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch buttons, Hint, stable Demo Solve, and number-key controls.</span></a>
         </section>
         <ol>
+          <li><strong>Play First.</strong><span>Try one manual phase with the Hint button, tactile node pulse, target glyphs, and keyboard/touch controls.</span></li>
           <li><strong>Open Auto Demo.</strong><span>Watch the playable page complete all four phases and produce receipt <code>SC-4P-2907-62-Y5VFX1</code>.</span></li>
           <li><strong>Run Smoke Test.</strong><span>Verify the browser path reaches 54 checks, including phase objective strip, phase announcer, Rotor Trace, phase ledger, Judge run summary, and receipt link coverage.</span></li>
           <li><strong>Verify Receipt.</strong><span>Open the receipt verifier to recompute the checksum and inspect phases, score, shifts, and suffix.</span></li>

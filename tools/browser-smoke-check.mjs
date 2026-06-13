@@ -207,6 +207,7 @@ async function main() {
       actions: [...document.querySelectorAll(".action strong")].map((node) => node.textContent.trim()),
       primaryActions: [...document.querySelectorAll(".primary-actions .action strong")].map((node) => node.textContent.trim()),
       evidenceActions: [...document.querySelectorAll(".evidence-actions .action strong")].map((node) => node.textContent.trim()),
+      reviewSteps: [...document.querySelectorAll(".review-flow ol strong")].map((node) => node.textContent.trim()),
       primaryInsideReview: Boolean(document.querySelector(".review-flow .primary-actions")),
       reviewBeforeEvidence: Boolean(
         document.querySelector(".review-flow") &&
@@ -247,7 +248,8 @@ async function main() {
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
-    assert(judge.primaryActions.join("|") === "Auto Demo|Play", "judge page primary actions are not focused on Auto Demo and Play");
+    assert(judge.primaryActions.join("|") === "Play|Auto Demo", "judge page primary actions should lead with Play before Auto Demo");
+    assert(judge.reviewSteps.join("|") === "Play First.|Open Auto Demo.|Run Smoke Test.|Verify Receipt.|Check Source.", "judge review steps changed");
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
