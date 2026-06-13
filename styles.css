@@ -672,6 +672,25 @@ button:focus-visible {
   color: var(--accent);
 }
 
+.node-button.recent {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(139, 211, 255, 0.12);
+}
+
+.node-button.recent .node-index {
+  border-color: rgba(139, 211, 255, 0.72);
+  background: rgba(139, 211, 255, 0.14);
+}
+
+.node-button.recent-locked {
+  box-shadow: 0 10px 24px rgba(184, 242, 200, 0.12);
+}
+
+.node-button.recent-locked .node-index {
+  border-color: rgba(184, 242, 200, 0.72);
+  background: rgba(184, 242, 200, 0.14);
+}
+
 .node-button:disabled {
   cursor: default;
   opacity: 0.72;

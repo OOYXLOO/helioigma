@@ -71,6 +71,9 @@
     lastTick: 0,
     demoing: false,
     hintedIndex: -1,
+    recentIndex: -1,
+    recentLife: 0,
+    recentLocked: false,
     phaseBanner: { title: "", detail: "", life: 0 },
     lastAction: "Awaiting start.",
     message: "Decode the Helioigma rotor before nightfall.",
@@ -126,6 +129,9 @@
     state.timeLeft = level.seconds;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.recentIndex = -1;
+    state.recentLife = 0;
+    state.recentLocked = false;
     if (state.running) {
       showPhaseBanner(index);
     }
@@ -320,6 +326,8 @@
       button.disabled = !state.running || state.complete || state.demoing;
       button.classList.toggle("locked", locked);
       button.classList.toggle("hinted", index === state.hintedIndex && !locked);
+      button.classList.toggle("recent", index === state.recentIndex && state.recentLife > 0);
+      button.classList.toggle("recent-locked", index === state.recentIndex && state.recentLife > 0 && state.recentLocked);
       button.setAttribute(
         "aria-label",
         `Rotate node ${index + 1}; current ${glyphs[value]}; target ${glyphs[targetValue]}`
@@ -463,6 +471,18 @@
         ctx.setLineDash([8, 6]);
         ctx.beginPath();
         ctx.arc(x, y, nodeRadius + 9, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      if (i === state.recentIndex && state.recentLife > 0) {
+        const pulse = Math.max(0, Math.min(1, state.recentLife / 0.55));
+        ctx.save();
+        ctx.globalAlpha = 0.18 + pulse * 0.42;
+        ctx.strokeStyle = state.recentLocked ? "rgba(184,242,200,0.94)" : "rgba(139,211,255,0.9)";
+        ctx.lineWidth = state.recentLocked ? 5 : 4;
+        ctx.beginPath();
+        ctx.arc(x, y, nodeRadius + 7 + (1 - pulse) * 18, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
       }
@@ -649,11 +669,19 @@
     } else {
       state.timeLeft = Math.max(0, state.timeLeft - 0.45);
     }
+    state.recentIndex = index;
+    state.recentLife = 0.55;
+    state.recentLocked = locked;
     burst(px, py, palette[state.ring[index]]);
     state.lastAction = locked
       ? `Node ${index + 1} locked at ${glyphs[state.ring[index]]}.`
       : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}.`;
-    state.message = locked ? `Signal ${index + 1} locked.` : `Phase ${index + 1} shifted.`;
+    const nextMismatch = state.ring.findIndex((value, i) => value !== state.target[i]);
+    state.message = locked
+      ? nextMismatch === -1
+        ? "All signals aligned; sealing phase."
+        : `Signal ${index + 1} locked. Next mismatch: node ${nextMismatch + 1} -> ${glyphs[state.target[nextMismatch]]}.`
+      : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}.`;
     updateHud();
     checkWin();
     draw();
@@ -669,6 +697,9 @@
       return;
     }
     state.hintedIndex = index;
+    state.recentIndex = index;
+    state.recentLife = 0.55;
+    state.recentLocked = false;
     state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}.`;
     state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
     updateHud();
@@ -689,6 +720,13 @@
     state.particles = state.particles.filter((particle) => particle.life > 0);
     if (state.phaseBanner.life > 0) {
       state.phaseBanner.life = Math.max(0, state.phaseBanner.life - delta);
+    }
+    if (state.recentLife > 0) {
+      state.recentLife = Math.max(0, state.recentLife - delta);
+      if (state.recentLife === 0) {
+        state.recentIndex = -1;
+        state.recentLocked = false;
+      }
     }
 
     if (state.running && !state.demoing) {
@@ -717,6 +755,9 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.recentIndex = -1;
+    state.recentLife = 0;
+    state.recentLocked = false;
     state.phaseBanner = { title: "", detail: "", life: 0 };
     state.ledger = [];
     state.lastAction = "Run started. Align the first visible mismatch.";
@@ -738,6 +779,9 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.recentIndex = -1;
+    state.recentLife = 0;
+    state.recentLocked = false;
     state.phaseBanner = { title: "", detail: "", life: 0 };
     state.ledger = [];
     state.lastAction = "Awaiting start.";

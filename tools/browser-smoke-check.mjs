@@ -147,6 +147,29 @@ async function main() {
     assert(desktop.judgeLinks.includes("Auto demo"), "first screen does not link the auto demo route");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
 
+    await page.click("#startButton");
+    await page.click("#hintButton");
+    const hintPulse = await page.evaluate(() => ({
+      status: document.querySelector("#statusLine")?.textContent.trim(),
+      hinted: Boolean(document.querySelector("#nodeButtons .node-button.hinted")),
+      recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
+      traceLast: document.querySelector("#traceLast")?.textContent.trim(),
+    }));
+    assert(hintPulse.status === "Hint: rotate node 1 toward SOL.", "hint status no longer gives a clear target");
+    assert(hintPulse.hinted && hintPulse.recent, "hint does not create a visible tactile node pulse");
+    assert(hintPulse.traceLast === "Hint node 1: target SOL.", "hint trace does not name the target node");
+
+    await page.keyboard.press("1");
+    const shiftPulse = await page.evaluate(() => ({
+      status: document.querySelector("#statusLine")?.textContent.trim(),
+      recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
+      recentLocked: Boolean(document.querySelector("#nodeButtons .node-button.recent-locked")),
+      traceLast: document.querySelector("#traceLast")?.textContent.trim(),
+    }));
+    assert(shiftPulse.status === "Node 1 shifted to LUX; target SOL.", "manual shift status no longer names current and target glyphs");
+    assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
+    assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
+
     await page.goto(`${baseUrl}?demo=1`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
     await page.waitForFunction(() => document.querySelector("#demoButton")?.disabled === false, { timeout: 5000 });
