@@ -129,12 +129,18 @@ async function main() {
       hasDevConsole: document.body.innerText.includes("DEV Console"),
       hasGif: document.body.innerText.includes("GIF"),
       hasWebm: document.body.innerText.includes("WebM"),
+      hasRunReceiptCopy: document.body.innerText.includes("run receipt"),
+      hasRunProofCopy: document.body.innerText.includes("run proof"),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
+      usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.hasGif, "judge page does not point to the current GIF");
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
+    assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
+    assert(!judge.hasRunProofCopy, "judge page still exposes run proof wording");
+    assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
     assert(!judge.hasPublishAssistant, "judge page exposes Publish Assistant");
     assert(judge.actions.includes("Watch Video"), "judge page is missing video action");
@@ -162,10 +168,12 @@ async function main() {
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
       hasCaveat: document.body.innerText.includes("not anti-cheat or identity proof"),
+      usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
     assert(proof.result === "Valid run receipt: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
+    assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 
     await page.goto(`${baseUrl}smoke.html`, { waitUntil: "domcontentloaded" });

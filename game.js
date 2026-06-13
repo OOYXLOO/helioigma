@@ -629,9 +629,9 @@
     if (!state.finalProof) return;
     try {
       await navigator.clipboard.writeText(state.finalProof);
-      state.message = "Run proof copied.";
+      state.message = "Run receipt copied.";
     } catch {
-      state.message = `Run proof ready: ${state.finalProof}`;
+      state.message = `Run receipt ready: ${state.finalProof}`;
     }
     updateHud();
   });

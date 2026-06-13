@@ -59,7 +59,7 @@ Expected local URLs:
 - Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2893, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
-- Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
+- Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 30 PASS assertions:
