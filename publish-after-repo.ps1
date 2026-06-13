@@ -5,6 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 $repoUrl = "https://github.com/OOYXLOO/solstice-cipher.git"
 $repoPage = "https://github.com/OOYXLOO/solstice-cipher"
+$repoCreateUrl = "https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
 
 function Run {
   param([string]$Command)
@@ -53,6 +54,8 @@ try {
   if ($remoteCheck.ExitCode -ne 0) {
     Write-Output $remoteCheck.Output
     Write-Output "BLOCKED: Public repository is not reachable yet. Create $repoPage first, public, with no README/license/gitignore initialization."
+    Write-Output "Fast create link: $repoCreateUrl"
+    Write-Output "Important: leave README, license, and .gitignore unchecked so this prepared main branch can push cleanly."
     exit 1
   }
 

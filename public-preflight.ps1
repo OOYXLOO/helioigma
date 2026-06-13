@@ -122,6 +122,8 @@ try {
   Assert-Contains "publish-assistant.html" "28 smoke checks"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
+  Assert-Contains "publish-after-repo.ps1" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
+  Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 28 smoke checks"
