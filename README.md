@@ -4,9 +4,9 @@ Static browser game package for the DEV June Solstice Game Jam.
 
 ## Status
 
-- Built locally and prepared as a GitHub Pages-ready package.
-- Public repository, GitHub Pages, and DEV submission are account-owner launch gates.
-- The checked-in judge links are the intended public URLs once those gates are complete.
+- GitHub Pages-ready static game package for the submitted public URLs.
+- The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
+- Owner-only publishing helpers are included, but the judge path is the playable game, judge page, smoke test, manifest, media, and receipt verifier.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
 
@@ -24,7 +24,7 @@ http://127.0.0.1:8781/
 
 ## Submission Fit
 
-Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can be hosted on GitHub Pages if the user authorizes public publishing.
+Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can run on GitHub Pages without a backend.
 
 The current build now has a visible four-phase progress strip, a first-screen phase objective strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on Start, a manual `Hint` path, tactile node pulse feedback after hints or shifts, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
@@ -80,13 +80,10 @@ Helioigma is released under the MIT license in `LICENSE`.
 
 ## Judge Receipt
 
-- `judge.html`: one-page judge pack with a 60-second review path, rubric snapshot, play link, smoke-test link, theme fit, and publication boundary.
-- `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and human gates.
+- `judge.html`: one-page judge pack with a 60-second review path, rubric snapshot, play link, smoke-test link, theme fit, and receipt boundary.
+- `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and non-secret boundaries.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, a prefilled sample receipt link, and `?receipt=` deep-link support from completed runs.
-- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
-- `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
-- `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
@@ -104,6 +101,14 @@ Use `PUBLISHING.md` when the account owner is ready to create or approve the pub
 - Auto demo: `https://ooyxloo.github.io/helioigma/?demo=1`
 
 The package includes `.nojekyll` and social metadata so GitHub Pages can serve the game from the repository root.
+
+## Owner Launch Helpers
+
+These files are included for the account owner and are not part of the judge's required review path:
+
+- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
+- `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
+- `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 
 ## Human Gates
 

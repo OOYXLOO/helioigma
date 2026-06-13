@@ -32,8 +32,8 @@
     ]
   },
   "status": {
-    "public_repo_gate": "Account-owner launch gate; confirm with public-preflight.ps1 -Public after GitHub Pages is enabled.",
-    "dev_article_gate": "Account-owner DEV submission gate; publish only after public links pass.",
+    "public_review_surface": "Public review uses the GitHub Pages game, judge page, smoke test, receipt verifier, manifest, source, and media links.",
+    "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used."
   },
@@ -97,11 +97,10 @@
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"
   },
-  "human_gates": [
-    "Create public GitHub repository OOYXLOO/helioigma",
-    "Enable GitHub Pages from main/root",
-    "Run public-preflight.ps1 -Public",
-    "Publish DEV article after public links pass",
-    "Handle any prize, tax, or payout steps personally"
+  "owner_actions_not_automated": [
+    "Public repository and GitHub Pages publication",
+    "DEV article publication",
+    "Public preflight after Pages is live",
+    "Any prize, tax, or payout steps"
   ]
 }

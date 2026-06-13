@@ -110,6 +110,11 @@ jobs:
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
+          grep -q "GitHub Pages-ready static game package" README.md
+          grep -q "Owner-only publishing helpers are included" README.md
+          grep -q "Owner Launch Helpers" README.md
+          ! grep -q "Public repository, GitHub Pages, and DEV submission are account-owner launch gates" README.md
+          ! grep -q "if the user authorizes public publishing" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "Award thesis: Helioigma is a playable ode" README.md
           grep -q "first-move coach on Start" README.md
@@ -168,6 +173,9 @@ jobs:
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
           grep -q "award_thesis" judge-manifest.json
+          grep -q "public_review_surface" judge-manifest.json
+          grep -q "owner_publication_note" judge-manifest.json
+          grep -q "owner_actions_not_automated" judge-manifest.json
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
@@ -268,8 +276,11 @@ jobs:
           npm install --no-save playwright
           npx playwright install --with-deps chromium
 
+      - name: Run browser smoke on committed package
+        run: node tools/browser-smoke-check.mjs
+
       - name: Rebuild demo video
         run: node tools/build-demo-video.mjs
 
-      - name: Run browser smoke
-        run: node tools/browser-smoke-check.mjs
+      - name: Verify rebuilt demo video output
+        run: test -s helioigma-demo.webm

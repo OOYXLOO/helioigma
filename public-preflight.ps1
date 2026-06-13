@@ -131,8 +131,8 @@ try {
   if ($manifest.verification.expected_smoke_checks -ne 56) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
-  if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
-  if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
+  if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
+  if (-not ($manifest.status.owner_publication_note -like "Public hosting and DEV article publication are external publication actions*")) { throw "judge-manifest owner publication note mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
   if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
@@ -221,7 +221,11 @@ try {
   Assert-Contains "dev-submit-console.html" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
-  Assert-Contains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
+  Assert-Contains "README.md" "GitHub Pages-ready static game package"
+  Assert-Contains "README.md" "Owner-only publishing helpers are included"
+  Assert-Contains "README.md" "Owner Launch Helpers"
+  Assert-NotContains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
+  Assert-NotContains "README.md" "if the user authorizes public publishing"
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Award thesis: Helioigma is a playable ode"
@@ -275,6 +279,8 @@ try {
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-demo.webm"
+  Assert-Contains ".github/workflows/verify.yml" "Run browser smoke on committed package"
+  Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt demo video output"
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
   Assert-NotContains ".github/workflows/verify.yml" "solstice-cipher"
@@ -439,8 +445,9 @@ try {
   Assert-Contains "verification.html" "Technical execution"
   Assert-Contains "verification.html" "Turing category"
   Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
-  Assert-Contains "judge-manifest.json" "public_repo_gate"
-  Assert-Contains "judge-manifest.json" "dev_article_gate"
+  Assert-Contains "judge-manifest.json" "public_review_surface"
+  Assert-Contains "judge-manifest.json" "owner_publication_note"
+  Assert-Contains "judge-manifest.json" "owner_actions_not_automated"
   Assert-Contains "judge-manifest.json" "originality"
   Assert-Contains "judge-manifest.json" "template_boundary"
   Assert-Contains "judge-manifest.json" "asset_boundary"
