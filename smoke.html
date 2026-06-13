@@ -199,6 +199,10 @@
       const proofSummary = doc.querySelector("#proofSummary");
       const phaseLedger = doc.querySelector("#phaseLedger");
       const verifyProofLink = doc.querySelector("#verifyProofLink");
+      const judgeRunSummary = doc.querySelector("#judgeRunSummary");
+      const judgeRunSummaryText = doc.querySelector("#judgeRunSummaryText");
+      const judgeRunFacts = doc.querySelector("#judgeRunFacts");
+      const copyRunSummaryButton = doc.querySelector("#copyRunSummaryButton");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
@@ -228,6 +232,8 @@
       addCheck("run receipt summary is present", Boolean(proofSummary));
       addCheck("phase scoring ledger is present", Boolean(phaseLedger));
       addCheck("run receipt verifier link is present", Boolean(verifyProofLink));
+      addCheck("judge run summary is present", Boolean(judgeRunSummary && judgeRunSummaryText && judgeRunFacts));
+      addCheck("copy judge summary button is present", Boolean(copyRunSummaryButton));
 
       press(win, "d");
       await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a receipt");
@@ -235,6 +241,9 @@
       addCheck("demo receipt summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
       addCheck("demo receipt includes four phase ledger entries", phaseLedger.querySelectorAll("li").length === levelLengths.length);
       addCheck("demo receipt verifier link carries the receipt", verifyProofLink.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1");
+      addCheck("demo judge run summary reports phases and score", judgeRunSummaryText.textContent.includes("4/4 solstice phases") && judgeRunSummaryText.textContent.includes("2907 score"));
+      addCheck("demo judge run facts include receipt and Turing fit", judgeRunFacts.textContent.includes("SC-4P-2907-62-Y5VFX1") && judgeRunFacts.textContent.includes("state alignment + checksum reasoning"));
+      addCheck("copy judge summary button is enabled", copyRunSummaryButton.disabled === false);
       await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
       addCheck("demo solve releases manual controls", demoButton.disabled === false);
 

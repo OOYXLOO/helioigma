@@ -22,11 +22,11 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
 - `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
-- `helioigma-demo.gif`: current animated GIF preview ending on the receipt ledger
+- `helioigma-demo.gif`: current animated GIF preview ending on the receipt ledger and Judge run summary
 - `helioigma-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
-- `desktop-complete-v4.png`: completion screenshot with final receipt and phase scoring ledger
+- `desktop-complete-v4.png`: completion screenshot with final receipt, phase scoring ledger, and Judge run summary
 
 ## Local Verification Commands
 
@@ -64,8 +64,8 @@ Expected local URLs:
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
-- The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 49 PASS assertions:
+- The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- Smoke checks include 54 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -89,7 +89,8 @@ Expected local URLs:
   - rotor trace panel present
   - rotor trace reports the first phase
   - run receipt panel and summary present
-  - phase scoring ledger present
+- phase scoring ledger present
+- Judge run summary present and populated
   - stable demo receipt matches `SC-4P-2907-62-Y5VFX1`
   - demo receipt summary reports score and shifts
   - demo receipt includes four phase ledger entries
@@ -130,7 +131,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 49 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 54 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

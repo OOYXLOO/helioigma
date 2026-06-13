@@ -149,12 +149,18 @@ async function main() {
     const autoDemo = await page.evaluate(() => ({
       receipt: document.querySelector("#proofCode")?.textContent.trim(),
       verifyHref: document.querySelector("#verifyProofLink")?.getAttribute("href"),
+      judgeRunSummary: document.querySelector("#judgeRunSummaryText")?.textContent.trim(),
+      judgeRunFacts: document.querySelector("#judgeRunFacts")?.textContent.trim(),
+      copyRunSummaryDisabled: document.querySelector("#copyRunSummaryButton")?.disabled,
       status: document.querySelector("#statusLine")?.textContent.trim(),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     }));
     assert(autoDemo.overflowX === 0, "auto demo route has horizontal overflow");
     assert(autoDemo.receipt === "SC-4P-2907-62-Y5VFX1", "auto demo route did not reach the stable receipt");
     assert(autoDemo.verifyHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "auto demo route did not build a verifier link");
+    assert(autoDemo.judgeRunSummary.includes("4/4 solstice phases") && autoDemo.judgeRunSummary.includes("2907 score"), "auto demo route did not build the judge run summary");
+    assert(autoDemo.judgeRunFacts.includes("state alignment + checksum reasoning"), "auto demo route did not build the judge run facts");
+    assert(autoDemo.copyRunSummaryDisabled === false, "auto demo route did not enable the judge summary copy button");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
     await page.setViewportSize({ width: 390, height: 844 });
@@ -227,7 +233,7 @@ async function main() {
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 49, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 54, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
@@ -269,7 +275,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 49, `expected 49 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 54, `expected 54 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

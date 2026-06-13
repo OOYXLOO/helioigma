@@ -127,7 +127,8 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 49) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 54) { throw "judge-manifest smoke count mismatch" }
+  if (-not ($manifest.proof.judge_run_summary -like "Completion panel includes*")) { throw "judge-manifest judge run summary mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
   if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
@@ -224,7 +225,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "publish-assistant.html" "49 smoke checks"
+  Assert-Contains "publish-assistant.html" "54 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
@@ -244,7 +245,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 49 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 54 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -260,7 +261,7 @@ try {
   Assert-Contains "judge.html" "Primary judge actions"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
-  Assert-Contains "judge.html" "Verify the browser path reaches 49 checks"
+  Assert-Contains "judge.html" "Verify the browser path reaches 54 checks"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
@@ -290,6 +291,10 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "desktop game canvas starts too low"
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
+  Assert-Contains "game.js" "Judge run summary copied."
+  Assert-Contains "index.html" "Judge run summary"
+  Assert-Contains "index.html" "Copy judge summary"
+  Assert-Contains "styles.css" ".judge-run-summary"
   Assert-Contains "game.js" "proof-verifier.html?receipt="
   Assert-Contains "game.js" 'get("demo") === "1"'
   Assert-NotContains "game.js" "Run proof"
@@ -335,6 +340,7 @@ try {
   Assert-Contains "smoke.html" "phase announcer is present"
   Assert-Contains "smoke.html" "phase announcer names the active phase"
   Assert-Contains "smoke.html" "phase scoring ledger is present"
+  Assert-Contains "smoke.html" "judge run summary is present"
   Assert-Contains "smoke.html" "four phase ledger entries"
   Assert-Contains "smoke.html" "rotor trace records hint action"
   Assert-Contains "smoke.html" "first-screen judge path is present"
@@ -362,8 +368,8 @@ try {
   Assert-Contains "proof-verifier.html" "linear-gradient(105deg"
   Assert-NotContains "proof-verifier.html" "radial-gradient"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
-  Assert-Contains "verification-report.md" "completion screenshot with final receipt and phase scoring ledger"
-  Assert-Contains "verification-report.md" "GIF preview ending on the receipt ledger"
+  Assert-Contains "verification-report.md" "completion screenshot with final receipt, phase scoring ledger, and Judge run summary"
+  Assert-Contains "verification-report.md" "GIF preview ending on the receipt ledger and Judge run summary"
   Assert-Contains "verification-report.md" "parsed receipt facts"
   Assert-Contains "verification-report.md" "Score variance is expected"
   Assert-Contains "verification-report.md" "Rubric Snapshot"

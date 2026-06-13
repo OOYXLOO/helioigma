@@ -86,10 +86,11 @@
     "shifts": 62,
     "checksum": "Y5VFX1",
     "verifier": "proof-verifier.html",
+    "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, and Turing fit.",
     "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
   },
   "verification": {
-    "expected_smoke_checks": 49,
+    "expected_smoke_checks": 54,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"

@@ -473,6 +473,55 @@ h1 {
   line-height: 1.35;
 }
 
+.judge-run-summary {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.summary-title {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#judgeRunSummaryText {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.judge-run-facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 5px 10px;
+  margin: 10px 0 0;
+}
+
+.judge-run-facts dt,
+.judge-run-facts dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.judge-run-facts dt {
+  color: var(--muted);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.judge-run-facts dd {
+  color: var(--ink);
+}
+
 .phase-ledger {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -808,6 +857,10 @@ button:focus-visible {
   .proof-panel button,
   .proof-panel .receipt-link {
     width: 100%;
+  }
+
+  .judge-run-facts {
+    grid-template-columns: 1fr;
   }
 
   .phase-ledger {

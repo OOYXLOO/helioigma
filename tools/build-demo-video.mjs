@@ -163,11 +163,12 @@ async function main() {
       "The timer is stabilized so the published judge receipt is reproducible."
     );
     await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    await page.locator("#proofPanel").scrollIntoViewIfNeeded();
 
     await setCaption(
       page,
-      "4/5 - A completed run leaves a local receipt",
-      "SC-4P-2907-62-Y5VFX1 records phases, score, shifts, and a checksum suffix."
+      "4/5 - A completed run leaves a local receipt and judge summary",
+      "SC-4P-2907-62-Y5VFX1 records phases, score, shifts, checksum suffix, and a readable run card."
     );
     await page.waitForTimeout(6500);
 

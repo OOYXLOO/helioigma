@@ -57,7 +57,7 @@ Core features:
 - Short phase banner and screen-reader phase announcer when each phase starts.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
-- Final screen with solved phase count, phase scoring ledger, total shifts, score, and copyable `SC-4P-...` run receipt.
+- Final screen with solved phase count, phase scoring ledger, total shifts, score, copyable `SC-4P-...` run receipt, and a human-readable Judge run summary.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
 - First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
@@ -77,7 +77,7 @@ Public media links:
 3. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
 4. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
 5. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
-6. Completion screenshot with receipt ledger: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
+6. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
 
 ## Code
 
@@ -175,5 +175,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 49 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 49 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 54 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 54 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
