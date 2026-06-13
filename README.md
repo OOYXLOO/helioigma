@@ -62,7 +62,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
-- `desktop-complete-v4.png`: current final-score screenshot with solved phases, best score, and shift count.
+- `desktop-complete-v4.png`: current completion screenshot with final score, run receipt, verifier link, and phase scoring ledger.
 - `solstice-cipher-dev-package.zip`: local review/transfer package containing source files and final media assets.
 
 ## License

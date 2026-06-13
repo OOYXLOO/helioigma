@@ -26,7 +26,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
-- `desktop-complete-v4.png`: completion screenshot
+- `desktop-complete-v4.png`: completion screenshot with final receipt and phase scoring ledger
 
 ## Local Verification Commands
 

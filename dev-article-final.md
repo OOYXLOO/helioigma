@@ -75,7 +75,7 @@ Public media links:
 3. GIF fallback: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 4. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
 5. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
-6. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
+6. Completion screenshot with receipt ledger: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
 
 ## Code
 

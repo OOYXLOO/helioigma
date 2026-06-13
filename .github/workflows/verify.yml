@@ -59,6 +59,7 @@ jobs:
           grep -q "solar rotor" dev-article-final.md
           grep -q "solstice-cipher-demo.gif" dev-article-final.md
           grep -q "solstice-cipher-demo.webm" dev-article-final.md
+          grep -q "Completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
@@ -89,6 +90,7 @@ jobs:
           grep -q "Rotor Trace" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
+          grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
@@ -122,6 +124,7 @@ jobs:
           ! grep -q "DEV Console" judge.html
           ! grep -q "Publish Assistant" judge.html
           grep -q "PASS - Longest day held" verification-report.md
+          grep -q "completion screenshot with final receipt and phase scoring ledger" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" judge-manifest.json
           grep -q "Best Ode to Alan Turing" judge-manifest.json
