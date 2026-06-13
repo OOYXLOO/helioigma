@@ -706,6 +706,17 @@
     draw();
   }
 
+  function cueFirstMove() {
+    const index = state.ring.findIndex((value, i) => value !== state.target[i]);
+    if (index === -1) return;
+    state.hintedIndex = index;
+    state.recentIndex = index;
+    state.recentLife = 0.55;
+    state.recentLocked = false;
+    state.lastAction = `First move cue: node ${index + 1} target ${glyphs[state.target[index]]}.`;
+    state.message = `First move: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
+  }
+
   function tick(time) {
     if (!state.lastTick) state.lastTick = time;
     const delta = Math.min(0.05, (time - state.lastTick) / 1000);
@@ -744,7 +755,8 @@
     requestAnimationFrame(tick);
   }
 
-  function startGame() {
+  function startGame(options = {}) {
+    const { coach = true } = options;
     state.demoing = false;
     state.running = true;
     state.level = 0;
@@ -765,6 +777,9 @@
     state.lastTick = 0;
     seedLevel(0);
     state.message = "Helioigma rotor is live.";
+    if (coach) {
+      cueFirstMove();
+    }
     updateHud();
   }
 
@@ -806,7 +821,7 @@
 
   async function demoSolve() {
     if (state.demoing) return;
-    startGame();
+    startGame({ coach: false });
     state.demoing = true;
     state.lastTick = 0;
     state.message = "Demo solve is tracing the longest day with a stable judge receipt.";

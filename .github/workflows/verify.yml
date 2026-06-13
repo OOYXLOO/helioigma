@@ -110,6 +110,7 @@ jobs:
           grep -q "only browser storage is the local numeric best score key" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "Award thesis: Helioigma is a playable ode" README.md
+          grep -q "first-move coach on Start" README.md
           grep -q "Originality and Review Transparency" README.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" README.md
           grep -q "Rotor Trace" README.md
@@ -226,6 +227,7 @@ jobs:
           grep -q "phase objective strip is present" smoke.html
           grep -q "phase objective names the first phase" smoke.html
           grep -q "phase objective shows target glyphs and alignment" smoke.html
+          grep -q "start button shows the first-move coach" smoke.html
           grep -q "judge shortcut links include the auto demo route" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "run receipt verifier link is present" smoke.html

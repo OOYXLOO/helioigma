@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260614-tactile-pulse" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260614-first-move-coach" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -253,7 +253,7 @@
 
       startButton.click();
       await sleep(120);
-      addCheck("run starts through the public button", statusLine.textContent.includes("Helioigma rotor is live"));
+      addCheck("start button shows the first-move coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
       addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
       press(win, "h");
       await sleep(80);

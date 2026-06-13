@@ -57,7 +57,7 @@ Core features:
 
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
-- Mouse, touch, on-screen buttons, hint, demo-solve, number-key controls, and tactile pulse feedback after hints or shifts.
+- Mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback after hints or shifts.
 - Short phase banner and screen-reader phase announcer when each phase starts.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.

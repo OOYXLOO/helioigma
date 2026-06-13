@@ -148,6 +148,16 @@ async function main() {
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
 
     await page.click("#startButton");
+    const startCoach = await page.evaluate(() => ({
+      status: document.querySelector("#statusLine")?.textContent.trim(),
+      hinted: Boolean(document.querySelector("#nodeButtons .node-button.hinted")),
+      recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
+      traceLast: document.querySelector("#traceLast")?.textContent.trim(),
+    }));
+    assert(startCoach.status === "First move: rotate node 1 toward SOL.", "start button no longer gives a first-move coach");
+    assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
+    assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
+
     await page.click("#hintButton");
     const hintPulse = await page.evaluate(() => ({
       status: document.querySelector("#statusLine")?.textContent.trim(),
