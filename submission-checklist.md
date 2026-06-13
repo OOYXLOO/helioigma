@@ -8,6 +8,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - GitHub Pages marker: `.nojekyll`.
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
+- Judge review card: `JUDGE_REVIEW_CARD.md` with the shortest review path, award thesis, rubric evidence, and boundaries.
 - Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
 - Run receipt verifier: `proof-verifier.html` with parsed receipt facts and `?receipt=` deep-link support.
@@ -51,6 +52,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, the first-screen/judge-pack sample link opens `?receipt=SC-4P-2907-62-Y5VFX1`, and the verifier shows phases, score, shifts, and checksum facts.
 - Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 60 expected smoke checks, sample receipt verifier URL, score basis, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Judge review card check: `JUDGE_REVIEW_CARD.md` records the 60-second path, award thesis, rubric evidence, boundaries, and public evidence links.
 
 ## Before Publishing
 
@@ -63,6 +65,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
+- Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.

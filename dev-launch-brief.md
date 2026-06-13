@@ -12,6 +12,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Sample receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
 - Judge manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
 - Verification report: `https://ooyxloo.github.io/helioigma/verification.html`
+- Source review card: `https://github.com/OOYXLOO/helioigma/blob/main/JUDGE_REVIEW_CARD.md`
 
 ## DEV Article Fields
 
@@ -50,6 +51,7 @@ Expected local proof signals:
 - `60 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
+- `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
 
 ## DEV No-Go Gate
 

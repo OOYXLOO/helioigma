@@ -32,7 +32,7 @@
     ]
   },
   "status": {
-    "public_review_surface": "Public review uses the GitHub Pages game, judge page, smoke test, receipt verifier, manifest, source, and media links.",
+    "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, receipt verifier, manifest, source, and media links.",
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used.",
@@ -44,6 +44,7 @@
     "asset_boundary": "Public media is generated from this build's browser UI and checked-in demo frames, not from a stock-art pack.",
     "review_surface": [
       "game.js",
+      "JUDGE_REVIEW_CARD.md",
       "proof-verifier.html",
       "judge.html",
       "judge-manifest.json",
@@ -68,6 +69,7 @@
   },
   "local_artifacts": [
     "index.html",
+    "JUDGE_REVIEW_CARD.md",
     "judge.html",
     "smoke.html",
     "proof-verifier.html",

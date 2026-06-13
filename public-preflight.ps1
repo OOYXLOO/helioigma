@@ -73,6 +73,7 @@ try {
     "styles.css",
     "game.js",
     "LICENSE",
+    "JUDGE_REVIEW_CARD.md",
     "judge.html",
     "judge-manifest.json",
     "smoke.html",
@@ -257,6 +258,16 @@ try {
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Award thesis: Helioigma is a playable ode"
+  Assert-Contains "README.md" "JUDGE_REVIEW_CARD.md"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Helioigma Judge Review Card"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "60-Second Path"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Rubric Evidence"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Boundaries"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Best Ode to Alan Turing"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
   Assert-Contains "README.md" "first-move coach on Start"
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
@@ -492,6 +503,8 @@ try {
   Assert-Contains "verification.html" "Turing category"
   Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "judge-manifest.json" "public_review_surface"
+  Assert-Contains "judge-manifest.json" "judge review card"
+  Assert-Contains "judge-manifest.json" "JUDGE_REVIEW_CARD.md"
   Assert-Contains "judge-manifest.json" "owner_publication_note"
   Assert-Contains "judge-manifest.json" "owner_actions_not_automated"
   Assert-Contains "judge-manifest.json" "originality"

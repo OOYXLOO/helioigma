@@ -52,6 +52,7 @@ Do not submit on DEV until the public try link works. Use:
 
 - Copy console: `dev-submit-console.html`
 - Launch brief: `dev-launch-brief.md`
+- Judge review card: `JUDGE_REVIEW_CARD.md`
 - Publish assistant: `publish-assistant.html`
 - Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
@@ -81,6 +82,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
 - [ ] Public judge page shows the 60-second review path.
+- [ ] Public source includes `JUDGE_REVIEW_CARD.md` with the 60-second path, award thesis, rubric evidence, and boundaries.
 - [ ] Public judge manifest returns HTTP 200 and records the stable receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Public receipt verifier accepts stable Demo Solve receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`
