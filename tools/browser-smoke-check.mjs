@@ -65,6 +65,7 @@ async function readGameFacts(page) {
   return page.evaluate(() => {
     const demo = document.querySelector("#demoButton")?.getBoundingClientRect();
     const hint = document.querySelector("#hintButton")?.getBoundingClientRect();
+    const sound = document.querySelector("#soundButton")?.getBoundingClientRect();
     const judgePath = document.querySelector(".judge-path")?.getBoundingClientRect();
     const dayMeter = document.querySelector("#dayMeter")?.getBoundingClientRect();
     const objectiveStrip = document.querySelector(".objective-strip")?.getBoundingClientRect();
@@ -77,6 +78,7 @@ async function readGameFacts(page) {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
+      soundVisible: Boolean(sound && sound.top >= 0 && sound.bottom <= innerHeight),
       judgePathBeforeCanvas: Boolean(judgePath && ordered.indexOf(document.querySelector(".judge-path")) >= 0 && ordered.indexOf(document.querySelector(".judge-path")) < ordered.indexOf(canvas)),
       judgePathVisible: Boolean(judgePath && judgePath.top >= 0 && judgePath.bottom <= innerHeight),
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
@@ -104,6 +106,10 @@ async function readGameFacts(page) {
         demo: document.querySelector("#demoButton")?.getAttribute("aria-keyshortcuts"),
         demoLabel: document.querySelector("#demoButton")?.getAttribute("aria-label"),
         demoPrimary: document.querySelector("#demoButton")?.classList.contains("primary-control"),
+        sound: document.querySelector("#soundButton")?.getAttribute("aria-keyshortcuts"),
+        soundPressed: document.querySelector("#soundButton")?.getAttribute("aria-pressed"),
+        soundLabel: document.querySelector("#soundButton")?.getAttribute("aria-label"),
+        soundText: document.querySelector("#soundButton")?.textContent.trim(),
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
       },
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
@@ -125,6 +131,7 @@ async function main() {
     assert(desktop.overflowX === 0, "desktop has horizontal overflow");
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
     assert(desktop.hintVisible, "desktop Hint is not visible in the first viewport");
+    assert(desktop.soundVisible, "desktop Audio toggle is not visible in the first viewport");
     assert(desktop.canvasTop < 520, `desktop game canvas starts too low: ${desktop.canvasTop}`);
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
@@ -143,6 +150,10 @@ async function main() {
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
+    assert(desktop.shortcutMap.sound === "S", "audio shortcut is not exposed");
+    assert(desktop.shortcutMap.soundPressed === "false", "audio cues should default off");
+    assert(desktop.shortcutMap.soundLabel === "Audio cues off", "audio default label changed");
+    assert(desktop.shortcutMap.soundText === "Audio", "audio default button text changed");
     assert(desktop.shortcutMap.demoLabel === "Demo Solve full judge route", "demo button judge route label is not exposed");
     assert(desktop.shortcutMap.demoPrimary === true, "demo button is not marked as the primary judge control");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
@@ -212,6 +223,7 @@ async function main() {
     assert(mobile.overflowX === 0, "mobile has horizontal overflow");
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
+    assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
@@ -292,7 +304,7 @@ async function main() {
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 56, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 59, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
@@ -338,7 +350,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 56, `expected 56 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 59, `expected 59 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

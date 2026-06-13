@@ -761,6 +761,17 @@ button:focus-visible {
   background: rgba(247, 201, 72, 0.12);
 }
 
+#soundButton {
+  border-color: rgba(139, 211, 255, 0.42);
+  background: rgba(139, 211, 255, 0.1);
+}
+
+#soundButton.active {
+  border-color: rgba(184, 242, 200, 0.62);
+  background: rgba(184, 242, 200, 0.14);
+  color: #b8f2c8;
+}
+
 .status {
   flex: 1;
   text-align: right;
@@ -909,7 +920,7 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     padding: 6px;
   }
 

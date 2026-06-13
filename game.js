@@ -11,6 +11,7 @@
   const resetButton = document.querySelector("#resetButton");
   const hintButton = document.querySelector("#hintButton");
   const demoButton = document.querySelector("#demoButton");
+  const soundButton = document.querySelector("#soundButton");
   const phaseTrack = document.querySelector("#phaseTrack");
   const dayMeter = document.querySelector("#dayMeter");
   const dayMeterLabel = document.querySelector("#dayMeterLabel");
@@ -78,6 +79,84 @@
     lastAction: "Awaiting start.",
     message: "Decode the Helioigma rotor before nightfall.",
   };
+  const audio = {
+    enabled: false,
+    context: null,
+    master: null,
+  };
+
+  function syncSoundButton() {
+    if (!soundButton) return;
+    soundButton.textContent = audio.enabled ? "Audio On" : "Audio";
+    soundButton.setAttribute("aria-pressed", String(audio.enabled));
+    soundButton.setAttribute("aria-label", audio.enabled ? "Audio cues on" : "Audio cues off");
+    soundButton.classList.toggle("active", audio.enabled);
+  }
+
+  async function ensureAudio() {
+    if (!audio.context) {
+      const AudioCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtor) return false;
+      audio.context = new AudioCtor();
+      audio.master = audio.context.createGain();
+      audio.master.gain.value = 0.055;
+      audio.master.connect(audio.context.destination);
+    }
+    if (audio.context.state === "suspended") {
+      await audio.context.resume();
+    }
+    return audio.context.state === "running";
+  }
+
+  function playCue(name) {
+    if (!audio.enabled || !audio.context || !audio.master || audio.context.state !== "running") return;
+    const patterns = {
+      start: [[220, 0, 0.08], [330, 0.07, 0.1]],
+      hint: [[640, 0, 0.05], [480, 0.05, 0.06]],
+      shift: [[260, 0, 0.055]],
+      lock: [[420, 0, 0.06], [630, 0.06, 0.08]],
+      phase: [[392, 0, 0.08], [588, 0.08, 0.1]],
+      complete: [[392, 0, 0.1], [523, 0.1, 0.12], [784, 0.22, 0.16]],
+      fail: [[180, 0, 0.16]],
+    };
+    const tones = patterns[name] || patterns.shift;
+    const now = audio.context.currentTime;
+    tones.forEach(([frequency, offset, duration]) => {
+      const oscillator = audio.context.createOscillator();
+      const gain = audio.context.createGain();
+      const start = now + offset;
+      oscillator.type = name === "fail" ? "sawtooth" : "triangle";
+      oscillator.frequency.setValueAtTime(frequency, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.72, start + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+      oscillator.connect(gain);
+      gain.connect(audio.master);
+      oscillator.start(start);
+      oscillator.stop(start + duration + 0.02);
+    });
+  }
+
+  async function toggleAudio() {
+    if (!audio.enabled) {
+      const available = await ensureAudio();
+      if (!available) {
+        state.message = "Audio cues are unavailable in this browser.";
+        updateHud();
+        return;
+      }
+      audio.enabled = true;
+      syncSoundButton();
+      state.message = "Audio cues enabled.";
+      updateHud();
+      playCue("start");
+      return;
+    }
+    audio.enabled = false;
+    syncSoundButton();
+    state.message = "Audio cues off.";
+    updateHud();
+  }
 
   function loadBestScore() {
     try {
@@ -161,6 +240,7 @@
       hintButton.disabled = !state.running || state.complete || state.demoing;
     }
     demoButton.disabled = state.demoing;
+    syncSoundButton();
     syncDayMeter();
     syncPhaseObjective();
     syncPhaseTrack();
@@ -633,6 +713,7 @@
     state.level += 1;
     burst(canvas.clientWidth / 2, canvas.clientHeight / 2, "#b8f2c8");
     seedLevel(state.level);
+    playCue(state.complete ? "complete" : "phase");
     state.lastAction = `${phaseNames[state.level - 1]} complete: +${phaseScore}.`;
     if (!state.complete) {
       state.message = `${phaseNames[state.level - 1]} complete. +${phaseScore}`;
@@ -675,6 +756,7 @@
     state.recentLife = 0.55;
     state.recentLocked = locked;
     burst(px, py, palette[state.ring[index]]);
+    playCue(locked ? "lock" : "shift");
     state.lastAction = locked
       ? `Node ${index + 1} locked at ${glyphs[state.ring[index]]}.`
       : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}.`;
@@ -704,6 +786,7 @@
     state.recentLocked = false;
     state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}.`;
     state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
+    playCue("hint");
     updateHud();
     draw();
   }
@@ -749,6 +832,7 @@
         state.streak = 0;
         state.timeLeft = 0;
         state.message = "Nightfall sealed the Helioigma rotor.";
+        playCue("fail");
       }
       updateHud();
     }
@@ -782,6 +866,7 @@
     if (coach) {
       cueFirstMove();
     }
+    playCue("start");
     updateHud();
   }
 
@@ -891,6 +976,11 @@
       showHint();
       return;
     }
+    if (event.key.toLowerCase() === "s") {
+      event.preventDefault();
+      toggleAudio();
+      return;
+    }
     if (event.key === "Escape") {
       event.preventDefault();
       resetGame();
@@ -925,6 +1015,12 @@
     demoSolve();
     focusPlayfield();
   });
+  if (soundButton) {
+    soundButton.addEventListener("click", () => {
+      toggleAudio();
+      focusPlayfield();
+    });
+  }
   copyProofButton.addEventListener("click", async () => {
     if (!state.finalProof) return;
     try {
@@ -951,6 +1047,7 @@
 
   resizeCanvas();
   seedLevel(0);
+  syncSoundButton();
   updateHud();
   requestAnimationFrame(tick);
 

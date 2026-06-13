@@ -58,6 +58,7 @@ Core features:
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback after hints or shifts.
+- Optional default-off Web Audio cues for start, hint, node shift, lock, phase clear, completion, and nightfall.
 - Short phase banner and screen-reader phase announcer when each phase starts.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
@@ -110,6 +111,7 @@ Controls:
 - Use the touch buttons below the canvas.
 - Press `Hint` or `H` to highlight the next mismatched node during manual play.
 - Press `Demo Solve` or `D` to watch all four phases complete automatically, or open `?demo=1` to start that judge path immediately.
+- Press `Audio` or `S` to enable optional short generated audio cues. Audio starts off.
 - Press number keys `1` through `9` to rotate matching node positions.
 - Press `Enter` to start a fresh run.
 - Press `Escape` or `R` to reset the board.
@@ -181,5 +183,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 56 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 56 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 59 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 59 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

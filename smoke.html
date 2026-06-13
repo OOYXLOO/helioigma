@@ -174,6 +174,7 @@
       const resetButton = doc.querySelector("#resetButton");
       const hintButton = doc.querySelector("#hintButton");
       const demoButton = doc.querySelector("#demoButton");
+      const soundButton = doc.querySelector("#soundButton");
       const dayMeter = doc.querySelector("#dayMeter");
       const dayMeterFill = doc.querySelector("#dayMeterFill");
       const dayMeterLabel = doc.querySelector("#dayMeterLabel");
@@ -210,11 +211,14 @@
       addCheck("reset button is present", Boolean(resetButton));
       addCheck("hint button is present", Boolean(hintButton));
       addCheck("demo solve button is present", Boolean(demoButton));
+      addCheck("audio cue button is present", Boolean(soundButton));
       addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");
       addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");
+      addCheck("audio shortcut is exposed", soundButton.getAttribute("aria-keyshortcuts") === "S");
+      addCheck("audio cues default off", soundButton.getAttribute("aria-pressed") === "false" && soundButton.textContent.trim() === "Audio");
       addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
       addCheck("phase objective strip is present", Boolean(phaseObjective && phaseTargetLine && phaseAlignment));
       addCheck("phase objective names the first phase", phaseObjective.textContent.includes("Crib dawn"));

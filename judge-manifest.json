@@ -35,7 +35,8 @@
     "public_review_surface": "Public review uses the GitHub Pages game, judge page, smoke test, receipt verifier, manifest, source, and media links.",
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
-    "browser_storage": "Only a local numeric best-score key is used."
+    "browser_storage": "Only a local numeric best-score key is used.",
+    "audio": "Optional generated Web Audio cues are off by default and require the Audio button or S shortcut."
   },
   "originality": {
     "build_window": "New static game package for the DEV June Solstice Game Jam period.",
@@ -92,7 +93,7 @@
     "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
   },
   "verification": {
-    "expected_smoke_checks": 56,
+    "expected_smoke_checks": 59,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"
