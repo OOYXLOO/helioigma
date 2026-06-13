@@ -6,7 +6,7 @@ Purpose: make the DEV June Solstice Game Jam package publishable with minimal hu
 
 - Local game package is complete and verified.
 - Local Git repository can be pushed after a public GitHub repository exists.
-- No DEV post, public repo, or public try link exists yet.
+- Public repository, GitHub Pages, and DEV submission are account-owner launch gates; confirm them with `public-preflight.ps1 -Public` after they exist.
 - No payout, tax, KYC, bank, API key, password, OTP, or private account data belongs in this package.
 
 ## Recommended Public Repository

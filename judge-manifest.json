@@ -9,8 +9,8 @@
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography."
   },
   "status": {
-    "public_repo_created": false,
-    "dev_article_submitted": false,
+    "public_repo_gate": "Account-owner launch gate; confirm with public-preflight.ps1 -Public after GitHub Pages is enabled.",
+    "dev_article_gate": "Account-owner DEV submission gate; publish only after public links pass.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used."
   },

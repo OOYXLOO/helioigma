@@ -127,6 +127,8 @@ try {
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 41) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
+  if (-not ($manifest.status.public_repo_gate -like "Account-owner launch gate*")) { throw "judge-manifest public repo gate copy mismatch" }
+  if (-not ($manifest.status.dev_article_gate -like "Account-owner DEV submission gate*")) { throw "judge-manifest DEV gate copy mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
@@ -181,6 +183,7 @@ try {
   Assert-Contains "dev-submit-console.html" "WebM video"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
+  Assert-Contains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Rotor Trace"
   Assert-Contains "README.md" "?demo=1"
@@ -193,10 +196,12 @@ try {
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
   Assert-Contains "publish-assistant.html" "41 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
+  Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
   Assert-Contains "submission-checklist.md" "Optional auto-demo route"
   Assert-Contains "submission-checklist.md" "no spam, bought reactions, or fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
+  Assert-Contains "PUBLISHING.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-Contains "PUBLISHING.md" "gh repo create OOYXLOO/solstice-cipher"
   Assert-Contains "PUBLISHING.md" "do not spam, buy reactions, or ask for fake engagement"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
@@ -300,6 +305,8 @@ try {
   Assert-Contains "verification.html" "Score variance is expected"
   Assert-Contains "verification.html" "solstice-cipher-demo.webm"
   Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "judge-manifest.json" "public_repo_gate"
+  Assert-Contains "judge-manifest.json" "dev_article_gate"
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/solstice-cipher/"

@@ -1,6 +1,6 @@
 # Helioigma Submission Checklist
 
-Status: local package is GitHub Pages-ready. Not published and not submitted.
+Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, and DEV submission remain account-owner launch gates until completed.
 
 ## Ready Locally
 

@@ -5,8 +5,8 @@ Static browser game package for the DEV June Solstice Game Jam backup route.
 ## Status
 
 - Built locally and prepared as a GitHub Pages-ready package.
-- Not yet published to a public repository.
-- Not submitted to DEV.
+- Public repository, GitHub Pages, and DEV submission are account-owner launch gates.
+- The checked-in judge links are the intended public URLs once those gates are complete.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
 
