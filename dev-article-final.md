@@ -23,8 +23,6 @@ Links:
 - Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
 - Judge manifest: https://ooyxloo.github.io/solstice-cipher/judge-manifest.json
 
-Launch gate: I will only publish this post after the public repo, Pages play link, judge page, judge manifest, smoke page, proof verifier, WebM video, and GIF fallback pass `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`.
-
 Core features:
 
 - Four timed phases with a visible progress strip.
@@ -54,7 +52,7 @@ Watch the current WebM video: https://ooyxloo.github.io/solstice-cipher/solstice
 
 Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 
-Public media links after GitHub Pages publication:
+Public media links:
 
 1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
 2. WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
@@ -65,7 +63,7 @@ Public media links after GitHub Pages publication:
 
 ## Code
 
-The source is hosted at https://github.com/OOYXLOO/solstice-cipher after publication. The project is deliberately small:
+The source is hosted at https://github.com/OOYXLOO/solstice-cipher. The project is deliberately small:
 
 - `index.html`: playable game shell and first-screen judge path.
 - `styles.css`: responsive game UI.
@@ -135,6 +133,7 @@ The package is a new static game build for this jam period, not a wrapper around
 I verified the package with:
 
 - `node --check game.js`
+- `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
 - `smoke.html`: 29 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.

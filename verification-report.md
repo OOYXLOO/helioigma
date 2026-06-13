@@ -6,7 +6,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `894a06f`.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `325e01871bab1cbd961e6b2686e05e0551109f75`.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`
@@ -54,6 +54,7 @@ Expected local URLs:
 
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
 - Mobile 390x844: no horizontal overflow; phase progress strip wraps cleanly and canvas is visible.
+- Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Stable Demo Solve proof: `SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke proof format: `SC-4P-score-shifts-checksum`
