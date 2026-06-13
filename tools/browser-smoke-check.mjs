@@ -136,11 +136,13 @@ async function main() {
     await page.waitForFunction(() => document.querySelector("#demoButton")?.disabled === false, { timeout: 5000 });
     const autoDemo = await page.evaluate(() => ({
       receipt: document.querySelector("#proofCode")?.textContent.trim(),
+      verifyHref: document.querySelector("#verifyProofLink")?.getAttribute("href"),
       status: document.querySelector("#statusLine")?.textContent.trim(),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     }));
     assert(autoDemo.overflowX === 0, "auto demo route has horizontal overflow");
     assert(autoDemo.receipt === "SC-4P-2907-62-Y5VFX1", "auto demo route did not reach the stable receipt");
+    assert(autoDemo.verifyHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "auto demo route did not build a verifier link");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
     await page.setViewportSize({ width: 390, height: 844 });
@@ -188,7 +190,7 @@ async function main() {
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 38, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 41, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
@@ -208,6 +210,15 @@ async function main() {
     assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 
+    await page.goto(`${baseUrl}proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Valid run receipt"));
+    const proofFromQuery = await page.evaluate(() => ({
+      input: document.querySelector("#proofInput")?.value.trim(),
+      result: document.querySelector("#result")?.textContent.trim(),
+    }));
+    assert(proofFromQuery.input === "SC-4P-2907-62-Y5VFX1", "proof verifier did not read receipt query parameter");
+    assert(proofFromQuery.result === "Valid run receipt: 2907 points across 62 shifts.", "proof verifier query route did not validate");
+
     await page.goto(`${baseUrl}smoke.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => {
       const status = document.querySelector("#status")?.textContent || "";
@@ -221,7 +232,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 38, `expected 38 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 41, `expected 41 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

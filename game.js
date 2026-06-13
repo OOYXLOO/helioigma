@@ -19,6 +19,7 @@
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
   const proofSummary = document.querySelector("#proofSummary");
+  const verifyProofLink = document.querySelector("#verifyProofLink");
   const copyProofButton = document.querySelector("#copyProofButton");
   const tracePanel = document.querySelector("#tracePanel");
   const tracePhase = document.querySelector("#tracePhase");
@@ -137,6 +138,11 @@
         proofSummary.textContent = state.finalProof
       ? `Receipt loop: ${state.solvedPhases}/${levels.length} phases, ${state.score} score, ${state.shifts} shifts. FNV-1a payload ${buildReceiptPayload()} -> ${state.finalProof.split("-").at(-1)}.`
           : "";
+      }
+      if (verifyProofLink) {
+        verifyProofLink.href = state.finalProof
+          ? `proof-verifier.html?receipt=${encodeURIComponent(state.finalProof)}`
+          : "proof-verifier.html";
       }
       copyProofButton.disabled = !state.finalProof;
     }

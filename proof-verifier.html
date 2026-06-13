@@ -244,6 +244,10 @@
     input.addEventListener("keydown", (event) => {
       if (event.key === "Enter") verify();
     });
+    const receiptFromUrl = new URLSearchParams(window.location.search).get("receipt");
+    if (receiptFromUrl) {
+      input.value = receiptFromUrl;
+    }
     verify();
   </script>
 </body>

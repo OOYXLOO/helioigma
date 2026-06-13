@@ -10,7 +10,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Judge pack: `judge.html`.
 - Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
-- Run receipt verifier: `proof-verifier.html` with parsed receipt facts.
+- Run receipt verifier: `proof-verifier.html` with parsed receipt facts and `?receipt=` deep-link support.
 - Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Copy-ready DEV final post console: `dev-submit-console.html`.
@@ -37,7 +37,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 38 PASS checks including daylight meter, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, and receipt format.
+- `smoke.html`: 41 PASS checks including daylight meter, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
@@ -47,8 +47,8 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Auto demo: `/?demo=1` completes to the same stable receipt during browser verification.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
-- Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 38 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, accepts `?receipt=SC-4P-2907-62-Y5VFX1`, and shows phases, score, shifts, and checksum facts.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 41 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

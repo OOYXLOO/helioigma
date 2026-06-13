@@ -125,7 +125,7 @@ try {
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/solstice-cipher/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 38) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 41) { throw "judge-manifest smoke count mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/solstice-cipher/") { throw "judge-manifest public play URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
@@ -191,7 +191,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/solstice-cipher/?demo=1"
-  Assert-Contains "publish-assistant.html" "38 smoke checks"
+  Assert-Contains "publish-assistant.html" "41 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
   Assert-Contains "submission-checklist.md" "Optional auto-demo route"
@@ -207,8 +207,9 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "?demo=1"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
+  Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 38 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 41 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
@@ -236,6 +237,7 @@ try {
   Assert-Contains "styles.css" "linear-gradient(105deg"
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
+  Assert-Contains "game.js" "proof-verifier.html?receipt="
   Assert-Contains "game.js" 'get("demo") === "1"'
   Assert-NotContains "game.js" "Run proof"
   Assert-Contains "index.html" "nodeButtons"
@@ -254,6 +256,7 @@ try {
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"
   Assert-Contains "index.html" "proofSummary"
+  Assert-Contains "index.html" "verifyProofLink"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Decode the solstice rotor"
   Assert-Contains "index.html" "20260613-trace-polish"
@@ -274,6 +277,8 @@ try {
   Assert-Contains "smoke.html" "demo solve button is present"
   Assert-Contains "smoke.html" "daylight meter is present"
   Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge receipt"
+  Assert-Contains "smoke.html" "run receipt verifier link is present"
+  Assert-Contains "smoke.html" "completion verifier link carries the final receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
   Assert-Contains "smoke.html" "judge shortcut links include the auto demo route"
   Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
@@ -285,6 +290,7 @@ try {
   Assert-Contains "proof-verifier.html" "Parsed receipt facts"
   Assert-Contains "proof-verifier.html" "Checksum"
   Assert-Contains "proof-verifier.html" "Valid run receipt"
+  Assert-Contains "proof-verifier.html" 'get("receipt")'
   Assert-Contains "proof-verifier.html" "not anti-cheat or identity proof"
   Assert-Contains "proof-verifier.html" "linear-gradient(105deg"
   Assert-NotContains "proof-verifier.html" "radial-gradient"

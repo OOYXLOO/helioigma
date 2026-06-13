@@ -38,7 +38,7 @@ Core features:
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run receipt.
-- Receipt verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
+- Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
 - First-screen Judge Path cards for Play, Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
 
@@ -48,7 +48,7 @@ Core features:
 2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, run receipt, public links, and human gate summary.
-5. Paste the sample receipt into `proof-verifier.html` to confirm the checksum loop.
+5. Paste the sample receipt into `proof-verifier.html`, or use the completed-run Verify receipt link, to confirm the checksum loop.
 
 ## Video Demo
 
@@ -163,5 +163,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 38 checks passed, including daylight meter, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, and run receipt.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 38 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 41 checks passed, including daylight meter, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 41 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

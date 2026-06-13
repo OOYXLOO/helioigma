@@ -52,7 +52,7 @@
     "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
   },
   "verification": {
-    "expected_smoke_checks": 38,
+    "expected_smoke_checks": 41,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"

@@ -63,9 +63,9 @@ Expected local URLs:
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
-- `proof-verifier.html` recomputes the receipt checksum locally and shows parsed receipt facts for phases, score, shifts, and expected checksum.
+- `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 38 PASS assertions:
+- Smoke checks include 41 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -117,7 +117,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, and waits for 38 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 41 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

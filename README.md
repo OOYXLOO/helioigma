@@ -74,7 +74,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
 - `judge-manifest.json`: machine-readable judge manifest for prize target, public links, stable run receipt, required assets, verification commands, and human gates.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
-- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, and checksum facts.
+- `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, and `?receipt=` deep-link support from completed runs.
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
@@ -82,7 +82,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint and Demo Solve controls, daylight meter, desktop Judge Path, Rotor Trace, mobile canvas visibility, validates the run receipt, and waits for `smoke.html` to reach 38 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint and Demo Solve controls, daylight meter, desktop Judge Path, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 41 PASS checks.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `solstice-cipher-demo.webm`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 

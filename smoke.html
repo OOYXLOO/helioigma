@@ -193,6 +193,7 @@
       const proofPanel = doc.querySelector("#proofPanel");
       const proofCode = doc.querySelector("#proofCode");
       const proofSummary = doc.querySelector("#proofSummary");
+      const verifyProofLink = doc.querySelector("#verifyProofLink");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
@@ -216,11 +217,13 @@
       addCheck("rotor trace reports the first phase", tracePhase.textContent.includes("Crib dawn"));
       addCheck("run receipt panel is present", Boolean(proofPanel));
       addCheck("run receipt summary is present", Boolean(proofSummary));
+      addCheck("run receipt verifier link is present", Boolean(verifyProofLink));
 
       press(win, "d");
       await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a receipt");
       addCheck("demo shortcut reaches a deterministic judge receipt", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
       addCheck("demo receipt summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
+      addCheck("demo receipt verifier link carries the receipt", verifyProofLink.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1");
       await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
       addCheck("demo solve releases manual controls", demoButton.disabled === false);
 
@@ -253,6 +256,7 @@
       addCheck("final status reports shift count", finalText.includes("shifts"));
       addCheck("completion reveals run receipt", proofPanel.hidden === false);
       addCheck("run receipt encodes phases, score, shifts, and checksum", /^SC-4P-\d+-\d+-[0-9A-Z]{6}$/.test(proofCode.textContent));
+      addCheck("completion verifier link carries the final receipt", verifyProofLink.getAttribute("href").includes(encodeURIComponent(proofCode.textContent)));
 
       status.textContent = `PASS - ${finalText}`;
       status.classList.add("pass");
