@@ -10,7 +10,7 @@
   <meta property="og:image" content="cover.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=20260613-judge-first">
+  <link rel="stylesheet" href="styles.css?v=20260613-input-polish">
 </head>
 <body>
   <main class="shell">
@@ -40,14 +40,14 @@
       <p class="play-rule"><strong>Goal:</strong> Match each numbered ring node to the target glyph above it before time runs out. Press <span>Demo Solve</span> for the fastest judge path.</p>
 
       <div class="controls quick-controls">
-        <button id="startButton" type="button">Start</button>
-        <button id="resetButton" type="button">Reset</button>
-        <button id="demoButton" type="button">Demo Solve</button>
-        <div id="statusLine" class="status">Align the ring before nightfall.</div>
+        <button id="startButton" type="button" aria-keyshortcuts="Enter">Start</button>
+        <button id="resetButton" type="button" aria-keyshortcuts="Escape R">Reset</button>
+        <button id="demoButton" type="button" aria-keyshortcuts="D">Demo Solve</button>
+        <div id="statusLine" class="status" role="status">Align the ring before nightfall.</div>
       </div>
 
-      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered cipher node until it matches the target glyph above it.</p>
-      <canvas id="game" width="960" height="640" tabindex="0" aria-label="Solstice Cipher playfield" aria-describedby="srHelp"></canvas>
+      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered cipher node until it matches the target glyph above it. Enter starts, D runs the demo solve, Escape or R resets, and number keys rotate matching numbered nodes.</p>
+      <canvas id="game" width="960" height="640" tabindex="0" aria-keyshortcuts="1 2 3 4 5 6 7 8 9" aria-label="Solstice Cipher playfield" aria-describedby="srHelp"></canvas>
       <div id="nodeButtons" class="node-buttons" aria-label="Cipher node controls"></div>
 
       <nav class="judge-links" aria-label="Judge shortcuts">
@@ -67,6 +67,6 @@
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-judge-first"></script>
+  <script src="game.js?v=20260613-input-polish"></script>
 </body>
 </html>

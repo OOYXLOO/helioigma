@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-        <iframe id="gameFrame" src="./?v=20260613-judge-first" title="Solstice Cipher game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260613-input-polish" title="Solstice Cipher game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -188,6 +188,10 @@
       addCheck("start button is present", Boolean(startButton));
       addCheck("reset button is present", Boolean(resetButton));
       addCheck("demo solve button is present", Boolean(demoButton));
+      addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
+      addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
+      addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");
+      addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links are present", judgeLinks.length === 4);
       addCheck("status line is present", Boolean(statusLine));
@@ -197,15 +201,16 @@
       addCheck("run proof panel is present", Boolean(proofPanel));
       addCheck("run proof summary is present", Boolean(proofSummary));
 
-      demoButton.click();
+      press(win, "d");
       await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a proof");
-      addCheck("demo solve reaches a deterministic judge proof", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
+      addCheck("demo shortcut reaches a deterministic judge proof", proofCode.textContent === "SC-4P-2907-62-Y5VFX1");
       addCheck("demo proof summary reports score and shifts", proofSummary.textContent.includes("2907 score") && proofSummary.textContent.includes("62 shifts"));
       await waitFor(() => demoButton.disabled === false, "demo solve did not release controls");
       addCheck("demo solve releases manual controls", demoButton.disabled === false);
 
-      resetButton.click();
+      press(win, "r");
       await sleep(120);
+      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("Decode the Turing wheel"));
 
       startButton.click();
       await sleep(120);

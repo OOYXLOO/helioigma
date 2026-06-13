@@ -506,6 +506,14 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  function focusPlayfield() {
+    try {
+      canvas.focus({ preventScroll: true });
+    } catch {
+      canvas.focus();
+    }
+  }
+
   async function demoSolve() {
     if (state.demoing) return;
     startGame();
@@ -534,6 +542,16 @@
     draw();
   }
 
+  function isTextEntryTarget(target) {
+    return Boolean(
+      target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable)
+    );
+  }
+
   window.addEventListener("resize", () => {
     resizeCanvas();
     draw();
@@ -549,12 +567,25 @@
     });
   }
   window.addEventListener("keydown", (event) => {
+    if (isTextEntryTarget(event.target)) return;
     if (state.demoing) return;
     if (event.key === "Enter") {
+      event.preventDefault();
       startGame();
       return;
     }
+    if (event.key.toLowerCase() === "d") {
+      event.preventDefault();
+      demoSolve();
+      return;
+    }
     if (event.key === "Escape") {
+      event.preventDefault();
+      resetGame();
+      return;
+    }
+    if (event.key.toLowerCase() === "r") {
+      event.preventDefault();
       resetGame();
       return;
     }
@@ -564,9 +595,18 @@
       rotateNode(index);
     }
   });
-  startButton.addEventListener("click", startGame);
-  resetButton.addEventListener("click", resetGame);
-  demoButton.addEventListener("click", demoSolve);
+  startButton.addEventListener("click", () => {
+    startGame();
+    focusPlayfield();
+  });
+  resetButton.addEventListener("click", () => {
+    resetGame();
+    focusPlayfield();
+  });
+  demoButton.addEventListener("click", () => {
+    demoSolve();
+    focusPlayfield();
+  });
   copyProofButton.addEventListener("click", async () => {
     if (!state.finalProof) return;
     try {

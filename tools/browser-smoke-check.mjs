@@ -69,6 +69,12 @@ async function readGameFacts(page) {
     return {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
+      shortcutMap: {
+        start: document.querySelector("#startButton")?.getAttribute("aria-keyshortcuts"),
+        reset: document.querySelector("#resetButton")?.getAttribute("aria-keyshortcuts"),
+        demo: document.querySelector("#demoButton")?.getAttribute("aria-keyshortcuts"),
+        canvas: canvas?.getAttribute("aria-keyshortcuts"),
+      },
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     };
@@ -87,6 +93,10 @@ async function main() {
     assert(desktop.overflowX === 0, "desktop has horizontal overflow");
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
+    assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
+    assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
+    assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
+    assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
 
     await page.setViewportSize({ width: 390, height: 844 });
@@ -135,7 +145,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 23, `expected 23 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 28, `expected 28 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

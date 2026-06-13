@@ -127,4 +127,4 @@ I verified the package with:
 - `node --check game.js`
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, visible wrapped phase track, and nonblank gameplay screenshot.
-- `smoke.html`: 23 checks passed, including deterministic demo proof, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.
+- `smoke.html`: 28 checks passed, including deterministic demo proof through the public shortcut path, released manual controls, judge shortcuts, shift counter, phase track, final status, and run proof.

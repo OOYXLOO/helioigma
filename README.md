@@ -71,7 +71,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 23 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 28 PASS checks.
 
 ## Public Publishing
 
