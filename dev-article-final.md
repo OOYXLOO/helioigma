@@ -64,7 +64,7 @@ Core features:
 - Final screen with solved phase count, phase scoring ledger, total shifts, score, copyable `SC-4P-...` run receipt, and a human-readable Judge run summary.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
+- First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
 
 ## Judge in 60 Seconds
 

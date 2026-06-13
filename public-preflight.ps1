@@ -184,6 +184,8 @@ try {
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
+  Assert-Contains "dev-article-final.md" "On mobile the cards collapse to compact labels"
+  Assert-NotContains "dev-article-final.md" "moved after the playfield on mobile"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
