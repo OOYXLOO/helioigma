@@ -225,7 +225,7 @@
 
       const plausibleRun = solved === 4 && score >= 0 && score <= 5000 && shifts >= 0 && shifts <= 300;
       if (plausibleRun && suffix === expected) {
-        result.textContent = `Valid run receipt: ${score} points across ${shifts} shifts.`;
+        result.textContent = `Checksum-valid receipt within published demo bounds: ${score} points across ${shifts} shifts.`;
         result.classList.add("ok");
         return;
       }

@@ -16,15 +16,32 @@ That is why the first action is not a lore screen or a menu. The game puts the d
 
 Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
 
+Helioigma is the game title; `solstice-cipher` is only the repository slug for the public build.
+
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
 
 The build is meant to be judged quickly without losing the game premise: the first screen names the rotor, the matching goal, and the three-step judge path. A reviewer can play manually with `Hint` if they want a small nudge, press `Demo Solve`, watch all four phases complete, copy the stable receipt `SC-4P-2907-62-Y5VFX1`, and verify the checksum locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
 
-Links:
+## Video Demo
+
+The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
+
+![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
+
+![Helioigma desktop gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
+
+Watch the current captioned WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+
+Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+
+## Quick Links
 
 - Play: https://ooyxloo.github.io/solstice-cipher/
 - Auto demo: https://ooyxloo.github.io/solstice-cipher/?demo=1
 - Source: https://github.com/OOYXLOO/solstice-cipher
+
+Detailed judge links:
+
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 - Receipt verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
@@ -34,13 +51,13 @@ Core features:
 
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
-- Mouse, touch, node-button, hint, demo-solve, and number-key controls.
+- Mouse, touch, on-screen buttons, hint, demo-solve, and number-key controls.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run receipt.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen Judge Path cards for Play, Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
+- First-screen Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
 
 ## Judge in 60 Seconds
 
@@ -49,18 +66,6 @@ Core features:
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, run receipt, public links, and human gate summary.
 5. Paste the sample receipt into `proof-verifier.html`, or use the completed-run Verify receipt link, to confirm the checksum loop.
-
-## Video Demo
-
-The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual node controls, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
-
-![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
-
-![Helioigma desktop gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
-
-Watch the current captioned WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
-
-Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 
 Public media links:
 
@@ -93,7 +98,7 @@ Start the run, then decode the solstice rotor by matching each numbered node to 
 Controls:
 
 - Click or tap ring nodes to rotate them.
-- Use the node-control buttons below the canvas.
+- Use the touch buttons below the canvas.
 - Press `Hint` or `H` to highlight the next mismatched node during manual play.
 - Press `Demo Solve` or `D` to watch all four phases complete automatically, or open `?demo=1` to start that judge path immediately.
 - Press number keys `1` through `9` to rotate matching node positions.

@@ -6,7 +6,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `949317068886cc5563f3be3e0ab322287ca881cb`.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-13.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`
@@ -57,8 +57,8 @@ Expected local URLs:
 - Mobile 390x844: no horizontal overflow; phase progress strip stays compact and the canvas begins in the first viewport.
 - Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
 - Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls and Rotor Trace through verifier validation.
-- `smoke.html` result: `PASS - Longest day held. Final score 2892 across 62 shifts.`
-- Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
+- Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
+- Keyboard smoke: `PASS - Longest day held. Latest live-timer score 2892 across 62 shifts.`
 - Auto-demo URL `?demo=1` reaches the same stable receipt.
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.

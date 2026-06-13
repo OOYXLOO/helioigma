@@ -16,7 +16,7 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 
 - A static HTML/CSS/JavaScript game.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
-- Mouse, touch, node-button, Hint, and number-key controls.
+- Mouse, touch, on-screen button, Hint, and number-key controls.
 - A `Demo Solve` button that shows the complete four-phase loop without manual play and produces a stable judge receipt.
 - Multiple timed phases with a visible progress strip and score carry-over.
 - Time pressure, per-signal points, streak bonuses, small time penalties for exploratory shifts, and a final score state after four phases.

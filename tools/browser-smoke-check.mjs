@@ -122,7 +122,7 @@ async function main() {
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
-    assert(desktop.judgePathCards.join("|") === "1. Play|2. Rotor Trace|3. Receipt", "Judge path cards changed");
+    assert(desktop.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "Judge path cards changed");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
@@ -198,26 +198,26 @@ async function main() {
     assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Valid run receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid receipt"));
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
       hasCaveat: document.body.innerText.includes("not anti-cheat or identity proof"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
-    assert(proof.result === "Valid run receipt: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
+    assert(proof.result === "Checksum-valid receipt within published demo bounds: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
     assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 
     await page.goto(`${baseUrl}proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Valid run receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid receipt"));
     const proofFromQuery = await page.evaluate(() => ({
       input: document.querySelector("#proofInput")?.value.trim(),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
     assert(proofFromQuery.input === "SC-4P-2907-62-Y5VFX1", "proof verifier did not read receipt query parameter");
-    assert(proofFromQuery.result === "Valid run receipt: 2907 points across 62 shifts.", "proof verifier query route did not validate");
+    assert(proofFromQuery.result === "Checksum-valid receipt within published demo bounds: 2907 points across 62 shifts.", "proof verifier query route did not validate");
 
     await page.goto(`${baseUrl}smoke.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => {
