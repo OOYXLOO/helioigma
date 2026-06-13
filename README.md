@@ -37,10 +37,10 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 - Click or tap ring nodes to rotate their phase.
 - Use the node-control buttons below the canvas.
 - Use `Hint` or press `H` during manual play to highlight the next mismatched node.
-- Use `Demo Solve` to watch the complete four-phase loop without manual input.
+- Use `Demo Solve` or press `D` to watch the complete four-phase loop without manual input.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
-- `Escape` resets the board.
+- `Escape` or `R` resets the board.
 
 ## Current Quality Checks
 

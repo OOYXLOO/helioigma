@@ -94,10 +94,10 @@ Controls:
 - Click or tap ring nodes to rotate them.
 - Use the node-control buttons below the canvas.
 - Press `Hint` or `H` to highlight the next mismatched node during manual play.
-- Press `Demo Solve` to watch all four phases complete automatically.
+- Press `Demo Solve` or `D` to watch all four phases complete automatically.
 - Press number keys `1` through `9` to rotate matching node positions.
 - Press `Enter` to start a fresh run.
-- Press `Escape` to reset the board.
+- Press `Escape` or `R` to reset the board.
 
 ## How I Built It
 

@@ -160,6 +160,9 @@ try {
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
+  Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
+  Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
+  Assert-Contains "dev-submit-console.html" 'plus a `D` shortcut'
   Assert-Contains "dev-submit-console.html" "Helioigma"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
