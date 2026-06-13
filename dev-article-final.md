@@ -34,6 +34,7 @@ Core features:
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, node-button, hint, demo-solve, and number-key controls.
+- Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, total shifts, score, and copyable `SC-4P-...` run receipt.
 - Receipt verifier that recomputes the checksum locally and shows parsed phases, score, shifts, and checksum facts.
@@ -50,7 +51,7 @@ Core features:
 
 ## Video Demo
 
-The demo video is a live browser recording of the current judge path: first-screen context, manual node controls, `Demo Solve`, the final receipt, and the local verifier.
+The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual node controls, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
 
@@ -161,5 +162,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 34 checks passed, including daylight meter, Hint shortcut/highlight behavior, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, and run receipt.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 34 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 38 checks passed, including daylight meter, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, and run receipt.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 38 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

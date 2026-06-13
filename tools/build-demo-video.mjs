@@ -144,7 +144,15 @@ async function main() {
       await page.keyboard.press(key);
       await page.waitForTimeout(500);
     }
-    await page.waitForTimeout(3000);
+    await page.locator("#tracePanel").scrollIntoViewIfNeeded();
+    await setCaption(
+      page,
+      "2/5 - Rotor Trace makes the state machine readable",
+      "The panel mirrors phase, aligned count, next mismatch, and the last action."
+    );
+    await page.waitForTimeout(2600);
+    await page.locator("#demoButton").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(900);
 
     await page.click("#resetButton");
     await page.waitForTimeout(700);

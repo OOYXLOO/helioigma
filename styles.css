@@ -302,6 +302,44 @@ body {
   margin-top: 12px;
 }
 
+.trace-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.trace-panel div {
+  min-width: 0;
+  min-height: 58px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(9, 14, 24, 0.72);
+}
+
+.trace-panel span,
+.trace-panel strong {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.trace-panel span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.trace-panel strong {
+  margin-top: 5px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
 .proof-panel {
   margin-top: 12px;
   min-height: 82px;
@@ -566,6 +604,21 @@ button:focus-visible {
 
   .judge-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trace-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .trace-panel div {
+    min-height: 52px;
+    padding: 8px;
+  }
+
+  .trace-panel strong {
+    font-size: 12px;
   }
 
   .judge-path {

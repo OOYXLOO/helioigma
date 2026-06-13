@@ -20,6 +20,11 @@
   const proofCode = document.querySelector("#proofCode");
   const proofSummary = document.querySelector("#proofSummary");
   const copyProofButton = document.querySelector("#copyProofButton");
+  const tracePanel = document.querySelector("#tracePanel");
+  const tracePhase = document.querySelector("#tracePhase");
+  const traceMatch = document.querySelector("#traceMatch");
+  const traceNext = document.querySelector("#traceNext");
+  const traceLast = document.querySelector("#traceLast");
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
   const palette = ["#f7c948", "#ff7a59", "#8bd3ff", "#b8f2c8"];
@@ -50,6 +55,7 @@
     lastTick: 0,
     demoing: false,
     hintedIndex: -1,
+    lastAction: "Awaiting start.",
     message: "Decode the Helioigma rotor before nightfall.",
   };
 
@@ -93,6 +99,7 @@
       state.timeLeft = 0;
       storeBestScore(state.score);
       state.finalProof = buildRunProof();
+      state.lastAction = "Receipt built from final score and shifts.";
       state.message = `Longest day held. Final score ${state.score} across ${state.shifts} shifts.`;
       updateHud();
       return;
@@ -102,6 +109,7 @@
     state.timeLeft = level.seconds;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.lastAction = index === 0 ? "Awaiting start." : `${phaseNames[index]} seeded.`;
     state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
   }
@@ -121,6 +129,7 @@
     syncDayMeter();
     syncPhaseTrack();
     syncNodeButtons();
+    syncRotorTrace();
     if (proofPanel && proofCode && copyProofButton) {
       proofPanel.hidden = !state.complete;
       proofCode.textContent = state.finalProof;
@@ -207,6 +216,22 @@
       button.querySelector(".node-current").textContent = glyphs[value];
       button.querySelector(".node-target").textContent = `target ${glyphs[targetValue]}`;
     });
+  }
+
+  function syncRotorTrace() {
+    if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast) return;
+    const safeLevel = Math.min(state.level, levels.length - 1);
+    const phase = state.complete ? "Receipt" : phaseNames[safeLevel];
+    const matched = state.ring.filter((value, i) => value === state.target[i]).length;
+    const nextMismatch = state.ring.findIndex((value, i) => value !== state.target[i]);
+    tracePhase.textContent = state.complete ? `${levels.length}/${levels.length} phases held` : `${safeLevel + 1} - ${phase}`;
+    traceMatch.textContent = `${matched}/${state.target.length}`;
+    traceNext.textContent = state.complete
+      ? "Receipt ready"
+      : nextMismatch === -1
+        ? "All nodes aligned"
+        : `Node ${nextMismatch + 1}: ${glyphs[state.ring[nextMismatch]]} -> ${glyphs[state.target[nextMismatch]]}`;
+    traceLast.textContent = state.lastAction;
   }
 
   function resizeCanvas() {
@@ -436,6 +461,7 @@
     state.level += 1;
     burst(canvas.clientWidth / 2, canvas.clientHeight / 2, "#b8f2c8");
     seedLevel(state.level);
+    state.lastAction = `${phaseNames[state.level - 1]} complete: +${phaseScore}.`;
     if (!state.complete) {
       state.message = `${phaseNames[state.level - 1]} complete. +${phaseScore}`;
     }
@@ -474,6 +500,9 @@
       state.timeLeft = Math.max(0, state.timeLeft - 0.45);
     }
     burst(px, py, palette[state.ring[index]]);
+    state.lastAction = locked
+      ? `Node ${index + 1} locked at ${glyphs[state.ring[index]]}.`
+      : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}.`;
     state.message = locked ? `Signal ${index + 1} locked.` : `Phase ${index + 1} shifted.`;
     updateHud();
     checkWin();
@@ -490,6 +519,7 @@
       return;
     }
     state.hintedIndex = index;
+    state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}.`;
     state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
     updateHud();
     draw();
@@ -534,6 +564,7 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.lastAction = "Run started. Align the first visible mismatch.";
     state.particles = [];
     state.lastTick = 0;
     seedLevel(0);
@@ -552,6 +583,7 @@
     state.complete = false;
     state.finalProof = "";
     state.hintedIndex = -1;
+    state.lastAction = "Awaiting start.";
     state.particles = [];
     seedLevel(0);
     state.message = "Decode the Helioigma rotor before nightfall.";

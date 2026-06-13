@@ -96,7 +96,7 @@ Helioigma is a small browser puzzle for the June Solstice Game Jam. You rotate a
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference.
 
-The game is intentionally compact: a visible daylight meter, a four-phase progress strip, keyboard, touch, node-button controls, a manual Hint path, one-click Demo Solve with a stable receipt, streak scoring, a local best score, and a deterministic run receipt at the end.</textarea>
+The game is intentionally compact: a visible daylight meter, a four-phase progress strip, keyboard, touch, node-button controls, a manual Hint path, a live Rotor Trace panel, one-click Demo Solve with a stable receipt, streak scoring, a local best score, and a deterministic run receipt at the end.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Prize Category</h2><button type="button" data-copy="category">Copy</button></div>
@@ -126,6 +126,7 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 - Four named phases with a visible progress strip, score carry-over, streak bonuses, and shift counting.
 - Explicit node-control buttons for mobile and accessibility-friendly play.
 - A manual Hint control that highlights the next mismatched node without changing score or receipt state.
+- A live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - One-click Demo Solve for judges who want to see the full loop immediately.
 - A finale screen with final score, local best score, solved phase count, total shifts, and copyable run receipt.
 - A judge page, smoke test, and receipt verifier with parsed receipt facts so reviewers can verify the full loop quickly.
@@ -138,7 +139,7 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 Key files:
 - index.html: playable game shell and first-screen judge path.
 - styles.css: responsive game UI.
-- game.js: deterministic levels, canvas rendering, controls, Hint behavior, scoring, receipt generation, and Demo Solve.
+- game.js: deterministic levels, canvas rendering, controls, Hint behavior, Rotor Trace state, scoring, receipt generation, and Demo Solve.
 - proof-verifier.html: local receipt checksum verifier.
 - smoke.html: browser smoke test that solves the public game path in an iframe.
 - judge.html: one-page review hub.

@@ -36,7 +36,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
   - `node --check game.js`
   - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 34 PASS checks including daylight meter, H-to-Hint behavior, D-to-Demo-Solve, R-to-reset, final status, and receipt format.
+- `smoke.html`: 38 PASS checks including daylight meter, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, and receipt format.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
@@ -46,7 +46,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1` and shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 34 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 38 expected smoke checks, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 
 ## Before Publishing
 

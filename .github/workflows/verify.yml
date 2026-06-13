@@ -85,11 +85,13 @@ jobs:
           grep -q "judge-manifest.json" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
           grep -q "Ode With Restraint" dev-submit-console.html
+          grep -q "Rotor Trace" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
+          grep -q "Rotor Trace" README.md
           grep -q "MIT license" README.md
           grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
@@ -109,6 +111,7 @@ jobs:
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
           grep -q "Ode With Restraint" judge.html
+          grep -q "Rotor Trace" judge.html
           grep -q "state, logic, verification" judge.html
           ! grep -q "DEV Console" judge.html
           ! grep -q "Publish Assistant" judge.html
@@ -139,6 +142,8 @@ jobs:
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
           grep -q "hintButton" index.html
+          grep -q "tracePanel" index.html
+          grep -q "traceNext" index.html
           grep -q "demoButton" index.html
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
@@ -153,6 +158,8 @@ jobs:
           grep -q "hint shortcut is exposed" smoke.html
           grep -q "hint shortcut names the next mismatched node" smoke.html
           grep -q "hint highlights a node button" smoke.html
+          grep -q "rotor trace panel is present" smoke.html
+          grep -q "rotor trace records hint action" smoke.html
           grep -q "demo solve button is present" smoke.html
           grep -q "judge shortcut links are present" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html

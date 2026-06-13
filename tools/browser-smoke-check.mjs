@@ -67,6 +67,7 @@ async function readGameFacts(page) {
     const hint = document.querySelector("#hintButton")?.getBoundingClientRect();
     const judgePath = document.querySelector(".judge-path")?.getBoundingClientRect();
     const dayMeter = document.querySelector("#dayMeter")?.getBoundingClientRect();
+    const tracePanel = document.querySelector("#tracePanel");
     const ordered = [...document.querySelectorAll("body *")];
     const controls = document.querySelector(".quick-controls");
     const canvas = document.querySelector("#game");
@@ -80,6 +81,13 @@ async function readGameFacts(page) {
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
       dayMeterLabel: document.querySelector("#dayMeterLabel")?.textContent.trim(),
       canvasTop: canvasRect?.top,
+      trace: {
+        phase: document.querySelector("#tracePhase")?.textContent.trim(),
+        match: document.querySelector("#traceMatch")?.textContent.trim(),
+        next: document.querySelector("#traceNext")?.textContent.trim(),
+        last: document.querySelector("#traceLast")?.textContent.trim(),
+        exists: Boolean(tracePanel),
+      },
       judgePathCards: [...document.querySelectorAll(".judge-path article strong")].map((node) => node.textContent.trim()),
       shortcutMap: {
         start: document.querySelector("#startButton")?.getAttribute("aria-keyshortcuts"),
@@ -110,6 +118,9 @@ async function main() {
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.dayMeterVisible, "desktop daylight meter is not visible in the first viewport");
     assert(desktop.dayMeterLabel === "45s", "desktop daylight meter did not initialize");
+    assert(desktop.trace.exists, "rotor trace panel is missing");
+    assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
+    assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
     assert(desktop.judgePathCards.join("|") === "1. Play|2. Rotor Trace|3. Receipt", "Judge path cards changed");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
@@ -162,7 +173,7 @@ async function main() {
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 34, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 38, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
@@ -195,7 +206,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 34, `expected 34 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 38, `expected 38 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

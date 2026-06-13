@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260613-hint-polish" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260613-trace-polish" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -185,6 +185,11 @@
       const bestLabel = doc.querySelector("#bestLabel");
       const shiftLabel = doc.querySelector("#shiftLabel");
       const phaseSteps = doc.querySelectorAll("#phaseTrack .phase-step");
+      const tracePanel = doc.querySelector("#tracePanel");
+      const tracePhase = doc.querySelector("#tracePhase");
+      const traceMatch = doc.querySelector("#traceMatch");
+      const traceNext = doc.querySelector("#traceNext");
+      const traceLast = doc.querySelector("#traceLast");
       const proofPanel = doc.querySelector("#proofPanel");
       const proofCode = doc.querySelector("#proofCode");
       const proofSummary = doc.querySelector("#proofSummary");
@@ -207,6 +212,8 @@
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
+      addCheck("rotor trace panel is present", Boolean(tracePanel && tracePhase && traceMatch && traceNext && traceLast));
+      addCheck("rotor trace reports the first phase", tracePhase.textContent.includes("Crib dawn"));
       addCheck("run receipt panel is present", Boolean(proofPanel));
       addCheck("run receipt summary is present", Boolean(proofSummary));
 
@@ -228,6 +235,8 @@
       await sleep(80);
       addCheck("hint shortcut names the next mismatched node", statusLine.textContent.includes("Hint: rotate node"));
       addCheck("hint highlights a node button", Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
+      addCheck("rotor trace records hint action", traceLast.textContent.includes("Hint node"));
+      addCheck("rotor trace names the next mismatch", traceNext.textContent.includes("Node 1"));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);
