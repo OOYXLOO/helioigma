@@ -6,7 +6,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `325e01871bab1cbd961e6b2686e05e0551109f75`.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `949317068886cc5563f3be3e0ab322287ca881cb`.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`
@@ -21,7 +21,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `solstice-cipher-demo.webm`: current video demo generated from the checked-in demo frames
+- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session
 - `solstice-cipher-demo.gif`: current animated GIF preview
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
@@ -55,6 +55,7 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
 - Mobile 390x844: no horizontal overflow; phase progress strip stays compact and the canvas begins in the first viewport.
 - Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
+- Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls through verifier validation.
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Stable Demo Solve receipt: `SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`

@@ -43,20 +43,20 @@ Core features:
 ## Judge in 60 Seconds
 
 1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, then verify it.
-2. Watch the current GIF preview.
+2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Open `judge-manifest.json` for the machine-readable prize target, run receipt, public links, and human gate summary.
 5. Paste the sample receipt into `proof-verifier.html` to confirm the checksum loop.
 
 ## Video Demo
 
-The demo video shows the current four-phase interface, node controls, and final receipt flow.
+The demo video is a live browser recording of the current judge path: first-screen context, manual node controls, `Demo Solve`, the final receipt, and the local verifier.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif)
 
 ![Helioigma desktop gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
 
-Watch the current WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+Watch the current captioned WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
 
 Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 
@@ -80,7 +80,8 @@ The source is hosted at https://github.com/OOYXLOO/solstice-cipher. The project 
 - `smoke.html`: browser smoke test that solves the public game path in an iframe.
 - `judge.html`: one-page review hub.
 - `judge-manifest.json`: machine-readable judge manifest for the prize target, public links, stable run receipt, media, verification steps, and human gates.
-- `tools/build-demo-webm.mjs`: reproduces the current WebM video from the checked-in demo frames.
+- `tools/build-demo-video.mjs`: records the current captioned WebM demo from a live browser session.
+- `tools/build-demo-webm.mjs`: keeps a frame-based fallback builder for the preview sequence.
 - `LICENSE`: MIT license for the game package.
 
 ## How to Play

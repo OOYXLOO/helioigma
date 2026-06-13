@@ -53,7 +53,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 ## Local Media Assets
 
 - `cover.png`: 1200x630 social/DEV cover image.
-- `solstice-cipher-demo.webm`: current WebM video built from the checked-in seven-frame demo sequence.
+- `solstice-cipher-demo.webm`: current captioned WebM video recorded from the real browser game path.
 - `solstice-cipher-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt.
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
@@ -79,7 +79,8 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve, daylight meter, desktop Judge Path, mobile canvas visibility, validates the run receipt, and waits for `smoke.html` to reach 30 PASS checks.
-- `tools/build-demo-webm.mjs`: reproducible video builder for `solstice-cipher-demo.webm`.
+- `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `solstice-cipher-demo.webm`.
+- `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 
 ## Public Publishing
 

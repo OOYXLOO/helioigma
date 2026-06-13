@@ -106,7 +106,7 @@ The game is intentionally compact: a visible daylight meter, a four-phase progre
         <div class="copy-row"><h2>Judge in 60 Seconds</h2><button type="button" data-copy="judgepath">Copy</button></div>
         <textarea id="judgepath" readonly>If you are judging in a hurry:
 1. Open the play link and press Demo Solve for the full loop and stable receipt SC-4P-2907-62-Y5VFX1, or press Start to play manually.
-2. Watch the current WebM video or GIF fallback.
+2. Watch the captioned WebM video or GIF fallback.
 3. Run smoke.html to see the game solve all four phases automatically.
 4. Open judge-manifest.json for the machine-readable prize target, run receipt, public links, and human gate summary.
 5. Paste the sample receipt into proof-verifier.html to confirm the checksum loop.</textarea>
@@ -128,7 +128,7 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 - One-click Demo Solve for judges who want to see the full loop immediately.
 - A finale screen with final score, local best score, solved phase count, total shifts, and copyable run receipt.
 - A judge page, smoke test, and receipt verifier with parsed receipt facts so reviewers can verify the full loop quickly.
-- DEV-ready media: cover image, current WebM video, GIF fallback, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
+- DEV-ready media: cover image, captioned WebM video, GIF fallback, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Code</h2><button type="button" data-copy="code">Copy</button></div>
@@ -142,6 +142,7 @@ Key files:
 - smoke.html: browser smoke test that solves the public game path in an iframe.
 - judge.html: one-page review hub.
 - judge-manifest.json: machine-readable judge manifest for the prize target, public links, stable run receipt, media, verification steps, and human gates.
+- tools/build-demo-video.mjs: reproducible browser-recording builder for the captioned WebM demo.
 - LICENSE: MIT license for the game package.</textarea>
       </div>
       <div class="panel">
@@ -176,7 +177,7 @@ I would love real feedback on the feel of the puzzle loop, mobile controls, and 
       <div class="panel">
         <div class="copy-row"><h2>Media Order</h2><button type="button" data-copy="media">Copy</button></div>
         <textarea id="media" readonly>1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
-2. WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+2. Captioned WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
 3. GIF fallback: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 4. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
 5. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
@@ -193,7 +194,7 @@ I would love real feedback on the feel of the puzzle loop, mobile controls, and 
 - Demo Solve completes the full loop and reveals a run receipt.
 - The live page shows node-control buttons below the canvas.
 - DEV post uses tags: devchallenge, gamechallenge, gamedev.
-- DEV post includes the play link, source link, public cover image, current WebM video, GIF fallback, and screenshots.
+- DEV post includes the play link, source link, public cover image, captioned WebM video, GIF fallback, and screenshots.
 - DEV post mentions the only browser storage is a local numeric best score key.
 - Source package includes the MIT LICENSE file.
 - No password, token, payout, tax, KYC, or private account data is included.</textarea>

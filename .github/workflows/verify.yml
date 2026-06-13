@@ -30,6 +30,7 @@ jobs:
             publish-assistant.html \
             publish-after-repo.ps1 \
             public-preflight.ps1 \
+            tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
             dev-submit-console.html \
@@ -121,6 +122,8 @@ jobs:
           grep -q "Score variance is expected" verification.html
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
+          grep -q "live browser recording" tools/build-demo-video.mjs
+          grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "solstice-cipher-dev-package.zip" .gitignore
@@ -151,7 +154,7 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Rebuild demo video
-        run: node tools/build-demo-webm.mjs
+        run: node tools/build-demo-video.mjs
 
       - name: Run browser smoke
         run: node tools/browser-smoke-check.mjs

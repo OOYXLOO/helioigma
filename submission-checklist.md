@@ -25,11 +25,12 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 - Mobile screenshot: `mobile-check-v6.png`.
 - Completion screenshot: `desktop-complete-v4.png`.
 - Cover image after Pages is live: `https://ooyxloo.github.io/solstice-cipher/cover.png`.
-- Current WebM demo video: `solstice-cipher-demo.webm`.
+- Current captioned WebM demo video: `solstice-cipher-demo.webm`.
 - Current GIF demo: `solstice-cipher-demo.gif`.
 - Optional legacy MP4 asset: `solstice-cipher-demo.mp4`.
 - Source frames: `demo-frames-v3/`.
-  - Rebuild WebM from frames with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-webm.mjs`.
+- Rebuild captioned WebM from a live browser session with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-video.mjs`.
+- Rebuild the fallback frame-based WebM with `NODE_PATH=C:\Users\YXL\.codex\tmp\solstice-playwright\node_modules node .\tools\build-demo-webm.mjs`.
 - Local package ZIP: `solstice-cipher-dev-package.zip`.
 - Verification:
   - `node --check game.js`

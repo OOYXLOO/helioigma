@@ -48,7 +48,7 @@ Do not submit on DEV until the public try link works. Use:
 - Draft: `dev-post-draft.md`
 - Cover image after Pages is live: `https://ooyxloo.github.io/solstice-cipher/cover.png`
 - Current GIF demo after Pages is live: `https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif`
-- The WebM is the canonical current demo video; the GIF remains as a fallback preview, and the MP4 is a legacy optional asset.
+- The WebM is the canonical captioned browser-recorded demo video; the GIF remains as a fallback preview, and the MP4 is a legacy optional asset.
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Judge manifest: `https://ooyxloo.github.io/solstice-cipher/judge-manifest.json`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`

@@ -82,6 +82,7 @@ try {
     "dev-post-draft.md",
     "publish-assistant.html",
     "publish-after-repo.ps1",
+    "tools/build-demo-video.mjs",
     "tools/build-demo-webm.mjs",
     "tools/browser-smoke-check.mjs",
     "verification.html",
@@ -187,6 +188,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 30 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
+  Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
+  Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "tools/build-demo-webm.mjs" "solstice-cipher-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
   Assert-Contains ".gitignore" "solstice-cipher-dev-package.zip"
@@ -198,6 +201,7 @@ try {
   Assert-Contains "judge.html" "Verify Receipt"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
   Assert-Contains "judge.html" "solstice-cipher-demo.webm"
+  Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Run Receipt"
   Assert-Contains "judge.html" "run receipt"
   Assert-NotContains "judge.html" "radial-gradient"
