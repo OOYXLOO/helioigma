@@ -22,7 +22,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
 - `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
-- `solstice-cipher-demo.gif`: current animated GIF preview
+- `solstice-cipher-demo.gif`: current animated GIF preview ending on the receipt ledger
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot

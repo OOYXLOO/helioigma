@@ -58,7 +58,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 
 - `cover.png`: 1200x630 social/DEV cover image.
 - `solstice-cipher-demo.webm`: current captioned WebM video recorded from the real browser game path, including Hint, phase banner, Rotor Trace, Demo Solve, final receipt, and verifier.
-- `solstice-cipher-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt.
+- `solstice-cipher-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt ledger.
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
