@@ -88,6 +88,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, a prefilled sample receipt link, and `?receipt=` deep-link support from completed runs.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
+- `dev-launch-brief.md`: final DEV launch field list, URL checklist, no-go gate, and post-publish receipt template.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
@@ -110,6 +111,7 @@ The package includes `.nojekyll` and social metadata so GitHub Pages can serve t
 These files are included for the account owner and are not part of the judge's required review path:
 
 - `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
+- `dev-launch-brief.md`: compact launch-day brief for the account owner after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 

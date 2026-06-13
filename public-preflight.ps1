@@ -79,6 +79,7 @@ try {
     "proof-verifier.html",
     "dev-submit-console.html",
     "dev-article-final.md",
+    "dev-launch-brief.md",
     "dev-post-draft.md",
     "publish-assistant.html",
     "publish-after-repo.ps1",
@@ -196,6 +197,22 @@ try {
   Assert-NotContains "dev-article-final.md" "moved after the playfield on mobile"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
+  Assert-Contains "dev-launch-brief.md" "Helioigma DEV Launch Brief"
+  Assert-Contains "dev-launch-brief.md" "Helioigma: a Turing-wheel puzzle for holding the longest day"
+  Assert-Contains "dev-launch-brief.md" "devchallenge"
+  Assert-Contains "dev-launch-brief.md" "gamechallenge"
+  Assert-Contains "dev-launch-brief.md" "gamedev"
+  Assert-Contains "dev-launch-brief.md" "javascript"
+  Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/"
+  Assert-Contains "dev-launch-brief.md" "https://github.com/OOYXLOO/helioigma"
+  Assert-Contains "dev-launch-brief.md" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "dev-launch-brief.md" "PASS browser smoke"
+  Assert-Contains "dev-launch-brief.md" "DEV No-Go Gate"
+  Assert-Contains "dev-launch-brief.md" "Post-Publish Receipt"
+  Assert-Contains "dev-launch-brief.md" "Honest Share Note"
+  Assert-Contains "dev-launch-brief.md" "Do not publish the DEV article if"
+  Assert-Contains "dev-launch-brief.md" "fake engagement"
+  Assert-Contains "dev-launch-brief.md" "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "dev-submit-console.html" 'plus a `D` shortcut'

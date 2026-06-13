@@ -20,6 +20,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - DEV post draft: `dev-post-draft.md`.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
+- DEV launch brief: `dev-launch-brief.md` with final article fields, public URL checks, no-go gate, and post-publish receipt.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
 - License: `LICENSE`.
@@ -61,6 +62,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Confirm GitHub Actions `Verify Helioigma` passes after push.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
+- Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.

@@ -35,6 +35,7 @@ jobs:
             tools/browser-smoke-check.mjs \
             dev-submit-console.html \
             dev-article-final.md \
+            dev-launch-brief.md \
             verification.html \
             verification-report.md \
             cover.png \
@@ -95,6 +96,22 @@ jobs:
           grep -q "default-off Audio control" dev-article-final.md
           grep -q "Score rewards held daylight, streaks, and fewer wasted shifts" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
+          grep -q "Helioigma DEV Launch Brief" dev-launch-brief.md
+          grep -q "Helioigma: a Turing-wheel puzzle for holding the longest day" dev-launch-brief.md
+          grep -q "devchallenge" dev-launch-brief.md
+          grep -q "gamechallenge" dev-launch-brief.md
+          grep -q "gamedev" dev-launch-brief.md
+          grep -q "javascript" dev-launch-brief.md
+          grep -q "https://ooyxloo.github.io/helioigma/" dev-launch-brief.md
+          grep -q "https://github.com/OOYXLOO/helioigma" dev-launch-brief.md
+          grep -q "SC-4P-2907-62-Y5VFX1" dev-launch-brief.md
+          grep -q "PASS browser smoke" dev-launch-brief.md
+          grep -q "DEV No-Go Gate" dev-launch-brief.md
+          grep -q "Post-Publish Receipt" dev-launch-brief.md
+          grep -q "Honest Share Note" dev-launch-brief.md
+          grep -q "Do not publish the DEV article if" dev-launch-brief.md
+          grep -q "fake engagement" dev-launch-brief.md
+          grep -q "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content" dev-launch-brief.md
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev, javascript" dev-submit-console.html
           grep -q "Helioigma" dev-submit-console.html
@@ -137,10 +154,12 @@ jobs:
           grep -q "MIT license" README.md
           grep -q "MIT License" LICENSE
           grep -q "judge-manifest.json" submission-checklist.md
+          grep -q "dev-launch-brief.md" submission-checklist.md
           grep -q "sample receipt verifier URL" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
           grep -q "60 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
+          grep -q "dev-launch-brief.md" PUBLISHING.md
 
       - name: Verify judge and smoke links
         run: |

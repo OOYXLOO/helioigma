@@ -51,6 +51,7 @@ After the push, the `Verify Helioigma` workflow should pass before the DEV artic
 Do not submit on DEV until the public try link works. Use:
 
 - Copy console: `dev-submit-console.html`
+- Launch brief: `dev-launch-brief.md`
 - Publish assistant: `publish-assistant.html`
 - Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
@@ -90,6 +91,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] DEV article uses the official tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
+- [ ] `dev-launch-brief.md` public URL checks, DEV article fields, and no-go gate are reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.
 - [ ] If sharing after publication, ask for real play/feedback only; mention DEV reactions only as honest tie-breaker context; do not spam, buy reactions, or ask for fake engagement.
