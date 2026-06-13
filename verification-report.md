@@ -56,6 +56,7 @@ Expected local URLs:
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Stable Demo Solve proof: `SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke proof format: `SC-4P-score-shifts-checksum`
+- Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
 - `proof-verifier.html` recomputes the proof checksum locally and shows parsed proof facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 23 PASS assertions:
@@ -91,10 +92,11 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - official DEV challenge tags
 - current GIF demo reference
 - intended public play URL
-- judge page demo-video link
+- judge page current GIF link
 - smoke proof pattern
 - proof verifier page and stable demo checksum copy
 - proof verifier parsed proof facts
+- browser smoke script that opens the real pages and waits for 23 PASS checks
 
 ## Human Gates
 

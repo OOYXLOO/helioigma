@@ -69,6 +69,7 @@ try {
     "dev-post-draft.md",
     "publish-assistant.html",
     "publish-after-repo.ps1",
+    "tools/browser-smoke-check.mjs",
     "verification.html",
     "verification-report.md",
     "cover.png",
@@ -119,6 +120,9 @@ try {
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
+  Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
+  Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 23 smoke checks"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
   Assert-Contains "judge.html" "Run Receipt"

@@ -28,6 +28,7 @@ jobs:
             publish-assistant.html \
             publish-after-repo.ps1 \
             public-preflight.ps1 \
+            tools/browser-smoke-check.mjs \
             dev-submit-console.html \
             dev-article-final.md \
             verification.html \
@@ -103,3 +104,11 @@ jobs:
           grep -q "shift counter records the completed run" smoke.html
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html
+
+      - name: Install browser smoke dependency
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run browser smoke
+        run: node tools/browser-smoke-check.mjs
