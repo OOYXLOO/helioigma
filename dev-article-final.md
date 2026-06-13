@@ -20,7 +20,7 @@ Links:
 - Source: https://github.com/OOYXLOO/solstice-cipher
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
-- Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
+- Receipt verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
 - Judge manifest: https://ooyxloo.github.io/solstice-cipher/judge-manifest.json
 
 Core features:
