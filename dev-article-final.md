@@ -10,6 +10,8 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png
 
 The first thing I want a judge to see is the machine itself: a solar rotor under a 45-second daylight bar. Every click shifts `SOL`, `XOR`, `LUX`, and `BIN` around the ring; every phase asks you to pull the board back into alignment before nightfall. The solstice is a strange clock, so Helioigma turns the longest day into a countdown machine.
 
+I am aiming this at Best Ode to Alan Turing by making the tribute playable: rotor-like alignment, target checking, XOR/binary language, and a checksum receipt that lets the run be inspected instead of only watched.
+
 That is why the first action is not a lore screen or a menu. The game opens on the daylight meter, target rotor, and playable controls. A judge can start manually, use `Hint` when a node is off, or press `Demo Solve` to watch the full four-phase run in under a minute. The receipt/verifier path is there after the play loop, so the review stays fast without turning the entry into a static proof page.
 
 ## What I Built

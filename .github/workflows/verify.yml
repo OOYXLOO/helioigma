@@ -57,6 +57,7 @@ jobs:
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
           grep -q "solar rotor" dev-article-final.md
+          grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
           grep -q "Completion screenshot with receipt ledger" dev-article-final.md
@@ -124,7 +125,11 @@ jobs:
           grep -q "Auto Demo" judge.html
           grep -q "Run Smoke Test" judge.html
           grep -q "60-second review path" judge.html
+          grep -q "Primary judge actions" judge.html
+          grep -q "Evidence links" judge.html
+          grep -q "Watch the playable page complete all four phases" judge.html
           grep -q "Verify the browser path reaches 46 checks" judge.html
+          ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
           grep -q "Ode With Restraint" judge.html

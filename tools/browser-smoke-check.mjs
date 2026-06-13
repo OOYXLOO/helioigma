@@ -159,11 +159,21 @@ async function main() {
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
     const judge = await page.evaluate(() => ({
       actions: [...document.querySelectorAll(".action strong")].map((node) => node.textContent.trim()),
+      primaryActions: [...document.querySelectorAll(".primary-actions .action strong")].map((node) => node.textContent.trim()),
+      evidenceActions: [...document.querySelectorAll(".evidence-actions .action strong")].map((node) => node.textContent.trim()),
+      primaryInsideReview: Boolean(document.querySelector(".review-flow .primary-actions")),
+      reviewBeforeEvidence: Boolean(
+        document.querySelector(".review-flow") &&
+        document.querySelector(".evidence-actions") &&
+        (document.querySelector(".review-flow").compareDocumentPosition(document.querySelector(".evidence-actions")) & Node.DOCUMENT_POSITION_FOLLOWING),
+      ),
       hasDevConsole: document.body.innerText.includes("DEV Console"),
       hasGif: document.body.innerText.includes("GIF"),
       hasWebm: document.body.innerText.includes("WebM"),
       hasRunReceiptCopy: document.body.innerText.includes("run receipt"),
       hasRunProofCopy: document.body.innerText.includes("run proof"),
+      hasOldPublicPageCopy: document.body.innerText.includes("Watch the public page complete all four phases"),
+      hasPlayablePageCopy: document.body.innerText.includes("Watch the playable page complete all four phases"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
       rubricItems: [...document.querySelectorAll(".rubric-item strong")].map((node) => node.textContent.trim()),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
@@ -175,6 +185,8 @@ async function main() {
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
     assert(!judge.hasRunProofCopy, "judge page still exposes run proof wording");
+    assert(!judge.hasOldPublicPageCopy, "judge page still calls the prelaunch route a public page");
+    assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
     assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
@@ -185,6 +197,12 @@ async function main() {
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
+    assert(judge.primaryActions.join("|") === "Auto Demo|Play", "judge page primary actions are not focused on Auto Demo and Play");
+    assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
+    assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
+    assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
+    assert(judge.primaryInsideReview, "judge page primary actions are not embedded in the 60-second review path");
+    assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
     assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");
