@@ -15,6 +15,9 @@
   const dayMeter = document.querySelector("#dayMeter");
   const dayMeterLabel = document.querySelector("#dayMeterLabel");
   const dayMeterFill = document.querySelector("#dayMeterFill");
+  const phaseObjective = document.querySelector("#phaseObjective");
+  const phaseTargetLine = document.querySelector("#phaseTargetLine");
+  const phaseAlignment = document.querySelector("#phaseAlignment");
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
@@ -150,6 +153,7 @@
     }
     demoButton.disabled = state.demoing;
     syncDayMeter();
+    syncPhaseObjective();
     syncPhaseTrack();
     syncNodeButtons();
     syncRotorTrace();
@@ -193,6 +197,24 @@
     dayMeter.classList.toggle("low", !state.complete && ratio <= 0.25);
     dayMeter.classList.toggle("held", state.complete);
     dayMeterLabel.textContent = state.complete ? "held" : `${Math.max(0, Math.ceil(state.timeLeft))}s`;
+  }
+
+  function countAlignedNodes() {
+    return state.ring.reduce((count, value, index) => count + (value === state.target[index] ? 1 : 0), 0);
+  }
+
+  function syncPhaseObjective() {
+    if (!phaseObjective || !phaseTargetLine || !phaseAlignment) return;
+    const safeLevel = Math.min(state.level, levels.length - 1);
+    const aligned = countAlignedNodes();
+    phaseObjective.textContent = state.complete ? "Receipt sealed" : phaseNames[safeLevel];
+    phaseObjective.nextElementSibling.textContent = state.complete
+      ? "The longest-day run is complete; verify the receipt below."
+      : phaseMottos[safeLevel];
+    phaseTargetLine.textContent = state.target.map((value) => glyphs[value]).join(" ");
+    phaseAlignment.textContent = state.complete
+      ? `${state.solvedPhases}/${levels.length} phases solved`
+      : `${aligned}/${state.target.length} nodes aligned`;
   }
 
   function syncPhaseTrack() {
@@ -501,7 +523,7 @@
     ctx.fillStyle = "rgba(7,16,24,0.82)";
     ctx.strokeStyle = "rgba(247,201,72,0.45)";
     ctx.lineWidth = 2;
-    roundRect(ctx, cx - ringRadius * 0.88, cy - ringRadius * 0.4, ringRadius * 1.76, ringRadius * 0.88, 18);
+    roundRect(ctx, cx - ringRadius * 0.88, cy - ringRadius * 0.46, ringRadius * 1.76, ringRadius * 1.02, 18);
     ctx.fill();
     ctx.stroke();
     ctx.textAlign = "center";
@@ -515,10 +537,13 @@
     ctx.fillStyle = "rgba(174,184,197,0.9)";
     ctx.font = `600 ${Math.max(12, ringRadius * 0.055)}px ui-sans-serif, system-ui`;
     ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.16);
+    ctx.fillStyle = "rgba(184,242,200,0.9)";
+    ctx.font = `700 ${Math.max(11, ringRadius * 0.05)}px ui-sans-serif, system-ui`;
+    ctx.fillText("Logic aligned. Daylight proved.", cx, cy + ringRadius * 0.28);
     ctx.fillStyle = "rgba(174,184,197,0.78)";
     ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
-    ctx.fillText(`Receipt ${state.finalProof}`, cx, cy + ringRadius * 0.29);
-    ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.41);
+    ctx.fillText(`Receipt ${state.finalProof}`, cx, cy + ringRadius * 0.39);
+    ctx.fillText(state.score >= state.bestScore ? "New solstice record." : "Ready for another run.", cx, cy + ringRadius * 0.51);
     ctx.restore();
   }
 

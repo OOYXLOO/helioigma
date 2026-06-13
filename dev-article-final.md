@@ -8,11 +8,11 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png
 
 ## The Longest Day as a Countdown Machine
 
-The first thing I want a judge to see is the machine itself: a solar rotor under a 45-second daylight bar. Every click shifts `SOL`, `XOR`, `LUX`, and `BIN` around the ring; every phase asks you to pull the board back into alignment before nightfall. The solstice is a strange clock, so Helioigma turns the longest day into a countdown machine.
+You get 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before the timer empties.
 
-I am aiming this at Best Ode to Alan Turing by making the tribute playable: rotor-like alignment, target checking, XOR/binary language, and a checksum receipt that lets the run be inspected instead of only watched.
+Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but a compact proof that the solve path can be inspected.
 
-That is why the first action is not a lore screen or a menu. The game opens on the daylight meter, target rotor, and playable controls. A judge can start manually, use `Hint` when a node is off, or press `Demo Solve` to watch the full four-phase run in under a minute. The receipt/verifier path is there after the play loop, so the review stays fast without turning the entry into a static proof page.
+I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
 ## What I Built
 
@@ -60,7 +60,7 @@ Core features:
 - Final screen with solved phase count, phase scoring ledger, total shifts, score, and copyable `SC-4P-...` run receipt.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
+- First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
 
 ## Judge in 60 Seconds
 
@@ -175,5 +175,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 46 checks passed, including daylight meter, phase announcer, phase scoring ledger, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 46 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `smoke.html`: 49 checks passed, including daylight meter, phase objective strip, phase announcer, phase scoring ledger, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 49 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

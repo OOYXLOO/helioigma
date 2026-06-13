@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://ooyxloo.github.io/helioigma/cover.png">
-  <link rel="stylesheet" href="styles.css?v=20260613-ledger-polish">
+  <link rel="stylesheet" href="styles.css?v=20260613-objective-strip">
 </head>
 <body>
   <main class="shell">
@@ -32,10 +32,10 @@
 
       <ol id="phaseTrack" class="phase-track" aria-label="Phase progress"></ol>
 
-      <div class="brief" aria-label="Challenge fit">
-        <span>Daylight is the clock.</span>
-        <span>Rotor shifts follow SOL, XOR, LUX, BIN.</span>
-        <span>Every completed run leaves a receipt code.</span>
+      <div class="brief objective-strip" aria-label="Current phase objective">
+        <span><strong id="phaseObjective">Crib dawn</strong><small>Find the daylight crib before the wheel starts to drift.</small></span>
+        <span><strong>Target glyphs</strong><small id="phaseTargetLine">SOL LUX XOR BIN SOL XOR</small></span>
+        <span><strong>Alignment</strong><small id="phaseAlignment">0/6 nodes aligned</small></span>
       </div>
 
       <div id="dayMeter" class="day-meter" aria-label="Daylight remaining">
@@ -116,6 +116,6 @@
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-ledger-polish"></script>
+  <script src="game.js?v=20260613-objective-strip"></script>
 </body>
 </html>

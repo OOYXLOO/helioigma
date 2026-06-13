@@ -67,6 +67,7 @@ async function readGameFacts(page) {
     const hint = document.querySelector("#hintButton")?.getBoundingClientRect();
     const judgePath = document.querySelector(".judge-path")?.getBoundingClientRect();
     const dayMeter = document.querySelector("#dayMeter")?.getBoundingClientRect();
+    const objectiveStrip = document.querySelector(".objective-strip")?.getBoundingClientRect();
     const tracePanel = document.querySelector("#tracePanel");
     const ordered = [...document.querySelectorAll("body *")];
     const controls = document.querySelector(".quick-controls");
@@ -80,6 +81,12 @@ async function readGameFacts(page) {
       judgePathVisible: Boolean(judgePath && judgePath.top >= 0 && judgePath.bottom <= innerHeight),
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
       dayMeterLabel: document.querySelector("#dayMeterLabel")?.textContent.trim(),
+      objectiveVisible: Boolean(objectiveStrip && objectiveStrip.top >= 0 && objectiveStrip.bottom <= innerHeight),
+      objective: {
+        phase: document.querySelector("#phaseObjective")?.textContent.trim(),
+        target: document.querySelector("#phaseTargetLine")?.textContent.trim(),
+        alignment: document.querySelector("#phaseAlignment")?.textContent.trim(),
+      },
       canvasTop: canvasRect?.top,
       trace: {
         phase: document.querySelector("#tracePhase")?.textContent.trim(),
@@ -119,6 +126,10 @@ async function main() {
     assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.dayMeterVisible, "desktop daylight meter is not visible in the first viewport");
     assert(desktop.dayMeterLabel === "45s", "desktop daylight meter did not initialize");
+    assert(desktop.objectiveVisible, "desktop phase objective is not visible in the first viewport");
+    assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
+    assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
+    assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -153,6 +164,8 @@ async function main() {
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
+    assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
+    assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.canvasTop < 844, "mobile game canvas does not begin in the first viewport");
 
     await page.setViewportSize({ width: 1280, height: 900 });
@@ -214,7 +227,7 @@ async function main() {
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 46, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 49, "judge manifest smoke count changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
@@ -256,7 +269,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 46, `expected 46 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 49, `expected 49 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

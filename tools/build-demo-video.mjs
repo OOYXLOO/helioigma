@@ -127,8 +127,8 @@ async function main() {
     await installCaptionOverlay(page);
     await setCaption(
       page,
-      "1/5 - First screen: play path, timer, rotor, and receipt goal",
-      "Judges can start manually, ask for a Hint, or use Demo Solve without hunting through a menu."
+      "1/5 - First screen: objective, timer, rotor, and receipt goal",
+      "The phase objective strip shows the current target glyphs before judges touch the wheel."
     );
     await page.waitForTimeout(4200);
 

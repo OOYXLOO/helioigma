@@ -138,20 +138,39 @@ body {
   line-height: 1.35;
 }
 
-.brief span {
-  min-width: 0;
+.objective-strip {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 0.72fr;
+  align-items: stretch;
+  gap: 8px;
 }
 
-.brief span::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 18px rgba(247, 201, 72, 0.6);
-  vertical-align: 1px;
+.objective-strip span {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  border-left: 3px solid rgba(247, 201, 72, 0.62);
+  padding-left: 10px;
+}
+
+.objective-strip strong,
+.objective-strip small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.objective-strip strong {
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.objective-strip small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
 }
 
 .day-meter {
@@ -701,8 +720,23 @@ button:focus-visible {
     display: none;
   }
 
-  .brief {
+  .objective-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 8px 10px;
+  }
+
+  .objective-strip span {
+    border-left-width: 2px;
+    padding-left: 8px;
+  }
+
+  .objective-strip span:first-child small {
     display: none;
+  }
+
+  .objective-strip small {
+    font-size: 11px;
   }
 
   .day-meter {

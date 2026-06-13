@@ -57,6 +57,9 @@ jobs:
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
           grep -q "solar rotor" dev-article-final.md
+          grep -q "You get 45 seconds of daylight" dev-article-final.md
+          grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
+          grep -q "compact proof that the solve path can be inspected" dev-article-final.md
           grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
@@ -87,6 +90,8 @@ jobs:
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
           grep -q "Helioigma" dev-submit-console.html
+          grep -q "You get 45 seconds of daylight" dev-submit-console.html
+          grep -q "live objective strip tells you what the rotor wants next" dev-submit-console.html
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "judge-manifest.json" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
@@ -128,7 +133,7 @@ jobs:
           grep -q "Primary judge actions" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
-          grep -q "Verify the browser path reaches 46 checks" judge.html
+          grep -q "Verify the browser path reaches 49 checks" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
@@ -148,7 +153,7 @@ jobs:
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q "46" judge-manifest.json
+          grep -q "49" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
@@ -172,6 +177,10 @@ jobs:
           grep -q "helioigma-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
+          grep -q "objective-strip" index.html
+          grep -q "phaseObjective" index.html
+          grep -q "phaseTargetLine" index.html
+          grep -q "phaseAlignment" index.html
           grep -q "shiftLabel" index.html
           grep -q "hintButton" index.html
           grep -q "tracePanel" index.html
@@ -185,12 +194,12 @@ jobs:
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
           grep -q "Decode the solstice rotor" index.html
-          grep -q "20260613-ledger-polish" index.html
+          grep -q "20260613-objective-strip" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260613-ledger-polish" smoke.html
+          grep -q "20260613-objective-strip" smoke.html
           grep -q "hint button is present" smoke.html
           grep -q "hint shortcut is exposed" smoke.html
           grep -q "hint shortcut names the next mismatched node" smoke.html
@@ -198,6 +207,9 @@ jobs:
           grep -q "rotor trace panel is present" smoke.html
           grep -q "rotor trace records hint action" smoke.html
           grep -q "demo solve button is present" smoke.html
+          grep -q "phase objective strip is present" smoke.html
+          grep -q "phase objective names the first phase" smoke.html
+          grep -q "phase objective shows target glyphs and alignment" smoke.html
           grep -q "judge shortcut links include the auto demo route" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "run receipt verifier link is present" smoke.html

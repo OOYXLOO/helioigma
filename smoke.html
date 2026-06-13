@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260613-ledger-polish" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260613-objective-strip" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -177,6 +177,9 @@
       const dayMeter = doc.querySelector("#dayMeter");
       const dayMeterFill = doc.querySelector("#dayMeterFill");
       const dayMeterLabel = doc.querySelector("#dayMeterLabel");
+      const phaseObjective = doc.querySelector("#phaseObjective");
+      const phaseTargetLine = doc.querySelector("#phaseTargetLine");
+      const phaseAlignment = doc.querySelector("#phaseAlignment");
       const judgePathCards = doc.querySelectorAll(".judge-path article");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
       const judgeLinks = doc.querySelectorAll(".judge-links a");
@@ -208,6 +211,9 @@
       addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");
       addCheck("demo shortcut is exposed", demoButton.getAttribute("aria-keyshortcuts") === "D");
       addCheck("number-key node shortcuts are exposed", canvas.getAttribute("aria-keyshortcuts") === "1 2 3 4 5 6 7 8 9");
+      addCheck("phase objective strip is present", Boolean(phaseObjective && phaseTargetLine && phaseAlignment));
+      addCheck("phase objective names the first phase", phaseObjective.textContent.includes("Crib dawn"));
+      addCheck("phase objective shows target glyphs and alignment", phaseTargetLine.textContent.includes("SOL LUX XOR BIN") && phaseAlignment.textContent === "0/6 nodes aligned");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links include the auto demo route", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")));
