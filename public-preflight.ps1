@@ -34,6 +34,17 @@ function Assert-Http200 {
   }
 }
 
+function Assert-PngSignature {
+  param([string]$Path)
+  $expected = @(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+  $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path))
+  for ($i = 0; $i -lt $expected.Count; $i += 1) {
+    if ($bytes[$i] -ne $expected[$i]) {
+      throw "PNG signature mismatch: $Path"
+    }
+  }
+}
+
 Push-Location $PSScriptRoot
 try {
   node --check game.js | Out-Null
@@ -67,6 +78,15 @@ try {
 
   foreach ($file in $requiredFiles) {
     Assert-File $file
+  }
+
+  foreach ($png in @(
+    "cover.png",
+    "desktop-check-v5.png",
+    "mobile-check-v6.png",
+    "desktop-complete-v4.png"
+  )) {
+    Assert-PngSignature $png
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
