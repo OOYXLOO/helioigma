@@ -6,9 +6,9 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Local repository HEAD: current local commit after this report is committed
-- Publication status: not public yet
-- DEV submission status: not submitted yet
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed after local baseline `ab9c6bf`.
+- Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
+- DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/solstice-cipher/`
 - Intended source URL after publication: `https://github.com/OOYXLOO/solstice-cipher`
 - Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`
@@ -21,9 +21,9 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
+- `solstice-cipher-demo.webm`: current video demo generated from the checked-in demo frames
 - `solstice-cipher-demo.gif`: current animated GIF preview
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
-- `solstice-cipher-demo.webm`: optional legacy WebM asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
 - `desktop-complete-v4.png`: completion screenshot
@@ -47,6 +47,7 @@ Expected local URLs:
 - `http://127.0.0.1:8781/smoke.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-submit-console.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-article-final.md`: HTTP 200
+- `http://127.0.0.1:8781/solstice-cipher-demo.webm`: HTTP 200
 - `http://127.0.0.1:8781/solstice-cipher-demo.gif`: HTTP 200
 
 ## Browser Checks
@@ -56,6 +57,7 @@ Expected local URLs:
 - `smoke.html` result: `PASS - Longest day held. Final score 2893 across 62 shifts.`
 - Stable Demo Solve proof: `SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke proof format: `SC-4P-score-shifts-checksum`
+- Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2893, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve proof above.
 - `proof-verifier.html` recomputes the proof checksum locally and shows parsed proof facts for phases, score, shifts, and expected checksum.
 - The playable page exposes a four-step phase progress strip, judge shortcut links, Demo Solve, and node-control buttons below the canvas for fast judging and mobile play.
@@ -90,13 +92,14 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - JavaScript syntax with `node --check game.js`
 - required public package files
 - official DEV challenge tags
-- current GIF demo reference
+- current WebM video and GIF fallback references
 - intended public play URL
-- judge page current GIF link
+- judge page current WebM/GIF links
 - smoke proof pattern
 - proof verifier page and stable demo checksum copy
 - proof verifier parsed proof facts
-  - browser smoke script that opens the real pages and waits for 28 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, and waits for 28 PASS checks
+- reproducible WebM demo builder and WebM media link
 
 ## Human Gates
 

@@ -28,6 +28,7 @@ jobs:
             publish-assistant.html \
             publish-after-repo.ps1 \
             public-preflight.ps1 \
+            tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
             dev-submit-console.html \
             dev-article-final.md \
@@ -45,12 +46,14 @@ jobs:
           do
             test -s "$file"
           done
+          test "$(find demo-frames-v3 -maxdepth 1 -name '*.png' | wc -l)" -ge 7
 
       - name: Verify DEV challenge submission copy
         run: |
           set -euo pipefail
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
           grep -q "solstice-cipher-demo.gif" dev-article-final.md
+          grep -q "solstice-cipher-demo.webm" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
@@ -61,17 +64,24 @@ jobs:
           grep -q "Rubric Fit" dev-article-final.md
           grep -q "I chose a cipher wheel" dev-article-final.md
           grep -q "biggest tradeoff" dev-article-final.md
+          grep -q "only browser storage is a local numeric best-score key" dev-article-final.md
+          grep -q "public-preflight.ps1 -Public" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
+          grep -q "WebM video" dev-submit-console.html
+          grep -q "public-preflight.ps1 -Public" dev-submit-console.html
+          grep -q "only browser storage is the local numeric best score key" README.md
 
       - name: Verify judge and smoke links
         run: |
           set -euo pipefail
           grep -q "solstice-cipher-demo.gif" judge.html
+          grep -q "solstice-cipher-demo.webm" judge.html
+          grep -q "Watch Video" judge.html
           grep -q "Run Smoke Test" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
@@ -85,8 +95,14 @@ jobs:
           grep -q "Valid run receipt" proof-verifier.html
           grep -q "not anti-cheat or identity proof" proof-verifier.html
           grep -q "parsed proof facts" verification-report.md
+          grep -q "solstice-cipher-demo.webm" verification-report.md
+          grep -q "Score variance is expected" verification-report.md
+          grep -q "Score variance is expected" verification.html
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
+          grep -q "demo-frames-v3" tools/build-demo-webm.mjs
+          grep -q "video/webm" tools/browser-smoke-check.mjs
+          grep -q "solstice-cipher-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
@@ -95,10 +111,12 @@ jobs:
           grep -q "judge-links" index.html
           grep -q "proofSummary" index.html
           grep -q "Match each numbered ring node" index.html
+          grep -q "https://ooyxloo.github.io/solstice-cipher/cover.png" index.html
+          grep -q "twitter:image" index.html
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "demo solve button is present" smoke.html
           grep -q "judge shortcut links are present" smoke.html
-          grep -q "demo solve reaches a deterministic judge proof" smoke.html
+          grep -q "demo shortcut reaches a deterministic judge proof" smoke.html
           grep -q "demo solve releases manual controls" smoke.html
           grep -q "four-phase progress track is present" smoke.html
           grep -q "shift counter records the completed run" smoke.html
@@ -109,6 +127,9 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
+
+      - name: Rebuild demo video
+        run: node tools/build-demo-webm.mjs
 
       - name: Run browser smoke
         run: node tools/browser-smoke-check.mjs

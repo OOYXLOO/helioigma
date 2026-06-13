@@ -71,6 +71,7 @@
     <p class="eyebrow">DEV June Solstice Game Jam final post console</p>
     <h1>Solstice Cipher is ready to publish after the public hosting gate.</h1>
     <p class="dek">Use this page after the GitHub repository and GitHub Pages try link are live. It keeps the DEV post short, consistent, and honest: no public URL, no DEV submit.</p>
+    <p class="dek"><strong>No-go gate:</strong> publish only after <code>powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public</code> confirms the public play link, source repo, judge page, smoke page, proof verifier, WebM video, and GIF fallback are live.</p>
 
     <section class="status" aria-label="Current status">
 <div><strong>Ready local package</strong><p>Static game, phase progress, node controls, judge page, smoke page, GIF, cover, screenshots, and ZIP are prepared.</p></div>
@@ -103,7 +104,7 @@ The game is intentionally compact: a visible four-phase progress strip, keyboard
         <div class="copy-row"><h2>Judge in 60 Seconds</h2><button type="button" data-copy="judgepath">Copy</button></div>
         <textarea id="judgepath" readonly>If you are judging in a hurry:
 1. Open the play link and press Demo Solve for the full loop and stable proof SC-4P-2907-62-Y5VFX1, or press Start to play manually.
-2. Watch the current GIF preview.
+2. Watch the current WebM video or GIF fallback.
 3. Run smoke.html to see the game solve all four phases automatically.
 4. Paste the sample proof into proof-verifier.html to confirm the checksum loop.</textarea>
       </div>
@@ -123,7 +124,7 @@ Source: https://github.com/OOYXLOO/solstice-cipher</textarea>
 - One-click Demo Solve for judges who want to see the full loop immediately.
 - A finale screen with final score, local best score, solved phase count, total shifts, and copyable run proof.
 - A judge page, smoke test, and proof verifier with parsed proof facts so reviewers can verify the full loop quickly.
-- DEV-ready media: cover image, current GIF demo, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
+- DEV-ready media: cover image, current WebM video, GIF fallback, desktop gameplay screenshot, mobile screenshot, and completion screenshot.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Code</h2><button type="button" data-copy="code">Copy</button></div>
@@ -159,10 +160,11 @@ The biggest tradeoff was keeping the canvas interaction playful while making the
       <div class="panel">
         <div class="copy-row"><h2>Media Order</h2><button type="button" data-copy="media">Copy</button></div>
         <textarea id="media" readonly>1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
-2. GIF demo: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
-3. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
-4. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
-5. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png</textarea>
+2. WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+3. GIF fallback: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+4. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
+5. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
+6. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png</textarea>
       </div>
       <div class="panel warn">
         <div class="copy-row"><h2>Pre-Submit Checks</h2><button type="button" data-copy="checks">Copy</button></div>
@@ -170,11 +172,13 @@ The biggest tradeoff was keeping the canvas interaction playful while making the
 - GitHub repository exists publicly at https://github.com/OOYXLOO/solstice-cipher.
 - GitHub Pages play link opens logged-out.
 - /judge.html and /smoke.html return HTTP 200.
+- /proof-verifier.html, /solstice-cipher-demo.webm, and /solstice-cipher-demo.gif return HTTP 200.
 - smoke.html shows all PASS checks.
 - Demo Solve completes the full loop and reveals a run proof.
 - The live page shows node-control buttons below the canvas.
 - DEV post uses tags: devchallenge, gamechallenge, gamedev.
-- DEV post includes the play link, source link, public cover image, current GIF demo, and screenshots.
+- DEV post includes the play link, source link, public cover image, current WebM video, GIF fallback, and screenshots.
+- DEV post mentions the only browser storage is a local numeric best score key.
 - No password, token, payout, tax, KYC, or private account data is included.</textarea>
       </div>
       <div class="panel danger">

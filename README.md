@@ -8,6 +8,7 @@ Static browser game package for the DEV June Solstice Game Jam backup route.
 - Not yet published to a public repository.
 - Not submitted to DEV.
 - No account login, payout data, API key, or private user data is used.
+- The only browser storage is the local numeric best score key for this game.
 
 ## Run
 
@@ -51,9 +52,9 @@ The playable first screen now includes the plain rule: match each numbered ring 
 ## Local Media Assets
 
 - `cover.png`: 1200x630 social/DEV cover image.
-- `solstice-cipher-demo.gif`: seven-frame current gameplay demo, from first-screen controls through the final run receipt.
+- `solstice-cipher-demo.webm`: current WebM video built from the checked-in seven-frame demo sequence.
+- `solstice-cipher-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt.
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
-- `solstice-cipher-demo.webm`: optional legacy WebM asset retained for public hosting fallback.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
 - `desktop-complete-v4.png`: current final-score screenshot with solved phases, best score, and shift count.
@@ -64,7 +65,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve proof, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs, with parsed phases, score, shifts, and checksum facts.
-- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current GIF media, try links, and the no-go gate after the public Pages link exists.
+- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
@@ -72,6 +73,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Demo Solve visibility, validates the run receipt, and waits for `smoke.html` to reach 28 PASS checks.
+- `tools/build-demo-webm.mjs`: reproducible video builder for `solstice-cipher-demo.webm`.
 
 ## Public Publishing
 

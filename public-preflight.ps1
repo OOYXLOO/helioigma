@@ -52,6 +52,17 @@ function Assert-PngSignature {
   }
 }
 
+function Assert-WebmSignature {
+  param([string]$Path)
+  $expected = @(0x1A, 0x45, 0xDF, 0xA3)
+  $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path))
+  for ($i = 0; $i -lt $expected.Count; $i += 1) {
+    if ($bytes[$i] -ne $expected[$i]) {
+      throw "WebM/EBML signature mismatch: $Path"
+    }
+  }
+}
+
 Push-Location $PSScriptRoot
 try {
   node --check game.js | Out-Null
@@ -69,6 +80,7 @@ try {
     "dev-post-draft.md",
     "publish-assistant.html",
     "publish-after-repo.ps1",
+    "tools/build-demo-webm.mjs",
     "tools/browser-smoke-check.mjs",
     "verification.html",
     "verification-report.md",
@@ -88,6 +100,11 @@ try {
     Assert-File $file
   }
 
+  $demoFrameCount = (Get-ChildItem -LiteralPath "demo-frames-v3" -Filter "*.png" -File).Count
+  if ($demoFrameCount -lt 7) {
+    throw "Expected at least 7 demo frames in demo-frames-v3; found $demoFrameCount"
+  }
+
   foreach ($png in @(
     "cover.png",
     "desktop-check-v5.png",
@@ -96,6 +113,7 @@ try {
   )) {
     Assert-PngSignature $png
   }
+  Assert-WebmSignature "solstice-cipher-demo.webm"
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev"
   Assert-Contains "dev-article-final.md" "What I Built"
@@ -108,14 +126,20 @@ try {
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
   Assert-Contains "dev-article-final.md" "I chose a cipher wheel"
   Assert-Contains "dev-article-final.md" "biggest tradeoff"
+  Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
+  Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "dev-submit-console.html" "How I Built It"
   Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/solstice-cipher"
+  Assert-Contains "dev-submit-console.html" "WebM video"
+  Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
+  Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "publish-assistant.html" "No-go gate"
   Assert-Contains "publish-assistant.html" "OOYXLOO/solstice-cipher"
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
@@ -127,8 +151,14 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
   Assert-Contains "tools/browser-smoke-check.mjs" "Valid run receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 28 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
+  Assert-Contains "tools/build-demo-webm.mjs" "solstice-cipher-demo.webm"
+  Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
+  Assert-Contains ".gitignore" "solstice-cipher-dev-package.zip"
   Assert-Contains "judge.html" "Run Smoke Test"
+  Assert-Contains "judge.html" "Watch Video"
   Assert-Contains "judge.html" "solstice-cipher-demo.gif"
+  Assert-Contains "judge.html" "solstice-cipher-demo.webm"
   Assert-Contains "judge.html" "Run Receipt"
   Assert-NotContains "judge.html" "DEV Console"
   Assert-NotContains "judge.html" "Publish Assistant"
@@ -140,6 +170,8 @@ try {
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "Match each numbered ring node"
+  Assert-Contains "index.html" "https://ooyxloo.github.io/solstice-cipher/cover.png"
+  Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
@@ -159,6 +191,9 @@ try {
   Assert-Contains "proof-verifier.html" "not anti-cheat or identity proof"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
   Assert-Contains "verification-report.md" "parsed proof facts"
+  Assert-Contains "verification-report.md" "Score variance is expected"
+  Assert-Contains "verification.html" "Score variance is expected"
+  Assert-Contains "verification.html" "solstice-cipher-demo.webm"
 
   $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md -Recurse |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
@@ -175,6 +210,7 @@ try {
       "https://ooyxloo.github.io/solstice-cipher/smoke.html",
       "https://ooyxloo.github.io/solstice-cipher/proof-verifier.html",
       "https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html",
+      "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm",
       "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif",
       "https://github.com/OOYXLOO/solstice-cipher"
     )

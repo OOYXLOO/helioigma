@@ -111,15 +111,22 @@ async function main() {
       actions: [...document.querySelectorAll(".action strong")].map((node) => node.textContent.trim()),
       hasDevConsole: document.body.innerText.includes("DEV Console"),
       hasGif: document.body.innerText.includes("GIF"),
+      hasWebm: document.body.innerText.includes("WebM"),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.hasGif, "judge page does not point to the current GIF");
+    assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
     assert(!judge.hasPublishAssistant, "judge page exposes Publish Assistant");
+    assert(judge.actions.includes("Watch Video"), "judge page is missing video action");
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Proof"), "judge page is missing verifier action");
+
+    const videoResponse = await page.goto(`${baseUrl}solstice-cipher-demo.webm`);
+    assert(videoResponse?.ok(), "WebM demo did not return HTTP 200");
+    assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Valid run receipt"));

@@ -12,7 +12,7 @@ Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. 
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
 
-The build is meant to be judged quickly: open the game, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data.
+The build is meant to be judged quickly: open the game, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
 
 Links:
 
@@ -21,6 +21,8 @@ Links:
 - Judge page: https://ooyxloo.github.io/solstice-cipher/judge.html
 - Smoke test: https://ooyxloo.github.io/solstice-cipher/smoke.html
 - Proof verifier: https://ooyxloo.github.io/solstice-cipher/proof-verifier.html
+
+Launch gate: I will only publish this post after the public repo, Pages play link, judge page, smoke page, proof verifier, WebM video, and GIF fallback pass `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`.
 
 Core features:
 
@@ -45,15 +47,18 @@ The demo video shows the current four-phase interface, node controls, and final 
 
 ![Solstice Cipher gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
 
+Watch the current WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+
 Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
 
 Public media links after GitHub Pages publication:
 
 1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
-2. GIF demo: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
-3. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
-4. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
-5. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
+2. WebM video: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.webm
+3. GIF fallback: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+4. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
+5. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
+6. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
 
 ## Code
 
@@ -65,6 +70,7 @@ The source is hosted at https://github.com/OOYXLOO/solstice-cipher after publica
 - `proof-verifier.html`: local proof checksum verifier.
 - `smoke.html`: browser smoke test that solves the public game path in an iframe.
 - `judge.html`: one-page review hub.
+- `tools/build-demo-webm.mjs`: reproduces the current WebM video from the checked-in demo frames.
 
 ## How to Play
 

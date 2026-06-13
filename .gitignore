@@ -1,9 +1,11 @@
 # Local-only package artifacts
-demo-frames-v3/
 solstice-cipher-dev-package.zip
 desktop-check-v3.png
+desktop-check-v4.png
 desktop-complete-v2.png
+desktop-complete-v3.png
 mobile-check-v4.png
+mobile-check-v5.png
 *.log
 *.tmp
 .DS_Store
