@@ -49,7 +49,7 @@ jobs:
         run: |
           set -euo pipefail
           grep -q "tags: devchallenge, gamechallenge, gamedev" dev-article-final.md
-          grep -q "solstice-cipher-demo.mp4" dev-article-final.md
+          grep -q "solstice-cipher-demo.gif" dev-article-final.md
           grep -q "https://ooyxloo.github.io/solstice-cipher/" dev-article-final.md
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
@@ -68,14 +68,19 @@ jobs:
       - name: Verify judge and smoke links
         run: |
           set -euo pipefail
-          grep -q "solstice-cipher-demo.mp4" judge.html
+          grep -q "solstice-cipher-demo.gif" judge.html
           grep -q "Run Smoke Test" judge.html
           grep -q "verification.html" judge.html
+          grep -q "Run Receipt" judge.html
+          ! grep -q "DEV Console" judge.html
+          ! grep -q "Publish Assistant" judge.html
           grep -q "PASS - Longest day held" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
           grep -q "proofFacts" proof-verifier.html
           grep -q "Parsed proof facts" proof-verifier.html
+          grep -q "Valid run receipt" proof-verifier.html
+          grep -q "not anti-cheat or identity proof" proof-verifier.html
           grep -q "parsed proof facts" verification-report.md
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
@@ -83,6 +88,7 @@ jobs:
           grep -q "phaseTrack" index.html
           grep -q "shiftLabel" index.html
           grep -q "demoButton" index.html
+          grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
           grep -q "proofSummary" index.html
           grep -q "Match each numbered ring node" index.html

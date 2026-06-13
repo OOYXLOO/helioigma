@@ -51,9 +51,9 @@ The playable first screen now includes the plain rule: match each numbered ring 
 ## Local Media Assets
 
 - `cover.png`: 1200x630 social/DEV cover image.
-- `solstice-cipher-demo.gif`: six-frame local gameplay demo, from ready state through final score.
-- `solstice-cipher-demo.mp4`: MP4 version of the demo for the DEV article/video requirement.
-- `solstice-cipher-demo.webm`: WebM version of the demo for public hosting fallback.
+- `solstice-cipher-demo.gif`: seven-frame current gameplay demo, from first-screen controls through the final run receipt.
+- `solstice-cipher-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
+- `solstice-cipher-demo.webm`: optional legacy WebM asset retained for public hosting fallback.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
 - `desktop-complete-v4.png`: current final-score screenshot with solved phases, best score, and shift count.
@@ -64,7 +64,7 @@ The playable first screen now includes the plain rule: match each numbered ring 
 - `judge.html`: one-page judge pack with play link, smoke-test link, theme fit, and publication boundary.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve proof, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, and completion proof code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run proofs, with parsed phases, score, shifts, and checksum facts.
-- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, media order, try links, and the no-go gate after the public Pages link exists.
+- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current GIF media, try links, and the no-go gate after the public Pages link exists.
 - `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.

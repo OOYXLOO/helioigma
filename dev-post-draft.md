@@ -27,13 +27,13 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 
 - Cover image: `cover.png`
 - Animated gameplay preview: `solstice-cipher-demo.gif`
-- Demo video: `solstice-cipher-demo.mp4`
-- WebM demo fallback: `solstice-cipher-demo.webm`
+- Current GIF demo: `solstice-cipher-demo.gif`
+- Optional MP4/WebM assets: `solstice-cipher-demo.mp4` and `solstice-cipher-demo.webm`
 - Desktop screenshot: `desktop-check-v5.png`
 - Mobile screenshot: `mobile-check-v6.png`
 - Completion screenshot: `desktop-complete-v4.png`
 
-The GIF was generated from local browser screenshots and converted into MP4/WebM demo video assets for the DEV post media requirement.
+The GIF was generated from current local browser screenshots and is the canonical preview for the DEV post.
 
 ## Links
 
@@ -67,5 +67,5 @@ This is a new static game package for the jam period, not a wrapper around a pri
 ## Next
 
 - Add a public try link after user authorizes publishing.
-- Use `dev-submit-console.html` for the final copy pass, media order, and no-go gate.
+- Use `dev-submit-console.html` for the final copy pass, current GIF media, and no-go gate.
 - Polish level balance after mobile playtesting.

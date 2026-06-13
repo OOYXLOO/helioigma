@@ -159,18 +159,19 @@
   <main>
     <p class="eyebrow">Run proof verifier</p>
     <h1>Check a Solstice Cipher completion proof.</h1>
-    <p>Completed runs expose a proof in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the proof matches the published scoring formula. The default proof is the stable one-click Demo Solve result.</p>
+    <p>Completed runs expose a run receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published scoring formula. The default receipt is the stable one-click Demo Solve result.</p>
 
     <section class="panel">
       <label for="proofInput">Proof code</label>
       <input id="proofInput" value="SC-4P-2907-62-Y5VFX1" spellcheck="false" autocomplete="off">
-      <button id="verifyButton" type="button">Verify proof</button>
+      <button id="verifyButton" type="button">Verify receipt</button>
       <div id="result" class="result" aria-live="polite"></div>
       <dl id="proofFacts" class="fact-grid" aria-label="Parsed proof facts"></dl>
     </section>
 
     <section class="panel">
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
+      <p>This is a transparent run receipt for a public jam demo, not anti-cheat or identity proof. It exists so judges can replay the scoring path and inspect the checksum without trusting a screenshot.</p>
       <p><a href="./">Play the game</a> - <a href="smoke.html">Run smoke test</a> - <a href="verification.html">Open verification report</a></p>
     </section>
   </main>
@@ -221,13 +222,20 @@
         facts.append(block);
       });
 
-      if (solved === 4 && suffix === expected) {
-        result.textContent = `Valid proof: ${score} points across ${shifts} shifts.`;
+      const plausibleRun = solved === 4 && score >= 0 && score <= 5000 && shifts >= 0 && shifts <= 300;
+      if (plausibleRun && suffix === expected) {
+        result.textContent = `Valid run receipt: ${score} points across ${shifts} shifts.`;
         result.classList.add("ok");
         return;
       }
 
-      result.textContent = `Invalid proof. Expected checksum ${expected} for ${score} points and ${shifts} shifts.`;
+      if (suffix === expected && !plausibleRun) {
+        result.textContent = `Checksum matches, but the phase/score/shift values are outside the published four-phase demo bounds.`;
+        result.classList.add("bad");
+        return;
+      }
+
+      result.textContent = `Invalid receipt. Expected checksum ${expected} for ${score} points and ${shifts} shifts.`;
       result.classList.add("bad");
     }
 

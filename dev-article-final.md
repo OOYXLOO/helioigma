@@ -3,7 +3,7 @@ title: "Solstice Cipher: a Turing-wheel puzzle for holding the longest day"
 published: false
 description: "A small browser game for the DEV June Solstice Game Jam: align a Turing-inspired solar cipher wheel before nightfall."
 tags: devchallenge, gamechallenge, gamedev
-cover_image: ./cover.png
+cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png
 ---
 
 ## What I Built
@@ -33,7 +33,7 @@ Core features:
 ## Judge in 60 Seconds
 
 1. Open the play link and press `Demo Solve` for the full loop and stable proof `SC-4P-2907-62-Y5VFX1`, or press `Start` to play manually.
-2. Watch the short MP4 demo or GIF preview.
+2. Watch the current GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
 4. Paste the sample proof into `proof-verifier.html` to confirm the checksum loop.
 
@@ -41,15 +41,17 @@ Core features:
 
 The demo video shows the current four-phase interface, node controls, and final proof flow.
 
-Media order:
+![Solstice Cipher gameplay](https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png)
 
-1. `cover.png`
-2. `solstice-cipher-demo.mp4`
-3. `solstice-cipher-demo.webm`
-4. `solstice-cipher-demo.gif`
-5. `desktop-check-v5.png`
-6. `mobile-check-v6.png`
-7. `desktop-complete-v4.png`
+Watch the current GIF preview: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+
+Public media links after GitHub Pages publication:
+
+1. Cover: https://ooyxloo.github.io/solstice-cipher/cover.png
+2. GIF demo: https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif
+3. Desktop screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-check-v5.png
+4. Mobile screenshot: https://ooyxloo.github.io/solstice-cipher/mobile-check-v6.png
+5. Completion screenshot: https://ooyxloo.github.io/solstice-cipher/desktop-complete-v4.png
 
 ## Code
 

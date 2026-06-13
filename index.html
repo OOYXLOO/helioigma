@@ -10,7 +10,7 @@
   <meta property="og:image" content="cover.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=20260613-judge-demo">
+  <link rel="stylesheet" href="styles.css?v=20260613-judge-first">
 </head>
 <body>
   <main class="shell">
@@ -39,22 +39,22 @@
 
       <p class="play-rule"><strong>Goal:</strong> Match each numbered ring node to the target glyph above it before time runs out. Press <span>Demo Solve</span> for the fastest judge path.</p>
 
-      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered cipher node until it matches the target glyph above it.</p>
-      <canvas id="game" width="960" height="640" tabindex="0" aria-label="Solstice Cipher playfield" aria-describedby="srHelp"></canvas>
-      <div id="nodeButtons" class="node-buttons" aria-label="Cipher node controls"></div>
-
-      <div class="controls">
+      <div class="controls quick-controls">
         <button id="startButton" type="button">Start</button>
         <button id="resetButton" type="button">Reset</button>
         <button id="demoButton" type="button">Demo Solve</button>
         <div id="statusLine" class="status">Align the ring before nightfall.</div>
       </div>
 
+      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered cipher node until it matches the target glyph above it.</p>
+      <canvas id="game" width="960" height="640" tabindex="0" aria-label="Solstice Cipher playfield" aria-describedby="srHelp"></canvas>
+      <div id="nodeButtons" class="node-buttons" aria-label="Cipher node controls"></div>
+
       <nav class="judge-links" aria-label="Judge shortcuts">
         <a href="judge.html">Judge pack</a>
         <a href="smoke.html">Smoke test</a>
         <a href="proof-verifier.html">Proof verifier</a>
-        <a href="solstice-cipher-demo.mp4">Demo video</a>
+        <a href="solstice-cipher-demo.gif">Demo GIF</a>
       </nav>
 
       <section id="proofPanel" class="proof-panel" aria-live="polite" hidden>
@@ -67,6 +67,6 @@
       </section>
     </section>
   </main>
-  <script src="game.js?v=20260613-judge-demo"></script>
+  <script src="game.js?v=20260613-judge-first"></script>
 </body>
 </html>

@@ -46,10 +46,9 @@ Do not submit on DEV until the public try link works. Use:
 - Publish assistant: `publish-assistant.html`
 - Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
-- Cover image: `cover.png`
-- Demo video: `solstice-cipher-demo.mp4`
-- WebM fallback: `solstice-cipher-demo.webm`
-- Demo GIF: `solstice-cipher-demo.gif`
+- Cover image after Pages is live: `https://ooyxloo.github.io/solstice-cipher/cover.png`
+- Current GIF demo after Pages is live: `https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif`
+- Optional MP4/WebM assets remain in the package, but the GIF is the canonical current preview.
 - Judge pack: `https://ooyxloo.github.io/solstice-cipher/judge.html`
 - Smoke test: `https://ooyxloo.github.io/solstice-cipher/smoke.html`
 - Proof verifier: `https://ooyxloo.github.io/solstice-cipher/proof-verifier.html`

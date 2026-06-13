@@ -21,6 +21,13 @@ function Assert-Contains {
   }
 }
 
+function Assert-NotContains {
+  param([string]$Path, [string]$Pattern)
+  if (Select-String -Path $Path -Pattern $Pattern -SimpleMatch -Quiet) {
+    throw "Unexpected pattern '$Pattern' in $Path"
+  }
+}
+
 function Assert-Http200 {
   param([string]$Url)
   try {
@@ -98,6 +105,8 @@ try {
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
+  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
@@ -109,10 +118,15 @@ try {
   Assert-Contains "publish-after-repo.ps1" "publish-after-repo helper"
   Assert-Contains "publish-after-repo.ps1" "-Push"
   Assert-Contains "judge.html" "Run Smoke Test"
+  Assert-Contains "judge.html" "solstice-cipher-demo.gif"
+  Assert-Contains "judge.html" "Run Receipt"
+  Assert-NotContains "judge.html" "DEV Console"
+  Assert-NotContains "judge.html" "Publish Assistant"
   Assert-Contains "index.html" "nodeButtons"
   Assert-Contains "index.html" "phaseTrack"
   Assert-Contains "index.html" "shiftLabel"
   Assert-Contains "index.html" "demoButton"
+  Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "Match each numbered ring node"
@@ -127,6 +141,8 @@ try {
   Assert-Contains "proof-verifier.html" "proofFacts"
   Assert-Contains "proof-verifier.html" "Parsed proof facts"
   Assert-Contains "proof-verifier.html" "Checksum"
+  Assert-Contains "proof-verifier.html" "Valid run receipt"
+  Assert-Contains "proof-verifier.html" "not anti-cheat or identity proof"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
   Assert-Contains "verification-report.md" "parsed proof facts"
 
@@ -145,7 +161,7 @@ try {
       "https://ooyxloo.github.io/solstice-cipher/smoke.html",
       "https://ooyxloo.github.io/solstice-cipher/proof-verifier.html",
       "https://ooyxloo.github.io/solstice-cipher/dev-submit-console.html",
-      "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.mp4",
+      "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif",
       "https://github.com/OOYXLOO/solstice-cipher"
     )
     foreach ($url in $urls) {

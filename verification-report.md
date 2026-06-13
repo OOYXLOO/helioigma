@@ -21,9 +21,9 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `solstice-cipher-demo.mp4`: MP4 demo video
-- `solstice-cipher-demo.webm`: WebM demo video fallback
-- `solstice-cipher-demo.gif`: animated GIF fallback
+- `solstice-cipher-demo.gif`: current animated GIF preview
+- `solstice-cipher-demo.mp4`: optional legacy MP4 asset
+- `solstice-cipher-demo.webm`: optional legacy WebM asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
 - `desktop-complete-v4.png`: completion screenshot
@@ -47,8 +47,7 @@ Expected local URLs:
 - `http://127.0.0.1:8781/smoke.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-submit-console.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-article-final.md`: HTTP 200
-- `http://127.0.0.1:8781/solstice-cipher-demo.mp4`: HTTP 200
-- `http://127.0.0.1:8781/solstice-cipher-demo.webm`: HTTP 200
+- `http://127.0.0.1:8781/solstice-cipher-demo.gif`: HTTP 200
 
 ## Browser Checks
 
@@ -90,7 +89,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - JavaScript syntax with `node --check game.js`
 - required public package files
 - official DEV challenge tags
-- MP4 demo reference
+- current GIF demo reference
 - intended public play URL
 - judge page demo-video link
 - smoke proof pattern

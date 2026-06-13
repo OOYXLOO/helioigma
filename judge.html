@@ -80,6 +80,20 @@
       padding: 18px;
     }
 
+    .demo-frame {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .demo-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     .action {
       min-height: 112px;
       color: var(--ink);
@@ -111,25 +125,29 @@
   <main>
     <p class="eyebrow">DEV June Solstice Game Jam</p>
     <h1>Solstice Cipher is a complete four-phase browser puzzle loop.</h1>
-    <p class="dek">A small static game about holding the longest day by aligning a Turing-inspired cipher wheel before nightfall. This page gives judges the play link, automated smoke proof, theme fit, and publication boundary in one place.</p>
+    <p class="dek">A small static game about holding the longest day by aligning a Turing-inspired cipher wheel before nightfall. This page gives judges the play link, automated smoke proof, theme fit, run receipt, and source path in one place.</p>
+
+    <a class="demo-frame" href="solstice-cipher-demo.gif" aria-label="Watch the Solstice Cipher demo GIF">
+      <img src="desktop-check-v5.png" alt="Solstice Cipher four-phase gameplay with the cipher wheel, progress strip, and judge controls visible.">
+    </a>
 
     <section class="actions" aria-label="Judge actions">
       <a class="action" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch, node-button, stable Demo Solve, and number-key controls.</span></a>
-      <a class="action" href="solstice-cipher-demo.mp4"><strong>Watch Demo</strong><span>Open the short MP4 gameplay demo prepared for the DEV article media requirement.</span></a>
+      <a class="action" href="solstice-cipher-demo.gif"><strong>Watch Demo</strong><span>Open the current GIF preview of the four-phase Demo Solve path and final run receipt.</span></a>
       <a class="action" href="smoke.html"><strong>Run Smoke Test</strong><span>Starts the game in an iframe, solves all phases, and verifies final score/status plus run proof.</span></a>
       <a class="action" href="proof-verifier.html"><strong>Verify Proof</strong><span>Check a completed run proof against the local checksum formula.</span></a>
       <a class="action" href="verification.html"><strong>Open Verification</strong><span>Review package checks, official tags, media assets, and the post-publication CI preflight.</span></a>
-      <a class="action" href="dev-submit-console.html"><strong>DEV Console</strong><span>Copy final post fields, media order, public links, and the no-go gate after Pages is live.</span></a>
-      <a class="action" href="publish-assistant.html"><strong>Publish Assistant</strong><span>Copy repository settings, push commands, Pages settings, and public preflight commands.</span></a>
-      <a class="action" href="README.md"><strong>Read README</strong><span>Review controls, theme fit, media assets, and publishing status.</span></a>
+      <a class="action" href="https://github.com/OOYXLOO/solstice-cipher"><strong>Source</strong><span>Review the static HTML/CSS/JavaScript package and public CI checks after repository publication.</span></a>
+      <a class="action" href="dev-article-final.md"><strong>Read Story</strong><span>Open the final DEV article draft with theme, demo, code, build notes, and category fit.</span></a>
+      <a class="action" href="README.md"><strong>Read README</strong><span>Review controls, theme fit, media assets, and verification notes.</span></a>
     </section>
 
     <section class="grid" aria-label="Judge notes">
       <div class="card"><strong>Theme Fit</strong><p>The June solstice becomes the core timer: daylight is the player's resource, nightfall ends the run, and the final screen celebrates holding the longest day.</p></div>
       <div class="card"><strong>Turing Fit</strong><p>The puzzle uses rotor-like alignment, binary and XOR glyph language, and target-versus-ring matching without pretending to simulate a historical machine.</p></div>
-      <div class="card"><strong>Completed Loop</strong><p>Four named phases, visible progress strip, score carry-over, streak scoring, shift counting, one-click stable Demo Solve proof, copyable and locally verifiable run proof, keyboard support, explicit node buttons, mobile layout, MP4/WebM/GIF demos, and final run summary are ready.</p></div>
+      <div class="card"><strong>Completed Loop</strong><p>Four named phases, visible progress strip, score carry-over, streak scoring, shift counting, one-click stable Demo Solve proof, copyable and locally verifiable run proof, keyboard support, explicit node buttons, mobile layout, current GIF preview, and final run summary are ready.</p></div>
+      <div class="card"><strong>Run Receipt</strong><p>The stable judge path produces <code>SC-4P-2907-62-Y5VFX1</code>. The verifier recomputes the checksum and shows phases, score, shifts, and checksum facts.</p></div>
       <div class="card"><strong>Category Boundary</strong><p>This is aimed at Best Ode to Alan Turing through mechanics and verifier design. It does not claim the Best Google AI Usage category.</p></div>
-      <div class="card"><strong>Publication Boundary</strong><p>No DEV post, public repo, or prize claim exists yet. Use <a href="PUBLISHING.md">PUBLISHING.md</a> after the account owner creates or approves public hosting.</p></div>
     </section>
   </main>
 </body>

@@ -173,6 +173,10 @@ body {
   margin-top: 12px;
 }
 
+.quick-controls {
+  margin: 0 0 12px;
+}
+
 .judge-links {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
