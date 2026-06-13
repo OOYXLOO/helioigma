@@ -58,6 +58,8 @@ jobs:
           grep -q "Prize Category" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
+          grep -q "I chose a cipher wheel" dev-article-final.md
+          grep -q "biggest tradeoff" dev-article-final.md
           grep -q "proof-verifier.html" dev-article-final.md
           grep -q "publish-assistant.html" PUBLISHING.md
           grep -q "devchallenge, gamechallenge, gamedev" dev-submit-console.html

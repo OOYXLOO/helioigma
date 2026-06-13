@@ -89,7 +89,11 @@
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Opening</h2><button type="button" data-copy="opening">Copy</button></div>
-<textarea id="opening" readonly>Solstice Cipher is a small browser puzzle for the June Solstice Game Jam. You rotate a Turing-inspired ring of sun, XOR, light, and binary glyphs to match each target cipher before nightfall. The game is intentionally compact: a visible four-phase progress strip, keyboard, touch, node-button controls, one-click Demo Solve with a stable proof, streak scoring, a local best score, and a deterministic run proof at the end.</textarea>
+<textarea id="opening" readonly>Solstice Cipher is a small browser puzzle for the June Solstice Game Jam. You rotate a Turing-inspired ring of sun, XOR, light, and binary glyphs to match each target cipher before nightfall.
+
+I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference.
+
+The game is intentionally compact: a visible four-phase progress strip, keyboard, touch, node-button controls, one-click Demo Solve with a stable proof, streak scoring, a local best score, and a deterministic run proof at the end.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Prize Category</h2><button type="button" data-copy="category">Copy</button></div>
@@ -137,7 +141,9 @@ Key files:
         <div class="copy-row"><h2>How I Built It</h2><button type="button" data-copy="howbuilt">Copy</button></div>
         <textarea id="howbuilt" readonly>I built Solstice Cipher as a no-backend canvas game so the public demo can run from GitHub Pages. Each phase has a deterministic target array; the player ring starts offset from that target, and every click, tap, keypress, or node button rotates one node through SOL, XOR, LUX, and BIN states.
 
-The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during Demo Solve so judges get the same stable proof every time. Completed runs generate a reproducible checksum from solstice|4|score|shifts|4. The verifier recomputes that checksum in the browser and displays the parsed proof facts.</textarea>
+The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during Demo Solve so judges get the same stable proof every time. Completed runs generate a reproducible checksum from solstice|4|score|shifts|4. The verifier recomputes that checksum in the browser and displays the parsed proof facts.
+
+The biggest tradeoff was keeping the canvas interaction playful while making the review path deterministic. Manual play keeps the live timer and normal keyboard/touch controls, but Demo Solve pauses timer drift and uses the same node-rotation path, so the judge can inspect one stable run without a hidden test mode.</textarea>
       </div>
       <div class="panel">
         <div class="copy-row"><h2>Rubric Fit</h2><button type="button" data-copy="rubric">Copy</button></div>

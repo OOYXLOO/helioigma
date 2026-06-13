@@ -10,6 +10,8 @@ cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png
 
 Solstice Cipher is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired ring of `SOL`, `XOR`, `LUX`, and `BIN` glyphs until each numbered node matches the target cipher before nightfall ends the run.
 
+I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
+
 The build is meant to be judged quickly: open the game, press `Demo Solve`, watch all four phases complete, copy the stable proof `SC-4P-2907-62-Y5VFX1`, and verify it locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data.
 
 Links:
@@ -88,6 +90,8 @@ solstice|4|score|shifts|4
 ```
 
 The verifier recomputes that checksum in the browser and displays the parsed proof facts. It is not anti-cheat infrastructure; it is a reproducible run checksum that makes the demo path inspectable.
+
+The biggest tradeoff was keeping the canvas interaction playful while making the review path deterministic. Manual play keeps the live timer and normal keyboard/touch controls, but `Demo Solve` pauses timer drift and uses the same node-rotation path, so the judge can inspect one stable run without a hidden test mode.
 
 ## Prize Category
 

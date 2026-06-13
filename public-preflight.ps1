@@ -105,6 +105,8 @@ try {
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
+  Assert-Contains "dev-article-final.md" "I chose a cipher wheel"
+  Assert-Contains "dev-article-final.md" "biggest tradeoff"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/solstice-cipher/cover.png"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/solstice-cipher/solstice-cipher-demo.gif"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
