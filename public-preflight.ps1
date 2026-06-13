@@ -73,6 +73,7 @@ try {
     "styles.css",
     "game.js",
     "LICENSE",
+    "package.json",
     "JUDGE_REVIEW_CARD.md",
     "CHALLENGE_COMPLIANCE.md",
     "judge.html",
@@ -120,6 +121,11 @@ try {
     Assert-PngSignature $png
   }
   Assert-WebmSignature "helioigma-demo.webm"
+
+  $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
+  if ($package.name -ne "helioigma") { throw "package name mismatch" }
+  if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
+  if (-not ($package.devDependencies.playwright -like "^1.*")) { throw "package Playwright devDependency mismatch" }
 
   $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
   if ($manifest.project -ne "Helioigma") { throw "judge-manifest project mismatch" }
@@ -226,6 +232,8 @@ try {
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
+  Assert-Contains "README.md" "package.json"
+  Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
@@ -335,6 +343,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "first screen sample verifier link is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile game canvas starts too low for game-first review"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport shows too little gameplay canvas"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 60 smoke checks"
@@ -343,15 +352,19 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "tools/build-demo-video.mjs" "HELIOIGMA_VIDEO_WORK_DIR"
+  Assert-Contains "tools/build-demo-video.mjs" "tmpdir()"
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-demo.webm"
   Assert-Contains ".github/workflows/verify.yml" "Run browser smoke on committed package"
+  Assert-Contains ".github/workflows/verify.yml" "npm run smoke"
   Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt demo video output"
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
   Assert-NotContains ".github/workflows/verify.yml" "solstice-cipher"
   Assert-Contains ".gitignore" "helioigma-dev-package.zip"
+  Assert-Contains ".gitignore" "node_modules/"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "judge.html" "60-second review path"
   Assert-Contains "judge.html" "Award thesis"
@@ -450,8 +463,8 @@ try {
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
   Assert-Contains "index.html" "Helioigma"
-  Assert-Contains "index.html" "Match numbered nodes before nightfall"
-  Assert-Contains "index.html" "Score rewards held daylight, streaks, and fewer wasted shifts"
+  Assert-Contains "index.html" "Match nodes before nightfall"
+  Assert-Contains "index.html" "Score rewards held daylight; the final receipt lets judges verify the path"
   Assert-Contains "index.html" "20260614-award-signals"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"

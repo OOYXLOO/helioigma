@@ -1,0 +1,16 @@
+{
+  "name": "helioigma",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check game.js && node --check tools/browser-smoke-check.mjs && node --check tools/build-demo-video.mjs && node --check tools/build-demo-webm.mjs",
+    "preflight": "powershell -ExecutionPolicy Bypass -File ./public-preflight.ps1",
+    "smoke": "node tools/browser-smoke-check.mjs",
+    "build:video": "node tools/build-demo-video.mjs",
+    "build:webm": "node tools/build-demo-webm.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

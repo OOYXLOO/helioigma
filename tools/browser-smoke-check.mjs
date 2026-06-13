@@ -232,7 +232,7 @@ async function main() {
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
     assert(mobile.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "mobile Judge path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
-    assert(mobile.canvasTop < 844, "mobile game canvas does not begin in the first viewport");
+    assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 
     await page.setViewportSize({ width: 1280, height: 900 });

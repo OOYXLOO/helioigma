@@ -31,10 +31,14 @@ This report records the public-package checks that can be repeated after `OOYXLO
 ## Local Verification Commands
 
 ```powershell
-node --check game.js
+npm install
+npx playwright install chromium
+npm run check
+npm run preflight
+npm run smoke
 ```
 
-Expected result: exit code `0`.
+Expected result: exit code `0` for the check, preflight, and browser smoke scripts.
 
 ```powershell
 python -m http.server 8781 --bind 127.0.0.1
@@ -54,9 +58,9 @@ Expected local URLs:
 ## Browser Checks
 
 - Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
-- Mobile 390x844: no horizontal overflow; phase progress strip stays compact and the canvas begins in the first viewport.
-- Browser smoke runner: `PASS browser smoke` with Playwright launched from the existing external dependency root.
-- Demo video builder: `tools/build-demo-video.mjs` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation.
+- Mobile 390x844: no horizontal overflow; phase progress strip and Judge Path stay compact, and the canvas starts at about 413px with over 431px visible in the first viewport.
+- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm install` and Playwright Chromium setup.
+- Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held. Latest live-timer score 2892 across 62 shifts.`
 - Auto-demo URL `?demo=1` reaches the same stable receipt.
@@ -149,7 +153,8 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, and waits for 60 PASS checks
+- package scripts for clean-clone checks, browser smoke, and media rebuild
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the mobile game-first threshold, and waits for 60 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

@@ -65,6 +65,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
+- `package.json` provides clean-clone commands: `npm install`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, and `npm run build:webm`.
 
 ## Local Media Assets
 
@@ -95,7 +96,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, and score/receipt explanation, daylight meter, desktop Judge Path, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 60 PASS checks.
-- `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`.
+- `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`; it writes capture scratch files under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 
 ## Public Publishing

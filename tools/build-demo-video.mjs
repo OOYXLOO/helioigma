@@ -2,6 +2,7 @@ import { copyFileSync, mkdirSync, rmSync, statSync } from "node:fs";
 import { createReadStream } from "node:fs";
 import { createServer } from "node:http";
 import { createRequire } from "node:module";
+import { tmpdir } from "node:os";
 import { dirname, extname, join, normalize, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -9,7 +10,7 @@ const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const workDir = "C:/Users/YXL/.codex/tmp/hks-yxl/solstice-video-capture";
+const workDir = resolve(process.env.HELIOIGMA_VIDEO_WORK_DIR || join(tmpdir(), "helioigma-video-capture"));
 const outputPath = join(root, "helioigma-demo.webm");
 const mimeTypes = new Map([
   [".css", "text/css"],

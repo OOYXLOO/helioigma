@@ -1,5 +1,6 @@
 # Local-only package artifacts
 helioigma-dev-package.zip
+node_modules/
 desktop-check-v3.png
 desktop-check-v4.png
 desktop-complete-v2.png

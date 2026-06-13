@@ -23,6 +23,8 @@ jobs:
             styles.css \
             game.js \
             LICENSE \
+            package.json \
+            CHALLENGE_COMPLIANCE.md \
             JUDGE_REVIEW_CARD.md \
             judge.html \
             judge-manifest.json \
@@ -91,6 +93,8 @@ jobs:
           grep -q "Originality and Build Window" dev-article-final.md
           grep -q "not a wrapper around a prior game template" dev-article-final.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-article-final.md
+          grep -q "Challenge Compliance" dev-article-final.md
+          grep -q "official-route checklist" dev-article-final.md
           grep -q "public-preflight.ps1 -Public" dev-article-final.md
           grep -q "Optional default-off Web Audio cues" dev-article-final.md
           grep -q 'Press `Audio` or `S`' dev-article-final.md
@@ -120,6 +124,8 @@ jobs:
           grep -q "live objective strip tells you what the rotor wants next" dev-submit-console.html
           grep -q "Judge in 60 Seconds" dev-submit-console.html
           grep -q "judge-manifest.json" dev-submit-console.html
+          grep -q "CHALLENGE_COMPLIANCE.md" dev-submit-console.html
+          grep -q "Challenge Compliance" dev-submit-console.html
           grep -q "Sample receipt verifier" dev-submit-console.html
           grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" dev-submit-console.html
           grep -q "Rubric Fit" dev-submit-console.html
@@ -143,6 +149,8 @@ jobs:
           grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "Award thesis: Helioigma is a playable ode" README.md
           grep -q "JUDGE_REVIEW_CARD.md" README.md
+          grep -q "package.json" README.md
+          grep -q "npm run smoke" README.md
           grep -q "Helioigma Judge Review Card" JUDGE_REVIEW_CARD.md
           grep -q "60-Second Path" JUDGE_REVIEW_CARD.md
           grep -q "Award Thesis" JUDGE_REVIEW_CARD.md
@@ -151,6 +159,10 @@ jobs:
           grep -q "SC-4P-2907-62-Y5VFX1" JUDGE_REVIEW_CARD.md
           grep -q "Best Ode to Alan Turing" JUDGE_REVIEW_CARD.md
           grep -q "does not claim the Best Google AI Usage category" JUDGE_REVIEW_CARD.md
+          grep -q "CHALLENGE_COMPLIANCE.md" JUDGE_REVIEW_CARD.md
+          grep -q "Prize target: Best Ode to Alan Turing" CHALLENGE_COMPLIANCE.md
+          grep -q "Deadline: June 21, 2026 at 11:59 PM PDT" CHALLENGE_COMPLIANCE.md
+          grep -q "Do not publish the DEV article until all of these are true" CHALLENGE_COMPLIANCE.md
           grep -q "first-move coach on Start" README.md
           grep -q "optional default-off Web Audio cues" README.md
           grep -q 'Use `Audio` or press `S`' README.md
@@ -247,6 +259,8 @@ jobs:
           grep -q "Assert-CleanWorktreeForPush" publish-after-repo.ps1
           grep -q "Commit the verified Helioigma package before pushing" publish-after-repo.ps1
           grep -q "live browser recording" tools/build-demo-video.mjs
+          grep -q "HELIOIGMA_VIDEO_WORK_DIR" tools/build-demo-video.mjs
+          grep -q "tmpdir()" tools/build-demo-video.mjs
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
@@ -285,7 +299,7 @@ jobs:
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
           grep -q "Match numbered nodes before nightfall" index.html
-          grep -q "Score rewards held daylight, streaks, and fewer wasted shifts" index.html
+          grep -q "Score rewards held daylight; the final receipt lets judges verify the path" index.html
           grep -q "20260614-award-signals" index.html
           grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
@@ -324,16 +338,16 @@ jobs:
           grep -q "devchallenge" verification.html
           grep -q "SC-4P" smoke.html
 
-      - name: Install browser smoke dependency
+      - name: Install package dependencies
         run: |
-          npm install --no-save playwright
+          npm install
           npx playwright install --with-deps chromium
 
       - name: Run browser smoke on committed package
-        run: node tools/browser-smoke-check.mjs
+        run: npm run smoke
 
       - name: Rebuild demo video
-        run: node tools/build-demo-video.mjs
+        run: npm run build:video
 
       - name: Verify rebuilt demo video output
         run: test -s helioigma-demo.webm
