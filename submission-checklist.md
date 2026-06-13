@@ -52,6 +52,7 @@ Status: local package is GitHub Pages-ready. Not published and not submitted.
 
 - Create or approve a public GitHub repository named `OOYXLOO/solstice-cipher`.
   - Fast path: `https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public`
+  - Optional GitHub CLI path, only when the account owner is present and `gh` is already authenticated: `gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"`
 - Keep it empty: no README, no license template, no `.gitignore`; the prepared package already includes the tracked `README.md`, MIT `LICENSE`, and `.gitignore`.
 - Push the prepared local `main` branch to that repository.
 - Confirm GitHub Actions `Verify Helioigma` passes after push.

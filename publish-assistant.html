@@ -153,6 +153,12 @@ Initialize with README/license/gitignore: no</textarea>
       </article>
 
       <article class="panel">
+        <div class="copy-row"><h2>Optional GitHub CLI</h2><button type="button" data-copy="ghcli">Copy</button></div>
+        <textarea id="ghcli" readonly>gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"</textarea>
+        <p>Use only when the account owner is present and <code>gh</code> is already authenticated. Do not add README, license, or gitignore flags.</p>
+      </article>
+
+      <article class="panel">
         <div class="copy-row"><h2>Push commands</h2><button type="button" data-copy="push">Copy</button></div>
         <textarea id="push" readonly>powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1
 powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push</textarea>

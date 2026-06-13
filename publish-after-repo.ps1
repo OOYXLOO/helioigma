@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 $repoUrl = "https://github.com/OOYXLOO/solstice-cipher.git"
 $repoPage = "https://github.com/OOYXLOO/solstice-cipher"
 $repoCreateUrl = "https://github.com/new?owner=OOYXLOO&name=solstice-cipher&visibility=public"
+$repoCreateCommand = 'gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"'
 
 function Run {
   param([string]$Command)
@@ -55,6 +56,8 @@ Write-Output "Helioigma publish-after-repo helper"
     Write-Output $remoteCheck.Output
     Write-Output "BLOCKED: Public repository is not reachable yet. Create $repoPage first, public, with no README/license/gitignore initialization."
     Write-Output "Fast create link: $repoCreateUrl"
+    Write-Output "Optional GitHub CLI command, only if the account owner is present and gh is already authenticated:"
+    Write-Output $repoCreateCommand
     Write-Output "Important: leave README, license, and .gitignore unchecked so this prepared main branch can push cleanly."
     exit 1
   }

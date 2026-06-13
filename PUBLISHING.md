@@ -28,6 +28,14 @@ The account owner should create the public GitHub repository, or approve Codex t
 5. Do not initialize with README, license, or `.gitignore`; this prepared package already includes the tracked README, MIT `LICENSE`, and `.gitignore`
 6. Create repository
 
+Optional GitHub CLI path, only when the account owner is present and `gh` is already authenticated:
+
+```powershell
+gh repo create OOYXLOO/solstice-cipher --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/solstice-cipher/"
+```
+
+Do not add `--add-readme`, `--license`, or `--gitignore`; this repository needs to start empty so the prepared local `main` branch can push cleanly.
+
 After that, run:
 
 ```powershell
