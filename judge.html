@@ -80,6 +80,72 @@
       padding: 18px;
     }
 
+    .review-flow {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .review-flow h2 {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .review-flow ol {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: review-step;
+    }
+
+    .review-flow li {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      counter-increment: review-step;
+    }
+
+    .review-flow li::before {
+      content: counter(review-step);
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(247, 201, 72, 0.42);
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .review-flow strong,
+    .review-flow span {
+      display: block;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .review-flow strong {
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .review-flow span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     .demo-frame {
       margin-top: 24px;
       border: 1px solid var(--line);
@@ -118,6 +184,7 @@
 
     @media (max-width: 780px) {
       .actions, .grid { grid-template-columns: 1fr; }
+      .review-flow ol { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -143,6 +210,16 @@
       <a class="action" href="https://github.com/OOYXLOO/solstice-cipher"><strong>Source</strong><span>Review the static HTML/CSS/JavaScript package and public CI checks.</span></a>
       <a class="action" href="dev-article-final.md"><strong>Read Story</strong><span>Open the final DEV article draft with theme, demo, code, build notes, and category fit.</span></a>
       <a class="action" href="README.md"><strong>Read README</strong><span>Review controls, theme fit, media assets, and verification notes.</span></a>
+    </section>
+
+    <section class="review-flow" aria-label="60-second review path">
+      <h2>60-second review path</h2>
+      <ol>
+        <li><strong>Open Auto Demo.</strong><span>Watch the public page complete all four phases and produce receipt <code>SC-4P-2907-62-Y5VFX1</code>.</span></li>
+        <li><strong>Run Smoke Test.</strong><span>Verify the browser path reaches 46 checks, including phase announcer, Rotor Trace, phase ledger, and receipt link coverage.</span></li>
+        <li><strong>Verify Receipt.</strong><span>Open the receipt verifier to recompute the checksum and inspect phases, score, shifts, and suffix.</span></li>
+        <li><strong>Check Source.</strong><span>Use the manifest and README only if deeper review is needed; the playable loop is static and no-backend.</span></li>
+      </ol>
     </section>
 
     <section class="grid" aria-label="Judge notes">

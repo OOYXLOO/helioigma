@@ -112,6 +112,8 @@ jobs:
           grep -q "Watch Video" judge.html
           grep -q "Auto Demo" judge.html
           grep -q "Run Smoke Test" judge.html
+          grep -q "60-second review path" judge.html
+          grep -q "Verify the browser path reaches 46 checks" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
           grep -q "Ode With Restraint" judge.html
@@ -162,10 +164,12 @@ jobs:
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
           grep -q "Decode the solstice rotor" index.html
+          grep -q "20260613-ledger-polish" index.html
           grep -q "https://ooyxloo.github.io/solstice-cipher/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
+          grep -q "20260613-ledger-polish" smoke.html
           grep -q "hint button is present" smoke.html
           grep -q "hint shortcut is exposed" smoke.html
           grep -q "hint shortcut names the next mismatched node" smoke.html

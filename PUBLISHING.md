@@ -79,6 +79,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Keyboard shortcuts work: Enter starts, H reveals a manual hint, D runs Demo Solve, R/Escape resets, and number keys rotate matching nodes.
 - [ ] Public game shows node-control buttons below the canvas.
 - [ ] Public smoke test returns `PASS`.
+- [ ] Public judge page shows the 60-second review path.
 - [ ] Public judge manifest returns HTTP 200 and records the stable receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Public receipt verifier accepts stable Demo Solve receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`

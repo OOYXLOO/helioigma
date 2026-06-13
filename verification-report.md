@@ -16,12 +16,12 @@ This report records the public-package checks that can be repeated after `OOYXLO
 ## Verified Assets
 
 - `index.html`: playable static game
-- `judge.html`: judge quick path
+- `judge.html`: judge quick path with a 60-second review path
 - `smoke.html`: browser smoke test
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner
+- `solstice-cipher-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
 - `solstice-cipher-demo.gif`: current animated GIF preview
 - `solstice-cipher-demo.mp4`: optional legacy MP4 asset
 - `desktop-check-v5.png`: desktop gameplay screenshot
@@ -118,7 +118,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - official DEV challenge tags
 - current WebM video and GIF fallback references
 - intended public play URL
-- judge page current WebM/GIF links
+- judge page current WebM/GIF links and 60-second review path
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
