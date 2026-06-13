@@ -105,6 +105,42 @@
       line-height: 1.2;
     }
 
+    .verdict-label {
+      margin: 0 0 8px;
+      color: var(--moon);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .review-verdict {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .review-verdict p {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .review-verdict strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 13px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
     .review-focus {
       display: grid;
       grid-template-columns: 1fr;
@@ -256,6 +292,7 @@
 
     @media (max-width: 780px) {
       .primary-actions, .evidence-actions, .grid, .rubric-grid { grid-template-columns: 1fr; }
+      .review-verdict { grid-template-columns: 1fr; }
       .review-focus { grid-template-columns: 1fr; }
       .review-flow ol { grid-template-columns: 1fr; }
     }
@@ -269,6 +306,12 @@
 
     <section class="review-flow" aria-label="60-second review path">
       <h2>60-second review path</h2>
+      <p class="verdict-label">Award thesis</p>
+      <div class="review-verdict" aria-label="Award thesis">
+        <p><strong>Playable ode</strong> The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning.</p>
+        <p><strong>Judge-verifiable</strong> Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier all inspect the same public game loop.</p>
+        <p><strong>Finished surface</strong> The package is static, mobile-ready, media-backed, and reviewable without accounts, APIs, or private data.</p>
+      </div>
       <div class="review-focus">
         <section class="primary-actions" aria-label="Primary judge actions">
           <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Open the playable page with the deterministic Demo Solve route already running.</span></a>

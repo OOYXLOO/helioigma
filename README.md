@@ -28,6 +28,8 @@ Helioigma is a compact browser puzzle game for the June solstice theme and an od
 
 The current build now has a visible four-phase progress strip, a first-screen phase objective strip, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a manual `Hint` path, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path proves the same public game loop through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.
+
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
 The playable first screen now includes the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.

@@ -6,6 +6,7 @@
     "target_prize_usd": 200,
     "target_category": "Best Ode to Alan Turing",
     "required_tags": ["devchallenge", "gamechallenge", "gamedev"],
+    "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.",
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
     "rubric_snapshot": [
       {

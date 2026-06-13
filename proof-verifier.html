@@ -149,9 +149,43 @@
       overflow-wrap: anywhere;
     }
 
+    .boundary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .boundary-grid div {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .boundary-grid strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 13px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .boundary-grid p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     @media (max-width: 720px) {
       .fact-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .boundary-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -173,6 +207,17 @@
     <section class="panel">
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
       <p>This is a transparent run receipt for a public jam demo, not anti-cheat or identity proof. It exists so judges can replay the scoring path and inspect the checksum without trusting a screenshot.</p>
+      <div class="boundary-grid" aria-label="Receipt proof boundary">
+        <div>
+          <strong>What this proves</strong>
+          <p>The receipt matches the published four-phase payload shape, score, shift count, and local checksum formula for the public Demo Solve path.</p>
+        </div>
+        <div>
+          <strong>What this does not prove</strong>
+          <p>It does not prove player identity, anti-cheat integrity, payout eligibility, or that a private account action happened.</p>
+        </div>
+      </div>
+      <p><strong>Sample payload:</strong> <code>solstice|4|2907|62|4</code> produces suffix <code>Y5VFX1</code> for receipt <code>SC-4P-2907-62-Y5VFX1</code>.</p>
       <p><a href="./">Play the game</a> - <a href="smoke.html">Run smoke test</a> - <a href="verification.html">Open verification report</a></p>
     </section>
   </main>

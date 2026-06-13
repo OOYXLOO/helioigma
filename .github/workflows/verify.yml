@@ -77,6 +77,8 @@ jobs:
           grep -q "not a biography game" dev-article-final.md
           grep -q "careful reasoning about machines and proof" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
+          grep -q "My award thesis is simple" dev-article-final.md
+          grep -q "playable ode, a judge-verifiable loop, and a finished static package" dev-article-final.md
           grep -q "judge-manifest.json" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
           grep -q "I chose a cipher wheel" dev-article-final.md
@@ -107,6 +109,7 @@ jobs:
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
+          grep -q "Award thesis: Helioigma is a playable ode" README.md
           grep -q "Originality and Review Transparency" README.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" README.md
           grep -q "Rotor Trace" README.md
@@ -130,10 +133,14 @@ jobs:
           grep -q "Auto Demo" judge.html
           grep -q "Run Smoke Test" judge.html
           grep -q "60-second review path" judge.html
+          grep -q "Award thesis" judge.html
+          grep -q "Playable ode" judge.html
+          grep -q "Judge-verifiable" judge.html
+          grep -q "Finished surface" judge.html
           grep -q "Primary judge actions" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
-          grep -q "Verify the browser path reaches 49 checks" judge.html
+          grep -q "Verify the browser path reaches 54 checks" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
           grep -q "Run Receipt" judge.html
@@ -143,17 +150,18 @@ jobs:
           ! grep -q "DEV Console" judge.html
           ! grep -q "Publish Assistant" judge.html
           grep -q "PASS - Longest day held" verification-report.md
-          grep -q "completion screenshot with final receipt and phase scoring ledger" verification-report.md
-          grep -q "GIF preview ending on the receipt ledger" verification-report.md
+          grep -q "completion screenshot with final receipt, phase scoring ledger, and Judge run summary" verification-report.md
+          grep -q "GIF preview ending on the receipt ledger and Judge run summary" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" verification-report.md
           grep -q "SC-4P-2907-62-Y5VFX1" judge-manifest.json
           grep -q "Best Ode to Alan Turing" judge-manifest.json
           grep -q "ode_note" judge-manifest.json
           grep -q "expected_smoke_checks" judge-manifest.json
+          grep -q "award_thesis" judge-manifest.json
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q "49" judge-manifest.json
+          grep -q "54" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json
           grep -q "SC-4P-2907-62-Y5VFX1" proof-verifier.html
@@ -162,6 +170,9 @@ jobs:
           grep -q "Checksum-valid receipt" proof-verifier.html
           grep -q 'get("receipt")' proof-verifier.html
           grep -q "not anti-cheat or identity proof" proof-verifier.html
+          grep -q "What this proves" proof-verifier.html
+          grep -q "What this does not prove" proof-verifier.html
+          grep -q "solstice|4|2907|62|4" proof-verifier.html
           grep -q "parsed receipt facts" verification-report.md
           grep -q "helioigma-demo.webm" verification-report.md
           grep -q "Score variance is expected" verification-report.md
@@ -174,6 +185,8 @@ jobs:
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
+          grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
+          grep -q "expected 54 smoke checks" tools/browser-smoke-check.mjs
           grep -q "helioigma-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
@@ -187,6 +200,7 @@ jobs:
           grep -q "traceNext" index.html
           grep -q "phaseAnnouncer" index.html
           grep -q "demoButton" index.html
+          grep -q "Demo Solve full judge route" index.html
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
           grep -q "proofSummary" index.html

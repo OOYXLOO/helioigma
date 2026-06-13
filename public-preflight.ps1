@@ -123,6 +123,7 @@ try {
   if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
+  if (-not ($manifest.challenge.award_thesis -like "Helioigma is a playable ode*")) { throw "judge-manifest award thesis mismatch" }
   if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
@@ -147,6 +148,8 @@ try {
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "compact proof that the solve path can be inspected"
   Assert-Contains "dev-article-final.md" "I am aiming this at Best Ode to Alan Turing by making the tribute playable"
+  Assert-Contains "dev-article-final.md" "My award thesis is simple"
+  Assert-Contains "dev-article-final.md" "playable ode, a judge-verifiable loop, and a finished static package"
   Assert-Contains "dev-article-final.md" "small pressure loop"
   Assert-Contains "dev-article-final.md" "Video Demo"
   Assert-Contains "dev-article-final.md" "Code"
@@ -191,6 +194,8 @@ try {
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
   Assert-Contains "dev-submit-console.html" "You get 45 seconds of daylight"
   Assert-Contains "dev-submit-console.html" "live objective strip tells you what the rotor wants next"
+  Assert-Contains "dev-submit-console.html" "My award thesis is simple"
+  Assert-Contains "dev-submit-console.html" "playable ode, a judge-verifiable loop, and a finished static package"
   Assert-Contains "dev-submit-console.html" "judge-manifest.json"
   Assert-Contains "dev-submit-console.html" "Rubric Fit"
   Assert-Contains "dev-submit-console.html" "live Rotor Trace, deterministic Demo Solve, and a verifiable run receipt"
@@ -211,6 +216,7 @@ try {
   Assert-Contains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
+  Assert-Contains "README.md" "Award thesis: Helioigma is a playable ode"
   Assert-Contains "README.md" "Originality and Review Transparency"
   Assert-Contains "README.md" "not a wrapper around a prior game template"
   Assert-Contains "README.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
@@ -258,6 +264,10 @@ try {
   Assert-Contains ".gitignore" "helioigma-dev-package.zip"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "judge.html" "60-second review path"
+  Assert-Contains "judge.html" "Award thesis"
+  Assert-Contains "judge.html" "Playable ode"
+  Assert-Contains "judge.html" "Judge-verifiable"
+  Assert-Contains "judge.html" "Finished surface"
   Assert-Contains "judge.html" "Primary judge actions"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
@@ -288,6 +298,8 @@ try {
   Assert-NotContains "judge.html" "DEV Console"
   Assert-NotContains "judge.html" "Publish Assistant"
   Assert-Contains "styles.css" "linear-gradient(105deg"
+  Assert-Contains "styles.css" "#demoButton"
+  Assert-Contains "styles.css" "box-shadow: 0 10px 28px rgba(247, 201, 72, 0.16)"
   Assert-Contains "tools/browser-smoke-check.mjs" "desktop game canvas starts too low"
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
@@ -306,6 +318,7 @@ try {
   Assert-Contains "index.html" "traceNext"
   Assert-Contains "index.html" "phaseAnnouncer"
   Assert-Contains "index.html" "demoButton"
+  Assert-Contains "index.html" "Demo Solve full judge route"
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
   Assert-Contains "index.html" "1. Play"
@@ -364,6 +377,9 @@ try {
   Assert-Contains "proof-verifier.html" "Checksum"
   Assert-Contains "proof-verifier.html" "Checksum-valid receipt"
   Assert-Contains "proof-verifier.html" 'get("receipt")'
+  Assert-Contains "proof-verifier.html" "What this proves"
+  Assert-Contains "proof-verifier.html" "What this does not prove"
+  Assert-Contains "proof-verifier.html" "solstice|4|2907|62|4"
   Assert-Contains "proof-verifier.html" "not anti-cheat or identity proof"
   Assert-Contains "proof-verifier.html" "linear-gradient(105deg"
   Assert-NotContains "proof-verifier.html" "radial-gradient"
@@ -389,6 +405,7 @@ try {
   Assert-Contains "judge-manifest.json" "template_boundary"
   Assert-Contains "judge-manifest.json" "asset_boundary"
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
+  Assert-Contains "judge-manifest.json" "award_thesis"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
 

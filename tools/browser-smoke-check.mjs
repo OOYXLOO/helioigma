@@ -101,6 +101,8 @@ async function readGameFacts(page) {
         reset: document.querySelector("#resetButton")?.getAttribute("aria-keyshortcuts"),
         hint: document.querySelector("#hintButton")?.getAttribute("aria-keyshortcuts"),
         demo: document.querySelector("#demoButton")?.getAttribute("aria-keyshortcuts"),
+        demoLabel: document.querySelector("#demoButton")?.getAttribute("aria-label"),
+        demoPrimary: document.querySelector("#demoButton")?.classList.contains("primary-control"),
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
       },
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
@@ -139,6 +141,8 @@ async function main() {
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
+    assert(desktop.shortcutMap.demoLabel === "Demo Solve full judge route", "demo button judge route label is not exposed");
+    assert(desktop.shortcutMap.demoPrimary === true, "demo button is not marked as the primary judge control");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.judgeLinks.includes("Auto demo"), "first screen does not link the auto demo route");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
@@ -194,6 +198,8 @@ async function main() {
       hasOldPublicPageCopy: document.body.innerText.includes("Watch the public page complete all four phases"),
       hasPlayablePageCopy: document.body.innerText.includes("Watch the playable page complete all four phases"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
+      hasAwardThesis: document.body.innerText.toLowerCase().includes("award thesis"),
+      verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
       rubricItems: [...document.querySelectorAll(".rubric-item strong")].map((node) => node.textContent.trim()),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
@@ -207,6 +213,8 @@ async function main() {
     assert(!judge.hasOldPublicPageCopy, "judge page still calls the prelaunch route a public page");
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
+    assert(judge.hasAwardThesis, "judge page is missing the award thesis");
+    assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
     assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
@@ -231,6 +239,7 @@ async function main() {
     assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/helioigma/?demo=1", "judge manifest auto demo URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
+    assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
     assert(manifest.verification?.expected_smoke_checks === 54, "judge manifest smoke count changed");
@@ -245,11 +254,15 @@ async function main() {
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
       hasCaveat: document.body.innerText.includes("not anti-cheat or identity proof"),
+      hasProofBoundary: document.body.innerText.toLowerCase().includes("what this proves") && document.body.innerText.toLowerCase().includes("what this does not prove"),
+      hasSamplePayload: document.body.innerText.includes("solstice|4|2907|62|4"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
     assert(proof.result === "Checksum-valid receipt within published demo bounds: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
+    assert(proof.hasProofBoundary, "proof verifier is missing the proof boundary explanation");
+    assert(proof.hasSamplePayload, "proof verifier is missing the sample payload breakdown");
     assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 

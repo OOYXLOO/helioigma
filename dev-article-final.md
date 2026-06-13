@@ -14,6 +14,8 @@ Helioigma is built around that small pressure loop. Each phase changes the targe
 
 I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
+My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.
+
 ## What I Built
 
 Helioigma is a compact browser puzzle for the DEV June Solstice Game Jam. The player races the longest day by rotating a Turing-inspired solar rotor until each numbered node matches the target cipher before nightfall ends the run.
@@ -63,6 +65,8 @@ Core features:
 - First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop, with the detailed cards moved after the playfield on mobile so the canvas starts in the first viewport.
 
 ## Judge in 60 Seconds
+
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. No account, API, backend, private data, or hidden judge path is needed to inspect it.
 
 1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
