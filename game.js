@@ -558,6 +558,8 @@
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
     ctx.clearRect(0, 0, w, h);
+    const inputHint = "Tap nodes or press 1-9. H = hint, D = demo.";
+    canvas.dataset.inputHint = inputHint;
 
     const cx = w / 2;
     const topBand = Math.max(92, h * 0.18);
@@ -622,6 +624,14 @@
     state.target.forEach((value, i) => {
       drawGlyph(targetStart + i * targetGap, targetY, targetGlyphRadius, value, "");
     });
+
+    ctx.save();
+    ctx.fillStyle = "rgba(247,243,223,0.78)";
+    ctx.font = `700 ${Math.max(11, Math.min(w, h) * 0.022)}px ui-sans-serif, system-ui`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(inputHint, cx, targetY + targetGlyphRadius + 32);
+    ctx.restore();
 
     state.ring.forEach((value, i) => {
       const angle = -Math.PI / 2 + (Math.PI * 2 * i) / state.ring.length;

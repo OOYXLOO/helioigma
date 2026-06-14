@@ -127,6 +127,7 @@ async function readGameFacts(page) {
       canvasTop: canvasRect?.top,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       targetRowBounds,
+      inputHint: canvas?.dataset.inputHint || "",
       trace: {
         phase: document.querySelector("#tracePhase")?.textContent.trim(),
         match: document.querySelector("#traceMatch")?.textContent.trim(),
@@ -199,6 +200,7 @@ async function main() {
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "status line no longer exposes the first-screen node-cycle cue");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
+    assert(desktop.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "desktop canvas lost the first-action input hint");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -334,6 +336,7 @@ async function main() {
     assert(mobile.mobileCues.map((cue) => cue.text).join("|") === "Rotate|Trace|Receipt", "mobile run path cues changed");
     assert(mobile.mobileCues.every((cue) => cue.visible), "mobile run path explanatory cues are not visible");
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
+    assert(mobile.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "mobile canvas lost the first-action input hint");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "mobile status line no longer exposes the node-cycle cue");
     assert(
