@@ -151,7 +151,7 @@
     "shifts": 62,
     "checksum": "Y5VFX1",
     "score_basis": "Score rewards held daylight, streaks, and fewer wasted shifts before the final summary receipt checksum is built.",
-    "phase_proof_line": "Each phase exposes a compact verification cue and a distinct hint scan order that maps the current loop to solstice pressure, Turing-style state alignment, controlled shifts, or checksum verification.",
+    "phase_proof_line": "Each phase exposes a compact Turing cue and a distinct hint scan order that maps the current loop to crib state checks, XOR parity, binary carry, or checksum trace.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
     "mobile_completion_proof": "mobile-complete-v1.png captures the same stable receipt, phase ledger, and Judge run summary in a 390px mobile viewport.",

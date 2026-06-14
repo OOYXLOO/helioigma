@@ -22,7 +22,7 @@ Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `proo
 
 - It is a playable static browser game, not only a write-up or mockup.
 - The solstice is mechanical: daylight is the timer, nightfall is the fail state, and the run ends after four held phases.
-- The Alan Turing ode is restrained and interactive: rotor-like alignment, XOR/binary glyphs, state transitions, and checksum reasoning carry the tribute through play.
+- The Alan Turing ode is restrained and interactive: the first-screen `Turing cue` line, rotor-like alignment, XOR/binary glyphs, state checks, and checksum reasoning carry the tribute through play.
 - The game feel is visible before the proof layer: short timer pressure, a `SOL -> XOR -> LUX -> BIN` node cycle cue, node pulse feedback, Rotor Trace, phase-specific hints, optional audio, and Nightfall recovery.
 - `Demo Solve` uses the same visible game surface and leaves the stable summary receipt `SC-4P-2907-62-Y5VFX1`.
 - The receipt verifier, Rotor Trace, judge page, manifest, media, and optional smoke test all inspect the published static review package.

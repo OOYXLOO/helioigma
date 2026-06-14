@@ -14,7 +14,7 @@ Helioigma is a finished static browser game for the Best Ode to Alan Turing rout
 | Creativity | Instead of a literal calendar/trivia treatment, the entry combines a solar rotor, XOR/binary glyphs, short timer pressure, tactile node pulses, Rotor Trace, Nightfall recovery, Demo Solve, and a checksum receipt. | `index.html`, `judge.html`, `proof-verifier.html` |
 | Technical execution | The build is a self-contained static canvas game with mouse, touch, keyboard, on-screen node controls, phase-specific hint order, default-off audio, deterministic demo route, local verifier, and 69-check browser smoke. | `game.js`, `smoke.html`, `tools/browser-smoke-check.mjs` |
 | Writing quality | The judge path is explicit: README, DEV article, judge page, verification page, manifest, screenshots, and media all point to the same short review flow. | `README.md`, `dev-article-final.md`, `judge.html`, `verification.html` |
-| Best Ode to Alan Turing | The tribute lives in mechanics rather than biography: state alignment, target checking, XOR/binary language, timed pressure, and machine-checkable receipt reasoning. | `JUDGE_REVIEW_CARD.md`, `CHALLENGE_COMPLIANCE.md`, `judge-manifest.json` |
+| Best Ode to Alan Turing | The tribute lives in mechanics rather than biography: first-screen Turing cues, state alignment, target checking, XOR/binary language, timed pressure, and machine-checkable receipt reasoning. | `JUDGE_REVIEW_CARD.md`, `CHALLENGE_COMPLIANCE.md`, `judge-manifest.json` |
 
 ## 60-Second Evidence Path
 

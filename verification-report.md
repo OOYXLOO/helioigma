@@ -72,7 +72,7 @@ Expected local URLs:
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The first-screen judge shortcuts and judge pack expose the stable Auto Demo sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
-- The playable page exposes a four-step phase progress strip, first-screen phase objective strip with phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Privacy review path: `?nostore=1` keeps the game playable while avoiding best-score reads and writes.
 - Smoke checks include 69 PASS assertions:
@@ -96,7 +96,7 @@ Expected local URLs:
   - phase objective names the first phase
   - phase objective shows target glyphs and alignment
   - phase proof strip present
-  - phase proof names the first cue
+- phase proof names the first Turing cue
   - first-screen judge path present
   - first-phase node buttons present
   - judge shortcut links include the auto demo route

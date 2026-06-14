@@ -52,10 +52,10 @@
     "Close the checksum before nightfall seals the rotor.",
   ];
   const phaseProofs = [
-    "Solstice crib starts state transitions.",
-    "XOR noon checks parity alignment.",
-    "Binary carry proves controlled shifts.",
-    "Checksum night seals algorithmic trace.",
+    "Turing cue: crib starts state checks.",
+    "Turing cue: XOR checks parity.",
+    "Turing cue: binary carry controls shifts.",
+    "Turing cue: checksum seals the trace.",
   ];
   const phaseScanNotes = [
     "Crib scan: first mismatch.",

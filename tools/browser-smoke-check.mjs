@@ -156,7 +156,7 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(
-      desktop.objective.proof === "Solstice crib starts state transitions.",
+      desktop.objective.proof === "Turing cue: crib starts state checks.",
       "phase proof initial copy changed"
     );
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
@@ -289,7 +289,7 @@ async function main() {
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(
-      mobile.objective.proof === "Solstice crib starts state transitions.",
+      mobile.objective.proof === "Turing cue: crib starts state checks.",
       "mobile phase proof initial copy changed"
     );
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);

@@ -183,7 +183,7 @@ try {
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 69) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
-  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact verification cue*")) { throw "judge-manifest phase proof mismatch" }
+  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if (-not ($manifest.proof.mobile_completion_proof -like "mobile-complete-v1.png captures*")) { throw "judge-manifest mobile completion proof mismatch" }
@@ -232,7 +232,7 @@ try {
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "For game feel, I focused on a short pressure loop"
   Assert-Contains "dev-article-final.md" "the first artifact is still the playable daylight race"
-  Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
+  Assert-Contains "dev-article-final.md" "phase-proof line names a compact Turing cue"
   Assert-Contains "dev-article-final.md" "The manual Hint and Rotor Trace path also changes by phase"
   Assert-Contains "dev-article-final.md" "XOR alternates mirrored rotor nodes"
   Assert-Contains "dev-article-final.md" "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked"
@@ -356,7 +356,8 @@ try {
   Assert-Contains "README.md" "XOR alternates mirrored nodes"
   Assert-Contains "README.md" "Seal the daylight run."
   Assert-NotContains "README.md" "Prove the daylight run."
-  Assert-Contains "README.md" "phase-proof line keeps the solstice/Turing/verification connection visible"
+  Assert-Contains "README.md" "phase-proof line now starts as"
+  Assert-Contains "README.md" "Turing cue: crib starts state checks."
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
   Assert-Contains "README.md" "Owner-only launch notes are kept in Markdown"
   Assert-Contains "README.md" "Local Launch Notes"
@@ -380,7 +381,8 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Boundaries"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Best Ode to Alan Turing"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "first-screen"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Turing cue"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-specific hint order"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
@@ -639,9 +641,9 @@ try {
   Assert-Contains "index.html" "phaseAlignment"
   Assert-Contains "index.html" "phaseProof"
   Assert-Contains "index.html" "Phase proof"
-  Assert-Contains "index.html" "Solstice crib starts state transitions."
+  Assert-Contains "index.html" "Turing cue: crib starts state checks."
   Assert-Contains "game.js" "phaseProofs"
-  Assert-Contains "game.js" "Checksum night seals algorithmic trace."
+  Assert-Contains "game.js" "Turing cue: checksum seals the trace."
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
