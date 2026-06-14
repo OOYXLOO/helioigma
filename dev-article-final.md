@@ -123,7 +123,7 @@ Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt
 
 I treated the review surface as part of the game. Helioigma can be played with mouse, touch, on-screen buttons, or number keys, and the screen includes hidden helper text plus a phase announcer for assistive technology. Audio cues are generated in the browser, start off by default, and only turn on after the player chooses `Audio` or presses `S`.
 
-The build avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only default browser storage is the local numeric best score for this game, and `?nostore=1` disables best-score storage for stricter privacy review. Privacy review URL: https://ooyxloo.github.io/helioigma/?nostore=1. The receipt is not anti-cheat, identity, payout, or eligibility proof; it is a small checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
+The build avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only default browser storage is the local numeric best score for this game, and `?nostore=1` disables best-score storage for stricter privacy review. Privacy review URL: [no-storage mode](https://ooyxloo.github.io/helioigma/?nostore=1). The receipt is not anti-cheat, identity, payout, or eligibility proof; it is a small checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
 
 ## How I Built It
 
