@@ -12,6 +12,6 @@
     "build:package": "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1"
   },
   "devDependencies": {
-    "playwright": "^1.52.0"
+    "playwright": "1.60.0"
   }
 }

@@ -54,7 +54,6 @@ Do not submit on DEV until the public try link works. Use:
 - Launch brief: `dev-launch-brief.md`
 - Judge review card: `JUDGE_REVIEW_CARD.md`
 - Push helper: `publish-after-repo.ps1`
-- Draft: `dev-post-draft.md`
 - Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`
 - Current GIF demo after Pages is live: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
 - The WebM is the canonical captioned browser-recorded demo video, the GIF is the inline fallback preview, and the MP4 is an optional legacy fallback only if DEV specifically asks for MP4.

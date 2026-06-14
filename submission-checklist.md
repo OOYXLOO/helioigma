@@ -18,7 +18,6 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Local/public preflight script: `public-preflight.ps1`.
 - Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
-- DEV post draft: `dev-post-draft.md`.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
 - DEV launch brief: `dev-launch-brief.md` with final article fields, public URL checks, no-go gate, and post-publish receipt.
 - Verification report: `verification.html` and `verification-report.md`.
@@ -33,7 +32,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Current GIF demo: `helioigma-demo.gif`.
 - Optional legacy MP4 fallback, only if DEV specifically asks for MP4: `helioigma-demo.mp4`.
 - Source frames: `demo-frames-v3/`.
-- Install browser test dependencies from a clean clone with `npm install` and `npx playwright install chromium`.
+- Install browser test dependencies from a clean clone with `npm ci` and `npx playwright install chromium`.
 - Rebuild captioned WebM from a live browser session with `npm run build:video`. Override capture scratch space with `HELIOIGMA_VIDEO_WORK_DIR` if needed.
 - Rebuild the fallback frame-based WebM with `npm run build:webm`.
 - Rebuild the local transfer ZIP with `npm run build:package`.
@@ -73,6 +72,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
 - Use `PUBLISHING.md` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
+- Keep the official DEV template marker at the top of `dev-article-final.md`: "This is a submission for the June Solstice Game Jam."
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.

@@ -22,6 +22,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 
 | Requirement | Helioigma Evidence |
 | --- | --- |
+| DEV submission template marker | `dev-article-final.md` opens with the official challenge marker and names the June Solstice Game Jam plus the Best Ode to Alan Turing target. |
 | DEV challenge tags | `dev-article-final.md` front matter includes `devchallenge`, `gamechallenge`, `gamedev`, and `javascript`. |
 | Playable game | `index.html`, `game.js`, and `styles.css` run as a static GitHub Pages game with mouse, touch, keyboard, and on-screen controls. |
 | Demo video | `helioigma-demo.webm` is the primary current browser recording; `helioigma-demo.gif` and `helioigma-demo.mp4` are fallback media; `mobile-complete-v1.png` proves the receipt/ledger path on a 390px viewport; the article states the WebM/GIF are true demo artifacts from the current game, not mockups. |
@@ -46,7 +47,7 @@ Do not publish the DEV article until all of these are true:
 1. `https://github.com/OOYXLOO/helioigma` is public.
 2. `https://ooyxloo.github.io/helioigma/` returns HTTP 200.
 3. `public-preflight.ps1 -Public` passes against the live Pages URLs.
-4. The article body still includes the required challenge tags, demo media, code link, build notes, prize category, and no-secret boundary.
+4. The article body still includes the official challenge marker, required challenge tags, demo media, code link, build notes, prize category, and no-secret boundary.
 5. No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content appears in the public package.
 6. The article still states that the receipt is review proof, not anti-cheat, identity, payout, or eligibility proof.
 

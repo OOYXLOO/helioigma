@@ -33,7 +33,7 @@ Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finish
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
-The playable first screen now leads with the game hook, `45s solstice cipher`, then gives the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
+The playable first screen now leads with the game hook, `Prove the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
 ## Official Review Snapshot
 
@@ -76,7 +76,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt verifier is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
-- `package.json` provides clean-clone commands: `npm install`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
+- `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 
 ## Local Media Assets
 

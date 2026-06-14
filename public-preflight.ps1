@@ -74,6 +74,7 @@ try {
     "game.js",
     "LICENSE",
     "package.json",
+    "package-lock.json",
     "JUDGE_REVIEW_CARD.md",
     "CHALLENGE_COMPLIANCE.md",
     "judge.html",
@@ -82,7 +83,6 @@ try {
     "proof-verifier.html",
     "dev-article-final.md",
     "dev-launch-brief.md",
-    "dev-post-draft.md",
     "publish-after-repo.ps1",
     "tools/build-package.ps1",
     "tools/build-demo-video.mjs",
@@ -126,7 +126,7 @@ try {
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
-  if (-not ($package.devDependencies.playwright -like "^1.*")) { throw "package Playwright devDependency mismatch" }
+  if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
 
   if (Test-Path -LiteralPath "helioigma-dev-package.zip") {
@@ -203,12 +203,14 @@ try {
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev, javascript"
+  Assert-Contains "dev-article-final.md" "This is a submission for the [June Solstice Game Jam]"
+  Assert-Contains "dev-article-final.md" "It targets the Best Ode to Alan Turing category"
   Assert-Contains "dev-article-final.md" "Reviewer Fast Path"
   Assert-Contains "dev-article-final.md" "If you are judging quickly, start here"
   Assert-Contains "dev-article-final.md" "The shortest evaluation path is: play one phase, run Auto Demo, verify receipt"
   Assert-Contains "dev-article-final.md" "No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed"
   Assert-Contains "dev-article-final.md" "What I Built"
-  Assert-Contains "dev-article-final.md" "You get 45 seconds of daylight"
+  Assert-Contains "dev-article-final.md" "You open with 45 seconds of daylight"
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
@@ -307,7 +309,7 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
-  Assert-Contains "README.md" "45s solstice cipher"
+  Assert-Contains "README.md" "Prove the daylight run."
   Assert-Contains "README.md" "phase-proof line keeps the solstice/Turing/verification connection visible"
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
   Assert-Contains "README.md" "Owner-only launch notes are kept in Markdown"
@@ -398,6 +400,7 @@ try {
   Assert-Contains ".github/workflows/verify.yml" "helioigma-demo.webm"
   Assert-Contains ".github/workflows/verify.yml" "Run browser smoke on committed package"
   Assert-Contains ".github/workflows/verify.yml" "npm run smoke"
+  Assert-Contains ".github/workflows/verify.yml" "npm ci"
   Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt demo video output"
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
@@ -406,7 +409,8 @@ try {
   Assert-Contains ".gitignore" "node_modules/"
   Assert-Contains "judge.html" "Run Smoke Test"
   Assert-Contains "judge.html" "Helioigma is a playable Turing ode for holding the longest day."
-  Assert-Contains "judge.html" "A small static 45-second, four-phase game"
+  Assert-Contains "judge.html" "A small static four-phase game"
+  Assert-Contains "judge.html" "transparent receipt"
   Assert-Contains "judge.html" "receipt verifier, theme fit, run receipt, and source path"
   Assert-Contains "judge.html" "60-second review path"
   Assert-Contains "judge.html" "Official route snapshot"
@@ -499,7 +503,7 @@ try {
   Assert-Contains "index.html" "phaseAnnouncer"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "Demo Solve full judge route"
-  Assert-Contains "index.html" "45s solstice cipher"
+  Assert-Contains "index.html" "Prove the daylight run."
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
   Assert-Contains "index.html" "Run path"
@@ -532,8 +536,9 @@ try {
   Assert-Contains "game.js" "Nightfall sealed the rotor. Retry or watch Demo Solve."
   Assert-Contains "game.js" "syncNightfallPanel"
   Assert-Contains "index.html" "Helioigma"
-  Assert-Contains "index.html" "In each 45s phase, rotate every numbered node until it matches the target glyphs"
-  Assert-Contains "index.html" "full receipt path"
+  Assert-Contains "index.html" "Start with 45s daylight"
+  Assert-Contains "index.html" "Match numbered nodes to target glyphs"
+  Assert-Contains "index.html" "receipt path"
   Assert-Contains "index.html" "20260614-mobile-review"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
@@ -545,7 +550,7 @@ try {
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "audio cue button is present"
   Assert-Contains "smoke.html" "audio cues default off"
-  Assert-Contains "smoke.html" "play rule gives 45s target-glyph receipt path"
+  Assert-Contains "smoke.html" "play rule gives opening-daylight target-glyph receipt path"
   Assert-Contains "smoke.html" "hint shortcut is exposed"
   Assert-Contains "smoke.html" "start button shows the first-move coach"
   Assert-Contains "smoke.html" "hint shortcut names the next mismatched node"

@@ -33,7 +33,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 ## Local Verification Commands
 
 ```powershell
-npm install
+npm ci
 npx playwright install chromium
 npm run check
 npm run preflight
@@ -61,7 +61,7 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 473px, and about 427px of gameplay is visible in the first viewport.
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
-- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm install` and Playwright Chromium setup.
+- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
 - Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held. Latest live-timer score 2892 across 62 shifts.`
@@ -80,7 +80,7 @@ Expected local URLs:
   - demo solve button present
   - audio cue button present
   - daylight meter present
-  - play rule gives the 45-second target-glyph receipt path
+  - play rule gives the opening-daylight target-glyph receipt path
   - start shortcut exposed
   - reset shortcut exposed
   - hint shortcut exposed

@@ -148,8 +148,8 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(desktop.objective.proof === "Solstice crib starts target checking.", "phase proof initial copy changed");
-    assert(desktop.heroHook === "45s solstice cipher", "first screen no longer leads with the game hook");
-    assert(desktop.playRule?.includes("In each 45s phase") && desktop.playRule?.includes("matches the target glyphs") && desktop.playRule?.includes("full receipt path"), "play rule no longer gives the rushed-judge goal");
+    assert(desktop.heroHook === "Prove the daylight run.", "first screen no longer leads with the game hook");
+    assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -244,7 +244,7 @@ async function main() {
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
-    assert(mobile.heroHook === "45s solstice cipher", "mobile first screen no longer leads with the game hook");
+    assert(mobile.heroHook === "Prove the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.objective.proof === "Solstice crib starts target checking.", "mobile phase proof initial copy changed");
@@ -301,7 +301,7 @@ async function main() {
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.heading === "Helioigma is a playable Turing ode for holding the longest day.", "judge page heading no longer leads with the award thesis");
-    assert(judge.dek?.includes("45-second, four-phase game") && judge.dek?.includes("receipt verifier"), "judge page deck no longer gives the quick review frame");
+    assert(judge.dek?.includes("small static four-phase game") && judge.dek?.includes("transparent receipt") && judge.dek?.includes("receipt verifier"), "judge page deck no longer gives the quick review frame");
     assert(judge.hasGif, "judge page does not point to the current GIF");
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");

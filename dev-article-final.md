@@ -6,6 +6,8 @@ tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png
 ---
 
+**This is a submission for the [June Solstice Game Jam](https://dev.to/challenges/june-game-jam-2026-06-03). It targets the Best Ode to Alan Turing category.**
+
 ## Reviewer Fast Path
 
 If you are judging quickly, start here:
@@ -19,7 +21,7 @@ Helioigma targets Best Ode to Alan Turing. The shortest evaluation path is: play
 
 ## The Longest Day as a Countdown Machine
 
-You get 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before the timer empties.
+You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before each tightening phase empties its timer.
 
 The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for proof.
 
@@ -27,7 +29,7 @@ Helioigma is built around that small pressure loop. Each phase changes the targe
 
 I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
-My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
 
 ## What I Built
 
