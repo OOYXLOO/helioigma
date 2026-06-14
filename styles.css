@@ -951,18 +951,28 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 5px;
     padding: 5px;
   }
 
+  .quick-controls #startButton { order: 1; }
+  .quick-controls #hintButton { order: 2; }
+  .quick-controls #demoButton {
+    order: 3;
+    grid-column: span 2;
+  }
+  .quick-controls #resetButton { order: 4; }
+  .quick-controls #soundButton { order: 5; }
+
   button {
     min-height: 40px;
     padding: 0 5px;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .status {
+    order: 6;
     grid-column: 1 / -1;
     width: 100%;
     min-height: 26px;

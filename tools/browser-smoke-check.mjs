@@ -120,6 +120,11 @@ async function readGameFacts(page) {
       controlHeights: [...document.querySelectorAll(".quick-controls button")]
         .filter((button) => getComputedStyle(button).display !== "none")
         .map((button) => button.getBoundingClientRect().height),
+      controlWidths: Object.fromEntries(
+        [...document.querySelectorAll(".quick-controls button")]
+          .filter((button) => getComputedStyle(button).display !== "none")
+          .map((button) => [button.id, Math.round(button.getBoundingClientRect().width)]),
+      ),
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
       judgeLinkHrefs: [...document.querySelectorAll(".judge-links a")].map((link) => link.getAttribute("href")),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -243,6 +248,7 @@ async function main() {
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
     assert(mobile.controlHeights.every((height) => height >= 40), `mobile visible control buttons are too short: ${mobile.controlHeights.join(",")}`);
+    assert(mobile.controlWidths.demoButton >= mobile.controlWidths.startButton * 1.75, `mobile Demo Solve is not visually prioritized: ${JSON.stringify(mobile.controlWidths)}`);
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
@@ -301,7 +307,9 @@ async function main() {
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
-      scorecardHref: document.querySelector('.evidence-actions a[href="RUBRIC_SCORECARD.md"]')?.getAttribute("href"),
+      scorecardHref: document.querySelector(".evidence-actions a[href$='RUBRIC_SCORECARD.md']")?.getAttribute("href"),
+      storyHref: document.querySelector(".evidence-actions a[href$='dev-article-final.md']")?.getAttribute("href"),
+      readmeHref: document.querySelector(".evidence-actions a[href$='README.md']")?.getAttribute("href"),
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.heading === "Helioigma is a playable Turing ode for holding the longest day.", "judge page heading no longer leads with the award thesis");
@@ -348,7 +356,9 @@ async function main() {
     assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
-    assert(judge.scorecardHref === "RUBRIC_SCORECARD.md", "judge page scorecard action is not local and source-first");
+    assert(judge.scorecardHref === "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md", "judge page scorecard action is not GitHub-rendered and source-first");
+    assert(judge.storyHref === "https://github.com/OOYXLOO/helioigma/blob/main/dev-article-final.md", "judge page story action is not GitHub-rendered");
+    assert(judge.readmeHref === "https://github.com/OOYXLOO/helioigma/blob/main/README.md", "judge page README action is not GitHub-rendered");
     assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");
     assert(!judge.primaryInsideReview, "judge page repeats primary actions inside the 60-second review path");
     assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");

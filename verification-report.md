@@ -60,7 +60,7 @@ Expected local URLs:
 ## Browser Checks
 
 - Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 473px, and about 427px of gameplay is visible in the first viewport.
-- Mobile 390x844: no horizontal overflow; controls appear before the canvas, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
+- Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Demo Solve` is wider than the other quick controls, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
 - Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.

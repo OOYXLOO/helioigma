@@ -64,6 +64,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 ## Current Quality Checks
 
 - Desktop and 390px mobile browser checks pass with no horizontal overflow.
+- On 390px mobile, `Demo Solve` is intentionally wider than the other quick controls so the judge receipt path is easier to hit without hiding Start, Hint, Reset, Audio, or the first canvas viewport.
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
