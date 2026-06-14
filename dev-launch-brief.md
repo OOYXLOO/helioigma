@@ -21,11 +21,11 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Title: `Helioigma: a Turing-wheel puzzle for holding the longest day`
 - Description: `A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt.`
 - Tags: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
-- Cover image: `https://ooyxloo.github.io/helioigma/cover.png`
+- Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media`
 - Body source: `dev-article-final.md`
-- Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm`
+- Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media`
 - MP4 fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.mp4`
-- Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
+- Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media`
 
 ## Judge Hook To Preserve
 

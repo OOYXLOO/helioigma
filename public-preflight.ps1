@@ -205,6 +205,10 @@ try {
   if (-not ($manifest.challenge_compliance.public_launch_gate -contains "GitHub Pages returns HTTP 200")) { throw "judge-manifest challenge-compliance launch-gate mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
   if ($manifest.public_urls.rubric_scorecard -ne "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md") { throw "judge-manifest rubric scorecard URL mismatch" }
+  if ($manifest.public_urls.cover_image -ne "https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media") { throw "judge-manifest cover image URL mismatch" }
+  if ($manifest.public_urls.demo_webm -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media") { throw "judge-manifest demo WebM URL mismatch" }
+  if ($manifest.public_urls.demo_gif -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media") { throw "judge-manifest demo GIF URL mismatch" }
+  if ($manifest.public_urls.mobile_completion_image -ne "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media") { throw "judge-manifest mobile completion image URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
   }
@@ -262,11 +266,18 @@ try {
   Assert-Contains "dev-article-final.md" "biggest tradeoff"
   Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
-  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png"
+  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
+  Assert-Contains "dev-article-final.md" "helioigma-demo.gif?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "helioigma-demo.webm?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "cover.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "desktop-check-v5.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "mobile-check-v6.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "desktop-complete-v4.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "mobile-complete-v1.png?v=20260614-seal-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
   Assert-Contains "dev-article-final.md" "Optional legacy MP4 fallback"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
@@ -299,6 +310,9 @@ try {
   Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "dev-launch-brief.md" "https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
+  Assert-Contains "dev-launch-brief.md" "helioigma-demo.webm?v=20260614-seal-media"
+  Assert-Contains "dev-launch-brief.md" "helioigma-demo.gif?v=20260614-seal-media"
+  Assert-Contains "dev-launch-brief.md" "cover.png?v=20260614-seal-media"
   Assert-Contains "dev-launch-brief.md" "Source rubric scorecard"
   Assert-Contains "dev-launch-brief.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "dev-launch-brief.md" "PASS browser smoke"
@@ -352,6 +366,9 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.gif?v=20260614-seal-media"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.webm?v=20260614-seal-media"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "mobile-complete-v1.png?v=20260614-seal-media"
   Assert-Contains "FIRST_MINUTE.md" "Helioigma First Minute"
   Assert-Contains "FIRST_MINUTE.md" "rushed DEV judge"
   Assert-Contains "FIRST_MINUTE.md" "Try This In One Minute"
@@ -484,8 +501,11 @@ try {
   Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
-  Assert-Contains "judge.html" '<video src="helioigma-demo.webm"'
-  Assert-Contains "judge.html" 'poster="desktop-check-v5.png"'
+  Assert-Contains "judge.html" '<video src="helioigma-demo.webm?v=20260614-seal-media"'
+  Assert-Contains "judge.html" 'poster="desktop-check-v5.png?v=20260614-seal-media"'
+  Assert-Contains "judge.html" "helioigma-demo.webm?v=20260614-seal-media"
+  Assert-Contains "judge.html" "desktop-check-v5.png?v=20260614-seal-media"
+  Assert-Contains "judge.html" "helioigma-demo.gif?v=20260614-seal-media"
   Assert-Contains "judge.html" "helioigma-demo.gif"
   Assert-Contains "judge.html" "timed node-rotation loop"
   Assert-Contains "judge.html" "Animated Helioigma demo preview"
@@ -539,6 +559,8 @@ try {
   Assert-NotContains "styles.css" "radial-gradient"
   Assert-Contains "game.js" "Run receipt copied."
   Assert-Contains "game.js" "Judge run summary copied."
+  Assert-Contains "game.js" "Logic aligned. Daylight sealed."
+  Assert-NotContains "game.js" "Daylight proved"
   Assert-Contains "index.html" "Judge run summary"
   Assert-Contains "index.html" "Copy judge summary"
   Assert-Contains "styles.css" ".judge-run-summary"
@@ -572,6 +594,8 @@ try {
   Assert-Contains "index.html" "Rotate nodes before nightfall."
   Assert-Contains "index.html" "Verify sample"
   Assert-Contains "index.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "index.html" "helioigma-demo.gif?v=20260614-seal-media"
+  Assert-Contains "index.html" "cover.png?v=20260614-seal-media"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"

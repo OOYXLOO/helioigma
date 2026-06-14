@@ -726,7 +726,7 @@
     ctx.fillText(`${state.solvedPhases}/${levels.length} phases solved in ${state.shifts} shifts`, cx, cy + ringRadius * 0.16);
     ctx.fillStyle = "rgba(184,242,200,0.9)";
     ctx.font = `700 ${Math.max(11, ringRadius * 0.05)}px ui-sans-serif, system-ui`;
-    ctx.fillText("Logic aligned. Daylight proved.", cx, cy + ringRadius * 0.28);
+    ctx.fillText("Logic aligned. Daylight sealed.", cx, cy + ringRadius * 0.28);
     ctx.fillStyle = "rgba(174,184,197,0.78)";
     ctx.font = `600 ${Math.max(11, ringRadius * 0.046)}px ui-sans-serif, system-ui`;
     ctx.fillText(`Receipt ${state.finalProof}`, cx, cy + ringRadius * 0.39);

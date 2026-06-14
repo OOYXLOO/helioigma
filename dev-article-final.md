@@ -3,7 +3,7 @@ title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
 published: false
 description: "A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt."
 tags: devchallenge, gamechallenge, gamedev, javascript
-cover_image: https://ooyxloo.github.io/helioigma/cover.png
+cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media
 ---
 
 **This is a submission for the [June Solstice Game Jam](https://dev.to/challenges/june-game-jam-2026-06-03). It targets the Best Ode to Alan Turing category.**
@@ -19,7 +19,7 @@ If you are judging quickly, the first-minute check is: rotate one node, watch Ro
 
 Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished solve inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
 
-![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
+![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media)
 
 *The first-minute loop in motion: match nodes, trace state, seal the run, verify the receipt.*
 
@@ -49,15 +49,15 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 The captioned WebM records the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The GIF above is the quick inline fallback; the optional MP4 remains only if the DEV editor specifically asks for an MP4 file.
 
-![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png)
+![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png?v=20260614-seal-media)
 
-![Helioigma mobile completion receipt](https://ooyxloo.github.io/helioigma/mobile-complete-v1.png)
+![Helioigma mobile completion receipt](https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media)
 
-Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
+Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media
 
 Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
 
-Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
+Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media
 
 ## Quick Links
 
@@ -102,14 +102,14 @@ Official route snapshot: Best Ode to Alan Turing category route in the official 
 
 Public media links:
 
-1. Cover: https://ooyxloo.github.io/helioigma/cover.png
-2. WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
+1. Cover: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media
+2. WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media
 3. Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
-4. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
-5. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
-6. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
-7. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
-8. Mobile completion screenshot with stable receipt, phase ledger, and Judge run summary: https://ooyxloo.github.io/helioigma/mobile-complete-v1.png
+4. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media
+5. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png?v=20260614-seal-media
+6. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png?v=20260614-seal-media
+7. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png?v=20260614-seal-media
+8. Mobile completion screenshot with stable receipt, phase ledger, and Judge run summary: https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media
 
 ## Code
 

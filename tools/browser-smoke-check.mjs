@@ -177,6 +177,7 @@ async function main() {
     assert(desktop.judgeLinks.includes("Verify sample"), "first screen does not link the sample receipt verifier");
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "first screen sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
+    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.gif?v=20260614-seal-media"), "first screen Demo GIF link is not cache-busted to the current media");
 
     await page.click("#startButton");
     const startCoach = await page.evaluate(() => ({
@@ -337,9 +338,9 @@ async function main() {
     assert(judge.hasVisualJudgeHero, "judge page is missing the visual judge hero");
     assert(judge.hasVisualJudgeCopy, "judge page does not lead with a playable-game visual claim");
     assert(judge.hasTimedLoopCopy, "judge page does not foreground the timed node-rotation loop");
-    assert(judge.visualHeroVideoSrc === "helioigma-demo.webm", "judge page visual hero does not use the current WebM demo");
-    assert(judge.visualHeroVideoPoster === "desktop-check-v5.png", "judge page visual hero does not retain the current gameplay screenshot poster");
-    assert(judge.demoFrameImageSrc === "helioigma-demo.gif", "judge page demo frame does not use the current animated GIF");
+    assert(judge.visualHeroVideoSrc === "helioigma-demo.webm?v=20260614-seal-media", "judge page visual hero does not use the current cache-busted WebM demo");
+    assert(judge.visualHeroVideoPoster === "desktop-check-v5.png?v=20260614-seal-media", "judge page visual hero does not retain the current cache-busted gameplay screenshot poster");
+    assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260614-seal-media", "judge page demo frame does not use the current cache-busted animated GIF");
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
