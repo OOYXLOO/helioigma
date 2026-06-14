@@ -19,7 +19,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 ## DEV Article Fields
 
 - Title: `Helioigma: a Turing-wheel puzzle for holding the longest day`
-- Description: `A small browser game for the DEV June Solstice Game Jam: decode a Turing-inspired solar rotor before nightfall.`
+- Description: `A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt.`
 - Tags: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
 - Cover image: `https://ooyxloo.github.io/helioigma/cover.png`
 - Body source: `dev-article-final.md`
@@ -28,6 +28,12 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
 
 ## Judge Hook To Preserve
+
+First-minute proof for rushed judges:
+
+```text
+Rotate one node, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
+```
 
 Keep this exact meaning in the public post:
 
