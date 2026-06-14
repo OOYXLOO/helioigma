@@ -100,7 +100,7 @@ The source is hosted on [GitHub](https://github.com/OOYXLOO/helioigma). I am inc
 
 Plain source URL: https://github.com/OOYXLOO/helioigma
 
-The project is deliberately small: `index.html`, `styles.css`, and `game.js` hold the playable game; `proof-verifier.html`, `smoke.html`, `judge.html`, `RUBRIC_SCORECARD.md`, and `judge-manifest.json` make the review path inspectable; `tools/build-demo-video.mjs` and `tools/build-demo-webm.mjs` reproduce the media; and `LICENSE` is the MIT license for the game package.
+The project is deliberately small: `index.html`, `styles.css`, and `game.js` hold the playable game; `proof-verifier.html`, `smoke.html`, `judge.html`, `RUBRIC_SCORECARD.md`, and `judge-manifest.json` make the review path inspectable; `tools/build-demo-video.mjs`, `tools/build-demo-webm.mjs`, and `tools/build-demo-gif.py` reproduce the media; `tools/verify-media-freshness.mjs` checks PNG, GIF, and WebM freshness; and `LICENSE` is the MIT license for the game package.
 
 ## How to Play
 

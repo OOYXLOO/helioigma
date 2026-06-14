@@ -89,6 +89,8 @@ jobs:
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
           grep -q "Code" dev-article-final.md
+          grep -q "tools/build-demo-gif.py" dev-article-final.md
+          grep -q "tools/verify-media-freshness.mjs" dev-article-final.md
           grep -q "How I Built It" dev-article-final.md
           grep -q "Prize Category" dev-article-final.md
           grep -q "An Ode with Restraint" dev-article-final.md

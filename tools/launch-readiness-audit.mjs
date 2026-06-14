@@ -64,6 +64,8 @@ const mustContain = [
   ["dev-article-final.md", "published: true"],
   ["dev-article-final.md", "tags: devchallenge, gamechallenge, gamedev, javascript"],
   ["dev-article-final.md", "{% embed https://github.com/OOYXLOO/helioigma %}"],
+  ["dev-article-final.md", "tools/build-demo-gif.py"],
+  ["dev-article-final.md", "tools/verify-media-freshness.mjs"],
   ["judge.html", "Playability proof"],
   ["judge.html", "Readable decisions"],
   ["judge.html", "Immediate feedback"],

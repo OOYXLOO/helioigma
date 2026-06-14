@@ -346,6 +346,8 @@ try {
   Assert-Contains "dev-launch-brief.md" "fake engagement"
   Assert-Contains "dev-launch-brief.md" "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
+  Assert-Contains "dev-article-final.md" "tools/build-demo-gif.py"
+  Assert-Contains "dev-article-final.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
