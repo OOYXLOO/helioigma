@@ -1,6 +1,6 @@
 # Helioigma Judge Review Card
 
-Purpose: give a busy DEV judge the shortest honest path from first click to prize evidence.
+Purpose: give a busy DEV judge the shortest honest path from first click to review evidence.
 
 ## Official Route Snapshot
 

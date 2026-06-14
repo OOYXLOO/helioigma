@@ -875,18 +875,14 @@ button:focus-visible {
 
   .objective-strip {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 4px;
     padding: 5px 6px;
   }
 
-  .objective-strip span:nth-child(4) {
-    display: none;
-  }
-
   .objective-strip span {
     border-left-width: 2px;
-    padding-left: 6px;
+    padding-left: 5px;
   }
 
   .objective-strip span:first-child small {
@@ -894,8 +890,8 @@ button:focus-visible {
   }
 
   .objective-strip small {
-    font-size: 10px;
-    line-height: 1.15;
+    font-size: 9px;
+    line-height: 1.12;
   }
 
   .day-meter {

@@ -66,7 +66,7 @@ jobs:
           grep -q "solar rotor" dev-article-final.md
           grep -q "You open with 45 seconds of daylight" dev-article-final.md
           grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
-          grep -q "compact proof that the solve path can be inspected" dev-article-final.md
+          grep -q "inspectable receipt that lets the solve path be checked" dev-article-final.md
           grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
@@ -306,13 +306,13 @@ jobs:
           grep -q "Prove the daylight run." index.html
           grep -q "Start with 45s daylight" index.html
           grep -q "Match numbered nodes to target glyphs" index.html
-          grep -q "20260614-nightfall-report" index.html
+          grep -q "20260614-mobile-review" index.html
           grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260614-nightfall-report" smoke.html
+          grep -q "20260614-mobile-review" smoke.html
           grep -q "award signals are present" smoke.html
           grep -q "demo award signals name solstice, Turing, and judge proof" smoke.html
           grep -q "audio cue button is present" smoke.html

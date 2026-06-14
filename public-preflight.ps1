@@ -177,7 +177,7 @@ try {
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 69) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
-  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact proof cue*")) { throw "judge-manifest phase proof mismatch" }
+  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact verification cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if (-not ($manifest.proof.mobile_completion_proof -like "mobile-complete-v1.png captures*")) { throw "judge-manifest mobile completion proof mismatch" }
   if (-not ($manifest.proof.nightfall_recovery -like "Failed manual runs show a Nightfall report*")) { throw "judge-manifest nightfall recovery mismatch" }
@@ -187,7 +187,7 @@ try {
   if ($manifest.accessibility_and_fair_play.input_paths.Count -lt 4) { throw "judge-manifest accessibility input-path mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*")) { throw "judge-manifest accessibility privacy mismatch" }
-  if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review proof*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review evidence*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
   if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
@@ -214,7 +214,7 @@ try {
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
-  Assert-Contains "dev-article-final.md" "compact proof that the solve path can be inspected"
+  Assert-Contains "dev-article-final.md" "inspectable receipt that lets the solve path be checked"
   Assert-Contains "dev-article-final.md" "I am aiming this at Best Ode to Alan Turing by making the tribute playable"
   Assert-Contains "dev-article-final.md" "My award thesis is simple"
   Assert-Contains "dev-article-final.md" "playable ode, a judge-verifiable loop, and a finished static package"

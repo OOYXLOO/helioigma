@@ -25,11 +25,11 @@ You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `
 
 The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for proof.
 
-Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but a compact proof that the solve path can be inspected.
+Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but an inspectable receipt that lets the solve path be checked against the public verifier.
 
 I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
-My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
+My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the same public game loop through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
 
 ## What I Built
 

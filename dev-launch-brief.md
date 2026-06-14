@@ -30,7 +30,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 Keep this exact meaning in the public post:
 
 ```text
-Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 ```
 
 ## Final Local Commands
@@ -38,6 +38,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 Run these before publishing the DEV article:
 
 ```powershell
+npm ci
 node --check game.js
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 node tools/browser-smoke-check.mjs
