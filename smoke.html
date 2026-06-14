@@ -235,7 +235,7 @@
       addCheck("phase proof names the first Turing cue", phaseProof.textContent === "Turing cue: crib starts state checks.");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
-      addCheck("judge shortcut links include the auto demo route", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")));
+      addCheck("judge shortcut links include auto demo and video routes", judgeLinks.length === 6 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")) && [...judgeLinks].some((link) => link.textContent.includes("Watch video")) && [...judgeLinks].some((link) => link.getAttribute("href") === "helioigma-demo.webm?v=20260614-seal-media"));
       addCheck("status line is present", Boolean(statusLine));
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));

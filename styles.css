@@ -263,6 +263,10 @@ body {
   display: block;
 }
 
+.mobile-cue {
+  display: none;
+}
+
 .judge-path strong {
   color: var(--accent);
   font-size: 13px;
@@ -960,9 +964,10 @@ button:focus-visible {
   }
 
   .judge-path article {
-    min-height: 30px;
+    min-height: 38px;
     display: grid;
     align-content: center;
+    gap: 2px;
     padding: 4px 5px;
   }
 
@@ -972,6 +977,15 @@ button:focus-visible {
 
   .judge-path span {
     display: none;
+  }
+
+  .mobile-cue {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.05;
   }
 
   .controls {

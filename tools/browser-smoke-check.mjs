@@ -77,6 +77,10 @@ async function readGameFacts(page) {
     const canvasRect = canvas?.getBoundingClientRect();
     return {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
+      title: document.title,
+      canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href"),
+      ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content"),
+      ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content"),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
       resetVisible: Boolean(reset && reset.top >= 0 && reset.bottom <= innerHeight && getComputedStyle(document.querySelector("#resetButton")).display !== "none"),
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
@@ -94,6 +98,10 @@ async function readGameFacts(page) {
       },
       playRule: document.querySelector(".play-rule")?.textContent.trim(),
       judgePathText: document.querySelector(".judge-path")?.textContent.trim(),
+      mobileCues: [...document.querySelectorAll(".mobile-cue")].map((node) => ({
+        text: node.textContent.trim(),
+        visible: getComputedStyle(node).display !== "none",
+      })),
       canvasTop: canvasRect?.top,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       trace: {
@@ -143,6 +151,10 @@ async function main() {
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
     const desktop = await readGameFacts(page);
     assert(desktop.overflowX === 0, "desktop has horizontal overflow");
+    assert(desktop.title === "Helioigma - Solstice Rotor Turing Ode", "document title no longer carries the solstice/Turing preview hook");
+    assert(desktop.canonical === "https://ooyxloo.github.io/helioigma/", "canonical URL changed");
+    assert(desktop.ogTitle === "Helioigma - Solstice Rotor Turing Ode", "Open Graph title no longer carries the solstice/Turing preview hook");
+    assert(desktop.ogUrl === "https://ooyxloo.github.io/helioigma/", "Open Graph URL changed");
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
     assert(desktop.hintVisible, "desktop Hint is not visible in the first viewport");
     assert(desktop.soundVisible, "desktop Audio toggle is not visible in the first viewport");
@@ -178,11 +190,13 @@ async function main() {
     assert(desktop.shortcutMap.demoLabel === "Demo Solve full judge route", "demo button judge route label is not exposed");
     assert(desktop.shortcutMap.demoPrimary === true, "demo button is not marked as the primary judge control");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
-    assert(desktop.judgeLinks.includes("Auto demo"), "first screen does not link the auto demo route");
-    assert(desktop.judgeLinks.includes("Verify sample"), "first screen does not link the sample receipt verifier");
-    assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "first screen sample verifier link is not prefilled");
-    assert(desktop.judgeLinks.includes("Demo GIF"), "first screen does not link the current GIF");
-    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.gif?v=20260614-seal-media"), "first screen Demo GIF link is not cache-busted to the current media");
+    assert(desktop.judgeLinks.includes("Auto demo"), "judge shortcut row does not link the auto demo route");
+    assert(desktop.judgeLinks.includes("Verify sample"), "judge shortcut row does not link the sample receipt verifier");
+    assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
+    assert(desktop.judgeLinks.includes("Watch video"), "judge shortcut row does not link the current WebM video");
+    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.webm?v=20260614-seal-media"), "judge shortcut row WebM video link is not cache-busted to the current media");
+    assert(desktop.judgeLinks.includes("Demo GIF"), "judge shortcut row does not link the current GIF");
+    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.gif?v=20260614-seal-media"), "judge shortcut row Demo GIF link is not cache-busted to the current media");
 
     await page.click("#startButton");
     const startCoach = await page.evaluate(() => ({
@@ -286,6 +300,8 @@ async function main() {
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
     assert(mobile.heroHook === "Seal the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
+    assert(mobile.mobileCues.map((cue) => cue.text).join("|") === "Rotate|Trace|Receipt", "mobile run path cues changed");
+    assert(mobile.mobileCues.every((cue) => cue.visible), "mobile run path explanatory cues are not visible");
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(

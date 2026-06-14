@@ -16,10 +16,11 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
 4. Confirm the completed run receipt: `SC-4P-2907-62-Y5VFX1`.
 5. Open the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
-6. Optional: run the browser smoke test at `https://ooyxloo.github.io/helioigma/smoke.html`.
-7. Optional: read `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md` for the one-page first-minute review path.
-8. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
-9. Optional: check `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md` for the official-route checklist and public launch boundary.
+6. Optional: watch the captioned WebM at `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media`.
+7. Optional: run the browser smoke test at `https://ooyxloo.github.io/helioigma/smoke.html`.
+8. Optional: read `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md` for the one-page first-minute review path.
+9. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
+10. Optional: check `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md` for the official-route checklist and public launch boundary.
 
 Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and `smoke.html`.
 
