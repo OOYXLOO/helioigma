@@ -149,6 +149,11 @@ function collectPublicLinks(relativePath) {
   return collectHtmlReferences(relativePath).filter((reference) => /^https?:\/\//i.test(reference));
 }
 
+function collectPunctuationEndedBareUrls(relativePath) {
+  const text = fileText(relativePath);
+  return [...text.matchAll(/https?:\/\/[^\s<>)\]]+[\.,](?=\s|$)/g)].map((match) => match[0]);
+}
+
 function sha256(relativePath) {
   const absolute = resolve(root, relativePath);
   if (!existsSync(absolute)) return null;
@@ -212,6 +217,13 @@ addCheck(
   "judge page public links stay on expected launch hosts",
   unexpectedPublicJudgeLinks.length === 0,
   unexpectedPublicJudgeLinks.join("; "),
+);
+
+const punctuationEndedArticleUrls = collectPunctuationEndedBareUrls("dev-article-final.md");
+addCheck(
+  "DEV article bare URLs do not include trailing punctuation",
+  punctuationEndedArticleUrls.length === 0,
+  punctuationEndedArticleUrls.join("; "),
 );
 
 const trackedFiles = runGit(["ls-files"]).split(/\r?\n/).filter(Boolean);
