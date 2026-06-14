@@ -217,6 +217,8 @@ try {
   Assert-Contains "dev-article-final.md" "Prize Category"
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
   Assert-Contains "dev-article-final.md" "Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots"
+  Assert-Contains "dev-article-final.md" '{% embed https://github.com/OOYXLOO/helioigma %}'
+  Assert-Contains "dev-article-final.md" "Plain source URL: https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-article-final.md" "judge-manifest.json"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Why It Is Not Just a Cipher Demo"
@@ -232,7 +234,9 @@ try {
   Assert-Contains "dev-article-final.md" "Challenge Compliance"
   Assert-Contains "dev-article-final.md" "official-route checklist"
   Assert-Contains "dev-article-final.md" "Helioigma targets Best Ode to Alan Turing and does not claim Best Google AI Usage"
+  Assert-Contains "dev-article-final.md" "new creation for the official June 3 to June 21 jam window"
   Assert-Contains "dev-article-final.md" "not a wrapper around a prior game template"
+  Assert-Contains "dev-article-final.md" "true demo artifacts from the current game rather than mockups"
   Assert-Contains "dev-article-final.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "dev-article-final.md" "Best Ode to Alan Turing"
   Assert-Contains "dev-article-final.md" "Helioigma"
@@ -320,6 +324,9 @@ try {
   Assert-NotContains "dev-submit-console.html" "positive reactions can matter"
   Assert-NotContains "dev-submit-console.html" "tie-breaker help"
   Assert-Contains "dev-submit-console.html" "Originality Note"
+  Assert-Contains "dev-submit-console.html" '{% embed https://github.com/OOYXLOO/helioigma %}'
+  Assert-Contains "dev-submit-console.html" "new creation for the official June 3 to June 21 jam window"
+  Assert-Contains "dev-submit-console.html" "true demo artifacts from the current game rather than mockups"
   Assert-Contains "dev-submit-console.html" "not a wrapper around a prior game template"
   Assert-Contains "dev-submit-console.html" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "dev-submit-console.html" "static solved cipher"
@@ -451,7 +458,11 @@ try {
   Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
+  Assert-Contains "judge.html" '<video src="helioigma-demo.webm"'
+  Assert-Contains "judge.html" 'poster="desktop-check-v5.png"'
   Assert-Contains "judge.html" "helioigma-demo.gif"
+  Assert-Contains "judge.html" "timed node-rotation loop"
+  Assert-Contains "judge.html" "Animated Helioigma demo preview"
   Assert-Contains "judge.html" "visual-judge-hero"
   Assert-Contains "judge.html" "helioigma-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"

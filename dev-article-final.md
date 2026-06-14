@@ -97,9 +97,11 @@ Public media links:
 
 ## Code
 
-The source is hosted at https://github.com/OOYXLOO/helioigma. If the DEV editor renders GitHub cards, this repository URL can stand alone as the code embed for review:
+The source is hosted at https://github.com/OOYXLOO/helioigma. I am including the DEV embed syntax as the code card, plus the plain URL immediately below for reviewers whose reader strips embeds:
 
-https://github.com/OOYXLOO/helioigma
+{% embed https://github.com/OOYXLOO/helioigma %}
+
+Plain source URL: https://github.com/OOYXLOO/helioigma
 
 The project is deliberately small:
 
@@ -186,9 +188,9 @@ After the DEV post is public, I will share the live post with a short, honest no
 
 ## Originality and Build Window
 
-The package is a new static game build for this jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, judge manifest, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
+The package is a new creation for the official June 3 to June 21 jam window, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, judge manifest, smoke test, screenshots, and demo media are included with the source package so reviewers can inspect what was built for the submission.
 
-The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the entry.
+The public media pack is generated from this build's browser UI and checked-in demo frames, so the WebM/GIF are true demo artifacts from the current game rather than mockups. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the entry.
 
 ## Challenge Compliance
 

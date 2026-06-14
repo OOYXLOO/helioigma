@@ -94,7 +94,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 
 ## Judge Receipt
 
-- `judge.html`: one-page judge pack with a 60-second review path, rubric snapshot, play link, Nightfall recovery signal, smoke-test link, theme fit, and receipt boundary.
+- `judge.html`: one-page judge pack with a 60-second review path, WebM visual hero, GIF demo frame, rubric snapshot, play link, Nightfall recovery signal, smoke-test link, theme fit, and receipt boundary.
 - `JUDGE_REVIEW_CARD.md`: one-page judge card with the shortest public review path, award thesis, rubric evidence, and boundaries.
 - `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and non-secret boundaries.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.

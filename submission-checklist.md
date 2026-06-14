@@ -70,6 +70,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Confirm GitHub Actions `Verify Helioigma` passes after push.
 - Enable GitHub Pages from the `main` branch root.
 - Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
+- Keep the GitHub source embed in the Code section: `{% embed https://github.com/OOYXLOO/helioigma %}`, followed by the plain source URL.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
 - Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
 - Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
@@ -77,7 +78,8 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
-- Include the originality/build-window note in the final DEV post.
+- Include the originality/build-window note in the final DEV post, including the official June 3 to June 21 jam window.
+- Keep the demo-media boundary explicit: the WebM/GIF are true demo artifacts generated from the current game, not mockups.
 - Include the differentiation note: the Turing/code-breaking fit is inside the interaction, not only in the title.
 - After publishing, share the DEV post only with honest feedback requests. The ask must stay clean: real play, real feedback, no spam, no bought reactions, no pressure, and no fake engagement.
 - Confirm the challenge rules and eligibility on the official DEV pages.

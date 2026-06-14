@@ -94,7 +94,11 @@ jobs:
           grep -q "biggest tradeoff" dev-article-final.md
           grep -q "only browser storage is a local numeric best-score key" dev-article-final.md
           grep -q "Originality and Build Window" dev-article-final.md
+          grep -q "{% embed https://github.com/OOYXLOO/helioigma %}" dev-article-final.md
+          grep -q "Plain source URL: https://github.com/OOYXLOO/helioigma" dev-article-final.md
+          grep -q "new creation for the official June 3 to June 21 jam window" dev-article-final.md
           grep -q "not a wrapper around a prior game template" dev-article-final.md
+          grep -q "true demo artifacts from the current game rather than mockups" dev-article-final.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-article-final.md
           grep -q "Challenge Compliance" dev-article-final.md
           grep -q "official-route checklist" dev-article-final.md
@@ -145,7 +149,10 @@ jobs:
           grep -q "mobile-complete-v1.png" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "Originality Note" dev-submit-console.html
+          grep -q "{% embed https://github.com/OOYXLOO/helioigma %}" dev-submit-console.html
+          grep -q "new creation for the official June 3 to June 21 jam window" dev-submit-console.html
           grep -q "not a wrapper around a prior game template" dev-submit-console.html
+          grep -q "true demo artifacts from the current game rather than mockups" dev-submit-console.html
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-submit-console.html
           grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
@@ -202,6 +209,10 @@ jobs:
           set -euo pipefail
           grep -q "helioigma-demo.gif" judge.html
           grep -q "helioigma-demo.webm" judge.html
+          grep -q '<video src="helioigma-demo.webm"' judge.html
+          grep -q 'poster="desktop-check-v5.png"' judge.html
+          grep -q "timed node-rotation loop" judge.html
+          grep -q "Animated Helioigma demo preview" judge.html
           grep -q "Helioigma" judge.html
           grep -q "Verify Receipt" judge.html
           grep -q "judge-manifest.json" judge.html

@@ -277,7 +277,10 @@ async function main() {
       hasAwardThesis: document.body.innerText.toLowerCase().includes("award thesis"),
       hasVisualJudgeHero: document.body.innerText.toLowerCase().includes("visual judge start"),
       hasVisualJudgeCopy: document.body.innerText.toLowerCase().includes("the core artifact is a playable rotor puzzle"),
-      visualHeroImageSrc: document.querySelector(".visual-judge-hero img")?.getAttribute("src"),
+      hasTimedLoopCopy: document.body.innerText.toLowerCase().includes("timed node-rotation loop"),
+      visualHeroVideoSrc: document.querySelector(".visual-judge-hero video")?.getAttribute("src"),
+      visualHeroVideoPoster: document.querySelector(".visual-judge-hero video")?.getAttribute("poster"),
+      demoFrameImageSrc: document.querySelector(".demo-frame img")?.getAttribute("src"),
       visualHeroTop: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().top,
       visualHeroBottom: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().bottom,
       verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
@@ -307,7 +310,10 @@ async function main() {
     assert(judge.hasAwardThesis, "judge page is missing the award thesis");
     assert(judge.hasVisualJudgeHero, "judge page is missing the visual judge hero");
     assert(judge.hasVisualJudgeCopy, "judge page does not lead with a playable-game visual claim");
-    assert(judge.visualHeroImageSrc === "desktop-check-v5.png", "judge page visual hero does not use the current gameplay screenshot");
+    assert(judge.hasTimedLoopCopy, "judge page does not foreground the timed node-rotation loop");
+    assert(judge.visualHeroVideoSrc === "helioigma-demo.webm", "judge page visual hero does not use the current WebM demo");
+    assert(judge.visualHeroVideoPoster === "desktop-check-v5.png", "judge page visual hero does not retain the current gameplay screenshot poster");
+    assert(judge.demoFrameImageSrc === "helioigma-demo.gif", "judge page demo frame does not use the current animated GIF");
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
@@ -332,10 +338,10 @@ async function main() {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
     const mobileJudge = await page.evaluate(() => {
-      const image = document.querySelector(".visual-judge-hero img")?.getBoundingClientRect();
+      const media = document.querySelector(".visual-judge-hero video")?.getBoundingClientRect();
       const actions = document.querySelector(".visual-judge-hero .primary-actions")?.getBoundingClientRect();
       return {
-        imageVisible: Boolean(image && image.top < innerHeight && image.bottom > 0),
+        imageVisible: Boolean(media && media.top < innerHeight && media.bottom > 0),
         actionsVisible: Boolean(actions && actions.top < innerHeight && actions.bottom <= innerHeight),
         primaryActions: [...document.querySelectorAll(".visual-judge-hero .action strong")].map((node) => node.textContent.trim()),
         overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
