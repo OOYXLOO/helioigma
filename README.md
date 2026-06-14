@@ -96,6 +96,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 
 ## Judge Receipt
 
+- `FIRST_MINUTE.md`: shortest source-readable review path for a rushed DEV judge, focused on play, category fit, receipt verification, and what is not claimed.
 - `judge.html`: one-page judge pack with a 60-second review path, WebM visual hero, GIF demo frame, rubric snapshot, play link, Nightfall recovery signal, smoke-test link, theme fit, and receipt boundary.
 - `JUDGE_REVIEW_CARD.md`: one-page judge card with the shortest public review path, award thesis, rubric evidence, and boundaries.
 - `RUBRIC_SCORECARD.md`: source-first rubric map for theme relevance, creativity, technical execution, writing quality, and Best Ode to Alan Turing fit.

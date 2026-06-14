@@ -16,8 +16,9 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 3. Confirm the completed run receipt: `SC-4P-2907-62-Y5VFX1`.
 4. Open the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
 5. Optional: run the browser smoke test at `https://ooyxloo.github.io/helioigma/smoke.html`.
-6. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
-7. Optional: check `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md` for the official-route checklist and public launch boundary.
+6. Optional: read `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md` for the one-page first-minute review path.
+7. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
+8. Optional: check `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md` for the official-route checklist and public launch boundary.
 
 ## Award Thesis
 
@@ -48,6 +49,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 ## Public Evidence Links
 
 - Judge page: `https://ooyxloo.github.io/helioigma/judge.html`
+- First-minute guide: `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md`
 - Manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
 - Verification report: `https://ooyxloo.github.io/helioigma/verification.html`
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`

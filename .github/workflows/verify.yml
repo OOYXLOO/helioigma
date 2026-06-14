@@ -25,6 +25,7 @@ jobs:
             LICENSE \
             package.json \
             package-lock.json \
+            FIRST_MINUTE.md \
             CHALLENGE_COMPLIANCE.md \
             JUDGE_REVIEW_CARD.md \
             RUBRIC_SCORECARD.md \
@@ -138,11 +139,13 @@ jobs:
           ! grep -q "if the user authorizes public publishing" README.md
           grep -q "The Turing ode is intentionally restrained" README.md
           grep -q "Award thesis: Helioigma is a playable ode" README.md
+          grep -q "FIRST_MINUTE.md" README.md
           grep -q "JUDGE_REVIEW_CARD.md" README.md
           grep -q "package.json" README.md
           grep -q "npm run smoke" README.md
           grep -q "npm run build:package" README.md
           grep -q "Helioigma Judge Review Card" JUDGE_REVIEW_CARD.md
+          grep -q "FIRST_MINUTE.md" JUDGE_REVIEW_CARD.md
           grep -q "60-Second Path" JUDGE_REVIEW_CARD.md
           grep -q "Award Thesis" JUDGE_REVIEW_CARD.md
           grep -q "Rubric Evidence" JUDGE_REVIEW_CARD.md
@@ -151,6 +154,12 @@ jobs:
           grep -q "SC-4P-2907-62-Y5VFX1" JUDGE_REVIEW_CARD.md
           grep -q "Best Ode to Alan Turing" JUDGE_REVIEW_CARD.md
           grep -q "does not claim the Best Google AI Usage category" JUDGE_REVIEW_CARD.md
+          grep -q "Helioigma First Minute" FIRST_MINUTE.md
+          grep -q "rushed DEV judge" FIRST_MINUTE.md
+          grep -q "SC-4P-2907-62-Y5VFX1" FIRST_MINUTE.md
+          grep -q "Best Ode to Alan Turing" FIRST_MINUTE.md
+          grep -q "No Best Google AI Usage claim" FIRST_MINUTE.md
+          grep -q "not anti-cheat, identity, eligibility, or payment proof" FIRST_MINUTE.md
           grep -q "CHALLENGE_COMPLIANCE.md" JUDGE_REVIEW_CARD.md
           grep -q "Prize target: Best Ode to Alan Turing" CHALLENGE_COMPLIANCE.md
           grep -q "Deadline: June 21, 2026 at 11:59 PM PDT" CHALLENGE_COMPLIANCE.md
@@ -230,6 +239,8 @@ jobs:
           grep -q "expected_smoke_checks" judge-manifest.json
           grep -q "award_thesis" judge-manifest.json
           grep -q "public_review_surface" judge-manifest.json
+          grep -q "FIRST_MINUTE.md" judge-manifest.json
+          grep -q "first_minute" judge-manifest.json
           grep -q "judge review card" judge-manifest.json
           grep -q "JUDGE_REVIEW_CARD.md" judge-manifest.json
           grep -q "owner_publication_note" judge-manifest.json

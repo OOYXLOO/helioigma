@@ -75,6 +75,7 @@ try {
     "LICENSE",
     "package.json",
     "package-lock.json",
+    "FIRST_MINUTE.md",
     "JUDGE_REVIEW_CARD.md",
     "RUBRIC_SCORECARD.md",
     "CHALLENGE_COMPLIANCE.md",
@@ -188,6 +189,7 @@ try {
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
   if (-not ($manifest.status.owner_publication_note -like "Public hosting and DEV article publication are external publication actions*")) { throw "judge-manifest owner publication note mismatch" }
+  if ($manifest.public_urls.first_minute -ne "https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md") { throw "judge-manifest first-minute URL mismatch" }
   if ($manifest.accessibility_and_fair_play.input_paths.Count -lt 4) { throw "judge-manifest accessibility input-path mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*")) { throw "judge-manifest accessibility privacy mismatch" }
@@ -328,9 +330,11 @@ try {
   Assert-NotContains "README.md" "backup route"
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Award thesis: Helioigma is a playable ode"
+  Assert-Contains "README.md" "FIRST_MINUTE.md"
   Assert-Contains "README.md" "JUDGE_REVIEW_CARD.md"
   Assert-Contains "README.md" "RUBRIC_SCORECARD.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Helioigma Judge Review Card"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "FIRST_MINUTE.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "60-Second Path"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Official Route Snapshot"
@@ -343,6 +347,12 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
+  Assert-Contains "FIRST_MINUTE.md" "Helioigma First Minute"
+  Assert-Contains "FIRST_MINUTE.md" "rushed DEV judge"
+  Assert-Contains "FIRST_MINUTE.md" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "FIRST_MINUTE.md" "Best Ode to Alan Turing"
+  Assert-Contains "FIRST_MINUTE.md" "No Best Google AI Usage claim"
+  Assert-Contains "FIRST_MINUTE.md" "not anti-cheat, identity, eligibility, or payment proof"
   Assert-Contains "RUBRIC_SCORECARD.md" "Helioigma Rubric Scorecard"
   Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
@@ -648,6 +658,8 @@ try {
   Assert-Contains "verification.html" "Turing category"
   Assert-Contains "judge-manifest.json" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "judge-manifest.json" "public_review_surface"
+  Assert-Contains "judge-manifest.json" "FIRST_MINUTE.md"
+  Assert-Contains "judge-manifest.json" "first_minute"
   Assert-Contains "judge-manifest.json" "judge review card"
   Assert-Contains "judge-manifest.json" "JUDGE_REVIEW_CARD.md"
   Assert-Contains "judge-manifest.json" "owner_publication_note"

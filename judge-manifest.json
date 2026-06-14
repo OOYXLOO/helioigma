@@ -65,6 +65,7 @@
     "asset_boundary": "Public media is generated from this build's browser UI and checked-in demo frames, not from a stock-art pack.",
     "review_surface": [
       "game.js",
+      "FIRST_MINUTE.md",
       "JUDGE_REVIEW_CARD.md",
       "proof-verifier.html",
       "judge.html",
@@ -111,6 +112,7 @@
     "proof_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html",
     "sample_receipt_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
     "verification": "https://ooyxloo.github.io/helioigma/verification.html",
+    "first_minute": "https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md",
     "challenge_compliance": "https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md",
     "rubric_scorecard": "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md",
     "manifest": "https://ooyxloo.github.io/helioigma/judge-manifest.json",
@@ -121,6 +123,7 @@
   },
   "local_artifacts": [
     "index.html",
+    "FIRST_MINUTE.md",
     "JUDGE_REVIEW_CARD.md",
     "RUBRIC_SCORECARD.md",
     "judge.html",
