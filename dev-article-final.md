@@ -1,6 +1,6 @@
 ---
 title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
-published: false
+published: true
 description: "A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the stable Demo Solve summary receipt."
 tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media

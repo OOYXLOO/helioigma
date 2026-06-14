@@ -222,6 +222,8 @@ try {
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev, javascript"
+  Assert-Contains "dev-article-final.md" "published: true"
+  Assert-NotContains "dev-article-final.md" "published: false"
   Assert-Contains "dev-article-final.md" "This is a submission for the [June Solstice Game Jam]"
   Assert-Contains "dev-article-final.md" "It targets the Best Ode to Alan Turing category"
   Assert-Contains "dev-article-final.md" "Reviewer Fast Path"

@@ -59,6 +59,7 @@ const requiredFiles = [
 
 const mustContain = [
   ["dev-article-final.md", "Playability Proof"],
+  ["dev-article-final.md", "published: true"],
   ["dev-article-final.md", "tags: devchallenge, gamechallenge, gamedev, javascript"],
   ["dev-article-final.md", "{% embed https://github.com/OOYXLOO/helioigma %}"],
   ["judge.html", "Playability proof"],
@@ -232,6 +233,13 @@ addCheck(
   "DEV article bare URLs do not include trailing punctuation",
   punctuationEndedArticleUrls.length === 0,
   punctuationEndedArticleUrls.join("; "),
+);
+
+const devArticleText = fileText("dev-article-final.md");
+addCheck(
+  "DEV article front matter is publish-ready",
+  devArticleText.includes("published: true") && !devArticleText.includes("published: false"),
+  "Use published: true before the final DEV/API publish path.",
 );
 
 const trackedFiles = runGit(["ls-files"]).split(/\r?\n/).filter(Boolean);

@@ -64,6 +64,8 @@ jobs:
         run: |
           set -euo pipefail
           grep -q "tags: devchallenge, gamechallenge, gamedev, javascript" dev-article-final.md
+          grep -q "published: true" dev-article-final.md
+          ! grep -q "published: false" dev-article-final.md
           grep -q "This is a submission for the \\[June Solstice Game Jam\\]" dev-article-final.md
           grep -q "It targets the Best Ode to Alan Turing category" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
