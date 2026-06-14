@@ -380,32 +380,48 @@ async function main() {
     assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid demo receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
       hasCaveat: document.body.innerText.includes("not anti-cheat, identity, payout, or eligibility proof"),
       hasProofBoundary: document.body.innerText.toLowerCase().includes("what this checks") && document.body.innerText.toLowerCase().includes("what this does not check"),
       hasSamplePayload: document.body.innerText.includes("solstice|4|2907|62|4"),
       hasSourceNote: document.body.innerText.includes("Generated in game.js by buildRunProof") || document.body.innerText.includes("generated in game.js by buildRunProof"),
+      hasNeutralBoundary: document.body.innerText.includes("Other formula-valid receipts are shown as neutral checksum-form matches"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
+      resultClass: document.querySelector("#result")?.className,
     }));
-    assert(proof.result === "Checksum-valid demo receipt: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
+    assert(proof.result === "Stable Demo Solve receipt: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
+    assert(proof.resultClass.includes("ok"), "stable receipt should be the only green receipt state");
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
     assert(proof.hasProofBoundary, "proof verifier is missing the proof boundary explanation");
     assert(proof.hasSamplePayload, "proof verifier is missing the sample payload breakdown");
     assert(proof.hasSourceNote, "proof verifier is missing the generator source note");
+    assert(proof.hasNeutralBoundary, "proof verifier is missing the non-stable formula-valid boundary");
     assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 
     await page.goto(`${baseUrl}proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid demo receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));
     const proofFromQuery = await page.evaluate(() => ({
       input: document.querySelector("#proofInput")?.value.trim(),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
     assert(proofFromQuery.input === "SC-4P-2907-62-Y5VFX1", "proof verifier did not read receipt query parameter");
-    assert(proofFromQuery.result === "Checksum-valid demo receipt: 2907 points across 62 shifts.", "proof verifier query route did not validate");
+    assert(proofFromQuery.result === "Stable Demo Solve receipt: 2907 points across 62 shifts.", "proof verifier query route did not validate");
+
+    await page.evaluate(() => {
+      const input = document.querySelector("#proofInput");
+      input.value = "SC-4P-2907-63-3HZ0GI";
+      document.querySelector("#verifyButton").click();
+    });
+    const neutralProof = await page.evaluate(() => ({
+      result: document.querySelector("#result")?.textContent.trim(),
+      resultClass: document.querySelector("#result")?.className,
+    }));
+    assert(neutralProof.result === "Checksum-form valid, but not the published stable Demo Solve receipt.", "non-stable formula-valid receipt should be neutral");
+    assert(neutralProof.resultClass.includes("neutral") && !neutralProof.resultClass.includes("ok"), "non-stable formula-valid receipt should not be green");
 
     await page.goto(`${baseUrl}smoke.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => {

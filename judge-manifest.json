@@ -44,6 +44,21 @@
     "browser_storage": "Only a local numeric best-score key is used.",
     "audio": "Optional generated Web Audio cues are off by default and require the Audio button or S shortcut."
   },
+  "accessibility_and_fair_play": {
+    "input_paths": [
+      "mouse or tap on rotor nodes",
+      "on-screen node buttons",
+      "number keys 1 through 9",
+      "keyboard shortcuts for start, reset, hint, demo solve, and audio"
+    ],
+    "assistive_technology": [
+      "hidden screen-reader help text",
+      "aria-live phase announcer",
+      "visible phase objective and target glyph lines"
+    ],
+    "privacy": "No telemetry, analytics endpoint, backend, API key, account login, or private console is required; only a local numeric best-score key is stored.",
+    "receipt_boundary": "The receipt is transparent review proof for the stable demo route, not anti-cheat, identity, payout, tax, eligibility, or account proof."
+  },
   "originality": {
     "build_window": "New static game package for the DEV June Solstice Game Jam period.",
     "template_boundary": "Not a wrapper around a prior game template or third-party game kit.",

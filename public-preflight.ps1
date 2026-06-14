@@ -186,6 +186,10 @@ try {
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
   if (-not ($manifest.status.owner_publication_note -like "Public hosting and DEV article publication are external publication actions*")) { throw "judge-manifest owner publication note mismatch" }
+  if ($manifest.accessibility_and_fair_play.input_paths.Count -lt 4) { throw "judge-manifest accessibility input-path mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*")) { throw "judge-manifest accessibility privacy mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review proof*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
   if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
@@ -265,6 +269,10 @@ try {
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
   Assert-Contains "dev-article-final.md" "default-off Audio control"
   Assert-Contains "dev-article-final.md" "Score rewards held daylight, streaks, and fewer wasted shifts"
+  Assert-Contains "dev-article-final.md" "Accessibility, Fair Play, and Privacy"
+  Assert-Contains "dev-article-final.md" "hidden helper text plus a phase announcer"
+  Assert-Contains "dev-article-final.md" "no analytics call"
+  Assert-Contains "dev-article-final.md" "not anti-cheat, identity, payout, or eligibility proof"
   Assert-Contains "dev-article-final.md" "On mobile the cards collapse to compact labels"
   Assert-NotContains "dev-article-final.md" "moved after the playfield on mobile"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
@@ -294,6 +302,8 @@ try {
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Accessibility and privacy"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "receipt is review proof, not anti-cheat"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
@@ -421,7 +431,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile game canvas starts too low for game-first review"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport shows too little gameplay canvas"
-  Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid demo receipt"
+  Assert-Contains "tools/browser-smoke-check.mjs" "Stable Demo Solve receipt"
+  Assert-Contains "tools/browser-smoke-check.mjs" "non-stable formula-valid receipt should be neutral"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 69 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
   Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
@@ -430,6 +441,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
   Assert-Contains "tools/build-demo-video.mjs" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "tools/build-demo-video.mjs" "Stable Demo Solve receipt"
   Assert-Contains "tools/build-demo-video.mjs" "HELIOIGMA_VIDEO_WORK_DIR"
   Assert-Contains "tools/build-demo-video.mjs" "tmpdir()"
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
@@ -613,7 +625,10 @@ try {
   Assert-Contains "proof-verifier.html" "proofFacts"
   Assert-Contains "proof-verifier.html" "Parsed receipt facts"
   Assert-Contains "proof-verifier.html" "Checksum"
-  Assert-Contains "proof-verifier.html" "Checksum-valid demo receipt"
+  Assert-Contains "proof-verifier.html" "Stable Demo Solve receipt"
+  Assert-Contains "proof-verifier.html" "Stable demo boundary"
+  Assert-Contains "proof-verifier.html" "Other formula-valid receipts are shown as neutral checksum-form matches"
+  Assert-Contains "proof-verifier.html" "Checksum-form valid, but not the published stable Demo Solve receipt"
   Assert-Contains "proof-verifier.html" 'get("receipt")'
   Assert-Contains "proof-verifier.html" "What this checks"
   Assert-Contains "proof-verifier.html" "What this does not check"

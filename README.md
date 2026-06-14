@@ -4,11 +4,12 @@ Static browser game package for the DEV June Solstice Game Jam.
 
 ## Status
 
-- GitHub Pages-ready static game package for the submitted public URLs.
+- GitHub Pages-ready static game package for the intended public URLs.
 - The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
 - Owner-only publishing helpers are included, but the judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
+- Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, no telemetry, and a transparent receipt that is review proof rather than anti-cheat or identity proof.
 
 ## Run
 
@@ -72,6 +73,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
+- Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt verifier is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 - `package.json` provides clean-clone commands: `npm install`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.

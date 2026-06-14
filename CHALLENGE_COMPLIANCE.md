@@ -31,6 +31,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 | Best Ode to Alan Turing | Rotor-like state alignment, target checking, XOR/binary glyph language, and local receipt verification carry the tribute through play. |
 | Originality | `README.md`, `dev-article-final.md`, and `judge-manifest.json` state the package is a new jam-period static game, not a third-party game template; the article names the official June 3 to June 21 jam window. |
 | Review without accounts | Game, judge page, manifest, smoke test, verifier, screenshots, and media run without login, API keys, backend services, private data, or account consoles. |
+| Accessibility and privacy | Mouse, touch, on-screen buttons, number keys, hidden helper text, phase announcements, and default-off audio are documented; no telemetry, account state, API key, backend, private data, or hidden judge dashboard is required. |
 
 ## Category Boundary
 
@@ -47,6 +48,7 @@ Do not publish the DEV article until all of these are true:
 3. `public-preflight.ps1 -Public` passes against the live Pages URLs.
 4. The article body still includes the required challenge tags, demo media, code link, build notes, prize category, and no-secret boundary.
 5. No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content appears in the public package.
+6. The article still states that the receipt is review proof, not anti-cheat, identity, payout, or eligibility proof.
 
 ## Prize-Claim Boundary
 

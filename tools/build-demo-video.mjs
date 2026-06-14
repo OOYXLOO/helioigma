@@ -181,7 +181,7 @@ async function main() {
       "No backend, account, API key, or private data is needed to inspect the judge path."
     );
     await page.click("#verifyButton");
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid demo receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));
     await page.waitForTimeout(7500);
 
     const video = page.video();

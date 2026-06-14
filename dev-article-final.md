@@ -144,6 +144,12 @@ Controls:
 
 Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the same run path without trusting a hidden backend.
 
+## Accessibility, Fair Play, and Privacy
+
+I treated the review surface as part of the game. Helioigma can be played with mouse, touch, on-screen buttons, or number keys, and the screen includes hidden helper text plus a phase announcer for assistive technology. Audio cues are generated in the browser, start off by default, and only turn on after the player chooses `Audio` or presses `S`.
+
+The build also avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only browser storage is the local numeric best score for this game. The receipt is deliberately transparent: it is not anti-cheat, identity, payout, or eligibility proof. It is a small review checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
+
 ## How I Built It
 
 I built Helioigma as a no-backend canvas game so the public demo can run from GitHub Pages. The level data is deterministic: every phase has a target array, the player ring starts offset from that target, and every click/tap/key/button press rotates one node through the `SOL`, `XOR`, `LUX`, and `BIN` states.
