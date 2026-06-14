@@ -422,7 +422,7 @@ async function main() {
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
     assert(judge.hasOfficialRouteSnapshot, "judge page is missing the official route snapshot");
-    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge receipt|Boundary", "judge page official route snapshot changed");
+    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge run|Boundary", "judge page official route snapshot changed");
     assert(judge.hasPrizeRouteCopy, "judge page does not name the Turing category route");
     assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
     assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");
@@ -441,7 +441,7 @@ async function main() {
     assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260615-fresh-media", "judge page demo frame does not use the current cache-busted animated GIF");
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
-    assert(judge.verdictItems.join("|") === "Playable ode|Receipt-checkable|Finished surface", "judge award thesis cards changed");
+    assert(judge.verdictItems.join("|") === "Playable ode|Inspectable run|Finished surface", "judge award thesis cards changed");
     assert(judge.standoutHeading, "judge page is missing the competitive standout section");
     assert(judge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "judge standout cards changed");
     const standoutCopy = judge.standoutCopy.toLowerCase();
