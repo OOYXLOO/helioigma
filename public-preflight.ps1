@@ -89,9 +89,11 @@ try {
     "tools/build-package.ps1",
     "tools/build-demo-video.mjs",
     "tools/build-demo-webm.mjs",
+    "tools/build-demo-gif.py",
     "tools/browser-smoke-check.mjs",
     "tools/capture-public-media.mjs",
     "tools/launch-readiness-audit.mjs",
+    "tools/verify-media-freshness.mjs",
     "verification.html",
     "verification-report.md",
     "cover.png",
@@ -126,6 +128,7 @@ try {
     Assert-PngSignature $png
   }
   Assert-WebmSignature "helioigma-demo.webm"
+  node tools/verify-media-freshness.mjs | Out-Null
 
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
@@ -133,6 +136,8 @@ try {
   if ($package.scripts.'audit:launch' -ne "node tools/launch-readiness-audit.mjs") { throw "package audit:launch script mismatch" }
   if ($package.scripts.'audit:launch:public' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch:public script mismatch" }
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
+  if ($package.scripts.'build:gif' -ne "python tools/build-demo-gif.py") { throw "package build:gif script mismatch" }
+  if ($package.scripts.'verify:media' -ne "node tools/verify-media-freshness.mjs") { throw "package verify:media script mismatch" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
 
@@ -160,7 +165,9 @@ try {
       "demo-frames-v3/00-ready.png",
       "tools/capture-public-media.mjs",
       "tools/browser-smoke-check.mjs",
+      "tools/build-demo-gif.py",
       "tools/build-package.ps1",
+      "tools/verify-media-freshness.mjs",
       "mobile-complete-v1.png"
     )) {
       if ($zipEntries -notcontains $entry) {
@@ -213,10 +220,10 @@ try {
   if (-not ($manifest.challenge_compliance.public_launch_gate -contains "GitHub Pages returns HTTP 200")) { throw "judge-manifest challenge-compliance launch-gate mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
   if ($manifest.public_urls.rubric_scorecard -ne "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md") { throw "judge-manifest rubric scorecard URL mismatch" }
-  if ($manifest.public_urls.cover_image -ne "https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media") { throw "judge-manifest cover image URL mismatch" }
-  if ($manifest.public_urls.demo_webm -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media") { throw "judge-manifest demo WebM URL mismatch" }
-  if ($manifest.public_urls.demo_gif -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media") { throw "judge-manifest demo GIF URL mismatch" }
-  if ($manifest.public_urls.mobile_completion_image -ne "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media") { throw "judge-manifest mobile completion image URL mismatch" }
+  if ($manifest.public_urls.cover_image -ne "https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media") { throw "judge-manifest cover image URL mismatch" }
+  if ($manifest.public_urls.demo_webm -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media") { throw "judge-manifest demo WebM URL mismatch" }
+  if ($manifest.public_urls.demo_gif -ne "https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media") { throw "judge-manifest demo GIF URL mismatch" }
+  if ($manifest.public_urls.mobile_completion_image -ne "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260615-fresh-media") { throw "judge-manifest mobile completion image URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
   }
@@ -282,18 +289,18 @@ try {
   Assert-Contains "dev-article-final.md" "?nostore=1"
   Assert-Contains "dev-article-final.md" "SOL -> XOR -> LUX -> BIN"
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
-  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
-  Assert-Contains "dev-article-final.md" "helioigma-demo.gif?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "cover.png?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "desktop-check-v5.png?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "mobile-check-v6.png?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "desktop-complete-v4.png?v=20260614-seal-media"
-  Assert-Contains "dev-article-final.md" "mobile-complete-v1.png?v=20260614-seal-media"
+  Assert-Contains "dev-article-final.md" "helioigma-demo.gif?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "helioigma-demo.webm?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "cover.png?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "desktop-check-v5.png?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "mobile-check-v6.png?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "desktop-complete-v4.png?v=20260615-fresh-media"
+  Assert-Contains "dev-article-final.md" "mobile-complete-v1.png?v=20260615-fresh-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
   Assert-Contains "dev-article-final.md" "Optional legacy MP4 fallback"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
@@ -326,9 +333,9 @@ try {
   Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "dev-launch-brief.md" "https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
-  Assert-Contains "dev-launch-brief.md" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "dev-launch-brief.md" "helioigma-demo.gif?v=20260614-seal-media"
-  Assert-Contains "dev-launch-brief.md" "cover.png?v=20260614-seal-media"
+  Assert-Contains "dev-launch-brief.md" "helioigma-demo.webm?v=20260615-fresh-media"
+  Assert-Contains "dev-launch-brief.md" "helioigma-demo.gif?v=20260615-fresh-media"
+  Assert-Contains "dev-launch-brief.md" "cover.png?v=20260615-fresh-media"
   Assert-Contains "dev-launch-brief.md" "Source rubric scorecard"
   Assert-Contains "dev-launch-brief.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "dev-launch-brief.md" "PASS browser smoke"
@@ -391,9 +398,9 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-specific hint order"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.gif?v=20260614-seal-media"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" "mobile-complete-v1.png?v=20260614-seal-media"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.gif?v=20260615-fresh-media"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.webm?v=20260615-fresh-media"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "mobile-complete-v1.png?v=20260615-fresh-media"
   Assert-Contains "FIRST_MINUTE.md" "Helioigma First Minute"
   Assert-Contains "FIRST_MINUTE.md" "rushed DEV judge"
   Assert-Contains "FIRST_MINUTE.md" "Try This In One Minute"
@@ -489,6 +496,8 @@ try {
   Assert-Contains "tools/build-demo-video.mjs" "tmpdir()"
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
+  Assert-Contains "tools/build-demo-gif.py" "helioigma-demo.gif"
+  Assert-Contains "tools/verify-media-freshness.mjs" "PASS media freshness"
   Assert-Contains "tools/capture-public-media.mjs" "clean browser contexts"
   Assert-Contains "tools/capture-public-media.mjs" "first screen inherited best score"
   Assert-Contains "tools/capture-public-media.mjs" "mobile-complete-v1.png"
@@ -496,7 +505,7 @@ try {
   Assert-Contains ".github/workflows/verify.yml" "Run browser smoke on committed package"
   Assert-Contains ".github/workflows/verify.yml" "npm run smoke"
   Assert-Contains ".github/workflows/verify.yml" "npm ci"
-  Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt demo video output"
+  Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt public media output"
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
   Assert-NotContains ".github/workflows/verify.yml" "solstice-cipher"
@@ -530,11 +539,11 @@ try {
   Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
-  Assert-Contains "judge.html" '<video src="helioigma-demo.webm?v=20260614-seal-media"'
-  Assert-Contains "judge.html" 'poster="desktop-check-v5.png?v=20260614-seal-media"'
-  Assert-Contains "judge.html" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "judge.html" "desktop-check-v5.png?v=20260614-seal-media"
-  Assert-Contains "judge.html" "helioigma-demo.gif?v=20260614-seal-media"
+  Assert-Contains "judge.html" '<video src="helioigma-demo.webm?v=20260615-fresh-media"'
+  Assert-Contains "judge.html" 'poster="desktop-check-v5.png?v=20260615-fresh-media"'
+  Assert-Contains "judge.html" "helioigma-demo.webm?v=20260615-fresh-media"
+  Assert-Contains "judge.html" "desktop-check-v5.png?v=20260615-fresh-media"
+  Assert-Contains "judge.html" "helioigma-demo.gif?v=20260615-fresh-media"
   Assert-Contains "judge.html" "helioigma-demo.gif"
   Assert-Contains "judge.html" "timed node-rotation loop"
   Assert-Contains "judge.html" "Animated Helioigma demo preview"
@@ -638,8 +647,8 @@ try {
   Assert-Contains "index.html" "Verify sample"
   Assert-Contains "index.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "index.html" "Watch video"
-  Assert-Contains "index.html" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "index.html" "cover.png?v=20260614-seal-media"
+  Assert-Contains "index.html" "helioigma-demo.webm?v=20260615-fresh-media"
+  Assert-Contains "index.html" "cover.png?v=20260615-fresh-media"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"

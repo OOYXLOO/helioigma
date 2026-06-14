@@ -16,7 +16,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
 4. Confirm the completed run receipt: `SC-4P-2907-62-Y5VFX1`.
 5. Open the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
-6. Optional: watch the captioned WebM at `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media`.
+6. Optional: watch the captioned WebM at `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`.
 7. Optional: run the browser smoke test at `https://ooyxloo.github.io/helioigma/smoke.html`.
 8. Optional: read `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md` for the one-page first-minute review path.
 9. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
@@ -73,7 +73,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 - Verification report: `https://ooyxloo.github.io/helioigma/verification.html`
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 - Rubric scorecard: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
-- GIF preview: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media`
-- WebM demo: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media`
-- Mobile completion screenshot: `https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media`
+- GIF preview: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media`
+- WebM demo: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
+- Mobile completion screenshot: `https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260615-fresh-media`
 - Source: `https://github.com/OOYXLOO/helioigma`

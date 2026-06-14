@@ -137,10 +137,10 @@
     "challenge_compliance": "https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md",
     "rubric_scorecard": "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md",
     "manifest": "https://ooyxloo.github.io/helioigma/judge-manifest.json",
-    "cover_image": "https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media",
-    "demo_webm": "https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media",
-    "demo_gif": "https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media",
-    "mobile_completion_image": "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260614-seal-media",
+    "cover_image": "https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media",
+    "demo_webm": "https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media",
+    "demo_gif": "https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media",
+    "mobile_completion_image": "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260615-fresh-media",
     "source": "https://github.com/OOYXLOO/helioigma"
   },
   "local_artifacts": [

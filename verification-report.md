@@ -1,12 +1,12 @@
 # Helioigma Verification Report
 
-Generated for the local DEV June Solstice Game Jam package on 2026-06-14.
+Generated for the local DEV June Solstice Game Jam package on 2026-06-15.
 
 This report records the public-package checks that can be repeated after `OOYXLOO/helioigma` is published. It does not use account data, private user data, API keys, payout data, tax data, or KYC data.
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-14.
+- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-15.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
@@ -37,11 +37,15 @@ This report records the public-package checks that can be repeated after `OOYXLO
 npm ci
 npx playwright install chromium
 npm run check
+npm run build:media
+npm run build:gif
+npm run build:video
+npm run verify:media
 npm run preflight
 npm run smoke
 ```
 
-Expected result: exit code `0` for the check, preflight, and browser smoke scripts. Latest local run on 2026-06-14 passed `npm run check`, `public-preflight.ps1`, `npm run smoke` with external Playwright dependency path, and `npm run build:video`.
+Expected result: exit code `0` for the check, media build, media freshness, preflight, and browser smoke scripts. Latest local run on 2026-06-15 rebuilt PNG frames, GIF, and WebM from the current browser path, then passed media freshness, `npm run check`, `public-preflight.ps1`, and `npm run smoke` with the external Playwright dependency path.
 
 ```powershell
 python -m http.server 8781 --bind 127.0.0.1
@@ -63,7 +67,7 @@ Expected local URLs:
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Demo Solve` is wider than the other quick controls, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
-- Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
+- Demo media builders: `npm run build:media`, `npm run build:gif`, and `npm run build:video` rebuild the screenshots, GIF preview, and WebM from the real browser judge path; scratch video files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held. Latest live-timer score 2892 across 62 shifts.`
 - Auto-demo URL `?demo=1` reaches the same stable receipt.

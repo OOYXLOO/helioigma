@@ -38,9 +38,11 @@ jobs:
             tools/build-package.ps1 \
             tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
+            tools/build-demo-gif.py \
             tools/browser-smoke-check.mjs \
             tools/capture-public-media.mjs \
             tools/launch-readiness-audit.mjs \
+            tools/verify-media-freshness.mjs \
             dev-article-final.md \
             dev-launch-brief.md \
             verification.html \
@@ -199,8 +201,8 @@ jobs:
           set -euo pipefail
           grep -q "helioigma-demo.gif" judge.html
           grep -q "helioigma-demo.webm" judge.html
-          grep -q '<video src="helioigma-demo.webm?v=20260614-seal-media"' judge.html
-          grep -q 'poster="desktop-check-v5.png?v=20260614-seal-media"' judge.html
+          grep -q '<video src="helioigma-demo.webm?v=20260615-fresh-media"' judge.html
+          grep -q 'poster="desktop-check-v5.png?v=20260615-fresh-media"' judge.html
           grep -q "timed node-rotation loop" judge.html
           grep -q "Animated Helioigma demo preview" judge.html
           grep -q "Helioigma" judge.html
@@ -290,6 +292,8 @@ jobs:
           grep -q "tmpdir()" tools/build-demo-video.mjs
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
+          grep -q "helioigma-demo.gif" tools/build-demo-gif.py
+          grep -q "PASS media freshness" tools/verify-media-freshness.mjs
           grep -q "clean browser contexts" tools/capture-public-media.mjs
           grep -q "first screen inherited best score" tools/capture-public-media.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
@@ -372,6 +376,7 @@ jobs:
       - name: Install package dependencies
         run: |
           npm ci
+          python -m pip install pillow
           npx playwright install --with-deps chromium
 
       - name: Run launch readiness audit
@@ -380,8 +385,14 @@ jobs:
       - name: Run browser smoke on committed package
         run: npm run smoke
 
-      - name: Rebuild demo video
-        run: npm run build:video
+      - name: Rebuild public media
+        run: |
+          npm run build:media
+          npm run build:gif
+          npm run build:video
 
-      - name: Verify rebuilt demo video output
-        run: test -s helioigma-demo.webm
+      - name: Verify rebuilt public media output
+        run: |
+          test -s helioigma-demo.webm
+          test -s helioigma-demo.gif
+          npm run verify:media

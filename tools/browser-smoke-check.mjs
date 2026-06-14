@@ -219,7 +219,7 @@ async function main() {
     assert(desktop.judgeLinks.includes("Verify sample"), "judge shortcut row does not link the sample receipt verifier");
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Watch video"), "judge shortcut row does not link the current WebM video");
-    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.webm?v=20260614-seal-media"), "judge shortcut row WebM video link is not cache-busted to the current media");
+    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.webm?v=20260615-fresh-media"), "judge shortcut row WebM video link is not cache-busted to the current media");
     assert(desktop.judgeLinks.length === 4, `judge shortcut row should stay focused on four routes, found ${desktop.judgeLinks.length}`);
     assert(!desktop.judgeLinks.includes("Demo GIF"), "judge shortcut row should leave GIF fallback inside the judge pack");
 
@@ -426,9 +426,9 @@ async function main() {
     assert(judge.playabilityItems.join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge playability proof cards changed");
     const playabilityCopy = judge.playabilityCopy.toLowerCase();
     assert(playabilityCopy.includes("short, finishable jam game") && playabilityCopy.includes("choose a node") && playabilityCopy.includes("nightfall wins"), "judge playability proof no longer foregrounds game feel");
-    assert(judge.visualHeroVideoSrc === "helioigma-demo.webm?v=20260614-seal-media", "judge page visual hero does not use the current cache-busted WebM demo");
-    assert(judge.visualHeroVideoPoster === "desktop-check-v5.png?v=20260614-seal-media", "judge page visual hero does not retain the current cache-busted gameplay screenshot poster");
-    assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260614-seal-media", "judge page demo frame does not use the current cache-busted animated GIF");
+    assert(judge.visualHeroVideoSrc === "helioigma-demo.webm?v=20260615-fresh-media", "judge page visual hero does not use the current cache-busted WebM demo");
+    assert(judge.visualHeroVideoPoster === "desktop-check-v5.png?v=20260615-fresh-media", "judge page visual hero does not retain the current cache-busted gameplay screenshot poster");
+    assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260615-fresh-media", "judge page demo frame does not use the current cache-busted animated GIF");
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
@@ -460,9 +460,9 @@ async function main() {
     assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");
 
     await Promise.all([
-      assertLocalAssetOk(baseUrl, "helioigma-demo.webm?v=20260614-seal-media", "video/webm"),
-      assertLocalAssetOk(baseUrl, "helioigma-demo.gif?v=20260614-seal-media", "image/gif"),
-      assertLocalAssetOk(baseUrl, "desktop-check-v5.png?v=20260614-seal-media", "image/png"),
+      assertLocalAssetOk(baseUrl, "helioigma-demo.webm?v=20260615-fresh-media", "video/webm"),
+      assertLocalAssetOk(baseUrl, "helioigma-demo.gif?v=20260615-fresh-media", "image/gif"),
+      assertLocalAssetOk(baseUrl, "desktop-check-v5.png?v=20260615-fresh-media", "image/png"),
       assertLocalAssetOk(baseUrl, "smoke.html", "text/html"),
       assertLocalAssetOk(baseUrl, "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "text/html"),
       assertLocalAssetOk(baseUrl, "verification.html", "text/html"),

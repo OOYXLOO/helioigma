@@ -22,11 +22,11 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Title: `Helioigma: a Turing-wheel puzzle for holding the longest day`
 - Description: `A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt.`
 - Tags: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
-- Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media`
+- Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media`
 - Body source: `dev-article-final.md`
-- Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260614-seal-media`
+- Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
 - MP4 fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.mp4`
-- Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media`
+- Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media`
 
 ## Judge Hook To Preserve
 
@@ -49,6 +49,10 @@ Run these before publishing the DEV article:
 ```powershell
 npm ci
 node --check game.js
+npm run build:media
+npm run build:gif
+npm run build:video
+npm run verify:media
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 node tools/browser-smoke-check.mjs
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
@@ -57,6 +61,7 @@ powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 Expected local review signals:
 
 - `PASS Helioigma preflight`
+- `PASS media freshness`
 - `PASS browser smoke`
 - `70 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
