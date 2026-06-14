@@ -1,7 +1,7 @@
 ---
 title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
 published: false
-description: "A small browser game for the DEV June Solstice Game Jam: decode a Turing-inspired solar rotor before nightfall."
+description: "A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt."
 tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png
 ---
@@ -10,14 +10,18 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png
 
 ## Reviewer Fast Path
 
-If you are judging quickly, start here:
+If you are judging quickly, the first-minute proof is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then verify receipt `SC-4P-2907-62-Y5VFX1`.
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
 - Verify the stable receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Source: https://github.com/OOYXLOO/helioigma
 
-Helioigma targets Best Ode to Alan Turing. The shortest evaluation path is: play one phase, run Auto Demo, verify receipt `SC-4P-2907-62-Y5VFX1`, then open the source or manifest if you want deeper proof. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
+Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished solve inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
+
+![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
+
+*The first-minute loop in motion: match nodes, trace state, seal the run, verify the receipt.*
 
 ## The Longest Day as a Countdown Machine
 
@@ -43,9 +47,7 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 ## Video Demo
 
-The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The WebM is the primary captioned video; the GIF below is a quick inline fallback. An optional legacy MP4 fallback is retained only if the DEV editor specifically asks for an MP4 file.
-
-![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
+The captioned WebM records the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The GIF above is the quick inline fallback; the optional MP4 remains only if the DEV editor specifically asks for an MP4 file.
 
 ![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png)
 
