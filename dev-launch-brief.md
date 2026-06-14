@@ -4,6 +4,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 
 ## Public URLs To Confirm
 
+- DEV challenge entry path: `https://dev.to/challenges/june-game-jam-2026-06-03`
 - Play: `https://ooyxloo.github.io/helioigma/`
 - Auto demo: `https://ooyxloo.github.io/helioigma/?demo=1`
 - Source: `https://github.com/OOYXLOO/helioigma`
@@ -67,6 +68,7 @@ Expected local review signals:
 
 Do not publish the DEV article if any item is true:
 
+- The logged-in DEV challenge flow does not accept a June Solstice Game Jam entry.
 - The GitHub Pages play URL returns 404 or redirects to another project.
 - The source URL is not `https://github.com/OOYXLOO/helioigma`.
 - `public-preflight.ps1 -Public` fails.

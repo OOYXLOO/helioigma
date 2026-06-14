@@ -69,7 +69,10 @@ const mustContain = [
   ["README.md", "Playability proof for a rushed judge"],
   ["FIRST_MINUTE.md", "Playability proof appears before the verifier"],
   ["PUBLISHING.md", intended.repo],
+  ["PUBLISHING.md", "logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
   ["dev-launch-brief.md", intended.pages],
+  ["dev-launch-brief.md", "The logged-in DEV challenge flow does not accept a June Solstice Game Jam entry."],
+  ["submission-checklist.md", "Confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
 ];
 
 const expectedPublicLinkHosts = new Set([

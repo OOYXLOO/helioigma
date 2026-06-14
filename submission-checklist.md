@@ -82,6 +82,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists. Add `-ConfigurePages` only if the account owner is present and GitHub CLI is already authenticated. Add `-WaitForPages` to poll the public Pages URL and run `public-preflight.ps1 -Public` before publishing DEV.
 - Keep the official DEV template marker at the top of `dev-article-final.md`: "This is a submission for the June Solstice Game Jam."
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
+- Confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry before the final post, even if a public status label looks inconsistent with the rules deadline.
 - Review the DEV post draft for tone and personal voice.
 - Keep the category boundary honest: Best Ode to Alan Turing, not Best Google AI Usage.
 - Include the originality/build-window note in the final DEV post, including the official June 3 to June 21 jam window.

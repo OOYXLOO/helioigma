@@ -60,7 +60,9 @@ After the push, the `Verify Helioigma` workflow should pass before the DEV artic
 
 ## DEV Post Gate
 
-Do not submit on DEV until the public try link works. Use:
+Do not submit on DEV until the public try link works and the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry. The public challenge page may show a confusing status label, so the account owner should verify the actual submission path immediately before publishing the article.
+
+Use:
 
 - Final DEV article: `dev-article-final.md`
 - Launch brief: `dev-launch-brief.md`
@@ -105,6 +107,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] DEV article uses the official tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-launch-brief.md` public URL checks, DEV article fields, and no-go gate are reviewed immediately before publishing.
+- [ ] Logged-in DEV challenge flow still accepts this June Solstice Game Jam submission despite any confusing public status label.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.
 - [ ] If sharing after publication, ask for real play/feedback only; do not spam, buy reactions, pressure people, or ask for fake engagement.
