@@ -88,6 +88,7 @@ async function readGameFacts(page) {
         phase: document.querySelector("#phaseObjective")?.textContent.trim(),
         target: document.querySelector("#phaseTargetLine")?.textContent.trim(),
         alignment: document.querySelector("#phaseAlignment")?.textContent.trim(),
+        proof: document.querySelector("#phaseProof")?.textContent.trim(),
       },
       playRule: document.querySelector(".play-rule")?.textContent.trim(),
       canvasTop: canvasRect?.top,
@@ -142,6 +143,7 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
+    assert(desktop.objective.proof === "Solstice crib starts target checking.", "phase proof initial copy changed");
     assert(desktop.playRule?.includes("Score rewards held daylight") && desktop.playRule?.includes("final receipt lets judges verify the path"), "play rule no longer explains score and receipt");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
@@ -232,6 +234,7 @@ async function main() {
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
     assert(mobile.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "mobile Judge path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
+    assert(mobile.objective.proof === "Solstice crib starts target checking.", "mobile phase proof initial copy changed");
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 

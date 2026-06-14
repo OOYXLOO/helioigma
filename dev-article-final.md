@@ -12,7 +12,7 @@ You get 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, 
 
 The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for proof.
 
-Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but a compact proof that the solve path can be inspected.
+Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but a compact proof that the solve path can be inspected.
 
 I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
@@ -67,7 +67,7 @@ Core features:
 - Final screen with solved phase count, phase scoring ledger, total shifts, score, copyable `SC-4P-...` run receipt, and a human-readable Judge run summary.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen phase objective strip plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
+- First-screen phase objective strip with phase-proof copy, plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
 
 ## Judge in 60 Seconds
 
@@ -202,5 +202,5 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
-- `smoke.html`: 60 checks passed, including daylight meter, score/receipt explanation, phase objective strip, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
+- `smoke.html`: 60 checks passed, including daylight meter, score/receipt explanation, phase objective strip, phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
 - `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 60 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

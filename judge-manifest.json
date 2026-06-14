@@ -12,7 +12,7 @@
       "judge_proof": "Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.",
       "boundary": "No Google AI claim, backend, account login, API key, or private data."
     },
-    "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.",
+    "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, phase-proof copy, smoke test, manifest, and receipt verifier.",
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
     "rubric_snapshot": [
       {
@@ -38,7 +38,7 @@
     ]
   },
   "status": {
-    "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, receipt verifier, manifest, source, and media links.",
+    "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, phase-proof line, receipt verifier, manifest, source, and media links.",
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used.",
@@ -127,6 +127,7 @@
     "shifts": 62,
     "checksum": "Y5VFX1",
     "score_basis": "Score rewards held daylight, streaks, and fewer wasted shifts before the final receipt checksum is built.",
+    "phase_proof_line": "Each phase exposes a compact proof cue that maps the current loop to solstice pressure, Turing-style state alignment, controlled shifts, or checksum verification.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."

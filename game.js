@@ -19,6 +19,7 @@
   const phaseObjective = document.querySelector("#phaseObjective");
   const phaseTargetLine = document.querySelector("#phaseTargetLine");
   const phaseAlignment = document.querySelector("#phaseAlignment");
+  const phaseProof = document.querySelector("#phaseProof");
   const nodeButtons = document.querySelector("#nodeButtons");
   const proofPanel = document.querySelector("#proofPanel");
   const proofCode = document.querySelector("#proofCode");
@@ -44,6 +45,12 @@
     "Carry the XOR signal through the longest noon.",
     "Hold twilight long enough for the binary carry.",
     "Close the checksum before nightfall seals the rotor.",
+  ];
+  const phaseProofs = [
+    "Solstice crib starts target checking.",
+    "XOR noon tests state alignment.",
+    "Binary carry proves controlled shifts.",
+    "Checksum night seals the receipt.",
   ];
   const bestScoreKey = "helioigma-best-score";
   const levels = [
@@ -350,6 +357,9 @@
     phaseAlignment.textContent = state.complete
       ? `${state.solvedPhases}/${levels.length} phases solved`
       : `${aligned}/${state.target.length} nodes aligned`;
+    if (phaseProof) {
+      phaseProof.textContent = state.complete ? "Receipt verifier checks the same run." : phaseProofs[safeLevel];
+    }
   }
 
   function syncPhaseTrack() {

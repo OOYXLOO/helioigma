@@ -143,6 +143,7 @@ try {
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 60) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
+  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact proof cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
@@ -166,6 +167,7 @@ try {
   Assert-Contains "dev-article-final.md" "You get 45 seconds of daylight"
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
+  Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
   Assert-Contains "dev-article-final.md" "compact proof that the solve path can be inspected"
   Assert-Contains "dev-article-final.md" "I am aiming this at Best Ode to Alan Turing by making the tribute playable"
   Assert-Contains "dev-article-final.md" "My award thesis is simple"
@@ -254,6 +256,7 @@ try {
   Assert-Contains "dev-submit-console.html" "You get 45 seconds of daylight"
   Assert-Contains "dev-submit-console.html" "little daylight machine"
   Assert-Contains "dev-submit-console.html" "live objective strip tells you what the rotor wants next"
+  Assert-Contains "dev-submit-console.html" "phase-proof line explains how the current phase maps"
   Assert-Contains "dev-submit-console.html" "My award thesis is simple"
   Assert-Contains "dev-submit-console.html" "playable ode, a judge-verifiable loop, and a finished static package"
   Assert-Contains "dev-submit-console.html" "first-move coach on Start"
@@ -285,6 +288,8 @@ try {
   Assert-Contains "dev-submit-console.html" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
+  Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
+  Assert-Contains "README.md" "phase-proof line keeps the solstice/Turing/verification connection visible"
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
   Assert-Contains "README.md" "Owner-only publishing helpers are included"
   Assert-Contains "README.md" "Owner Launch Helpers"
@@ -302,6 +307,7 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Boundaries"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Best Ode to Alan Turing"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
   Assert-Contains "README.md" "first-move coach on Start"
@@ -358,6 +364,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid demo receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 60 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer explains score and receipt"
+  Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile phase proof initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "audio cues should default off"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"
@@ -471,6 +479,11 @@ try {
   Assert-Contains "index.html" "phaseObjective"
   Assert-Contains "index.html" "phaseTargetLine"
   Assert-Contains "index.html" "phaseAlignment"
+  Assert-Contains "index.html" "phaseProof"
+  Assert-Contains "index.html" "Phase proof"
+  Assert-Contains "index.html" "Solstice crib starts target checking."
+  Assert-Contains "game.js" "phaseProofs"
+  Assert-Contains "game.js" "Checksum night seals the receipt."
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
@@ -556,6 +569,8 @@ try {
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "award_thesis"
   Assert-Contains "judge-manifest.json" "score_basis"
+  Assert-Contains "judge-manifest.json" "phase_proof_line"
+  Assert-Contains "judge-manifest.json" "phase-proof line"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "judge-manifest.json" "sample_receipt_verifier"
