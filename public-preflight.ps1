@@ -86,6 +86,7 @@ try {
     "dev-post-draft.md",
     "publish-assistant.html",
     "publish-after-repo.ps1",
+    "tools/build-package.ps1",
     "tools/build-demo-video.mjs",
     "tools/build-demo-webm.mjs",
     "tools/browser-smoke-check.mjs",
@@ -128,6 +129,39 @@ try {
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
   if (-not ($package.devDependencies.playwright -like "^1.*")) { throw "package Playwright devDependency mismatch" }
+  if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
+
+  if (Test-Path -LiteralPath "helioigma-dev-package.zip") {
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $zip = [System.IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath "helioigma-dev-package.zip"))
+    try {
+      $zipEntries = @($zip.Entries | ForEach-Object { $_.FullName } | Sort-Object)
+    } finally {
+      $zip.Dispose()
+    }
+    $trackedEntries = @(git ls-files | Where-Object { $_ -ne "helioigma-dev-package.zip" } | ForEach-Object { $_ -replace "\\", "/" } | Sort-Object)
+    if ($zipEntries.Count -ne $trackedEntries.Count) {
+      throw "Package ZIP entry count mismatch: zip=$($zipEntries.Count) tracked=$($trackedEntries.Count)"
+    }
+    $diff = @(Compare-Object -ReferenceObject $trackedEntries -DifferenceObject $zipEntries)
+    if ($diff.Count -gt 0) {
+      $diff | Select-Object -First 12 | ForEach-Object {
+        Write-Output "Package ZIP path mismatch: $($_.SideIndicator) $($_.InputObject)"
+      }
+      throw "Package ZIP does not preserve the tracked relative file set"
+    }
+    foreach ($entry in @(
+      ".github/workflows/verify.yml",
+      "demo-frames-v3/00-ready.png",
+      "tools/browser-smoke-check.mjs",
+      "tools/build-package.ps1",
+      "mobile-complete-v1.png"
+    )) {
+      if ($zipEntries -notcontains $entry) {
+        throw "Package ZIP missing required relative entry: $entry"
+      }
+    }
+  }
 
   $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
   if ($manifest.project -ne "Helioigma") { throw "judge-manifest project mismatch" }
@@ -331,6 +365,7 @@ try {
   Assert-Contains "README.md" "Rotor Trace"
   Assert-Contains "README.md" "Nightfall report"
   Assert-Contains "README.md" "Retry run"
+  Assert-Contains "README.md" "scrolls the completed receipt panel into view"
   Assert-Contains "README.md" "final run receipt ledger"
   Assert-Contains "README.md" "phase banner"
   Assert-Contains "README.md" "?demo=1"
@@ -368,6 +403,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "?demo=1"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
+  Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not scroll the receipt into view"
   Assert-Contains "tools/browser-smoke-check.mjs" "first screen sample verifier link is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile game canvas starts too low for game-first review"

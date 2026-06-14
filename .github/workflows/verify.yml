@@ -33,6 +33,7 @@ jobs:
             publish-assistant.html \
             publish-after-repo.ps1 \
             public-preflight.ps1 \
+            tools/build-package.ps1 \
             tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
@@ -48,6 +49,7 @@ jobs:
             desktop-check-v5.png \
             mobile-check-v6.png \
             desktop-complete-v4.png \
+            mobile-complete-v1.png \
             PUBLISHING.md \
             submission-checklist.md
           do
@@ -70,6 +72,7 @@ jobs:
           grep -q "helioigma-demo.mp4" dev-article-final.md
           grep -q "Optional legacy MP4 fallback" dev-article-final.md
           grep -q "Completion screenshot with receipt ledger" dev-article-final.md
+          grep -q "Mobile completion screenshot" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
           grep -q "https://ooyxloo.github.io/helioigma/" dev-article-final.md
@@ -139,6 +142,7 @@ jobs:
           ! grep -q "positive reactions can matter" dev-submit-console.html
           grep -q "optional legacy MP4 fallback" dev-submit-console.html
           grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
+          grep -q "mobile-complete-v1.png" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "Originality Note" dev-submit-console.html
           grep -q "not a wrapper around a prior game template" dev-submit-console.html
@@ -155,6 +159,7 @@ jobs:
           grep -q "JUDGE_REVIEW_CARD.md" README.md
           grep -q "package.json" README.md
           grep -q "npm run smoke" README.md
+          grep -q "npm run build:package" README.md
           grep -q "Helioigma Judge Review Card" JUDGE_REVIEW_CARD.md
           grep -q "60-Second Path" JUDGE_REVIEW_CARD.md
           grep -q "Award Thesis" JUDGE_REVIEW_CARD.md
@@ -178,6 +183,7 @@ jobs:
           grep -q "Rotor Trace" README.md
           grep -q "Nightfall report" README.md
           grep -q "Retry run" README.md
+          grep -q "scrolls the completed receipt panel into view" README.md
           grep -q "final run receipt ledger" README.md
           grep -q "?demo=1" README.md
           grep -q "MIT license" README.md
@@ -185,6 +191,7 @@ jobs:
           grep -q "judge-manifest.json" submission-checklist.md
           grep -q "dev-launch-brief.md" submission-checklist.md
           grep -q "sample receipt verifier URL" submission-checklist.md
+          grep -q "build:package" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
           grep -q "69 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
@@ -264,8 +271,10 @@ jobs:
           grep -q "helioigma-demo.webm" verification-report.md
           grep -q "Score variance is expected" verification-report.md
           grep -q "Score variance is expected" verification.html
+          grep -q "mobile-complete-v1.png" verification.html
           grep -q "No-go gate" publish-assistant.html
           grep -q "publish-after-repo helper" publish-after-repo.ps1
+          grep -q "git ls-files" tools/build-package.ps1
           grep -q "Assert-CleanWorktreeForPush" publish-after-repo.ps1
           grep -q "Commit the verified Helioigma package before pushing" publish-after-repo.ps1
           grep -q "live browser recording" tools/build-demo-video.mjs
@@ -276,6 +285,7 @@ jobs:
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
+          grep -q "auto demo route did not scroll the receipt into view" tools/browser-smoke-check.mjs
           grep -q "first screen sample verifier link is not prefilled" tools/browser-smoke-check.mjs
           grep -q "judge page verifier action is not prefilled" tools/browser-smoke-check.mjs
           grep -q "mobile first viewport shows too little gameplay canvas" tools/browser-smoke-check.mjs

@@ -68,12 +68,13 @@ The public media pack is generated from this build's browser UI and checked-in d
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
 - A first-screen Judge Path strip makes the review sequence explicit: play, run Demo Solve, then verify receipt `SC-4P-2907-62-Y5VFX1`.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
+- After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the proof instead of leaving it below the fold.
 - The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
-- `package.json` provides clean-clone commands: `npm install`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, and `npm run build:webm`.
+- `package.json` provides clean-clone commands: `npm install`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 
 ## Local Media Assets
 
@@ -105,6 +106,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, and score/receipt explanation, daylight meter, desktop Judge Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 69 PASS checks.
+- `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`; it writes capture scratch files under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 

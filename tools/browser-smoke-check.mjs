@@ -209,6 +209,9 @@ async function main() {
       judgeRunFacts: document.querySelector("#judgeRunFacts")?.textContent.trim(),
       awardSignals: document.querySelector("#awardSignals")?.textContent.trim(),
       copyRunSummaryDisabled: document.querySelector("#copyRunSummaryButton")?.disabled,
+      proofPanelTop: document.querySelector("#proofPanel")?.getBoundingClientRect().top,
+      proofPanelBottom: document.querySelector("#proofPanel")?.getBoundingClientRect().bottom,
+      activeElementId: document.activeElement?.id,
       status: document.querySelector("#statusLine")?.textContent.trim(),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     }));
@@ -219,6 +222,9 @@ async function main() {
     assert(autoDemo.judgeRunFacts.includes("state alignment + checksum reasoning"), "auto demo route did not build the judge run facts");
     assert(autoDemo.awardSignals.includes("Solstice loop") && autoDemo.awardSignals.includes("Turing ode") && autoDemo.awardSignals.includes("Judge proof"), "auto demo route did not expose award signals");
     assert(autoDemo.copyRunSummaryDisabled === false, "auto demo route did not enable the judge summary copy button");
+    assert(autoDemo.proofPanelTop >= 0 && autoDemo.proofPanelTop < 450, `auto demo route did not scroll the receipt into view: ${autoDemo.proofPanelTop}`);
+    assert(autoDemo.proofPanelBottom > 180, "auto demo route receipt panel is not visible after completion");
+    assert(autoDemo.activeElementId === "verifyProofLink", "auto demo route did not focus the verifier link after completion");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
     await page.setViewportSize({ width: 390, height: 844 });

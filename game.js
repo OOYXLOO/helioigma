@@ -948,6 +948,16 @@
     }
   }
 
+  function focusCompletedReceipt() {
+    if (!proofPanel || !verifyProofLink) return;
+    proofPanel.scrollIntoView({ block: "start", behavior: "auto" });
+    try {
+      verifyProofLink.focus({ preventScroll: true });
+    } catch {
+      verifyProofLink.focus();
+    }
+  }
+
   async function demoSolve() {
     if (state.demoing) return;
     startGame({ coach: false });
@@ -973,6 +983,9 @@
       state.message = `Demo solve complete. Final score ${state.score} across ${state.shifts} shifts.`;
     }
     updateHud();
+    if (state.complete) {
+      focusCompletedReceipt();
+    }
     draw();
   }
 

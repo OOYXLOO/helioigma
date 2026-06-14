@@ -18,7 +18,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Copy-ready DEV final post console: `dev-submit-console.html`.
 - Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
-- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, and `npm run build:webm`.
+- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - DEV post draft: `dev-post-draft.md`.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
@@ -38,7 +38,8 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Install browser test dependencies from a clean clone with `npm install` and `npx playwright install chromium`.
 - Rebuild captioned WebM from a live browser session with `npm run build:video`. Override capture scratch space with `HELIOIGMA_VIDEO_WORK_DIR` if needed.
 - Rebuild the fallback frame-based WebM with `npm run build:webm`.
-- Local package ZIP: `helioigma-dev-package.zip`.
+- Rebuild the local transfer ZIP with `npm run build:package`.
+- Local package ZIP: `helioigma-dev-package.zip`, rebuilt by the package script so directory paths are preserved.
 - Verification:
   - `npm run check`
   - `npm run preflight`
