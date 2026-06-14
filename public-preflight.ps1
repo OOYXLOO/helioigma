@@ -409,6 +409,8 @@ try {
   Assert-Contains "publish-after-repo.ps1" "Optional GitHub CLI command"
   Assert-Contains "publish-after-repo.ps1" "repos/OOYXLOO/helioigma/pages"
   Assert-Contains "publish-after-repo.ps1" "source[branch]=main"
+  Assert-Contains "publish-after-repo.ps1" "Launch package HEAD"
+  Assert-Contains "publish-after-repo.ps1" "Launch package ZIP SHA256"
   Assert-Contains "publish-after-repo.ps1" "public-preflight.ps1 -Public"
   Assert-Contains "PUBLISHING.md" "gh api --method POST"
   Assert-Contains "publish-after-repo.ps1" "leave README, license, and .gitignore unchecked"

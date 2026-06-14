@@ -101,6 +101,23 @@ function Write-PagesDryRun {
   Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages"
 }
 
+function Write-LaunchPackageSnapshot {
+  $head = Invoke-GitCapture @("rev-parse", "--short", "HEAD")
+  $fullHead = Invoke-GitCapture @("rev-parse", "HEAD")
+  if ($head.ExitCode -eq 0 -and $fullHead.ExitCode -eq 0) {
+    Write-Output "Launch package HEAD: $($head.Output) ($($fullHead.Output))"
+  } else {
+    Write-Output "Launch package HEAD: unavailable"
+  }
+
+  if (Test-Path -LiteralPath "helioigma-dev-package.zip") {
+    $zipHash = (Get-FileHash -Algorithm SHA256 -LiteralPath "helioigma-dev-package.zip").Hash
+    Write-Output "Launch package ZIP SHA256: $zipHash"
+  } else {
+    Write-Output "Launch package ZIP SHA256: helioigma-dev-package.zip is not present"
+  }
+}
+
 function Configure-GitHubPages {
   if (-not $ConfigurePages) {
     Write-Output "GitHub Pages API configuration was not requested."
@@ -205,6 +222,7 @@ Write-Output "Helioigma publish-after-repo helper"
   Write-Output "Mode: $(if ($Push) { 'PUSH ENABLED' } else { 'dry run' })"
   Write-Output "Pages API: $(if ($ConfigurePages) { 'requested' } else { 'dry-run instructions only' })"
   Write-Output "Pages wait: $(if ($WaitForPages) { "$PagesTimeoutSec sec timeout / $PagesPollSec sec interval" } else { 'not requested' })"
+  Write-LaunchPackageSnapshot
 
   powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 
