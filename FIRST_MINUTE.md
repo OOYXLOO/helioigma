@@ -26,7 +26,7 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 
 ## Why It Fits The Category
 
-Helioigma targets Best Ode to Alan Turing. It does not try to recreate the Bombe or turn Turing into decoration. The category fit is in the game loop: state, logic, alignment, pressure, verification, and a small proof that the machine did what the player saw.
+Helioigma targets Best Ode to Alan Turing. It does not try to recreate the Bombe or turn Turing into decoration. The category fit is in the game loop: state, logic, alignment, pressure, verification, and a small receipt trail for what the player saw.
 
 ## What Is Not Claimed
 

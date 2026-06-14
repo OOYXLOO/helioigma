@@ -155,7 +155,7 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(desktop.objective.proof === "Solstice crib starts state transitions.", "phase proof initial copy changed");
-    assert(desktop.heroHook === "Prove the daylight run.", "first screen no longer leads with the game hook");
+    assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
@@ -253,7 +253,7 @@ async function main() {
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
-    assert(mobile.heroHook === "Prove the daylight run.", "mobile first screen no longer leads with the game hook");
+    assert(mobile.heroHook === "Seal the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.objective.proof === "Solstice crib starts state transitions.", "mobile phase proof initial copy changed");

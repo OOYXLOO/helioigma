@@ -29,7 +29,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 
 ## Judge Hook To Preserve
 
-First-minute proof for rushed judges:
+First-minute check for rushed judges:
 
 ```text
 Rotate one node, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
@@ -53,7 +53,7 @@ node tools/browser-smoke-check.mjs
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 ```
 
-Expected local proof signals:
+Expected local review signals:
 
 - `PASS Helioigma preflight`
 - `PASS browser smoke`

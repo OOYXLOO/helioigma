@@ -9,7 +9,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 - Owner-only launch notes are kept in Markdown; the public judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
-- Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, no telemetry, and a transparent receipt that is review proof rather than anti-cheat or identity proof.
+- Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, no telemetry, and a transparent receipt that is review evidence rather than anti-cheat or identity proof.
 
 ## Run
 
@@ -29,11 +29,11 @@ Helioigma is a compact browser puzzle game for the June solstice theme and an od
 
 The current build now has a visible four-phase progress strip, a first-screen phase objective strip with a compact phase-proof line, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, a Nightfall report for failed manual runs, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on Start, a manual `Hint` path, tactile node pulse feedback after hints or shifts, optional default-off Web Audio cues, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path proves the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path makes the same public game loop inspectable through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
-The playable first screen now leads with the game hook, `Prove the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
+The playable first screen now leads with the game hook, `Seal the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
 ## Official Review Snapshot
 
@@ -70,7 +70,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
 - A first-screen Run Path strip keeps the game-first sequence explicit: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
-- After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the proof instead of leaving it below the fold.
+- After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the receipt details instead of leaving them below the fold.
 - The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.

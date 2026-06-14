@@ -10,7 +10,7 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png
 
 ## Reviewer Fast Path
 
-If you are judging quickly, the first-minute proof is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then verify receipt `SC-4P-2907-62-Y5VFX1`.
+If you are judging quickly, the first-minute check is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then verify receipt `SC-4P-2907-62-Y5VFX1`.
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
@@ -27,7 +27,7 @@ Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor
 
 You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before each tightening phase empties its timer.
 
-The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for proof.
+The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for a receipt check.
 
 Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but an inspectable receipt that lets the solve path be checked against the public verifier.
 
@@ -98,7 +98,7 @@ Official route snapshot: Best Ode to Alan Turing category route in the official 
 2. Watch the captioned WebM video or GIF preview.
 3. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
-5. Optional: run `smoke.html` to see the game solve all four phases automatically and report the 69-check browser proof.
+5. Optional: run `smoke.html` to see the game solve all four phases automatically and report the 69-check browser receipt.
 
 Public media links:
 

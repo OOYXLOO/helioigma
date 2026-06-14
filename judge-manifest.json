@@ -153,7 +153,7 @@
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
     "mobile_completion_proof": "mobile-complete-v1.png captures the same stable receipt, phase ledger, and Judge run summary in a 390px mobile viewport.",
-    "nightfall_recovery": "Failed manual runs show a Nightfall report with aligned nodes, held phases, score, shifts, next proof cue, Retry run, and Watch Demo Solve recovery.",
+    "nightfall_recovery": "Failed manual runs show a Nightfall report with aligned nodes, held phases, score, shifts, next review cue, Retry run, and Watch Demo Solve recovery.",
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },
   "verification": {
