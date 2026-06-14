@@ -19,6 +19,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 - `index.html`: playable static game
 - `judge.html`: judge quick path with official route snapshot, 60-second review path, rubric snapshot, and receipt links
+- `RUBRIC_SCORECARD.md`: source-first rubric map for the official review criteria and Turing category
 - `smoke.html`: browser smoke test
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image

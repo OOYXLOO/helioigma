@@ -11,8 +11,10 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
 - Sample receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
 - Judge manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
+- Rubric scorecard: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
 - Verification report: `https://ooyxloo.github.io/helioigma/verification.html`
 - Source review card: `https://github.com/OOYXLOO/helioigma/blob/main/JUDGE_REVIEW_CARD.md`
+- Source rubric scorecard: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 
 ## DEV Article Fields
 
@@ -53,6 +55,7 @@ Expected local proof signals:
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
+- `RUBRIC_SCORECARD.md` is present in the public source and preserves the criteria map.
 
 ## DEV No-Go Gate
 
@@ -64,6 +67,7 @@ Do not publish the DEV article if any item is true:
 - `smoke.html` does not reach the expected 69 PASS checks.
 - `Demo Solve` does not reach receipt `SC-4P-2907-62-Y5VFX1`.
 - The post omits the play link, source link, GIF/WebM media, or judge manifest.
+- The post omits the public rubric scorecard link when the judge links are listed.
 - The post claims Best Google AI Usage, backend AI/API usage, external account data, private user data, or anti-cheat identity proof.
 - The post asks for spam, bought reactions, fake engagement, or pressure-based reactions.
 - Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content is present.

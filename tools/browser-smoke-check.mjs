@@ -64,6 +64,7 @@ function startStaticServer() {
 async function readGameFacts(page) {
   return page.evaluate(() => {
     const demo = document.querySelector("#demoButton")?.getBoundingClientRect();
+    const reset = document.querySelector("#resetButton")?.getBoundingClientRect();
     const hint = document.querySelector("#hintButton")?.getBoundingClientRect();
     const sound = document.querySelector("#soundButton")?.getBoundingClientRect();
     const judgePath = document.querySelector(".judge-path")?.getBoundingClientRect();
@@ -77,6 +78,7 @@ async function readGameFacts(page) {
     return {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
+      resetVisible: Boolean(reset && reset.top >= 0 && reset.bottom <= innerHeight && getComputedStyle(document.querySelector("#resetButton")).display !== "none"),
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
       soundVisible: Boolean(sound && sound.top >= 0 && sound.bottom <= innerHeight),
       judgePathBeforeCanvas: Boolean(judgePath && ordered.indexOf(document.querySelector(".judge-path")) >= 0 && ordered.indexOf(document.querySelector(".judge-path")) < ordered.indexOf(canvas)),
@@ -147,7 +149,7 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
-    assert(desktop.objective.proof === "Solstice crib starts target checking.", "phase proof initial copy changed");
+    assert(desktop.objective.proof === "Solstice crib starts state transitions.", "phase proof initial copy changed");
     assert(desktop.heroHook === "Prove the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
@@ -237,6 +239,7 @@ async function main() {
     const mobile = await readGameFacts(page);
     assert(mobile.overflowX === 0, "mobile has horizontal overflow");
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
+    assert(mobile.resetVisible, "mobile Reset is not visible in the first viewport");
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
     assert(mobile.controlHeights.every((height) => height >= 40), `mobile visible control buttons are too short: ${mobile.controlHeights.join(",")}`);
@@ -247,7 +250,7 @@ async function main() {
     assert(mobile.heroHook === "Prove the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
-    assert(mobile.objective.proof === "Solstice crib starts target checking.", "mobile phase proof initial copy changed");
+    assert(mobile.objective.proof === "Solstice crib starts state transitions.", "mobile phase proof initial copy changed");
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 
@@ -298,6 +301,7 @@ async function main() {
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
+      scorecardHref: document.querySelector('.evidence-actions a[href="RUBRIC_SCORECARD.md"]')?.getAttribute("href"),
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.heading === "Helioigma is a playable Turing ode for holding the longest day.", "judge page heading no longer leads with the award thesis");
@@ -336,12 +340,15 @@ async function main() {
     assert(judge.actions.includes("Auto Demo"), "judge page is missing auto demo action");
     assert(judge.actions.includes("Run Smoke Test"), "judge page is missing smoke action");
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
+    assert(judge.actions.includes("Open Scorecard"), "judge page is missing scorecard action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
     assert(judge.primaryActions.join("|") === "Play|Auto Demo", "judge page primary actions should lead with Play before Auto Demo");
     assert(judge.reviewSteps.join("|") === "Play First.|Open Auto Demo.|Verify Receipt.|Check Source.|Optional Smoke.", "judge review steps changed");
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
+    assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
+    assert(judge.scorecardHref === "RUBRIC_SCORECARD.md", "judge page scorecard action is not local and source-first");
     assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");
     assert(!judge.primaryInsideReview, "judge page repeats primary actions inside the 60-second review path");
     assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");

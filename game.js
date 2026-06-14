@@ -52,10 +52,10 @@
     "Close the checksum before nightfall seals the rotor.",
   ];
   const phaseProofs = [
-    "Solstice crib starts target checking.",
-    "XOR noon tests state alignment.",
+    "Solstice crib starts state transitions.",
+    "XOR noon checks parity alignment.",
     "Binary carry proves controlled shifts.",
-    "Checksum night seals the receipt.",
+    "Checksum night seals algorithmic trace.",
   ];
   const bestScoreKey = "helioigma-best-score";
   const levels = [

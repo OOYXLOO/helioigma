@@ -76,6 +76,7 @@ try {
     "package.json",
     "package-lock.json",
     "JUDGE_REVIEW_CARD.md",
+    "RUBRIC_SCORECARD.md",
     "CHALLENGE_COMPLIANCE.md",
     "judge.html",
     "judge-manifest.json",
@@ -198,6 +199,7 @@ try {
   if (-not ($manifest.challenge_compliance.submission_checks -contains "demo video and fallback media")) { throw "judge-manifest challenge-compliance submission-check mismatch" }
   if (-not ($manifest.challenge_compliance.public_launch_gate -contains "GitHub Pages returns HTTP 200")) { throw "judge-manifest challenge-compliance launch-gate mismatch" }
   if ($manifest.public_urls.play -ne "https://ooyxloo.github.io/helioigma/") { throw "judge-manifest public play URL mismatch" }
+  if ($manifest.public_urls.rubric_scorecard -ne "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md") { throw "judge-manifest rubric scorecard URL mismatch" }
   foreach ($artifact in $manifest.local_artifacts) {
     Assert-File $artifact
   }
@@ -228,6 +230,7 @@ try {
   Assert-Contains "dev-article-final.md" '{% embed https://github.com/OOYXLOO/helioigma %}'
   Assert-Contains "dev-article-final.md" "Plain source URL: https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-article-final.md" "judge-manifest.json"
+  Assert-Contains "dev-article-final.md" "RUBRIC_SCORECARD.md"
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Why It Is Not Just a Cipher Demo"
   Assert-Contains "dev-article-final.md" "judge-verifiable loop"
@@ -255,6 +258,7 @@ try {
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
+  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
@@ -285,6 +289,8 @@ try {
   Assert-Contains "dev-launch-brief.md" "javascript"
   Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "dev-launch-brief.md" "https://github.com/OOYXLOO/helioigma"
+  Assert-Contains "dev-launch-brief.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
+  Assert-Contains "dev-launch-brief.md" "Source rubric scorecard"
   Assert-Contains "dev-launch-brief.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "dev-launch-brief.md" "PASS browser smoke"
   Assert-Contains "dev-launch-brief.md" "DEV No-Go Gate"
@@ -320,10 +326,12 @@ try {
   Assert-Contains "README.md" "The Turing ode is intentionally restrained"
   Assert-Contains "README.md" "Award thesis: Helioigma is a playable ode"
   Assert-Contains "README.md" "JUDGE_REVIEW_CARD.md"
+  Assert-Contains "README.md" "RUBRIC_SCORECARD.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Helioigma Judge Review Card"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "60-Second Path"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Official Route Snapshot"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "RUBRIC_SCORECARD.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Rubric Evidence"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Nightfall recovery"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Boundaries"
@@ -332,6 +340,10 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
+  Assert-Contains "RUBRIC_SCORECARD.md" "Helioigma Rubric Scorecard"
+  Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
+  Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
+  Assert-Contains "RUBRIC_SCORECARD.md" "69-check browser smoke"
   Assert-Contains "README.md" "first-move coach on Start"
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
@@ -351,6 +363,8 @@ try {
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
+  Assert-Contains "submission-checklist.md" "RUBRIC_SCORECARD.md"
+  Assert-Contains "submission-checklist.md" "Rubric scorecard link"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "share the DEV post only with honest feedback requests"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
@@ -362,6 +376,8 @@ try {
   Assert-Contains "submission-checklist.md" "69 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, no pressure, and no fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
+  Assert-Contains "PUBLISHING.md" "RUBRIC_SCORECARD.md"
+  Assert-Contains "PUBLISHING.md" 'Public source includes `RUBRIC_SCORECARD.md`'
   Assert-Contains "PUBLISHING.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-Contains "PUBLISHING.md" "gh repo create OOYXLOO/helioigma"
   Assert-Contains "PUBLISHING.md" "Do not spam, buy reactions, pressure people, or ask for fake engagement"
@@ -428,6 +444,8 @@ try {
   Assert-Contains "judge.html" "Run the 69-check browser smoke test"
   Assert-Contains "judge.html" "nightfall report"
   Assert-Contains "judge.html" "Open Manifest"
+  Assert-Contains "judge.html" "Open Scorecard"
+  Assert-Contains "judge.html" "RUBRIC_SCORECARD.md"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
   Assert-Contains "judge.html" "Auto Demo"
@@ -517,16 +535,17 @@ try {
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"
   Assert-Contains "styles.css" "min-height: 40px"
-  Assert-Contains "styles.css" "#resetButton"
+  Assert-Contains "styles.css" "grid-template-columns: repeat(5, minmax(0, 1fr));"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile Reset is not visible in the first viewport"
   Assert-Contains "index.html" "objective-strip"
   Assert-Contains "index.html" "phaseObjective"
   Assert-Contains "index.html" "phaseTargetLine"
   Assert-Contains "index.html" "phaseAlignment"
   Assert-Contains "index.html" "phaseProof"
   Assert-Contains "index.html" "Phase proof"
-  Assert-Contains "index.html" "Solstice crib starts target checking."
+  Assert-Contains "index.html" "Solstice crib starts state transitions."
   Assert-Contains "game.js" "phaseProofs"
-  Assert-Contains "game.js" "Checksum night seals the receipt."
+  Assert-Contains "game.js" "Checksum night seals algorithmic trace."
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"

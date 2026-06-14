@@ -112,6 +112,7 @@
     "sample_receipt_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
     "verification": "https://ooyxloo.github.io/helioigma/verification.html",
     "challenge_compliance": "https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md",
+    "rubric_scorecard": "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md",
     "manifest": "https://ooyxloo.github.io/helioigma/judge-manifest.json",
     "demo_webm": "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
     "demo_gif": "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
@@ -121,6 +122,7 @@
   "local_artifacts": [
     "index.html",
     "JUDGE_REVIEW_CARD.md",
+    "RUBRIC_SCORECARD.md",
     "judge.html",
     "smoke.html",
     "proof-verifier.html",

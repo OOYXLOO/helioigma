@@ -951,7 +951,7 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 5px;
     padding: 5px;
   }
@@ -960,10 +960,6 @@ button:focus-visible {
     min-height: 40px;
     padding: 0 5px;
     font-size: 10px;
-  }
-
-  #resetButton {
-    display: none;
   }
 
   .status {

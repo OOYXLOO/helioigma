@@ -232,7 +232,7 @@
       addCheck("phase objective names the first phase", phaseObjective.textContent.includes("Crib dawn"));
       addCheck("phase objective shows target glyphs and alignment", phaseTargetLine.textContent.includes("SOL LUX XOR BIN") && phaseAlignment.textContent === "0/6 nodes aligned");
       addCheck("phase proof strip is present", Boolean(phaseProof));
-      addCheck("phase proof names the first cue", phaseProof.textContent === "Solstice crib starts target checking.");
+      addCheck("phase proof names the first cue", phaseProof.textContent === "Solstice crib starts state transitions.");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links include the auto demo route", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")));

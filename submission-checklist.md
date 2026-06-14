@@ -9,6 +9,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Publishing gate: `PUBLISHING.md`.
 - Judge pack: `judge.html`.
 - Judge review card: `JUDGE_REVIEW_CARD.md` with the shortest review path, award thesis, rubric evidence, and boundaries.
+- Rubric scorecard: `RUBRIC_SCORECARD.md` with the source-first map for theme relevance, creativity, technical execution, writing quality, and Best Ode to Alan Turing fit.
 - Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
 - Run receipt verifier: `proof-verifier.html` with parsed receipt facts and `?receipt=` deep-link support.
@@ -70,6 +71,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Keep the GitHub source embed in the Code section: `{% embed https://github.com/OOYXLOO/helioigma %}`, followed by the plain source URL.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
 - Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
+- Use `RUBRIC_SCORECARD.md` as the source-first rubric map if a judge wants the criteria fit without reading the full article.
 - Use `PUBLISHING.md` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
 - Keep the official DEV template marker at the top of `dev-article-final.md`: "This is a submission for the June Solstice Game Jam."
@@ -96,6 +98,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Source link: to be filled after repo/public hosting is authorized.
 - Judge pack link: `https://ooyxloo.github.io/helioigma/judge.html` after public hosting.
 - Judge manifest link: `https://ooyxloo.github.io/helioigma/judge-manifest.json` after public hosting.
+- Rubric scorecard link: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/helioigma/smoke.html` after public hosting.
 - Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.mp4`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, `desktop-complete-v4.png`, and `mobile-complete-v1.png`.
 - Package: use `helioigma-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.

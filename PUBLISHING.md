@@ -59,6 +59,7 @@ Do not submit on DEV until the public try link works. Use:
 - The WebM is the canonical captioned browser-recorded demo video, the GIF is the inline fallback preview, and the MP4 is an optional legacy fallback only if DEV specifically asks for MP4.
 - Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 - Judge manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
+- Rubric scorecard: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
 - Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
 - Receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html`
 - Try link: `https://ooyxloo.github.io/helioigma/`
@@ -81,6 +82,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public smoke test returns `PASS`.
 - [ ] Public judge page shows the 60-second review path.
 - [ ] Public source includes `JUDGE_REVIEW_CARD.md` with the 60-second path, award thesis, rubric evidence, and boundaries.
+- [ ] Public source includes `RUBRIC_SCORECARD.md` with the source-first criteria map.
 - [ ] Public judge manifest returns HTTP 200 and records the stable receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Public receipt verifier accepts stable Demo Solve receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public`

@@ -69,6 +69,7 @@ Detailed judge links:
 - Smoke test: https://ooyxloo.github.io/helioigma/smoke.html
 - Sample receipt verifier: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Judge manifest: https://ooyxloo.github.io/helioigma/judge-manifest.json
+- Rubric scorecard: https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md
 
 Core features:
 
@@ -87,9 +88,9 @@ Core features:
 
 ## Judge in 60 Seconds
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. No account, API, backend, private data, or hidden judge path is needed to inspect it.
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. For a first pass, the important thing is simple: play the wheel, watch the state trace, and verify the receipt.
 
-Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data.
+Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data. No account, API, backend, private data, or hidden judge path is needed to inspect the build.
 
 1. Open the play link and follow the first-screen Run Path: match nodes manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
@@ -124,6 +125,7 @@ The project is deliberately small:
 - `proof-verifier.html`: local receipt checksum verifier.
 - `smoke.html`: browser smoke test that solves the public game path in an iframe.
 - `judge.html`: one-page review hub.
+- `RUBRIC_SCORECARD.md`: compact source-first rubric map for the official review criteria and Turing category.
 - `judge-manifest.json`: machine-readable judge manifest for the prize target, public links, stable run receipt, media, verification steps, and human gates.
 - `tools/build-demo-video.mjs`: records the current captioned WebM demo from a live browser session.
 - `tools/build-demo-webm.mjs`: keeps a frame-based fallback builder for the preview sequence.
