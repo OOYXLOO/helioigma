@@ -97,6 +97,8 @@ jobs:
           grep -q "official-route checklist" dev-article-final.md
           grep -q "public-preflight.ps1 -Public" dev-article-final.md
           grep -q "Optional default-off Web Audio cues" dev-article-final.md
+          grep -q "Nightfall report for failed manual runs" dev-article-final.md
+          grep -q "the losing state is inspectable" dev-article-final.md
           grep -q 'Press `Audio` or `S`' dev-article-final.md
           grep -q "default-off Audio control" dev-article-final.md
           grep -q "Score rewards held daylight, streaks, and fewer wasted shifts" dev-article-final.md
@@ -157,6 +159,7 @@ jobs:
           grep -q "60-Second Path" JUDGE_REVIEW_CARD.md
           grep -q "Award Thesis" JUDGE_REVIEW_CARD.md
           grep -q "Rubric Evidence" JUDGE_REVIEW_CARD.md
+          grep -q "Nightfall recovery" JUDGE_REVIEW_CARD.md
           grep -q "Boundaries" JUDGE_REVIEW_CARD.md
           grep -q "SC-4P-2907-62-Y5VFX1" JUDGE_REVIEW_CARD.md
           grep -q "Best Ode to Alan Turing" JUDGE_REVIEW_CARD.md
@@ -173,6 +176,8 @@ jobs:
           grep -q "Originality and Review Transparency" README.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" README.md
           grep -q "Rotor Trace" README.md
+          grep -q "Nightfall report" README.md
+          grep -q "Retry run" README.md
           grep -q "final run receipt ledger" README.md
           grep -q "?demo=1" README.md
           grep -q "MIT license" README.md
@@ -215,6 +220,8 @@ jobs:
           grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" judge.html
           grep -q "prefilled sample verifier" judge.html
           grep -q "Ode With Restraint" judge.html
+          grep -q "Nightfall Recovery" judge.html
+          grep -q "the Nightfall report summarizes aligned nodes" judge.html
           grep -q "Rotor Trace" judge.html
           grep -q "state, logic, verification" judge.html
           ! grep -q "DEV Console" judge.html
@@ -238,6 +245,7 @@ jobs:
           grep -q "asset_boundary" judge-manifest.json
           grep -q "69" judge-manifest.json
           grep -q "score_basis" judge-manifest.json
+          grep -q "nightfall_recovery" judge-manifest.json
           grep -q "award signals" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/?demo=1" judge-manifest.json

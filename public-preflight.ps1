@@ -145,6 +145,7 @@ try {
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact proof cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
+  if (-not ($manifest.proof.nightfall_recovery -like "Failed manual runs show a Nightfall report*")) { throw "judge-manifest nightfall recovery mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
   if (-not ($manifest.status.owner_publication_note -like "Public hosting and DEV article publication are external publication actions*")) { throw "judge-manifest owner publication note mismatch" }
@@ -213,6 +214,8 @@ try {
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
   Assert-Contains "dev-article-final.md" "Optional default-off Web Audio cues"
+  Assert-Contains "dev-article-final.md" "Nightfall report for failed manual runs"
+  Assert-Contains "dev-article-final.md" "the losing state is inspectable"
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
   Assert-Contains "dev-article-final.md" "default-off Audio control"
   Assert-Contains "dev-article-final.md" "Score rewards held daylight, streaks, and fewer wasted shifts"
@@ -304,6 +307,7 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Official Route Snapshot"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Rubric Evidence"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Nightfall recovery"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Boundaries"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Best Ode to Alan Turing"
@@ -320,6 +324,8 @@ try {
   Assert-Contains "README.md" "not a wrapper around a prior game template"
   Assert-Contains "README.md" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
   Assert-Contains "README.md" "Rotor Trace"
+  Assert-Contains "README.md" "Nightfall report"
+  Assert-Contains "README.md" "Retry run"
   Assert-Contains "README.md" "final run receipt ledger"
   Assert-Contains "README.md" "phase banner"
   Assert-Contains "README.md" "?demo=1"
@@ -408,6 +414,8 @@ try {
   Assert-Contains "judge.html" "helioigma-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Ode With Restraint"
+  Assert-Contains "judge.html" "Nightfall Recovery"
+  Assert-Contains "judge.html" "the Nightfall report summarizes aligned nodes"
   Assert-Contains "judge.html" "Rubric snapshot"
   Assert-Contains "judge.html" "Theme relevance"
   Assert-Contains "judge.html" "Technical execution"
@@ -577,6 +585,7 @@ try {
   Assert-Contains "judge-manifest.json" "Best Ode to Alan Turing"
   Assert-Contains "judge-manifest.json" "award_thesis"
   Assert-Contains "judge-manifest.json" "score_basis"
+  Assert-Contains "judge-manifest.json" "nightfall_recovery"
   Assert-Contains "judge-manifest.json" "phase_proof_line"
   Assert-Contains "judge-manifest.json" "phase-proof line"
   Assert-Contains "judge-manifest.json" "ode_note"

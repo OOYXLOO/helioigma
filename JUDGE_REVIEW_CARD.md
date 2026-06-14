@@ -24,7 +24,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 
 - Solstice fit: daylight is the timer, nightfall is the fail state, and holding the longest day is the win condition.
 - Turing fit: rotor-like alignment, target checking, XOR/binary language, state reasoning, phase-proof cues, and a local checksum receipt carry the tribute through mechanics.
-- Execution proof: the same public build includes the game, judge page, smoke test, manifest, screenshots, GIF/WebM media, and receipt verifier.
+- Execution proof: the same public build includes the game, judge page, Nightfall recovery report, smoke test, manifest, screenshots, GIF/WebM media, and receipt verifier.
 
 ## Rubric Evidence
 
@@ -32,7 +32,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 | --- | --- |
 | Theme relevance | The first screen explains the solstice rotor, target glyphs, daylight timer, and nightfall fail state. |
 | Creativity | The entry combines a solstice countdown with a code-breaking wheel, Rotor Trace, Demo Solve, and verifiable receipt. |
-| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, optional default-off audio, four phases, scoring, local best score, and CI smoke checks. |
+| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, optional default-off audio, Nightfall recovery, four phases, scoring, local best score, and CI smoke checks. |
 | Writing quality | DEV article, README, judge page, manifest, verification report, and this card give a clear review path with no hidden account dependency. |
 | Best Ode to Alan Turing | The ode is restrained: state, logic, alignment, verification, pressure, and machine-readable reasoning, not a fake biography or Bombe simulator. |
 

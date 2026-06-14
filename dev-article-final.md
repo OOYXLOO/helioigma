@@ -65,6 +65,7 @@ Core features:
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
 - Score carry-over, streak bonuses, shift counting, and a local best score.
 - Final screen with solved phase count, phase scoring ledger, total shifts, score, copyable `SC-4P-...` run receipt, and a human-readable Judge run summary.
+- Nightfall report for failed manual runs, with aligned-node progress, held phases, score, shifts, and direct Retry / Demo Solve recovery.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
 - First-screen phase objective strip with phase-proof copy, plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
@@ -112,7 +113,7 @@ The project is deliberately small:
 
 ## How to Play
 
-Start the run, then decode the solstice rotor by matching each numbered node to the target glyph above it before nightfall. Correct locks earn points, streaks reward clean phase solves, and exploratory shifts cost a little time. Clear all four phases to hold the longest day and reveal the final score.
+Start the run, then decode the solstice rotor by matching each numbered node to the target glyph above it before nightfall. Correct locks earn points, streaks reward clean phase solves, and exploratory shifts cost a little time. Clear all four phases to hold the longest day and reveal the final score. If nightfall catches a manual run, the game reports how much of the current phase was aligned and gives a clean Retry or Demo Solve recovery path.
 
 Controls:
 
@@ -131,7 +132,7 @@ Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt
 
 I built Helioigma as a no-backend canvas game so the public demo can run from GitHub Pages. The level data is deterministic: every phase has a target array, the player ring starts offset from that target, and every click/tap/key/button press rotates one node through the `SOL`, `XOR`, `LUX`, and `BIN` states.
 
-The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during `Demo Solve` so judges get the same stable receipt every time. Completed runs generate a checksum from:
+The game awards points for locking nodes, keeps a shift counter, carries score through four named phases, and pauses timer drift during `Demo Solve` so judges get the same stable receipt every time. Failed manual runs also produce a small Nightfall report, so the losing state is inspectable rather than just a reset. Completed runs generate a checksum from:
 
 ```text
 solstice|4|score|shifts|4

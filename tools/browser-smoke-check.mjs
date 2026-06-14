@@ -256,6 +256,8 @@ async function main() {
       hasWebm: document.body.innerText.includes("WebM"),
       hasRunReceiptCopy: document.body.innerText.includes("run receipt"),
       hasRunProofCopy: document.body.innerText.includes("run proof"),
+      hasNightfallRecovery: document.body.innerText.includes("Nightfall Recovery"),
+      hasNightfallRecoveryCopy: document.body.innerText.includes("the Nightfall report summarizes aligned nodes"),
       hasOldPublicPageCopy: document.body.innerText.includes("Watch the public page complete all four phases"),
       hasPlayablePageCopy: document.body.innerText.includes("Watch the playable page complete all four phases"),
       hasPrefilledVerifierCopy: document.body.innerText.includes("pre-filled sample verifier") || document.body.innerText.includes("prefilled sample verifier"),
@@ -278,6 +280,8 @@ async function main() {
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
     assert(!judge.hasRunProofCopy, "judge page still exposes run proof wording");
+    assert(judge.hasNightfallRecovery, "judge page is missing Nightfall Recovery card");
+    assert(judge.hasNightfallRecoveryCopy, "judge page does not describe Nightfall recovery behavior");
     assert(!judge.hasOldPublicPageCopy, "judge page still calls the prelaunch route a public page");
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
@@ -323,6 +327,7 @@ async function main() {
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
     assert(manifest.verification?.expected_smoke_checks === 69, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
+    assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);

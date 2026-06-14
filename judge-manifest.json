@@ -25,7 +25,7 @@
       },
       {
         "criterion": "Technical execution",
-        "evidence": "Static canvas game, touch and keyboard controls, stable demo route, checksum receipt, smoke test, and Pages-ready CI."
+        "evidence": "Static canvas game, touch and keyboard controls, stable demo route, Nightfall failure recovery, checksum receipt, smoke test, and Pages-ready CI."
       },
       {
         "criterion": "Writing quality",
@@ -38,7 +38,7 @@
     ]
   },
   "status": {
-    "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, phase-proof line, receipt verifier, manifest, source, and media links.",
+    "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, phase-proof line, Nightfall recovery report, receipt verifier, manifest, source, and media links.",
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used.",
@@ -130,6 +130,7 @@
     "phase_proof_line": "Each phase exposes a compact proof cue that maps the current loop to solstice pressure, Turing-style state alignment, controlled shifts, or checksum verification.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
+    "nightfall_recovery": "Failed manual runs show a Nightfall report with aligned nodes, held phases, score, shifts, next proof cue, Retry run, and Watch Demo Solve recovery.",
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },
   "verification": {
