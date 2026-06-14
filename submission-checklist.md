@@ -29,6 +29,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Desktop screenshot: `desktop-check-v5.png`.
 - Mobile screenshot: `mobile-check-v6.png`.
 - Completion screenshot: `desktop-complete-v4.png`.
+- Mobile completion screenshot: `mobile-complete-v1.png`.
 - Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`.
 - Current captioned WebM demo video: `helioigma-demo.webm`.
 - Current GIF demo: `helioigma-demo.gif`.
@@ -96,5 +97,5 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Judge manifest link: `https://ooyxloo.github.io/helioigma/judge-manifest.json` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/helioigma/smoke.html` after public hosting.
 - DEV post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html` after public hosting.
-- Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.mp4`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, and `desktop-complete-v4.png`.
+- Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.mp4`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, `desktop-complete-v4.png`, and `mobile-complete-v1.png`.
 - Package: use `helioigma-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.

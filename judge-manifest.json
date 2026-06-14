@@ -100,6 +100,7 @@
     "manifest": "https://ooyxloo.github.io/helioigma/judge-manifest.json",
     "demo_webm": "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
     "demo_gif": "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
+    "mobile_completion_image": "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png",
     "source": "https://github.com/OOYXLOO/helioigma"
   },
   "local_artifacts": [
@@ -118,7 +119,8 @@
     "helioigma-demo.gif",
     "desktop-check-v5.png",
     "mobile-check-v6.png",
-    "desktop-complete-v4.png"
+    "desktop-complete-v4.png",
+    "mobile-complete-v1.png"
   ],
   "proof": {
     "stable_receipt": "SC-4P-2907-62-Y5VFX1",
@@ -130,6 +132,7 @@
     "phase_proof_line": "Each phase exposes a compact proof cue that maps the current loop to solstice pressure, Turing-style state alignment, controlled shifts, or checksum verification.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
+    "mobile_completion_proof": "mobile-complete-v1.png captures the same stable receipt, phase ledger, and Judge run summary in a 390px mobile viewport.",
     "nightfall_recovery": "Failed manual runs show a Nightfall report with aligned nodes, held phases, score, shifts, next proof cue, Retry run, and Watch Demo Solve recovery.",
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },

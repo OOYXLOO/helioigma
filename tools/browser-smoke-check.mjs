@@ -245,6 +245,7 @@ async function main() {
       primaryActions: [...document.querySelectorAll(".primary-actions .action strong")].map((node) => node.textContent.trim()),
       evidenceActions: [...document.querySelectorAll(".evidence-actions .action strong")].map((node) => node.textContent.trim()),
       reviewSteps: [...document.querySelectorAll(".review-flow ol strong")].map((node) => node.textContent.trim()),
+      primaryInsideVisualHero: Boolean(document.querySelector(".visual-judge-hero .primary-actions")),
       primaryInsideReview: Boolean(document.querySelector(".review-flow .primary-actions")),
       reviewBeforeEvidence: Boolean(
         document.querySelector(".review-flow") &&
@@ -268,6 +269,11 @@ async function main() {
       hasBoundaryCopy: document.body.innerText.includes("No Google AI claim, backend, account login, API key, or private data"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
       hasAwardThesis: document.body.innerText.toLowerCase().includes("award thesis"),
+      hasVisualJudgeHero: document.body.innerText.toLowerCase().includes("visual judge start"),
+      hasVisualJudgeCopy: document.body.innerText.toLowerCase().includes("the core artifact is a playable rotor puzzle"),
+      visualHeroImageSrc: document.querySelector(".visual-judge-hero img")?.getAttribute("src"),
+      visualHeroTop: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().top,
+      visualHeroBottom: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().bottom,
       verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
       rubricItems: [...document.querySelectorAll(".rubric-item strong")].map((node) => node.textContent.trim()),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
@@ -293,6 +299,11 @@ async function main() {
     assert(judge.verifyReceiptHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge page verifier action is not prefilled");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
     assert(judge.hasAwardThesis, "judge page is missing the award thesis");
+    assert(judge.hasVisualJudgeHero, "judge page is missing the visual judge hero");
+    assert(judge.hasVisualJudgeCopy, "judge page does not lead with a playable-game visual claim");
+    assert(judge.visualHeroImageSrc === "desktop-check-v5.png", "judge page visual hero does not use the current gameplay screenshot");
+    assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
+    assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
     assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
@@ -308,8 +319,26 @@ async function main() {
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
-    assert(judge.primaryInsideReview, "judge page primary actions are not embedded in the 60-second review path");
+    assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");
+    assert(!judge.primaryInsideReview, "judge page repeats primary actions inside the 60-second review path");
     assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
+    const mobileJudge = await page.evaluate(() => {
+      const image = document.querySelector(".visual-judge-hero img")?.getBoundingClientRect();
+      const actions = document.querySelector(".visual-judge-hero .primary-actions")?.getBoundingClientRect();
+      return {
+        imageVisible: Boolean(image && image.top < innerHeight && image.bottom > 0),
+        actionsVisible: Boolean(actions && actions.top < innerHeight && actions.bottom <= innerHeight),
+        primaryActions: [...document.querySelectorAll(".visual-judge-hero .action strong")].map((node) => node.textContent.trim()),
+        overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      };
+    });
+    assert(mobileJudge.overflowX === 0, "mobile judge page has horizontal overflow");
+    assert(mobileJudge.imageVisible, "mobile judge page does not show the visual gameplay asset in the first viewport");
+    assert(mobileJudge.actionsVisible, "mobile judge page does not show Play and Auto Demo in the first viewport");
+    assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo", "mobile judge page primary actions changed");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
     assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");

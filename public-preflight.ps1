@@ -98,6 +98,7 @@ try {
     "desktop-check-v5.png",
     "mobile-check-v6.png",
     "desktop-complete-v4.png",
+    "mobile-complete-v1.png",
     "PUBLISHING.md",
     "submission-checklist.md",
     ".github/workflows/verify.yml"
@@ -116,7 +117,8 @@ try {
     "cover.png",
     "desktop-check-v5.png",
     "mobile-check-v6.png",
-    "desktop-complete-v4.png"
+    "desktop-complete-v4.png",
+    "mobile-complete-v1.png"
   )) {
     Assert-PngSignature $png
   }
@@ -145,6 +147,7 @@ try {
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact proof cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
+  if (-not ($manifest.proof.mobile_completion_proof -like "mobile-complete-v1.png captures*")) { throw "judge-manifest mobile completion proof mismatch" }
   if (-not ($manifest.proof.nightfall_recovery -like "Failed manual runs show a Nightfall report*")) { throw "judge-manifest nightfall recovery mismatch" }
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
@@ -211,6 +214,7 @@ try {
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
   Assert-Contains "dev-article-final.md" "Optional legacy MP4 fallback"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
+  Assert-Contains "dev-article-final.md" "Mobile completion screenshot"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
   Assert-Contains "dev-article-final.md" "Optional default-off Web Audio cues"
@@ -256,6 +260,7 @@ try {
   Assert-Contains "dev-submit-console.html" "Helioigma"
   Assert-Contains "dev-submit-console.html" "No-Go Gate"
   Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
+  Assert-Contains "dev-submit-console.html" "mobile-complete-v1.png"
   Assert-Contains "dev-submit-console.html" "You get 45 seconds of daylight"
   Assert-Contains "dev-submit-console.html" "little daylight machine"
   Assert-Contains "dev-submit-console.html" "live objective strip tells you what the rotor wants next"
@@ -411,6 +416,7 @@ try {
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
   Assert-Contains "judge.html" "helioigma-demo.gif"
+  Assert-Contains "judge.html" "visual-judge-hero"
   Assert-Contains "judge.html" "helioigma-demo.webm"
   Assert-Contains "judge.html" "recorded from the real browser judge path"
   Assert-Contains "judge.html" "Ode With Restraint"
@@ -559,6 +565,7 @@ try {
   Assert-Contains "verification-report.md" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "verification-report.md" "PASS - Longest day held"
   Assert-Contains "verification-report.md" "completion screenshot with final receipt, phase scoring ledger, and Judge run summary"
+  Assert-Contains "verification-report.md" "mobile completion screenshot with stable receipt"
   Assert-Contains "verification-report.md" "GIF preview ending on the receipt ledger and Judge run summary"
   Assert-Contains "verification-report.md" "parsed receipt facts"
   Assert-Contains "verification-report.md" "Score variance is expected"
@@ -569,6 +576,7 @@ try {
   Assert-Contains "verification.html" "Score variance is expected"
   Assert-Contains "verification.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "verification.html" "helioigma-demo.webm"
+  Assert-Contains "verification.html" "mobile-complete-v1.png"
   Assert-Contains "verification.html" "Rubric Snapshot"
   Assert-Contains "verification.html" "Theme relevance"
   Assert-Contains "verification.html" "Technical execution"
@@ -586,6 +594,8 @@ try {
   Assert-Contains "judge-manifest.json" "award_thesis"
   Assert-Contains "judge-manifest.json" "score_basis"
   Assert-Contains "judge-manifest.json" "nightfall_recovery"
+  Assert-Contains "judge-manifest.json" "mobile_completion_proof"
+  Assert-Contains "judge-manifest.json" "mobile-complete-v1.png"
   Assert-Contains "judge-manifest.json" "phase_proof_line"
   Assert-Contains "judge-manifest.json" "phase-proof line"
   Assert-Contains "judge-manifest.json" "ode_note"
@@ -611,6 +621,7 @@ try {
       "https://ooyxloo.github.io/helioigma/dev-submit-console.html",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
+      "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png",
       "https://github.com/OOYXLOO/helioigma"
     )
     foreach ($url in $urls) {

@@ -34,6 +34,7 @@ The game borrows the feeling of rotor alignment and cipher checking rather than 
 - Desktop screenshot: `desktop-check-v5.png`
 - Mobile screenshot: `mobile-check-v6.png`
 - Completion screenshot: `desktop-complete-v4.png`
+- Mobile completion screenshot: `mobile-complete-v1.png`
 
 The GIF was generated from current local browser screenshots and is the canonical preview for the DEV post.
 

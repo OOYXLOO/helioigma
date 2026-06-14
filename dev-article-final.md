@@ -36,6 +36,8 @@ The demo video is a live browser recording of the current judge path: first-scre
 
 ![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png)
 
+![Helioigma mobile completion receipt](https://ooyxloo.github.io/helioigma/mobile-complete-v1.png)
+
 Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
 
 Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
@@ -91,6 +93,7 @@ Public media links:
 5. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
 6. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png
 7. Completion screenshot with receipt ledger and Judge run summary: https://ooyxloo.github.io/helioigma/desktop-complete-v4.png
+8. Mobile completion screenshot with stable receipt, phase ledger, and Judge run summary: https://ooyxloo.github.io/helioigma/mobile-complete-v1.png
 
 ## Code
 
@@ -203,5 +206,6 @@ I verified the package with:
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
+- 390px mobile completion check: Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - `smoke.html`: 69 checks passed, including daylight meter, score/receipt explanation, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
 - `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 69 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.

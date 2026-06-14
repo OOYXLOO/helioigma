@@ -52,4 +52,5 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 - GIF preview: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif`
 - WebM demo: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm`
+- Mobile completion screenshot: `https://ooyxloo.github.io/helioigma/mobile-complete-v1.png`
 - Source: `https://github.com/OOYXLOO/helioigma`

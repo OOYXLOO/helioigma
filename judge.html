@@ -65,6 +65,49 @@
       margin-top: 24px;
     }
 
+    .visual-judge-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(9, 14, 24, 0.62);
+      padding: 16px;
+    }
+
+    .visual-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .visual-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .visual-media {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #030712;
+    }
+
+    .visual-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .primary-actions {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -172,18 +215,6 @@
       font-size: 13px;
       line-height: 1.2;
       text-transform: uppercase;
-    }
-
-    .review-focus {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .review-flow .primary-actions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 0;
     }
 
     .review-flow ol {
@@ -324,11 +355,27 @@
     a { color: var(--accent); font-weight: 800; }
 
     @media (max-width: 780px) {
-      .primary-actions, .evidence-actions, .grid, .rubric-grid { grid-template-columns: 1fr; }
+      .visual-judge-hero, .primary-actions, .evidence-actions, .grid, .rubric-grid { grid-template-columns: 1fr; }
       .route-snapshot { grid-template-columns: 1fr; }
       .review-verdict { grid-template-columns: 1fr; }
-      .review-focus { grid-template-columns: 1fr; }
       .review-flow ol { grid-template-columns: 1fr; }
+      .visual-media { order: -1; }
+      .visual-media img { height: auto; }
+      .visual-judge-hero .primary-actions {
+        order: -1;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 0;
+      }
+      .visual-judge-hero .action.primary {
+        min-height: 88px;
+        padding: 12px;
+      }
+      .visual-judge-hero .action.primary strong {
+        font-size: 20px;
+      }
+      .visual-judge-hero .action.primary span {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -337,6 +384,22 @@
     <p class="eyebrow">DEV June Solstice Game Jam</p>
     <h1>Helioigma is a complete four-phase rotor puzzle loop.</h1>
     <p class="dek">A small static game about holding the longest day by aligning a Turing-inspired solar rotor before nightfall. This page gives judges the play link, automated smoke receipt, theme fit, run receipt, and source path in one place.</p>
+
+    <section class="visual-judge-hero" aria-label="Visual judge hero">
+      <div class="visual-copy">
+        <div>
+          <p class="verdict-label">Visual judge start</p>
+          <p>Open the game first: the core artifact is a playable rotor puzzle, not only a proof packet. The screenshot is from the current browser build, and the two primary actions below are the fastest way to feel the loop before checking the receipt trail.</p>
+        </div>
+        <section class="primary-actions" aria-label="Primary judge actions">
+          <a class="action primary" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch buttons, Hint, tactile node pulses, stable Demo Solve, and number-key controls.</span></a>
+          <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Open the playable page with the deterministic Demo Solve route already running.</span></a>
+        </section>
+      </div>
+      <figure class="visual-media">
+        <img src="desktop-check-v5.png" alt="Helioigma gameplay screenshot with the cipher wheel, target glyphs, progress strip, and judge controls visible.">
+      </figure>
+    </section>
 
     <p class="verdict-label">Official route snapshot</p>
     <section class="route-snapshot" aria-label="Official route snapshot">
@@ -354,19 +417,13 @@
         <p><strong>Judge-verifiable</strong> Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier all inspect the same public game loop.</p>
         <p><strong>Finished surface</strong> The package is static, mobile-ready, media-backed, and reviewable without accounts, APIs, or private data.</p>
       </div>
-      <div class="review-focus">
-        <section class="primary-actions" aria-label="Primary judge actions">
-          <a class="action primary" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch buttons, Hint, tactile node pulses, stable Demo Solve, and number-key controls.</span></a>
-          <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Open the playable page with the deterministic Demo Solve route already running.</span></a>
-        </section>
-        <ol>
-          <li><strong>Play First.</strong><span>Try one manual phase with the Hint button, tactile node pulse, target glyphs, and keyboard/touch controls.</span></li>
-          <li><strong>Open Auto Demo.</strong><span>Watch the playable page complete all four phases and produce receipt <code>SC-4P-2907-62-Y5VFX1</code>.</span></li>
-          <li><strong>Run Smoke Test.</strong><span>Verify the browser path reaches 69 checks, including score/receipt explanation, phase objective strip, phase-proof copy, nightfall report, phase announcer, Rotor Trace, phase ledger, Judge run summary, award signals, and receipt link coverage.</span></li>
-          <li><strong>Verify Receipt.</strong><span>Open the prefilled sample verifier to recompute the checksum and inspect phases, score, shifts, and suffix.</span></li>
-          <li><strong>Check Source.</strong><span>Use the manifest and README only if deeper review is needed; the playable loop is static and no-backend.</span></li>
-        </ol>
-      </div>
+      <ol>
+        <li><strong>Play First.</strong><span>Try one manual phase with the Hint button, tactile node pulse, target glyphs, and keyboard/touch controls.</span></li>
+        <li><strong>Open Auto Demo.</strong><span>Watch the playable page complete all four phases and produce receipt <code>SC-4P-2907-62-Y5VFX1</code>.</span></li>
+        <li><strong>Run Smoke Test.</strong><span>Verify the browser path reaches 69 checks, including score/receipt explanation, phase objective strip, phase-proof copy, nightfall report, phase announcer, Rotor Trace, phase ledger, Judge run summary, award signals, and receipt link coverage.</span></li>
+        <li><strong>Verify Receipt.</strong><span>Open the prefilled sample verifier to recompute the checksum and inspect phases, score, shifts, and suffix.</span></li>
+        <li><strong>Check Source.</strong><span>Use the manifest and README only if deeper review is needed; the playable loop is static and no-backend.</span></li>
+      </ol>
     </section>
 
     <a class="demo-frame" href="helioigma-demo.gif" aria-label="Watch the Helioigma demo GIF">

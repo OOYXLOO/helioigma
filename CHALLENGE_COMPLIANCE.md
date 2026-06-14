@@ -24,7 +24,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 | --- | --- |
 | DEV challenge tags | `dev-article-final.md` front matter includes `devchallenge`, `gamechallenge`, `gamedev`, and `javascript`. |
 | Playable game | `index.html`, `game.js`, and `styles.css` run as a static GitHub Pages game with mouse, touch, keyboard, and on-screen controls. |
-| Demo video | `helioigma-demo.webm` is the primary current browser recording; `helioigma-demo.gif` and `helioigma-demo.mp4` are fallback media. |
+| Demo video | `helioigma-demo.webm` is the primary current browser recording; `helioigma-demo.gif` and `helioigma-demo.mp4` are fallback media; `mobile-complete-v1.png` proves the receipt/ledger path on a 390px viewport. |
 | Code link | Intended public source is `https://github.com/OOYXLOO/helioigma`; local package includes all source before publication. |
 | How it was built | `dev-article-final.md`, `README.md`, and `judge.html` describe deterministic levels, canvas rendering, controls, scoring, receipt generation, and smoke checks. |
 | Theme relevance | Daylight is the timer, nightfall is the fail state, and clearing four phases is framed as holding the longest day. |

@@ -29,6 +29,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
 - `desktop-complete-v4.png`: completion screenshot with final receipt, phase scoring ledger, and Judge run summary
+- `mobile-complete-v1.png`: mobile completion screenshot with stable receipt, phase ledger, and Judge run summary
 
 ## Local Verification Commands
 
@@ -61,6 +62,7 @@ Expected local URLs:
 
 - Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 473px, and about 427px of gameplay is visible in the first viewport.
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
+- Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm install` and Playwright Chromium setup.
 - Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`

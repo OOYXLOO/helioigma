@@ -84,6 +84,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
 - `desktop-complete-v4.png`: current completion screenshot with final score, run receipt, verifier link, phase scoring ledger, and Judge run summary.
+- `mobile-complete-v1.png`: current mobile completion screenshot with stable receipt, phase ledger, and Judge run summary in a 390px viewport.
 - `helioigma-dev-package.zip`: local review/transfer package containing source files and final media assets.
 
 ## License
