@@ -338,6 +338,106 @@ body {
   }
 }
 
+@media (min-width: 721px) and (max-height: 760px) {
+  .shell {
+    padding: 10px;
+    place-items: start center;
+  }
+
+  .hud,
+  .brief,
+  .controls,
+  .proof-panel {
+    padding: 8px 10px;
+  }
+
+  .hud,
+  .phase-track,
+  .brief,
+  .day-meter,
+  .play-rule,
+  .judge-path,
+  .quick-controls {
+    margin-bottom: 6px;
+  }
+
+  .phase-track {
+    gap: 6px;
+  }
+
+  .phase-step {
+    min-height: 32px;
+    padding: 5px 8px;
+  }
+
+  .phase-index {
+    width: 22px;
+    height: 22px;
+  }
+
+  .phase-name,
+  .objective-strip small,
+  .judge-path span {
+    font-size: 10px;
+    line-height: 1.12;
+  }
+
+  .objective-strip {
+    padding: 7px 9px;
+  }
+
+  .day-meter {
+    padding: 6px 8px;
+  }
+
+  .day-meter-track {
+    height: 6px;
+    margin-top: 6px;
+  }
+
+  .play-rule {
+    padding: 7px 9px;
+    font-size: 12px;
+    line-height: 1.24;
+  }
+
+  .judge-path article {
+    min-height: 40px;
+    padding: 6px 8px;
+  }
+
+  .quick-controls {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .quick-controls #demoButton {
+    grid-column: span 2;
+  }
+
+  .status {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 28px;
+    text-align: left;
+  }
+
+  button {
+    min-height: 40px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  canvas {
+    max-height: calc(100vh - 318px);
+    min-height: 330px;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+  }
+}
+
 .controls {
   margin-top: 12px;
 }
@@ -999,9 +1099,9 @@ button:focus-visible {
   .quick-controls #soundButton { order: 5; }
 
   button {
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 5px;
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .status {

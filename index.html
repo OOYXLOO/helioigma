@@ -39,7 +39,7 @@
         <span><strong id="phaseObjective">Crib dawn</strong><small>Find the daylight crib before the wheel starts to drift.</small></span>
         <span><strong>Target glyphs</strong><small id="phaseTargetLine">SOL LUX XOR BIN SOL XOR</small></span>
         <span><strong>Alignment</strong><small id="phaseAlignment">0/6 nodes aligned</small></span>
-        <span><strong>Phase proof</strong><small id="phaseProof">Turing cue: crib checks state.</small></span>
+        <span><strong>Turing cue</strong><small id="phaseProof">Crib checks state.</small></span>
       </div>
 
       <div id="dayMeter" class="day-meter" aria-label="Daylight remaining">
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <p class="play-rule"><strong>Goal:</strong> Start with 45s daylight. Match numbered nodes to target glyphs. Tap nodes to cycle <span>SOL -> XOR -> LUX -> BIN</span>. Use <span>Hint</span>/<span>Demo Solve</span> for receipt path.</p>
+      <p class="play-rule"><strong>Goal:</strong> Start with 45s daylight. Rotate numbered nodes, match the target glyphs, and survive nightfall. Tap nodes to cycle <span>SOL -> XOR -> LUX -> BIN</span>.</p>
 
       <section class="judge-path" aria-label="Run path">
         <article>
@@ -67,13 +67,13 @@
         </article>
         <article>
           <strong>3. Seal</strong>
-          <span>Auto Demo sample receipt SC-4P-2907-62-Y5VFX1.</span>
+          <span>Finish all four phases, then verify the sample receipt.</span>
           <em class="mobile-cue" aria-hidden="true">Receipt</em>
         </article>
       </section>
 
       <div class="controls quick-controls">
-        <button id="startButton" type="button" aria-keyshortcuts="Enter">Start Run</button>
+        <button id="startButton" type="button" aria-keyshortcuts="Enter" aria-label="Start run">Start</button>
         <button id="resetButton" type="button" aria-keyshortcuts="Escape R">Reset</button>
         <button id="hintButton" type="button" aria-keyshortcuts="H">Hint</button>
         <button id="demoButton" class="primary-control" type="button" aria-keyshortcuts="D" aria-label="Demo Solve full judge route">Demo Solve</button>

@@ -85,7 +85,7 @@ Expected local URLs:
   - demo solve button present
   - audio cue button present
   - daylight meter present
-  - play rule gives the opening-daylight target-glyph receipt path
+- play rule gives the opening-daylight rotate-match-survive goal
   - start shortcut exposed
   - reset shortcut exposed
   - hint shortcut exposed

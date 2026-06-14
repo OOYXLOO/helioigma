@@ -52,10 +52,10 @@
     "Close the checksum before nightfall seals the rotor.",
   ];
   const phaseProofs = [
-    "Turing cue: crib checks state.",
-    "Turing cue: XOR checks parity.",
-    "Turing cue: binary carry controls shifts.",
-    "Turing cue: checksum seals the trace.",
+    "Crib checks state.",
+    "XOR checks parity.",
+    "Binary carry controls shifts.",
+    "Checksum seals the trace.",
   ];
   const phaseScanNotes = [
     "Crib scan: first mismatch.",

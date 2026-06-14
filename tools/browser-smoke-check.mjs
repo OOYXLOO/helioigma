@@ -5,7 +5,15 @@ import { dirname, extname, join, normalize, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const require = createRequire(import.meta.url);
-const { chromium } = require("playwright");
+let chromium;
+try {
+  ({ chromium } = require("playwright"));
+} catch (error) {
+  const missingPlaywright = error?.code === "MODULE_NOT_FOUND" && String(error.message || "").includes("playwright");
+  if (!missingPlaywright) throw error;
+  console.error("Missing Playwright dependency. Run `npm ci` from the Helioigma repository root, then rerun `npm run smoke`.");
+  process.exit(1);
+}
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const mimeTypes = new Map([
@@ -178,19 +186,16 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
-    assert(
-      desktop.objective.proof === "Turing cue: crib checks state.",
-      "phase proof initial copy changed"
-    );
+    assert(desktop.objective.proof === "Crib checks state.", "phase proof initial copy changed");
     assert(desktop.objective.proofFits, "desktop phase proof text is clipped");
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
-    assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
+    assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
     assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "first-screen run path cards changed");
-    assert(desktop.judgePathText?.includes("Auto Demo sample receipt SC-4P-2907-62-Y5VFX1"), "first-screen run path no longer labels the sample receipt as Auto Demo evidence");
+    assert(desktop.judgePathText?.includes("Finish all four phases") && desktop.judgePathText?.includes("verify the sample receipt"), "first-screen run path no longer keeps receipt verification after play");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
@@ -317,7 +322,7 @@ async function main() {
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(
-      mobile.objective.proof === "Turing cue: crib checks state.",
+      mobile.objective.proof === "Crib checks state.",
       "mobile phase proof initial copy changed"
     );
     assert(mobile.objective.proofFits, "mobile phase proof text is clipped");
