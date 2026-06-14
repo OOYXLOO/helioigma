@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <p class="play-rule"><strong>Goal:</strong> Start with 45s daylight; later phases tighten. Match numbered nodes to target glyphs. Use <span>Hint</span> or <span>Demo Solve</span> for the score and receipt path.</p>
+      <p class="play-rule"><strong>Goal:</strong> Start with 45s daylight. Match numbered nodes to target glyphs. Tap nodes to cycle <span>SOL -> XOR -> LUX -> BIN</span>. Use <span>Hint</span>/<span>Demo Solve</span> for receipt path.</p>
 
       <section class="judge-path" aria-label="Run path">
         <article>
@@ -63,7 +63,7 @@
         </article>
         <article>
           <strong>3. Seal</strong>
-          <span>Finish with receipt SC-4P-2907-62-Y5VFX1.</span>
+          <span>Auto Demo sample receipt SC-4P-2907-62-Y5VFX1.</span>
         </article>
       </section>
 
@@ -76,7 +76,7 @@
         <div id="statusLine" class="status" role="status">Decode the Helioigma rotor before nightfall.</div>
       </div>
 
-      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered rotor node until it matches the target glyph above it. Score rewards held daylight; the final receipt lets judges verify the path. Enter starts, H gives a hint for the next mismatched node, D runs the demo solve, S toggles optional audio cues, Escape or R resets, and number keys rotate matching numbered nodes.</p>
+      <p id="srHelp" class="sr-only">Start the game, then rotate each numbered rotor node until it matches the target glyph above it. Each move cycles SOL to XOR to LUX to BIN. Score rewards held daylight; the final receipt lets judges verify the path. Enter starts, H gives a hint for the next mismatched node, D runs the demo solve, S toggles optional audio cues, Escape or R resets, and number keys rotate matching numbered nodes.</p>
       <p id="phaseAnnouncer" class="sr-only" aria-live="assertive"></p>
       <canvas id="game" width="960" height="640" tabindex="0" aria-keyshortcuts="1 2 3 4 5 6 7 8 9" aria-label="Helioigma playfield" aria-describedby="srHelp"></canvas>
       <section id="tracePanel" class="trace-panel" aria-label="Rotor trace" aria-live="polite">

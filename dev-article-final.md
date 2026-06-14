@@ -14,7 +14,8 @@ If you are judging quickly, the first-minute check is: rotate one node, watch Ro
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
-- Verify the stable receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
+- Verify the Auto Demo sample receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
+- Privacy review, no best-score storage: https://ooyxloo.github.io/helioigma/?nostore=1
 - Source: https://github.com/OOYXLOO/helioigma
 
 Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished Demo Solve summary inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
@@ -43,9 +44,9 @@ Helioigma is the game title and the public build slug, chosen so the submission 
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. A wheel let me turn that into a small mechanical ritual instead of a static theme reference. Each phase asks the player to line up a readable pattern, but the timer keeps it from becoming a spreadsheet.
 
-The build is meant to be judged quickly without losing the game premise: the first screen names the rotor, the matching goal, and the three-step judge path. A reviewer can play manually with `Hint` if they want a small nudge, press `Demo Solve`, watch all four phases complete, copy the stable receipt `SC-4P-2907-62-Y5VFX1`, and verify the checksum locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
+The build is meant to be judged quickly without losing the game premise: the first screen names the rotor, the matching goal, the `SOL -> XOR -> LUX -> BIN` node cycle, and the three-step judge path. A reviewer can play manually with `Hint` if they want a small nudge, press `Demo Solve`, watch all four phases complete, copy the stable Auto Demo sample receipt `SC-4P-2907-62-Y5VFX1`, and verify the checksum locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only default browser storage is a local numeric best-score key for this game, and `?nostore=1` disables best-score reads/writes for stricter privacy review.
 
-For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, each node move pulses the board, Rotor Trace names the next mismatch, phase scan order changes as the run advances, and a failed manual attempt becomes a Nightfall report instead of a dead end. The proof layer is there for judges, but the first artifact is still the playable daylight race.
+For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, the visible cycle cue says how a tap changes each glyph, each node move pulses the board, Rotor Trace names the next mismatch, phase scan order changes as the run advances, and a failed manual attempt becomes a Nightfall report instead of a dead end. The proof layer is there for judges, but the first artifact is still the playable daylight race.
 
 ## Video Demo
 
@@ -157,7 +158,7 @@ Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt
 
 I treated the review surface as part of the game. Helioigma can be played with mouse, touch, on-screen buttons, or number keys, and the screen includes hidden helper text plus a phase announcer for assistive technology. Audio cues are generated in the browser, start off by default, and only turn on after the player chooses `Audio` or presses `S`.
 
-The build also avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only browser storage is the local numeric best score for this game. The receipt is deliberately transparent: it is not anti-cheat, identity, payout, or eligibility proof. It is a small review checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
+The build also avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only default browser storage is the local numeric best score for this game, and `?nostore=1` disables best-score storage for stricter privacy review. The receipt is deliberately transparent: it is not anti-cheat, identity, payout, or eligibility proof. It is a small review checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
 
 ## How I Built It
 

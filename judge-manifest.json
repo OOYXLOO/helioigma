@@ -41,12 +41,12 @@
     "public_review_surface": "Public review uses the GitHub Pages game, judge page, judge review card, smoke test, phase-proof line, Nightfall recovery report, receipt verifier, manifest, source, and media links.",
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
-    "browser_storage": "Only a local numeric best-score key is used.",
+    "browser_storage": "Only a local numeric best-score key is used by default; ?nostore=1 disables best-score reads/writes for stricter privacy review.",
     "audio": "Optional generated Web Audio cues are off by default and require the Audio button or S shortcut."
   },
   "accessibility_and_fair_play": {
     "input_paths": [
-      "mouse or tap on rotor nodes",
+      "mouse or tap on rotor nodes, with a visible SOL -> XOR -> LUX -> BIN cycle cue",
       "on-screen node buttons",
       "number keys 1 through 9",
       "keyboard shortcuts for start, reset, hint, demo solve, and audio"
@@ -56,7 +56,7 @@
       "aria-live phase announcer",
       "visible phase objective and target glyph lines"
     ],
-    "privacy": "No telemetry, analytics endpoint, backend, API key, account login, or private console is required; only a local numeric best-score key is stored.",
+    "privacy": "No telemetry, analytics endpoint, backend, API key, account login, or private console is required; only a local numeric best-score key is stored by default, and ?nostore=1 disables that read/write path.",
     "receipt_boundary": "The receipt is transparent review evidence for the stable demo route, not anti-cheat, identity, payout, tax, eligibility, or account proof."
   },
   "originality": {
@@ -107,6 +107,7 @@
   "public_urls": {
     "play": "https://ooyxloo.github.io/helioigma/",
     "auto_demo": "https://ooyxloo.github.io/helioigma/?demo=1",
+    "privacy_review": "https://ooyxloo.github.io/helioigma/?nostore=1",
     "judge": "https://ooyxloo.github.io/helioigma/judge.html",
     "smoke": "https://ooyxloo.github.io/helioigma/smoke.html",
     "proof_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html",

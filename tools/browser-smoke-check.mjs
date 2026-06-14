@@ -93,6 +93,7 @@ async function readGameFacts(page) {
         proof: document.querySelector("#phaseProof")?.textContent.trim(),
       },
       playRule: document.querySelector(".play-rule")?.textContent.trim(),
+      judgePathText: document.querySelector(".judge-path")?.textContent.trim(),
       canvasTop: canvasRect?.top,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       trace: {
@@ -159,12 +160,13 @@ async function main() {
       "phase proof initial copy changed"
     );
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
-    assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
+    assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
     assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "first-screen run path cards changed");
+    assert(desktop.judgePathText?.includes("Auto Demo sample receipt SC-4P-2907-62-Y5VFX1"), "first-screen run path no longer labels the sample receipt as Auto Demo evidence");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
@@ -246,6 +248,28 @@ async function main() {
     assert(autoDemo.activeElementId === "verifyProofLink", "auto demo route did not focus the verifier link after completion");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
+    await page.goto(`${baseUrl}?nostore=1`, { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => localStorage.setItem("helioigma-best-score", "7777"));
+    await page.reload({ waitUntil: "domcontentloaded" });
+    const noStoreInitial = await page.evaluate(() => ({
+      best: document.querySelector("#bestLabel")?.textContent.trim(),
+      stored: localStorage.getItem("helioigma-best-score"),
+      playRule: document.querySelector(".play-rule")?.textContent.trim(),
+    }));
+    assert(noStoreInitial.best === "0", "?nostore=1 should not read the stored best score");
+    assert(noStoreInitial.stored === "7777", "?nostore=1 setup did not preserve the stored sentinel");
+    assert(noStoreInitial.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "?nostore=1 route lost the visible glyph cycle cue");
+    await page.click("#demoButton");
+    await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    const noStoreAfterDemo = await page.evaluate(() => ({
+      best: document.querySelector("#bestLabel")?.textContent.trim(),
+      stored: localStorage.getItem("helioigma-best-score"),
+      receipt: document.querySelector("#proofCode")?.textContent.trim(),
+    }));
+    assert(noStoreAfterDemo.receipt === "SC-4P-2907-62-Y5VFX1", "?nostore=1 route did not preserve Demo Solve");
+    assert(Number(noStoreAfterDemo.best) >= 2907, "?nostore=1 should keep an in-memory best score during the run");
+    assert(noStoreAfterDemo.stored === "7777", "?nostore=1 should not overwrite localStorage");
+
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
     const mobile = await readGameFacts(page);
@@ -262,6 +286,7 @@ async function main() {
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
     assert(mobile.heroHook === "Seal the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
+    assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(
       mobile.objective.proof === "Solstice crib starts state transitions.",

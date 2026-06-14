@@ -191,10 +191,13 @@ try {
   if ($manifest.status.no_secrets -ne $true) { throw "judge-manifest no-secret boundary mismatch" }
   if (-not ($manifest.status.public_review_surface -like "Public review uses*")) { throw "judge-manifest public review surface mismatch" }
   if (-not ($manifest.status.owner_publication_note -like "Public hosting and DEV article publication are external publication actions*")) { throw "judge-manifest owner publication note mismatch" }
+  if (-not ($manifest.status.browser_storage -like "*?nostore=1 disables best-score reads/writes*")) { throw "judge-manifest browser-storage privacy mode mismatch" }
   if ($manifest.public_urls.first_minute -ne "https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md") { throw "judge-manifest first-minute URL mismatch" }
+  if ($manifest.public_urls.privacy_review -ne "https://ooyxloo.github.io/helioigma/?nostore=1") { throw "judge-manifest privacy review URL mismatch" }
   if ($manifest.accessibility_and_fair_play.input_paths.Count -lt 4) { throw "judge-manifest accessibility input-path mismatch" }
+  if (-not (($manifest.accessibility_and_fair_play.input_paths -join " ") -like "*SOL -> XOR -> LUX -> BIN*")) { throw "judge-manifest glyph cycle cue mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
-  if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*")) { throw "judge-manifest accessibility privacy mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*?nostore=1*")) { throw "judge-manifest accessibility privacy mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review evidence*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
@@ -270,7 +273,9 @@ try {
   Assert-Contains "dev-article-final.md" "solar rotor"
   Assert-Contains "dev-article-final.md" "I chose a cipher wheel"
   Assert-Contains "dev-article-final.md" "biggest tradeoff"
-  Assert-Contains "dev-article-final.md" "only browser storage is a local numeric best-score key"
+  Assert-Contains "dev-article-final.md" "only default browser storage is a local numeric best-score key"
+  Assert-Contains "dev-article-final.md" "?nostore=1"
+  Assert-Contains "dev-article-final.md" "SOL -> XOR -> LUX -> BIN"
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
@@ -342,7 +347,10 @@ try {
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
-  Assert-Contains "README.md" "only browser storage is the local numeric best score key"
+  Assert-Contains "README.md" "only default browser storage is the local numeric best score key"
+  Assert-Contains "README.md" "?nostore=1"
+  Assert-Contains "FIRST_MINUTE.md" "Local pre-publication equivalents"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "Local pre-publication path"
   Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
   Assert-Contains "README.md" 'phase-guided manual `Hint` path'
   Assert-Contains "README.md" "XOR alternates mirrored nodes"
@@ -591,6 +599,8 @@ try {
   Assert-Contains "smoke.html" "award signals are present"
   Assert-Contains "smoke.html" "demo award signals name solstice, Turing, and judge receipt"
   Assert-Contains "game.js" "proof-verifier.html?receipt="
+  Assert-Contains "game.js" "storageDisabled"
+  Assert-Contains "game.js" 'get("nostore") === "1"'
   Assert-Contains "game.js" 'get("demo") === "1"'
   Assert-NotContains "game.js" "Run proof"
   Assert-Contains "index.html" "nodeButtons"
@@ -643,6 +653,8 @@ try {
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Start with 45s daylight"
   Assert-Contains "index.html" "Match numbered nodes to target glyphs"
+  Assert-Contains "index.html" "SOL -> XOR -> LUX -> BIN"
+  Assert-Contains "index.html" "Auto Demo sample receipt"
   Assert-Contains "index.html" "receipt path"
   Assert-Contains "index.html" "20260614-demo-priority"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
@@ -658,6 +670,7 @@ try {
   Assert-Contains "README.md" "Player feel matters as much as proof"
   Assert-Contains "verification-report.md" "is wider than the other quick controls"
   Assert-Contains "verification-report.md" "Game feel is part of the review surface"
+  Assert-Contains "verification-report.md" "Privacy review path"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"
   Assert-Contains "styles.css" "grid-column: span 2"
   Assert-Contains "judge.html" "github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"

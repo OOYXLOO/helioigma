@@ -63,6 +63,8 @@
     "Carry scan: binary chain.",
     "Checksum scan: reverse.",
   ];
+  const searchParams = new URLSearchParams(window.location.search);
+  const storageDisabled = searchParams.get("nostore") === "1";
   const bestScoreKey = "helioigma-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
@@ -184,6 +186,7 @@
   }
 
   function loadBestScore() {
+    if (storageDisabled) return 0;
     try {
       return Number(localStorage.getItem(bestScoreKey)) || 0;
     } catch {
@@ -193,6 +196,7 @@
 
   function storeBestScore(score) {
     state.bestScore = Math.max(state.bestScore, score);
+    if (storageDisabled) return;
     try {
       localStorage.setItem(bestScoreKey, String(state.bestScore));
     } catch {
@@ -1150,7 +1154,7 @@
   updateHud();
   requestAnimationFrame(tick);
 
-  if (new URLSearchParams(window.location.search).get("demo") === "1") {
+  if (searchParams.get("demo") === "1") {
     window.setTimeout(() => {
       demoSolve();
     }, 350);
