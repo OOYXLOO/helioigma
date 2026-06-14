@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check game.js && node --check tools/browser-smoke-check.mjs && node --check tools/build-demo-video.mjs && node --check tools/build-demo-webm.mjs",
+    "check": "node --check game.js && node --check tools/browser-smoke-check.mjs && node --check tools/build-demo-video.mjs && node --check tools/build-demo-webm.mjs && node --check tools/capture-public-media.mjs",
     "preflight": "powershell -ExecutionPolicy Bypass -File ./public-preflight.ps1",
     "smoke": "node tools/browser-smoke-check.mjs",
+    "build:media": "node tools/capture-public-media.mjs",
     "build:video": "node tools/build-demo-video.mjs",
     "build:webm": "node tools/build-demo-webm.mjs",
     "build:package": "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1"

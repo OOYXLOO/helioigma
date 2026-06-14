@@ -38,6 +38,7 @@ jobs:
             tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
+            tools/capture-public-media.mjs \
             dev-article-final.md \
             dev-launch-brief.md \
             verification.html \
@@ -268,6 +269,8 @@ jobs:
           grep -q "tmpdir()" tools/build-demo-video.mjs
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
+          grep -q "clean browser contexts" tools/capture-public-media.mjs
+          grep -q "first screen inherited best score" tools/capture-public-media.mjs
           grep -q "video/webm" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs

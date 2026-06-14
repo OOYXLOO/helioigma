@@ -17,7 +17,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Local/public preflight script: `public-preflight.ps1`.
-- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
+- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
 - DEV launch brief: `dev-launch-brief.md` with final article fields, public URL checks, no-go gate, and post-publish receipt.
@@ -33,6 +33,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Current GIF demo: `helioigma-demo.gif`.
 - Optional legacy MP4 fallback, only if DEV specifically asks for MP4: `helioigma-demo.mp4`.
 - Source frames: `demo-frames-v3/`.
+- Rebuild screenshots and source frames from clean browser contexts with `npm run build:media`.
 - Install browser test dependencies from a clean clone with `npm ci` and `npx playwright install chromium`.
 - Rebuild captioned WebM from a live browser session with `npm run build:video`. Override capture scratch space with `HELIOIGMA_VIDEO_WORK_DIR` if needed.
 - Rebuild the fallback frame-based WebM with `npm run build:webm`.

@@ -89,6 +89,7 @@ try {
     "tools/build-demo-video.mjs",
     "tools/build-demo-webm.mjs",
     "tools/browser-smoke-check.mjs",
+    "tools/capture-public-media.mjs",
     "verification.html",
     "verification-report.md",
     "cover.png",
@@ -127,6 +128,7 @@ try {
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
+  if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
 
@@ -152,6 +154,7 @@ try {
     foreach ($entry in @(
       ".github/workflows/verify.yml",
       "demo-frames-v3/00-ready.png",
+      "tools/capture-public-media.mjs",
       "tools/browser-smoke-check.mjs",
       "tools/build-package.ps1",
       "mobile-complete-v1.png"
@@ -413,6 +416,9 @@ try {
   Assert-Contains "tools/build-demo-video.mjs" "tmpdir()"
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
+  Assert-Contains "tools/capture-public-media.mjs" "clean browser contexts"
+  Assert-Contains "tools/capture-public-media.mjs" "first screen inherited best score"
+  Assert-Contains "tools/capture-public-media.mjs" "mobile-complete-v1.png"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-demo.webm"
   Assert-Contains ".github/workflows/verify.yml" "Run browser smoke on committed package"
   Assert-Contains ".github/workflows/verify.yml" "npm run smoke"
