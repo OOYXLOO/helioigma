@@ -302,6 +302,9 @@ async function main() {
       visualHeroTop: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().top,
       visualHeroBottom: document.querySelector(".visual-judge-hero")?.getBoundingClientRect().bottom,
       verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
+      standoutHeading: [...document.querySelectorAll(".rubric-snapshot h2")].some((node) => node.textContent.trim() === "Why it stands out in a jam review"),
+      standoutItems: [...document.querySelectorAll(".standout-item strong")].map((node) => node.textContent.trim()),
+      standoutCopy: document.querySelector('[aria-label="Why Helioigma stands out"]')?.textContent.trim() || "",
       rubricItems: [...document.querySelectorAll(".rubric-item strong")].map((node) => node.textContent.trim()),
       hasPublishAssistant: document.body.innerText.includes("Publish Assistant"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
@@ -340,6 +343,10 @@ async function main() {
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
+    assert(judge.standoutHeading, "judge page is missing the competitive standout section");
+    assert(judge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe", "judge standout cards changed");
+    const standoutCopy = judge.standoutCopy.toLowerCase();
+    assert(standoutCopy.includes("avoids the common prototype traps") && standoutCopy.includes("the first click opens a timed rotor puzzle") && standoutCopy.includes("same static route instead of separate screenshots"), "judge standout copy no longer names the competitive edge");
     assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
@@ -372,6 +379,7 @@ async function main() {
         imageVisible: Boolean(media && media.top < innerHeight && media.bottom > 0),
         actionsVisible: Boolean(actions && actions.top < innerHeight && actions.bottom <= innerHeight),
         primaryActions: [...document.querySelectorAll(".visual-judge-hero .action strong")].map((node) => node.textContent.trim()),
+        standoutItems: [...document.querySelectorAll(".standout-item strong")].map((node) => node.textContent.trim()),
         overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       };
     });
@@ -379,6 +387,7 @@ async function main() {
     assert(mobileJudge.imageVisible, "mobile judge page does not show the visual gameplay asset in the first viewport");
     assert(mobileJudge.actionsVisible, "mobile judge page does not show Play and Auto Demo in the first viewport");
     assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo", "mobile judge page primary actions changed");
+    assert(mobileJudge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe", "mobile judge page standout cards changed");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
     assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");

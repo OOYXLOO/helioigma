@@ -59,7 +59,7 @@
       line-height: 1.6;
     }
 
-    .primary-actions, .evidence-actions, .grid, .rubric-grid {
+    .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid {
       display: grid;
       gap: 14px;
       margin-top: 24px;
@@ -126,7 +126,12 @@
       margin-top: 14px;
     }
 
-    .card, .action, .rubric-item {
+    .standout-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .card, .action, .rubric-item, .standout-item {
       min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -289,11 +294,13 @@
       margin: 10px 0 0;
     }
 
-    .rubric-item {
+    .rubric-item,
+    .standout-item {
       background: rgba(255, 255, 255, 0.05);
     }
 
-    .rubric-item strong {
+    .rubric-item strong,
+    .standout-item strong {
       display: block;
       margin-bottom: 8px;
       color: var(--accent);
@@ -301,7 +308,8 @@
       line-height: 1.2;
     }
 
-    .rubric-item p {
+    .rubric-item p,
+    .standout-item p {
       margin: 0;
       font-size: 13px;
       line-height: 1.45;
@@ -357,7 +365,7 @@
     a { color: var(--accent); font-weight: 800; }
 
     @media (max-width: 780px) {
-      .visual-judge-hero, .primary-actions, .evidence-actions, .grid, .rubric-grid { grid-template-columns: 1fr; }
+      .visual-judge-hero, .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid { grid-template-columns: 1fr; }
       .route-snapshot { grid-template-columns: 1fr; }
       .review-verdict { grid-template-columns: 1fr; }
       .review-flow ol { grid-template-columns: 1fr; }
@@ -427,6 +435,17 @@
         <li><strong>Check Source.</strong><span>Use the manifest and README only if deeper review is needed; the playable loop is static and no-backend.</span></li>
         <li><strong>Optional Smoke.</strong><span>Run the 69-check browser smoke test if you want machine verification of the same score/receipt, phase-proof, Nightfall, Rotor Trace, and link coverage.</span></li>
       </ol>
+    </section>
+
+    <section class="rubric-snapshot" aria-label="Why Helioigma stands out">
+      <h2>Why it stands out in a jam review</h2>
+      <p>For a crowded challenge, Helioigma avoids the common prototype traps: the game is playable first, the theme is mechanical, the demo is reproducible, and the review path is public without hidden services.</p>
+      <div class="standout-grid">
+        <div class="standout-item"><strong>Not a write-up wrapper</strong><p>The first click opens a timed rotor puzzle; the article and judge pack explain a real playable loop rather than compensating for one.</p></div>
+        <div class="standout-item"><strong>Theme in mechanics</strong><p>Daylight pressure, nightfall failure, XOR/BIN glyphs, target alignment, and checksum reasoning carry the solstice and Turing ideas through play.</p></div>
+        <div class="standout-item"><strong>Fast judge confidence</strong><p>Auto Demo, Rotor Trace, receipt verifier, manifest, and smoke test all inspect the same static route instead of separate screenshots.</p></div>
+        <div class="standout-item"><strong>Publication-safe</strong><p>No backend, account login, telemetry, API key, private data, payout data, or hidden console is required to review the entry.</p></div>
+      </div>
     </section>
 
     <a class="demo-frame" href="helioigma-demo.gif" aria-label="Watch the Helioigma demo GIF">
