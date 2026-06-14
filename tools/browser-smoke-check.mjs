@@ -114,6 +114,9 @@ async function readGameFacts(page) {
         soundText: document.querySelector("#soundButton")?.textContent.trim(),
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
       },
+      controlHeights: [...document.querySelectorAll(".quick-controls button")]
+        .filter((button) => getComputedStyle(button).display !== "none")
+        .map((button) => button.getBoundingClientRect().height),
       judgeLinks: [...document.querySelectorAll(".judge-links a")].map((link) => link.textContent.trim()),
       judgeLinkHrefs: [...document.querySelectorAll(".judge-links a")].map((link) => link.getAttribute("href")),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -234,6 +237,7 @@ async function main() {
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
+    assert(mobile.controlHeights.every((height) => height >= 40), `mobile visible control buttons are too short: ${mobile.controlHeights.join(",")}`);
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");

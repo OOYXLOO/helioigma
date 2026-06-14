@@ -872,6 +872,10 @@ button:focus-visible {
     padding: 5px 6px;
   }
 
+  .objective-strip span:nth-child(4) {
+    display: none;
+  }
+
   .objective-strip span {
     border-left-width: 2px;
     padding-left: 6px;
@@ -943,20 +947,25 @@ button:focus-visible {
 
   .controls {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 5px;
     padding: 5px;
   }
 
   button {
-    min-height: 32px;
-    padding: 0 6px;
+    min-height: 40px;
+    padding: 0 5px;
     font-size: 10px;
+  }
+
+  #resetButton {
+    display: none;
   }
 
   .status {
     grid-column: 1 / -1;
     width: 100%;
+    min-height: 26px;
     text-align: left;
   }
 
