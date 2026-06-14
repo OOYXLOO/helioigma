@@ -74,7 +74,7 @@ jobs:
           grep -q "solar rotor" dev-article-final.md
           grep -q "You open with 45 seconds of daylight" dev-article-final.md
           grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
-          grep -q "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked" dev-article-final.md
+          grep -q "inspectable summary receipt with score, shifts, phase count, and checksum" dev-article-final.md
           grep -q "That is my Best Ode to Alan Turing angle" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
@@ -95,10 +95,10 @@ jobs:
           grep -q "Prize Category" dev-article-final.md
           grep -q "An Ode with Restraint" dev-article-final.md
           grep -q "not a biography game" dev-article-final.md
-          grep -q "careful reasoning about machines and proof" dev-article-final.md
+          grep -q "careful reasoning about machines and evidence" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
           grep -q "Award thesis: Helioigma is a playable ode" dev-article-final.md
-          grep -q "playable ode, a judge-verifiable loop, and a finished static package" dev-article-final.md
+          grep -q "playable ode, a receipt-checkable loop, and a finished static package" dev-article-final.md
           grep -q "judge-manifest.json" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
           grep -q "I chose a cipher wheel" dev-article-final.md
@@ -220,7 +220,7 @@ jobs:
           grep -q "60-second review path" judge.html
           grep -q "Award thesis" judge.html
           grep -q "Playable ode" judge.html
-          grep -q "Judge-verifiable" judge.html
+          grep -q "Receipt-checkable" judge.html
           grep -q "Finished surface" judge.html
           grep -q "Primary judge actions" judge.html
           grep -q "Play First." judge.html

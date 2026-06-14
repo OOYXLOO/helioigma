@@ -6,7 +6,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 
 - GitHub Pages-ready static game package for the intended public URLs.
 - The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
-- Owner-only launch notes are kept in Markdown; the public judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
+- Owner-only launch notes are kept in Markdown; the public judge path is the playable game, judge page, receipt checker, manifest, media, and optional smoke test.
 - No account login, payout data, API key, or private user data is used.
 - The only default browser storage is the local numeric best score key for this game; `?nostore=1` disables best-score reads/writes for stricter privacy review.
 - Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, no telemetry, and a transparent receipt that is review evidence rather than anti-cheat or identity proof.
@@ -29,11 +29,11 @@ Helioigma is a compact browser puzzle game for the June solstice theme and an od
 
 The current build now has a visible four-phase progress strip, a first-screen phase objective strip with a compact phase-proof line, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, a Nightfall report for failed manual runs, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on `Start Run`, a phase-guided manual `Hint` path, tactile node pulse feedback after hints or shifts, optional default-off Web Audio cues, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path makes the published Demo Solve summary inspectable through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+Award thesis: Helioigma is a playable ode, a receipt-checkable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path makes the published Demo Solve summary inspectable through Auto Demo, Rotor Trace, receipt checker, manifest, and optional smoke test.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
-Crowded-jam distinction: if several entries start from solstice ciphers or Turing references, Helioigma's claim is the playable system around the idea. A judge can feel the timed node decisions, see Rotor Trace explain the state change, lose into a finished Nightfall report, or press Demo Solve and verify the same public path through a checksum receipt. The proof layer supports the game-first loop instead of replacing it.
+Crowded-jam distinction: if several entries start from solstice ciphers or Turing references, Helioigma's claim is the playable system around the idea. A judge can feel the timed node decisions, see Rotor Trace explain the state change, lose into a finished Nightfall report, or press Demo Solve and check the same public path through a checksum receipt. The receipt layer supports the game-first loop instead of replacing it.
 
 Player feel matters as much as proof: each phase gives a readable target, a visible `SOL -> XOR -> LUX -> BIN` rotation cue, a short timer, immediate node pulse feedback, a changing Hint/Rotor Trace scan order, optional audio, and a clean Nightfall recovery. The verifier supports the game loop; it does not replace the feeling of making and correcting moves under daylight pressure.
 
@@ -45,12 +45,12 @@ The playable first screen now leads with the game hook, `Seal the daylight run.`
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
+- Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## Originality and Review Transparency
 
-Helioigma is a new static game package for this jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, manifest, smoke test, screenshots, and demo media are included so reviewers can inspect the build directly.
+Helioigma is a new static game package for this jam period, not a wrapper around a prior game template. The gameplay code, receipt checker, judge page, manifest, smoke test, screenshots, and demo media are included so reviewers can inspect the build directly.
 
 The public media pack is generated from this build's browser UI and checked-in demo frames. No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state is required to review the submission.
 
@@ -86,7 +86,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - First-move coaching holds its highlight long enough for a cold reviewer to see it, and wrong shifts now state the exact visible penalty (`Daylight -0.45s`) instead of making the timer loss feel mysterious.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
-- Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt verifier is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
+- Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt checker is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 - `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:gif`, `npm run build:video`, `npm run build:webm`, `npm run verify:media`, and `npm run build:package`.
@@ -122,7 +122,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, default-off Audio controls, score/receipt explanation, daylight meter, desktop canvas priority, game-first Run Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 70 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, default-off Audio controls, score/receipt explanation, daylight meter, desktop canvas priority, mobile Run Path after the canvas, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 70 PASS checks.
 - `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/capture-public-media.mjs`: clean-browser media capture for desktop/mobile first screens, completion screenshots, and the seven `demo-frames-v3` frames; it asserts first-screen score/best/shifts start at zero so public assets do not inherit local review state.
 - `tools/build-demo-gif.py`: reproducible GIF builder for the current seven-frame gameplay preview.

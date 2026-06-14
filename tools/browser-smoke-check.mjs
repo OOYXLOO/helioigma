@@ -104,6 +104,7 @@ async function readGameFacts(page) {
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
       soundVisible: Boolean(sound && sound.top >= 0 && sound.bottom <= innerHeight),
       judgePathBeforeCanvas: Boolean(judgePath && canvasRect && judgePath.bottom <= canvasRect.top + 1),
+      judgePathAfterCanvas: Boolean(judgePath && canvasRect && judgePath.top >= canvasRect.bottom - 1),
       judgePathVisible: Boolean(judgePath && judgePath.top >= 0 && judgePath.bottom <= innerHeight),
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
       dayMeterLabel: document.querySelector("#dayMeterLabel")?.textContent.trim(),
@@ -327,8 +328,7 @@ async function main() {
     assert(mobile.controlWidths.demoButton >= mobile.controlWidths.startButton * 1.75, `mobile Demo Solve is not visually prioritized: ${JSON.stringify(mobile.controlWidths)}`);
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
-    assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
-    assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
+    assert(mobile.judgePathAfterCanvas, "mobile Run Path should sit after the playable canvas");
     assert(mobile.heroHook === "Seal the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.mobileCues.map((cue) => cue.text).join("|") === "Rotate|Trace|Receipt", "mobile run path cues changed");
@@ -346,8 +346,8 @@ async function main() {
     assert(mobile.targetRowBounds.left >= 24, `mobile target row is too close to the left canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.targetRowBounds.right <= mobile.targetRowBounds.width - 24, `mobile target row is too close to the right canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.targetRowBounds.inset >= 48, `mobile target row inset is too small for glyph labels: ${JSON.stringify(mobile.targetRowBounds)}`);
-    assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
-    assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
+    assert(mobile.canvasTop < 400, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
+    assert(mobile.canvasVisibleHeight >= 330, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
@@ -408,7 +408,7 @@ async function main() {
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
     assert(judge.heading === "Helioigma is a playable Turing ode for holding the longest day.", "judge page heading no longer leads with the award thesis");
-    assert(judge.dek?.includes("small static four-phase game") && judge.dek?.includes("transparent receipt") && judge.dek?.includes("receipt verifier"), "judge page deck no longer gives the quick review frame");
+    assert(judge.dek?.includes("small static four-phase game") && judge.dek?.includes("transparent receipt") && judge.dek?.includes("receipt checker"), "judge page deck no longer gives the quick review frame");
     assert(judge.hasGif, "judge page does not point to the current GIF");
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
@@ -438,7 +438,7 @@ async function main() {
     assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260615-fresh-media", "judge page demo frame does not use the current cache-busted animated GIF");
     assert(judge.visualHeroTop >= 0 && judge.visualHeroTop < 420, "judge page visual hero is not in the first viewport");
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
-    assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
+    assert(judge.verdictItems.join("|") === "Playable ode|Receipt-checkable|Finished surface", "judge award thesis cards changed");
     assert(judge.standoutHeading, "judge page is missing the competitive standout section");
     assert(judge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "judge standout cards changed");
     const standoutCopy = judge.standoutCopy.toLowerCase();

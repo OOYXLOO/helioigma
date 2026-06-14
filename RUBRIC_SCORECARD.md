@@ -4,7 +4,7 @@ Purpose: give a source-first DEV judge a compact, evidence-linked map from the J
 
 ## Fast Verdict
 
-Helioigma is a finished static browser game for the Best Ode to Alan Turing route: a four-phase daylight timer puzzle, a restrained Turing-inspired rotor/checksum mechanic, and a judge-verifiable receipt path that runs without accounts, servers, APIs, or private data.
+Helioigma is a finished static browser game for the Best Ode to Alan Turing route: a four-phase daylight timer puzzle, a restrained Turing-inspired rotor/checksum mechanic, and a receipt-checkable path that runs without accounts, servers, APIs, or private data.
 
 ## Criteria Map
 

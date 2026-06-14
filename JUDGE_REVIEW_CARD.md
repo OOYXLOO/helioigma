@@ -6,7 +6,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
+- Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## 60-Second Path
@@ -26,17 +26,17 @@ Local pre-publication path from a static server: `index.html`, `index.html?demo=
 
 ## Award Thesis
 
-Helioigma is a playable ode, a judge-verifiable loop, and a finished static package.
+Helioigma is a playable ode, a receipt-checkable loop, and a finished static package.
 
 - Solstice fit: daylight is the timer, nightfall is the fail state, and holding the longest day is the win condition.
 - Turing fit: rotor-like alignment, target checking, XOR/binary language, state reasoning, first-screen `Turing cue` phase proof, and a local checksum receipt carry the tribute through mechanics.
-- Execution evidence: the same public build includes the game, judge page, Nightfall recovery report, receipt verifier, manifest, screenshots, GIF/WebM media, and optional smoke test.
+- Execution evidence: the same public build includes the game, judge page, Nightfall recovery report, receipt checker, manifest, screenshots, GIF/WebM media, and optional smoke test.
 
 ## Crowded-Jam Differentiator
 
 If the review queue contains several cipher or Turing-themed entries, Helioigma should still read differently:
 
-- Game-first: timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the proof layer matters.
+- Game-first: timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.
 - Reproducible: Demo Solve uses the same public controls and produces receipt `SC-4P-2907-62-Y5VFX1`.
 - Finished on failure: Nightfall reports aligned nodes, held phases, score, shifts, and gives Retry or Demo Solve instead of a dead end.
 - Public-safe: no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect the build.

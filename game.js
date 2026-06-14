@@ -424,7 +424,7 @@
     const aligned = countAlignedNodes();
     phaseObjective.textContent = state.complete ? "Receipt sealed" : phaseNames[safeLevel];
     phaseObjective.nextElementSibling.textContent = state.complete
-      ? "The longest-day run is complete; verify the receipt below."
+      ? "The longest-day run is complete; inspect the receipt below."
       : phaseMottos[safeLevel];
     phaseTargetLine.textContent = state.target.map((value) => glyphs[value]).join(" ");
     phaseAlignment.textContent = state.complete

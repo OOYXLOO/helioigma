@@ -925,9 +925,9 @@ button:focus-visible {
   .day-meter { order: 3; }
   .controls { order: 4; }
   .objective-strip { order: 5; }
-  .judge-path { order: 6; }
-  canvas { order: 7; }
-  .play-rule { order: 8; }
+  canvas { order: 6; }
+  .play-rule { order: 7; }
+  .judge-path { order: 8; }
   .trace-panel { order: 9; }
   .node-buttons { order: 10; }
   .judge-links { order: 11; }

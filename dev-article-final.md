@@ -10,25 +10,25 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-medi
 
 ## Reviewer Fast Path
 
-If you are judging quickly, the first-minute check is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then verify receipt `SC-4P-2907-62-Y5VFX1`.
+If you are judging quickly, the first-minute check is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then inspect receipt `SC-4P-2907-62-Y5VFX1`.
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
-- Verify the Auto Demo sample receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
+- Check the Auto Demo sample receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Privacy review, no best-score storage: https://ooyxloo.github.io/helioigma/?nostore=1
 - Source: https://github.com/OOYXLOO/helioigma
 
-Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished Demo Solve summary inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
+Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, with a small checksum receipt to make the finished Demo Solve summary inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media)
 
-*The first-minute loop in motion: match nodes, trace state, seal the run, verify the receipt.*
+*The first-minute loop in motion: match nodes, trace state, seal the run, check the receipt.*
 
 ## The Longest Day as a Countdown Machine
 
 You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before each tightening phase empties its timer. It is a little daylight machine: read the target glyphs, tap a numbered node, watch the wheel answer, and decide whether to chase the next mismatch or spend the `Hint` nudge.
 
-Helioigma is built around that small pressure loop. Each phase changes the target, the live objective strip tells you what the rotor wants next, and a small phase-proof line names a compact Turing cue: crib state checks, XOR parity, binary carry, then checksum trace. The manual Hint and Rotor Trace path also changes by phase: Crib follows the first visible mismatch, XOR alternates mirrored rotor nodes, Carry advances through the binary chain, and Checksum verifies in reverse. Clear all four phases and the game leaves an inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked against the public verifier.
+Helioigma is built around that small pressure loop. Each phase changes the target, the live objective strip tells you what the rotor wants next, and a compact Turing cue names the current reasoning: crib state checks, XOR parity, binary carry, then checksum trace. The manual Hint and Rotor Trace path also changes by phase: Crib follows the first visible mismatch, XOR alternates mirrored rotor nodes, Carry advances through the binary chain, and Checksum scans in reverse. Clear all four phases and the game leaves an inspectable summary receipt with score, shifts, phase count, and checksum.
 
 That is my Best Ode to Alan Turing angle: rotor state and checksum reasoning carry the tribute; daylight pressure carries the solstice theme; and the finished static package lets a judge inspect one stable Demo Solve without trusting a hidden service.
 
@@ -40,7 +40,7 @@ Helioigma is the game title and the public build slug, chosen so the submission 
 
 I chose a cipher wheel because the solstice already has a natural tension: one unusually long day, then the light starts slipping away again. The first screen names the rotor, the matching goal, the `SOL -> XOR -> LUX -> BIN` node cycle, and the three-step judge path. A reviewer can play manually with `Hint`, press `Demo Solve`, copy the stable Auto Demo sample receipt `SC-4P-2907-62-Y5VFX1`, and verify the checksum locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only default browser storage is a local numeric best-score key for this game, and `?nostore=1` disables best-score reads/writes for stricter privacy review.
 
-For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, the visible cycle cue says how a tap changes each glyph, each node move pulses the board, Rotor Trace names the next mismatch, and a failed manual attempt becomes a Nightfall report instead of a dead end. The proof layer is there for judges, but the first artifact is still the playable daylight race.
+For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, the visible cycle cue says how a tap changes each glyph, each node move pulses the board, Rotor Trace names the next mismatch, and a failed manual attempt becomes a Nightfall report instead of a dead end. The receipt layer is there for judges, but the first artifact is still the playable daylight race.
 
 ## Playability Proof
 
@@ -76,11 +76,11 @@ Detailed judge links: [judge page](https://ooyxloo.github.io/helioigma/judge.htm
 
 Core features, compressed for review: four timed phases; canvas-rendered glyphs, beams, progress ring, and particle feedback; mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback; phase-specific hint order where Crib uses the first mismatch, XOR alternates mirrored rotor nodes, Carry follows the chain, and Checksum scans backward; Optional default-off Web Audio cues; short phase banner and screen-reader phase announcer; live Rotor Trace; score carry-over, local best score, final phase ledger, copyable `SC-4P-...` receipt, and Judge run summary.
 
-Fast review evidence stays compact: Nightfall reports failed manual runs, the receipt verifier recomputes the checksum, and the judge page, manifest, and smoke test cover the loop. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
+Fast review evidence stays compact: Nightfall reports failed manual runs, the receipt checker recomputes the checksum, and the judge page, manifest, and smoke test cover the loop. On mobile the Run Path moves below the playfield so the canvas owns the first viewport.
 
 ## Judge in 60 Seconds
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. For a first pass, the important thing is simple: play the wheel, watch the state trace, and verify the receipt.
+Award thesis: Helioigma is a playable ode, a receipt-checkable loop, and a finished static package. For a first pass, the important thing is simple: play the wheel, watch the state trace, and inspect the receipt.
 
 Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data. No account, API, backend, private data, or hidden judge path is needed to inspect the build.
 
@@ -117,7 +117,7 @@ Controls:
 - Press `Enter` to start a fresh run.
 - Press `Escape` or `R` to reset the board.
 
-Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify score, shift count, phase count, and checksum summary without trusting a hidden backend.
+Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges inspect score, shift count, phase count, and checksum summary without trusting a hidden backend.
 
 ## Accessibility, Fair Play, and Privacy
 
@@ -135,7 +135,7 @@ The game awards points for locking nodes, keeps a shift counter, carries score t
 solstice|4|score|shifts|4
 ```
 
-The verifier recomputes that checksum in the browser and displays the parsed receipt facts. It is not anti-cheat infrastructure; it is a reproducible run checksum that makes the demo path inspectable.
+The receipt checker recomputes that checksum in the browser and displays the parsed receipt facts. It is not anti-cheat infrastructure; it is a reproducible run checksum that makes the demo path inspectable.
 
 The biggest tradeoff was keeping the canvas interaction playful while making the review path deterministic. Manual play keeps the live timer and normal controls, while `Demo Solve` pauses timer drift and uses the same node-rotation path so the judge can inspect one stable receipt without a hidden test mode.
 
@@ -156,13 +156,13 @@ For the Alan Turing angle, Helioigma borrows the feeling of rotor alignment and 
 
 I wanted the Turing reference to be respectful instead of decorative. Helioigma is not a biography game, and it does not try to recreate the Bombe or any real wartime machine. It keeps the tribute inside the things a browser game can honestly express: state, logic, alignment, verification, pressure, and a small act of holding light against a timer.
 
-That is also why the verifier matters to the theme. Turing's legacy is not only "secret codes"; it is careful reasoning about machines and proof. The receipt is modest, but it makes the solve inspectable instead of asking the judge to trust a screenshot.
+That is also why the receipt matters to the theme. Turing's legacy is not only "secret codes"; it is careful reasoning about machines and evidence. The checksum is modest, but it makes the solve inspectable instead of asking the judge to trust a screenshot.
 
 ## Why It Is Not Just a Cipher Demo
 
-I wanted the Turing reference to live in the interaction, not only in the title. The player manipulates rotor state under a daylight timer, builds a score through phase solves, and leaves behind a receipt that can be checked independently. Rotor Trace shows the state machine changing, `Demo Solve` uses the same public controls as manual play, and the completed run links directly into the receipt verifier. The result is a small playable system with an audit trail, not just a solstice skin over a puzzle.
+I wanted the Turing reference to live in the interaction, not only in the title. The player manipulates rotor state under a daylight timer, builds a score through phase solves, and leaves behind a receipt that can be checked independently. Rotor Trace shows the state machine changing, `Demo Solve` uses the same public controls as manual play, and the completed run links directly into the receipt checker. The result is a small playable system with an audit trail, not just a solstice skin over a puzzle.
 
-My crowded-queue test: if a judge has already seen another cipher wheel or Turing reference, Helioigma should still be legible as game-first, reproducible, finished on failure, and public-safe. The timer, node pulses, and phase-specific hint order are playable before the proof layer matters; Nightfall becomes a report with Retry and Demo Solve; and no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect it.
+My crowded-queue test: if a judge has already seen another cipher wheel or Turing reference, Helioigma should still be legible as game-first, reproducible, finished on failure, and public-safe. The timer, node pulses, and phase-specific hint order are playable before the receipt layer matters; Nightfall becomes a report with Retry and Demo Solve; and no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect it.
 
 ## Rubric Fit
 
