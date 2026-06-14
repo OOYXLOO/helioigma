@@ -101,6 +101,7 @@ Expected local URLs:
   - phase-proof copy present
   - phase objective names the first phase
   - phase objective shows target glyphs and alignment
+  - mobile target row keeps first and last glyphs safely inset from the canvas edge
   - phase proof strip present
 - phase proof names the first Turing cue
   - first-screen judge path present

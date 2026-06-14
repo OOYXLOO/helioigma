@@ -74,6 +74,7 @@ const mustContain = [
   ["README.md", "Playability proof for a rushed judge"],
   ["README.md", "npm run build:gif"],
   ["README.md", "npm run verify:media"],
+  ["README.md", "first and last target glyphs do not clip"],
   ["README.md", "tools/build-demo-gif.py"],
   ["README.md", "tools/verify-media-freshness.mjs"],
   ["FIRST_MINUTE.md", "Playability proof appears before the verifier"],

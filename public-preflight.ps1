@@ -349,6 +349,7 @@ try {
   Assert-Contains "dev-article-final.md" "tools/build-demo-gif.py"
   Assert-Contains "dev-article-final.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
+  Assert-Contains "README.md" "first and last target glyphs do not clip"
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
   Assert-Contains "README.md" "npm run smoke"
@@ -491,6 +492,9 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
   Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile phase proof initial copy changed"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row is too close to the left canvas edge"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row is too close to the right canvas edge"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row inset is too small for glyph labels"
   Assert-Contains "tools/browser-smoke-check.mjs" "audio cues should default off"
   Assert-Contains "tools/browser-smoke-check.mjs" "video/webm"
   Assert-Contains "tools/build-demo-video.mjs" "live browser recording"

@@ -599,9 +599,18 @@
     ctx.font = `700 ${Math.max(12, w * 0.014)}px ui-sans-serif, system-ui`;
     ctx.fillText((phaseNames[state.level] || "Solstice receipt").toUpperCase(), cx, Math.max(52, topBand * 0.48));
 
-    const targetGap = Math.min(72, (w * 0.76) / Math.max(1, state.target.length - 1));
+    const targetGlyphRadius = Math.min(23, nodeRadius * 0.52);
+    const targetInset = Math.max(targetGlyphRadius + 28, Math.min(64, w * 0.16));
+    const targetGap = Math.min(72, (w - targetInset * 2) / Math.max(1, state.target.length - 1));
     const targetY = Math.max(70, topBand * 0.72);
     const targetStart = cx - ((state.target.length - 1) * targetGap) / 2;
+    const targetVisualRadius = targetGlyphRadius + 12;
+    canvas.dataset.targetRowBounds = JSON.stringify({
+      left: Math.round(targetStart - targetVisualRadius),
+      right: Math.round(targetStart + (state.target.length - 1) * targetGap + targetVisualRadius),
+      width: Math.round(w),
+      inset: Math.round(targetInset),
+    });
     ctx.save();
     ctx.strokeStyle = "rgba(247,243,223,0.14)";
     ctx.lineWidth = 3;
@@ -611,7 +620,7 @@
     ctx.stroke();
     ctx.restore();
     state.target.forEach((value, i) => {
-      drawGlyph(targetStart + i * targetGap, targetY, Math.min(23, nodeRadius * 0.52), value, "");
+      drawGlyph(targetStart + i * targetGap, targetY, targetGlyphRadius, value, "");
     });
 
     state.ring.forEach((value, i) => {

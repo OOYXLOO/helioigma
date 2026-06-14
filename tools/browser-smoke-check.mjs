@@ -92,6 +92,7 @@ async function readGameFacts(page) {
     const controls = document.querySelector(".quick-controls");
     const canvas = document.querySelector("#game");
     const canvasRect = canvas?.getBoundingClientRect();
+    const targetRowBounds = canvas?.dataset.targetRowBounds ? JSON.parse(canvas.dataset.targetRowBounds) : null;
     return {
       demoBeforeCanvas: ordered.indexOf(controls) >= 0 && ordered.indexOf(controls) < ordered.indexOf(canvas),
       title: document.title,
@@ -124,6 +125,7 @@ async function readGameFacts(page) {
       })),
       canvasTop: canvasRect?.top,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
+      targetRowBounds,
       trace: {
         phase: document.querySelector("#tracePhase")?.textContent.trim(),
         match: document.querySelector("#traceMatch")?.textContent.trim(),
@@ -313,6 +315,7 @@ async function main() {
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#game")?.dataset.targetRowBounds, { timeout: 5000 });
     const mobile = await readGameFacts(page);
     assert(mobile.overflowX === 0, "mobile has horizontal overflow");
     assert(mobile.demoVisible, "mobile Demo Solve is not visible in the first viewport");
@@ -339,6 +342,10 @@ async function main() {
     );
     assert(mobile.objective.proofFits, "mobile phase proof text is clipped");
     assert(mobile.objective.proofTextOverflow !== "ellipsis", "mobile phase proof is still ellipsized");
+    assert(mobile.targetRowBounds, "mobile target row bounds were not published by the canvas renderer");
+    assert(mobile.targetRowBounds.left >= 24, `mobile target row is too close to the left canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
+    assert(mobile.targetRowBounds.right <= mobile.targetRowBounds.width - 24, `mobile target row is too close to the right canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
+    assert(mobile.targetRowBounds.inset >= 48, `mobile target row inset is too small for glyph labels: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 
