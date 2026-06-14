@@ -55,6 +55,8 @@ npm run build:video
 npm run verify:media
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 node tools/browser-smoke-check.mjs
+npm run audit:launch
+npm run audit:launch:public -- --json
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 ```
 
@@ -63,6 +65,8 @@ Expected local review signals:
 - `PASS Helioigma preflight`
 - `PASS media freshness`
 - `PASS browser smoke`
+- `npm run audit:launch` reports `READY_LOCALLY`
+- `npm run audit:launch:public -- --json` reports public URLs ready before DEV publication
 - `70 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.

@@ -830,10 +830,18 @@ try {
   if ($Public) {
     $urls = @(
       "https://ooyxloo.github.io/helioigma/",
+      "https://ooyxloo.github.io/helioigma/?demo=1",
       "https://ooyxloo.github.io/helioigma/judge.html",
       "https://ooyxloo.github.io/helioigma/smoke.html",
       "https://ooyxloo.github.io/helioigma/proof-verifier.html",
+      "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
       "https://ooyxloo.github.io/helioigma/judge-manifest.json",
+      "https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md",
+      "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md",
+      "https://ooyxloo.github.io/helioigma/cover.png",
+      "https://ooyxloo.github.io/helioigma/desktop-check-v5.png",
+      "https://ooyxloo.github.io/helioigma/mobile-check-v6.png",
+      "https://ooyxloo.github.io/helioigma/desktop-complete-v4.png",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
       "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png",

@@ -15,7 +15,7 @@ If you are judging quickly, the first-minute check is: rotate one node, watch Ro
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
 - Check the Auto Demo sample receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
-- Privacy review, no best-score storage: https://ooyxloo.github.io/helioigma/?nostore=1
+- Judge pack: https://ooyxloo.github.io/helioigma/judge.html
 - Source: https://github.com/OOYXLOO/helioigma
 
 Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, with a small checksum receipt to make the finished Demo Solve summary inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
@@ -84,7 +84,7 @@ Award thesis: Helioigma is a playable ode, a receipt-checkable loop, and a finis
 
 Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data. No account, API, backend, private data, or hidden judge path is needed to inspect the build.
 
-1. Open the play link and follow the first-screen Run Path: match nodes manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
+1. Open the play link, press `Start Run`, rotate one numbered node, then press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
 3. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
@@ -123,7 +123,7 @@ Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt
 
 I treated the review surface as part of the game. Helioigma can be played with mouse, touch, on-screen buttons, or number keys, and the screen includes hidden helper text plus a phase announcer for assistive technology. Audio cues are generated in the browser, start off by default, and only turn on after the player chooses `Audio` or presses `S`.
 
-The build avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only default browser storage is the local numeric best score for this game, and `?nostore=1` disables best-score storage for stricter privacy review. The receipt is not anti-cheat, identity, payout, or eligibility proof; it is a small checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
+The build avoids telemetry and account state. There is no backend, no analytics call, no API key, and no private console. The only default browser storage is the local numeric best score for this game, and `?nostore=1` disables best-score storage for stricter privacy review. Privacy review URL: https://ooyxloo.github.io/helioigma/?nostore=1. The receipt is not anti-cheat, identity, payout, or eligibility proof; it is a small checksum so judges can inspect the same Demo Solve path without trusting a screenshot.
 
 ## How I Built It
 
