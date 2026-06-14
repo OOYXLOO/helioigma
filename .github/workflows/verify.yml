@@ -314,7 +314,7 @@ jobs:
           grep -q "first-phase node buttons are present" smoke.html
           grep -q "20260614-mobile-review" smoke.html
           grep -q "award signals are present" smoke.html
-          grep -q "demo award signals name solstice, Turing, and judge proof" smoke.html
+          grep -q "demo award signals name solstice, Turing, and judge receipt" smoke.html
           grep -q "audio cue button is present" smoke.html
           grep -q "audio shortcut is exposed" smoke.html
           grep -q "audio cues default off" smoke.html

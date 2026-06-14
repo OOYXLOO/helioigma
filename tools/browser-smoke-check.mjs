@@ -225,7 +225,7 @@ async function main() {
     assert(autoDemo.verifyHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "auto demo route did not build a verifier link");
     assert(autoDemo.judgeRunSummary.includes("4/4 solstice phases") && autoDemo.judgeRunSummary.includes("2907 score"), "auto demo route did not build the judge run summary");
     assert(autoDemo.judgeRunFacts.includes("state alignment + checksum reasoning"), "auto demo route did not build the judge run facts");
-    assert(autoDemo.awardSignals.includes("Solstice loop") && autoDemo.awardSignals.includes("Turing ode") && autoDemo.awardSignals.includes("Judge proof"), "auto demo route did not expose award signals");
+    assert(autoDemo.awardSignals.includes("Solstice loop") && autoDemo.awardSignals.includes("Turing ode") && autoDemo.awardSignals.includes("Judge receipt"), "auto demo route did not expose award signals");
     assert(autoDemo.copyRunSummaryDisabled === false, "auto demo route did not enable the judge summary copy button");
     assert(autoDemo.proofPanelTop >= 0 && autoDemo.proofPanelTop < 450, `auto demo route did not scroll the receipt into view: ${autoDemo.proofPanelTop}`);
     assert(autoDemo.proofPanelBottom > 180, "auto demo route receipt panel is not visible after completion");
@@ -312,7 +312,7 @@ async function main() {
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
     assert(judge.hasOfficialRouteSnapshot, "judge page is missing the official route snapshot");
-    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge proof|Boundary", "judge page official route snapshot changed");
+    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge receipt|Boundary", "judge page official route snapshot changed");
     assert(judge.hasPrizeRouteCopy, "judge page does not name the Turing category route");
     assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
     assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");

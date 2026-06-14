@@ -6,7 +6,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
+- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## 60-Second Path

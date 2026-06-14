@@ -120,7 +120,7 @@ Expected local URLs:
   - demo receipt verifier link carries the receipt
   - demo Judge run summary reports phases and score
   - demo Judge run facts include receipt and Turing fit
-  - demo award signals name solstice, Turing, and judge proof
+- demo award signals name solstice, Turing, and judge receipt
   - copy judge summary button is enabled
   - demo solve releases manual controls
   - reset shortcut returns to idle

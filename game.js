@@ -330,7 +330,7 @@
       `Score: ${state.score}`,
       `Shifts: ${state.shifts}`,
       `Receipt: ${state.finalProof}`,
-      "Award signals: solstice loop, Turing ode, judge proof",
+      "Award signals: solstice loop, Turing ode, judge receipt",
       "Verification: open proof-verifier.html with the receipt query link",
       "Turing fit: state alignment, XOR/binary glyphs, pressure, and checksum reasoning",
     ].join("\n");
@@ -347,7 +347,7 @@
       ["Shifts", `${state.shifts} node shifts`],
       ["Receipt", state.finalProof],
       ["Verify", "Linked local receipt verifier"],
-      ["Award signal", "solstice loop + Turing ode + judge proof"],
+      ["Award signal", "solstice loop + Turing ode + judge receipt"],
       ["Turing fit", "state alignment + checksum reasoning"],
     ];
     facts.forEach(([label, value]) => {
