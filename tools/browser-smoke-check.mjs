@@ -144,7 +144,7 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(desktop.objective.proof === "Solstice crib starts target checking.", "phase proof initial copy changed");
-    assert(desktop.playRule?.includes("Score rewards held daylight") && desktop.playRule?.includes("final receipt lets judges verify the path"), "play rule no longer explains score and receipt");
+    assert(desktop.playRule?.includes("In each 45s phase") && desktop.playRule?.includes("matches the target glyphs") && desktop.playRule?.includes("full receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -248,6 +248,8 @@ async function main() {
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });
     const judge = await page.evaluate(() => ({
       actions: [...document.querySelectorAll(".action strong")].map((node) => node.textContent.trim()),
+      heading: document.querySelector("h1")?.textContent.trim(),
+      dek: document.querySelector(".dek")?.textContent.trim(),
       primaryActions: [...document.querySelectorAll(".primary-actions .action strong")].map((node) => node.textContent.trim()),
       evidenceActions: [...document.querySelectorAll(".evidence-actions .action strong")].map((node) => node.textContent.trim()),
       reviewSteps: [...document.querySelectorAll(".review-flow ol strong")].map((node) => node.textContent.trim()),
@@ -291,6 +293,8 @@ async function main() {
       verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
     }));
     assert(judge.overflowX === 0, "judge page has horizontal overflow");
+    assert(judge.heading === "Helioigma is a playable Turing ode for holding the longest day.", "judge page heading no longer leads with the award thesis");
+    assert(judge.dek?.includes("45-second, four-phase game") && judge.dek?.includes("receipt verifier"), "judge page deck no longer gives the quick review frame");
     assert(judge.hasGif, "judge page does not point to the current GIF");
     assert(judge.hasWebm, "judge page does not point to the current WebM video");
     assert(judge.hasRunReceiptCopy, "judge page does not use run receipt wording");
@@ -382,6 +386,7 @@ async function main() {
       hasCaveat: document.body.innerText.includes("not anti-cheat, identity, payout, or eligibility proof"),
       hasProofBoundary: document.body.innerText.toLowerCase().includes("what this checks") && document.body.innerText.toLowerCase().includes("what this does not check"),
       hasSamplePayload: document.body.innerText.includes("solstice|4|2907|62|4"),
+      hasSourceNote: document.body.innerText.includes("Generated in game.js by buildRunProof") || document.body.innerText.includes("generated in game.js by buildRunProof"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
@@ -389,6 +394,7 @@ async function main() {
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
     assert(proof.hasProofBoundary, "proof verifier is missing the proof boundary explanation");
     assert(proof.hasSamplePayload, "proof verifier is missing the sample payload breakdown");
+    assert(proof.hasSourceNote, "proof verifier is missing the generator source note");
     assert(!proof.usesRadialGradient, "proof verifier still uses radial background blobs");
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 

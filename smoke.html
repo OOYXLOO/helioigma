@@ -220,7 +220,7 @@
       addCheck("demo solve button is present", Boolean(demoButton));
       addCheck("audio cue button is present", Boolean(soundButton));
       addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
-      addCheck("play rule explains score and receipt", playRule.textContent.includes("Score rewards held daylight") && playRule.textContent.includes("final receipt lets judges verify the path"));
+      addCheck("play rule gives 45s target-glyph receipt path", playRule.textContent.includes("In each 45s phase") && playRule.textContent.includes("matches the target glyphs") && playRule.textContent.includes("full receipt path"));
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");

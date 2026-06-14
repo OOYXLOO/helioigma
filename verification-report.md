@@ -82,7 +82,7 @@ Expected local URLs:
   - demo solve button present
   - audio cue button present
   - daylight meter present
-  - play rule explains score and receipt
+  - play rule gives the 45-second target-glyph receipt path
   - start shortcut exposed
   - reset shortcut exposed
   - hint shortcut exposed

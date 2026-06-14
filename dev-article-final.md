@@ -6,6 +6,17 @@ tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png
 ---
 
+## Reviewer Fast Path
+
+If you are judging quickly, start here:
+
+- Play: https://ooyxloo.github.io/helioigma/
+- Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
+- Verify the stable receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
+- Source: https://github.com/OOYXLOO/helioigma
+
+Helioigma targets Best Ode to Alan Turing. The shortest evaluation path is: play one phase, run Auto Demo, verify receipt `SC-4P-2907-62-Y5VFX1`, then open the source or manifest if you want deeper proof. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
+
 ## The Longest Day as a Countdown Machine
 
 You get 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `BIN`, and one job: keep the longest day from slipping into night by aligning the cipher before the timer empties.
