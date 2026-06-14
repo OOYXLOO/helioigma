@@ -49,6 +49,12 @@ Optional Pages API helper, only when the account owner is present and GitHub CLI
 powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages
 ```
 
+To also wait for GitHub Pages and run the public preflight in the same launch flow:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages
+```
+
 The helper tries `gh api --method POST repos/OOYXLOO/helioigma/pages -f "source[branch]=main" -f "source[path]=/"`, then falls back to the update endpoint if Pages already exists. If GitHub CLI is unavailable or the API call fails, enable GitHub Pages manually from `main` / root. In the repository settings page, use Settings -> Pages -> Build and deployment -> Deploy from a branch -> `main` -> `/root`.
 After the push, the `Verify Helioigma` workflow should pass before the DEV article is published.
 

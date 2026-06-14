@@ -1,6 +1,9 @@
 param(
   [switch]$Push,
-  [switch]$ConfigurePages
+  [switch]$ConfigurePages,
+  [switch]$WaitForPages,
+  [int]$PagesTimeoutSec = 240,
+  [int]$PagesPollSec = 15
 )
 
 $ErrorActionPreference = "Stop"
@@ -94,6 +97,8 @@ function Write-PagesDryRun {
   Write-Output (Format-CommandLine "gh" $pagesUpdateArgs)
   Write-Output "Or re-run this helper after push with:"
   Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages"
+  Write-Output "To wait for Pages and run the public preflight after push, add:"
+  Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages"
 }
 
 function Configure-GitHubPages {
@@ -137,6 +142,43 @@ function Configure-GitHubPages {
   Write-Output "GitHub Pages update request accepted."
 }
 
+function Wait-ForGitHubPages {
+  if (-not $WaitForPages) {
+    Write-Output "Pages wait was not requested."
+    return
+  }
+
+  if (-not $Push) {
+    Write-Output "Dry run: -WaitForPages was provided without -Push, so no public polling will be made."
+    Write-Output "After push/Pages setup, run: powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages"
+    return
+  }
+
+  $deadline = (Get-Date).AddSeconds($PagesTimeoutSec)
+  Write-Output "Waiting up to $PagesTimeoutSec seconds for $pagesUrl to return HTTP 200..."
+  while ((Get-Date) -lt $deadline) {
+    try {
+      $response = Invoke-WebRequest -Uri $pagesUrl -Method Head -MaximumRedirection 5 -TimeoutSec 20 -UseBasicParsing
+      if ($response.StatusCode -eq 200) {
+        Write-Output "GitHub Pages is live: $pagesUrl"
+        Write-Output "> powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public"
+        powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
+        return
+      }
+      Write-Output "Pages check returned HTTP $($response.StatusCode); waiting $PagesPollSec seconds..."
+    } catch {
+      Write-Output "Pages not ready yet: $($_.Exception.Message)"
+      Write-Output "Waiting $PagesPollSec seconds..."
+    }
+    Start-Sleep -Seconds $PagesPollSec
+  }
+
+  Write-Output "BLOCKED: $pagesUrl did not return HTTP 200 within $PagesTimeoutSec seconds."
+  Write-Output "Open $pagesSettingsUrl, confirm Pages source is main / root, then run:"
+  Write-Output "powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public"
+  exit 1
+}
+
 function Assert-CleanWorktreeForPush {
   if (-not $Push) {
     return
@@ -162,6 +204,7 @@ Write-Output "Helioigma publish-after-repo helper"
   Write-Output "Repository: $repoUrl"
   Write-Output "Mode: $(if ($Push) { 'PUSH ENABLED' } else { 'dry run' })"
   Write-Output "Pages API: $(if ($ConfigurePages) { 'requested' } else { 'dry-run instructions only' })"
+  Write-Output "Pages wait: $(if ($WaitForPages) { "$PagesTimeoutSec sec timeout / $PagesPollSec sec interval" } else { 'not requested' })"
 
   powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 
@@ -190,6 +233,7 @@ Write-Output "Helioigma publish-after-repo helper"
   Assert-CleanWorktreeForPush
   Run "git push -u origin main"
   Configure-GitHubPages
+  Wait-ForGitHubPages
 
   if (-not $Push) {
     Write-Output ""
@@ -197,13 +241,15 @@ Write-Output "Helioigma publish-after-repo helper"
     Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push"
     Write-Output "To also try GitHub Pages setup through gh while you are present:"
     Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages"
+    Write-Output "To wait for Pages and run public preflight after Pages setup:"
+    Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages"
   } else {
     Write-Output ""
     Write-Output "Push complete. Next gate:"
     Write-Output "1. If -ConfigurePages was not used or failed, open $pagesSettingsUrl"
     Write-Output "2. Set Pages source to Deploy from a branch -> main -> /root"
-    Write-Output "3. Wait for $pagesUrl"
-    Write-Output "4. Run: powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public"
+    Write-Output "3. Wait for $pagesUrl, or use -WaitForPages next time"
+    Write-Output "4. Run: powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public if it was not already run by -WaitForPages"
     Write-Output "5. Publish DEV article only after public preflight passes."
   }
 } finally {
