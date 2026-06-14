@@ -9,6 +9,13 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 3. Stable receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
 4. Source: `https://github.com/OOYXLOO/helioigma`
 
+## Try This In One Minute
+
+1. Start the game and rotate one numbered node.
+2. Watch Rotor Trace name the action and next mismatch.
+3. Press `Demo Solve` to complete the same visible board.
+4. Verify receipt `SC-4P-2907-62-Y5VFX1`.
+
 ## What To Notice
 
 - It is a playable static browser game, not only a write-up or mockup.
