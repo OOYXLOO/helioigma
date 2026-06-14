@@ -25,6 +25,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 | DEV submission template marker | `dev-article-final.md` opens with the official challenge marker and names the June Solstice Game Jam plus the Best Ode to Alan Turing target. |
 | DEV challenge tags | `dev-article-final.md` front matter includes `devchallenge`, `gamechallenge`, `gamedev`, and `javascript`. |
 | Playable game | `index.html`, `game.js`, and `styles.css` run as a static GitHub Pages game with mouse, touch, keyboard, and on-screen controls. |
+| Playability proof | `judge.html`, `FIRST_MINUTE.md`, `JUDGE_REVIEW_CARD.md`, `README.md`, `dev-article-final.md`, and `judge-manifest.json` name readable decisions, immediate feedback, and finished Nightfall recovery as game-feel evidence before the verifier layer. |
 | Demo video | `helioigma-demo.webm` is the primary current browser recording; `helioigma-demo.gif` and `helioigma-demo.mp4` are fallback media; `mobile-complete-v1.png` captures the receipt/ledger path on a 390px viewport; the article states the WebM/GIF are true demo artifacts from the current game, not mockups. |
 | Code link | Intended public source is `https://github.com/OOYXLOO/helioigma`; the DEV article includes `{% embed https://github.com/OOYXLOO/helioigma %}` plus the plain URL, and the local package includes all source before publication. |
 | How it was built | `dev-article-final.md`, `README.md`, and `judge.html` describe deterministic levels, canvas rendering, controls, scoring, receipt generation, and smoke checks. |

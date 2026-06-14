@@ -59,7 +59,7 @@
       line-height: 1.6;
     }
 
-    .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid {
+    .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid, .playability-grid {
       display: grid;
       gap: 14px;
       margin-top: 24px;
@@ -131,7 +131,7 @@
       margin-top: 14px;
     }
 
-    .card, .action, .rubric-item, .standout-item {
+    .card, .action, .rubric-item, .standout-item, .playability-item {
       min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -282,6 +282,33 @@
       padding: 18px;
     }
 
+    .playability-proof {
+      margin-top: 24px;
+      border: 1px solid rgba(247, 201, 72, 0.26);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(247, 201, 72, 0.1), rgba(139, 211, 255, 0.06)),
+        rgba(9, 14, 24, 0.62);
+      padding: 18px;
+    }
+
+    .playability-proof h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .playability-proof > p {
+      max-width: 820px;
+      margin: 10px 0 0;
+    }
+
+    .playability-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
     .rubric-snapshot h2 {
       margin: 0;
       color: var(--ink);
@@ -295,12 +322,14 @@
     }
 
     .rubric-item,
-    .standout-item {
+    .standout-item,
+    .playability-item {
       background: rgba(255, 255, 255, 0.05);
     }
 
     .rubric-item strong,
-    .standout-item strong {
+    .standout-item strong,
+    .playability-item strong {
       display: block;
       margin-bottom: 8px;
       color: var(--accent);
@@ -309,7 +338,8 @@
     }
 
     .rubric-item p,
-    .standout-item p {
+    .standout-item p,
+    .playability-item p {
       margin: 0;
       font-size: 13px;
       line-height: 1.45;
@@ -365,7 +395,7 @@
     a { color: var(--accent); font-weight: 800; }
 
     @media (max-width: 780px) {
-      .visual-judge-hero, .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid { grid-template-columns: 1fr; }
+      .visual-judge-hero, .primary-actions, .evidence-actions, .grid, .rubric-grid, .standout-grid, .playability-grid { grid-template-columns: 1fr; }
       .route-snapshot { grid-template-columns: 1fr; }
       .review-verdict { grid-template-columns: 1fr; }
       .review-flow ol { grid-template-columns: 1fr; }
@@ -410,6 +440,16 @@
       <figure class="visual-media">
         <video src="helioigma-demo.webm?v=20260614-seal-media" poster="desktop-check-v5.png?v=20260614-seal-media" autoplay muted loop playsinline preload="metadata" aria-label="Helioigma demo video showing the current four-phase rotor puzzle and final receipt path."></video>
       </figure>
+    </section>
+
+    <section class="playability-proof" aria-label="Playability proof">
+      <h2>Playability proof</h2>
+      <p>Helioigma is built to feel like a short, finishable jam game before it asks for verification. The receipt layer supports judging, but the player loop stays readable: choose a node, see the wheel react, decide whether to chase the next mismatch or spend a Hint, then recover cleanly if nightfall wins.</p>
+      <div class="playability-grid">
+        <div class="playability-item"><strong>Readable decisions</strong><p>Every phase shows the target glyphs, aligned-node count, and phase-specific scan rule, so each tap has a visible reason.</p></div>
+        <div class="playability-item"><strong>Immediate feedback</strong><p>Node pulses, Rotor Trace, daylight meter movement, optional audio, and status copy make correct and incorrect shifts legible without reading source code.</p></div>
+        <div class="playability-item"><strong>Finished failure state</strong><p>Nightfall produces a report with held phases, score, shifts, and a direct retry or Demo Solve route instead of dropping the judge into a dead end.</p></div>
+      </div>
     </section>
 
     <p class="verdict-label">Official route snapshot</p>

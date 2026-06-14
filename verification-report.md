@@ -74,6 +74,7 @@ Expected local URLs:
 - The first-screen judge shortcuts and judge pack expose the stable Auto Demo sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
+- Playability proof is now explicit in the judge page, article, README, review card, manifest, and verification page: readable decisions, immediate feedback, and a finished Nightfall failure state are named as evidence that the project is a playable jam game before it is a receipt packet.
 - Privacy review path: `?nostore=1` keeps the game playable while avoiding best-score reads and writes.
 - Smoke checks include 69 PASS assertions:
   - canvas present

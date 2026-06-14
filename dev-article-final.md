@@ -48,6 +48,16 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, the visible cycle cue says how a tap changes each glyph, each node move pulses the board, Rotor Trace names the next mismatch, phase scan order changes as the run advances, and a failed manual attempt becomes a Nightfall report instead of a dead end. The proof layer is there for judges, but the first artifact is still the playable daylight race.
 
+## Playability Proof
+
+I know game jam judges see a lot of projects where the write-up is stronger than the loop. I tried to avoid that by making the first minute prove the game feel before the verifier appears:
+
+- Readable decisions: the target glyphs, aligned-node count, phase objective, and phase-specific scan rule are visible before and during play.
+- Immediate feedback: taps trigger node pulses, Rotor Trace updates, daylight movement, status copy, and optional audio cues, so a wrong move is still understandable.
+- Finished recovery: if nightfall wins, the game reports held phases, aligned nodes, score, shifts, and gives a direct retry or Demo Solve route.
+
+That is why the receipt is a supporting artifact instead of the main event. The intended path is still to play the rotor, feel the daylight pressure, and then use the checksum receipt to inspect the finished Demo Solve.
+
 ## Video Demo
 
 The captioned WebM records the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The GIF above is the quick inline fallback; the optional MP4 remains only if the DEV editor specifically asks for an MP4 file.

@@ -331,6 +331,9 @@ async function main() {
       hasVisualJudgeHero: document.body.innerText.toLowerCase().includes("visual judge start"),
       hasVisualJudgeCopy: document.body.innerText.toLowerCase().includes("the core artifact is a playable rotor puzzle"),
       hasTimedLoopCopy: document.body.innerText.toLowerCase().includes("timed node-rotation loop"),
+      hasPlayabilityProof: document.body.innerText.includes("Playability proof"),
+      playabilityItems: [...document.querySelectorAll(".playability-item strong")].map((node) => node.textContent.trim()),
+      playabilityCopy: document.querySelector('[aria-label="Playability proof"]')?.textContent.trim() || "",
       visualHeroVideoSrc: document.querySelector(".visual-judge-hero video")?.getAttribute("src"),
       visualHeroVideoPoster: document.querySelector(".visual-judge-hero video")?.getAttribute("poster"),
       demoFrameImageSrc: document.querySelector(".demo-frame img")?.getAttribute("src"),
@@ -372,6 +375,10 @@ async function main() {
     assert(judge.hasVisualJudgeHero, "judge page is missing the visual judge hero");
     assert(judge.hasVisualJudgeCopy, "judge page does not lead with a playable-game visual claim");
     assert(judge.hasTimedLoopCopy, "judge page does not foreground the timed node-rotation loop");
+    assert(judge.hasPlayabilityProof, "judge page is missing the playability proof section");
+    assert(judge.playabilityItems.join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge playability proof cards changed");
+    const playabilityCopy = judge.playabilityCopy.toLowerCase();
+    assert(playabilityCopy.includes("short, finishable jam game") && playabilityCopy.includes("choose a node") && playabilityCopy.includes("nightfall wins"), "judge playability proof no longer foregrounds game feel");
     assert(judge.visualHeroVideoSrc === "helioigma-demo.webm?v=20260614-seal-media", "judge page visual hero does not use the current cache-busted WebM demo");
     assert(judge.visualHeroVideoPoster === "desktop-check-v5.png?v=20260614-seal-media", "judge page visual hero does not retain the current cache-busted gameplay screenshot poster");
     assert(judge.demoFrameImageSrc === "helioigma-demo.gif?v=20260614-seal-media", "judge page demo frame does not use the current cache-busted animated GIF");
@@ -436,6 +443,8 @@ async function main() {
     assert(manifest.challenge?.official_route_snapshot?.prize_route === "Best Ode to Alan Turing category route in the official challenge.", "judge manifest official route prize changed");
     assert(manifest.challenge?.official_route_snapshot?.boundary?.startsWith("No Google AI claim"), "judge manifest official route boundary changed");
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
+    assert(manifest.challenge?.playability_proof?.length === 3, "judge manifest playability proof changed");
+    assert(manifest.challenge?.playability_proof?.map((item) => item.claim).join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge manifest playability proof claims changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
     assert(manifest.verification?.expected_smoke_checks === 69, "judge manifest smoke count changed");
