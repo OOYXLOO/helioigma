@@ -115,6 +115,7 @@ async function readGameFacts(page) {
         proofFits: phaseProof ? phaseProof.scrollWidth <= phaseProof.clientWidth + 1 : false,
         proofTextOverflow: phaseProofStyle?.textOverflow || "",
       },
+      statusLine: document.querySelector("#statusLine")?.textContent.trim(),
       playRule: document.querySelector(".play-rule")?.textContent.trim(),
       judgePathText: document.querySelector(".judge-path")?.textContent.trim(),
       mobileCues: [...document.querySelectorAll(".mobile-cue")].map((node) => ({
@@ -145,6 +146,7 @@ async function readGameFacts(page) {
         soundLabel: document.querySelector("#soundButton")?.getAttribute("aria-label"),
         soundText: document.querySelector("#soundButton")?.textContent.trim(),
         canvas: canvas?.getAttribute("aria-keyshortcuts"),
+        startDisabled: document.querySelector("#startButton")?.disabled,
       },
       controlHeights: [...document.querySelectorAll(".quick-controls button")]
         .filter((button) => getComputedStyle(button).display !== "none")
@@ -192,6 +194,7 @@ async function main() {
     assert(desktop.objective.proof === "Crib checks state.", "phase proof initial copy changed");
     assert(desktop.objective.proofFits, "desktop phase proof text is clipped");
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
+    assert(desktop.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "status line no longer exposes the first-screen node-cycle cue");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
@@ -230,6 +233,8 @@ async function main() {
     assert(startCoach.status === "First move: rotate node 1 toward SOL.", "start button no longer gives a first-move coach");
     assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
     assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
+    const activeStart = await readGameFacts(page);
+    assert(activeStart.shortcutMap.startDisabled === true, "start button should lock during active manual runs");
 
     await page.click("#hintButton");
     const hintPulse = await page.evaluate(() => ({
@@ -327,6 +332,7 @@ async function main() {
     assert(mobile.mobileCues.every((cue) => cue.visible), "mobile run path explanatory cues are not visible");
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
+    assert(mobile.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "mobile status line no longer exposes the node-cycle cue");
     assert(
       mobile.objective.proof === "Crib checks state.",
       "mobile phase proof initial copy changed"

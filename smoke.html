@@ -237,7 +237,7 @@
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links keep the strongest four review routes", judgeLinks.length === 4 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")) && [...judgeLinks].some((link) => link.textContent.includes("Judge pack")) && [...judgeLinks].some((link) => link.textContent.includes("Verify sample")) && [...judgeLinks].some((link) => link.textContent.includes("Watch video")) && [...judgeLinks].some((link) => link.getAttribute("href") === "helioigma-demo.webm?v=20260614-seal-media") && [...judgeLinks].some((link) => link.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"));
-      addCheck("status line is present", Boolean(statusLine));
+      addCheck("status line is present", Boolean(statusLine) && statusLine.textContent.includes("Cycle SOL>XOR>LUX>BIN"));
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
@@ -270,11 +270,11 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
 
       press(win, "r");
       await sleep(120);
-      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("Decode the Helioigma rotor"));
+      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("rotate before nightfall"));
 
       startButton.click();
       await sleep(120);
-      addCheck("start button shows the first-move coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
+      addCheck("start button shows the first-move coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
       addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
       press(win, "h");
       await sleep(80);

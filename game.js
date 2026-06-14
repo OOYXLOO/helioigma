@@ -107,7 +107,7 @@
     recentLocked: false,
     phaseBanner: { title: "", detail: "", life: 0 },
     lastAction: "Awaiting start.",
-    message: "Decode the Helioigma rotor before nightfall.",
+    message: "Cycle SOL>XOR>LUX>BIN; rotate before nightfall.",
   };
   const audio = {
     enabled: false,
@@ -249,7 +249,7 @@
       announcePhase(index);
     }
     state.lastAction = index === 0 ? "Awaiting start." : `${phaseNames[index]} seeded.`;
-    state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
+    state.message = index === 0 ? "Cycle SOL>XOR>LUX>BIN; rotate before nightfall." : `${phaseNames[index]} unlocked.`;
     updateHud();
   }
 
@@ -275,7 +275,7 @@
     shiftLabel.textContent = String(state.shifts);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
     statusLine.textContent = state.message;
-    startButton.disabled = state.demoing;
+    startButton.disabled = state.demoing || (state.running && !state.complete && !state.failed);
     if (hintButton) {
       hintButton.disabled = !state.running || state.complete || state.demoing;
     }
@@ -978,7 +978,7 @@
     state.lastAction = "Awaiting start.";
     state.particles = [];
     seedLevel(0);
-    state.message = "Decode the Helioigma rotor before nightfall.";
+    state.message = "Cycle SOL>XOR>LUX>BIN; rotate before nightfall.";
     updateHud();
     draw();
   }
@@ -1065,6 +1065,7 @@
     if (state.demoing) return;
     if (event.key === "Enter") {
       event.preventDefault();
+      if (state.running && !state.complete && !state.failed) return;
       startGame();
       return;
     }
@@ -1100,6 +1101,7 @@
     }
   });
   startButton.addEventListener("click", () => {
+    if (state.running && !state.complete && !state.failed) return;
     startGame();
     focusPlayfield();
   });
