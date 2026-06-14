@@ -14,6 +14,12 @@
     },
     "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, game feel through target glyphs, node pulses, phase-specific hints, optional audio, and Nightfall recovery, and review evidence through Auto Demo, Rotor Trace, phase-proof copy, summary receipt verifier, manifest, and optional smoke test.",
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
+    "crowded_jam_differentiator": {
+      "game_first": "Timed node decisions, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the proof layer matters.",
+      "reproducible": "Demo Solve uses the public control path and produces the stable receipt SC-4P-2907-62-Y5VFX1.",
+      "finished_failure": "Nightfall reports held phases, aligned nodes, score, shifts, and gives Retry or Demo Solve recovery.",
+      "public_safe": "No backend, hidden service, account login, API key, telemetry, private console, or private data is needed to inspect the build."
+    },
     "playability_proof": [
       {
         "claim": "Readable decisions",

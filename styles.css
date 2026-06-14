@@ -802,6 +802,20 @@ button:focus-visible {
     place-items: start center;
   }
 
+  .hud { order: 1; }
+  .phase-track { order: 2; }
+  .day-meter { order: 3; }
+  .controls { order: 4; }
+  .objective-strip { order: 5; }
+  .judge-path { order: 6; }
+  canvas { order: 7; }
+  .play-rule { order: 8; }
+  .trace-panel { order: 9; }
+  .node-buttons { order: 10; }
+  .judge-links { order: 11; }
+  .proof-panel { order: 12; }
+  .nightfall-panel { order: 13; }
+
   .hud,
   .brief,
   .controls,
@@ -877,21 +891,31 @@ button:focus-visible {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 4px;
-    padding: 5px 6px;
+    padding: 4px 5px;
   }
 
   .objective-strip span {
     border-left-width: 2px;
-    padding-left: 5px;
+    padding-left: 4px;
   }
 
   .objective-strip span:first-child small {
     display: none;
   }
 
-  .objective-strip small {
+  .objective-strip span:nth-child(4) small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .objective-strip strong {
     font-size: 9px;
-    line-height: 1.12;
+  }
+
+  .objective-strip small {
+    font-size: 8px;
+    line-height: 1.08;
   }
 
   .day-meter {
@@ -907,6 +931,7 @@ button:focus-visible {
     padding: 5px 7px;
     font-size: 10px;
     line-height: 1.22;
+    margin-top: 8px;
   }
 
   .judge-links {
@@ -998,5 +1023,6 @@ button:focus-visible {
 
   canvas {
     aspect-ratio: 4 / 5;
+    margin-top: 6px;
   }
 }

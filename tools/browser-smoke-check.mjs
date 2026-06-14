@@ -386,9 +386,9 @@ async function main() {
     assert(judge.visualHeroBottom <= 900, "judge page visual hero is too tall for desktop first viewport");
     assert(judge.verdictItems.join("|") === "Playable ode|Judge-verifiable|Finished surface", "judge award thesis cards changed");
     assert(judge.standoutHeading, "judge page is missing the competitive standout section");
-    assert(judge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe", "judge standout cards changed");
+    assert(judge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "judge standout cards changed");
     const standoutCopy = judge.standoutCopy.toLowerCase();
-    assert(standoutCopy.includes("avoids the common prototype traps") && standoutCopy.includes("the first click opens a timed rotor puzzle") && standoutCopy.includes("same static route instead of separate screenshots"), "judge standout copy no longer names the competitive edge");
+    assert(standoutCopy.includes("avoids the common prototype traps") && standoutCopy.includes("the first click opens a timed rotor puzzle") && standoutCopy.includes("same static route instead of separate screenshots") && standoutCopy.includes("losing path also feels complete") && standoutCopy.includes("timed game loop with public receipt evidence"), "judge standout copy no longer names the competitive edge");
     assert(judge.rubricItems.join("|") === "Theme relevance|Creativity|Technical execution|Writing quality|Turing category", "judge rubric snapshot changed");
     assert(!judge.usesRadialGradient, "judge page still uses radial background blobs");
     assert(!judge.hasDevConsole, "judge page exposes DEV Console");
@@ -429,7 +429,7 @@ async function main() {
     assert(mobileJudge.imageVisible, "mobile judge page does not show the visual gameplay asset in the first viewport");
     assert(mobileJudge.actionsVisible, "mobile judge page does not show Play and Auto Demo in the first viewport");
     assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo", "mobile judge page primary actions changed");
-    assert(mobileJudge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe", "mobile judge page standout cards changed");
+    assert(mobileJudge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "mobile judge page standout cards changed");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
     assert(manifestResponse?.ok(), "judge manifest did not return HTTP 200");
@@ -451,6 +451,8 @@ async function main() {
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
+    assert(manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("Timed node decisions"), "judge manifest crowded-jam differentiator missing game-first signal");
+    assert(manifest.challenge?.crowded_jam_differentiator?.finished_failure?.includes("Nightfall reports"), "judge manifest crowded-jam differentiator missing finished-failure signal");
 
     const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
     assert(videoResponse?.ok(), "WebM demo did not return HTTP 200");

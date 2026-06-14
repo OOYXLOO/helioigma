@@ -31,6 +31,15 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 - Turing fit: rotor-like alignment, target checking, XOR/binary language, state reasoning, first-screen `Turing cue` phase proof, and a local checksum receipt carry the tribute through mechanics.
 - Execution evidence: the same public build includes the game, judge page, Nightfall recovery report, receipt verifier, manifest, screenshots, GIF/WebM media, and optional smoke test.
 
+## Crowded-Jam Differentiator
+
+If the review queue contains several cipher or Turing-themed entries, Helioigma should still read differently:
+
+- Game-first: timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the proof layer matters.
+- Reproducible: Demo Solve uses the same public controls and produces receipt `SC-4P-2907-62-Y5VFX1`.
+- Finished on failure: Nightfall reports aligned nodes, held phases, score, shifts, and gives Retry or Demo Solve instead of a dead end.
+- Public-safe: no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect the build.
+
 ## Playability Proof
 
 - Readable decisions: target glyphs, aligned-node count, phase objective, and phase-specific scan rule make each tap explainable.

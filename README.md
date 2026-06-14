@@ -33,6 +33,8 @@ Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finish
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
+Crowded-jam distinction: if several entries start from solstice ciphers or Turing references, Helioigma's claim is the playable system around the idea. A judge can feel the timed node decisions, see Rotor Trace explain the state change, lose into a finished Nightfall report, or press Demo Solve and verify the same public path through a checksum receipt. The proof layer supports the game-first loop instead of replacing it.
+
 Player feel matters as much as proof: each phase gives a readable target, a visible `SOL -> XOR -> LUX -> BIN` rotation cue, a short timer, immediate node pulse feedback, a changing Hint/Rotor Trace scan order, optional audio, and a clean Nightfall recovery. The verifier supports the game loop; it does not replace the feeling of making and correcting moves under daylight pressure.
 
 Playability proof for a rushed judge: the first minute exposes readable decisions, immediate feedback, and a finished failure state. The target glyphs, aligned-node count, phase objective, and phase-specific scan rule make each tap explainable; node pulses, Rotor Trace, daylight movement, status copy, and optional audio make shifts legible; and the Nightfall report gives held phases, aligned nodes, score, shifts, Retry, and Demo Solve recovery instead of a dead end.
