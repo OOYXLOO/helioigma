@@ -321,7 +321,7 @@ async function main() {
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 60, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 69, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
 
@@ -368,7 +368,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 60, `expected 60 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 69, `expected 69 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

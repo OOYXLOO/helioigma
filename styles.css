@@ -421,6 +421,17 @@ body {
   min-height: 82px;
 }
 
+.nightfall-panel {
+  border-color: rgba(255, 122, 89, 0.42);
+  background:
+    linear-gradient(135deg, rgba(255, 122, 89, 0.12), rgba(139, 211, 255, 0.06)),
+    var(--panel);
+}
+
+.nightfall-panel .proof-code {
+  color: #ffb199;
+}
+
 .kicker {
   margin: 0 0 3px;
   color: var(--muted);

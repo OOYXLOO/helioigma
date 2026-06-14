@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://ooyxloo.github.io/helioigma/cover.png">
-  <link rel="stylesheet" href="styles.css?v=20260614-award-signals">
+  <link rel="stylesheet" href="styles.css?v=20260614-nightfall-report">
 </head>
 <body>
   <main class="shell">
@@ -130,8 +130,18 @@
         <button id="copyProofButton" type="button">Copy receipt</button>
         <button id="copyRunSummaryButton" type="button">Copy judge summary</button>
       </section>
+      <section id="nightfallPanel" class="proof-panel nightfall-panel" aria-live="polite" hidden>
+        <div>
+          <p class="kicker">Nightfall report</p>
+          <p class="proof-code">ROTOR UNSEALED</p>
+          <p id="nightfallSummary" class="proof-summary"></p>
+          <dl id="nightfallFacts" class="judge-run-facts"></dl>
+        </div>
+        <button id="retryButton" type="button">Retry run</button>
+        <button id="demoRetryButton" type="button">Watch Demo Solve</button>
+      </section>
     </section>
   </main>
-  <script src="game.js?v=20260614-award-signals"></script>
+  <script src="game.js?v=20260614-nightfall-report"></script>
 </body>
 </html>

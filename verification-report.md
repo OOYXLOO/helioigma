@@ -59,8 +59,8 @@ Expected local URLs:
 
 ## Browser Checks
 
-- Desktop 1280x900: no horizontal overflow; phase progress strip and canvas are visible.
-- Mobile 390x844: no horizontal overflow; phase progress strip and Judge Path stay compact, and the canvas starts at about 413px with over 431px visible in the first viewport.
+- Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 473px, and about 427px of gameplay is visible in the first viewport.
+- Mobile 390x844: no horizontal overflow; controls appear before the canvas, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm install` and Playwright Chromium setup.
 - Demo video builder: `npm run build:video` records the real browser judge path, from first-screen controls and phase banner / Rotor Trace through verifier validation; scratch files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
@@ -72,7 +72,7 @@ Expected local URLs:
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The first-screen judge shortcuts and judge pack expose the stable sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- Smoke checks include 60 PASS assertions:
+- Smoke checks include 69 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -92,6 +92,8 @@ Expected local URLs:
   - phase-proof copy present
   - phase objective names the first phase
   - phase objective shows target glyphs and alignment
+  - phase proof strip present
+  - phase proof names the first cue
   - first-screen judge path present
   - first-phase node buttons present
   - judge shortcut links include the auto demo route
@@ -109,6 +111,9 @@ Expected local URLs:
   - Judge run summary present
   - award signals present
   - copy judge summary button present
+  - Nightfall report panel present
+  - Nightfall action buttons present
+  - Nightfall report starts hidden
   - stable demo receipt matches `SC-4P-2907-62-Y5VFX1`
   - demo receipt summary reports score and shifts
   - demo receipt includes four phase ledger entries
@@ -125,6 +130,10 @@ Expected local URLs:
   - hint highlights a node button
   - rotor trace records hint action
   - rotor trace names the next mismatch
+  - Nightfall report appears after timeout
+  - Nightfall report summarizes aligned nodes
+  - Nightfall report facts include held phases and score
+  - Nightfall retry starts a new manual run
   - four phases reach final state
   - final score is positive
   - local best score records the completed run
@@ -157,7 +166,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
 - package scripts for clean-clone checks, browser smoke, and media rebuild
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the mobile game-first threshold, and waits for 60 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the mobile game-first threshold, and waits for 69 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

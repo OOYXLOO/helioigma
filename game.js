@@ -30,6 +30,11 @@
   const phaseLedger = document.querySelector("#phaseLedger");
   const judgeRunSummaryText = document.querySelector("#judgeRunSummaryText");
   const judgeRunFacts = document.querySelector("#judgeRunFacts");
+  const nightfallPanel = document.querySelector("#nightfallPanel");
+  const nightfallSummary = document.querySelector("#nightfallSummary");
+  const nightfallFacts = document.querySelector("#nightfallFacts");
+  const retryButton = document.querySelector("#retryButton");
+  const demoRetryButton = document.querySelector("#demoRetryButton");
   const tracePanel = document.querySelector("#tracePanel");
   const tracePhase = document.querySelector("#tracePhase");
   const traceMatch = document.querySelector("#traceMatch");
@@ -70,6 +75,7 @@
     shifts: 0,
     solvedPhases: 0,
     complete: false,
+    failed: false,
     finalProof: "",
     ring: [],
     target: levels[0].target,
@@ -273,6 +279,28 @@
         copyRunSummaryButton.disabled = !state.finalProof;
       }
     }
+    syncNightfallPanel();
+  }
+
+  function syncNightfallPanel() {
+    if (!nightfallPanel || !nightfallSummary || !nightfallFacts) return;
+    nightfallPanel.hidden = !state.failed;
+    nightfallFacts.textContent = "";
+    if (!state.failed) return;
+    const aligned = countAlignedNodes();
+    nightfallSummary.textContent = `Nightfall caught phase ${Math.min(state.level + 1, levels.length)} with ${aligned}/${state.target.length} nodes aligned. Press Retry for manual play or Watch Demo Solve to see the verified path.`;
+    [
+      ["Held phases", `${state.solvedPhases}/${levels.length}`],
+      ["Score", `${state.score} points`],
+      ["Shifts", `${state.shifts}`],
+      ["Next proof", phaseProof?.textContent || "Run the deterministic demo receipt."],
+    ].forEach(([label, value]) => {
+      const term = document.createElement("dt");
+      const detail = document.createElement("dd");
+      term.textContent = label;
+      detail.textContent = value;
+      nightfallFacts.append(term, detail);
+    });
   }
 
   function syncPhaseLedger() {
@@ -839,9 +867,11 @@
       state.timeLeft -= delta;
       if (state.timeLeft <= 0) {
         state.running = false;
+        state.failed = true;
         state.streak = 0;
         state.timeLeft = 0;
-        state.message = "Nightfall sealed the Helioigma rotor.";
+        state.lastAction = "Nightfall report ready.";
+        state.message = "Nightfall sealed the rotor. Retry or watch Demo Solve.";
         playCue("fail");
       }
       updateHud();
@@ -861,6 +891,7 @@
     state.shifts = 0;
     state.solvedPhases = 0;
     state.complete = false;
+    state.failed = false;
     state.finalProof = "";
     state.hintedIndex = -1;
     state.recentIndex = -1;
@@ -889,6 +920,7 @@
     state.shifts = 0;
     state.solvedPhases = 0;
     state.complete = false;
+    state.failed = false;
     state.finalProof = "";
     state.hintedIndex = -1;
     state.recentIndex = -1;
@@ -1015,6 +1047,18 @@
     resetGame();
     focusPlayfield();
   });
+  if (retryButton) {
+    retryButton.addEventListener("click", () => {
+      startGame();
+      focusPlayfield();
+    });
+  }
+  if (demoRetryButton) {
+    demoRetryButton.addEventListener("click", () => {
+      demoSolve();
+      focusPlayfield();
+    });
+  }
   if (hintButton) {
     hintButton.addEventListener("click", () => {
       showHint();

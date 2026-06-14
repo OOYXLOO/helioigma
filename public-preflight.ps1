@@ -141,7 +141,7 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 60) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 69) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact proof cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
@@ -330,7 +330,7 @@ try {
   Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
   Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
   Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "publish-assistant.html" "60 smoke checks"
+  Assert-Contains "publish-assistant.html" "69 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "share the DEV post only with honest feedback requests"
@@ -340,7 +340,7 @@ try {
   Assert-Contains "submission-checklist.md" '`devchallenge`, `gamechallenge`, `gamedev`, `javascript`'
   Assert-Contains "submission-checklist.md" "Optional legacy MP4 fallback"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
-  Assert-Contains "submission-checklist.md" "60 expected smoke checks"
+  Assert-Contains "submission-checklist.md" "69 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, no pressure, and no fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
@@ -362,7 +362,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile game canvas starts too low for game-first review"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport shows too little gameplay canvas"
   Assert-Contains "tools/browser-smoke-check.mjs" "Checksum-valid demo receipt"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 60 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 69 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer explains score and receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile phase proof initial copy changed"
@@ -396,7 +396,8 @@ try {
   Assert-Contains "judge.html" "tactile node pulse"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
-  Assert-Contains "judge.html" "Verify the browser path reaches 60 checks"
+  Assert-Contains "judge.html" "Verify the browser path reaches 69 checks"
+  Assert-Contains "judge.html" "nightfall report"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"
   Assert-Contains "judge.html" "Watch Video"
@@ -487,17 +488,22 @@ try {
   Assert-Contains "index.html" "proofSummary"
   Assert-Contains "index.html" "phaseLedger"
   Assert-Contains "index.html" "verifyProofLink"
+  Assert-Contains "index.html" "nightfallPanel"
+  Assert-Contains "index.html" "Nightfall report"
+  Assert-Contains "index.html" "retryButton"
+  Assert-Contains "game.js" "Nightfall sealed the rotor. Retry or watch Demo Solve."
+  Assert-Contains "game.js" "syncNightfallPanel"
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "Match nodes before nightfall"
   Assert-Contains "index.html" "Score rewards held daylight; the final receipt lets judges verify the path"
-  Assert-Contains "index.html" "20260614-award-signals"
+  Assert-Contains "index.html" "20260614-nightfall-report"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""H"""
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
-  Assert-Contains "smoke.html" "20260614-award-signals"
+  Assert-Contains "smoke.html" "20260614-nightfall-report"
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "audio cue button is present"
   Assert-Contains "smoke.html" "audio cues default off"
@@ -517,6 +523,8 @@ try {
   Assert-Contains "smoke.html" "demo solve button is present"
   Assert-Contains "smoke.html" "daylight meter is present"
   Assert-Contains "smoke.html" "phase objective strip is present"
+  Assert-Contains "smoke.html" "nightfall report appears after timeout"
+  Assert-Contains "smoke.html" "nightfall retry starts a new manual run"
   Assert-Contains "smoke.html" "phase objective names the first phase"
   Assert-Contains "smoke.html" "phase objective shows target glyphs and alignment"
   Assert-Contains "smoke.html" "demo shortcut reaches a deterministic judge receipt"

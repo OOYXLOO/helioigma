@@ -133,7 +133,7 @@
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },
   "verification": {
-    "expected_smoke_checks": 60,
+    "expected_smoke_checks": 69,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "ci_workflow": ".github/workflows/verify.yml"

@@ -113,7 +113,7 @@
         <p><a href="./">Open the playable game</a></p>
       </div>
       <div class="panel">
-    <iframe id="gameFrame" src="./?v=20260614-award-signals" title="Helioigma game under smoke test"></iframe>
+    <iframe id="gameFrame" src="./?v=20260614-nightfall-report" title="Helioigma game under smoke test"></iframe>
       </div>
     </section>
   </main>
@@ -182,6 +182,7 @@
       const phaseObjective = doc.querySelector("#phaseObjective");
       const phaseTargetLine = doc.querySelector("#phaseTargetLine");
       const phaseAlignment = doc.querySelector("#phaseAlignment");
+      const phaseProof = doc.querySelector("#phaseProof");
       const judgePathCards = doc.querySelectorAll(".judge-path article");
       const nodeButtons = doc.querySelectorAll("#nodeButtons .node-button");
       const judgeLinks = doc.querySelectorAll(".judge-links a");
@@ -206,6 +207,11 @@
       const judgeRunFacts = doc.querySelector("#judgeRunFacts");
       const awardSignals = doc.querySelector("#awardSignals");
       const copyRunSummaryButton = doc.querySelector("#copyRunSummaryButton");
+      const nightfallPanel = doc.querySelector("#nightfallPanel");
+      const nightfallSummary = doc.querySelector("#nightfallSummary");
+      const nightfallFacts = doc.querySelector("#nightfallFacts");
+      const retryButton = doc.querySelector("#retryButton");
+      const demoRetryButton = doc.querySelector("#demoRetryButton");
 
       addCheck("canvas is present", Boolean(canvas));
       addCheck("start button is present", Boolean(startButton));
@@ -225,6 +231,8 @@
       addCheck("phase objective strip is present", Boolean(phaseObjective && phaseTargetLine && phaseAlignment));
       addCheck("phase objective names the first phase", phaseObjective.textContent.includes("Crib dawn"));
       addCheck("phase objective shows target glyphs and alignment", phaseTargetLine.textContent.includes("SOL LUX XOR BIN") && phaseAlignment.textContent === "0/6 nodes aligned");
+      addCheck("phase proof strip is present", Boolean(phaseProof));
+      addCheck("phase proof names the first cue", phaseProof.textContent === "Solstice crib starts target checking.");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links include the auto demo route", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")));
@@ -242,6 +250,9 @@
       addCheck("judge run summary is present", Boolean(judgeRunSummary && judgeRunSummaryText && judgeRunFacts));
       addCheck("award signals are present", Boolean(awardSignals) && awardSignals.querySelectorAll("li").length === 3);
       addCheck("copy judge summary button is present", Boolean(copyRunSummaryButton));
+      addCheck("nightfall report panel is present", Boolean(nightfallPanel && nightfallSummary && nightfallFacts));
+      addCheck("nightfall action buttons are present", Boolean(retryButton && demoRetryButton));
+      addCheck("nightfall report starts hidden", nightfallPanel.hidden === true);
 
       press(win, "d");
       await waitFor(() => proofPanel.hidden === false, "demo solve did not reveal a receipt");
@@ -270,6 +281,18 @@
       addCheck("hint highlights a node button", Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
       addCheck("rotor trace records hint action", traceLast.textContent.includes("Hint node"));
       addCheck("rotor trace names the next mismatch", traceNext.textContent.includes("Node 1"));
+
+      for (let count = 0; count < 150; count += 1) {
+        press(win, "1");
+        await sleep(1);
+      }
+      await waitFor(() => nightfallPanel.hidden === false, "nightfall report did not appear after timeout");
+      addCheck("nightfall report appears after timeout", nightfallPanel.hidden === false && statusLine.textContent.includes("Nightfall sealed"));
+      addCheck("nightfall report summarizes aligned nodes", nightfallSummary.textContent.includes("nodes aligned") && nightfallSummary.textContent.includes("Retry"));
+      addCheck("nightfall report facts include held phases and score", nightfallFacts.textContent.includes("Held phases") && nightfallFacts.textContent.includes("Score"));
+      retryButton.click();
+      await sleep(120);
+      addCheck("nightfall retry starts a new manual run", nightfallPanel.hidden === true && statusLine.textContent.includes("First move: rotate node 1 toward SOL"));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);

@@ -181,7 +181,7 @@ jobs:
           grep -q "dev-launch-brief.md" submission-checklist.md
           grep -q "sample receipt verifier URL" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
-          grep -q "60 expected smoke checks" submission-checklist.md
+          grep -q "69 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
           grep -q "dev-launch-brief.md" PUBLISHING.md
 
@@ -207,7 +207,7 @@ jobs:
           grep -q "tactile node pulse" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
-          grep -q "Verify the browser path reaches 60 checks" judge.html
+          grep -q "Verify the browser path reaches 69 checks" judge.html
           grep -q "award signals" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
@@ -236,7 +236,7 @@ jobs:
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q "60" judge-manifest.json
+          grep -q "69" judge-manifest.json
           grep -q "score_basis" judge-manifest.json
           grep -q "award signals" judge-manifest.json
           grep -q "https://ooyxloo.github.io/helioigma/" judge-manifest.json
@@ -272,7 +272,7 @@ jobs:
           grep -q "judge page verifier action is not prefilled" tools/browser-smoke-check.mjs
           grep -q "mobile first viewport shows too little gameplay canvas" tools/browser-smoke-check.mjs
           grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
-          grep -q "expected 60 smoke checks" tools/browser-smoke-check.mjs
+          grep -q "expected 69 smoke checks" tools/browser-smoke-check.mjs
           grep -q "play rule no longer explains score and receipt" tools/browser-smoke-check.mjs
           grep -q "audio cues should default off" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
@@ -302,13 +302,13 @@ jobs:
           grep -q "Helioigma" index.html
           grep -q "Match numbered nodes before nightfall" index.html
           grep -q "Score rewards held daylight; the final receipt lets judges verify the path" index.html
-          grep -q "20260614-award-signals" index.html
+          grep -q "20260614-nightfall-report" index.html
           grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260614-award-signals" smoke.html
+          grep -q "20260614-nightfall-report" smoke.html
           grep -q "award signals are present" smoke.html
           grep -q "demo award signals name solstice, Turing, and judge proof" smoke.html
           grep -q "audio cue button is present" smoke.html
