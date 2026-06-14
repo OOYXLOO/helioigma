@@ -907,12 +907,6 @@ button:focus-visible {
     display: none;
   }
 
-  .objective-strip span:nth-child(4) small {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   .objective-strip strong {
     font-size: 9px;
   }

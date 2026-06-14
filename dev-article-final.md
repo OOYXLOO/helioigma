@@ -30,7 +30,7 @@ You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `
 
 Helioigma is built around that small pressure loop. Each phase changes the target, the live objective strip tells you what the rotor wants next, and a small phase-proof line names a compact Turing cue: crib state checks, XOR parity, binary carry, then checksum trace. The manual Hint and Rotor Trace path also changes by phase: Crib follows the first visible mismatch, XOR alternates mirrored rotor nodes, Carry advances through the binary chain, and Checksum verifies in reverse. Clear all four phases and the game leaves an inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked against the public verifier.
 
-I am aiming this at Best Ode to Alan Turing by making the tribute playable. My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the Demo Solve summary through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
+That is my Best Ode to Alan Turing angle: rotor state and checksum reasoning carry the tribute; daylight pressure carries the solstice theme; and the finished static package lets a judge inspect one stable Demo Solve without trusting a hidden service.
 
 ## What I Built
 
@@ -82,7 +82,7 @@ Detailed judge links:
 
 Core features, compressed for review: four timed phases; canvas-rendered glyphs, beams, progress ring, and particle feedback; mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback after hints or shifts; phase-specific hint order where Crib uses the first mismatch, XOR alternates mirrored rotor nodes, Carry follows the chain, and Checksum scans backward; Optional default-off Web Audio cues; short phase banner and screen-reader phase announcer; live Rotor Trace; score carry-over, streak bonuses, shift counting, local best score, final phase ledger, copyable `SC-4P-...` receipt, and Judge run summary.
 
-The fast review evidence is similarly compact: Nightfall report for failed manual runs, the losing state is inspectable, the receipt verifier recomputes the checksum, the judge page plus judge-manifest.json and browser smoke test provide a fast review path, and the first-screen phase objective strip plus phase-proof copy keep Match, Trace, and Seal visible. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
+The fast review evidence is similarly compact: Nightfall reports failed manual runs, the receipt verifier recomputes the checksum, and the judge page, manifest, and smoke test cover the loop. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
 
 ## Judge in 60 Seconds
 
@@ -166,11 +166,9 @@ That is also why the verifier matters to the theme. Turing's legacy is not only 
 
 ## Why It Is Not Just a Cipher Demo
 
-I wanted the Turing reference to live in the interaction, not only in the title. The player does not read a solved cipher; they manipulate the rotor state under a daylight timer, build a score through phase solves, and leave behind a receipt that can be checked independently. The smoke test and receipt verifier make the code-breaking loop visible and reproducible without turning the game into a static worksheet.
+I wanted the Turing reference to live in the interaction, not only in the title. The player does not read a solved cipher; they manipulate rotor state under a daylight timer, build a score through phase solves, and leave behind a receipt that can be checked independently. The live Rotor Trace shows the state machine changing, `Demo Solve` uses the same public controls as manual play, and the completed run links directly into the receipt verifier. The result is a small playable system with an audit trail, not just a solstice skin over a puzzle.
 
-The jam theme makes daylight, calendars, and code-breaking natural starting points. I tried to make Helioigma stand apart by turning those ideas into a judge-verifiable loop: the live Rotor Trace shows the state machine changing, `Demo Solve` uses the same public controls as manual play, and the completed run links directly into the receipt verifier. The result is a small playable system with an audit trail, not only a solstice skin over a puzzle.
-
-My crowded-queue test: if a judge has already seen another cipher wheel or another Turing reference, Helioigma should still be legible as game-first, reproducible, finished on failure, and public-safe. The timer, node pulses, and phase-specific hint order are playable before the proof layer matters; the Auto Demo receipt can be checked locally; Nightfall becomes a report with Retry and Demo Solve; and no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect it.
+My crowded-queue test: if a judge has already seen another cipher wheel or another Turing reference, Helioigma should still be legible as game-first, reproducible, finished on failure, and public-safe. The timer, node pulses, and phase-specific hint order are playable before the proof layer matters; Nightfall becomes a report with Retry and Demo Solve; and no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect it.
 
 ## Rubric Fit
 

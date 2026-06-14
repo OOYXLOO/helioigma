@@ -80,7 +80,7 @@ Do not publish the DEV article if any item is true:
 
 ## Post-Publish Receipt
 
-After publication, record these in `D:\hks\hks-yxl\money-goal-notes\06-prep-dev-solstice-cipher.md`:
+After publication, record these in the local Helioigma route note:
 
 - DEV article URL.
 - GitHub repository URL.

@@ -239,9 +239,9 @@ try {
   Assert-Contains "dev-article-final.md" "The manual Hint and Rotor Trace path also changes by phase"
   Assert-Contains "dev-article-final.md" "XOR alternates mirrored rotor nodes"
   Assert-Contains "dev-article-final.md" "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked"
-  Assert-Contains "dev-article-final.md" "I am aiming this at Best Ode to Alan Turing by making the tribute playable"
-  Assert-Contains "dev-article-final.md" "My award thesis is simple"
-  Assert-Contains "dev-article-final.md" "playable ode, a judge-verifiable loop, and a finished static package"
+  Assert-Contains "dev-article-final.md" "That is my Best Ode to Alan Turing angle"
+  Assert-Contains "dev-article-final.md" "rotor state and checksum reasoning carry the tribute"
+  Assert-Contains "dev-article-final.md" "finished static package lets a judge inspect one stable Demo Solve"
   Assert-Contains "dev-article-final.md" "small pressure loop"
   Assert-Contains "dev-article-final.md" "Video Demo"
   Assert-Contains "dev-article-final.md" "Code"
@@ -256,7 +256,7 @@ try {
   Assert-Contains "dev-article-final.md" "Rubric Fit"
   Assert-Contains "dev-article-final.md" "Why It Is Not Just a Cipher Demo"
   Assert-Contains "dev-article-final.md" "judge-verifiable loop"
-  Assert-Contains "dev-article-final.md" "not only a solstice skin over a puzzle"
+  Assert-Contains "dev-article-final.md" "not just a solstice skin over a puzzle"
   Assert-Contains "dev-article-final.md" "An Ode with Restraint"
   Assert-Contains "dev-article-final.md" "not a biography game"
   Assert-Contains "dev-article-final.md" "careful reasoning about machines and proof"
@@ -299,7 +299,7 @@ try {
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
   Assert-Contains "dev-article-final.md" "Optional default-off Web Audio cues"
-  Assert-Contains "dev-article-final.md" "Nightfall report for failed manual runs"
+  Assert-Contains "dev-article-final.md" "Nightfall reports failed manual runs"
   Assert-Contains "dev-article-final.md" "the losing state is inspectable"
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
   Assert-Contains "dev-article-final.md" "default-off Audio control"
@@ -360,7 +360,7 @@ try {
   Assert-Contains "README.md" "Seal the daylight run."
   Assert-NotContains "README.md" "Prove the daylight run."
   Assert-Contains "README.md" "phase-proof line now starts as"
-  Assert-Contains "README.md" "Turing cue: crib starts state checks."
+  Assert-Contains "README.md" "Turing cue: crib checks state."
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
   Assert-Contains "README.md" "Owner-only launch notes are kept in Markdown"
   Assert-Contains "README.md" "Local Launch Notes"
@@ -652,7 +652,7 @@ try {
   Assert-Contains "index.html" "phaseAlignment"
   Assert-Contains "index.html" "phaseProof"
   Assert-Contains "index.html" "Phase proof"
-  Assert-Contains "index.html" "Turing cue: crib starts state checks."
+  Assert-Contains "index.html" "Turing cue: crib checks state."
   Assert-Contains "game.js" "phaseProofs"
   Assert-Contains "game.js" "Turing cue: checksum seals the trace."
   Assert-Contains "index.html" "proofSummary"
@@ -792,6 +792,12 @@ try {
   if ($secretHits) {
     $secretHits | ForEach-Object { Write-Output "Potential secret hit: $($_.Path):$($_.LineNumber)" }
     throw "Potential secret-like content found"
+  }
+
+  $localPathHits = $scanFiles | Select-String -Pattern "(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]|hks-yxl|money-goal-200usd" -ErrorAction SilentlyContinue
+  if ($localPathHits) {
+    $localPathHits | ForEach-Object { Write-Output "Local staging path hit: $($_.Path):$($_.LineNumber)" }
+    throw "Local staging path found in launch text"
   }
 
   if ($Public) {

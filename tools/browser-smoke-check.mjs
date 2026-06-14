@@ -78,6 +78,8 @@ async function readGameFacts(page) {
     const dayMeter = document.querySelector("#dayMeter")?.getBoundingClientRect();
     const objectiveStrip = document.querySelector(".objective-strip")?.getBoundingClientRect();
     const tracePanel = document.querySelector("#tracePanel");
+    const phaseProof = document.querySelector("#phaseProof");
+    const phaseProofStyle = phaseProof ? getComputedStyle(phaseProof) : null;
     const ordered = [...document.querySelectorAll("body *")];
     const controls = document.querySelector(".quick-controls");
     const canvas = document.querySelector("#game");
@@ -101,7 +103,9 @@ async function readGameFacts(page) {
         phase: document.querySelector("#phaseObjective")?.textContent.trim(),
         target: document.querySelector("#phaseTargetLine")?.textContent.trim(),
         alignment: document.querySelector("#phaseAlignment")?.textContent.trim(),
-        proof: document.querySelector("#phaseProof")?.textContent.trim(),
+        proof: phaseProof?.textContent.trim(),
+        proofFits: phaseProof ? phaseProof.scrollWidth <= phaseProof.clientWidth + 1 : false,
+        proofTextOverflow: phaseProofStyle?.textOverflow || "",
       },
       playRule: document.querySelector(".play-rule")?.textContent.trim(),
       judgePathText: document.querySelector(".judge-path")?.textContent.trim(),
@@ -175,9 +179,10 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(
-      desktop.objective.proof === "Turing cue: crib starts state checks.",
+      desktop.objective.proof === "Turing cue: crib checks state.",
       "phase proof initial copy changed"
     );
+    assert(desktop.objective.proofFits, "desktop phase proof text is clipped");
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
@@ -312,9 +317,11 @@ async function main() {
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(
-      mobile.objective.proof === "Turing cue: crib starts state checks.",
+      mobile.objective.proof === "Turing cue: crib checks state.",
       "mobile phase proof initial copy changed"
     );
+    assert(mobile.objective.proofFits, "mobile phase proof text is clipped");
+    assert(mobile.objective.proofTextOverflow !== "ellipsis", "mobile phase proof is still ellipsized");
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 

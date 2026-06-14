@@ -39,7 +39,7 @@ Player feel matters as much as proof: each phase gives a readable target, a visi
 
 Playability proof for a rushed judge: the first minute exposes readable decisions, immediate feedback, and a finished failure state. The target glyphs, aligned-node count, phase objective, and phase-specific scan rule make each tap explainable; node pulses, Rotor Trace, daylight movement, status copy, and optional audio make shifts legible; and the Nightfall report gives held phases, aligned nodes, score, shifts, Retry, and Demo Solve recovery instead of a dead end.
 
-The playable first screen now leads with the game hook, `Seal the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line now starts as `Turing cue: crib starts state checks.`, keeping the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
+The playable first screen now leads with the game hook, `Seal the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line now starts as `Turing cue: crib checks state.`, keeping the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
 ## Official Review Snapshot
 

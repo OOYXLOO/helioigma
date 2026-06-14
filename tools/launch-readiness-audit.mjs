@@ -92,6 +92,7 @@ const sensitiveTextChecks = [
   ["card-like payment number", /\b(?:\d[ -]?){16}\b/],
   ["secret-key-like token", /\bsk-[A-Za-z0-9._-]{8,}\b/],
   ["password-like assignment", /\b(?:password|passwd|pwd)\s*[:=]\s*["']?[^\s"']{8,}/i],
+  ["local drive or staging path", /(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]|hks-yxl|money-goal-200usd/i],
 ];
 
 const result = {
@@ -240,6 +241,9 @@ for (const file of trackedFiles) {
   }
   for (const [label, pattern] of sensitiveTextChecks) {
     if (file === "public-preflight.ps1" && label === "password-like assignment") {
+      continue;
+    }
+    if (file === "public-preflight.ps1" && label === "local drive or staging path") {
       continue;
     }
     if (pattern.test(text)) {

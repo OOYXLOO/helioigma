@@ -232,7 +232,7 @@
       addCheck("phase objective names the first phase", phaseObjective.textContent.includes("Crib dawn"));
       addCheck("phase objective shows target glyphs and alignment", phaseTargetLine.textContent.includes("SOL LUX XOR BIN") && phaseAlignment.textContent === "0/6 nodes aligned");
       addCheck("phase proof strip is present", Boolean(phaseProof));
-      addCheck("phase proof names the first Turing cue", phaseProof.textContent === "Turing cue: crib starts state checks.");
+      addCheck("phase proof names the first Turing cue", phaseProof.textContent === "Turing cue: crib checks state.");
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links keep the strongest four review routes", judgeLinks.length === 4 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")) && [...judgeLinks].some((link) => link.textContent.includes("Judge pack")) && [...judgeLinks].some((link) => link.textContent.includes("Verify sample")) && [...judgeLinks].some((link) => link.textContent.includes("Watch video")) && [...judgeLinks].some((link) => link.getAttribute("href") === "helioigma-demo.webm?v=20260614-seal-media") && [...judgeLinks].some((link) => link.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"));
