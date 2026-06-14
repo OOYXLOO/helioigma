@@ -102,7 +102,7 @@ async function readGameFacts(page) {
       resetVisible: Boolean(reset && reset.top >= 0 && reset.bottom <= innerHeight && getComputedStyle(document.querySelector("#resetButton")).display !== "none"),
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
       soundVisible: Boolean(sound && sound.top >= 0 && sound.bottom <= innerHeight),
-      judgePathBeforeCanvas: Boolean(judgePath && ordered.indexOf(document.querySelector(".judge-path")) >= 0 && ordered.indexOf(document.querySelector(".judge-path")) < ordered.indexOf(canvas)),
+      judgePathBeforeCanvas: Boolean(judgePath && canvasRect && judgePath.bottom <= canvasRect.top + 1),
       judgePathVisible: Boolean(judgePath && judgePath.top >= 0 && judgePath.bottom <= innerHeight),
       dayMeterVisible: Boolean(dayMeter && dayMeter.top >= 0 && dayMeter.bottom <= innerHeight),
       dayMeterLabel: document.querySelector("#dayMeterLabel")?.textContent.trim(),
@@ -181,9 +181,8 @@ async function main() {
     assert(desktop.demoVisible, "desktop Demo Solve is not visible in the first viewport");
     assert(desktop.hintVisible, "desktop Hint is not visible in the first viewport");
     assert(desktop.soundVisible, "desktop Audio toggle is not visible in the first viewport");
-    assert(desktop.canvasTop < 520, `desktop game canvas starts too low: ${desktop.canvasTop}`);
+    assert(desktop.canvasTop < 410, `desktop game canvas starts too low for game-first review: ${desktop.canvasTop}`);
     assert(desktop.demoBeforeCanvas, "Demo Solve controls are not before the canvas");
-    assert(desktop.judgePathVisible, "desktop Judge path is not visible in the first viewport");
     assert(desktop.dayMeterVisible, "desktop daylight meter is not visible in the first viewport");
     assert(desktop.dayMeterLabel === "45s", "desktop daylight meter did not initialize");
     assert(desktop.objectiveVisible, "desktop phase objective is not visible in the first viewport");
@@ -197,9 +196,9 @@ async function main() {
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
-    assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
-    assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "first-screen run path cards changed");
-    assert(desktop.judgePathText?.includes("Finish all four phases") && desktop.judgePathText?.includes("verify the sample receipt"), "first-screen run path no longer keeps receipt verification after play");
+    assert(!desktop.judgePathBeforeCanvas, "desktop Run Path should sit after the canvas so the wheel appears earlier");
+    assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "run path cards changed");
+    assert(desktop.judgePathText?.includes("Finish all four phases") && desktop.judgePathText?.includes("verify the sample receipt"), "run path no longer keeps receipt verification after play");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.startText === "Start Run", "start button no longer names the play action");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");

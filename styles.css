@@ -282,6 +282,20 @@ body {
 }
 
 @media (min-width: 721px) {
+  .hud { order: 1; }
+  .phase-track { order: 2; }
+  .brief { order: 3; }
+  .day-meter { order: 4; }
+  .quick-controls { order: 5; }
+  canvas { order: 6; }
+  .play-rule { order: 7; }
+  .judge-path { order: 8; }
+  .trace-panel { order: 9; }
+  .node-buttons { order: 10; }
+  .judge-links { order: 11; }
+  .proof-panel { order: 12; }
+  .nightfall-panel { order: 13; }
+
   .hud,
   .brief,
   .controls,

@@ -76,7 +76,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
-- A first-screen Run Path strip keeps the game-first sequence explicit: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
+- A compact Run Path strip keeps the game-first sequence explicit after the playable wheel: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
 - The manual hint route is phase-specific, so later phases visibly change how the next mismatch is selected instead of only shrinking the timer.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
 - After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the receipt details instead of leaving them below the fold.
@@ -121,7 +121,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, default-off Audio controls, score/receipt explanation, daylight meter, game-first Run Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 70 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, default-off Audio controls, score/receipt explanation, daylight meter, desktop canvas priority, game-first Run Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 70 PASS checks.
 - `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/capture-public-media.mjs`: clean-browser media capture for desktop/mobile first screens, completion screenshots, and the seven `demo-frames-v3` frames; it asserts first-screen score/best/shifts start at zero so public assets do not inherit local review state.
 - `tools/launch-readiness-audit.mjs`: pre-publication readiness audit. `npm run audit:launch` reports local package readiness; `npm run audit:launch:public` also checks the missing public repo/Pages gate and reports `WAIT_USER_GATE` until launch is live.
