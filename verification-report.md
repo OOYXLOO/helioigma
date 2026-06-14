@@ -11,8 +11,8 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
 - Intended source URL after publication: `https://github.com/OOYXLOO/helioigma`
-- Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`
-- Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots; submit by June 21, 2026 at 11:59 PM PDT.
+- Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
+- Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT.
 - Public boundary: no Google AI claim, backend, account login, API key, private data, or payout/KYC data is required for review.
 
 ## Verified Assets
@@ -20,7 +20,6 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `index.html`: playable static game
 - `judge.html`: judge quick path with official route snapshot, 60-second review path, rubric snapshot, and receipt links
 - `smoke.html`: browser smoke test
-- `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
 - `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner, completed-run ledger, and demo receipt verifier
@@ -53,7 +52,6 @@ Expected local URLs:
 - `http://127.0.0.1:8781/?demo=1`: HTTP 200 and starts the deterministic Demo Solve route
 - `http://127.0.0.1:8781/judge.html`: HTTP 200
 - `http://127.0.0.1:8781/smoke.html`: HTTP 200
-- `http://127.0.0.1:8781/dev-submit-console.html`: HTTP 200
 - `http://127.0.0.1:8781/dev-article-final.md`: HTTP 200
 - `http://127.0.0.1:8781/helioigma-demo.webm`: HTTP 200
 - `http://127.0.0.1:8781/helioigma-demo.gif`: HTTP 200

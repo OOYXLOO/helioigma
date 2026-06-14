@@ -30,14 +30,12 @@ jobs:
             judge-manifest.json \
             smoke.html \
             proof-verifier.html \
-            publish-assistant.html \
             publish-after-repo.ps1 \
             public-preflight.ps1 \
             tools/build-package.ps1 \
             tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
-            dev-submit-console.html \
             dev-article-final.md \
             dev-launch-brief.md \
             verification.html \
@@ -126,39 +124,11 @@ jobs:
           grep -q "Do not publish the DEV article if" dev-launch-brief.md
           grep -q "fake engagement" dev-launch-brief.md
           grep -q "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content" dev-launch-brief.md
-          grep -q "publish-assistant.html" PUBLISHING.md
-          grep -q "devchallenge, gamechallenge, gamedev, javascript" dev-submit-console.html
-          grep -q "Helioigma" dev-submit-console.html
-          grep -q "You get 45 seconds of daylight" dev-submit-console.html
-          grep -q "live objective strip tells you what the rotor wants next" dev-submit-console.html
-          grep -q "Judge in 60 Seconds" dev-submit-console.html
-          grep -q "judge-manifest.json" dev-submit-console.html
-          grep -q "CHALLENGE_COMPLIANCE.md" dev-submit-console.html
-          grep -q "Challenge Compliance" dev-submit-console.html
-          grep -q "Sample receipt verifier" dev-submit-console.html
-          grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" dev-submit-console.html
-          grep -q "Rubric Fit" dev-submit-console.html
-          grep -q "Ode With Restraint" dev-submit-console.html
-          grep -q "Rotor Trace" dev-submit-console.html
-          grep -q "How I Built It" dev-submit-console.html
-          grep -q "WebM video" dev-submit-console.html
-          grep -q "No pressure, no spam, and no fake engagement" dev-submit-console.html
-          ! grep -q "positive reactions can matter" dev-submit-console.html
-          grep -q "optional legacy MP4 fallback" dev-submit-console.html
-          grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
-          grep -q "mobile-complete-v1.png" dev-submit-console.html
-          grep -q 'Optional `?demo=1` route' dev-submit-console.html
-          grep -q "Originality Note" dev-submit-console.html
-          grep -q "{% embed https://github.com/OOYXLOO/helioigma %}" dev-submit-console.html
-          grep -q "new creation for the official June 3 to June 21 jam window" dev-submit-console.html
-          grep -q "not a wrapper around a prior game template" dev-submit-console.html
-          grep -q "true demo artifacts from the current game rather than mockups" dev-submit-console.html
-          grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" dev-submit-console.html
-          grep -q "public-preflight.ps1 -Public" dev-submit-console.html
           grep -q "only browser storage is the local numeric best score key" README.md
+          grep -q "45s solstice cipher" README.md
           grep -q "GitHub Pages-ready static game package" README.md
-          grep -q "Owner-only publishing helpers are included" README.md
-          grep -q "Owner Launch Helpers" README.md
+          grep -q "Owner-only launch notes are kept in Markdown" README.md
+          grep -q "Local Launch Notes" README.md
           ! grep -q "Public repository, GitHub Pages, and DEV submission are account-owner launch gates" README.md
           ! grep -q "if the user authorizes public publishing" README.md
           grep -q "The Turing ode is intentionally restrained" README.md

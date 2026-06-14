@@ -7,13 +7,13 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 - Challenge: DEV June Solstice Game Jam.
 - Public rules page: `https://dev.to/challenges/june-game-jam-2026-06-03`.
 - Public announcement page: `https://dev.to/devteam/join-the-june-solstice-game-jam-1000-in-prizes-3jla`.
-- Prize target: Best Ode to Alan Turing, one of five total USD 200 winner slots.
+- Prize target: Best Ode to Alan Turing category route in the official challenge.
 - Deadline: June 21, 2026 at 11:59 PM PDT.
 - Winners announced: July 9, 2026.
 
 ## Official Review Snapshot
 
-- Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
+- Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
 - Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.

@@ -80,11 +80,9 @@ try {
     "judge-manifest.json",
     "smoke.html",
     "proof-verifier.html",
-    "dev-submit-console.html",
     "dev-article-final.md",
     "dev-launch-brief.md",
     "dev-post-draft.md",
-    "publish-assistant.html",
     "publish-after-repo.ps1",
     "tools/build-package.ps1",
     "tools/build-demo-video.mjs",
@@ -168,7 +166,7 @@ try {
   if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
   if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
-  if ($manifest.challenge.official_route_snapshot.prize_route -ne "Best Ode to Alan Turing, one of five USD 200 winner slots.") { throw "judge-manifest official route prize mismatch" }
+  if ($manifest.challenge.official_route_snapshot.prize_route -ne "Best Ode to Alan Turing category route in the official challenge.") { throw "judge-manifest official route prize mismatch" }
   if ($manifest.challenge.official_route_snapshot.submit_by -ne "June 21, 2026 at 11:59 PM PDT.") { throw "judge-manifest official route deadline mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt verifier*")) { throw "judge-manifest official route proof mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.boundary -like "No Google AI claim*")) { throw "judge-manifest official route boundary mismatch" }
@@ -224,7 +222,7 @@ try {
   Assert-Contains "dev-article-final.md" "How I Built It"
   Assert-Contains "dev-article-final.md" "Prize Category"
   Assert-Contains "dev-article-final.md" "Judge in 60 Seconds"
-  Assert-Contains "dev-article-final.md" "Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots"
+  Assert-Contains "dev-article-final.md" "Official route snapshot: Best Ode to Alan Turing category route in the official challenge"
   Assert-Contains "dev-article-final.md" '{% embed https://github.com/OOYXLOO/helioigma %}'
   Assert-Contains "dev-article-final.md" "Plain source URL: https://github.com/OOYXLOO/helioigma"
   Assert-Contains "dev-article-final.md" "judge-manifest.json"
@@ -298,7 +296,7 @@ try {
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
   Assert-Contains "README.md" "npm run smoke"
-  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing category route"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
@@ -307,57 +305,13 @@ try {
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
-  Assert-Contains "dev-submit-console.html" 'plus a `D` shortcut'
-  Assert-Contains "dev-submit-console.html" 'Optional `?demo=1` route'
-  Assert-Contains "dev-submit-console.html" "Helioigma"
-  Assert-Contains "dev-submit-console.html" "Reviewer fast path"
-  Assert-Contains "dev-submit-console.html" "The shortest evaluation path is: play one phase, run Auto Demo, verify receipt"
-  Assert-Contains "dev-submit-console.html" "No-Go Gate"
-  Assert-Contains "dev-submit-console.html" "Judge in 60 Seconds"
-  Assert-Contains "dev-submit-console.html" "mobile-complete-v1.png"
-  Assert-Contains "dev-submit-console.html" "You get 45 seconds of daylight"
-  Assert-Contains "dev-submit-console.html" "little daylight machine"
-  Assert-Contains "dev-submit-console.html" "live objective strip tells you what the rotor wants next"
-  Assert-Contains "dev-submit-console.html" "phase-proof line explains how the current phase maps"
-  Assert-Contains "dev-submit-console.html" "My award thesis is simple"
-  Assert-Contains "dev-submit-console.html" "playable ode, a judge-verifiable loop, and a finished static package"
-  Assert-Contains "dev-submit-console.html" "first-move coach on Start"
-  Assert-Contains "dev-submit-console.html" "tactile pulse feedback after hints or shifts"
-  Assert-Contains "dev-submit-console.html" "judge-manifest.json"
-  Assert-Contains "dev-submit-console.html" "CHALLENGE_COMPLIANCE.md"
-  Assert-Contains "dev-submit-console.html" "Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots"
-  Assert-Contains "dev-submit-console.html" "Challenge Compliance"
-  Assert-Contains "dev-submit-console.html" "Public launch gate"
-  Assert-Contains "dev-submit-console.html" "Sample receipt verifier"
-  Assert-Contains "dev-submit-console.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
-  Assert-Contains "dev-submit-console.html" "Rubric Fit"
-  Assert-Contains "dev-submit-console.html" "live Rotor Trace, deterministic Demo Solve, and a verifiable run receipt"
-  Assert-Contains "dev-submit-console.html" "phase banner"
-  Assert-Contains "dev-submit-console.html" "Ode With Restraint"
-  Assert-Contains "dev-submit-console.html" "Rotor Trace"
-  Assert-Contains "dev-submit-console.html" "Post-Publish Share Note"
-  Assert-Contains "dev-submit-console.html" "No pressure, no spam, and no fake engagement"
-  Assert-NotContains "dev-submit-console.html" "positive reactions can matter"
-  Assert-NotContains "dev-submit-console.html" "tie-breaker help"
-  Assert-Contains "dev-submit-console.html" "Originality Note"
-  Assert-Contains "dev-submit-console.html" '{% embed https://github.com/OOYXLOO/helioigma %}'
-  Assert-Contains "dev-submit-console.html" "new creation for the official June 3 to June 21 jam window"
-  Assert-Contains "dev-submit-console.html" "true demo artifacts from the current game rather than mockups"
-  Assert-Contains "dev-submit-console.html" "not a wrapper around a prior game template"
-  Assert-Contains "dev-submit-console.html" "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state"
-  Assert-Contains "dev-submit-console.html" "static solved cipher"
-  Assert-Contains "dev-submit-console.html" "How I Built It"
-  Assert-Contains "dev-submit-console.html" "Source: https://github.com/OOYXLOO/helioigma"
-  Assert-Contains "dev-submit-console.html" "WebM video"
-  Assert-Contains "dev-submit-console.html" "optional legacy MP4 fallback"
-  Assert-Contains "dev-submit-console.html" "Completion screenshot with receipt ledger"
-  Assert-Contains "dev-submit-console.html" "public-preflight.ps1 -Public"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
+  Assert-Contains "README.md" "45s solstice cipher"
   Assert-Contains "README.md" "phase-proof line keeps the solstice/Turing/verification connection visible"
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
-  Assert-Contains "README.md" "Owner-only publishing helpers are included"
-  Assert-Contains "README.md" "Owner Launch Helpers"
+  Assert-Contains "README.md" "Owner-only launch notes are kept in Markdown"
+  Assert-Contains "README.md" "Local Launch Notes"
   Assert-NotContains "README.md" "Public repository, GitHub Pages, and DEV submission are account-owner launch gates"
   Assert-NotContains "README.md" "if the user authorizes public publishing"
   Assert-NotContains "README.md" "backup route"
@@ -394,12 +348,6 @@ try {
   Assert-Contains "README.md" "?demo=1"
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
-  Assert-Contains "publish-assistant.html" "No-go gate"
-  Assert-Contains "publish-assistant.html" "OOYXLOO/helioigma"
-  Assert-Contains "publish-assistant.html" "github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
-  Assert-Contains "publish-assistant.html" "Optional GitHub CLI"
-  Assert-Contains "publish-assistant.html" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "publish-assistant.html" "69 smoke checks"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
   Assert-Contains "submission-checklist.md" "account-owner launch gates"
   Assert-Contains "submission-checklist.md" "share the DEV post only with honest feedback requests"
@@ -462,7 +410,7 @@ try {
   Assert-Contains "judge.html" "receipt verifier, theme fit, run receipt, and source path"
   Assert-Contains "judge.html" "60-second review path"
   Assert-Contains "judge.html" "Official route snapshot"
-  Assert-Contains "judge.html" "Best Ode to Alan Turing, one of five USD 200 winner slots"
+  Assert-Contains "judge.html" "Best Ode to Alan Turing category route in the official challenge"
   Assert-Contains "judge.html" "Award thesis"
   Assert-Contains "judge.html" "Playable ode"
   Assert-Contains "judge.html" "Judge-verifiable"
@@ -551,12 +499,14 @@ try {
   Assert-Contains "index.html" "phaseAnnouncer"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "Demo Solve full judge route"
+  Assert-Contains "index.html" "45s solstice cipher"
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
-  Assert-Contains "index.html" "1. Play"
-  Assert-Contains "index.html" "2. Demo Solve + Rotor Trace"
-  Assert-Contains "index.html" "Demo Solve traces all four phases."
-  Assert-Contains "index.html" "3. Receipt"
+  Assert-Contains "index.html" "Run path"
+  Assert-Contains "index.html" "1. Match"
+  Assert-Contains "index.html" "2. Trace"
+  Assert-Contains "index.html" "3. Seal"
+  Assert-Contains "index.html" "Rotate nodes before nightfall."
   Assert-Contains "index.html" "Verify sample"
   Assert-Contains "index.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "index.html" "judge-links"
@@ -584,14 +534,14 @@ try {
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "In each 45s phase, rotate every numbered node until it matches the target glyphs"
   Assert-Contains "index.html" "full receipt path"
-  Assert-Contains "index.html" "20260614-nightfall-report"
+  Assert-Contains "index.html" "20260614-mobile-review"
   Assert-Contains "index.html" "https://ooyxloo.github.io/helioigma/cover.png"
   Assert-Contains "index.html" "twitter:image"
   Assert-Contains "index.html" "aria-keyshortcuts=""H"""
   Assert-Contains "index.html" "aria-keyshortcuts=""D"""
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
-  Assert-Contains "smoke.html" "20260614-nightfall-report"
+  Assert-Contains "smoke.html" "20260614-mobile-review"
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "audio cue button is present"
   Assert-Contains "smoke.html" "audio cues default off"
@@ -695,7 +645,6 @@ try {
       "https://ooyxloo.github.io/helioigma/smoke.html",
       "https://ooyxloo.github.io/helioigma/proof-verifier.html",
       "https://ooyxloo.github.io/helioigma/judge-manifest.json",
-      "https://ooyxloo.github.io/helioigma/dev-submit-console.html",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.webm",
       "https://ooyxloo.github.io/helioigma/helioigma-demo.gif",
       "https://ooyxloo.github.io/helioigma/mobile-complete-v1.png",

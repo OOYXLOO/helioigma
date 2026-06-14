@@ -101,6 +101,7 @@ async function readGameFacts(page) {
         exists: Boolean(tracePanel),
       },
       judgePathCards: [...document.querySelectorAll(".judge-path article strong")].map((node) => node.textContent.trim()),
+      heroHook: document.querySelector(".hero-hook")?.textContent.trim(),
       shortcutMap: {
         start: document.querySelector("#startButton")?.getAttribute("aria-keyshortcuts"),
         reset: document.querySelector("#resetButton")?.getAttribute("aria-keyshortcuts"),
@@ -147,12 +148,13 @@ async function main() {
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
     assert(desktop.objective.proof === "Solstice crib starts target checking.", "phase proof initial copy changed");
+    assert(desktop.heroHook === "45s solstice cipher", "first screen no longer leads with the game hook");
     assert(desktop.playRule?.includes("In each 45s phase") && desktop.playRule?.includes("matches the target glyphs") && desktop.playRule?.includes("full receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
     assert(desktop.judgePathBeforeCanvas, "Judge path is not before the canvas");
-    assert(desktop.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "Judge path cards changed");
+    assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "first-screen run path cards changed");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
@@ -242,7 +244,8 @@ async function main() {
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathVisible, "mobile Judge path is not visible in the first viewport");
     assert(mobile.judgePathBeforeCanvas, "mobile Judge path is not before the canvas");
-    assert(mobile.judgePathCards.join("|") === "1. Play|2. Demo Solve + Rotor Trace|3. Receipt", "mobile Judge path cards changed");
+    assert(mobile.heroHook === "45s solstice cipher", "mobile first screen no longer leads with the game hook");
+    assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.objective.proof === "Solstice crib starts target checking.", "mobile phase proof initial copy changed");
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
@@ -276,7 +279,7 @@ async function main() {
       hasPrefilledVerifierCopy: document.body.innerText.includes("pre-filled sample verifier") || document.body.innerText.includes("prefilled sample verifier"),
       hasOfficialRouteSnapshot: document.body.innerText.toLowerCase().includes("official route snapshot"),
       routeSnapshotItems: [...document.querySelectorAll(".route-snapshot strong")].map((node) => node.textContent.trim()),
-      hasPrizeSlotCopy: document.body.innerText.includes("Best Ode to Alan Turing, one of five USD 200 winner slots"),
+      hasPrizeRouteCopy: document.body.innerText.includes("Best Ode to Alan Turing category route in the official challenge"),
       hasDeadlineCopy: document.body.innerText.includes("June 21, 2026 at 11:59 PM PDT"),
       hasBoundaryCopy: document.body.innerText.includes("No Google AI claim, backend, account login, API key, or private data"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
@@ -310,7 +313,7 @@ async function main() {
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
     assert(judge.hasOfficialRouteSnapshot, "judge page is missing the official route snapshot");
     assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge proof|Boundary", "judge page official route snapshot changed");
-    assert(judge.hasPrizeSlotCopy, "judge page does not name the USD 200 prize route");
+    assert(judge.hasPrizeRouteCopy, "judge page does not name the Turing category route");
     assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
     assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");
     assert(judge.verifyReceiptHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge page verifier action is not prefilled");
@@ -369,7 +372,7 @@ async function main() {
     assert(manifest.public_urls?.sample_receipt_verifier === "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge manifest sample receipt verifier URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
-    assert(manifest.challenge?.official_route_snapshot?.prize_route === "Best Ode to Alan Turing, one of five USD 200 winner slots.", "judge manifest official route prize changed");
+    assert(manifest.challenge?.official_route_snapshot?.prize_route === "Best Ode to Alan Turing category route in the official challenge.", "judge manifest official route prize changed");
     assert(manifest.challenge?.official_route_snapshot?.boundary?.startsWith("No Google AI claim"), "judge manifest official route boundary changed");
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");

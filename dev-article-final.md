@@ -81,15 +81,15 @@ Core features:
 - Nightfall report for failed manual runs, with aligned-node progress, held phases, score, shifts, and direct Retry / Demo Solve recovery.
 - Receipt verifier that recomputes the checksum locally, supports completed-run `?receipt=` deep links, and shows parsed phases, score, shifts, and checksum facts.
 - Judge page, judge manifest, and browser smoke test for a fast review path.
-- First-screen phase objective strip with phase-proof copy, plus Judge Path cards for Play, Demo Solve + Rotor Trace, and Receipt on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
+- First-screen phase objective strip with phase-proof copy, plus a game-first Run Path strip for Match, Trace, and Seal on desktop and mobile. On mobile the cards collapse to compact labels so the canvas still starts in the first viewport.
 
 ## Judge in 60 Seconds
 
 Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. No account, API, backend, private data, or hidden judge path is needed to inspect it.
 
-Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data.
+Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data.
 
-1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
+1. Open the play link and follow the first-screen Run Path: match nodes manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
 3. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
@@ -219,12 +219,14 @@ Before publication, the public launch gate is simple: the GitHub repo must be li
 
 ## Verification
 
-I verified the package with:
+I verified the local package with:
 
 - `node --check game.js`
-- `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after the public Pages links are live
+- `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
 - Desktop browser check: no horizontal overflow, visible four-step phase track, and nonblank gameplay screenshot.
 - 390px mobile browser check: no horizontal overflow, compact phase track, visible controls, and the canvas begins in the first viewport.
 - 390px mobile completion check: Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - `smoke.html`: 69 checks passed, including daylight meter, score/receipt explanation, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, Hint shortcut/highlight behavior, Rotor Trace state, deterministic demo receipt through the public shortcut path, reset shortcut recovery, released manual controls, judge shortcuts, shift counter, phase track, final status, run receipt, and receipt-verifier link coverage.
-- `judge-manifest.json`: records the USD 200 prize target, Best Ode to Alan Turing category, expected 69 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+- `judge-manifest.json`: records the Best Ode to Alan Turing category, expected 69 smoke checks, public links, stable receipt `SC-4P-2907-62-Y5VFX1`, and human gates.
+
+After GitHub Pages is live, the final launch check is `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` against the public URLs.

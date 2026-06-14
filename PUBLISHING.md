@@ -50,10 +50,9 @@ After the push, the `Verify Helioigma` workflow should pass before the DEV artic
 
 Do not submit on DEV until the public try link works. Use:
 
-- Copy console: `dev-submit-console.html`
+- Final DEV article: `dev-article-final.md`
 - Launch brief: `dev-launch-brief.md`
 - Judge review card: `JUDGE_REVIEW_CARD.md`
-- Publish assistant: `publish-assistant.html`
 - Push helper: `publish-after-repo.ps1`
 - Draft: `dev-post-draft.md`
 - Cover image after Pages is live: `https://ooyxloo.github.io/helioigma/cover.png`
@@ -66,7 +65,7 @@ Do not submit on DEV until the public try link works. Use:
 - Try link: `https://ooyxloo.github.io/helioigma/`
 - Auto demo link: `https://ooyxloo.github.io/helioigma/?demo=1`
 - Source link: `https://github.com/OOYXLOO/helioigma`
-- Post-publish sharing: use the copy-ready share note in `dev-submit-console.html` after the DEV URL exists. Ask for real feedback from people who try the game. Do not spam, buy reactions, pressure people, or ask for fake engagement.
+- Post-publish sharing: use the honest share note in `dev-launch-brief.md` after the DEV URL exists. Ask for real feedback from people who try the game. Do not spam, buy reactions, pressure people, or ask for fake engagement.
 
 The account owner handles DEV login, final post, prize claim, payout, tax, and KYC directly.
 
@@ -92,7 +91,6 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Completed public run reveals a copyable `SC-4P-...` run receipt.
 - [ ] DEV article uses the official tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
-- [ ] `dev-submit-console.html` no-go gate is reviewed immediately before publishing.
 - [ ] `dev-launch-brief.md` public URL checks, DEV article fields, and no-go gate are reviewed immediately before publishing.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.

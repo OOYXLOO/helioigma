@@ -15,8 +15,6 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
-- Copy-ready DEV final post console: `dev-submit-console.html`.
-- Copy-ready publish assistant: `publish-assistant.html`.
 - Local/public preflight script: `public-preflight.ps1`.
 - Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
@@ -57,7 +55,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, the first-screen/judge-pack sample link opens `?receipt=SC-4P-2907-62-Y5VFX1`, and the verifier shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the USD 200 target, Best Ode to Alan Turing category, 69 expected smoke checks, sample receipt verifier URL, score basis, Nightfall recovery, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Manifest check: `judge-manifest.json` records the Best Ode to Alan Turing category, 69 expected smoke checks, sample receipt verifier URL, score basis, Nightfall recovery, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 - Judge review card check: `JUDGE_REVIEW_CARD.md` records the 60-second path, award thesis, rubric evidence, boundaries, and public evidence links.
 
 ## Before Publishing
@@ -69,11 +67,11 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Push the prepared local `main` branch to that repository.
 - Confirm GitHub Actions `Verify Helioigma` passes after push.
 - Enable GitHub Pages from the `main` branch root.
-- Use `dev-submit-console.html` for the final title, tags, current WebM/GIF media, public links, and no-go gate.
+- Use `dev-article-final.md` for the final title, tags, current WebM/GIF media, public links, and category narrative.
 - Keep the GitHub source embed in the Code section: `{% embed https://github.com/OOYXLOO/helioigma %}`, followed by the plain source URL.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
 - Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
-- Use `publish-assistant.html` for repository settings, push commands, Pages settings, and public URL checks.
+- Use `PUBLISHING.md` for repository settings, push commands, Pages settings, and public URL checks.
 - Use `publish-after-repo.ps1` for a dry run before pushing, then `publish-after-repo.ps1 -Push` only after the public repo exists.
 - Use official DEV tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
 - Review the DEV post draft for tone and personal voice.
@@ -99,6 +97,5 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Judge pack link: `https://ooyxloo.github.io/helioigma/judge.html` after public hosting.
 - Judge manifest link: `https://ooyxloo.github.io/helioigma/judge-manifest.json` after public hosting.
 - Smoke test link: `https://ooyxloo.github.io/helioigma/smoke.html` after public hosting.
-- DEV post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html` after public hosting.
 - Screenshots/media: use the public Pages URLs for `cover.png`, `helioigma-demo.webm`, `helioigma-demo.mp4`, `helioigma-demo.gif`, `desktop-check-v5.png`, `mobile-check-v6.png`, `desktop-complete-v4.png`, and `mobile-complete-v1.png`.
 - Package: use `helioigma-dev-package.zip` only for local transfer/review; public hosting should still use the unpacked static files.

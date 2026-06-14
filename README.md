@@ -6,7 +6,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 
 - GitHub Pages-ready static game package for the intended public URLs.
 - The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
-- Owner-only publishing helpers are included, but the judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
+- Owner-only launch notes are kept in Markdown; the public judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
 - Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, no telemetry, and a transparent receipt that is review proof rather than anti-cheat or identity proof.
@@ -33,11 +33,11 @@ Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finish
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
-The playable first screen now includes the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
+The playable first screen now leads with the game hook, `45s solstice cipher`, then gives the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
 ## Official Review Snapshot
 
-- Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
+- Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
 - Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same static game loop.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
@@ -67,7 +67,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Canvas screenshots are nonblank and visually varied.
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
-- A first-screen Judge Path strip makes the review sequence explicit: play, run Demo Solve, then verify receipt `SC-4P-2907-62-Y5VFX1`.
+- A first-screen Run Path strip keeps the game-first sequence explicit: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
 - After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the proof instead of leaving it below the fold.
 - The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.
@@ -107,7 +107,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, and score/receipt explanation, daylight meter, desktop Judge Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 69 PASS checks.
+- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, score/receipt explanation, daylight meter, game-first Run Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 69 PASS checks.
 - `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`; it writes capture scratch files under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
@@ -122,13 +122,13 @@ Use `PUBLISHING.md` when the account owner is ready to create or approve the pub
 
 The package includes `.nojekyll` and social metadata so GitHub Pages can serve the game from the repository root.
 
-## Owner Launch Helpers
+## Local Launch Notes
 
-These files are included for the account owner and are not part of the judge's required review path:
+These files are for the account owner and are not part of the judge's required review path:
 
-- `dev-submit-console.html`: copy-ready DEV final post console for title, tags, body sections, current WebM/GIF media, try links, and the no-go gate after the public Pages link exists.
 - `dev-launch-brief.md`: compact launch-day brief for the account owner after the public Pages link exists.
-- `publish-assistant.html`: copy-ready repository, push, Pages, public URL, and preflight instructions for the human account gate.
+- `dev-article-final.md`: DEV-ready article draft with the final title, tags, body, media links, and category boundary.
+- `PUBLISHING.md`: repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
 
 ## Human Gates

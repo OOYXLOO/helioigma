@@ -44,7 +44,6 @@ The GIF was generated from current local browser screenshots and is the canonica
 - Source: `https://github.com/OOYXLOO/helioigma`
 - Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 - Smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
-- Final post console: `https://ooyxloo.github.io/helioigma/dev-submit-console.html`
 
 These links should only be included in the final DEV post after the public repository and GitHub Pages site are actually live.
 
@@ -70,5 +69,5 @@ This is a new static game package for the jam period, not a wrapper around a pri
 ## Next
 
 - Add a public try link after user authorizes publishing.
-- Use `dev-submit-console.html` for the final copy pass, current WebM/GIF media, and no-go gate.
+- Use `dev-article-final.md` and `dev-launch-brief.md` for the final copy pass, current WebM/GIF media, and no-go gate.
 - Polish level balance after mobile playtesting.
