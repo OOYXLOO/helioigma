@@ -2,6 +2,13 @@
 
 Purpose: give a busy DEV judge the shortest honest path from first click to prize evidence.
 
+## Official Route Snapshot
+
+- Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
+- Submit by: June 21, 2026 at 11:59 PM PDT.
+- Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.
+- Boundary: no Google AI claim, backend, account login, API key, or private data.
+
 ## 60-Second Path
 
 1. Play: `https://ooyxloo.github.io/helioigma/`

@@ -98,6 +98,39 @@
       padding: 14px;
     }
 
+    .route-snapshot {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .route-snapshot p {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .route-snapshot strong,
+    .route-snapshot span {
+      display: block;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .route-snapshot strong {
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: 12px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
     .review-flow h2 {
       margin: 0 0 14px;
       color: var(--ink);
@@ -292,6 +325,7 @@
 
     @media (max-width: 780px) {
       .primary-actions, .evidence-actions, .grid, .rubric-grid { grid-template-columns: 1fr; }
+      .route-snapshot { grid-template-columns: 1fr; }
       .review-verdict { grid-template-columns: 1fr; }
       .review-focus { grid-template-columns: 1fr; }
       .review-flow ol { grid-template-columns: 1fr; }
@@ -303,6 +337,14 @@
     <p class="eyebrow">DEV June Solstice Game Jam</p>
     <h1>Helioigma is a complete four-phase rotor puzzle loop.</h1>
     <p class="dek">A small static game about holding the longest day by aligning a Turing-inspired solar rotor before nightfall. This page gives judges the play link, automated smoke receipt, theme fit, run receipt, and source path in one place.</p>
+
+    <p class="verdict-label">Official route snapshot</p>
+    <section class="route-snapshot" aria-label="Official route snapshot">
+      <p><strong>Prize route</strong><span>Best Ode to Alan Turing, one of five USD 200 winner slots.</span></p>
+      <p><strong>Submit by</strong><span>June 21, 2026 at 11:59 PM PDT.</span></p>
+      <p><strong>Judge proof</strong><span>Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.</span></p>
+      <p><strong>Boundary</strong><span>No Google AI claim, backend, account login, API key, or private data.</span></p>
+    </section>
 
     <section class="review-flow" aria-label="60-second review path">
       <h2>60-second review path</h2>

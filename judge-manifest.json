@@ -6,6 +6,12 @@
     "target_prize_usd": 200,
     "target_category": "Best Ode to Alan Turing",
     "required_tags": ["devchallenge", "gamechallenge", "gamedev"],
+    "official_route_snapshot": {
+      "prize_route": "Best Ode to Alan Turing, one of five USD 200 winner slots.",
+      "submit_by": "June 21, 2026 at 11:59 PM PDT.",
+      "judge_proof": "Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.",
+      "boundary": "No Google AI claim, backend, account login, API key, or private data."
+    },
     "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.",
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
     "rubric_snapshot": [
@@ -123,7 +129,7 @@
     "score_basis": "Score rewards held daylight, streaks, and fewer wasted shifts before the final receipt checksum is built.",
     "verifier": "proof-verifier.html",
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
-    "caveat": "The receipt is a transparent run checksum, not anti-cheat or identity proof."
+    "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },
   "verification": {
     "expected_smoke_checks": 60,

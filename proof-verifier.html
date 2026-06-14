@@ -194,7 +194,7 @@
   <main>
     <p class="eyebrow">Run receipt verifier</p>
     <h1>Check a Helioigma completion receipt.</h1>
-    <p>Completed runs expose a run receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published scoring formula. The default receipt is the stable one-click Demo Solve result.</p>
+    <p>Completed runs expose a demo receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published scoring formula for the stable one-click Demo Solve result.</p>
 
     <section class="panel">
       <label for="proofInput">Receipt code</label>
@@ -206,15 +206,15 @@
 
     <section class="panel">
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
-      <p>This is a transparent run receipt for a public jam demo, not anti-cheat or identity proof. It exists so judges can replay the scoring path and inspect the checksum without trusting a screenshot.</p>
-      <div class="boundary-grid" aria-label="Receipt proof boundary">
+      <p>This is a transparent demo receipt for a public jam entry, not anti-cheat, identity, payout, or eligibility proof. It exists so judges can replay the scoring path and inspect the checksum without trusting a screenshot.</p>
+      <div class="boundary-grid" aria-label="Receipt check boundary">
         <div>
-          <strong>What this proves</strong>
+          <strong>What this checks</strong>
           <p>The receipt matches the published four-phase payload shape, score, shift count, and local checksum formula for the public Demo Solve path.</p>
         </div>
         <div>
-          <strong>What this does not prove</strong>
-          <p>It does not prove player identity, anti-cheat integrity, payout eligibility, or that a private account action happened.</p>
+          <strong>What this does not check</strong>
+          <p>It does not check player identity, anti-cheat integrity, payout eligibility, or that a private account action happened.</p>
         </div>
       </div>
       <p><strong>Sample payload:</strong> <code>solstice|4|2907|62|4</code> produces suffix <code>Y5VFX1</code> for receipt <code>SC-4P-2907-62-Y5VFX1</code>.</p>
@@ -270,7 +270,7 @@
 
       const plausibleRun = solved === 4 && score >= 0 && score <= 5000 && shifts >= 0 && shifts <= 300;
       if (plausibleRun && suffix === expected) {
-        result.textContent = `Checksum-valid receipt within published demo bounds: ${score} points across ${shifts} shifts.`;
+        result.textContent = `Checksum-valid demo receipt: ${score} points across ${shifts} shifts.`;
         result.classList.add("ok");
         return;
       }

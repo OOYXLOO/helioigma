@@ -11,6 +11,13 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 - Deadline: June 21, 2026 at 11:59 PM PDT.
 - Winners announced: July 9, 2026.
 
+## Official Review Snapshot
+
+- Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
+- Submit by: June 21, 2026 at 11:59 PM PDT.
+- Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.
+- Boundary: no Google AI claim, backend, account login, API key, or private data.
+
 ## Submission Checklist
 
 | Requirement | Helioigma Evidence |

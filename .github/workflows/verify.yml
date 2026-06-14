@@ -68,7 +68,7 @@ jobs:
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
           grep -q "helioigma-demo.mp4" dev-article-final.md
-          grep -q "MP4 fallback for DEV video upload fields" dev-article-final.md
+          grep -q "Optional legacy MP4 fallback" dev-article-final.md
           grep -q "Completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
@@ -133,7 +133,9 @@ jobs:
           grep -q "Rotor Trace" dev-submit-console.html
           grep -q "How I Built It" dev-submit-console.html
           grep -q "WebM video" dev-submit-console.html
-          grep -q "MP4 fallback" dev-submit-console.html
+          grep -q "No pressure, no spam, and no fake engagement" dev-submit-console.html
+          ! grep -q "positive reactions can matter" dev-submit-console.html
+          grep -q "optional legacy MP4 fallback" dev-submit-console.html
           grep -q "Completion screenshot with receipt ledger" dev-submit-console.html
           grep -q 'Optional `?demo=1` route' dev-submit-console.html
           grep -q "Originality Note" dev-submit-console.html
@@ -246,9 +248,9 @@ jobs:
           grep -q "Parsed receipt facts" proof-verifier.html
           grep -q "Checksum-valid receipt" proof-verifier.html
           grep -q 'get("receipt")' proof-verifier.html
-          grep -q "not anti-cheat or identity proof" proof-verifier.html
-          grep -q "What this proves" proof-verifier.html
-          grep -q "What this does not prove" proof-verifier.html
+          grep -q "not anti-cheat, identity, payout, or eligibility proof" proof-verifier.html
+          grep -q "What this checks" proof-verifier.html
+          grep -q "What this does not check" proof-verifier.html
           grep -q "solstice|4|2907|62|4" proof-verifier.html
           grep -q "parsed receipt facts" verification-report.md
           grep -q "helioigma-demo.webm" verification-report.md

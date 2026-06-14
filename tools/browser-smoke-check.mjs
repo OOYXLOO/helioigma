@@ -256,6 +256,11 @@ async function main() {
       hasOldPublicPageCopy: document.body.innerText.includes("Watch the public page complete all four phases"),
       hasPlayablePageCopy: document.body.innerText.includes("Watch the playable page complete all four phases"),
       hasPrefilledVerifierCopy: document.body.innerText.includes("pre-filled sample verifier") || document.body.innerText.includes("prefilled sample verifier"),
+      hasOfficialRouteSnapshot: document.body.innerText.toLowerCase().includes("official route snapshot"),
+      routeSnapshotItems: [...document.querySelectorAll(".route-snapshot strong")].map((node) => node.textContent.trim()),
+      hasPrizeSlotCopy: document.body.innerText.includes("Best Ode to Alan Turing, one of five USD 200 winner slots"),
+      hasDeadlineCopy: document.body.innerText.includes("June 21, 2026 at 11:59 PM PDT"),
+      hasBoundaryCopy: document.body.innerText.includes("No Google AI claim, backend, account login, API key, or private data"),
       hasRubricSnapshot: document.body.innerText.includes("Rubric snapshot"),
       hasAwardThesis: document.body.innerText.toLowerCase().includes("award thesis"),
       verdictItems: [...document.querySelectorAll(".review-verdict strong")].map((node) => node.textContent.trim()),
@@ -273,6 +278,11 @@ async function main() {
     assert(!judge.hasOldPublicPageCopy, "judge page still calls the prelaunch route a public page");
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
+    assert(judge.hasOfficialRouteSnapshot, "judge page is missing the official route snapshot");
+    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge proof|Boundary", "judge page official route snapshot changed");
+    assert(judge.hasPrizeSlotCopy, "judge page does not name the USD 200 prize route");
+    assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
+    assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");
     assert(judge.verifyReceiptHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge page verifier action is not prefilled");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
     assert(judge.hasAwardThesis, "judge page is missing the award thesis");
@@ -303,6 +313,8 @@ async function main() {
     assert(manifest.public_urls?.sample_receipt_verifier === "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge manifest sample receipt verifier URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
+    assert(manifest.challenge?.official_route_snapshot?.prize_route === "Best Ode to Alan Turing, one of five USD 200 winner slots.", "judge manifest official route prize changed");
+    assert(manifest.challenge?.official_route_snapshot?.boundary?.startsWith("No Google AI claim"), "judge manifest official route boundary changed");
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
@@ -315,16 +327,16 @@ async function main() {
     assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid demo receipt"));
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
-      hasCaveat: document.body.innerText.includes("not anti-cheat or identity proof"),
-      hasProofBoundary: document.body.innerText.toLowerCase().includes("what this proves") && document.body.innerText.toLowerCase().includes("what this does not prove"),
+      hasCaveat: document.body.innerText.includes("not anti-cheat, identity, payout, or eligibility proof"),
+      hasProofBoundary: document.body.innerText.toLowerCase().includes("what this checks") && document.body.innerText.toLowerCase().includes("what this does not check"),
       hasSamplePayload: document.body.innerText.includes("solstice|4|2907|62|4"),
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
-    assert(proof.result === "Checksum-valid receipt within published demo bounds: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
+    assert(proof.result === "Checksum-valid demo receipt: 2907 points across 62 shifts.", "proof verifier did not validate the stable receipt");
     assert(proof.hasCaveat, "proof verifier is missing the receipt caveat");
     assert(proof.hasProofBoundary, "proof verifier is missing the proof boundary explanation");
     assert(proof.hasSamplePayload, "proof verifier is missing the sample payload breakdown");
@@ -332,13 +344,13 @@ async function main() {
     assert(proof.facts.join("|") === "4/4|2907|62|Y5VFX1", "proof verifier facts changed");
 
     await page.goto(`${baseUrl}proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid receipt"));
+    await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Checksum-valid demo receipt"));
     const proofFromQuery = await page.evaluate(() => ({
       input: document.querySelector("#proofInput")?.value.trim(),
       result: document.querySelector("#result")?.textContent.trim(),
     }));
     assert(proofFromQuery.input === "SC-4P-2907-62-Y5VFX1", "proof verifier did not read receipt query parameter");
-    assert(proofFromQuery.result === "Checksum-valid receipt within published demo bounds: 2907 points across 62 shifts.", "proof verifier query route did not validate");
+    assert(proofFromQuery.result === "Checksum-valid demo receipt: 2907 points across 62 shifts.", "proof verifier query route did not validate");
 
     await page.goto(`${baseUrl}smoke.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => {

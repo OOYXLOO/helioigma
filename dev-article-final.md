@@ -30,7 +30,7 @@ The build is meant to be judged quickly without losing the game premise: the fir
 
 ## Video Demo
 
-The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The WebM is the primary captioned video; the GIF below is a quick inline fallback, and the MP4 link is available if the DEV editor asks for a conventional video file.
+The demo video is a live browser recording of the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The WebM is the primary captioned video; the GIF below is a quick inline fallback. An optional legacy MP4 fallback is retained only if the DEV editor specifically asks for an MP4 file.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif)
 
@@ -38,7 +38,7 @@ The demo video is a live browser recording of the current judge path: first-scre
 
 Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
 
-MP4 fallback for DEV video upload fields: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
+Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
 
 Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
 
@@ -73,6 +73,8 @@ Core features:
 
 Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. No account, API, backend, private data, or hidden judge path is needed to inspect it.
 
+Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data.
+
 1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
 3. Run `smoke.html` to see the game solve all four phases automatically.
@@ -83,7 +85,7 @@ Public media links:
 
 1. Cover: https://ooyxloo.github.io/helioigma/cover.png
 2. WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm
-3. MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
+3. Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
 4. GIF fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.gif
 5. Desktop screenshot: https://ooyxloo.github.io/helioigma/desktop-check-v5.png
 6. Mobile screenshot: https://ooyxloo.github.io/helioigma/mobile-check-v6.png

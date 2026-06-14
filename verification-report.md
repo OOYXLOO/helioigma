@@ -12,18 +12,20 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
 - Intended source URL after publication: `https://github.com/OOYXLOO/helioigma`
 - Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`
+- Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slots; submit by June 21, 2026 at 11:59 PM PDT.
+- Public boundary: no Google AI claim, backend, account login, API key, private data, or payout/KYC data is required for review.
 
 ## Verified Assets
 
 - `index.html`: playable static game
-- `judge.html`: judge quick path with a 60-second review path
+- `judge.html`: judge quick path with official route snapshot, 60-second review path, rubric snapshot, and receipt links
 - `smoke.html`: browser smoke test
 - `dev-submit-console.html`: copy-ready DEV publishing console
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1200x630 cover image
-- `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner and completed-run ledger
+- `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner, completed-run ledger, and demo receipt verifier
 - `helioigma-demo.gif`: current animated GIF preview ending on the receipt ledger and Judge run summary
-- `helioigma-demo.mp4`: optional legacy MP4 asset
+- `helioigma-demo.mp4`: optional legacy MP4 fallback; WebM and GIF are the current canonical demo media
 - `desktop-check-v5.png`: desktop gameplay screenshot
 - `mobile-check-v6.png`: mobile gameplay screenshot
 - `desktop-complete-v4.png`: completion screenshot with final receipt, phase scoring ledger, and Judge run summary
@@ -38,7 +40,7 @@ npm run preflight
 npm run smoke
 ```
 
-Expected result: exit code `0` for the check, preflight, and browser smoke scripts.
+Expected result: exit code `0` for the check, preflight, and browser smoke scripts. Latest local run on 2026-06-14 passed `npm run check`, `public-preflight.ps1`, `npm run smoke` with external Playwright dependency path, and `npm run build:video`.
 
 ```powershell
 python -m http.server 8781 --bind 127.0.0.1
@@ -67,7 +69,7 @@ Expected local URLs:
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing and currently reports 2892, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
-- `proof-verifier.html` recomputes the receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum.
+- `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The first-screen judge shortcuts and judge pack expose the stable sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip, phase announcer, phase scoring ledger, Judge run summary, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - Smoke checks include 60 PASS assertions:

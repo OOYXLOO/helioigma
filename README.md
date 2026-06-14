@@ -34,6 +34,13 @@ The Turing ode is intentionally restrained: the game does not pretend to recreat
 
 The playable first screen now includes the plain rule: decode the solstice rotor by matching each numbered node to the target glyph before nightfall. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
+## Official Review Snapshot
+
+- Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
+- Submit by: June 21, 2026 at 11:59 PM PDT.
+- Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same static game loop.
+- Boundary: no Google AI claim, backend, account login, API key, or private data.
+
 ## Originality and Review Transparency
 
 Helioigma is a new static game package for this jam period, not a wrapper around a prior game template. The gameplay code, receipt verifier, judge page, manifest, smoke test, screenshots, and demo media are included so reviewers can inspect the build directly.
@@ -72,7 +79,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - `cover.png`: 1200x630 social/DEV cover image.
 - `helioigma-demo.webm`: current captioned WebM video recorded from the real browser game path, including Hint, phase banner, Rotor Trace, Demo Solve, final receipt, and verifier.
 - `helioigma-demo.gif`: seven-frame current gameplay preview, from first-screen controls through the final run receipt ledger and Judge run summary.
-- `helioigma-demo.mp4`: optional legacy MP4 asset retained for platforms that specifically ask for MP4.
+- `helioigma-demo.mp4`: optional legacy MP4 fallback retained only for platforms that specifically ask for MP4; the current canonical demo media are the WebM and GIF.
 - `desktop-check-v5.png`: current desktop gameplay screenshot.
 - `mobile-check-v6.png`: current mobile gameplay screenshot.
 - `desktop-complete-v4.png`: current completion screenshot with final score, run receipt, verifier link, phase scoring ledger, and Judge run summary.
