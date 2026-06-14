@@ -26,6 +26,13 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+async function assertLocalAssetOk(baseUrl, path, contentTypeSnippet) {
+  const response = await fetch(new URL(path, baseUrl));
+  assert(response.ok, `${path} did not return HTTP 200`);
+  const contentType = response.headers.get("content-type") || "";
+  assert(contentType.includes(contentTypeSnippet), `${path} did not return ${contentTypeSnippet}`);
+}
+
 function requestPathToFilePath(requestUrl) {
   const url = new URL(requestUrl, "http://127.0.0.1");
   const decodedPath = decodeURIComponent(url.pathname);
@@ -427,6 +434,19 @@ async function main() {
     assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");
     assert(!judge.primaryInsideReview, "judge page repeats primary actions inside the 60-second review path");
     assert(judge.reviewBeforeEvidence, "judge page does not put the 60-second review path before evidence links");
+
+    await Promise.all([
+      assertLocalAssetOk(baseUrl, "helioigma-demo.webm?v=20260614-seal-media", "video/webm"),
+      assertLocalAssetOk(baseUrl, "helioigma-demo.gif?v=20260614-seal-media", "image/gif"),
+      assertLocalAssetOk(baseUrl, "desktop-check-v5.png?v=20260614-seal-media", "image/png"),
+      assertLocalAssetOk(baseUrl, "smoke.html", "text/html"),
+      assertLocalAssetOk(baseUrl, "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "text/html"),
+      assertLocalAssetOk(baseUrl, "verification.html", "text/html"),
+      assertLocalAssetOk(baseUrl, "judge-manifest.json", "application/json"),
+      assertLocalAssetOk(baseUrl, "RUBRIC_SCORECARD.md", "text/markdown"),
+      assertLocalAssetOk(baseUrl, "README.md", "text/markdown"),
+      assertLocalAssetOk(baseUrl, "dev-article-final.md", "text/markdown"),
+    ]);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });

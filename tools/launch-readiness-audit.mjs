@@ -72,6 +72,12 @@ const mustContain = [
   ["dev-launch-brief.md", intended.pages],
 ];
 
+const expectedPublicLinkHosts = new Set([
+  "dev.to",
+  "github.com",
+  "ooyxloo.github.io",
+]);
+
 const forbiddenLiterals = [
   "we target Best Google AI Usage",
   "I target Best Google AI Usage",
@@ -124,6 +130,25 @@ function fileExists(relativePath) {
   return existsSync(absolute) && statSync(absolute).isFile() && statSync(absolute).size > 0;
 }
 
+function localReferenceExists(reference) {
+  if (!reference || reference.startsWith("#")) return true;
+  if (reference.startsWith("mailto:") || reference.startsWith("tel:")) return true;
+  if (/^https?:\/\//i.test(reference)) return true;
+  const url = new URL(reference, "https://local.helioigma/");
+  const pathname = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+  const relativePath = pathname === "" ? "index.html" : pathname;
+  return fileExists(relativePath);
+}
+
+function collectHtmlReferences(relativePath) {
+  const text = fileText(relativePath);
+  return [...text.matchAll(/\b(?:href|src|poster)=["']([^"']+)["']/gi)].map((match) => match[1]);
+}
+
+function collectPublicLinks(relativePath) {
+  return collectHtmlReferences(relativePath).filter((reference) => /^https?:\/\//i.test(reference));
+}
+
 function sha256(relativePath) {
   const absolute = resolve(root, relativePath);
   if (!existsSync(absolute)) return null;
@@ -170,6 +195,24 @@ for (const [file, pattern] of mustContain) {
   const ok = fileExists(file) && fileText(file).includes(pattern);
   addCheck(`${file} contains ${pattern}`, ok);
 }
+
+const judgeReferences = collectHtmlReferences("judge.html");
+const missingLocalJudgeReferences = judgeReferences.filter((reference) => !localReferenceExists(reference));
+addCheck(
+  "judge page local media/evidence references resolve before public launch",
+  missingLocalJudgeReferences.length === 0,
+  missingLocalJudgeReferences.join("; "),
+);
+
+const unexpectedPublicJudgeLinks = collectPublicLinks("judge.html").filter((reference) => {
+  const url = new URL(reference);
+  return !expectedPublicLinkHosts.has(url.hostname);
+});
+addCheck(
+  "judge page public links stay on expected launch hosts",
+  unexpectedPublicJudgeLinks.length === 0,
+  unexpectedPublicJudgeLinks.join("; "),
+);
 
 const trackedFiles = runGit(["ls-files"]).split(/\r?\n/).filter(Boolean);
 const forbiddenHits = [];
