@@ -202,8 +202,8 @@ async function main() {
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Watch video"), "judge shortcut row does not link the current WebM video");
     assert(desktop.judgeLinkHrefs.includes("helioigma-demo.webm?v=20260614-seal-media"), "judge shortcut row WebM video link is not cache-busted to the current media");
-    assert(desktop.judgeLinks.includes("Demo GIF"), "judge shortcut row does not link the current GIF");
-    assert(desktop.judgeLinkHrefs.includes("helioigma-demo.gif?v=20260614-seal-media"), "judge shortcut row Demo GIF link is not cache-busted to the current media");
+    assert(desktop.judgeLinks.length === 4, `judge shortcut row should stay focused on four routes, found ${desktop.judgeLinks.length}`);
+    assert(!desktop.judgeLinks.includes("Demo GIF"), "judge shortcut row should leave GIF fallback inside the judge pack");
 
     await page.click("#startButton");
     const startCoach = await page.evaluate(() => ({
@@ -237,7 +237,7 @@ async function main() {
       recentLocked: Boolean(document.querySelector("#nodeButtons .node-button.recent-locked")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
     }));
-    assert(shiftPulse.status === "Node 1 shifted to LUX; target SOL.", "manual shift status no longer names current and target glyphs");
+    assert(shiftPulse.status === "Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "manual shift status no longer names current, target glyphs, and daylight penalty");
     assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
     assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
 

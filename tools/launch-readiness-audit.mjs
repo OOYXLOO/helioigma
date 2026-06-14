@@ -258,7 +258,8 @@ addCheck("manifest stable receipt", manifest.proof?.stable_receipt === "SC-4P-29
 addCheck("manifest no secrets", manifest.status?.no_secrets === true, String(manifest.status?.no_secrets));
 
 const packageJson = JSON.parse(fileText("package.json"));
-addCheck("package audit script", packageJson.scripts?.["audit:launch"] === "node tools/launch-readiness-audit.mjs --public", packageJson.scripts?.["audit:launch"] || "");
+addCheck("package local audit script", packageJson.scripts?.["audit:launch"] === "node tools/launch-readiness-audit.mjs", packageJson.scripts?.["audit:launch"] || "");
+addCheck("package public audit script", packageJson.scripts?.["audit:launch:public"] === "node tools/launch-readiness-audit.mjs --public", packageJson.scripts?.["audit:launch:public"] || "");
 addCheck("package smoke script", packageJson.scripts?.smoke === "node tools/browser-smoke-check.mjs", packageJson.scripts?.smoke || "");
 
 const zipHash = sha256("helioigma-dev-package.zip");

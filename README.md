@@ -81,13 +81,14 @@ The public media pack is generated from this build's browser UI and checked-in d
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
 - After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the receipt details instead of leaving them below the fold.
 - The judge shortcut row and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable Auto Demo sample checksum before or after running the demo.
-- The judge shortcut row also links directly to the current captioned WebM, so a rushed DEV reviewer can watch the real browser path before deciding whether to run the game.
+- The judge shortcut row stays focused on the strongest four routes: Auto demo, Judge pack, Verify sample, and the current captioned WebM. Deeper proof links such as smoke test, GIF fallback, source, manifest, README, and rubric scorecard live inside the Judge pack so the playable page does not turn into a link wall.
+- First-move coaching holds its highlight long enough for a cold reviewer to see it, and wrong shifts now state the exact visible penalty (`Daylight -0.45s`) instead of making the timer loss feel mysterious.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
 - Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt verifier is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
-- `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
+- `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 
 ## Local Media Assets
 
@@ -123,7 +124,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, default-off Audio controls, score/receipt explanation, daylight meter, game-first Run Path, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 69 PASS checks.
 - `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/capture-public-media.mjs`: clean-browser media capture for desktop/mobile first screens, completion screenshots, and the seven `demo-frames-v3` frames; it asserts first-screen score/best/shifts start at zero so public assets do not inherit local review state.
-- `tools/launch-readiness-audit.mjs`: pre-publication readiness audit that reports `READY_LOCALLY`, `WAIT_USER_GATE`, or `LOCAL_FIX_REQUIRED` with the current HEAD, ZIP hash, deadline distance, missing public gate, and next launch steps.
+- `tools/launch-readiness-audit.mjs`: pre-publication readiness audit. `npm run audit:launch` reports local package readiness; `npm run audit:launch:public` also checks the missing public repo/Pages gate and reports `WAIT_USER_GATE` until launch is live.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`; it writes capture scratch files under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
 

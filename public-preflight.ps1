@@ -130,7 +130,8 @@ try {
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
-  if ($package.scripts.'audit:launch' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch script mismatch" }
+  if ($package.scripts.'audit:launch' -ne "node tools/launch-readiness-audit.mjs") { throw "package audit:launch script mismatch" }
+  if ($package.scripts.'audit:launch:public' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch:public script mismatch" }
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
@@ -464,6 +465,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not scroll the receipt into view"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge shortcut row sample verifier link is not prefilled"
+  Assert-Contains "tools/browser-smoke-check.mjs" "judge shortcut row should stay focused on four routes"
   Assert-Contains "tools/browser-smoke-check.mjs" "document title no longer carries the solstice/Turing preview hook"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile run path cues changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
@@ -635,7 +637,6 @@ try {
   Assert-Contains "index.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "index.html" "Watch video"
   Assert-Contains "index.html" "helioigma-demo.webm?v=20260614-seal-media"
-  Assert-Contains "index.html" "helioigma-demo.gif?v=20260614-seal-media"
   Assert-Contains "index.html" "cover.png?v=20260614-seal-media"
   Assert-Contains "index.html" "judge-links"
   Assert-Contains "index.html" "dayMeter"
@@ -662,6 +663,9 @@ try {
   Assert-Contains "index.html" "retryButton"
   Assert-Contains "game.js" "Nightfall sealed the rotor. Retry or watch Demo Solve."
   Assert-Contains "game.js" "syncNightfallPanel"
+  Assert-Contains "game.js" "const shiftPenaltySeconds = 0.45"
+  Assert-Contains "game.js" "const firstMovePulseSeconds = 1.2"
+  Assert-Contains "game.js" 'Daylight -${shiftPenaltySeconds}s.'
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "<title>Helioigma - Solstice Rotor Turing Ode</title>"
   Assert-Contains "index.html" '<link rel="canonical" href="https://ooyxloo.github.io/helioigma/">'
@@ -719,7 +723,7 @@ try {
   Assert-Contains "smoke.html" "run receipt verifier link is present"
   Assert-Contains "smoke.html" "completion verifier link carries the final receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
-  Assert-Contains "smoke.html" "judge shortcut links include auto demo and video routes"
+  Assert-Contains "smoke.html" "judge shortcut links keep the strongest four review routes"
   Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "smoke.html" "demo solve releases manual controls"
   Assert-Contains "smoke.html" "four-phase progress track is present"

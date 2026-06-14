@@ -66,6 +66,9 @@
   const searchParams = new URLSearchParams(window.location.search);
   const storageDisabled = searchParams.get("nostore") === "1";
   const bestScoreKey = "helioigma-best-score";
+  const shiftPenaltySeconds = 0.45;
+  const tactilePulseSeconds = 0.55;
+  const firstMovePulseSeconds = 1.2;
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
     { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },
@@ -632,7 +635,7 @@
       }
 
       if (i === state.recentIndex && state.recentLife > 0) {
-        const pulse = Math.max(0, Math.min(1, state.recentLife / 0.55));
+        const pulse = Math.max(0, Math.min(1, state.recentLife / tactilePulseSeconds));
         ctx.save();
         ctx.globalAlpha = 0.18 + pulse * 0.42;
         ctx.strokeStyle = state.recentLocked ? "rgba(184,242,200,0.94)" : "rgba(139,211,255,0.9)";
@@ -824,10 +827,10 @@
     if (locked) {
       state.score += 5 + state.streak;
     } else {
-      state.timeLeft = Math.max(0, state.timeLeft - 0.45);
+      state.timeLeft = Math.max(0, state.timeLeft - shiftPenaltySeconds);
     }
     state.recentIndex = index;
-    state.recentLife = 0.55;
+    state.recentLife = tactilePulseSeconds;
     state.recentLocked = locked;
     burst(px, py, palette[state.ring[index]]);
     playCue(locked ? "lock" : "shift");
@@ -839,7 +842,7 @@
       ? nextMismatch === -1
         ? "All signals aligned; sealing phase."
         : `Signal ${index + 1} locked. Next mismatch: node ${nextMismatch + 1} -> ${glyphs[state.target[nextMismatch]]}.`
-      : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}.`;
+      : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}. Daylight -${shiftPenaltySeconds}s.`;
     updateHud();
     checkWin();
     draw();
@@ -856,7 +859,7 @@
     }
     state.hintedIndex = index;
     state.recentIndex = index;
-    state.recentLife = 0.55;
+    state.recentLife = tactilePulseSeconds;
     state.recentLocked = false;
     state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}. ${phaseScanNotes[currentPhaseIndex()]}`;
     state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
@@ -870,7 +873,7 @@
     if (index === -1) return;
     state.hintedIndex = index;
     state.recentIndex = index;
-    state.recentLife = 0.55;
+    state.recentLife = firstMovePulseSeconds;
     state.recentLocked = false;
     state.lastAction = `First move cue: node ${index + 1} target ${glyphs[state.target[index]]}.`;
     state.message = `First move: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
