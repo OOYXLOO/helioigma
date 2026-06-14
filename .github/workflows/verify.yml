@@ -282,6 +282,10 @@ jobs:
           grep -q "helioigma-demo.webm" verification-report.md
           grep -q "Score variance is expected" verification-report.md
           grep -q "Score variance is expected" verification.html
+          grep -q "current local package on 2026-06-15" verification.html
+          grep -q "Latest local run:" verification.html
+          ! grep -q "2026-06-14" verification.html
+          ! grep -q "Latest live-timer score 2892" verification.html
           grep -q "mobile-complete-v1.png" verification.html
           grep -q "DEV No-Go Gate" dev-launch-brief.md
           grep -q "publish-after-repo helper" publish-after-repo.ps1
