@@ -90,10 +90,34 @@ After publication, record these in the local Helioigma route note:
 - Public preflight timestamp and result.
 - Any official challenge confirmation or error message.
 
+## Ethical Visibility Plan
+
+The official challenge page says positive reactions on the DEV post may be used as a tie-breaker, so post-launch visibility matters. Keep it clean: ask for real play-throughs and feedback from people who would plausibly enjoy a small browser puzzle, not generic likes.
+
+Suggested places after the DEV post is live:
+
+- DEV comment/share note on the published article, only if it adds context or a playable tip.
+- Personal GitHub profile / repository README link, after Pages is live.
+- A small, relevant developer or game-dev chat where browser puzzle feedback is welcome.
+- One follow-up note if a real bug or improvement is fixed after publication.
+
+Do not do any of these:
+
+- Buy reactions, ask for fake engagement, or pressure friends/coworkers.
+- Cross-post into unrelated channels.
+- Claim prize status, finalist status, judging preference, or official endorsement.
+- Re-share before the public play link, source link, and receipt verifier are live.
+
 ## Honest Share Note
 
 After the DEV post is public, share only a clean request for real play and feedback:
 
 ```text
 I published Helioigma for the DEV June Solstice Game Jam: a small Turing-wheel puzzle where the longest day becomes a countdown machine. If you enjoy browser puzzle games, I would appreciate a real play-through and honest feedback.
+```
+
+Short variant:
+
+```text
+Helioigma is live for the DEV June Solstice Game Jam. It is a tiny browser puzzle about holding daylight with a Turing-inspired rotor. Real play-throughs and critique are welcome.
 ```

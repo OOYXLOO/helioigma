@@ -89,6 +89,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Keep the demo-media boundary explicit: the WebM/GIF are true demo artifacts generated from the current game, not mockups.
 - Include the differentiation note: the Turing/code-breaking fit is inside the interaction, not only in the title.
 - After publishing, share the DEV post only with honest feedback requests. The ask must stay clean: real play, real feedback, no spam, no bought reactions, no pressure, and no fake engagement.
+- Use the ethical visibility plan in `dev-launch-brief.md` because official tie-breakers may consider positive DEV reactions; keep it to real play-throughs, relevant channels, and honest critique.
 - Confirm the challenge rules and eligibility on the official DEV pages.
 
 ## Human Gates

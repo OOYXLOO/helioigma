@@ -72,7 +72,11 @@ const mustContain = [
   ["PUBLISHING.md", "logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
   ["dev-launch-brief.md", intended.pages],
   ["dev-launch-brief.md", "The logged-in DEV challenge flow does not accept a June Solstice Game Jam entry."],
+  ["dev-launch-brief.md", "Ethical Visibility Plan"],
+  ["dev-launch-brief.md", "positive reactions on the DEV post may be used as a tie-breaker"],
+  ["dev-launch-brief.md", "Buy reactions, ask for fake engagement, or pressure friends/coworkers"],
   ["submission-checklist.md", "Confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
+  ["submission-checklist.md", "ethical visibility plan"],
 ];
 
 const expectedPublicLinkHosts = new Set([
