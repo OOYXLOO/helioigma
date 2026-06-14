@@ -150,6 +150,8 @@ jobs:
           grep -q "package.json" README.md
           grep -q "npm run smoke" README.md
           grep -q "npm run audit:launch" README.md
+          grep -q "npm run build:gif" README.md
+          grep -q "npm run verify:media" README.md
           grep -q "npm run build:package" README.md
           grep -q "Helioigma Judge Review Card" JUDGE_REVIEW_CARD.md
           grep -q "FIRST_MINUTE.md" JUDGE_REVIEW_CARD.md
@@ -292,6 +294,8 @@ jobs:
           grep -q "tmpdir()" tools/build-demo-video.mjs
           grep -q "SC-4P-2907-62-Y5VFX1" tools/build-demo-video.mjs
           grep -q "demo-frames-v3" tools/build-demo-webm.mjs
+          grep -q "tools/build-demo-gif.py" README.md
+          grep -q "tools/verify-media-freshness.mjs" README.md
           grep -q "helioigma-demo.gif" tools/build-demo-gif.py
           grep -q "PASS media freshness" tools/verify-media-freshness.mjs
           grep -q "clean browser contexts" tools/capture-public-media.mjs
