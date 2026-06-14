@@ -71,12 +71,12 @@ jobs:
           grep -q "You open with 45 seconds of daylight" dev-article-final.md
           grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
           grep -q "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked" dev-article-final.md
-          grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
+          grep -q "That is my Best Ode to Alan Turing angle" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
           grep -q "helioigma-demo.mp4" dev-article-final.md
           grep -q "Optional legacy MP4 fallback" dev-article-final.md
-          grep -q "Completion screenshot with receipt ledger" dev-article-final.md
+          grep -q "completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Mobile completion screenshot" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
@@ -91,13 +91,13 @@ jobs:
           grep -q "not a biography game" dev-article-final.md
           grep -q "careful reasoning about machines and proof" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
-          grep -q "My award thesis is simple" dev-article-final.md
+          grep -q "Award thesis: Helioigma is a playable ode" dev-article-final.md
           grep -q "playable ode, a judge-verifiable loop, and a finished static package" dev-article-final.md
           grep -q "judge-manifest.json" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
           grep -q "I chose a cipher wheel" dev-article-final.md
           grep -q "biggest tradeoff" dev-article-final.md
-          grep -q "only browser storage is a local numeric best-score key" dev-article-final.md
+          grep -q "only default browser storage is a local numeric best-score key" dev-article-final.md
           grep -q "Originality and Build Window" dev-article-final.md
           grep -q "{% embed https://github.com/OOYXLOO/helioigma %}" dev-article-final.md
           grep -q "Plain source URL: https://github.com/OOYXLOO/helioigma" dev-article-final.md
@@ -109,7 +109,7 @@ jobs:
           grep -q "official-route checklist" dev-article-final.md
           grep -q "public-preflight.ps1 -Public" dev-article-final.md
           grep -q "Optional default-off Web Audio cues" dev-article-final.md
-          grep -q "Nightfall report for failed manual runs" dev-article-final.md
+          grep -q "Nightfall reports failed manual runs" dev-article-final.md
           grep -q "the losing state is inspectable" dev-article-final.md
           grep -q 'Press `Audio` or `S`' dev-article-final.md
           grep -q "default-off Audio control" dev-article-final.md
@@ -131,7 +131,7 @@ jobs:
           grep -q "Do not publish the DEV article if" dev-launch-brief.md
           grep -q "fake engagement" dev-launch-brief.md
           grep -q "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content" dev-launch-brief.md
-          grep -q "only browser storage is the local numeric best score key" README.md
+          grep -q "only default browser storage is the local numeric best score key" README.md
           grep -q "Seal the daylight run." README.md
           ! grep -q "Prove the daylight run." README.md
           grep -q "GitHub Pages-ready static game package" README.md
@@ -167,7 +167,7 @@ jobs:
           grep -q "Prize target: Best Ode to Alan Turing" CHALLENGE_COMPLIANCE.md
           grep -q "Deadline: June 21, 2026 at 11:59 PM PDT" CHALLENGE_COMPLIANCE.md
           grep -q "Do not publish the DEV article until all of these are true" CHALLENGE_COMPLIANCE.md
-          grep -q "first-move coach on Start" README.md
+          grep -q 'first-move coach on `Start Run`' README.md
           grep -q "optional default-off Web Audio cues" README.md
           grep -q 'Use `Audio` or press `S`' README.md
           grep -q "generated Web Audio tones" README.md
@@ -188,7 +188,7 @@ jobs:
           grep -q "build:package" submission-checklist.md
           grep -q "audit:launch" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
-          grep -q "69 expected smoke checks" submission-checklist.md
+          grep -q "70 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
           grep -q "dev-launch-brief.md" PUBLISHING.md
 
@@ -197,8 +197,8 @@ jobs:
           set -euo pipefail
           grep -q "helioigma-demo.gif" judge.html
           grep -q "helioigma-demo.webm" judge.html
-          grep -q '<video src="helioigma-demo.webm"' judge.html
-          grep -q 'poster="desktop-check-v5.png"' judge.html
+          grep -q '<video src="helioigma-demo.webm?v=20260614-seal-media"' judge.html
+          grep -q 'poster="desktop-check-v5.png?v=20260614-seal-media"' judge.html
           grep -q "timed node-rotation loop" judge.html
           grep -q "Animated Helioigma demo preview" judge.html
           grep -q "Helioigma" judge.html
@@ -219,7 +219,7 @@ jobs:
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
           grep -q "Optional Smoke." judge.html
-          grep -q "Run the 69-check browser smoke test" judge.html
+          grep -q "Run the 70-check browser smoke test" judge.html
           grep -q "Award thesis" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
@@ -252,7 +252,7 @@ jobs:
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q "69" judge-manifest.json
+          grep -q '"expected_smoke_checks": 70' judge-manifest.json
           grep -q "score_basis" judge-manifest.json
           grep -q "nightfall_recovery" judge-manifest.json
           grep -q "award signals" judge-manifest.json
@@ -294,11 +294,11 @@ jobs:
           grep -q "auto demo route did not reach the stable receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not build a verifier link" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not scroll the receipt into view" tools/browser-smoke-check.mjs
-          grep -q "first screen sample verifier link is not prefilled" tools/browser-smoke-check.mjs
+          grep -q "judge shortcut row sample verifier link is not prefilled" tools/browser-smoke-check.mjs
           grep -q "judge page verifier action is not prefilled" tools/browser-smoke-check.mjs
           grep -q "mobile first viewport shows too little gameplay canvas" tools/browser-smoke-check.mjs
           grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
-          grep -q "expected 69 smoke checks" tools/browser-smoke-check.mjs
+          grep -q "expected 70 smoke checks" tools/browser-smoke-check.mjs
           grep -q "play rule no longer gives the rushed-judge goal" tools/browser-smoke-check.mjs
           grep -q "audio cues should default off" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
@@ -328,20 +328,20 @@ jobs:
           grep -q "Helioigma" index.html
           grep -q "Seal the daylight run." index.html
           grep -q "Start with 45s daylight" index.html
-          grep -q "Match numbered nodes to target glyphs" index.html
-          grep -q "20260614-demo-priority" index.html
+          grep -q "Rotate numbered nodes, match the target glyphs" index.html
+          grep -q "20260615-canvas-priority" index.html
           grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260614-demo-priority" smoke.html
+          grep -q "20260615-canvas-priority" smoke.html
           grep -q "award signals are present" smoke.html
           grep -q "demo award signals name solstice, Turing, and judge receipt" smoke.html
           grep -q "audio cue button is present" smoke.html
           grep -q "audio shortcut is exposed" smoke.html
           grep -q "audio cues default off" smoke.html
-          grep -q "play rule gives opening-daylight target-glyph receipt path" smoke.html
+          grep -q "play rule gives opening-daylight rotate-match-survive goal" smoke.html
           grep -q "hint button is present" smoke.html
           grep -q "hint shortcut is exposed" smoke.html
           grep -q "hint shortcut names the next mismatched node" smoke.html
@@ -353,7 +353,7 @@ jobs:
           grep -q "phase objective names the first phase" smoke.html
           grep -q "phase objective shows target glyphs and alignment" smoke.html
           grep -q "start button shows the first-move coach" smoke.html
-          grep -q "judge shortcut links include the auto demo route" smoke.html
+          grep -q "judge shortcut links keep the strongest four review routes" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "run receipt verifier link is present" smoke.html
           grep -q "completion verifier link carries the final receipt" smoke.html
