@@ -92,6 +92,39 @@ async function assertCleanFirstScreen(page, label) {
   assert(facts.overflowX === 0, `${label} first screen has horizontal overflow`);
 }
 
+async function frameCompletedReceipt(page, label, { requireTopFrame = false } = {}) {
+  await page.evaluate(() => {
+    const panel = document.querySelector("#proofPanel");
+    if (!panel) throw new Error("Missing proof panel");
+    const y = panel.getBoundingClientRect().top + window.scrollY - 8;
+    window.scrollTo(0, Math.max(0, y));
+  });
+  await page.waitForTimeout(250);
+  const facts = await page.evaluate((receipt) => {
+    const panel = document.querySelector("#proofPanel")?.getBoundingClientRect();
+    const proof = document.querySelector("#proofCode")?.getBoundingClientRect();
+    const summary = document.querySelector("#judgeRunSummary")?.getBoundingClientRect();
+    const ledger = document.querySelector("#phaseLedger")?.getBoundingClientRect();
+    return {
+      panelTop: panel?.top,
+      proofText: document.querySelector("#proofCode")?.textContent.trim(),
+      receiptVisible: Boolean(proof && proof.top >= 0 && proof.bottom <= innerHeight),
+      summaryVisible: Boolean(summary && summary.top < innerHeight && summary.bottom > 0),
+      ledgerVisible: Boolean(ledger && ledger.top < innerHeight && ledger.bottom > 0),
+      overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      receipt,
+    };
+  }, stableReceipt);
+  if (requireTopFrame) {
+    assert(facts.panelTop >= 0 && facts.panelTop <= 16, `${label} receipt panel is not framed at the top`);
+  }
+  assert(facts.proofText === stableReceipt, `${label} stable receipt changed`);
+  assert(facts.receiptVisible, `${label} receipt is not visible in the completion viewport`);
+  assert(facts.summaryVisible, `${label} Judge run summary is not visible in the completion viewport`);
+  assert(facts.ledgerVisible, `${label} phase ledger is not visible in the completion viewport`);
+  assert(facts.overflowX === 0, `${label} completion viewport has horizontal overflow`);
+}
+
 async function captureFirstScreens(browser, baseUrl) {
   await withPage(browser, { width: 1280, height: 900 }, async (page) => {
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
@@ -135,8 +168,7 @@ async function captureDemoFrames(browser, baseUrl) {
       stableReceipt,
       { timeout: 20000 }
     );
-    await page.locator("#proofPanel").scrollIntoViewIfNeeded();
-    await page.waitForTimeout(250);
+    await frameCompletedReceipt(page, "desktop");
     await page.screenshot({ path: join(root, "desktop-complete-v4.png"), fullPage: false });
     await page.screenshot({ path: join(frameDir, "06-complete.png"), fullPage: false });
   });
@@ -150,8 +182,7 @@ async function captureMobileCompletion(browser, baseUrl) {
       stableReceipt,
       { timeout: 20000 }
     );
-    await page.locator("#proofPanel").scrollIntoViewIfNeeded();
-    await page.waitForTimeout(250);
+    await frameCompletedReceipt(page, "mobile", { requireTopFrame: true });
     await page.screenshot({ path: join(root, "mobile-complete-v1.png"), fullPage: false });
   });
 }
