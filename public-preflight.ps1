@@ -176,6 +176,7 @@ try {
   if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt verifier*stable summary receipt.")) { throw "judge-manifest official route proof mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.boundary -like "No Google AI claim*")) { throw "judge-manifest official route boundary mismatch" }
   if (-not ($manifest.challenge.award_thesis -like "Helioigma is a playable ode*")) { throw "judge-manifest award thesis mismatch" }
+  if (-not ($manifest.challenge.award_thesis -like "*game feel through target glyphs*Nightfall recovery*")) { throw "judge-manifest game-feel thesis mismatch" }
   if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
@@ -226,6 +227,8 @@ try {
   Assert-Contains "dev-article-final.md" "You open with 45 seconds of daylight"
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
+  Assert-Contains "dev-article-final.md" "For game feel, I focused on a short pressure loop"
+  Assert-Contains "dev-article-final.md" "the first artifact is still the playable daylight race"
   Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
   Assert-Contains "dev-article-final.md" "The manual Hint and Rotor Trace path also changes by phase"
   Assert-Contains "dev-article-final.md" "XOR alternates mirrored rotor nodes"
@@ -529,6 +532,8 @@ try {
   Assert-Contains "judge.html" "Writing quality"
   Assert-Contains "judge.html" "Turing category"
   Assert-Contains "judge.html" "Judge-Verifiable Loop"
+  Assert-Contains "judge.html" "Game Feel"
+  Assert-Contains "judge.html" "short timer pressure, node pulse reactions, phase-specific Hint scans"
   Assert-Contains "judge.html" "not only a solstice skin over a puzzle"
   Assert-Contains "judge.html" "Rotor Trace"
   Assert-Contains "judge.html" "state, logic, verification"
@@ -650,7 +655,9 @@ try {
   Assert-NotContains ".github/workflows/verify.yml" "20260614-mobile-review"
   Assert-NotContains ".github/workflows/verify.yml" '          grep -q "Prove the daylight run."'
   Assert-Contains "README.md" "is intentionally wider than the other quick controls"
+  Assert-Contains "README.md" "Player feel matters as much as proof"
   Assert-Contains "verification-report.md" "is wider than the other quick controls"
+  Assert-Contains "verification-report.md" "Game feel is part of the review surface"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"
   Assert-Contains "styles.css" "grid-column: span 2"
   Assert-Contains "judge.html" "github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"

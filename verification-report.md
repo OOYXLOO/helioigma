@@ -73,6 +73,7 @@ Expected local URLs:
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The first-screen judge shortcuts and judge pack expose the stable sample verifier link `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so judges can inspect the checksum path without manual copying.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with phase-proof copy, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- Game feel is part of the review surface: target glyphs, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Smoke checks include 69 PASS assertions:
   - canvas present
   - start button present
@@ -121,7 +122,7 @@ Expected local URLs:
   - demo receipt verifier link carries the receipt
   - demo Judge run summary reports phases and score
   - demo Judge run facts include receipt and Turing fit
-- demo award signals name solstice, Turing, and judge receipt
+  - demo award signals name solstice, Turing, and judge receipt
   - copy judge summary button is enabled
   - demo solve releases manual controls
   - reset shortcut returns to idle

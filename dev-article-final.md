@@ -45,6 +45,8 @@ I chose a cipher wheel because the solstice already has a natural tension: one u
 
 The build is meant to be judged quickly without losing the game premise: the first screen names the rotor, the matching goal, and the three-step judge path. A reviewer can play manually with `Hint` if they want a small nudge, press `Demo Solve`, watch all four phases complete, copy the stable receipt `SC-4P-2907-62-Y5VFX1`, and verify the checksum locally. It is a static HTML/CSS/JavaScript game with no backend, no API key, and no private data. The only browser storage is a local numeric best-score key for this game.
 
+For game feel, I focused on a short pressure loop rather than a long rules explanation. The target strip says what to match, each node move pulses the board, Rotor Trace names the next mismatch, phase scan order changes as the run advances, and a failed manual attempt becomes a Nightfall report instead of a dead end. The proof layer is there for judges, but the first artifact is still the playable daylight race.
+
 ## Video Demo
 
 The captioned WebM records the current judge path: first-screen context, Hint/manual controls, phase banner, Rotor Trace, `Demo Solve`, the final receipt, and the local verifier. The GIF above is the quick inline fallback; the optional MP4 remains only if the DEV editor specifically asks for an MP4 file.

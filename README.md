@@ -33,6 +33,8 @@ Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finish
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
+Player feel matters as much as proof: each phase gives a readable target, a short timer, immediate node pulse feedback, a changing Hint/Rotor Trace scan order, optional audio, and a clean Nightfall recovery. The verifier supports the game loop; it does not replace the feeling of making and correcting moves under daylight pressure.
+
 The playable first screen now leads with the game hook, `Seal the daylight run.`, then gives the plain rule: open with 45 seconds of daylight, survive tighter phases, and decode the rotor by matching each numbered node to the target glyph before nightfall. The phase-proof line keeps the solstice/Turing/verification connection visible during play instead of hiding it only in the write-up. The DEV final article is structured around the official submission expectations: What I Built, Video Demo, Code, How I Built It, and Prize Category.
 
 ## Official Review Snapshot
