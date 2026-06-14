@@ -40,6 +40,7 @@ jobs:
             tools/build-demo-webm.mjs \
             tools/browser-smoke-check.mjs \
             tools/capture-public-media.mjs \
+            tools/launch-readiness-audit.mjs \
             dev-article-final.md \
             dev-launch-brief.md \
             verification.html \
@@ -144,6 +145,7 @@ jobs:
           grep -q "JUDGE_REVIEW_CARD.md" README.md
           grep -q "package.json" README.md
           grep -q "npm run smoke" README.md
+          grep -q "npm run audit:launch" README.md
           grep -q "npm run build:package" README.md
           grep -q "Helioigma Judge Review Card" JUDGE_REVIEW_CARD.md
           grep -q "FIRST_MINUTE.md" JUDGE_REVIEW_CARD.md
@@ -184,6 +186,7 @@ jobs:
           grep -q "dev-launch-brief.md" submission-checklist.md
           grep -q "sample receipt verifier URL" submission-checklist.md
           grep -q "build:package" submission-checklist.md
+          grep -q "audit:launch" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
           grep -q "69 expected smoke checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
@@ -368,6 +371,9 @@ jobs:
         run: |
           npm ci
           npx playwright install --with-deps chromium
+
+      - name: Run launch readiness audit
+        run: npm run audit:launch
 
       - name: Run browser smoke on committed package
         run: npm run smoke

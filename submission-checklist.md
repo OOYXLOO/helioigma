@@ -17,7 +17,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Local/public preflight script: `public-preflight.ps1`.
-- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
+- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - Optional user-present Pages API helper: `publish-after-repo.ps1 -Push -ConfigurePages`.
 - Optional Pages wait/public preflight helper: `publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages`.
@@ -40,11 +40,13 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Rebuild captioned WebM from a live browser session with `npm run build:video`. Override capture scratch space with `HELIOIGMA_VIDEO_WORK_DIR` if needed.
 - Rebuild the fallback frame-based WebM with `npm run build:webm`.
 - Rebuild the local transfer ZIP with `npm run build:package`.
+- Run `npm run audit:launch` after packaging; before the public repo exists, the expected status is `WAIT_USER_GATE` with the repo/Pages/DEV next steps, not a local package failure.
 - Local package ZIP: `helioigma-dev-package.zip`, rebuilt by the package script so directory paths are preserved.
 - Verification:
   - `npm run check`
   - `npm run preflight`
   - `npm run smoke`
+  - `npm run audit:launch`
   - `.github/workflows/verify.yml`
 - `smoke.html`: 69 PASS checks including daylight meter, score/receipt explanation, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.

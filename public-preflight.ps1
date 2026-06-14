@@ -91,6 +91,7 @@ try {
     "tools/build-demo-webm.mjs",
     "tools/browser-smoke-check.mjs",
     "tools/capture-public-media.mjs",
+    "tools/launch-readiness-audit.mjs",
     "verification.html",
     "verification-report.md",
     "cover.png",
@@ -129,6 +130,7 @@ try {
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
   if ($package.name -ne "helioigma") { throw "package name mismatch" }
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
+  if ($package.scripts.'audit:launch' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch script mismatch" }
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
