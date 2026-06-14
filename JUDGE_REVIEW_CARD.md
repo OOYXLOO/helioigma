@@ -6,7 +6,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to priz
 
 - Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.
+- Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## 60-Second Path
@@ -24,7 +24,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 
 - Solstice fit: daylight is the timer, nightfall is the fail state, and holding the longest day is the win condition.
 - Turing fit: rotor-like alignment, target checking, XOR/binary language, state reasoning, phase-proof cues, and a local checksum receipt carry the tribute through mechanics.
-- Execution proof: the same public build includes the game, judge page, Nightfall recovery report, smoke test, manifest, screenshots, GIF/WebM media, and receipt verifier.
+- Execution proof: the same public build includes the game, judge page, Nightfall recovery report, receipt verifier, manifest, screenshots, GIF/WebM media, and optional smoke test.
 
 ## Rubric Evidence
 

@@ -6,7 +6,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 
 - GitHub Pages-ready static game package for the submitted public URLs.
 - The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
-- Owner-only publishing helpers are included, but the judge path is the playable game, judge page, smoke test, manifest, media, and receipt verifier.
+- Owner-only publishing helpers are included, but the judge path is the playable game, judge page, receipt verifier, manifest, media, and optional smoke test.
 - No account login, payout data, API key, or private user data is used.
 - The only browser storage is the local numeric best score key for this game.
 
@@ -28,7 +28,7 @@ Helioigma is a compact browser puzzle game for the June solstice theme and an od
 
 The current build now has a visible four-phase progress strip, a first-screen phase objective strip with a compact phase-proof line, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, a Nightfall report for failed manual runs, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on Start, a manual `Hint` path, tactile node pulse feedback after hints or shifts, optional default-off Web Audio cues, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path proves the same public game loop through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path proves the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
@@ -38,7 +38,7 @@ The playable first screen now includes the plain rule: decode the solstice rotor
 
 - Prize route: Best Ode to Alan Turing, one of five USD 200 winner slots.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same static game loop.
+- Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same static game loop.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## Originality and Review Transparency

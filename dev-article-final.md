@@ -16,7 +16,7 @@ Helioigma is built around that small pressure loop. Each phase changes the targe
 
 I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
 
-My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.
+My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 
 ## What I Built
 
@@ -80,9 +80,9 @@ Official route snapshot: Best Ode to Alan Turing, one of five USD 200 winner slo
 
 1. Open the play link and follow the first-screen Judge Path: play manually, press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch the captioned WebM video or GIF preview.
-3. Run `smoke.html` to see the game solve all four phases automatically.
+3. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
-5. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
+5. Optional: run `smoke.html` to see the game solve all four phases automatically and report the 69-check browser proof.
 
 Public media links:
 

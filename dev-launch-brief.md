@@ -30,7 +30,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 Keep this exact meaning in the public post:
 
 ```text
-Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, smoke test, manifest, and receipt verifier.
+Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge prove the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 ```
 
 ## Final Local Commands
@@ -48,7 +48,7 @@ Expected local proof signals:
 
 - `PASS Helioigma preflight`
 - `PASS browser smoke`
-- `60 PASS` inside `smoke.html`
+- `69 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
@@ -60,7 +60,7 @@ Do not publish the DEV article if any item is true:
 - The GitHub Pages play URL returns 404 or redirects to another project.
 - The source URL is not `https://github.com/OOYXLOO/helioigma`.
 - `public-preflight.ps1 -Public` fails.
-- `smoke.html` does not reach the expected 60 PASS checks.
+- `smoke.html` does not reach the expected 69 PASS checks.
 - `Demo Solve` does not reach receipt `SC-4P-2907-62-Y5VFX1`.
 - The post omits the play link, source link, GIF/WebM media, or judge manifest.
 - The post claims Best Google AI Usage, backend AI/API usage, external account data, private user data, or anti-cheat identity proof.

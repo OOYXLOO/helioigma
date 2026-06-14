@@ -170,7 +170,7 @@ try {
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.challenge.official_route_snapshot.prize_route -ne "Best Ode to Alan Turing, one of five USD 200 winner slots.") { throw "judge-manifest official route prize mismatch" }
   if ($manifest.challenge.official_route_snapshot.submit_by -ne "June 21, 2026 at 11:59 PM PDT.") { throw "judge-manifest official route deadline mismatch" }
-  if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, smoke test*")) { throw "judge-manifest official route proof mismatch" }
+  if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt verifier*")) { throw "judge-manifest official route proof mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.boundary -like "No Google AI claim*")) { throw "judge-manifest official route boundary mismatch" }
   if (-not ($manifest.challenge.award_thesis -like "Helioigma is a playable ode*")) { throw "judge-manifest award thesis mismatch" }
   if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
@@ -288,7 +288,7 @@ try {
   Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
-  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge proof: Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge proof: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Do not publish the DEV article until all of these are true"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content"
@@ -450,7 +450,8 @@ try {
   Assert-Contains "judge.html" "tactile node pulse"
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
-  Assert-Contains "judge.html" "Verify the browser path reaches 69 checks"
+  Assert-Contains "judge.html" "Optional Smoke."
+  Assert-Contains "judge.html" "Run the 69-check browser smoke test"
   Assert-Contains "judge.html" "nightfall report"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "judge-manifest.json"

@@ -2,7 +2,7 @@
 
 Helioigma is a small browser puzzle game about balancing daylight, nightfall, and code-breaking. Each round shows a target cipher above a Turing-inspired solar rotor of glyph nodes. Click, tap, or press number keys to rotate their phase before the timer reaches zero.
 
-Fast judge path: press `Demo Solve` in the live game, watch the short demo, run the smoke test, then verify the stable sample receipt `SC-4P-2907-62-Y5VFX1` in the receipt verifier.
+Fast judge path: press `Demo Solve` in the live game, verify the stable sample receipt `SC-4P-2907-62-Y5VFX1`, watch the short demo, then optionally run the smoke test.
 
 ## How to Play
 

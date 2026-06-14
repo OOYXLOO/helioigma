@@ -230,7 +230,8 @@ jobs:
           grep -q "tactile node pulse" judge.html
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
-          grep -q "Verify the browser path reaches 69 checks" judge.html
+          grep -q "Optional Smoke." judge.html
+          grep -q "Run the 69-check browser smoke test" judge.html
           grep -q "award signals" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html

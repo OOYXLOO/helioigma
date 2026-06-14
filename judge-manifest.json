@@ -9,10 +9,10 @@
     "official_route_snapshot": {
       "prize_route": "Best Ode to Alan Turing, one of five USD 200 winner slots.",
       "submit_by": "June 21, 2026 at 11:59 PM PDT.",
-      "judge_proof": "Play, Auto Demo, smoke test, manifest, and receipt verifier inspect the same loop.",
+      "judge_proof": "Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.",
       "boundary": "No Google AI claim, backend, account login, API key, or private data."
     },
-    "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, phase-proof copy, smoke test, manifest, and receipt verifier.",
+    "award_thesis": "Helioigma is a playable ode, a judge-verifiable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight pressure, and review proof through Auto Demo, Rotor Trace, phase-proof copy, receipt verifier, manifest, and optional smoke test.",
     "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
     "rubric_snapshot": [
       {
