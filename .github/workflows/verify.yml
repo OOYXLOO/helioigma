@@ -261,6 +261,8 @@ jobs:
           grep -q "mobile-complete-v1.png" verification.html
           grep -q "DEV No-Go Gate" dev-launch-brief.md
           grep -q "publish-after-repo helper" publish-after-repo.ps1
+          grep -q -- "-ConfigurePages" publish-after-repo.ps1
+          grep -q "source\\[branch\\]=main" publish-after-repo.ps1
           grep -q "git ls-files" tools/build-package.ps1
           grep -q "Assert-CleanWorktreeForPush" publish-after-repo.ps1
           grep -q "Commit the verified Helioigma package before pushing" publish-after-repo.ps1

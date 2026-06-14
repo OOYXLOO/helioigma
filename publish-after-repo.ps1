@@ -1,5 +1,6 @@
 param(
-  [switch]$Push
+  [switch]$Push,
+  [switch]$ConfigurePages
 )
 
 $ErrorActionPreference = "Stop"
@@ -7,6 +8,10 @@ $repoUrl = "https://github.com/OOYXLOO/helioigma.git"
 $repoPage = "https://github.com/OOYXLOO/helioigma"
 $repoCreateUrl = "https://github.com/new?owner=OOYXLOO&name=helioigma&visibility=public"
 $repoCreateCommand = 'gh repo create OOYXLOO/helioigma --public --description "Helioigma: a Turing-wheel puzzle for the DEV June Solstice Game Jam" --homepage "https://ooyxloo.github.io/helioigma/"'
+$pagesUrl = "https://ooyxloo.github.io/helioigma/"
+$pagesSettingsUrl = "$repoPage/settings/pages"
+$pagesCreateArgs = @("api", "--method", "POST", "repos/OOYXLOO/helioigma/pages", "-f", "source[branch]=main", "-f", "source[path]=/")
+$pagesUpdateArgs = @("api", "--method", "PUT", "repos/OOYXLOO/helioigma/pages", "-f", "source[branch]=main", "-f", "source[path]=/")
 
 function Run {
   param([string]$Command)
@@ -43,6 +48,95 @@ function Invoke-GitCapture {
   }
 }
 
+function Invoke-GhCapture {
+  param([string[]]$Arguments)
+
+  $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
+  $startInfo.FileName = "gh"
+  $startInfo.Arguments = ($Arguments | ForEach-Object {
+    if ($_ -match '\s') {
+      '"' + ($_ -replace '"', '\"') + '"'
+    } else {
+      $_
+    }
+  }) -join " "
+  $startInfo.RedirectStandardOutput = $true
+  $startInfo.RedirectStandardError = $true
+  $startInfo.UseShellExecute = $false
+
+  $process = [System.Diagnostics.Process]::Start($startInfo)
+  $stdout = $process.StandardOutput.ReadToEnd()
+  $stderr = $process.StandardError.ReadToEnd()
+  $process.WaitForExit()
+
+  [pscustomobject]@{
+    ExitCode = $process.ExitCode
+    Output = (($stdout + $stderr).Trim())
+  }
+}
+
+function Format-CommandLine {
+  param([string]$Program, [string[]]$Arguments)
+  $rendered = $Arguments | ForEach-Object {
+    if ($_ -match '[\s\[\]]') {
+      '"' + ($_ -replace '"', '\"') + '"'
+    } else {
+      $_
+    }
+  }
+  "$Program $($rendered -join ' ')"
+}
+
+function Write-PagesDryRun {
+  Write-Output "Optional Pages API command, only if the account owner is present and gh is already authenticated:"
+  Write-Output (Format-CommandLine "gh" $pagesCreateArgs)
+  Write-Output "If GitHub says Pages already exists, use:"
+  Write-Output (Format-CommandLine "gh" $pagesUpdateArgs)
+  Write-Output "Or re-run this helper after push with:"
+  Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages"
+}
+
+function Configure-GitHubPages {
+  if (-not $ConfigurePages) {
+    Write-Output "GitHub Pages API configuration was not requested."
+    Write-PagesDryRun
+    return
+  }
+
+  if (-not $Push) {
+    Write-Output "Dry run: -ConfigurePages was provided without -Push, so no GitHub Pages API call will be made."
+    Write-PagesDryRun
+    return
+  }
+
+  if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    Write-Output "BLOCKED: GitHub CLI 'gh' is not available. Enable Pages manually at $pagesSettingsUrl."
+    exit 1
+  }
+
+  Write-Output "Configuring GitHub Pages from branch main / root with GitHub CLI..."
+  Write-Output "> $(Format-CommandLine "gh" $pagesCreateArgs)"
+  $createResult = Invoke-GhCapture $pagesCreateArgs
+  if ($createResult.ExitCode -eq 0) {
+    if ($createResult.Output) { Write-Output $createResult.Output }
+    Write-Output "GitHub Pages create request accepted."
+    return
+  }
+
+  Write-Output $createResult.Output
+  Write-Output "Create request did not complete. Trying the update endpoint in case Pages already exists..."
+  Write-Output "> $(Format-CommandLine "gh" $pagesUpdateArgs)"
+  $updateResult = Invoke-GhCapture $pagesUpdateArgs
+  if ($updateResult.ExitCode -ne 0) {
+    Write-Output $updateResult.Output
+    Write-Output "BLOCKED: Could not configure GitHub Pages through gh. Enable Pages manually at $pagesSettingsUrl."
+    exit 1
+  }
+
+  if ($updateResult.Output) { Write-Output $updateResult.Output }
+  Write-Output "GitHub Pages update request accepted."
+}
+
 function Assert-CleanWorktreeForPush {
   if (-not $Push) {
     return
@@ -67,6 +161,7 @@ try {
 Write-Output "Helioigma publish-after-repo helper"
   Write-Output "Repository: $repoUrl"
   Write-Output "Mode: $(if ($Push) { 'PUSH ENABLED' } else { 'dry run' })"
+  Write-Output "Pages API: $(if ($ConfigurePages) { 'requested' } else { 'dry-run instructions only' })"
 
   powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 
@@ -94,17 +189,20 @@ Write-Output "Helioigma publish-after-repo helper"
 
   Assert-CleanWorktreeForPush
   Run "git push -u origin main"
+  Configure-GitHubPages
 
   if (-not $Push) {
     Write-Output ""
     Write-Output "Dry run complete. Re-run with -Push after confirming the public repo exists:"
     Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push"
+    Write-Output "To also try GitHub Pages setup through gh while you are present:"
+    Write-Output "powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push -ConfigurePages"
   } else {
     Write-Output ""
-    Write-Output "Push complete. Next human/browser gate:"
-    Write-Output "1. Open $repoPage/settings/pages"
+    Write-Output "Push complete. Next gate:"
+    Write-Output "1. If -ConfigurePages was not used or failed, open $pagesSettingsUrl"
     Write-Output "2. Set Pages source to Deploy from a branch -> main -> /root"
-    Write-Output "3. Wait for https://ooyxloo.github.io/helioigma/"
+    Write-Output "3. Wait for $pagesUrl"
     Write-Output "4. Run: powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public"
     Write-Output "5. Publish DEV article only after public preflight passes."
   }
