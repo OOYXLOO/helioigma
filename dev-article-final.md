@@ -1,7 +1,7 @@
 ---
 title: "Helioigma: a Turing-wheel puzzle for holding the longest day"
 published: false
-description: "A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the solved run with a local checksum receipt."
+description: "A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and verify the stable Demo Solve summary receipt."
 tags: devchallenge, gamechallenge, gamedev, javascript
 cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260614-seal-media
 ---
@@ -17,7 +17,7 @@ If you are judging quickly, the first-minute check is: rotate one node, watch Ro
 - Verify the stable receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Source: https://github.com/OOYXLOO/helioigma
 
-Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished solve inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
+Helioigma targets Best Ode to Alan Turing because the tribute is playable: rotor-like state alignment under a daylight timer, plus a checksum receipt that makes the finished Demo Solve summary inspectable. No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed.
 
 ![Helioigma four-phase demo solve](https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260614-seal-media)
 
@@ -29,11 +29,11 @@ You open with 45 seconds of daylight, a rotor full of `SOL`, `XOR`, `LUX`, and `
 
 The play feel is meant to be small but tense: read the target glyphs, tap a numbered node, watch the wheel answer, then decide whether to keep chasing the next mismatch or spend the `Hint` nudge. It is a little daylight machine that asks for fast pattern matching before it asks for a receipt check.
 
-Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but an inspectable receipt that lets the solve path be checked against the public verifier.
+Helioigma is built around that small pressure loop. Each phase changes the target pattern, the live objective strip tells you what the rotor wants next, and a small phase-proof line explains how the current phase maps to solstice pressure, Turing-style state alignment, or checksum verification. The manual Hint and Rotor Trace path also changes by phase: Crib follows the first visible mismatch, XOR alternates mirrored rotor nodes, Carry advances through the binary chain, and Checksum verifies the rotor in reverse. Every click or number key shifts a node one glyph forward. Clear all four phases and the game leaves behind a receipt: not a trophy screen alone, but an inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked against the public verifier.
 
-I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run into something a judge can verify instead of only watch.
+I am aiming this at Best Ode to Alan Turing by making the tribute playable. The ode is in rotor-like alignment, target checking, XOR/binary language, pressure, and a checksum receipt that turns the finished run summary into something a judge can verify instead of only watch.
 
-My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the same public game loop through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
+My award thesis is simple: this is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the published Demo Solve summary through Rotor Trace, Auto Demo, the receipt verifier, the manifest, and the optional smoke test.
 
 ## What I Built
 
@@ -78,6 +78,7 @@ Core features:
 - Four timed phases with a visible progress strip.
 - Canvas-rendered glyphs, beams, progress ring, and particle feedback.
 - Mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback after hints or shifts.
+- Phase-specific hint order: Crib first mismatch, XOR mirrored nodes, Carry chain, and Checksum reverse scan.
 - Optional default-off Web Audio cues for start, hint, node shift, lock, phase clear, completion, and nightfall.
 - Short phase banner and screen-reader phase announcer when each phase starts.
 - Live Rotor Trace panel for phase, aligned count, next mismatch, and last action.
@@ -148,7 +149,7 @@ Controls:
 - Press `Enter` to start a fresh run.
 - Press `Escape` or `R` to reset the board.
 
-Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the same run path without trusting a hidden backend.
+Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the score, shift count, phase count, and checksum summary without trusting a hidden backend.
 
 ## Accessibility, Fair Play, and Privacy
 
@@ -201,7 +202,7 @@ The jam theme makes daylight, calendars, and code-breaking natural starting poin
 | --- | --- |
 | Theme relevance | Daylight is the timer, nightfall is the fail state, and the final solve is framed as holding the longest day. |
 | Creativity | The solstice theme is combined with a code-breaking wheel, live Rotor Trace, deterministic demo route, and verifiable run receipt instead of a literal platformer or trivia page. |
-| Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, scoring, local best score, receipt generation, and a browser smoke test. |
+| Technical execution | The game is a self-contained canvas app with touch, keyboard, node buttons, phase-specific hint order, scoring, local best score, receipt generation, and a browser smoke test. |
 | Writing quality | The post, judge page, judge manifest, screenshots, and verification page give a short review path instead of asking judges to infer the project from source alone. |
 | Optional category | The Best Ode to Alan Turing fit comes from rotor-like alignment, target checking, XOR/binary language, receipt verification, and a restrained tribute that avoids pretending to simulate a real historical machine. |
 

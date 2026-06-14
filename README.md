@@ -27,9 +27,9 @@ http://127.0.0.1:8781/
 
 Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can run on GitHub Pages without a backend.
 
-The current build now has a visible four-phase progress strip, a first-screen phase objective strip with a compact phase-proof line, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, a Nightfall report for failed manual runs, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on Start, a manual `Hint` path, tactile node pulse feedback after hints or shifts, optional default-off Web Audio cues, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
+The current build now has a visible four-phase progress strip, a first-screen phase objective strip with a compact phase-proof line, score carry-over, streak scoring, shift counting, a local best-score readout, a shareable completion receipt code, phase scoring ledger, a human-readable Judge run summary, a Nightfall report for failed manual runs, and a final replay screen that summarizes the run. It also exposes live node-control buttons below the canvas, a first-move coach on Start, a phase-guided manual `Hint` path, tactile node pulse feedback after hints or shifts, optional default-off Web Audio cues, a short phase banner plus screen-reader phase announcer when each phase starts, a live Rotor Trace panel, judge shortcut links, a stable `Demo Solve` receipt path, and an optional `?demo=1` auto-demo URL, so judges can play or verify on mobile or desktop without guessing the canvas hit zones. That gives judges a complete loop in one short play session instead of an open-ended prototype.
 
-Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path makes the same public game loop inspectable through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+Award thesis: Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state, XOR/binary language, timed pressure, and checksum reasoning; the review path makes the published Demo Solve summary inspectable through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 
 The Turing ode is intentionally restrained: the game does not pretend to recreate the Bombe or a biography. It uses state, logic, alignment, verification, pressure, and machine-readable reasoning as the tribute.
 
@@ -39,7 +39,7 @@ The playable first screen now leads with the game hook, `Seal the daylight run.`
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same static game loop.
+- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## Originality and Review Transparency
@@ -53,9 +53,10 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Click or tap ring nodes to rotate their phase.
 - Use the node-control buttons below the canvas.
 - Use `Hint` or press `H` during manual play to highlight the next mismatched node.
+- Hints and Rotor Trace use phase-specific scan orders: Crib follows the first mismatch, XOR alternates mirrored nodes, Carry advances the binary chain, and Checksum scans in reverse.
 - Use `Demo Solve` or press `D` to watch the complete four-phase loop without manual input.
 - Use `Audio` or press `S` to enable optional short Web Audio cues. Audio is off by default.
-- Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the same run path.
+- Score rewards held daylight, streaks, and fewer wasted shifts; the final receipt lets judges verify the score, shift count, phase count, and checksum summary for the stable Demo Solve run.
 - Open `?demo=1` to start the same deterministic judge route automatically.
 - Number keys `1` through `9` rotate matching node positions.
 - `Enter` starts a fresh run.
@@ -69,6 +70,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Ring-node click interaction and keyboard node rotation are both covered by local browser checks.
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
 - A first-screen Run Path strip keeps the game-first sequence explicit: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
+- The manual hint route is phase-specific, so later phases visibly change how the next mismatch is selected instead of only shrinking the timer.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
 - After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the receipt details instead of leaving them below the fold.
 - The first-screen judge shortcuts and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable sample checksum before or after running the demo.

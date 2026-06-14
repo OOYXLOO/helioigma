@@ -38,7 +38,7 @@ Rotate one node, watch Rotor Trace explain the state change, press Demo Solve, t
 Keep this exact meaning in the public post:
 
 ```text
-Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the same public game loop through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
+Helioigma is a playable ode, a judge-verifiable loop, and a finished static package. The Turing fit lives in rotor state and checksum reasoning; the solstice fit lives in daylight pressure; and the review path lets a judge inspect the published Demo Solve summary through Auto Demo, Rotor Trace, receipt verifier, manifest, and optional smoke test.
 ```
 
 ## Final Local Commands

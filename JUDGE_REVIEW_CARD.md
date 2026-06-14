@@ -6,7 +6,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
+- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## 60-Second Path
@@ -35,7 +35,7 @@ Helioigma is a playable ode, a judge-verifiable loop, and a finished static pack
 | --- | --- |
 | Theme relevance | The first screen explains the solstice rotor, target glyphs, daylight timer, and nightfall fail state. |
 | Creativity | The entry combines a solstice countdown with a code-breaking wheel, Rotor Trace, Demo Solve, and verifiable receipt. |
-| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, optional default-off audio, Nightfall recovery, four phases, scoring, local best score, and CI smoke checks. |
+| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, phase-specific hint order, optional default-off audio, Nightfall recovery, four phases, scoring, local best score, and CI smoke checks. |
 | Writing quality | DEV article, README, judge page, manifest, verification report, and this card give a clear review path with no hidden account dependency. |
 | Best Ode to Alan Turing | The ode is restrained: state, logic, alignment, verification, pressure, and machine-readable reasoning, not a fake biography or Bombe simulator. |
 

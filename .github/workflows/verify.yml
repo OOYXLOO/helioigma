@@ -69,7 +69,7 @@ jobs:
           grep -q "solar rotor" dev-article-final.md
           grep -q "You open with 45 seconds of daylight" dev-article-final.md
           grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
-          grep -q "inspectable receipt that lets the solve path be checked" dev-article-final.md
+          grep -q "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked" dev-article-final.md
           grep -q "I am aiming this at Best Ode to Alan Turing by making the tribute playable" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
@@ -131,7 +131,8 @@ jobs:
           grep -q "fake engagement" dev-launch-brief.md
           grep -q "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content" dev-launch-brief.md
           grep -q "only browser storage is the local numeric best score key" README.md
-          grep -q "Prove the daylight run." README.md
+          grep -q "Seal the daylight run." README.md
+          ! grep -q "Prove the daylight run." README.md
           grep -q "GitHub Pages-ready static game package" README.md
           grep -q "Owner-only launch notes are kept in Markdown" README.md
           grep -q "Local Launch Notes" README.md
@@ -322,16 +323,16 @@ jobs:
           grep -q "phaseLedger" index.html
           grep -q "verifyProofLink" index.html
           grep -q "Helioigma" index.html
-          grep -q "Prove the daylight run." index.html
+          grep -q "Seal the daylight run." index.html
           grep -q "Start with 45s daylight" index.html
           grep -q "Match numbered nodes to target glyphs" index.html
-          grep -q "20260614-mobile-review" index.html
+          grep -q "20260614-demo-priority" index.html
           grep -q "Award signals" index.html
           grep -q "https://ooyxloo.github.io/helioigma/cover.png" index.html
           grep -q "twitter:image" index.html
           grep -q 'aria-keyshortcuts="H"' index.html
           grep -q "first-phase node buttons are present" smoke.html
-          grep -q "20260614-mobile-review" smoke.html
+          grep -q "20260614-demo-priority" smoke.html
           grep -q "award signals are present" smoke.html
           grep -q "demo award signals name solstice, Turing, and judge receipt" smoke.html
           grep -q "audio cue button is present" smoke.html

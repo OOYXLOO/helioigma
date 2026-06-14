@@ -21,8 +21,8 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 - It is a playable static browser game, not only a write-up or mockup.
 - The solstice is mechanical: daylight is the timer, nightfall is the fail state, and the run ends after four held phases.
 - The Alan Turing ode is restrained and interactive: rotor-like alignment, XOR/binary glyphs, state transitions, and checksum reasoning carry the tribute through play.
-- `Demo Solve` uses the same visible game surface and leaves the stable run receipt `SC-4P-2907-62-Y5VFX1`.
-- The receipt verifier, Rotor Trace, judge page, manifest, media, and optional smoke test all inspect the same static package.
+- `Demo Solve` uses the same visible game surface and leaves the stable summary receipt `SC-4P-2907-62-Y5VFX1`.
+- The receipt verifier, Rotor Trace, judge page, manifest, media, and optional smoke test all inspect the published static review package.
 
 ## Why It Fits The Category
 

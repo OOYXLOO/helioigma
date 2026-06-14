@@ -196,7 +196,7 @@
   <main>
     <p class="eyebrow">Run receipt verifier</p>
     <h1>Check a Helioigma completion receipt.</h1>
-    <p>Completed runs expose a demo receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published scoring formula, and whether it is the exact stable one-click Demo Solve receipt.</p>
+    <p>Completed runs expose a summary receipt in the form <code>SC-4P-score-shifts-checksum</code>. This page recomputes the checksum locally so judges can tell whether the receipt matches the published summary formula, and whether it is the exact stable one-click Demo Solve receipt.</p>
 
     <section class="panel">
       <label for="proofInput">Receipt code</label>
@@ -208,13 +208,13 @@
 
     <section class="panel">
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
-      <p><strong>Source note:</strong> the receipt is generated in <code>game.js</code> by <code>buildRunProof</code> from the same payload shape that this verifier recomputes.</p>
+      <p><strong>Source note:</strong> the receipt is generated in <code>game.js</code> by <code>buildRunProof</code> from the same summary payload shape that this verifier recomputes.</p>
       <p><strong>Stable demo boundary:</strong> only <code>SC-4P-2907-62-Y5VFX1</code> is marked as the published stable Demo Solve receipt. Other formula-valid receipts are shown as neutral checksum-form matches, not as the published demo route.</p>
-      <p>This is a transparent demo receipt for a public jam entry, not anti-cheat, identity, payout, or eligibility proof. It exists so judges can replay the scoring path and inspect the checksum without trusting a screenshot.</p>
+      <p>This is a transparent summary receipt for a public jam entry, not anti-cheat, identity, payout, or eligibility proof. It exists so judges can replay the public Demo Solve route and inspect the score, shift count, phase count, and checksum without trusting a screenshot.</p>
       <div class="boundary-grid" aria-label="Receipt check boundary">
         <div>
           <strong>What this checks</strong>
-          <p>The stable receipt matches the published four-phase payload shape, score, shift count, and local checksum formula for the public Demo Solve path.</p>
+          <p>The stable receipt matches the published four-phase summary payload shape, score, shift count, solved-phase count, and local checksum formula for the public Demo Solve route.</p>
         </div>
         <div>
           <strong>What this does not check</strong>

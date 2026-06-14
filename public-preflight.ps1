@@ -173,7 +173,7 @@ try {
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
   if ($manifest.challenge.official_route_snapshot.prize_route -ne "Best Ode to Alan Turing category route in the official challenge.") { throw "judge-manifest official route prize mismatch" }
   if ($manifest.challenge.official_route_snapshot.submit_by -ne "June 21, 2026 at 11:59 PM PDT.") { throw "judge-manifest official route deadline mismatch" }
-  if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt verifier*")) { throw "judge-manifest official route proof mismatch" }
+  if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt verifier*stable summary receipt.")) { throw "judge-manifest official route proof mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.boundary -like "No Google AI claim*")) { throw "judge-manifest official route boundary mismatch" }
   if (-not ($manifest.challenge.award_thesis -like "Helioigma is a playable ode*")) { throw "judge-manifest award thesis mismatch" }
   if ($manifest.challenge.rubric_snapshot.Count -ne 5) { throw "judge-manifest rubric snapshot mismatch" }
@@ -181,8 +181,9 @@ try {
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 69) { throw "judge-manifest smoke count mismatch" }
-  if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*")) { throw "judge-manifest score basis mismatch" }
+  if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact verification cue*")) { throw "judge-manifest phase proof mismatch" }
+  if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if (-not ($manifest.proof.mobile_completion_proof -like "mobile-complete-v1.png captures*")) { throw "judge-manifest mobile completion proof mismatch" }
   if (-not ($manifest.proof.nightfall_recovery -like "Failed manual runs show a Nightfall report*")) { throw "judge-manifest nightfall recovery mismatch" }
@@ -226,7 +227,9 @@ try {
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "phase-proof line explains how the current phase maps"
-  Assert-Contains "dev-article-final.md" "inspectable receipt that lets the solve path be checked"
+  Assert-Contains "dev-article-final.md" "The manual Hint and Rotor Trace path also changes by phase"
+  Assert-Contains "dev-article-final.md" "XOR alternates mirrored rotor nodes"
+  Assert-Contains "dev-article-final.md" "inspectable summary receipt that lets the score, shifts, phase count, and checksum be checked"
   Assert-Contains "dev-article-final.md" "I am aiming this at Best Ode to Alan Turing by making the tribute playable"
   Assert-Contains "dev-article-final.md" "My award thesis is simple"
   Assert-Contains "dev-article-final.md" "playable ode, a judge-verifiable loop, and a finished static package"
@@ -329,7 +332,7 @@ try {
   Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing category route"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
-  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Accessibility and privacy"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "receipt is review evidence, not anti-cheat"
@@ -338,7 +341,10 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "only browser storage is the local numeric best score key"
   Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
+  Assert-Contains "README.md" 'phase-guided manual `Hint` path'
+  Assert-Contains "README.md" "XOR alternates mirrored nodes"
   Assert-Contains "README.md" "Seal the daylight run."
+  Assert-NotContains "README.md" "Prove the daylight run."
   Assert-Contains "README.md" "phase-proof line keeps the solstice/Turing/verification connection visible"
   Assert-Contains "README.md" "GitHub Pages-ready static game package"
   Assert-Contains "README.md" "Owner-only launch notes are kept in Markdown"
@@ -364,6 +370,7 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Best Ode to Alan Turing"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-proof cues"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-specific hint order"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.gif?v=20260614-seal-media"
@@ -381,6 +388,7 @@ try {
   Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
   Assert-Contains "RUBRIC_SCORECARD.md" "69-check browser smoke"
+  Assert-Contains "RUBRIC_SCORECARD.md" "phase-specific hint order"
   Assert-Contains "README.md" "first-move coach on Start"
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
@@ -526,6 +534,7 @@ try {
   Assert-Contains "judge.html" "state, logic, verification"
   Assert-Contains "judge.html" "Run Receipt"
   Assert-Contains "judge.html" "run receipt"
+  Assert-Contains "judge.html" "stable summary receipt"
   Assert-Contains "judge.html" "Why it stands out in a jam review"
   Assert-Contains "judge.html" "avoids the common prototype traps"
   Assert-Contains "judge.html" "Not a write-up wrapper"
@@ -538,6 +547,9 @@ try {
   Assert-Contains "judge.html" "prefilled sample verifier"
   Assert-Contains "proof-verifier.html" "Source note:"
   Assert-Contains "proof-verifier.html" "generated in <code>game.js</code> by <code>buildRunProof</code>"
+  Assert-Contains "proof-verifier.html" "summary payload shape"
+  Assert-Contains "proof-verifier.html" "score, shift count, phase count, and checksum"
+  Assert-NotContains "proof-verifier.html" "published scoring formula"
   Assert-NotContains "judge.html" "Watch the public page complete all four phases"
   Assert-NotContains "judge.html" "radial-gradient"
   Assert-NotContains "judge.html" "DEV Console"
@@ -552,6 +564,9 @@ try {
   Assert-Contains "game.js" "AudioContext"
   Assert-Contains "game.js" "playCue"
   Assert-Contains "game.js" "cueFirstMove"
+  Assert-Contains "game.js" "phaseScanNotes"
+  Assert-Contains "game.js" "phaseOrders"
+  Assert-Contains "game.js" "findGuidedMismatchIndex"
   Assert-Contains "game.js" "Next mismatch: node"
   Assert-Contains "tools/browser-smoke-check.mjs" "tactile node pulse"
   Assert-Contains "tools/browser-smoke-check.mjs" "first-move coach"
@@ -585,6 +600,7 @@ try {
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "Demo Solve full judge route"
   Assert-Contains "index.html" "Seal the daylight run."
+  Assert-NotContains "index.html" "Prove the daylight run."
   Assert-Contains "index.html" "quick-controls"
   Assert-Contains "index.html" "judge-path"
   Assert-Contains "index.html" "Run path"
@@ -631,6 +647,8 @@ try {
   Assert-Contains "index.html" "aria-keyshortcuts=""1 2 3 4 5 6 7 8 9"""
   Assert-Contains "smoke.html" "first-phase node buttons are present"
   Assert-Contains "smoke.html" "20260614-demo-priority"
+  Assert-NotContains ".github/workflows/verify.yml" "20260614-mobile-review"
+  Assert-NotContains ".github/workflows/verify.yml" '          grep -q "Prove the daylight run."'
   Assert-Contains "README.md" "is intentionally wider than the other quick controls"
   Assert-Contains "verification-report.md" "is wider than the other quick controls"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"

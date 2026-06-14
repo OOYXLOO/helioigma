@@ -154,7 +154,10 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
-    assert(desktop.objective.proof === "Solstice crib starts state transitions.", "phase proof initial copy changed");
+    assert(
+      desktop.objective.proof === "Solstice crib starts state transitions.",
+      "phase proof initial copy changed"
+    );
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Match numbered nodes to target glyphs") && desktop.playRule?.includes("receipt path"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.trace.exists, "rotor trace panel is missing");
@@ -199,7 +202,10 @@ async function main() {
     }));
     assert(hintPulse.status === "Hint: rotate node 1 toward SOL.", "hint status no longer gives a clear target");
     assert(hintPulse.hinted && hintPulse.recent, "hint does not create a visible tactile node pulse");
-    assert(hintPulse.traceLast === "Hint node 1: target SOL.", "hint trace does not name the target node");
+    assert(
+      hintPulse.traceLast.startsWith("Hint node 1: target SOL.") && hintPulse.traceLast.includes("Crib scan: first mismatch."),
+      "hint trace does not name the target node and phase scan"
+    );
 
     await page.keyboard.press("1");
     const shiftPulse = await page.evaluate(() => ({
@@ -257,7 +263,10 @@ async function main() {
     assert(mobile.heroHook === "Seal the daylight run.", "mobile first screen no longer leads with the game hook");
     assert(mobile.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "mobile run path cards changed");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
-    assert(mobile.objective.proof === "Solstice crib starts state transitions.", "mobile phase proof initial copy changed");
+    assert(
+      mobile.objective.proof === "Solstice crib starts state transitions.",
+      "mobile phase proof initial copy changed"
+    );
     assert(mobile.canvasTop < 460, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 260, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
 

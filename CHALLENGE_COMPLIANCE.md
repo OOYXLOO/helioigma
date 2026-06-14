@@ -15,7 +15,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 
 - Prize route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
-- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the same loop.
+- Judge receipt: Play, Auto Demo, receipt verifier, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
 
 ## Submission Checklist

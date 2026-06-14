@@ -57,12 +57,24 @@
     "Binary carry proves controlled shifts.",
     "Checksum night seals algorithmic trace.",
   ];
+  const phaseScanNotes = [
+    "Crib scan: first mismatch.",
+    "XOR scan: mirrored nodes.",
+    "Carry scan: binary chain.",
+    "Checksum scan: reverse.",
+  ];
   const bestScoreKey = "helioigma-best-score";
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
     { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },
     { target: [1, 3, 0, 2, 1, 0, 3, 2], seconds: 38 },
     { target: [2, 1, 3, 0, 2, 3, 1, 0, 1], seconds: 35 },
+  ];
+  const phaseOrders = [
+    [0, 1, 2, 3, 4, 5],
+    [0, 6, 1, 5, 2, 4, 3],
+    [0, 1, 2, 3, 4, 5, 6, 7],
+    [8, 7, 6, 5, 4, 3, 2, 1, 0],
   ];
 
   const state = {
@@ -288,7 +300,7 @@
     nightfallFacts.textContent = "";
     if (!state.failed) return;
     const aligned = countAlignedNodes();
-    nightfallSummary.textContent = `Nightfall caught phase ${Math.min(state.level + 1, levels.length)} with ${aligned}/${state.target.length} nodes aligned. Press Retry for manual play or Watch Demo Solve to see the verified path.`;
+    nightfallSummary.textContent = `Nightfall caught phase ${Math.min(state.level + 1, levels.length)} with ${aligned}/${state.target.length} nodes aligned. Press Retry for manual play or Watch Demo Solve to see the stable summary receipt.`;
     [
       ["Held phases", `${state.solvedPhases}/${levels.length}`],
       ["Score", `${state.score} points`],
@@ -319,7 +331,7 @@
 
   function buildJudgeRunSummaryText() {
     if (!state.finalProof) return "";
-    return `Held ${state.solvedPhases}/${levels.length} solstice phases with ${state.score} score and ${state.shifts} shifts. The award signal is visible in play: solstice timer, Turing-style state alignment, and the same Demo Solve route verified by receipt ${state.finalProof}.`;
+    return `Held ${state.solvedPhases}/${levels.length} solstice phases with ${state.score} score and ${state.shifts} shifts. The award signal is visible in play: solstice timer, Turing-style state alignment, and a Demo Solve summary receipt ${state.finalProof}.`;
   }
 
   function buildJudgeRunSummaryClipboardText() {
@@ -373,9 +385,27 @@
     return state.ring.reduce((count, value, index) => count + (value === state.target[index] ? 1 : 0), 0);
   }
 
+  function currentPhaseIndex() {
+    return Math.min(state.level, levels.length - 1);
+  }
+
+  function currentPhaseOrder() {
+    const order = phaseOrders[currentPhaseIndex()] || [];
+    return order.filter((index) => index >= 0 && index < state.ring.length);
+  }
+
+  function findGuidedMismatchIndex() {
+    for (const index of currentPhaseOrder()) {
+      if (state.ring[index] !== state.target[index]) {
+        return index;
+      }
+    }
+    return state.ring.findIndex((value, index) => value !== state.target[index]);
+  }
+
   function syncPhaseObjective() {
     if (!phaseObjective || !phaseTargetLine || !phaseAlignment) return;
-    const safeLevel = Math.min(state.level, levels.length - 1);
+    const safeLevel = currentPhaseIndex();
     const aligned = countAlignedNodes();
     phaseObjective.textContent = state.complete ? "Receipt sealed" : phaseNames[safeLevel];
     phaseObjective.nextElementSibling.textContent = state.complete
@@ -386,7 +416,9 @@
       ? `${state.solvedPhases}/${levels.length} phases solved`
       : `${aligned}/${state.target.length} nodes aligned`;
     if (phaseProof) {
-      phaseProof.textContent = state.complete ? "Receipt verifier checks the same run." : phaseProofs[safeLevel];
+      phaseProof.textContent = state.complete
+        ? "Receipt verifier checks the summary checksum."
+        : phaseProofs[safeLevel];
     }
   }
 
@@ -460,10 +492,10 @@
 
   function syncRotorTrace() {
     if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast) return;
-    const safeLevel = Math.min(state.level, levels.length - 1);
+    const safeLevel = currentPhaseIndex();
     const phase = state.complete ? "Receipt" : phaseNames[safeLevel];
     const matched = state.ring.filter((value, i) => value === state.target[i]).length;
-    const nextMismatch = state.ring.findIndex((value, i) => value !== state.target[i]);
+    const nextMismatch = findGuidedMismatchIndex();
     tracePhase.textContent = state.complete ? `${levels.length}/${levels.length} phases held` : `${safeLevel + 1} - ${phase}`;
     traceMatch.textContent = `${matched}/${state.target.length}`;
     traceNext.textContent = state.complete
@@ -798,7 +830,7 @@
     state.lastAction = locked
       ? `Node ${index + 1} locked at ${glyphs[state.ring[index]]}.`
       : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}.`;
-    const nextMismatch = state.ring.findIndex((value, i) => value !== state.target[i]);
+    const nextMismatch = findGuidedMismatchIndex();
     state.message = locked
       ? nextMismatch === -1
         ? "All signals aligned; sealing phase."
@@ -811,7 +843,7 @@
 
   function showHint() {
     if (!state.running || state.complete || state.demoing) return;
-    const index = state.ring.findIndex((value, i) => value !== state.target[i]);
+    const index = findGuidedMismatchIndex();
     if (index === -1) {
       state.hintedIndex = -1;
       state.message = "All visible signals are aligned.";
@@ -822,7 +854,7 @@
     state.recentIndex = index;
     state.recentLife = 0.55;
     state.recentLocked = false;
-    state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}.`;
+    state.lastAction = `Hint node ${index + 1}: target ${glyphs[state.target[index]]}. ${phaseScanNotes[currentPhaseIndex()]}`;
     state.message = `Hint: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
     playCue("hint");
     updateHud();
@@ -830,7 +862,7 @@
   }
 
   function cueFirstMove() {
-    const index = state.ring.findIndex((value, i) => value !== state.target[i]);
+    const index = findGuidedMismatchIndex();
     if (index === -1) return;
     state.hintedIndex = index;
     state.recentIndex = index;
