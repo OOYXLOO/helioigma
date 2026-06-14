@@ -184,7 +184,7 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 69) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 70) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest phase proof mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
@@ -403,9 +403,9 @@ try {
   Assert-Contains "RUBRIC_SCORECARD.md" "Helioigma Rubric Scorecard"
   Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
-  Assert-Contains "RUBRIC_SCORECARD.md" "69-check browser smoke"
+  Assert-Contains "RUBRIC_SCORECARD.md" "70-check browser smoke"
   Assert-Contains "RUBRIC_SCORECARD.md" "phase-specific hint order"
-  Assert-Contains "README.md" "first-move coach on Start"
+  Assert-Contains "README.md" 'first-move coach on `Start Run`'
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
   Assert-Contains "README.md" 'Use `Audio` or press `S`'
@@ -434,7 +434,7 @@ try {
   Assert-Contains "submission-checklist.md" '`devchallenge`, `gamechallenge`, `gamedev`, `javascript`'
   Assert-Contains "submission-checklist.md" "Optional legacy MP4 fallback"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
-  Assert-Contains "submission-checklist.md" "69 expected smoke checks"
+  Assert-Contains "submission-checklist.md" "70 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, no pressure, and no fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "RUBRIC_SCORECARD.md"
@@ -474,7 +474,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile visible control buttons are too short"
   Assert-Contains "tools/browser-smoke-check.mjs" "Stable Demo Solve receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "non-stable formula-valid receipt should be neutral"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 69 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 70 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
   Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile phase proof initial copy changed"
@@ -518,7 +518,7 @@ try {
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
   Assert-Contains "judge.html" "Optional Smoke."
-  Assert-Contains "judge.html" "Run the 69-check browser smoke test"
+  Assert-Contains "judge.html" "Run the 70-check browser smoke test"
   Assert-Contains "judge.html" "nightfall report"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "Open Scorecard"

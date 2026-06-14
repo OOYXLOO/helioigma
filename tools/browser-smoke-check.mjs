@@ -134,6 +134,7 @@ async function readGameFacts(page) {
       heroHook: document.querySelector(".hero-hook")?.textContent.trim(),
       shortcutMap: {
         start: document.querySelector("#startButton")?.getAttribute("aria-keyshortcuts"),
+        startText: document.querySelector("#startButton")?.textContent.trim(),
         reset: document.querySelector("#resetButton")?.getAttribute("aria-keyshortcuts"),
         hint: document.querySelector("#hintButton")?.getAttribute("aria-keyshortcuts"),
         demo: document.querySelector("#demoButton")?.getAttribute("aria-keyshortcuts"),
@@ -148,6 +149,9 @@ async function readGameFacts(page) {
       controlHeights: [...document.querySelectorAll(".quick-controls button")]
         .filter((button) => getComputedStyle(button).display !== "none")
         .map((button) => button.getBoundingClientRect().height),
+      controlTextFits: [...document.querySelectorAll(".quick-controls button")]
+        .filter((button) => getComputedStyle(button).display !== "none")
+        .every((button) => button.scrollWidth <= button.clientWidth + 1 && button.scrollHeight <= button.clientHeight + 1),
       controlWidths: Object.fromEntries(
         [...document.querySelectorAll(".quick-controls button")]
           .filter((button) => getComputedStyle(button).display !== "none")
@@ -197,6 +201,7 @@ async function main() {
     assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "first-screen run path cards changed");
     assert(desktop.judgePathText?.includes("Finish all four phases") && desktop.judgePathText?.includes("verify the sample receipt"), "first-screen run path no longer keeps receipt verification after play");
     assert(desktop.shortcutMap.start === "Enter", "start shortcut is not exposed");
+    assert(desktop.shortcutMap.startText === "Start Run", "start button no longer names the play action");
     assert(desktop.shortcutMap.reset === "Escape R", "reset shortcut is not exposed");
     assert(desktop.shortcutMap.hint === "H", "hint shortcut is not exposed");
     assert(desktop.shortcutMap.demo === "D", "demo shortcut is not exposed");
@@ -207,6 +212,7 @@ async function main() {
     assert(desktop.shortcutMap.demoLabel === "Demo Solve full judge route", "demo button judge route label is not exposed");
     assert(desktop.shortcutMap.demoPrimary === true, "demo button is not marked as the primary judge control");
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
+    assert(desktop.controlTextFits, "desktop quick-control text overflows");
     assert(desktop.judgeLinks.includes("Auto demo"), "judge shortcut row does not link the auto demo route");
     assert(desktop.judgeLinks.includes("Verify sample"), "judge shortcut row does not link the sample receipt verifier");
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
@@ -310,6 +316,7 @@ async function main() {
     assert(mobile.hintVisible, "mobile Hint is not visible in the first viewport");
     assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
     assert(mobile.controlHeights.every((height) => height >= 40), `mobile visible control buttons are too short: ${mobile.controlHeights.join(",")}`);
+    assert(mobile.controlTextFits, "mobile quick-control text overflows");
     assert(mobile.controlWidths.demoButton >= mobile.controlWidths.startButton * 1.75, `mobile Demo Solve is not visually prioritized: ${JSON.stringify(mobile.controlWidths)}`);
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
@@ -495,7 +502,7 @@ async function main() {
     assert(manifest.challenge?.playability_proof?.map((item) => item.claim).join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge manifest playability proof claims changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 69, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 70, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
@@ -563,7 +570,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 69, `expected 69 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 70, `expected 70 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

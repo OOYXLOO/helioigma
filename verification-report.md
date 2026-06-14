@@ -77,7 +77,7 @@ Expected local URLs:
 - Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Playability proof is now explicit in the judge page, article, README, review card, manifest, and verification page: readable decisions, immediate feedback, and a finished Nightfall failure state are named as evidence that the project is a playable jam game before it is a receipt packet.
 - Privacy review path: `?nostore=1` keeps the game playable while avoiding best-score reads and writes.
-- Smoke checks include 69 PASS assertions:
+- Smoke checks include 70 PASS assertions:
   - canvas present
   - start button present
   - reset button present
@@ -171,7 +171,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
 - package scripts for clean-clone checks, browser smoke, and media rebuild
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies the mobile game-first threshold, and waits for 69 PASS checks
+- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies the mobile game-first threshold, and waits for 70 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

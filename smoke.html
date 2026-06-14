@@ -221,6 +221,7 @@
       addCheck("audio cue button is present", Boolean(soundButton));
       addCheck("daylight meter is present", Boolean(dayMeter && dayMeterFill && dayMeterLabel));
       addCheck("play rule gives opening-daylight rotate-match-survive goal", playRule.textContent.includes("Start with 45s daylight") && playRule.textContent.includes("Rotate numbered nodes") && playRule.textContent.includes("match the target glyphs") && playRule.textContent.includes("survive nightfall"));
+      addCheck("start button names the play action", startButton.textContent.trim() === "Start Run");
       addCheck("start shortcut is exposed", startButton.getAttribute("aria-keyshortcuts") === "Enter");
       addCheck("reset shortcut is exposed", resetButton.getAttribute("aria-keyshortcuts") === "Escape R");
       addCheck("hint shortcut is exposed", hintButton.getAttribute("aria-keyshortcuts") === "H");

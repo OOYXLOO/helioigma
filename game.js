@@ -243,8 +243,10 @@
     state.recentIndex = -1;
     state.recentLife = 0;
     state.recentLocked = false;
-    if (state.running) {
+    if (state.running && index > 0) {
       showPhaseBanner(index);
+    } else if (state.running) {
+      announcePhase(index);
     }
     state.lastAction = index === 0 ? "Awaiting start." : `${phaseNames[index]} seeded.`;
     state.message = index === 0 ? "Decode the Helioigma rotor before nightfall." : `${phaseNames[index]} unlocked.`;
@@ -255,6 +257,12 @@
     const title = `Phase ${index + 1}: ${phaseNames[index]}`;
     const detail = phaseMottos[index];
     state.phaseBanner = { title, detail, life: 1.65 };
+    announcePhase(index);
+  }
+
+  function announcePhase(index) {
+    const title = `Phase ${index + 1}: ${phaseNames[index]}`;
+    const detail = phaseMottos[index];
     if (phaseAnnouncer) {
       phaseAnnouncer.textContent = `${title}. ${detail}`;
     }
