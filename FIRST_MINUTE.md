@@ -9,7 +9,13 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 3. Stable receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
 4. Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 
-Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `index.html?nostore=1`, `index.html?calm=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and the no-install browser self-test `smoke.html` from the same static server.
+Local review fast path before public launch:
+
+```powershell
+python -m http.server 8781 --bind 127.0.0.1
+```
+
+Then open `http://127.0.0.1:8781/`, `http://127.0.0.1:8781/?demo=1`, `http://127.0.0.1:8781/?nostore=1`, `http://127.0.0.1:8781/?calm=1`, `http://127.0.0.1:8781/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `http://127.0.0.1:8781/judge.html`, and the no-install browser self-test `smoke.html` at `http://127.0.0.1:8781/smoke.html`.
 
 ## Try This In One Minute
 

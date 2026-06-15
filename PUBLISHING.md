@@ -114,6 +114,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] DEV article verification passes against `judge-manifest.json`, public media versions, and Helioigma public URLs.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-launch-brief.md` public URL checks, DEV article fields, and no-go gate are reviewed immediately before publishing.
+- [ ] Flip `dev-article-final.md` from `published: false` to `published: true` only at final DEV publication after live-link checks pass.
 - [ ] Logged-in DEV challenge flow still accepts this June Solstice Game Jam submission despite any confusing public status label.
 - [ ] DEV post contains the try link, source link, and clear challenge fit.
 - [ ] DEV post explains why the Turing/code-breaking fit is inside the interaction, not only in the title.

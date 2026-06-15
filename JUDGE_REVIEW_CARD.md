@@ -24,7 +24,13 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 - Check the source-first rubric map: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - Check the official-route compliance boundary: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 
-Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `index.html?calm=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and the no-install browser self-test at `smoke.html`. The optional `npm run smoke` path is for a clean-clone Playwright check after `npm ci`.
+Local review fast path before public launch:
+
+```powershell
+python -m http.server 8781 --bind 127.0.0.1
+```
+
+Then open `http://127.0.0.1:8781/`, `http://127.0.0.1:8781/?demo=1`, `http://127.0.0.1:8781/?calm=1`, `http://127.0.0.1:8781/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `http://127.0.0.1:8781/judge.html`, and the no-install browser self-test at `http://127.0.0.1:8781/smoke.html`. The optional `npm run smoke` path is for a clean-clone Playwright check after `npm ci`.
 
 ## Award Thesis
 

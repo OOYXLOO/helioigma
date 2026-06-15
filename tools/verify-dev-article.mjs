@@ -57,7 +57,7 @@ const front = Object.fromEntries(
 if (front.title !== "Helioigma: a Turing-wheel puzzle for holding the longest day") {
   fail(`DEV article title drifted: ${front.title || "(missing)"}`);
 }
-if (front.published !== "true") fail("DEV article must be publish-ready with published: true");
+if (front.published !== "false") fail("DEV article must stay draft-safe with published: false until final account-owner publication");
 if (front.cover_image !== manifest.public_urls.cover_image) fail("DEV cover image must match judge manifest");
 
 const tags = (front.tags || "").split(",").map((tag) => tag.trim()).filter(Boolean);
@@ -131,7 +131,7 @@ const forbiddenText = [
   "Optional legacy MP4 fallback",
   "helioigma-demo.mp4",
   "positive reactions as a tie-breaker",
-  "published: false",
+  "published: true",
 ];
 for (const pattern of forbiddenText) assertNotIncludes(article, pattern);
 

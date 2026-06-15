@@ -24,6 +24,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Tags: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
 - Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media`
 - Body source: `dev-article-final.md`
+- Final publish switch: change the front matter from `published: false` to `published: true` only after every public URL below returns correctly and the logged-in challenge flow accepts the entry.
 - Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
 - MP4 fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.mp4`
 - Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media`
@@ -76,6 +77,7 @@ Expected local review signals:
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
 - `RUBRIC_SCORECARD.md` is present in the public source and preserves the criteria map.
+- `dev-article-final.md` remains `published: false` during preflight and is flipped only for the final DEV publish action.
 
 ## DEV No-Go Gate
 

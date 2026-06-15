@@ -70,7 +70,7 @@ const mustContain = [
   [".gitignore", "*.log"],
   [".gitignore", "*.tmp"],
   ["dev-article-final.md", "Playability Proof"],
-  ["dev-article-final.md", "published: true"],
+  ["dev-article-final.md", "published: false"],
   ["dev-article-final.md", "tags: devchallenge, gamechallenge, gamedev, javascript"],
   ["dev-article-final.md", "{% embed https://github.com/OOYXLOO/helioigma %}"],
   ["dev-article-final.md", "tap node 1 three times until it reads `SOL`"],
@@ -276,9 +276,9 @@ addCheck(
 
 const devArticleText = fileText("dev-article-final.md");
 addCheck(
-  "DEV article front matter is publish-ready",
-  devArticleText.includes("published: true") && !devArticleText.includes("published: false"),
-  "Use published: true before the final DEV/API publish path.",
+  "DEV article front matter is draft-safe until final publication",
+  devArticleText.includes("published: false") && !devArticleText.includes("published: true"),
+  "Keep published: false until live links pass and the account owner is ready to publish on DEV.",
 );
 
 const trackedFiles = runGit(["ls-files"]).split(/\r?\n/).filter(Boolean);
