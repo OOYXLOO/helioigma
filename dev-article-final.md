@@ -89,6 +89,8 @@ Official route snapshot: Best Ode to Alan Turing category route in the official 
 
 After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review. The first decision should come from the playable loop: one node move, visible state trace, Demo Solve, and receipt verification.
 
+Fresh media set: `cover.png?v=20260615-fresh-media`, `helioigma-demo.webm?v=20260615-fresh-media`, `helioigma-demo.gif?v=20260615-fresh-media`, `desktop-check-v5.png?v=20260615-fresh-media`, `mobile-check-v6.png?v=20260615-fresh-media`, `desktop-complete-v4.png?v=20260615-fresh-media`, and `mobile-complete-v1.png?v=20260615-fresh-media`.
+
 ## Code
 
 The source is hosted on [GitHub](https://github.com/OOYXLOO/helioigma). I am including the DEV embed syntax as the code card, plus the plain URL immediately below for reviewers whose reader strips embeds:
