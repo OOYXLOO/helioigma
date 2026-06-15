@@ -58,6 +58,8 @@ The captioned WebM records the current judge path: first-screen context, Hint/ma
 
 ![Helioigma desktop gameplay](https://ooyxloo.github.io/helioigma/desktop-check-v5.png?v=20260615-fresh-media)
 
+![Helioigma completed judge receipt](https://ooyxloo.github.io/helioigma/desktop-complete-v4.png?v=20260615-fresh-media)
+
 ![Helioigma mobile completion receipt](https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260615-fresh-media)
 
 Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media

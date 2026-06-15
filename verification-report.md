@@ -6,7 +6,8 @@ This report records the public-package checks that can be repeated after `OOYXLO
 
 ## Public Package Status
 
-- Source commit: the exact public HEAD should be read from GitHub after publication; this report was refreshed from the current local package on 2026-06-15.
+- Local provenance: functional UI commit `f0a8b9f05f48289b8eec4d1e67adde365a4eb364` added the first-screen Rotor Trace summary; later article/media proof polish is included in the current local HEAD reported by `node tools/launch-readiness-audit.mjs --json`.
+- Public source commit: read the exact public HEAD from GitHub after publication; this report was refreshed from the current local package on 2026-06-15.
 - Publication gate: run `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` after Pages is enabled.
 - DEV submission gate: do not submit until the public preflight passes.
 - Intended play URL after publication: `https://ooyxloo.github.io/helioigma/`
@@ -63,7 +64,7 @@ Expected local URLs:
 
 ## Browser Checks
 
-- Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 406.58px, and the full 468px playable canvas is visible in the first viewport.
+- Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the first-screen status line summarizes Rotor Trace (`Trace: Crib dawn | 0/6 | next 1: XOR->SOL`), and the full 468px playable canvas is visible in the first viewport.
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Start Run` and `Demo Solve` share the first quick-control row, Nightfall starts hidden, and the browser smoke keeps the full playable canvas inside the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke page: `smoke.html` is the no-install judge self-test under the same static server.
