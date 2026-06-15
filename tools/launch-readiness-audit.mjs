@@ -86,6 +86,7 @@ const mustContain = [
   ["JUDGE_REVIEW_CARD.md", "After The First Minute"],
   ["dev-article-final.md", "After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review."],
   ["README.md", "Playability proof for a rushed judge"],
+  ["README.md", "pre-start canvas preview (`START NODE 1 x3 -> SOL`)"],
   ["README.md", "npm run build:gif"],
   ["README.md", "npm run verify:article"],
   ["README.md", "npm run verify:media"],
@@ -94,6 +95,8 @@ const mustContain = [
   ["README.md", "tools/verify-dev-article.mjs"],
   ["README.md", "tools/verify-media-freshness.mjs"],
   ["FIRST_MINUTE.md", "Playability proof appears before the verifier"],
+  ["FIRST_MINUTE.md", "START NODE 1 x3 -> SOL"],
+  ["JUDGE_REVIEW_CARD.md", "pre-start first-move preview"],
   ["PUBLISHING.md", intended.repo],
   ["PUBLISHING.md", "logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
   ["dev-launch-brief.md", intended.pages],
@@ -103,6 +106,8 @@ const mustContain = [
   ["dev-launch-brief.md", "Buy reactions, ask for fake engagement, or pressure friends/coworkers"],
   ["submission-checklist.md", "Confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
   ["submission-checklist.md", "ethical visibility plan"],
+  [".github/workflows/verify.yml", "judge shortcut links keep the strongest five review routes"],
+  [".github/workflows/verify.yml", "pre-start first-move preview is not visible on the canvas"],
 ];
 
 const expectedPublicLinkHosts = new Set([

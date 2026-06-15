@@ -182,6 +182,7 @@ jobs:
           grep -q "Deadline: June 21, 2026 at 11:59 PM PDT" CHALLENGE_COMPLIANCE.md
           grep -q "Do not publish the DEV article until all of these are true" CHALLENGE_COMPLIANCE.md
           grep -q 'first-move coach on `Start Run`' README.md
+          grep -q 'pre-start canvas preview (`START NODE 1 x3 -> SOL`)' README.md
           grep -q "optional default-off Web Audio cues" README.md
           grep -q 'Use `Audio` or press `S`' README.md
           grep -q "generated Web Audio tones" README.md
@@ -335,11 +336,12 @@ jobs:
           grep -q "auto demo route did not scroll the receipt into view" tools/browser-smoke-check.mjs
           grep -q "judge shortcut row sample verifier link is not prefilled" tools/browser-smoke-check.mjs
           grep -q "judge page verifier action is not prefilled" tools/browser-smoke-check.mjs
-          grep -q "mobile first viewport shows too little gameplay canvas" tools/browser-smoke-check.mjs
+          grep -q "mobile first viewport cuts off the playable canvas" tools/browser-smoke-check.mjs
           grep -q "tall desktop first viewport cuts off the playable canvas" tools/browser-smoke-check.mjs
           grep -q "demo button judge route label is not exposed" tools/browser-smoke-check.mjs
           grep -q "expected 71 smoke checks" tools/browser-smoke-check.mjs
           grep -q "play rule no longer gives the rushed-judge goal" tools/browser-smoke-check.mjs
+          grep -q "pre-start first-move preview is not visible on the canvas" tools/browser-smoke-check.mjs
           grep -q "audio cues should default off" tools/browser-smoke-check.mjs
           grep -q "calm review route changed the stable Demo Solve receipt" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
@@ -397,7 +399,7 @@ jobs:
           grep -q "phase objective names the first phase" smoke.html
           grep -q "phase objective shows target glyphs and alignment" smoke.html
           grep -q "start button shows the first-move coach" smoke.html
-          grep -q "judge shortcut links keep the strongest four review routes" smoke.html
+          grep -q "judge shortcut links keep the strongest five review routes" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "run receipt verifier link is present" smoke.html
           grep -q "completion verifier link carries the final receipt" smoke.html

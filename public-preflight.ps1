@@ -479,7 +479,7 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Helioigma Judge Review Card"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "FIRST_MINUTE.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "60-Second Path"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" 'Press `Start Run`, rotate one numbered node'
+  Assert-Contains "JUDGE_REVIEW_CARD.md" 'START NODE 1 x3 -> SOL'
   Assert-Contains "JUDGE_REVIEW_CARD.md" "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Official Route Snapshot"
@@ -515,6 +515,7 @@ try {
   Assert-NotContains "verification-report.md" "Latest live-timer score 2892"
   Assert-NotContains "verification-report.md" "currently reports 2892"
   Assert-Contains "README.md" 'first-move grace coach on `Start Run`'
+  Assert-Contains "README.md" 'pre-start canvas preview (`START NODE 1 x3 -> SOL`)'
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
   Assert-Contains "README.md" 'Use `Audio` or press `S`'
@@ -586,12 +587,13 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile run path cues changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile game canvas starts too low for game-first review"
-  Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport shows too little gameplay canvas"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile first viewport cuts off the playable canvas"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile visible control buttons are too short"
   Assert-Contains "tools/browser-smoke-check.mjs" "Stable Demo Solve receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "non-stable formula-valid receipt should be neutral"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 71 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
+  Assert-Contains "tools/browser-smoke-check.mjs" "pre-start first-move preview is not visible on the canvas"
   Assert-Contains "tools/browser-smoke-check.mjs" "Turing cue initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Turing cue initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row is too close to the left canvas edge"
@@ -626,7 +628,11 @@ try {
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
   Assert-Contains ".github/workflows/verify.yml" "expected 71 smoke checks"
+  Assert-Contains ".github/workflows/verify.yml" "judge shortcut links keep the strongest five review routes"
+  Assert-Contains ".github/workflows/verify.yml" "pre-start first-move preview is not visible on the canvas"
+  Assert-Contains ".github/workflows/verify.yml" "mobile first viewport cuts off the playable canvas"
   Assert-NotContains ".github/workflows/verify.yml" "expected 70 smoke checks"
+  Assert-NotContains ".github/workflows/verify.yml" "strongest four review routes"
   Assert-NotContains ".github/workflows/verify.yml" "solstice-cipher"
   Assert-Contains ".gitignore" "helioigma-dev-package.zip"
   Assert-Contains ".gitignore" "node_modules/"

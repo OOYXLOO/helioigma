@@ -64,7 +64,7 @@ Expected local URLs:
 ## Browser Checks
 
 - Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 406.58px, and the full 468px playable canvas is visible in the first viewport.
-- Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Start Run` and `Demo Solve` share the first quick-control row, Nightfall starts hidden, and the browser smoke keeps the game-first canvas start under 400px with at least 330px of playable canvas visible in the first viewport.
+- Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Start Run` and `Demo Solve` share the first quick-control row, Nightfall starts hidden, and the browser smoke keeps the full playable canvas inside the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
 - Demo media builders: `npm run build:media`, `npm run build:gif`, and `npm run build:video` rebuild the screenshots, GIF preview, and WebM from the real browser judge path; scratch video files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
@@ -77,8 +77,8 @@ Expected local URLs:
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The judge shortcut row stays focused on the strongest five routes: Auto demo, Calm review, Judge pack, stable sample verifier `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and the current WebM video. The Judge pack then exposes smoke test, GIF fallback, source, manifest, README, story, and rubric scorecard for deeper review without turning the playable page into a link wall.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` copy, mobile Match/Trace/Receipt cues, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
-- First-move grace coaching now holds its visual pulse for a cold reviewer, keeps the timer full until the first node shift, and wrong shifts explicitly report `Daylight -0.45s` so the timer pressure is understandable during manual play.
-- Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
+- The initial canvas previews `START NODE 1 x3 -> SOL`; after `Start Run`, first-move grace coaching switches to `TRY NODE 1 x3 -> SOL`, holds its visual pulse for a cold reviewer, keeps the timer full until the first node shift, and wrong shifts explicitly report `Daylight -0.45s` so the timer pressure is understandable during manual play.
+- Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, pre-start first-move preview, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Playability proof is now explicit in the judge page, article, README, review card, manifest, and verification page: readable decisions, immediate feedback, and a finished Nightfall failure state are named as evidence that the project is a playable jam game before it is a receipt packet.
 - Privacy review path: `?nostore=1` keeps the game playable while avoiding best-score reads and writes.
 - Calm review path: `?calm=1` and system reduced-motion preference keep the same stable receipt path while reducing particle/CSS motion.
@@ -108,7 +108,7 @@ Expected local URLs:
   - first-screen judge path present
   - first-phase node buttons present
   - judge shortcut links keep the strongest five review routes
-  - status line present
+  - status line and pre-start first-move preview present
   - best score label present
   - shift counter present
   - four-phase progress track present

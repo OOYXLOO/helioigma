@@ -13,7 +13,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Judge manifest: `judge-manifest.json` with prize target, public links, stable run receipt, required assets, verification steps, and human gates.
 - Browser smoke test: `smoke.html`.
 - Run receipt verifier: `proof-verifier.html` with parsed receipt facts and `?receipt=` deep-link support.
-- Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
+- Phase progress strip, pre-start first-move preview, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Optional calm review route: `?calm=1` and system reduced-motion preference reduce particle/CSS motion while preserving the same stable receipt path.
@@ -51,11 +51,11 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
   - `npm run audit:launch`
   - `npm run audit:launch:public`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 71 PASS checks including visible `Start Run`, first-action grace, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, calm-mode route coverage, and receipt-verifier link coverage.
+- `smoke.html`: 71 PASS checks including visible `Start Run`, pre-start first-move preview, first-action grace, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, calm-mode route coverage, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
-- First-move canvas coach: after `Start Run`, the highlighted first node exposes the in-canvas `TRY NODE 1 -> SOL` callout, keeps daylight at 45s during grace, and clears the callout after the first node shift.
-- Mobile objective strip: on 390px mobile, the phase objective uses a compact 2x2 layout so phase, target, alignment, and Turing cue remain readable while the playable canvas still starts inside the smoke-tested first-screen bound.
+- First-move canvas coach: before `Start Run`, the canvas previews `START NODE 1 x3 -> SOL`; after `Start Run`, the highlighted first node exposes the in-canvas `TRY NODE 1 x3 -> SOL` callout, keeps daylight at 45s during grace, and clears the callout after the first node shift.
+- Mobile objective strip: on 390px mobile, the phase objective uses a compact 2x2 layout so phase, target, alignment, and Turing cue remain readable while the smoke-tested playable canvas fits inside the first viewport.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
 - First-screen rule: visible text explains that the player should decode the solstice rotor by matching each numbered node to the target glyph before nightfall.
 - Nightfall recovery: a timed-out manual run shows aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery; the judge page and manifest expose this as a review signal.

@@ -13,7 +13,7 @@ Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `inde
 
 ## Try This In One Minute
 
-1. Press `Start Run`, notice the in-canvas `Tap nodes or press 1-9. H = hint, D = demo.` prompt, and rotate one numbered node.
+1. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, then rotate that numbered node while the timer starts from full daylight.
 2. Watch Rotor Trace name the action and next mismatch.
 3. Press `Demo Solve` to complete the same visible board.
 4. Verify receipt `SC-4P-2907-62-Y5VFX1`.
@@ -23,7 +23,7 @@ Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `inde
 - It is a playable static browser game, not only a write-up or mockup.
 - The solstice is mechanical: daylight is the timer, nightfall is the fail state, and the run ends after four held phases.
 - The Alan Turing ode is restrained and interactive: the first-screen `Turing cue` line, rotor-like alignment, XOR/binary glyphs, state checks, and checksum reasoning carry the tribute through play.
-- Playability proof appears before the verifier: readable target decisions, short timer pressure, a `SOL -> XOR -> LUX -> BIN` node cycle cue, the first-action hint, node pulse feedback, Rotor Trace, phase-specific hints, optional audio, and a finished Nightfall recovery state.
+- Playability proof appears before the verifier: readable target decisions, short timer pressure, a `SOL -> XOR -> LUX -> BIN` node cycle cue, the pre-start first-move preview, node pulse feedback, Rotor Trace, phase-specific hints, optional audio, and a finished Nightfall recovery state.
 - `Demo Solve` uses the same visible game surface and leaves the stable summary receipt `SC-4P-2907-62-Y5VFX1`.
 - The receipt verifier, Rotor Trace, judge page, manifest, media, and optional smoke test all inspect the published static review package.
 

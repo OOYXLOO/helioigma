@@ -211,6 +211,7 @@ async function main() {
     assert(desktop.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "status line no longer exposes the first-screen node-cycle cue");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "desktop canvas lost the first-action input hint");
+    assert(desktop.firstMoveCoach === "START NODE 1 x3 -> SOL", "desktop pre-start first-move preview is not visible on the canvas");
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
@@ -249,14 +250,14 @@ async function main() {
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
       canvasCoach: document.querySelector("#game")?.dataset.firstMoveCoach || "",
     }));
-    assert(startCoach.status === "First move: rotate node 1 toward SOL. Timer starts on first shift.", "start button no longer gives a first-move grace coach");
+    assert(startCoach.status === "First target: rotate node 1 x3 toward SOL. Timer starts on first shift.", "start button no longer gives a first-move grace coach");
     assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
-    assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
-    assert(startCoach.canvasCoach === "TRY NODE 1 -> SOL", "first-move coach is not visible on the canvas");
+    assert(startCoach.traceLast === "First target cue: node 1 x3 target SOL.", "first-move coach trace changed");
+    assert(startCoach.canvasCoach === "TRY NODE 1 x3 -> SOL", "first-move coach is not visible on the canvas");
     const activeStart = await readGameFacts(page);
     assert(activeStart.shortcutMap.startDisabled === true, "start button should lock during active manual runs");
     assert(activeStart.trace.quality === "Streak 0 | Clean locks 0", "first-move coach changed initial run quality");
-    assert(activeStart.firstMoveCoach === "TRY NODE 1 -> SOL", "first-move coach dataset was not preserved after HUD sync");
+    assert(activeStart.firstMoveCoach === "TRY NODE 1 x3 -> SOL", "first-move coach dataset was not preserved after HUD sync");
     await page.waitForTimeout(900);
     const graceStart = await readGameFacts(page);
     assert(graceStart.dayMeterLabel === "45s", `first-action grace let the timer drift before a node shift: ${graceStart.dayMeterLabel}`);
@@ -275,7 +276,21 @@ async function main() {
       "hint trace does not name the target node and phase scan"
     );
 
-    await page.keyboard.press("1");
+    const firstNodePoint = await page.evaluate(() => {
+      const canvas = document.querySelector("#game");
+      const rect = canvas.getBoundingClientRect();
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const cx = width / 2;
+      const topBand = Math.max(92, height * 0.18);
+      const cy = topBand + (height - topBand) * 0.52;
+      const ringRadius = Math.min(width * 0.32, (height - topBand) * 0.36);
+      return {
+        x: rect.left + cx,
+        y: rect.top + cy - ringRadius,
+      };
+    });
+    await page.mouse.click(firstNodePoint.x, firstNodePoint.y);
     const shiftPulse = await page.evaluate(() => ({
       status: document.querySelector("#statusLine")?.textContent.trim(),
       recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
@@ -363,6 +378,7 @@ async function main() {
     assert(calmInitial.motionMode === "calm", "calm review route did not expose calm motion mode");
     assert(calmInitial.calmClass === true, "calm review route did not set the calm-mode class");
     assert(calmInitial.demoVisible && calmInitial.objectiveVisible, "calm review route lost the first-screen judge controls");
+    assert(calmInitial.firstMoveCoach === "START NODE 1 x3 -> SOL", "calm review route lost the pre-start first-move preview");
     await page.click("#demoButton");
     await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
     const calmDemo = await page.evaluate(() => ({
@@ -404,6 +420,7 @@ async function main() {
     assert(mobile.mobileCues.every((cue) => cue.visible), "mobile run path explanatory cues are not visible");
     assert(mobile.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "mobile play rule lost the visible glyph cycle cue");
     assert(mobile.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "mobile canvas lost the first-action input hint");
+    assert(mobile.firstMoveCoach === "START NODE 1 x3 -> SOL", "mobile pre-start first-move preview is not visible on the canvas");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
     assert(mobile.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "mobile status line no longer exposes the node-cycle cue");
     assert(
@@ -417,7 +434,7 @@ async function main() {
     assert(mobile.targetRowBounds.right <= mobile.targetRowBounds.width - 24, `mobile target row is too close to the right canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.targetRowBounds.inset >= 48, `mobile target row inset is too small for glyph labels: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.canvasTop < 400, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
-    assert(mobile.canvasVisibleHeight >= 330, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
+    assert(mobile.canvasVisibleHeight >= mobile.canvasHeight - 8, `mobile first viewport cuts off the playable canvas: ${mobile.canvasVisibleHeight}/${mobile.canvasHeight}`);
 
     await page.goto(`${baseUrl}?demo=1`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
@@ -614,7 +631,11 @@ async function main() {
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
     assert(manifest.status?.motion_review?.includes("?calm=1"), "judge manifest calm review boundary missing");
-    assert(manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("Timed node decisions"), "judge manifest crowded-jam differentiator missing game-first signal");
+    assert(
+      manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("START NODE 1 x3 -> SOL") &&
+        manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("timed node decisions"),
+      "judge manifest crowded-jam differentiator missing game-first signal"
+    );
     assert(manifest.challenge?.crowded_jam_differentiator?.finished_failure?.includes("Nightfall reports"), "judge manifest crowded-jam differentiator missing finished-failure signal");
     assert(manifest.challenge?.crowded_jam_differentiator?.low_motion?.includes("?calm=1"), "judge manifest crowded-jam differentiator missing low-motion signal");
 

@@ -12,7 +12,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 ## 60-Second Path
 
 1. Play: `https://ooyxloo.github.io/helioigma/`
-2. Press `Start Run`, rotate one numbered node, and watch Rotor Trace name the action plus next mismatch.
+2. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, rotate that numbered node, and watch Rotor Trace name the action plus next mismatch.
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
 4. Confirm the completed run receipt `SC-4P-2907-62-Y5VFX1` in the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
 
@@ -38,7 +38,7 @@ Helioigma is a playable ode, a receipt-checkable loop, and a finished static pac
 
 If the review queue contains several cipher or Turing-themed entries, Helioigma should still read differently:
 
-- Game-first: timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.
+- Game-first: the canvas previews the first node, then timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.
 - Reproducible: Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; the stable route produces receipt `SC-4P-2907-62-Y5VFX1`.
 - Finished on failure: Nightfall reports aligned nodes, held phases, score, shifts, and gives Retry or Demo Solve instead of a dead end.
 - Public-safe: no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect the build.
@@ -46,7 +46,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 
 ## Playability Proof
 
-- Readable decisions: target glyphs, aligned-node count, phase objective, and phase-specific scan rule make each tap explainable.
+- Readable decisions: target glyphs, aligned-node count, phase objective, pre-start first-move preview, and phase-specific scan rule make each tap explainable.
 - Immediate feedback: node pulses, Rotor Trace, daylight meter movement, status copy, and optional audio make shifts legible without reading source code.
 - Finished failure state: Nightfall reports held phases, aligned nodes, score, shifts, and gives Retry or Demo Solve instead of a dead end.
 
@@ -56,7 +56,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 | --- | --- |
 | Theme relevance | The first screen explains the solstice rotor, target glyphs, daylight timer, and nightfall fail state. |
 | Creativity | The entry combines a solstice countdown with a code-breaking wheel, Rotor Trace, Demo Solve, and verifiable receipt. |
-| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, visible glyph cycle cue, phase-specific hint order, optional default-off audio, Nightfall recovery, four phases, scoring, optional best-score storage, and CI smoke checks. |
+| Technical execution | Static canvas game with mouse, touch, keyboard, on-screen controls, visible glyph cycle cue, pre-start first-move preview, phase-specific hint order, optional default-off audio, Nightfall recovery, four phases, scoring, optional best-score storage, and CI smoke checks. |
 | Writing quality | DEV article, README, judge page, manifest, verification report, and this card give a clear review path with no hidden account dependency. |
 | Best Ode to Alan Turing | The ode is restrained: state, logic, alignment, verification, pressure, and machine-readable reasoning, not a fake biography or Bombe simulator. |
 

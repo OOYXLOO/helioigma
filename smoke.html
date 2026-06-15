@@ -237,7 +237,7 @@
       addCheck("first-screen judge path is present", judgePathCards.length === 3);
       addCheck("first-phase node buttons are present", nodeButtons.length === levelLengths[0]);
       addCheck("judge shortcut links keep the strongest five review routes", judgeLinks.length === 5 && [...judgeLinks].some((link) => link.textContent.includes("Auto demo")) && [...judgeLinks].some((link) => link.textContent.includes("Calm review")) && [...judgeLinks].some((link) => link.textContent.includes("Judge pack")) && [...judgeLinks].some((link) => link.textContent.includes("Verify sample")) && [...judgeLinks].some((link) => link.textContent.includes("Watch video")) && [...judgeLinks].some((link) => link.getAttribute("href") === "./?calm=1") && [...judgeLinks].some((link) => link.getAttribute("href") === "helioigma-demo.webm?v=20260615-fresh-media") && [...judgeLinks].some((link) => link.getAttribute("href") === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"));
-      addCheck("status line is present", Boolean(statusLine) && statusLine.textContent.includes("Cycle SOL>XOR>LUX>BIN"));
+      addCheck("status line and pre-start first-move preview are present", Boolean(statusLine) && statusLine.textContent.includes("Cycle SOL>XOR>LUX>BIN") && canvas.dataset.firstMoveCoach === "START NODE 1 x3 -> SOL");
       addCheck("best score label is present", Boolean(bestLabel));
       addCheck("shift counter is present", Boolean(shiftLabel));
       addCheck("four-phase progress track is present", phaseSteps.length === levelLengths.length);
@@ -274,7 +274,7 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
 
       startButton.click();
       await sleep(120);
-      addCheck("start button shows the first-move grace coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL. Timer starts on first shift.") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
+      addCheck("start button shows the first-move grace coach", statusLine.textContent.includes("First target: rotate node 1 x3 toward SOL. Timer starts on first shift.") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
       await sleep(900);
       addCheck("first-action grace keeps full daylight before a node shift", dayMeterLabel.textContent.trim() === "45s");
       addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
@@ -295,7 +295,7 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
       addCheck("nightfall report facts include held phases and score", nightfallFacts.textContent.includes("Held phases") && nightfallFacts.textContent.includes("Score"));
       retryButton.click();
       await sleep(120);
-      addCheck("nightfall retry starts a new manual run", nightfallPanel.hidden === true && statusLine.textContent.includes("First move: rotate node 1 toward SOL"));
+      addCheck("nightfall retry starts a new manual run", nightfallPanel.hidden === true && statusLine.textContent.includes("First target: rotate node 1 x3 toward SOL"));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);

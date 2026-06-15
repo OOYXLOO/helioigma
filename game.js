@@ -318,9 +318,7 @@
   }
 
   function syncFirstMoveCoachDataset() {
-    canvas.dataset.firstMoveCoach = state.running && state.awaitingFirstShift && state.hintedIndex >= 0
-      ? `TRY NODE ${state.hintedIndex + 1} -> ${glyphs[state.target[state.hintedIndex]]}`
-      : "";
+    canvas.dataset.firstMoveCoach = buildFirstMoveCoachText();
   }
 
   function syncNightfallPanel() {
@@ -580,9 +578,7 @@
     const inputHint = "Tap nodes or press 1-9. H = hint, D = demo.";
     canvas.dataset.motionMode = calmMode ? "calm" : "default";
     canvas.dataset.inputHint = inputHint;
-    canvas.dataset.firstMoveCoach = state.running && state.awaitingFirstShift && state.hintedIndex >= 0
-      ? `TRY NODE ${state.hintedIndex + 1} -> ${glyphs[state.target[state.hintedIndex]]}`
-      : "";
+    canvas.dataset.firstMoveCoach = buildFirstMoveCoachText();
 
     const cx = w / 2;
     const topBand = Math.max(92, h * 0.18);
@@ -770,13 +766,38 @@
     ctx.restore();
   }
 
+  function firstMoveCoachIndex() {
+    if (state.complete || state.failed || state.demoing) return -1;
+    if (state.running && state.awaitingFirstShift && state.hintedIndex >= 0) return state.hintedIndex;
+    if (!state.running) return findGuidedMismatchIndex();
+    return -1;
+  }
+
+  function buildFirstMoveCoachText() {
+    const index = firstMoveCoachIndex();
+    if (index < 0) return "";
+    const prefix = state.running ? "TRY" : "START";
+    const taps = tapsToTarget(index);
+    const tapText = taps > 1 ? ` x${taps}` : "";
+    return `${prefix} NODE ${index + 1}${tapText} -> ${glyphs[state.target[index]]}`;
+  }
+
+  function tapsToTarget(index) {
+    if (index < 0 || index >= state.ring.length) return 0;
+    return (state.target[index] - state.ring[index] + glyphs.length) % glyphs.length;
+  }
+
   function drawFirstMoveCoach(cx, cy, nodeRadius) {
-    if (!state.running || !state.awaitingFirstShift || state.hintedIndex < 0) return;
-    const node = state.nodes[state.hintedIndex];
+    const coachIndex = firstMoveCoachIndex();
+    if (coachIndex < 0) return;
+    const node = state.nodes[coachIndex];
     if (!node) return;
-    const label = `TRY NODE ${state.hintedIndex + 1}`;
-    const target = `TARGET ${glyphs[state.target[state.hintedIndex]]}`;
-    const panelWidth = Math.max(138, nodeRadius * 4.8);
+    const activeCoach = state.running && state.awaitingFirstShift;
+    const taps = tapsToTarget(coachIndex);
+    const tapText = taps > 1 ? ` x${taps}` : "";
+    const label = activeCoach ? `TRY NODE ${coachIndex + 1}${tapText}` : `START NODE ${coachIndex + 1}${tapText}`;
+    const target = `TARGET ${glyphs[state.target[coachIndex]]}`;
+    const panelWidth = Math.max(152, nodeRadius * 5.3);
     const panelHeight = Math.max(50, nodeRadius * 1.68);
     const leftSide = node.x < cx;
     const x = Math.max(12, Math.min(canvas.clientWidth - panelWidth - 12, node.x + (leftSide ? 20 : -panelWidth - 20)));
@@ -784,7 +805,7 @@
     const anchorX = x + (leftSide ? 0 : panelWidth);
     const anchorY = y + panelHeight * 0.56;
     ctx.save();
-    ctx.strokeStyle = "rgba(247,201,72,0.72)";
+    ctx.strokeStyle = activeCoach ? "rgba(247,201,72,0.72)" : "rgba(139,211,255,0.62)";
     ctx.lineWidth = 3;
     ctx.setLineDash([7, 5]);
     ctx.beginPath();
@@ -792,14 +813,17 @@
     ctx.lineTo(node.x, node.y);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(7,16,24,0.92)";
-    ctx.strokeStyle = "rgba(247,201,72,0.78)";
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, nodeRadius + 10, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = activeCoach ? "rgba(7,16,24,0.92)" : "rgba(7,16,24,0.82)";
+    ctx.strokeStyle = activeCoach ? "rgba(247,201,72,0.78)" : "rgba(139,211,255,0.64)";
     roundRect(ctx, x, y, panelWidth, panelHeight, 12);
     ctx.fill();
     ctx.stroke();
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillStyle = "#f7c948";
+    ctx.fillStyle = activeCoach ? "#f7c948" : "#8bd3ff";
     ctx.font = `900 ${Math.max(14, nodeRadius * 0.48)}px ui-sans-serif, system-ui`;
     ctx.fillText(label, x + panelWidth / 2, y + panelHeight * 0.36);
     ctx.fillStyle = "rgba(247,243,223,0.86)";
@@ -970,8 +994,10 @@
     state.recentIndex = index;
     state.recentLife = firstMovePulseSeconds;
     state.recentLocked = false;
-    state.lastAction = `First move cue: node ${index + 1} target ${glyphs[state.target[index]]}.`;
-    state.message = `First move: rotate node ${index + 1} toward ${glyphs[state.target[index]]}. Timer starts on first shift.`;
+    const taps = tapsToTarget(index);
+    const tapText = taps > 1 ? ` x${taps}` : "";
+    state.lastAction = `First target cue: node ${index + 1}${tapText} target ${glyphs[state.target[index]]}.`;
+    state.message = `First target: rotate node ${index + 1}${tapText} toward ${glyphs[state.target[index]]}. Timer starts on first shift.`;
   }
 
   function tick(time) {
