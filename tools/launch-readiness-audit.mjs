@@ -81,6 +81,8 @@ const mustContain = [
   ["judge.html", "Fresh Play"],
   ["judge.html", "./?nostore=1"],
   ["JUDGE_REVIEW_CARD.md", "Playability Proof"],
+  ["JUDGE_REVIEW_CARD.md", "After The First Minute"],
+  ["dev-article-final.md", "After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review."],
   ["README.md", "Playability proof for a rushed judge"],
   ["README.md", "npm run build:gif"],
   ["README.md", "npm run verify:article"],

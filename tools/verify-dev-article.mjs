@@ -75,6 +75,7 @@ const requiredText = [
   "Video Demo",
   "Quick Links",
   "Judge in 60 Seconds",
+  "After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review.",
   "Code",
   "How to Play",
   "Accessibility, Fair Play, and Privacy",
@@ -92,6 +93,13 @@ const requiredText = [
   "not anti-cheat, identity, payout, or eligibility proof",
 ];
 for (const pattern of requiredText) assertIncludes(article, pattern);
+
+const judgeMinute = article.match(/## Judge in 60 Seconds\r?\n([\s\S]*?)(?=\r?\n## Code)/);
+if (!judgeMinute) fail("DEV article missing bounded Judge in 60 Seconds section");
+const judgeMinuteSteps = [...judgeMinute[1].matchAll(/^\d+\.\s/gm)].length;
+if (judgeMinuteSteps !== 4) {
+  fail(`DEV article Judge in 60 Seconds should keep exactly 4 numbered steps; found ${judgeMinuteSteps}`);
+}
 
 const requiredUrls = [
   manifest.challenge.challenge_url,

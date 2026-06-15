@@ -14,13 +14,15 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 1. Play: `https://ooyxloo.github.io/helioigma/`
 2. Rotate one numbered node and watch Rotor Trace name the action plus next mismatch.
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
-4. Confirm the completed run receipt: `SC-4P-2907-62-Y5VFX1`.
-5. Open the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
-6. Optional: watch the captioned WebM at `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`.
-7. Optional: run the browser smoke test at `https://ooyxloo.github.io/helioigma/smoke.html`.
-8. Optional: read `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md` for the one-page first-minute review path.
-9. Optional: read `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md` for the source-first rubric map.
-10. Optional: check `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md` for the official-route checklist and public launch boundary.
+4. Confirm the completed run receipt `SC-4P-2907-62-Y5VFX1` in the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
+
+## After The First Minute
+
+- Watch the captioned WebM: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
+- Run the browser smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
+- Read the first-minute source card: `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md`
+- Check the source-first rubric map: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
+- Check the official-route compliance boundary: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 
 Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and `smoke.html`.
 

@@ -290,6 +290,8 @@ async function main() {
       copyRunSummaryDisabled: document.querySelector("#copyRunSummaryButton")?.disabled,
       proofPanelTop: document.querySelector("#proofPanel")?.getBoundingClientRect().top,
       proofPanelBottom: document.querySelector("#proofPanel")?.getBoundingClientRect().bottom,
+      verifyLinkTop: document.querySelector("#verifyProofLink")?.getBoundingClientRect().top,
+      verifyLinkBottom: document.querySelector("#verifyProofLink")?.getBoundingClientRect().bottom,
       activeElementId: document.activeElement?.id,
       status: document.querySelector("#statusLine")?.textContent.trim(),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -303,6 +305,7 @@ async function main() {
     assert(autoDemo.copyRunSummaryDisabled === false, "auto demo route did not enable the judge summary copy button");
     assert(autoDemo.proofPanelTop >= 0 && autoDemo.proofPanelTop < 450, `auto demo route did not scroll the receipt into view: ${autoDemo.proofPanelTop}`);
     assert(autoDemo.proofPanelBottom > 180, "auto demo route receipt panel is not visible after completion");
+    assert(autoDemo.verifyLinkTop >= 0 && autoDemo.verifyLinkBottom <= 900, `auto demo verifier link is not visible after completion: ${autoDemo.verifyLinkTop}/${autoDemo.verifyLinkBottom}`);
     assert(autoDemo.activeElementId === "verifyProofLink", "auto demo route did not focus the verifier link after completion");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
 
@@ -370,6 +373,28 @@ async function main() {
     assert(mobile.targetRowBounds.inset >= 48, `mobile target row inset is too small for glyph labels: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.canvasTop < 400, `mobile game canvas starts too low for game-first review: ${mobile.canvasTop}`);
     assert(mobile.canvasVisibleHeight >= 330, `mobile first viewport shows too little gameplay canvas: ${mobile.canvasVisibleHeight}`);
+
+    await page.goto(`${baseUrl}?demo=1`, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    await page.waitForFunction(() => document.querySelector("#demoButton")?.disabled === false, { timeout: 5000 });
+    const mobileCompletion = await page.evaluate(() => {
+      const link = document.querySelector("#verifyProofLink")?.getBoundingClientRect();
+      const code = document.querySelector("#proofCode")?.getBoundingClientRect();
+      return {
+        receipt: document.querySelector("#proofCode")?.textContent.trim(),
+        verifyHref: document.querySelector("#verifyProofLink")?.getAttribute("href"),
+        verifyVisible: Boolean(link && link.top >= 0 && link.bottom <= innerHeight),
+        verifyAfterCode: Boolean(link && code && link.top >= code.bottom),
+        activeElementId: document.activeElement?.id,
+        overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      };
+    });
+    assert(mobileCompletion.overflowX === 0, "mobile completion route has horizontal overflow");
+    assert(mobileCompletion.receipt === "SC-4P-2907-62-Y5VFX1", "mobile completion route did not reach the stable receipt");
+    assert(mobileCompletion.verifyHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "mobile completion verifier link is not prefilled");
+    assert(mobileCompletion.verifyVisible, "mobile completion verifier link is not visible in the focused viewport");
+    assert(mobileCompletion.verifyAfterCode, "mobile completion verifier link is not directly after the receipt code");
+    assert(mobileCompletion.activeElementId === "verifyProofLink", "mobile completion did not focus the verifier link");
 
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(`${baseUrl}judge.html`, { waitUntil: "domcontentloaded" });

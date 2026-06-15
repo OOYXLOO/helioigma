@@ -614,6 +614,18 @@ h1 {
   line-height: 1.35;
 }
 
+.receipt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.receipt-actions .receipt-link,
+.receipt-actions button {
+  flex: 1 1 150px;
+}
+
 .judge-run-summary {
   margin-top: 12px;
   padding-top: 12px;
