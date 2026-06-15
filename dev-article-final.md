@@ -80,7 +80,7 @@ Fast review evidence stays compact: Nightfall reports failed manual runs, the ch
 
 Award thesis: Helioigma is a playable ode, an inspectable loop, and a finished static package. For a first pass, the important thing is simple: play the wheel, watch the state trace, and inspect the finished run.
 
-Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, or private data. No account, API, backend, private data, or hidden judge path is needed to inspect the build.
+Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, private data, or hidden judge path.
 
 1. Open the play link, press `Start Run`, rotate one numbered node, then press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch Rotor Trace explain the state change and the next mismatch.
@@ -88,8 +88,6 @@ Official route snapshot: Best Ode to Alan Turing category route in the official 
 4. If you want deeper proof, open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
 
 After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review. The first decision should come from the playable loop: one node move, visible state trace, Demo Solve, and receipt verification.
-
-Public media links: cover.png?v=20260615-fresh-media, helioigma-demo.webm?v=20260615-fresh-media, helioigma-demo.gif?v=20260615-fresh-media, desktop-check-v5.png?v=20260615-fresh-media, mobile-check-v6.png?v=20260615-fresh-media, desktop-complete-v4.png?v=20260615-fresh-media, and mobile-complete-v1.png?v=20260615-fresh-media. The strongest stills are the completion screenshot with receipt ledger and Judge run summary, plus the Mobile completion screenshot.
 
 ## Code
 
