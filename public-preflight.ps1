@@ -616,6 +616,8 @@ try {
   Assert-Contains ".github/workflows/verify.yml" "Verify rebuilt public media output"
   Assert-Contains ".github/workflows/verify.yml" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains ".github/workflows/verify.yml" "helioigma-dev-package.zip"
+  Assert-Contains ".github/workflows/verify.yml" "expected 71 smoke checks"
+  Assert-NotContains ".github/workflows/verify.yml" "expected 70 smoke checks"
   Assert-NotContains ".github/workflows/verify.yml" "solstice-cipher"
   Assert-Contains ".gitignore" "helioigma-dev-package.zip"
   Assert-Contains ".gitignore" "node_modules/"
