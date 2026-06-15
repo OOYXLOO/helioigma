@@ -110,7 +110,7 @@
     }
 
     .primary-actions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .evidence-actions {
@@ -409,15 +409,17 @@
       .visual-media video { height: auto; }
       .visual-judge-hero .primary-actions {
         order: -1;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
         margin-top: 0;
       }
       .visual-judge-hero .action.primary {
-        min-height: 88px;
-        padding: 12px;
+        min-height: 64px;
+        padding: 10px 6px;
       }
       .visual-judge-hero .action.primary strong {
-        font-size: 20px;
+        font-size: 16px;
+        line-height: 1.15;
       }
       .visual-judge-hero .action.primary span {
         display: none;
@@ -436,6 +438,7 @@
         <section class="primary-actions" aria-label="Primary judge actions">
           <a class="action primary" href="./"><strong>Play</strong><span>Start the timed rotor puzzle.</span></a>
           <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Run the deterministic solve.</span></a>
+          <a class="action primary" href="./?nostore=1"><strong>Fresh Play</strong><span>Open without reading or writing local best score.</span></a>
         </section>
         <div>
           <p class="verdict-label">Visual judge start</p>
@@ -474,7 +477,7 @@
         <p><strong>Finished surface</strong> The package is static, mobile-ready, media-backed, and reviewable without accounts, APIs, or private data.</p>
       </div>
       <ol>
-        <li><strong>Play First.</strong><span>Try one manual phase with the Hint button, tactile node pulse, target glyphs, and keyboard/touch controls.</span></li>
+        <li><strong>Play First.</strong><span>Try one manual phase with the Hint button, tactile node pulse, target glyphs, and keyboard/touch controls. Use Fresh Play for a no-storage review path.</span></li>
         <li><strong>Open Auto Demo.</strong><span>Watch the playable page complete all four phases and produce receipt <code>SC-4P-2907-62-Y5VFX1</code>.</span></li>
         <li><strong>Verify Receipt.</strong><span>Open the prefilled sample verifier to recompute the checksum and inspect phases, score, shifts, and suffix.</span></li>
         <li><strong>Check Source.</strong><span>Use the manifest and README only if deeper review is needed; the playable loop is static and no-backend.</span></li>

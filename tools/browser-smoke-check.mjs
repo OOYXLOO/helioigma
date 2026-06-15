@@ -477,7 +477,7 @@ async function main() {
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Scorecard"), "judge page is missing scorecard action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
-    assert(judge.primaryActions.join("|") === "Play|Auto Demo", "judge page primary actions should lead with Play before Auto Demo");
+    assert(judge.primaryActions.join("|") === "Play|Auto Demo|Fresh Play", "judge page primary actions should lead with Play, Auto Demo, then Fresh Play");
     assert(judge.reviewSteps.join("|") === "Play First.|Open Auto Demo.|Verify Receipt.|Check Source.|Optional Smoke.", "judge review steps changed");
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
     assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
@@ -518,8 +518,8 @@ async function main() {
     });
     assert(mobileJudge.overflowX === 0, "mobile judge page has horizontal overflow");
     assert(mobileJudge.imageVisible, "mobile judge page does not show the visual gameplay asset in the first viewport");
-    assert(mobileJudge.actionsVisible, "mobile judge page does not show Play and Auto Demo in the first viewport");
-    assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo", "mobile judge page primary actions changed");
+    assert(mobileJudge.actionsVisible, "mobile judge page does not show Play, Auto Demo, and Fresh Play in the first viewport");
+    assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo|Fresh Play", "mobile judge page primary actions changed");
     assert(mobileJudge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "mobile judge page standout cards changed");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);

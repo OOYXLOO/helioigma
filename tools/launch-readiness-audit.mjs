@@ -76,6 +76,8 @@ const mustContain = [
   ["judge.html", "Readable decisions"],
   ["judge.html", "Immediate feedback"],
   ["judge.html", "Finished failure state"],
+  ["judge.html", "Fresh Play"],
+  ["judge.html", "./?nostore=1"],
   ["JUDGE_REVIEW_CARD.md", "Playability Proof"],
   ["README.md", "Playability proof for a rushed judge"],
   ["README.md", "npm run build:gif"],
