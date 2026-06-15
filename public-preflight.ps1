@@ -445,6 +445,7 @@ try {
   Assert-Contains "README.md" "Rotor Trace now includes a run-quality line"
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
+  Assert-Contains "README.md" "No-install judge self-test"
   Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "README.md" "npm run build:gif"
   Assert-Contains "README.md" "npm run build:cover"
@@ -499,6 +500,8 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "phase-specific hint order"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "does not claim the Best Google AI Usage category"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "no-install browser self-test"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" 'clean-clone Playwright check after `npm ci`'
   Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.gif?v=20260615-fresh-media"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "helioigma-demo.webm?v=20260615-fresh-media"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "mobile-complete-v1.png?v=20260615-fresh-media"
@@ -510,6 +513,7 @@ try {
   Assert-Contains "FIRST_MINUTE.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "FIRST_MINUTE.md" "Best Ode to Alan Turing"
   Assert-Contains "FIRST_MINUTE.md" "No Best Google AI Usage claim"
+  Assert-Contains "FIRST_MINUTE.md" 'no-install browser self-test `smoke.html`'
   Assert-Contains "FIRST_MINUTE.md" "not anti-cheat, identity, eligibility, or payment proof"
   Assert-Contains "RUBRIC_SCORECARD.md" "Helioigma Rubric Scorecard"
   Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
@@ -908,11 +912,15 @@ try {
   Assert-Contains "verification-report.md" "GIF preview ending on the receipt ledger and Judge run summary"
   Assert-Contains "verification-report.md" "parsed receipt facts"
   Assert-Contains "verification-report.md" "Score variance is expected"
+  Assert-Contains "verification-report.md" "no-install browser smoke page"
+  Assert-Contains "verification-report.md" "optional clean-clone Playwright check"
   Assert-Contains "verification-report.md" "Rubric Snapshot"
   Assert-Contains "verification-report.md" "Theme relevance"
   Assert-Contains "verification-report.md" "Technical execution"
   Assert-Contains "verification-report.md" "Turing category"
   Assert-Contains "verification.html" "Score variance is expected"
+  Assert-Contains "verification.html" 'no-install <code>smoke.html</code> page'
+  Assert-Contains "verification.html" 'optional <code>npm run smoke</code> route'
   Assert-Contains "verification.html" "full playable canvas visible in the first viewport"
   Assert-Contains "verification.html" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
   Assert-Contains "verification.html" "helioigma-demo.webm"

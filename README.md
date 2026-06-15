@@ -32,6 +32,18 @@ Then open:
 http://127.0.0.1:8781/
 ```
 
+No-install judge self-test:
+
+```text
+http://127.0.0.1:8781/smoke.html
+```
+
+Optional local/CI Playwright check after `npm ci`:
+
+```powershell
+npm run smoke
+```
+
 ## Submission Fit
 
 Helioigma is a compact browser puzzle game for the June solstice theme and an ode to Alan Turing's code-breaking legacy. The player rotates a Turing-inspired solar rotor of solar, XOR, light, and binary glyphs to match the target cipher before time runs out. It is intentionally static and self-contained so it can run on GitHub Pages without a backend.
@@ -129,7 +141,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `JUDGE_REVIEW_CARD.md`: one-page judge card with the shortest public review path, award thesis, rubric evidence, and boundaries.
 - `RUBRIC_SCORECARD.md`: source-first rubric map for theme relevance, creativity, technical execution, writing quality, and Best Ode to Alan Turing fit.
 - `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and non-secret boundaries.
-- `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
+- `smoke.html`: no-install browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, a prefilled sample receipt link, and `?receipt=` deep-link support from completed runs.
 - `receipt-core.js`: shared public receipt formula used by both `game.js` and `proof-verifier.html`, so judges can inspect the same checksum implementation from generation to verification.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
@@ -138,7 +150,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `verification.html` and `verification-report.md`: public verification summary for smoke result, layout checks, media assets, and CI preflight.
 - `public-preflight.ps1`: local and optional public URL preflight without pushing or submitting anything.
 - `.github/workflows/verify.yml`: public CI preflight for source syntax, required assets, official DEV tags, and judge/smoke links.
-- `tools/browser-smoke-check.mjs`: CI browser check that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, pre-start first-move preview, first-action grace, default-off Audio controls, score/receipt explanation, daylight meter, desktop canvas priority, mobile Run Path after the canvas, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 71 PASS checks.
+- `tools/browser-smoke-check.mjs`: optional clean-clone Playwright check after `npm ci` that opens the real pages, verifies first-screen Hint, Demo Solve, `Start Run`, pre-start first-move preview, first-action grace, default-off Audio controls, score/receipt explanation, daylight meter, desktop canvas priority, mobile Run Path after the canvas, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, Rotor Trace, mobile canvas visibility, validates the run receipt and receipt-verifier query path, and waits for `smoke.html` to reach 71 PASS checks.
 - `tools/build-package.ps1`: reproducible ZIP builder that packages exactly the tracked file set while preserving directories such as `.github/workflows/`, `demo-frames-v3/`, and `tools/`.
 - `tools/build-cover.py`: reproducible DEV-friendly `1000x420` cover image builder.
 - `tools/capture-public-media.mjs`: clean-browser media capture for desktop/mobile first screens, completion screenshots, and the seven `demo-frames-v3` frames; it asserts first-screen score/best/shifts start at zero so public assets do not inherit local review state.

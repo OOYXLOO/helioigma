@@ -20,7 +20,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `index.html`: playable static game
 - `judge.html`: judge quick path with official route snapshot, 60-second review path, rubric snapshot, and receipt links
 - `RUBRIC_SCORECARD.md`: source-first rubric map for the official review criteria and Turing category
-- `smoke.html`: browser smoke test
+- `smoke.html`: no-install browser smoke page for judges and quick local static-server review
 - `dev-article-final.md`: DEV article draft with official tags
 - `cover.png`: 1000x420 cover image
 - `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner, completed-run ledger, and demo receipt verifier
@@ -66,7 +66,8 @@ Expected local URLs:
 - Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 406.58px, and the full 468px playable canvas is visible in the first viewport.
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Start Run` and `Demo Solve` share the first quick-control row, Nightfall starts hidden, and the browser smoke keeps the full playable canvas inside the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
-- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
+- Browser smoke page: `smoke.html` is the no-install judge self-test under the same static server.
+- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` as the optional clean-clone Playwright check after `npm ci` and Playwright Chromium setup.
 - Demo media builders: `npm run build:media`, `npm run build:gif`, and `npm run build:video` rebuild the screenshots, GIF preview, and WebM from the real browser judge path; scratch video files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held across the expected 62 shifts.` Manual smoke score variance is expected because this path uses live browser timing.
@@ -177,8 +178,8 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - smoke receipt pattern
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
-- package scripts for clean-clone checks, browser smoke, and media rebuild
-- browser smoke script that opens the real pages, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies first-action grace, verifies the mobile game-first threshold, and waits for 71 PASS checks
+- package scripts for clean-clone checks, optional Playwright browser smoke, and media rebuild
+- browser smoke script that opens the real pages after `npm ci`, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies first-action grace, verifies the mobile game-first threshold, and waits for 71 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates
