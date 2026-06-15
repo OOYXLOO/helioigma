@@ -24,7 +24,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 - Check the source-first rubric map: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - Check the official-route compliance boundary: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 
-Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and `smoke.html`.
+Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `index.html?calm=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and `smoke.html`.
 
 ## Award Thesis
 
@@ -42,6 +42,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 - Reproducible: Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; the stable route produces receipt `SC-4P-2907-62-Y5VFX1`.
 - Finished on failure: Nightfall reports aligned nodes, held phases, score, shifts, and gives Retry or Demo Solve instead of a dead end.
 - Public-safe: no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect the build.
+- Low-motion review: `?calm=1` and system reduced-motion preference keep the same receipt path while suppressing particle bursts and CSS motion.
 
 ## Playability Proof
 
@@ -63,6 +64,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 
 - No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content is required.
 - Browser storage is limited to one local numeric best-score key by default; `?nostore=1` disables best-score reads/writes for stricter privacy review.
+- Motion review is explicit: `?calm=1` reduces particle/CSS motion while preserving the same controls, proof path, and stable receipt.
 - The receipt is a transparent run checksum, not anti-cheat, identity proof, or payout proof.
 - The submission targets Best Ode to Alan Turing and does not claim the Best Google AI Usage category.
 - Public launch is gated on a live public GitHub repo, live GitHub Pages URL, and passing `public-preflight.ps1 -Public`.

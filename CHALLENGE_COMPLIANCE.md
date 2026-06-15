@@ -33,7 +33,7 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 | Best Ode to Alan Turing | Rotor-like state alignment, target checking, XOR/binary glyph language, and local receipt verification carry the tribute through play. |
 | Originality | `README.md`, `dev-article-final.md`, and `judge-manifest.json` state the package is a new jam-period static game, not a third-party game template; the article names the official June 3 to June 21 jam window. |
 | Review without accounts | Game, judge page, manifest, smoke test, verifier, screenshots, and media run without login, API keys, backend services, private data, or account consoles. |
-| Accessibility and privacy | Mouse, touch, on-screen buttons, number keys, hidden helper text, phase announcements, and default-off audio are documented; no telemetry, account state, API key, backend, private data, or hidden judge dashboard is required. |
+| Accessibility and privacy | Mouse, touch, on-screen buttons, number keys, hidden helper text, phase announcements, default-off audio, system reduced-motion support, and `?calm=1` are documented; no telemetry, account state, API key, backend, private data, or hidden judge dashboard is required. |
 
 ## Category Boundary
 

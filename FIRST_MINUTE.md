@@ -9,7 +9,7 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 3. Stable receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
 4. Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 
-Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `index.html?nostore=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and `judge.html` from the same static server.
+Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `index.html?nostore=1`, `index.html?calm=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and `judge.html` from the same static server.
 
 ## Try This In One Minute
 
@@ -41,6 +41,7 @@ Helioigma targets Best Ode to Alan Turing. It does not try to recreate the Bombe
 
 - Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 - Privacy/no-storage play: `https://ooyxloo.github.io/helioigma/?nostore=1`
+- Calm/low-motion play: `https://ooyxloo.github.io/helioigma/?calm=1`
 - Source: `https://github.com/OOYXLOO/helioigma`
 - Rubric scorecard: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`

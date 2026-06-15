@@ -279,9 +279,11 @@ try {
   if (-not ($manifest.status.browser_storage -like "*?nostore=1 disables best-score reads/writes*")) { throw "judge-manifest browser-storage privacy mode mismatch" }
   if ($manifest.public_urls.first_minute -ne "https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md") { throw "judge-manifest first-minute URL mismatch" }
   if ($manifest.public_urls.privacy_review -ne "https://ooyxloo.github.io/helioigma/?nostore=1") { throw "judge-manifest privacy review URL mismatch" }
+  if ($manifest.public_urls.calm_review -ne "https://ooyxloo.github.io/helioigma/?calm=1") { throw "judge-manifest calm review URL mismatch" }
   if ($manifest.accessibility_and_fair_play.input_paths.Count -lt 4) { throw "judge-manifest accessibility input-path mismatch" }
   if (-not (($manifest.accessibility_and_fair_play.input_paths -join " ") -like "*SOL -> XOR -> LUX -> BIN*")) { throw "judge-manifest glyph cycle cue mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.low_motion -like "*?calm=1*prefers-reduced-motion*")) { throw "judge-manifest low-motion accessibility mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*?nostore=1*")) { throw "judge-manifest accessibility privacy mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review evidence*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
@@ -528,6 +530,7 @@ try {
   Assert-Contains "README.md" "final run receipt ledger"
   Assert-Contains "README.md" "phase banner"
   Assert-Contains "README.md" "?demo=1"
+  Assert-Contains "README.md" "?calm=1"
   Assert-Contains "README.md" "MIT license"
   Assert-Contains "LICENSE" "MIT License"
   Assert-Contains "submission-checklist.md" "judge-manifest.json"
@@ -537,11 +540,13 @@ try {
   Assert-Contains "submission-checklist.md" "share the DEV post only with honest feedback requests"
   Assert-Contains "submission-checklist.md" "Optional GitHub CLI path"
   Assert-Contains "submission-checklist.md" "Optional auto-demo route"
+  Assert-Contains "submission-checklist.md" "Optional calm review route"
   Assert-Contains "submission-checklist.md" "Optional default-off Audio cue toggle"
   Assert-Contains "submission-checklist.md" '`devchallenge`, `gamechallenge`, `gamedev`, `javascript`'
   Assert-Contains "submission-checklist.md" "Optional legacy MP4 fallback"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
   Assert-Contains "submission-checklist.md" "71 expected smoke checks"
+  Assert-Contains "submission-checklist.md" "calm review URL"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, no pressure, and no fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "RUBRIC_SCORECARD.md"
@@ -575,7 +580,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not scroll the receipt into view"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge shortcut row sample verifier link is not prefilled"
-  Assert-Contains "tools/browser-smoke-check.mjs" "judge shortcut row should stay focused on four routes"
+  Assert-Contains "tools/browser-smoke-check.mjs" "judge shortcut row should stay focused on five routes"
+  Assert-Contains "tools/browser-smoke-check.mjs" "calm review route changed the stable Demo Solve receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "document title no longer carries the solstice/Turing preview hook"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile run path cues changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "judge page verifier action is not prefilled"
@@ -654,6 +660,8 @@ try {
   Assert-Contains "judge.html" "Verify Receipt"
   Assert-Contains "judge.html" "No Storage"
   Assert-Contains "judge.html" "./?nostore=1"
+  Assert-Contains "judge.html" "Calm Review"
+  Assert-Contains "judge.html" "./?calm=1"
   Assert-Contains "judge.html" '<video src="helioigma-demo.webm?v=20260615-fresh-media"'
   Assert-Contains "judge.html" 'poster="desktop-check-v5.png?v=20260615-fresh-media"'
   Assert-Contains "judge.html" "helioigma-demo.webm?v=20260615-fresh-media"
@@ -794,7 +802,7 @@ try {
   Assert-Contains "game.js" "Nightfall sealed the rotor. Retry or watch Demo Solve."
   Assert-Contains "game.js" "syncNightfallPanel"
   Assert-Contains "game.js" "const shiftPenaltySeconds = 0.45"
-  Assert-Contains "game.js" "const firstMovePulseSeconds = 1.2"
+  Assert-Contains "game.js" "const firstMovePulseSeconds = calmMode ? 0.22 : 1.2"
   Assert-Contains "game.js" 'Daylight -${shiftPenaltySeconds}s.'
   Assert-Contains "index.html" "Helioigma"
   Assert-Contains "index.html" "<title>Helioigma - Solstice Rotor Turing Ode</title>"
@@ -857,7 +865,7 @@ try {
   Assert-Contains "smoke.html" "run receipt verifier link is present"
   Assert-Contains "smoke.html" "completion verifier link carries the final receipt"
   Assert-Contains "smoke.html" "reset shortcut returns to idle"
-  Assert-Contains "smoke.html" "judge shortcut links keep the strongest four review routes"
+  Assert-Contains "smoke.html" "judge shortcut links keep the strongest five review routes"
   Assert-Contains "smoke.html" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "smoke.html" "demo solve releases manual controls"
   Assert-Contains "smoke.html" "four-phase progress track is present"

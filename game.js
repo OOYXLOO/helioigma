@@ -65,11 +65,16 @@
     "Checksum scan: reverse.",
   ];
   const searchParams = new URLSearchParams(window.location.search);
+  const prefersReducedMotion = typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const storageDisabled = searchParams.get("nostore") === "1";
+  const calmMode = searchParams.get("calm") === "1" || prefersReducedMotion;
+  document.documentElement.classList.toggle("calm-mode", calmMode);
+  document.documentElement.dataset.motionMode = calmMode ? "calm" : "default";
   const bestScoreKey = "helioigma-best-score";
   const shiftPenaltySeconds = 0.45;
-  const tactilePulseSeconds = 0.55;
-  const firstMovePulseSeconds = 1.2;
+  const tactilePulseSeconds = calmMode ? 0.08 : 0.55;
+  const firstMovePulseSeconds = calmMode ? 0.22 : 1.2;
   const levels = [
     { target: [0, 2, 1, 3, 0, 1], seconds: 45 },
     { target: [3, 0, 2, 1, 3, 2, 0], seconds: 42 },
@@ -573,6 +578,7 @@
     const h = canvas.clientHeight;
     ctx.clearRect(0, 0, w, h);
     const inputHint = "Tap nodes or press 1-9. H = hint, D = demo.";
+    canvas.dataset.motionMode = calmMode ? "calm" : "default";
     canvas.dataset.inputHint = inputHint;
     canvas.dataset.firstMoveCoach = state.running && state.awaitingFirstShift && state.hintedIndex >= 0
       ? `TRY NODE ${state.hintedIndex + 1} -> ${glyphs[state.target[state.hintedIndex]]}`
@@ -738,6 +744,7 @@
 
   function drawPhaseBanner(cx, topBand, ringRadius, width) {
     if (!state.phaseBanner.life || state.complete) return;
+    if (calmMode) return;
     const fade = Math.min(1, state.phaseBanner.life / 0.28);
     const alpha = Math.max(0, Math.min(1, fade));
     const panelWidth = Math.min(width * 0.72, 560);
@@ -802,6 +809,7 @@
   }
 
   function burst(x, y, color) {
+    if (calmMode) return;
     for (let i = 0; i < 18; i += 1) {
       const angle = (Math.PI * 2 * i) / 18;
       state.particles.push({
@@ -1093,7 +1101,7 @@
     state.lastTick = 0;
     state.message = "Demo solve is tracing the longest day with a stable judge receipt.";
     updateHud();
-    await sleep(260);
+    await sleep(calmMode ? 90 : 260);
     while (state.running && !state.complete) {
       const phaseLength = state.ring.length;
       for (let index = 0; index < phaseLength && state.running && !state.complete; index += 1) {
@@ -1101,10 +1109,10 @@
         while (state.ring[index] !== state.target[index] && guard < glyphs.length && state.running) {
           rotateNode(index);
           guard += 1;
-          await sleep(90);
+          await sleep(calmMode ? 50 : 90);
         }
       }
-      await sleep(220);
+      await sleep(calmMode ? 90 : 220);
     }
     state.demoing = false;
     if (state.complete) {

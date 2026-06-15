@@ -75,12 +75,13 @@ Expected local URLs:
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
-- The judge shortcut row stays focused on the strongest four routes: Auto demo, Judge pack, stable sample verifier `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and the current WebM video. The Judge pack then exposes smoke test, GIF fallback, source, manifest, README, story, and rubric scorecard for deeper review without turning the playable page into a link wall.
+- The judge shortcut row stays focused on the strongest five routes: Auto demo, Calm review, Judge pack, stable sample verifier `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and the current WebM video. The Judge pack then exposes smoke test, GIF fallback, source, manifest, README, story, and rubric scorecard for deeper review without turning the playable page into a link wall.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` copy, mobile Match/Trace/Receipt cues, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - First-move grace coaching now holds its visual pulse for a cold reviewer, keeps the timer full until the first node shift, and wrong shifts explicitly report `Daylight -0.45s` so the timer pressure is understandable during manual play.
 - Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Playability proof is now explicit in the judge page, article, README, review card, manifest, and verification page: readable decisions, immediate feedback, and a finished Nightfall failure state are named as evidence that the project is a playable jam game before it is a receipt packet.
 - Privacy review path: `?nostore=1` keeps the game playable while avoiding best-score reads and writes.
+- Calm review path: `?calm=1` and system reduced-motion preference keep the same stable receipt path while reducing particle/CSS motion.
 - Smoke checks include 71 PASS assertions:
   - canvas present
   - start button present
@@ -106,7 +107,7 @@ Expected local URLs:
   - Turing cue names the first state check
   - first-screen judge path present
   - first-phase node buttons present
-  - judge shortcut links keep the strongest four review routes
+  - judge shortcut links keep the strongest five review routes
   - status line present
   - best score label present
   - shift counter present

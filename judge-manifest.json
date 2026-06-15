@@ -18,7 +18,8 @@
       "game_first": "Timed node decisions, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.",
       "reproducible": "Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; it produces stable receipt SC-4P-2907-62-Y5VFX1.",
       "finished_failure": "Nightfall reports held phases, aligned nodes, score, shifts, and gives Retry or Demo Solve recovery.",
-      "public_safe": "No backend, hidden service, account login, API key, telemetry, private console, or private data is needed to inspect the build."
+      "public_safe": "No backend, hidden service, account login, API key, telemetry, private console, or private data is needed to inspect the build.",
+      "low_motion": "?calm=1 and system reduced-motion preference preserve the same game/proof path while suppressing particle bursts and CSS motion."
     },
     "playability_proof": [
       {
@@ -62,7 +63,8 @@
     "owner_publication_note": "Public hosting and DEV article publication are external publication actions; this manifest records review evidence and never stores account data.",
     "no_secrets": true,
     "browser_storage": "Only a local numeric best-score key is used by default; ?nostore=1 disables best-score reads/writes for stricter privacy review.",
-    "audio": "Optional generated Web Audio cues are off by default and require the Audio button or S shortcut."
+    "audio": "Optional generated Web Audio cues are off by default and require the Audio button or S shortcut.",
+    "motion_review": "?calm=1 and system reduced-motion preference reduce particle/CSS motion while keeping the same controls, Auto Demo route, and stable receipt."
   },
   "accessibility_and_fair_play": {
     "input_paths": [
@@ -76,6 +78,7 @@
       "aria-live phase announcer",
       "visible phase objective and target glyph lines"
     ],
+    "low_motion": "?calm=1 sets a calm review mode, and prefers-reduced-motion is honored automatically; both keep the game playable and the stable receipt unchanged.",
     "privacy": "No telemetry, analytics endpoint, backend, API key, account login, or private console is required; only a local numeric best-score key is stored by default, and ?nostore=1 disables that read/write path.",
     "receipt_boundary": "The receipt is transparent review evidence for the stable demo route, not anti-cheat, identity, payout, tax, eligibility, or account proof."
   },
@@ -128,6 +131,7 @@
     "play": "https://ooyxloo.github.io/helioigma/",
     "auto_demo": "https://ooyxloo.github.io/helioigma/?demo=1",
     "privacy_review": "https://ooyxloo.github.io/helioigma/?nostore=1",
+    "calm_review": "https://ooyxloo.github.io/helioigma/?calm=1",
     "judge": "https://ooyxloo.github.io/helioigma/judge.html",
     "smoke": "https://ooyxloo.github.io/helioigma/smoke.html",
     "proof_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html",

@@ -104,6 +104,8 @@ async function readGameFacts(page) {
       canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href"),
       ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content"),
       ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content"),
+      motionMode: canvas?.dataset.motionMode || document.documentElement.dataset.motionMode || "",
+      calmClass: document.documentElement.classList.contains("calm-mode"),
       demoVisible: Boolean(demo && demo.top >= 0 && demo.bottom <= innerHeight),
       resetVisible: Boolean(reset && reset.top >= 0 && reset.bottom <= innerHeight && getComputedStyle(document.querySelector("#resetButton")).display !== "none"),
       hintVisible: Boolean(hint && hint.top >= 0 && hint.bottom <= innerHeight),
@@ -230,11 +232,13 @@ async function main() {
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.controlTextFits, "desktop quick-control text overflows");
     assert(desktop.judgeLinks.includes("Auto demo"), "judge shortcut row does not link the auto demo route");
+    assert(desktop.judgeLinks.includes("Calm review"), "judge shortcut row does not link the calm review route");
+    assert(desktop.judgeLinkHrefs.includes("./?calm=1"), "judge shortcut row calm review link is not present");
     assert(desktop.judgeLinks.includes("Verify sample"), "judge shortcut row does not link the sample receipt verifier");
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Watch video"), "judge shortcut row does not link the current WebM video");
     assert(desktop.judgeLinkHrefs.includes("helioigma-demo.webm?v=20260615-fresh-media"), "judge shortcut row WebM video link is not cache-busted to the current media");
-    assert(desktop.judgeLinks.length === 4, `judge shortcut row should stay focused on four routes, found ${desktop.judgeLinks.length}`);
+    assert(desktop.judgeLinks.length === 5, `judge shortcut row should stay focused on five routes, found ${desktop.judgeLinks.length}`);
     assert(!desktop.judgeLinks.includes("Demo GIF"), "judge shortcut row should leave GIF fallback inside the judge pack");
 
     await page.click("#startButton");
@@ -351,6 +355,30 @@ async function main() {
     assert(noStoreAfterDemo.receipt === "SC-4P-2907-62-Y5VFX1", "?nostore=1 route did not preserve Demo Solve");
     assert(Number(noStoreAfterDemo.best) >= 2907, "?nostore=1 should keep an in-memory best score during the run");
     assert(noStoreAfterDemo.stored === "7777", "?nostore=1 should not overwrite localStorage");
+
+    await page.goto(`${baseUrl}?calm=1`, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#game")?.dataset.motionMode, { timeout: 5000 });
+    const calmInitial = await readGameFacts(page);
+    assert(calmInitial.overflowX === 0, "calm review route has horizontal overflow");
+    assert(calmInitial.motionMode === "calm", "calm review route did not expose calm motion mode");
+    assert(calmInitial.calmClass === true, "calm review route did not set the calm-mode class");
+    assert(calmInitial.demoVisible && calmInitial.objectiveVisible, "calm review route lost the first-screen judge controls");
+    await page.click("#demoButton");
+    await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    const calmDemo = await page.evaluate(() => ({
+      receipt: document.querySelector("#proofCode")?.textContent.trim(),
+      motionMode: document.querySelector("#game")?.dataset.motionMode || document.documentElement.dataset.motionMode || "",
+      transitionDuration: getComputedStyle(document.querySelector("#dayMeterFill")).transitionDuration,
+    }));
+    assert(calmDemo.receipt === "SC-4P-2907-62-Y5VFX1", "calm review route changed the stable Demo Solve receipt");
+    assert(calmDemo.motionMode === "calm", "calm review route did not preserve calm mode through Demo Solve");
+    assert(
+      calmDemo.transitionDuration.includes("0.01ms") ||
+        calmDemo.transitionDuration.includes("0.00001s") ||
+        calmDemo.transitionDuration.includes("1e-05s") ||
+        calmDemo.transitionDuration.includes("0s"),
+      "calm review route did not reduce CSS motion duration"
+    );
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
@@ -570,6 +598,7 @@ async function main() {
     const manifest = JSON.parse(await page.textContent("body"));
     assert(manifest.project === "Helioigma", "judge manifest project changed");
     assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/helioigma/?demo=1", "judge manifest auto demo URL changed");
+    assert(manifest.public_urls?.calm_review === "https://ooyxloo.github.io/helioigma/?calm=1", "judge manifest calm review URL changed");
     assert(manifest.public_urls?.sample_receipt_verifier === "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge manifest sample receipt verifier URL changed");
     assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
@@ -584,8 +613,10 @@ async function main() {
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
+    assert(manifest.status?.motion_review?.includes("?calm=1"), "judge manifest calm review boundary missing");
     assert(manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("Timed node decisions"), "judge manifest crowded-jam differentiator missing game-first signal");
     assert(manifest.challenge?.crowded_jam_differentiator?.finished_failure?.includes("Nightfall reports"), "judge manifest crowded-jam differentiator missing finished-failure signal");
+    assert(manifest.challenge?.crowded_jam_differentiator?.low_motion?.includes("?calm=1"), "judge manifest crowded-jam differentiator missing low-motion signal");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));

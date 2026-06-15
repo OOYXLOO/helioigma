@@ -16,6 +16,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Phase progress strip, Hint, Demo Solve, and node-control buttons for quick judging, mobile play, and accessibility-friendly play.
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
+- Optional calm review route: `?calm=1` and system reduced-motion preference reduce particle/CSS motion while preserving the same stable receipt path.
 - Local/public preflight script: `public-preflight.ps1`.
 - Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, `npm run verify:article`, `npm run verify:media`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
@@ -50,7 +51,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
   - `npm run audit:launch`
   - `npm run audit:launch:public`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 71 PASS checks including visible `Start Run`, first-action grace, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
+- `smoke.html`: 71 PASS checks including visible `Start Run`, first-action grace, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, calm-mode route coverage, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - First-move canvas coach: after `Start Run`, the highlighted first node exposes the in-canvas `TRY NODE 1 -> SOL` callout, keeps daylight at 45s during grace, and clears the callout after the first node shift.
@@ -64,7 +65,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Node-control buttons: visible below the canvas, six controls on the first phase, no mobile overflow.
 - Four-phase completion check: final state shows `Longest day held. Final score ... across ... shifts.` and the canvas finale reports solved phases, local best score, total shifts, and a deterministic run receipt.
 - Receipt verifier check: `proof-verifier.html` accepts stable demo receipt `SC-4P-2907-62-Y5VFX1`, the first-screen/judge-pack sample link opens `?receipt=SC-4P-2907-62-Y5VFX1`, and the verifier shows phases, score, shifts, and checksum facts.
-- Manifest check: `judge-manifest.json` records the Best Ode to Alan Turing category, 71 expected smoke checks, sample receipt verifier URL, score basis, Nightfall recovery, and stable receipt `SC-4P-2907-62-Y5VFX1`.
+- Manifest check: `judge-manifest.json` records the Best Ode to Alan Turing category, 71 expected smoke checks, sample receipt verifier URL, score basis, Nightfall recovery, calm review URL, and stable receipt `SC-4P-2907-62-Y5VFX1`.
 - Judge review card check: `JUDGE_REVIEW_CARD.md` records the 60-second path, award thesis, rubric evidence, boundaries, and public evidence links.
 
 ## Before Publishing
