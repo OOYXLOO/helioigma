@@ -950,6 +950,11 @@ button:focus-visible {
   text-align: right;
 }
 
+.trace-summary {
+  color: var(--ink);
+  line-height: 1.35;
+}
+
 @media (max-width: 720px) {
   .shell {
     padding: 6px;

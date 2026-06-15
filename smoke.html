@@ -270,17 +270,17 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
 
       press(win, "r");
       await sleep(120);
-      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("rotate before nightfall"));
+      addCheck("reset shortcut returns to idle", proofPanel.hidden === true && statusLine.textContent.includes("Trace: Crib dawn") && statusLine.textContent.includes("Cycle SOL>XOR>LUX>BIN"));
 
       startButton.click();
       await sleep(120);
-      addCheck("start button shows the first-move grace coach", statusLine.textContent.includes("First target: rotate node 1 x3 toward SOL. Timer starts on first shift.") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
+      addCheck("start button shows the first-move grace coach", statusLine.textContent.includes("first target 1 x3->SOL") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
       await sleep(900);
       addCheck("first-action grace keeps full daylight before a node shift", dayMeterLabel.textContent.trim() === "45s");
       addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
       press(win, "h");
       await sleep(80);
-      addCheck("hint shortcut names the next mismatched node", statusLine.textContent.includes("Hint: rotate node"));
+      addCheck("hint shortcut names the next mismatched node", statusLine.textContent.includes("hint 1->SOL"));
       addCheck("hint highlights a node button", Boolean(doc.querySelector("#nodeButtons .node-button.hinted")));
       addCheck("rotor trace records hint action", traceLast.textContent.includes("Hint node"));
       addCheck("rotor trace names the next mismatch", traceNext.textContent.includes("Node 1"));
@@ -290,12 +290,12 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
         await sleep(1);
       }
       await waitFor(() => nightfallPanel.hidden === false, "nightfall report did not appear after timeout");
-      addCheck("nightfall report appears after timeout", nightfallPanel.hidden === false && statusLine.textContent.includes("Nightfall sealed"));
+      addCheck("nightfall report appears after timeout", nightfallPanel.hidden === false && statusLine.textContent.includes("nightfall report"));
       addCheck("nightfall report summarizes aligned nodes", nightfallSummary.textContent.includes("nodes aligned") && nightfallSummary.textContent.includes("Retry"));
       addCheck("nightfall report facts include held phases and score", nightfallFacts.textContent.includes("Held phases") && nightfallFacts.textContent.includes("Score"));
       retryButton.click();
       await sleep(120);
-      addCheck("nightfall retry starts a new manual run", nightfallPanel.hidden === true && statusLine.textContent.includes("First target: rotate node 1 x3 toward SOL"));
+      addCheck("nightfall retry starts a new manual run", nightfallPanel.hidden === true && statusLine.textContent.includes("first target 1 x3->SOL"));
 
       for (const length of levelLengths) {
         await solvePhase(win, length);
@@ -305,7 +305,7 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
       const finalScore = Number(scoreLabel.textContent);
       const bestScore = Number(bestLabel.textContent);
       const shiftCount = Number(shiftLabel.textContent);
-      addCheck("four phases reach final state", finalText.includes("Longest day held"));
+      addCheck("four phases reach final state", finalText.includes("Trace: Receipt") && finalText.includes("held"));
       addCheck("final score is positive", Number.isFinite(finalScore) && finalScore > 0);
       addCheck("best score records the completed run", Number.isFinite(bestScore) && bestScore >= finalScore);
       addCheck("shift counter records the completed run", Number.isFinite(shiftCount) && shiftCount > 0);

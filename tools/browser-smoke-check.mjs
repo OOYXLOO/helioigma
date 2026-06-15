@@ -221,6 +221,8 @@ async function main() {
     assert(desktop.objective.proof === "Crib checks state.", "Turing cue initial copy changed");
     assert(desktop.objective.proofFits, "desktop Turing cue text is clipped");
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
+    assert(desktop.statusLine?.startsWith("Trace:"), "desktop status line no longer exposes the first-screen trace summary");
+    assert(desktop.statusLine?.includes("0/6") && desktop.statusLine?.includes("next 1: XOR->SOL"), "desktop status line no longer previews the next trace action");
     assert(desktop.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "status line no longer exposes the first-screen node-cycle cue");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
     assert(desktop.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "desktop canvas lost the first-action input hint");
@@ -263,7 +265,8 @@ async function main() {
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
       canvasCoach: document.querySelector("#game")?.dataset.firstMoveCoach || "",
     }));
-    assert(startCoach.status === "First target: rotate node 1 x3 toward SOL. Timer starts on first shift.", "start button no longer gives a first-move grace coach");
+    assert(startCoach.status.includes("Trace: Crib dawn | 0/6 | next 1: XOR->SOL"), "start button no longer keeps the first-move trace summary visible");
+    assert(startCoach.status.includes("first target 1 x3->SOL"), "start button no longer gives a first-move grace coach");
     assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
     assert(startCoach.traceLast === "First target cue: node 1 x3 target SOL.", "first-move coach trace changed");
     assert(startCoach.canvasCoach === "TRY NODE 1 x3 -> SOL", "first-move coach is not visible on the canvas");
@@ -282,7 +285,8 @@ async function main() {
       recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
     }));
-    assert(hintPulse.status === "Hint: rotate node 1 toward SOL.", "hint status no longer gives a clear target");
+    assert(hintPulse.status.includes("Trace: Crib dawn | 0/6 | next 1: XOR->SOL"), "hint status no longer keeps the trace summary visible");
+    assert(hintPulse.status.includes("hint 1->SOL"), "hint status no longer gives a clear target");
     assert(hintPulse.hinted && hintPulse.recent, "hint does not create a visible tactile node pulse");
     assert(
       hintPulse.traceLast.startsWith("Hint node 1: target SOL.") && hintPulse.traceLast.includes("Crib scan: first mismatch."),
@@ -311,7 +315,8 @@ async function main() {
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
       canvasCoach: document.querySelector("#game")?.dataset.firstMoveCoach || "",
     }));
-    assert(shiftPulse.status === "Timer started. Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "first manual shift no longer starts the timer and names current, target glyphs, and daylight penalty");
+    assert(shiftPulse.status.includes("Trace: Crib dawn | 0/6 | next 1: LUX->SOL"), "first manual shift no longer updates the first-screen trace summary");
+    assert(shiftPulse.status.includes("node 1 LUX target SOL; -0.45s"), "first manual shift no longer starts the timer and names current, target glyphs, and daylight penalty");
     assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
     assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
     assert(shiftPulse.canvasCoach === "", "first-move coach should disappear after the timer starts");
@@ -353,7 +358,7 @@ async function main() {
     assert(autoDemo.proofPanelBottom > 180, "auto demo route receipt panel is not visible after completion");
     assert(autoDemo.verifyLinkTop >= 0 && autoDemo.verifyLinkBottom <= 900, `auto demo verifier link is not visible after completion: ${autoDemo.verifyLinkTop}/${autoDemo.verifyLinkBottom}`);
     assert(autoDemo.activeElementId === "verifyProofLink", "auto demo route did not focus the verifier link after completion");
-    assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
+    assert(autoDemo.status.includes("Trace: Receipt") && autoDemo.status.includes("demo complete"), "auto demo route did not report demo completion");
 
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
@@ -435,6 +440,8 @@ async function main() {
     assert(mobile.inputHint === "Tap nodes or press 1-9. H = hint, D = demo.", "mobile canvas lost the first-action input hint");
     assert(mobile.firstMoveCoach === "START NODE 1 x3 -> SOL", "mobile pre-start first-move preview is not visible on the canvas");
     assert(mobile.objective.phase === "Crib dawn", "mobile phase objective initial label changed");
+    assert(mobile.statusLine?.startsWith("Trace:"), "mobile status line no longer exposes the first-screen trace summary");
+    assert(mobile.statusLine?.includes("0/6") && mobile.statusLine?.includes("next 1: XOR->SOL"), "mobile status line no longer previews the next trace action");
     assert(mobile.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "mobile status line no longer exposes the node-cycle cue");
     assert(
       mobile.objective.proof === "Crib checks state.",
@@ -715,7 +722,7 @@ async function main() {
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       status: document.querySelector("#status")?.textContent.trim(),
     }));
-    assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
+    assert(smoke.status.startsWith("PASS - Trace: Receipt") && smoke.status.includes("held"), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
     assert(smoke.checks === 71, `expected 71 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);

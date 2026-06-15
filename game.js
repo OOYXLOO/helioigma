@@ -280,7 +280,7 @@
     bestLabel.textContent = String(state.bestScore);
     shiftLabel.textContent = String(state.shifts);
     timeLabel.textContent = String(Math.max(0, Math.ceil(state.timeLeft)));
-    statusLine.textContent = state.message;
+    statusLine.textContent = buildTraceSummary();
     startButton.disabled = state.demoing || (state.running && !state.complete && !state.failed);
     if (hintButton) {
       hintButton.disabled = !state.running || state.complete || state.demoing;
@@ -517,23 +517,70 @@
     });
   }
 
-  function syncRotorTrace() {
-    if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast || !traceQuality) return;
+  function buildTraceFacts() {
     const safeLevel = currentPhaseIndex();
     const phase = state.complete ? "Receipt" : phaseNames[safeLevel];
     const matched = state.ring.filter((value, i) => value === state.target[i]).length;
     const nextMismatch = findGuidedMismatchIndex();
-    tracePhase.textContent = state.complete ? `${levels.length}/${levels.length} phases held` : `${safeLevel + 1} - ${phase}`;
-    traceMatch.textContent = `${matched}/${state.target.length}`;
-    traceNext.textContent = state.complete
+    const next = state.complete
       ? "Receipt ready"
       : nextMismatch === -1
         ? "All nodes aligned"
         : `Node ${nextMismatch + 1}: ${glyphs[state.ring[nextMismatch]]} -> ${glyphs[state.target[nextMismatch]]}`;
-    traceLast.textContent = state.lastAction;
-    traceQuality.textContent = state.complete
+    const phaseLabel = state.complete ? `${levels.length}/${levels.length} phases held` : `${safeLevel + 1} - ${phase}`;
+    const quality = state.complete
       ? `${state.solvedPhases}/${levels.length} phase streak | ${state.shifts} inspected shifts`
       : `Streak ${state.streak} | Clean locks ${matched}`;
+    return { safeLevel, phase, matched, nextMismatch, next, phaseLabel, quality };
+  }
+
+  function buildTraceSummary() {
+    const facts = buildTraceFacts();
+    const aligned = `${facts.matched}/${state.target.length}`;
+    const next = facts.next
+      .replace(/^Node\s+/i, "")
+      .replace(/\s+->\s+/g, "->");
+    return `Trace: ${facts.phase} | ${aligned} | next ${next} | ${compactStatusAction()}.`;
+  }
+
+  function compactStatusAction() {
+    const message = state.message.replace(/\.$/, "");
+    if (message.startsWith("Cycle ")) return "Cycle SOL>XOR>LUX>BIN";
+    if (message.startsWith("First target: rotate node ")) {
+      const match = message.match(/First target: rotate node (\d+)( x\d+)? toward ([A-Z]+)/);
+      return match ? `first target ${match[1]}${match[2] || ""}->${match[3]}` : "first target ready";
+    }
+    if (message.startsWith("Hint: rotate node ")) {
+      const match = message.match(/Hint: rotate node (\d+) toward ([A-Z]+)/);
+      return match ? `hint ${match[1]}->${match[2]}` : "hint ready";
+    }
+    if (message.startsWith("Timer started. Node ")) {
+      const match = message.match(/Node (\d+) shifted to ([A-Z]+); target ([A-Z]+).*Daylight -([0-9.]+s)/);
+      return match ? `node ${match[1]} ${match[2]} target ${match[3]}; -${match[4]}` : "timer started";
+    }
+    if (message.startsWith("Demo solve complete")) return `demo complete ${state.score}/${state.shifts} shifts`;
+    if (message.startsWith("Demo solve is tracing")) return "demo tracing";
+    if (message.startsWith("Longest day held")) return `held ${state.score} score, ${state.shifts} shifts`;
+    if (message.startsWith("Run receipt ready")) return "receipt copied";
+    if (message.startsWith("Run receipt copied")) return "receipt copied";
+    if (message.startsWith("Judge run summary copied")) return "summary copied";
+    if (message.startsWith("Judge run summary is ready")) return "summary ready";
+    if (message.startsWith("Nightfall sealed")) return "nightfall report";
+    if (message.startsWith("All visible signals")) return "all aligned";
+    if (message.startsWith("Audio cues enabled")) return "audio on";
+    if (message.startsWith("Audio cues off")) return "audio off";
+    if (message.includes("unavailable")) return "audio unavailable";
+    return message.length > 34 ? `${message.slice(0, 31)}...` : message;
+  }
+
+  function syncRotorTrace() {
+    if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast || !traceQuality) return;
+    const facts = buildTraceFacts();
+    tracePhase.textContent = facts.phaseLabel;
+    traceMatch.textContent = `${facts.matched}/${state.target.length}`;
+    traceNext.textContent = facts.next;
+    traceLast.textContent = state.lastAction;
+    traceQuality.textContent = facts.quality;
   }
 
   function resizeCanvas() {
