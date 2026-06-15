@@ -269,6 +269,7 @@ try {
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 71) { throw "judge-manifest smoke count mismatch" }
+  if (-not ($manifest.verification.browser_smoke_runtime_boundary -like "Fails on external network requests*")) { throw "judge-manifest runtime boundary mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest Turing cue mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
@@ -286,7 +287,7 @@ try {
   if (-not (($manifest.accessibility_and_fair_play.input_paths -join " ") -like "*SOL -> XOR -> LUX -> BIN*")) { throw "judge-manifest glyph cycle cue mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.assistive_technology -contains "aria-live phase announcer")) { throw "judge-manifest accessibility assistive-tech mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.low_motion -like "*?calm=1*prefers-reduced-motion*")) { throw "judge-manifest low-motion accessibility mismatch" }
-  if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*?nostore=1*")) { throw "judge-manifest accessibility privacy mismatch" }
+  if (-not ($manifest.accessibility_and_fair_play.privacy -like "No telemetry*external runtime request*?nostore=1*")) { throw "judge-manifest accessibility privacy mismatch" }
   if (-not ($manifest.accessibility_and_fair_play.receipt_boundary -like "The receipt is transparent review evidence*")) { throw "judge-manifest accessibility receipt-boundary mismatch" }
   if ($manifest.originality.build_window -ne "New static game package for the DEV June Solstice Game Jam period.") { throw "judge-manifest originality build-window mismatch" }
   if (-not ($manifest.originality.template_boundary -like "Not a wrapper around*")) { throw "judge-manifest originality template-boundary mismatch" }
@@ -323,6 +324,7 @@ try {
   Assert-Contains "dev-article-final.md" "Helioigma targets Best Ode to Alan Turing because the tribute is playable"
   Assert-Contains "dev-article-final.md" "The first-minute loop in motion"
   Assert-Contains "dev-article-final.md" "No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed"
+  Assert-Contains "dev-article-final.md" "fails if the review path makes an external network request, logs a console error, or throws a page error"
   Assert-Contains "dev-article-final.md" "What I Built"
   Assert-Contains "dev-article-final.md" "You open with 45 seconds of daylight"
   Assert-Contains "dev-article-final.md" "little daylight machine"
@@ -590,6 +592,9 @@ try {
   Assert-Contains "PUBLISHING.md" "-Push -ConfigurePages"
   Assert-Contains "PUBLISHING.md" "-Push -ConfigurePages -WaitForPages"
   Assert-Contains "tools/browser-smoke-check.mjs" "PASS browser smoke"
+  Assert-Contains "tools/browser-smoke-check.mjs" "browser smoke saw external network requests"
+  Assert-Contains "tools/browser-smoke-check.mjs" "browser smoke saw console errors"
+  Assert-Contains "tools/browser-smoke-check.mjs" "browser smoke saw page errors"
   Assert-Contains "tools/browser-smoke-check.mjs" "?demo=1"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not reach the stable receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "auto demo route did not build a verifier link"

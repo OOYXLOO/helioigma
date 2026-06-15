@@ -186,6 +186,19 @@ async function main() {
   try {
     browser = await chromium.launch();
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const externalRequests = [];
+    const consoleErrors = [];
+    const pageErrors = [];
+    page.on("request", (request) => {
+      const url = new URL(request.url());
+      if (!["127.0.0.1", "localhost"].includes(url.hostname)) {
+        externalRequests.push(request.url());
+      }
+    });
+    page.on("console", (message) => {
+      if (message.type() === "error") consoleErrors.push(message.text());
+    });
+    page.on("pageerror", (error) => pageErrors.push(error.message || String(error)));
 
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
     const desktop = await readGameFacts(page);
@@ -632,6 +645,14 @@ async function main() {
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
     assert(manifest.status?.motion_review?.includes("?calm=1"), "judge manifest calm review boundary missing");
     assert(
+      manifest.verification?.browser_smoke_runtime_boundary?.startsWith("Fails on external network requests"),
+      "judge manifest browser runtime boundary changed"
+    );
+    assert(
+      manifest.accessibility_and_fair_play?.privacy?.includes("external runtime request"),
+      "judge manifest privacy boundary no longer names external runtime requests"
+    );
+    assert(
       manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("START NODE 1 x3 -> SOL") &&
         manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("timed node decisions"),
       "judge manifest crowded-jam differentiator missing game-first signal"
@@ -699,6 +720,9 @@ async function main() {
     assert(smoke.checks === 71, `expected 71 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
+    assert(externalRequests.length === 0, `browser smoke saw external network requests: ${externalRequests.join("; ")}`);
+    assert(consoleErrors.length === 0, `browser smoke saw console errors: ${consoleErrors.join("; ")}`);
+    assert(pageErrors.length === 0, `browser smoke saw page errors: ${pageErrors.join("; ")}`);
 
     console.log(`PASS browser smoke at ${baseUrl}`);
   } finally {

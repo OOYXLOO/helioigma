@@ -100,12 +100,14 @@ const mustContain = [
   ["README.md", "tools/build-demo-gif.py"],
   ["README.md", "tools/verify-dev-article.mjs"],
   ["README.md", "tools/verify-media-freshness.mjs"],
+  ["README.md", "browser smoke now fails on external network requests"],
   ["FIRST_MINUTE.md", "Playability proof appears before the verifier"],
   ["FIRST_MINUTE.md", "START NODE 1 x3 -> SOL"],
   ["FIRST_MINUTE.md", "tap node 1 three times until it reads `SOL`"],
   ["JUDGE_REVIEW_CARD.md", "pre-start first-move preview"],
   ["JUDGE_REVIEW_CARD.md", "tap node 1 three times until it reads `SOL`"],
   ["dev-article-final.md", "Daylight is the shared resource"],
+  ["dev-article-final.md", "fails if the review path makes an external network request, logs a console error, or throws a page error"],
   ["PUBLISHING.md", intended.repo],
   ["PUBLISHING.md", "logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
   ["dev-launch-brief.md", intended.pages],
@@ -114,6 +116,10 @@ const mustContain = [
   ["dev-launch-brief.md", "positive reactions on the DEV post may be used as a tie-breaker"],
   ["dev-launch-brief.md", "Buy reactions, ask for fake engagement, or pressure friends/coworkers"],
   ["submission-checklist.md", "Confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry"],
+  ["verification-report.md", "fails on external network requests, console errors, or page errors"],
+  ["tools/browser-smoke-check.mjs", "browser smoke saw external network requests"],
+  ["tools/browser-smoke-check.mjs", "browser smoke saw console errors"],
+  ["tools/browser-smoke-check.mjs", "browser smoke saw page errors"],
   ["submission-checklist.md", "ethical visibility plan"],
   [".github/workflows/verify.yml", "judge shortcut links keep the strongest five review routes"],
   [".github/workflows/verify.yml", "pre-start first-move preview is not visible on the canvas"],
@@ -314,6 +320,11 @@ addCheck("manifest target category", manifest.challenge?.target_category === "Be
 addCheck("manifest playability proof", manifest.challenge?.playability_proof?.length === 3, String(manifest.challenge?.playability_proof?.length || 0));
 addCheck("manifest stable receipt", manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", manifest.proof?.stable_receipt);
 addCheck("manifest no secrets", manifest.status?.no_secrets === true, String(manifest.status?.no_secrets));
+addCheck(
+  "manifest runtime boundary",
+  manifest.verification?.browser_smoke_runtime_boundary?.startsWith("Fails on external network requests") === true,
+  manifest.verification?.browser_smoke_runtime_boundary || "",
+);
 
 const packageJson = JSON.parse(fileText("package.json"));
 addCheck("package local audit script", packageJson.scripts?.["audit:launch"] === "node tools/launch-readiness-audit.mjs", packageJson.scripts?.["audit:launch"] || "");

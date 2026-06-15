@@ -18,7 +18,7 @@
       "game_first": "The canvas previews START NODE 1 x3 -> SOL before play, then timed node decisions, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.",
       "reproducible": "Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; it produces stable receipt SC-4P-2907-62-Y5VFX1.",
       "finished_failure": "Nightfall reports held phases, aligned nodes, score, shifts, and gives Retry or Demo Solve recovery.",
-      "public_safe": "No backend, hidden service, account login, API key, telemetry, private console, or private data is needed to inspect the build.",
+      "public_safe": "No backend, hidden service, account login, API key, telemetry, private console, external runtime request, or private data is needed to inspect the build.",
       "low_motion": "?calm=1 and system reduced-motion preference preserve the same game/proof path while suppressing particle bursts and CSS motion."
     },
     "playability_proof": [
@@ -46,7 +46,7 @@
       },
       {
         "criterion": "Technical execution",
-      "evidence": "Static canvas game, touch and keyboard controls, pre-start first-move preview, in-canvas first-action hint, first-action grace, phase-specific hint order, stable demo route, Nightfall failure recovery, checksum receipt, smoke test, and Pages-ready CI."
+        "evidence": "Static canvas game, touch and keyboard controls, pre-start first-move preview, in-canvas first-action hint, first-action grace, phase-specific hint order, stable demo route, Nightfall failure recovery, checksum receipt, smoke test, and Pages-ready CI."
       },
       {
         "criterion": "Writing quality",
@@ -79,7 +79,7 @@
       "visible phase objective and target glyph lines"
     ],
     "low_motion": "?calm=1 sets a calm review mode, and prefers-reduced-motion is honored automatically; both keep the game playable and the stable receipt unchanged.",
-    "privacy": "No telemetry, analytics endpoint, backend, API key, account login, or private console is required; only a local numeric best-score key is stored by default, and ?nostore=1 disables that read/write path.",
+    "privacy": "No telemetry, analytics endpoint, backend, API key, account login, external runtime request, or private console is required; only a local numeric best-score key is stored by default, and ?nostore=1 disables that read/write path.",
     "receipt_boundary": "The receipt is transparent review evidence for the stable demo route, not anti-cheat, identity, payout, tax, eligibility, or account proof."
   },
   "originality": {
@@ -186,6 +186,7 @@
     "expected_smoke_checks": 71,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
+    "browser_smoke_runtime_boundary": "Fails on external network requests, console errors, or page errors while exercising the static review paths.",
     "ci_workflow": ".github/workflows/verify.yml"
   },
   "owner_actions_not_automated": [
