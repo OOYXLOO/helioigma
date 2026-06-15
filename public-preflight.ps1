@@ -317,6 +317,7 @@ try {
   Assert-Contains "dev-article-final.md" "It targets the Best Ode to Alan Turing category"
   Assert-Contains "dev-article-final.md" "Reviewer Fast Path"
   Assert-Contains "dev-article-final.md" "If you are judging quickly, the first-minute check is"
+  Assert-Contains "dev-article-final.md" 'tap node 1 three times until it reads `SOL`'
   Assert-Contains "dev-article-final.md" "Helioigma targets Best Ode to Alan Turing because the tribute is playable"
   Assert-Contains "dev-article-final.md" "The first-minute loop in motion"
   Assert-Contains "dev-article-final.md" "No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed"
@@ -410,7 +411,7 @@ try {
   Assert-Contains "dev-launch-brief.md" "race a solar cipher wheel, trace its rotor state, and verify the solved run"
   Assert-Contains "dev-launch-brief.md" "receipt-checkable loop"
   Assert-Contains "dev-launch-brief.md" "First-minute check for rushed judges"
-  Assert-Contains "dev-launch-brief.md" "Press Start Run, rotate one node, watch Rotor Trace explain the state change"
+  Assert-Contains "dev-launch-brief.md" "Press Start Run, tap node 1 three times until it reads SOL"
   Assert-Contains "dev-launch-brief.md" "devchallenge"
   Assert-Contains "dev-launch-brief.md" "gamechallenge"
   Assert-Contains "dev-launch-brief.md" "gamedev"

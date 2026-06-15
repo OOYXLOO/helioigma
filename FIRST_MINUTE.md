@@ -13,7 +13,7 @@ Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `inde
 
 ## Try This In One Minute
 
-1. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, then rotate that numbered node while the timer starts from full daylight.
+1. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, then tap node 1 three times until it reads `SOL` while the timer starts from full daylight.
 2. Watch Rotor Trace name the action and next mismatch.
 3. Press `Demo Solve` to complete the same visible board.
 4. Verify receipt `SC-4P-2907-62-Y5VFX1`.

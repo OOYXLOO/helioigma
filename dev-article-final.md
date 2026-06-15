@@ -10,7 +10,7 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-medi
 
 ## Reviewer Fast Path
 
-If you are judging quickly, the first-minute check is: press `Start Run`, rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then inspect run summary `SC-4P-2907-62-Y5VFX1`.
+If you are judging quickly, the first-minute check is: press `Start Run`, tap node 1 three times until it reads `SOL`, watch Rotor Trace explain the state change, press `Demo Solve`, then inspect run summary `SC-4P-2907-62-Y5VFX1`.
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
@@ -82,7 +82,7 @@ Award thesis: Helioigma is a playable ode, an inspectable loop, and a finished s
 
 Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT; no Google AI claim, backend, account login, API key, private data, or hidden judge path.
 
-1. Open the play link, press `Start Run`, rotate one numbered node, then press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
+1. Open the play link, press `Start Run`, tap node 1 three times until it reads `SOL`, then press `Demo Solve` for the full loop and stable receipt `SC-4P-2907-62-Y5VFX1`, or use the auto-demo link to start that deterministic route immediately.
 2. Watch Rotor Trace explain the state change and the next mismatch.
 3. Open the sample receipt verifier, or use the completed-run Verify receipt link, to confirm the checksum loop.
 4. If you want deeper proof, open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.

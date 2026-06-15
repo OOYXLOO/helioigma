@@ -33,7 +33,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 First-minute check for rushed judges:
 
 ```text
-Press Start Run, rotate one node, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
+Press Start Run, tap node 1 three times until it reads SOL, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
 ```
 
 Keep this exact meaning in the public post:

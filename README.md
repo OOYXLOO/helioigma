@@ -9,7 +9,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 - Verify sample receipt: https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1
 - Judge pack: https://ooyxloo.github.io/helioigma/judge.html
 
-60-second thesis: start the 45-second daylight run, rotate one numbered node, watch Rotor Trace explain the state change, then press `Demo Solve` and inspect stable receipt `SC-4P-2907-62-Y5VFX1`. Helioigma is a playable Turing-wheel game first, with the receipt and smoke test as transparent review evidence.
+60-second thesis: start the 45-second daylight run, tap node 1 three times until it reads `SOL`, watch Rotor Trace explain the state change, then press `Demo Solve` and inspect stable receipt `SC-4P-2907-62-Y5VFX1`. Helioigma is a playable Turing-wheel game first, with the receipt and smoke test as transparent review evidence.
 
 ## Status
 

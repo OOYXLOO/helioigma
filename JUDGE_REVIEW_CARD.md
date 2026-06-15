@@ -12,7 +12,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 ## 60-Second Path
 
 1. Play: `https://ooyxloo.github.io/helioigma/`
-2. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, rotate that numbered node, and watch Rotor Trace name the action plus next mismatch.
+2. Notice the canvas preview `START NODE 1 x3 -> SOL`, press `Start Run`, tap node 1 three times until it reads `SOL`, and watch Rotor Trace name the action plus next mismatch.
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
 4. Confirm the completed run receipt `SC-4P-2907-62-Y5VFX1` in the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
 
