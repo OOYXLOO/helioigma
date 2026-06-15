@@ -400,6 +400,7 @@ try {
   Assert-Contains "dev-article-final.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "README.md" "first and last target glyphs do not clip"
+  Assert-Contains "README.md" "1280x900 desktop"
   Assert-Contains "README.md" "Rotor Trace now includes a run-quality line"
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
@@ -718,7 +719,9 @@ try {
   Assert-Contains "index.html" "dayMeter"
   Assert-Contains "index.html" "dayMeterFill"
   Assert-Contains "styles.css" "min-height: 44px"
+  Assert-Contains "styles.css" "max-height: min(52vh, 520px)"
   Assert-Contains "styles.css" ".mobile-cue"
+  Assert-Contains "tools/browser-smoke-check.mjs" "tall desktop first viewport cuts off the playable canvas"
   Assert-Contains "styles.css" "min-height: 38px"
   Assert-Contains "styles.css" "grid-template-columns: repeat(6, minmax(0, 1fr));"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Reset is not visible in the first viewport"

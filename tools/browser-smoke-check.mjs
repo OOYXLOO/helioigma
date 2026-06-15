@@ -125,6 +125,7 @@ async function readGameFacts(page) {
         visible: getComputedStyle(node).display !== "none",
       })),
       canvasTop: canvasRect?.top,
+      canvasHeight: canvasRect?.height,
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       targetRowBounds,
       inputHint: canvas?.dataset.inputHint || "",
@@ -304,6 +305,13 @@ async function main() {
     assert(autoDemo.proofPanelBottom > 180, "auto demo route receipt panel is not visible after completion");
     assert(autoDemo.activeElementId === "verifyProofLink", "auto demo route did not focus the verifier link after completion");
     assert(autoDemo.status.includes("Demo solve complete"), "auto demo route did not report demo completion");
+
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#game")?.dataset.targetRowBounds, { timeout: 5000 });
+    const tallDesktop = await readGameFacts(page);
+    assert(tallDesktop.overflowX === 0, "tall desktop has horizontal overflow");
+    assert(tallDesktop.canvasVisibleHeight >= tallDesktop.canvasHeight - 8, `tall desktop first viewport cuts off the playable canvas: ${tallDesktop.canvasVisibleHeight}/${tallDesktop.canvasHeight}`);
 
     await page.goto(`${baseUrl}?nostore=1`, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.setItem("helioigma-best-score", "7777"));

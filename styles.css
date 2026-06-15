@@ -303,6 +303,10 @@ body {
     padding: 10px 14px;
   }
 
+  canvas {
+    max-height: min(52vh, 520px);
+  }
+
   .hud,
   .phase-track,
   .brief,

@@ -72,6 +72,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 ## Current Quality Checks
 
 - Desktop and 390px mobile browser checks pass with no horizontal overflow.
+- On 1280x900 desktop, the first viewport keeps the full playable canvas visible instead of cutting off the lower wheel.
 - On 390px mobile, the canvas target row keeps a guarded inset so first and last target glyphs do not clip against the canvas edge.
 - On 390px mobile, `Demo Solve` is intentionally wider than the other quick controls so the judge receipt path is easier to hit without hiding `Start Run`, Hint, Reset, Audio, or the first canvas viewport.
 - Canvas screenshots are nonblank and visually varied.
