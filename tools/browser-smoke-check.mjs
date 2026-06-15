@@ -134,6 +134,7 @@ async function readGameFacts(page) {
       canvasVisibleHeight: canvasRect ? Math.max(0, Math.min(canvasRect.bottom, innerHeight) - Math.max(canvasRect.top, 0)) : 0,
       targetRowBounds,
       inputHint: canvas?.dataset.inputHint || "",
+      firstMoveCoach: canvas?.dataset.firstMoveCoach || "",
       trace: {
         phase: document.querySelector("#tracePhase")?.textContent.trim(),
         match: document.querySelector("#traceMatch")?.textContent.trim(),
@@ -242,13 +243,16 @@ async function main() {
       hinted: Boolean(document.querySelector("#nodeButtons .node-button.hinted")),
       recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
+      canvasCoach: document.querySelector("#game")?.dataset.firstMoveCoach || "",
     }));
     assert(startCoach.status === "First move: rotate node 1 toward SOL. Timer starts on first shift.", "start button no longer gives a first-move grace coach");
     assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
     assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
+    assert(startCoach.canvasCoach === "TRY NODE 1 -> SOL", "first-move coach is not visible on the canvas");
     const activeStart = await readGameFacts(page);
     assert(activeStart.shortcutMap.startDisabled === true, "start button should lock during active manual runs");
     assert(activeStart.trace.quality === "Streak 0 | Clean locks 0", "first-move coach changed initial run quality");
+    assert(activeStart.firstMoveCoach === "TRY NODE 1 -> SOL", "first-move coach dataset was not preserved after HUD sync");
     await page.waitForTimeout(900);
     const graceStart = await readGameFacts(page);
     assert(graceStart.dayMeterLabel === "45s", `first-action grace let the timer drift before a node shift: ${graceStart.dayMeterLabel}`);
@@ -273,10 +277,12 @@ async function main() {
       recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
       recentLocked: Boolean(document.querySelector("#nodeButtons .node-button.recent-locked")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
+      canvasCoach: document.querySelector("#game")?.dataset.firstMoveCoach || "",
     }));
     assert(shiftPulse.status === "Timer started. Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "first manual shift no longer starts the timer and names current, target glyphs, and daylight penalty");
     assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
     assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
+    assert(shiftPulse.canvasCoach === "", "first-move coach should disappear after the timer starts");
     const afterFirstShift = await readGameFacts(page);
     assert(afterFirstShift.trace.quality === "Streak 0 | Clean locks 0", "manual miss changed run quality unexpectedly");
 

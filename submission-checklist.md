@@ -53,6 +53,8 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - `smoke.html`: 71 PASS checks including visible `Start Run`, first-action grace, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
+- First-move canvas coach: after `Start Run`, the highlighted first node exposes the in-canvas `TRY NODE 1 -> SOL` callout, keeps daylight at 45s during grace, and clears the callout after the first node shift.
+- Mobile objective strip: on 390px mobile, the phase objective uses a compact 2x2 layout so phase, target, alignment, and Turing cue remain readable while the playable canvas still starts inside the smoke-tested first-screen bound.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
 - First-screen rule: visible text explains that the player should decode the solstice rotor by matching each numbered node to the target glyph before nightfall.
 - Nightfall recovery: a timed-out manual run shows aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery; the judge page and manifest expose this as a review signal.

@@ -204,7 +204,7 @@ jobs:
           grep -q "build:package" submission-checklist.md
           grep -q "audit:launch" submission-checklist.md
           grep -q "Optional default-off Audio cue toggle" submission-checklist.md
-          grep -q "70 expected smoke checks" submission-checklist.md
+          grep -q "71 PASS checks" submission-checklist.md
           grep -q "judge-manifest.json" PUBLISHING.md
           grep -q "dev-launch-brief.md" PUBLISHING.md
 
@@ -237,7 +237,7 @@ jobs:
           grep -q "Evidence links" judge.html
           grep -q "Watch the playable page complete all four phases" judge.html
           grep -q "Optional Smoke." judge.html
-          grep -q "Run the 70-check browser smoke test" judge.html
+          grep -q "Run the 71-check browser smoke test" judge.html
           grep -q "Award thesis" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
@@ -270,7 +270,7 @@ jobs:
           grep -q "originality" judge-manifest.json
           grep -q "template_boundary" judge-manifest.json
           grep -q "asset_boundary" judge-manifest.json
-          grep -q '"expected_smoke_checks": 70' judge-manifest.json
+          grep -q '"expected_smoke_checks": 71' judge-manifest.json
           grep -q "score_basis" judge-manifest.json
           grep -q "nightfall_recovery" judge-manifest.json
           grep -q "award signals" judge-manifest.json

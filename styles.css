@@ -956,7 +956,7 @@ button:focus-visible {
   .proof-panel,
   .day-meter,
   .play-rule {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .hud,
@@ -1023,14 +1023,16 @@ button:focus-visible {
 
   .objective-strip {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 4px;
-    padding: 4px 5px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+    padding: 3px 4px;
   }
 
   .objective-strip span {
     border-left-width: 2px;
     padding-left: 4px;
+    min-height: 20px;
+    gap: 1px;
   }
 
   .objective-strip span:first-child small {
@@ -1042,8 +1044,11 @@ button:focus-visible {
   }
 
   .objective-strip small {
+    display: block;
+    overflow: hidden;
     font-size: 8px;
-    line-height: 1.08;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .day-meter {
@@ -1173,6 +1178,6 @@ button:focus-visible {
 
   canvas {
     aspect-ratio: 4 / 5;
-    margin-top: 6px;
+    margin-top: 2px;
   }
 }

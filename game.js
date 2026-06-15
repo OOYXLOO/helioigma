@@ -271,6 +271,7 @@
   }
 
   function updateHud() {
+    syncFirstMoveCoachDataset();
     levelLabel.textContent = String(Math.min(state.level + 1, levels.length));
     scoreLabel.textContent = String(state.score);
     bestLabel.textContent = String(state.bestScore);
@@ -309,6 +310,12 @@
       }
     }
     syncNightfallPanel();
+  }
+
+  function syncFirstMoveCoachDataset() {
+    canvas.dataset.firstMoveCoach = state.running && state.awaitingFirstShift && state.hintedIndex >= 0
+      ? `TRY NODE ${state.hintedIndex + 1} -> ${glyphs[state.target[state.hintedIndex]]}`
+      : "";
   }
 
   function syncNightfallPanel() {
@@ -567,6 +574,9 @@
     ctx.clearRect(0, 0, w, h);
     const inputHint = "Tap nodes or press 1-9. H = hint, D = demo.";
     canvas.dataset.inputHint = inputHint;
+    canvas.dataset.firstMoveCoach = state.running && state.awaitingFirstShift && state.hintedIndex >= 0
+      ? `TRY NODE ${state.hintedIndex + 1} -> ${glyphs[state.target[state.hintedIndex]]}`
+      : "";
 
     const cx = w / 2;
     const topBand = Math.max(92, h * 0.18);
@@ -682,6 +692,7 @@
 
       drawGlyph(x, y, nodeRadius, value, String(i + 1));
     });
+    drawFirstMoveCoach(cx, cy, nodeRadius);
 
     const matched = state.ring.filter((value, i) => value === state.target[i]).length;
     const progress = matched / state.target.length;
@@ -749,6 +760,44 @@
     ctx.fillStyle = "rgba(247,243,223,0.86)";
     ctx.font = `700 ${Math.max(11, Math.min(width, ringRadius * 2) * 0.028)}px ui-sans-serif, system-ui`;
     ctx.fillText(state.phaseBanner.detail, cx, y + panelHeight * 0.67);
+    ctx.restore();
+  }
+
+  function drawFirstMoveCoach(cx, cy, nodeRadius) {
+    if (!state.running || !state.awaitingFirstShift || state.hintedIndex < 0) return;
+    const node = state.nodes[state.hintedIndex];
+    if (!node) return;
+    const label = `TRY NODE ${state.hintedIndex + 1}`;
+    const target = `TARGET ${glyphs[state.target[state.hintedIndex]]}`;
+    const panelWidth = Math.max(138, nodeRadius * 4.8);
+    const panelHeight = Math.max(50, nodeRadius * 1.68);
+    const leftSide = node.x < cx;
+    const x = Math.max(12, Math.min(canvas.clientWidth - panelWidth - 12, node.x + (leftSide ? 20 : -panelWidth - 20)));
+    const y = Math.max(14, Math.min(canvas.clientHeight - panelHeight - 14, node.y - panelHeight * 0.58));
+    const anchorX = x + (leftSide ? 0 : panelWidth);
+    const anchorY = y + panelHeight * 0.56;
+    ctx.save();
+    ctx.strokeStyle = "rgba(247,201,72,0.72)";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([7, 5]);
+    ctx.beginPath();
+    ctx.moveTo(anchorX, anchorY);
+    ctx.lineTo(node.x, node.y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "rgba(7,16,24,0.92)";
+    ctx.strokeStyle = "rgba(247,201,72,0.78)";
+    roundRect(ctx, x, y, panelWidth, panelHeight, 12);
+    ctx.fill();
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#f7c948";
+    ctx.font = `900 ${Math.max(14, nodeRadius * 0.48)}px ui-sans-serif, system-ui`;
+    ctx.fillText(label, x + panelWidth / 2, y + panelHeight * 0.36);
+    ctx.fillStyle = "rgba(247,243,223,0.86)";
+    ctx.font = `800 ${Math.max(11, nodeRadius * 0.34)}px ui-sans-serif, system-ui`;
+    ctx.fillText(target, x + panelWidth / 2, y + panelHeight * 0.68);
     ctx.restore();
   }
 
