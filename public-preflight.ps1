@@ -326,6 +326,8 @@ try {
   Assert-Contains "dev-article-final.md" "little daylight machine"
   Assert-Contains "dev-article-final.md" "live objective strip tells you what the rotor wants next"
   Assert-Contains "dev-article-final.md" "For game feel, I focused on a short pressure loop"
+  Assert-Contains "dev-article-final.md" "Daylight is the shared resource"
+  Assert-Contains "README.md" "Daylight is the shared resource"
   Assert-Contains "dev-article-final.md" "the first artifact is still the playable daylight race"
   Assert-Contains "dev-article-final.md" "a compact Turing cue names the current reasoning"
   Assert-Contains "dev-article-final.md" "The manual Hint and Rotor Trace path also changes by phase"
