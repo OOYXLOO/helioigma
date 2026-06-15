@@ -102,6 +102,7 @@ function Get-Sha256HexFromFile {
 
 Push-Location $PSScriptRoot
 try {
+  node --check receipt-core.js | Out-Null
   node --check game.js | Out-Null
 
   $requiredFiles = @(
@@ -109,6 +110,7 @@ try {
     ".nojekyll",
     "index.html",
     "styles.css",
+    "receipt-core.js",
     "game.js",
     "LICENSE",
     "package.json",
@@ -514,6 +516,9 @@ try {
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
   Assert-Contains "RUBRIC_SCORECARD.md" "71-check browser smoke"
   Assert-Contains "RUBRIC_SCORECARD.md" "phase-specific hint order"
+  Assert-Contains "RUBRIC_SCORECARD.md" "player makes a hypothesis about the rotor"
+  Assert-Contains "proof-verifier.html" "receipt-core.js"
+  Assert-Contains "index.html" "receipt-core.js?v=20260615-canvas-priority"
   Assert-Contains "verification-report.md" "Manual smoke score variance is expected"
   Assert-NotContains "verification-report.md" "Latest live-timer score 2892"
   Assert-NotContains "verification-report.md" "currently reports 2892"
@@ -690,6 +695,8 @@ try {
   Assert-Contains "judge.html" "Technical execution"
   Assert-Contains "judge.html" "Writing quality"
   Assert-Contains "judge.html" "Turing category"
+  Assert-Contains "judge.html" "Ode with restraint"
+  Assert-Contains "judge.html" "reasoning as play"
   Assert-Contains "judge.html" "Inspectable Finished Loop"
   Assert-Contains "judge.html" "Game Feel"
   Assert-Contains "judge.html" "short timer pressure, node pulse reactions, phase-specific Hint scans"
@@ -938,6 +945,7 @@ try {
   Assert-Contains "judge-manifest.json" "phase_proof_line"
   Assert-Contains "judge-manifest.json" "Turing cue line"
   Assert-Contains "judge-manifest.json" "ode_note"
+  Assert-Contains "judge-manifest.json" "player makes a hypothesis about the rotor"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "judge-manifest.json" "sample_receipt_verifier"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"

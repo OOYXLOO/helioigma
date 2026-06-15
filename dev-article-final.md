@@ -155,6 +155,8 @@ For the Alan Turing angle, Helioigma borrows the feeling of rotor alignment and 
 
 I wanted the Turing reference to be respectful instead of decorative. Helioigma is not a biography game, and it does not try to recreate the Bombe or any real wartime machine. It keeps the tribute inside the things a browser game can honestly express: state, logic, alignment, verification, pressure, and a small act of holding light against a timer.
 
+The part I care about is that the player is not asked to admire the word "cipher" from a distance. They have to make a hypothesis about the wheel, test it with a move, watch the state change, correct the next mismatch, and leave behind a receipt that can be checked. That is the modest ode: the game treats reasoning as an action, and it treats evidence as something a player and a judge can inspect together.
+
 That is also why the checksum matters to the theme. Turing's legacy is not only "secret codes"; it is careful reasoning about machines and evidence. The checksum is modest, but it makes the solve inspectable instead of asking the judge to trust a screenshot.
 
 ## Why It Is Not Just a Cipher Demo

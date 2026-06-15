@@ -32,6 +32,7 @@ Helioigma is a playable ode, a receipt-checkable loop, and a finished static pac
 
 - Solstice fit: daylight is the timer, nightfall is the fail state, and holding the longest day is the win condition.
 - Turing fit: rotor-like alignment, target checking, XOR/binary language, state reasoning, first-screen `Turing cue` line, and a local checksum receipt carry the tribute through mechanics.
+- Ode with restraint: the player makes a hypothesis about the wheel, tests it with a move, watches the machine state change, corrects the next mismatch, and leaves evidence a judge can inspect.
 - Execution evidence: the same public build includes the game, judge page, Nightfall recovery report, receipt checker, manifest, screenshots, GIF/WebM media, and optional smoke test.
 
 ## Crowded-Jam Differentiator

@@ -208,7 +208,7 @@
 
     <section class="panel">
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
-      <p><strong>Source note:</strong> the receipt is generated in <code>game.js</code> by <code>buildRunProof</code> from the same summary payload shape that this verifier recomputes.</p>
+      <p><strong>Source note:</strong> the receipt is generated in <code>game.js</code> by <code>buildRunProof</code>, and both the game and verifier use the shared public <code>receipt-core.js</code> checksum formula.</p>
       <p><strong>Stable demo boundary:</strong> only <code>SC-4P-2907-62-Y5VFX1</code> is marked as the published stable Demo Solve receipt. Other formula-valid receipts are shown as neutral checksum-form matches, not as the published demo route.</p>
       <p>This is a transparent summary receipt for a public jam entry, not anti-cheat, identity, payout, or eligibility proof. It exists so judges can replay the public Demo Solve route and inspect the score, shift count, phase count, and checksum without trusting a screenshot.</p>
       <div class="boundary-grid" aria-label="Receipt check boundary">
@@ -225,43 +225,28 @@
       <p><a href="./">Play the game</a> - <a href="smoke.html">Run smoke test</a> - <a href="verification.html">Open verification report</a></p>
     </section>
   </main>
+  <script src="receipt-core.js?v=20260615-canvas-priority"></script>
   <script>
     const input = document.querySelector("#proofInput");
     const button = document.querySelector("#verifyButton");
     const result = document.querySelector("#result");
     const facts = document.querySelector("#proofFacts");
 
-    function suffixFor(score, shifts, solvedPhases) {
-      const payload = `solstice|4|${score}|${shifts}|${solvedPhases}`;
-      let hash = 2166136261;
-      for (const char of payload) {
-        hash ^= char.charCodeAt(0);
-        hash = Math.imul(hash, 16777619);
-      }
-      return (hash >>> 0).toString(36).toUpperCase().padStart(6, "0").slice(0, 6);
-    }
-
     function verify() {
-      const value = input.value.trim().toUpperCase();
-      const match = /^SC-(\d+)P-(\d+)-(\d+)-([0-9A-Z]{6})$/.exec(value);
+      const verification = window.HelioigmaReceipt.verifyReceipt(input.value);
       result.className = "result";
       facts.textContent = "";
-      if (!match) {
+      if (verification.status === "invalid_format") {
         result.textContent = "Invalid format. Expected SC-4P-score-shifts-checksum.";
         result.classList.add("bad");
         return;
       }
 
-      const solved = Number(match[1]);
-      const score = Number(match[2]);
-      const shifts = Number(match[3]);
-      const suffix = match[4];
-      const expected = suffixFor(score, shifts, solved);
       [
-        ["Phases", `${solved}/4`],
-        ["Score", String(score)],
-        ["Shifts", String(shifts)],
-        ["Checksum", expected],
+        ["Phases", `${verification.solvedPhases}/4`],
+        ["Score", String(verification.score)],
+        ["Shifts", String(verification.shifts)],
+        ["Checksum", verification.expected],
       ].forEach(([label, value]) => {
         const block = document.createElement("div");
         const term = document.createElement("dt");
@@ -272,27 +257,25 @@
         facts.append(block);
       });
 
-      const stableDemoReceipt = value === "SC-4P-2907-62-Y5VFX1" && solved === 4 && score === 2907 && shifts === 62 && suffix === expected;
-      const formulaPlausible = solved === 4 && score >= 0 && score <= 5000 && shifts >= 0 && shifts <= 300;
-      if (stableDemoReceipt) {
-        result.textContent = `Stable Demo Solve receipt: ${score} points across ${shifts} shifts.`;
+      if (verification.status === "stable_demo") {
+        result.textContent = `Stable Demo Solve receipt: ${verification.score} points across ${verification.shifts} shifts.`;
         result.classList.add("ok");
         return;
       }
 
-      if (formulaPlausible && suffix === expected) {
+      if (verification.status === "formula_valid") {
         result.textContent = `Checksum-form valid, but not the published stable Demo Solve receipt.`;
         result.classList.add("neutral");
         return;
       }
 
-      if (suffix === expected && !formulaPlausible) {
+      if (verification.status === "out_of_bounds") {
         result.textContent = `Checksum matches, but the phase/score/shift values are outside the published four-phase demo bounds.`;
         result.classList.add("bad");
         return;
       }
 
-      result.textContent = `Invalid receipt. Expected checksum ${expected} for ${score} points and ${shifts} shifts.`;
+      result.textContent = `Invalid receipt. Expected checksum ${verification.expected} for ${verification.score} points and ${verification.shifts} shifts.`;
       result.classList.add("bad");
     }
 

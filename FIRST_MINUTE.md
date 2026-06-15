@@ -31,6 +31,8 @@ Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `inde
 
 Helioigma targets Best Ode to Alan Turing. It does not try to recreate the Bombe or turn Turing into decoration. The category fit is in the game loop: state, logic, alignment, pressure, verification, and a small receipt trail for what the player saw.
 
+The one-minute ode is practical: make a guess about the wheel, test it with a node move, watch the state change, and verify the finished evidence instead of trusting a screenshot.
+
 ## What Is Not Claimed
 
 - No Best Google AI Usage claim.

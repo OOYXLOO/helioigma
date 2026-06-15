@@ -13,7 +13,7 @@
       "boundary": "No Google AI claim, backend, account login, API key, or private data."
     },
     "award_thesis": "Helioigma is a playable ode, a receipt-checkable loop, and a finished static package: Turing fit through rotor state and checksum reasoning, solstice fit through daylight as the shared countdown, mistake cost, and score pressure, game feel through target glyphs, a pre-start first-move preview, an in-canvas first-action hint, node pulses, phase-specific hints, optional audio, and Nightfall recovery, and review evidence through Auto Demo, Rotor Trace, Turing cue copy, summary receipt checker, manifest, and optional smoke test.",
-    "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography.",
+    "ode_note": "The Alan Turing tribute is expressed through state, logic, alignment, verification, pressure, and machine-readable reasoning rather than pretending to simulate the Bombe or a biography. The player makes a hypothesis about the rotor, tests it with a move, watches state change, corrects the next mismatch, and leaves evidence a judge can inspect.",
     "crowded_jam_differentiator": {
       "game_first": "The canvas previews START NODE 1 x3 -> SOL before play, then timed node decisions, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.",
       "reproducible": "Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; it produces stable receipt SC-4P-2907-62-Y5VFX1.",

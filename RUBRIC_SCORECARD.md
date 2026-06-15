@@ -6,6 +6,10 @@ Purpose: give a source-first DEV judge a compact, evidence-linked map from the J
 
 Helioigma is a finished static browser game for the Best Ode to Alan Turing route: a four-phase daylight timer puzzle, a restrained Turing-inspired rotor/checksum mechanic, and a receipt-checkable path that runs without accounts, servers, APIs, or private data.
 
+## Ode Note
+
+The tribute is intentionally practical rather than biographical: the player makes a hypothesis about the rotor, tests it with a move, watches the state change, corrects the next mismatch, and leaves behind evidence a judge can inspect.
+
 ## Criteria Map
 
 | Criterion | Helioigma answer | Evidence |

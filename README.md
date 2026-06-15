@@ -131,6 +131,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `judge-manifest.json`: machine-readable judge manifest for prize target, rubric snapshot, public links, stable run receipt, required assets, verification commands, and non-secret boundaries.
 - `smoke.html`: browser self-test that starts the game in an iframe, checks the deterministic demo-solve receipt, solves all four phases through public keyboard controls, and verifies the final score/status, shift counter, phase track, Rotor Trace, and completion receipt code.
 - `proof-verifier.html`: local verifier for copyable `SC-4P-...` run receipts, with parsed phases, score, shifts, checksum facts, a prefilled sample receipt link, and `?receipt=` deep-link support from completed runs.
+- `receipt-core.js`: shared public receipt formula used by both `game.js` and `proof-verifier.html`, so judges can inspect the same checksum implementation from generation to verification.
 - `dev-article-final.md`: DEV-ready article draft using the official challenge tags and required overview/demo structure.
 - `CHALLENGE_COMPLIANCE.md`: official-route checklist for tags, demo media, code link, build notes, Turing category boundary, public launch no-go gate, and prize-claim boundary.
 - `dev-launch-brief.md`: final DEV launch field list, URL checklist, no-go gate, and post-publish receipt template.

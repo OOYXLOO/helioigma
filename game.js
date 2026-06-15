@@ -215,18 +215,16 @@
   }
 
   function buildRunProof() {
-    const payload = buildReceiptPayload();
-    let hash = 2166136261;
-    for (const char of payload) {
-      hash ^= char.charCodeAt(0);
-      hash = Math.imul(hash, 16777619);
-    }
-    const suffix = (hash >>> 0).toString(36).toUpperCase().padStart(6, "0").slice(0, 6);
-    return `SC-${state.solvedPhases}P-${state.score}-${state.shifts}-${suffix}`;
+    return window.HelioigmaReceipt.buildRunReceipt({
+      score: state.score,
+      shifts: state.shifts,
+      solvedPhases: state.solvedPhases,
+      phaseCount: levels.length,
+    });
   }
 
   function buildReceiptPayload() {
-    return `solstice|${levels.length}|${state.score}|${state.shifts}|${state.solvedPhases}`;
+    return window.HelioigmaReceipt.buildReceiptPayload(state.score, state.shifts, state.solvedPhases, levels.length);
   }
 
   function seedLevel(index) {
