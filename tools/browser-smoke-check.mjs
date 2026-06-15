@@ -508,7 +508,7 @@ async function main() {
     assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
-    assert(judge.scorecardHref === "RUBRIC_SCORECARD.md", "judge page scorecard action is not a local package link");
+    assert(judge.scorecardHref === "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md", "judge page scorecard action is not the GitHub-rendered source link");
     assert(judge.storyHref === "dev-article-final.md", "judge page story action is not a local package link");
     assert(judge.readmeHref === "README.md", "judge page README action is not a local package link");
     assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");

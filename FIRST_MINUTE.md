@@ -7,14 +7,13 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 1. Play: `https://ooyxloo.github.io/helioigma/`
 2. Auto demo: `https://ooyxloo.github.io/helioigma/?demo=1`
 3. Stable receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
-4. Privacy/no-storage play: `https://ooyxloo.github.io/helioigma/?nostore=1`
-5. Source: `https://github.com/OOYXLOO/helioigma`
+4. Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
 
 Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `index.html?nostore=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and `judge.html` from the same static server.
 
 ## Try This In One Minute
 
-1. Start the game, notice the in-canvas `Tap nodes or press 1-9. H = hint, D = demo.` prompt, and rotate one numbered node.
+1. Press `Start Run`, notice the in-canvas `Tap nodes or press 1-9. H = hint, D = demo.` prompt, and rotate one numbered node.
 2. Watch Rotor Trace name the action and next mismatch.
 3. Press `Demo Solve` to complete the same visible board.
 4. Verify receipt `SC-4P-2907-62-Y5VFX1`.
@@ -41,6 +40,8 @@ Helioigma targets Best Ode to Alan Turing. It does not try to recreate the Bombe
 ## Deeper Review
 
 - Judge pack: `https://ooyxloo.github.io/helioigma/judge.html`
-- Rubric scorecard: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
+- Privacy/no-storage play: `https://ooyxloo.github.io/helioigma/?nostore=1`
+- Source: `https://github.com/OOYXLOO/helioigma`
+- Rubric scorecard: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 - Browser smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`

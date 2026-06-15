@@ -33,7 +33,7 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 First-minute check for rushed judges:
 
 ```text
-Rotate one node, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
+Press Start Run, rotate one node, watch Rotor Trace explain the state change, press Demo Solve, then verify receipt SC-4P-2907-62-Y5VFX1.
 ```
 
 Keep this exact meaning in the public post:
@@ -54,6 +54,7 @@ npm run build:gif
 npm run build:video
 npm run verify:article
 npm run verify:media
+npm run build:package
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 node tools/browser-smoke-check.mjs
 npm run audit:launch

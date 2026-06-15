@@ -10,7 +10,7 @@ cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-medi
 
 ## Reviewer Fast Path
 
-If you are judging quickly, the first-minute check is: rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then inspect run summary `SC-4P-2907-62-Y5VFX1`.
+If you are judging quickly, the first-minute check is: press `Start Run`, rotate one node, watch Rotor Trace explain the state change, press `Demo Solve`, then inspect run summary `SC-4P-2907-62-Y5VFX1`.
 
 - Play: https://ooyxloo.github.io/helioigma/
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
@@ -70,7 +70,7 @@ Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-dem
 - Auto demo: https://ooyxloo.github.io/helioigma/?demo=1
 - Source: https://github.com/OOYXLOO/helioigma
 
-Detailed judge links: [judge page](https://ooyxloo.github.io/helioigma/judge.html), [smoke test](https://ooyxloo.github.io/helioigma/smoke.html), [sample receipt verifier](https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1), [judge-manifest.json](https://ooyxloo.github.io/helioigma/judge-manifest.json), and [RUBRIC_SCORECARD.md](https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md).
+Detailed judge links: [judge page](https://ooyxloo.github.io/helioigma/judge.html), [smoke test](https://ooyxloo.github.io/helioigma/smoke.html), [sample receipt verifier](https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1), [judge-manifest.json](https://ooyxloo.github.io/helioigma/judge-manifest.json), and the [GitHub-rendered rubric scorecard](https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md), with a [Pages asset mirror](https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md).
 
 Core features, compressed for review: four timed phases; canvas-rendered glyphs, beams, progress ring, and particle feedback; mouse, touch, on-screen buttons, first-move coach, hint, demo-solve, number-key controls, and tactile pulse feedback; phase-specific hint order where Crib uses the first mismatch, XOR alternates mirrored rotor nodes, Carry follows the chain, and Checksum scans backward; Optional default-off Web Audio cues; short phase banner and screen-reader phase announcer; live Rotor Trace with run-quality feedback; score carry-over, local best score, final phase ledger, copyable `SC-4P-...` run code, and Judge run summary.
 

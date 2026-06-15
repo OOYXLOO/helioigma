@@ -12,7 +12,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 ## 60-Second Path
 
 1. Play: `https://ooyxloo.github.io/helioigma/`
-2. Rotate one numbered node and watch Rotor Trace name the action plus next mismatch.
+2. Press `Start Run`, rotate one numbered node, and watch Rotor Trace name the action plus next mismatch.
 3. Press `Demo Solve` or open `https://ooyxloo.github.io/helioigma/?demo=1`.
 4. Confirm the completed run receipt `SC-4P-2907-62-Y5VFX1` in the prefilled verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`.
 
@@ -21,7 +21,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 - Watch the captioned WebM: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
 - Run the browser smoke test: `https://ooyxloo.github.io/helioigma/smoke.html`
 - Read the first-minute source card: `https://ooyxloo.github.io/helioigma/FIRST_MINUTE.md`
-- Check the source-first rubric map: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
+- Check the source-first rubric map: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - Check the official-route compliance boundary: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
 
 Local pre-publication path from a static server: `index.html`, `index.html?demo=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, `judge.html`, and `smoke.html`.
@@ -74,7 +74,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 - Manifest: `https://ooyxloo.github.io/helioigma/judge-manifest.json`
 - Verification report: `https://ooyxloo.github.io/helioigma/verification.html`
 - Challenge compliance: `https://ooyxloo.github.io/helioigma/CHALLENGE_COMPLIANCE.md`
-- Rubric scorecard: `https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md`
+- Rubric scorecard: `https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md`
 - GIF preview: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media`
 - WebM demo: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
 - Mobile completion screenshot: `https://ooyxloo.github.io/helioigma/mobile-complete-v1.png?v=20260615-fresh-media`

@@ -351,7 +351,8 @@ try {
   Assert-Contains "dev-article-final.md" "public-preflight.ps1 -Public"
   Assert-Contains "dev-article-final.md" "cover_image: https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/?demo=1"
-  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/RUBRIC_SCORECARD.md"
+  Assert-Contains "dev-article-final.md" "GitHub-rendered rubric scorecard"
+  Assert-Contains "dev-article-final.md" "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.gif"
   Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.webm"
   Assert-Contains "dev-article-final.md" "helioigma-demo.gif?v=20260615-fresh-media"
@@ -386,7 +387,7 @@ try {
   Assert-Contains "dev-launch-brief.md" "race a solar cipher wheel, trace its rotor state, and verify the solved run"
   Assert-Contains "dev-launch-brief.md" "receipt-checkable loop"
   Assert-Contains "dev-launch-brief.md" "First-minute check for rushed judges"
-  Assert-Contains "dev-launch-brief.md" "Rotate one node, watch Rotor Trace explain the state change"
+  Assert-Contains "dev-launch-brief.md" "Press Start Run, rotate one node, watch Rotor Trace explain the state change"
   Assert-Contains "dev-launch-brief.md" "devchallenge"
   Assert-Contains "dev-launch-brief.md" "gamechallenge"
   Assert-Contains "dev-launch-brief.md" "gamedev"
@@ -454,7 +455,8 @@ try {
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Helioigma Judge Review Card"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "FIRST_MINUTE.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "60-Second Path"
-  Assert-Contains "JUDGE_REVIEW_CARD.md" "Rotate one numbered node and watch Rotor Trace"
+  Assert-Contains "JUDGE_REVIEW_CARD.md" 'Press `Start Run`, rotate one numbered node'
+  Assert-Contains "JUDGE_REVIEW_CARD.md" "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Award Thesis"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Official Route Snapshot"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "RUBRIC_SCORECARD.md"
@@ -474,6 +476,7 @@ try {
   Assert-Contains "FIRST_MINUTE.md" "Helioigma First Minute"
   Assert-Contains "FIRST_MINUTE.md" "rushed DEV judge"
   Assert-Contains "FIRST_MINUTE.md" "Try This In One Minute"
+  Assert-Contains "FIRST_MINUTE.md" 'Press `Start Run`'
   Assert-Contains "FIRST_MINUTE.md" "Watch Rotor Trace name the action and next mismatch"
   Assert-Contains "FIRST_MINUTE.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "FIRST_MINUTE.md" "Best Ode to Alan Turing"
@@ -484,6 +487,9 @@ try {
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
   Assert-Contains "RUBRIC_SCORECARD.md" "70-check browser smoke"
   Assert-Contains "RUBRIC_SCORECARD.md" "phase-specific hint order"
+  Assert-Contains "verification-report.md" "Manual smoke score variance is expected"
+  Assert-NotContains "verification-report.md" "Latest live-timer score 2892"
+  Assert-NotContains "verification-report.md" "currently reports 2892"
   Assert-Contains "README.md" 'first-move coach on `Start Run`'
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
@@ -792,7 +798,7 @@ try {
   Assert-Contains "verification-report.md" "Privacy review path"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"
   Assert-Contains "styles.css" "grid-column: span 2"
-  Assert-Contains "judge.html" 'href="RUBRIC_SCORECARD.md"'
+  Assert-Contains "judge.html" 'href="https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"'
   Assert-Contains "judge.html" 'href="dev-article-final.md"'
   Assert-Contains "judge.html" 'href="README.md"'
   Assert-Contains "verification.html" "github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"

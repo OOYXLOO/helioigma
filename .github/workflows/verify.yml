@@ -75,7 +75,7 @@ jobs:
           grep -q "solar rotor" dev-article-final.md
           grep -q "You open with 45 seconds of daylight" dev-article-final.md
           grep -q "live objective strip tells you what the rotor wants next" dev-article-final.md
-          grep -q "inspectable summary receipt with score, shifts, phase count, and checksum" dev-article-final.md
+          grep -q "inspectable run summary with score, shifts, phase count, and checksum" dev-article-final.md
           grep -q "That is my Best Ode to Alan Turing angle" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
@@ -100,7 +100,7 @@ jobs:
           grep -q "careful reasoning about machines and evidence" dev-article-final.md
           grep -q "Judge in 60 Seconds" dev-article-final.md
           grep -q "Award thesis: Helioigma is a playable ode" dev-article-final.md
-          grep -q "playable ode, a receipt-checkable loop, and a finished static package" dev-article-final.md
+          grep -q "playable ode, an inspectable loop, and a finished static package" dev-article-final.md
           grep -q "judge-manifest.json" dev-article-final.md
           grep -q "Rubric Fit" dev-article-final.md
           grep -q "I chose a cipher wheel" dev-article-final.md
@@ -227,7 +227,7 @@ jobs:
           grep -q "60-second review path" judge.html
           grep -q "Award thesis" judge.html
           grep -q "Playable ode" judge.html
-          grep -q "Receipt-checkable" judge.html
+          grep -q "Inspectable run" judge.html
           grep -q "Finished surface" judge.html
           grep -q "Primary judge actions" judge.html
           grep -q "Play First." judge.html
@@ -293,6 +293,7 @@ jobs:
           grep -q "Latest local run:" verification.html
           ! grep -q "2026-06-14" verification.html
           ! grep -q "Latest live-timer score 2892" verification.html
+          ! grep -q "Latest live-timer score 2892" verification-report.md
           grep -q "mobile-complete-v1.png" verification.html
           grep -q "DEV No-Go Gate" dev-launch-brief.md
           grep -q "publish-after-repo helper" publish-after-repo.ps1
