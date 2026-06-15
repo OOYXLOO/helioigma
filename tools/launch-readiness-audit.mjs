@@ -55,6 +55,7 @@ const requiredFiles = [
   "tools/build-package.ps1",
   "tools/capture-public-media.mjs",
   "tools/launch-readiness-audit.mjs",
+  "tools/verify-dev-article.mjs",
   "tools/verify-media-freshness.mjs",
   "verification-report.md",
   "verification.html",
@@ -71,6 +72,7 @@ const mustContain = [
   ["dev-article-final.md", "tags: devchallenge, gamechallenge, gamedev, javascript"],
   ["dev-article-final.md", "{% embed https://github.com/OOYXLOO/helioigma %}"],
   ["dev-article-final.md", "tools/build-demo-gif.py"],
+  ["dev-article-final.md", "tools/verify-dev-article.mjs"],
   ["dev-article-final.md", "tools/verify-media-freshness.mjs"],
   ["judge.html", "Playability proof"],
   ["judge.html", "Readable decisions"],
@@ -81,9 +83,11 @@ const mustContain = [
   ["JUDGE_REVIEW_CARD.md", "Playability Proof"],
   ["README.md", "Playability proof for a rushed judge"],
   ["README.md", "npm run build:gif"],
+  ["README.md", "npm run verify:article"],
   ["README.md", "npm run verify:media"],
   ["README.md", "first and last target glyphs do not clip"],
   ["README.md", "tools/build-demo-gif.py"],
+  ["README.md", "tools/verify-dev-article.mjs"],
   ["README.md", "tools/verify-media-freshness.mjs"],
   ["FIRST_MINUTE.md", "Playability proof appears before the verifier"],
   ["PUBLISHING.md", intended.repo],
@@ -298,7 +302,15 @@ addCheck("package local audit script", packageJson.scripts?.["audit:launch"] ===
 addCheck("package public audit script", packageJson.scripts?.["audit:launch:public"] === "node tools/launch-readiness-audit.mjs --public", packageJson.scripts?.["audit:launch:public"] || "");
 addCheck("package smoke script", packageJson.scripts?.smoke === "node tools/browser-smoke-check.mjs", packageJson.scripts?.smoke || "");
 addCheck("package GIF build script", packageJson.scripts?.["build:gif"] === "python tools/build-demo-gif.py", packageJson.scripts?.["build:gif"] || "");
+addCheck("package DEV article verifier script", packageJson.scripts?.["verify:article"] === "node tools/verify-dev-article.mjs", packageJson.scripts?.["verify:article"] || "");
 addCheck("package media freshness script", packageJson.scripts?.["verify:media"] === "node tools/verify-media-freshness.mjs", packageJson.scripts?.["verify:media"] || "");
+
+try {
+  execFileSync("node", ["tools/verify-dev-article.mjs"], { cwd: root, encoding: "utf8" });
+  addCheck("DEV article manifest/link verification", true, "Front matter, links, media versions, and manifest URLs agree.");
+} catch (error) {
+  addCheck("DEV article manifest/link verification", false, error.stdout || error.stderr || error.message);
+}
 
 try {
   execFileSync("node", ["tools/verify-media-freshness.mjs"], { cwd: root, encoding: "utf8" });

@@ -91,7 +91,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text and phase announcements are present; no telemetry or network call records play; and the receipt checker is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
-- `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:gif`, `npm run build:video`, `npm run build:webm`, `npm run verify:media`, and `npm run build:package`.
+- `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:gif`, `npm run build:video`, `npm run build:webm`, `npm run verify:article`, `npm run verify:media`, and `npm run build:package`.
 
 ## Local Media Assets
 
@@ -131,6 +131,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 - `tools/launch-readiness-audit.mjs`: pre-publication readiness audit. `npm run audit:launch` reports local package readiness; `npm run audit:launch:public` also checks the missing public repo/Pages gate and reports `WAIT_USER_GATE` until launch is live.
 - `tools/build-demo-video.mjs`: reproducible browser-recording builder for the current captioned `helioigma-demo.webm`; it writes capture scratch files under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - `tools/build-demo-webm.mjs`: fallback frame-based WebM builder using `demo-frames-v3`.
+- `tools/verify-dev-article.mjs`: pre-publish guard that checks DEV front matter, required challenge sections, manifest-aligned public URLs, media version parameters, no stale slug, and no secret/local-staging strings.
 - `tools/verify-media-freshness.mjs`: signature and timestamp guard that checks PNG, GIF, and WebM media are fresh relative to their source builders and frames.
 
 ## Public Publishing

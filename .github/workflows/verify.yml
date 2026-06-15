@@ -42,6 +42,7 @@ jobs:
             tools/browser-smoke-check.mjs \
             tools/capture-public-media.mjs \
             tools/launch-readiness-audit.mjs \
+            tools/verify-dev-article.mjs \
             tools/verify-media-freshness.mjs \
             dev-article-final.md \
             dev-launch-brief.md \
@@ -90,6 +91,7 @@ jobs:
           grep -q "Video Demo" dev-article-final.md
           grep -q "Code" dev-article-final.md
           grep -q "tools/build-demo-gif.py" dev-article-final.md
+          grep -q "tools/verify-dev-article.mjs" dev-article-final.md
           grep -q "tools/verify-media-freshness.mjs" dev-article-final.md
           grep -q "How I Built It" dev-article-final.md
           grep -q "Prize Category" dev-article-final.md
@@ -153,6 +155,7 @@ jobs:
           grep -q "npm run smoke" README.md
           grep -q "npm run audit:launch" README.md
           grep -q "npm run build:gif" README.md
+          grep -q "npm run verify:article" README.md
           grep -q "npm run verify:media" README.md
           grep -q "first and last target glyphs do not clip" README.md
           grep -q "npm run build:package" README.md
@@ -312,8 +315,12 @@ jobs:
           grep -q "mobile target row is too close to the right canvas edge" tools/browser-smoke-check.mjs
           grep -q "mobile target row inset is too small for glyph labels" tools/browser-smoke-check.mjs
           grep -q "tools/build-demo-gif.py" README.md
+          grep -q "tools/verify-dev-article.mjs" README.md
           grep -q "tools/verify-media-freshness.mjs" README.md
           grep -q "helioigma-demo.gif" tools/build-demo-gif.py
+          grep -q "PASS DEV article verification" tools/verify-dev-article.mjs
+          grep -q "media URL has stale version" tools/verify-dev-article.mjs
+          node tools/verify-dev-article.mjs
           grep -q "PASS media freshness" tools/verify-media-freshness.mjs
           grep -q "clean browser contexts" tools/capture-public-media.mjs
           grep -q "first screen inherited best score" tools/capture-public-media.mjs

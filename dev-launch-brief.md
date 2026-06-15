@@ -52,6 +52,7 @@ node --check game.js
 npm run build:media
 npm run build:gif
 npm run build:video
+npm run verify:article
 npm run verify:media
 powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
 node tools/browser-smoke-check.mjs
@@ -63,6 +64,7 @@ powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 Expected local review signals:
 
 - `PASS Helioigma preflight`
+- `PASS DEV article verification`
 - `PASS media freshness`
 - `PASS browser smoke`
 - `npm run audit:launch` reports `READY_LOCALLY`

@@ -115,6 +115,7 @@ try {
     "tools/browser-smoke-check.mjs",
     "tools/capture-public-media.mjs",
     "tools/launch-readiness-audit.mjs",
+    "tools/verify-dev-article.mjs",
     "tools/verify-media-freshness.mjs",
     "verification.html",
     "verification-report.md",
@@ -150,6 +151,8 @@ try {
     Assert-PngSignature $png
   }
   Assert-WebmSignature "helioigma-demo.webm"
+  node --check tools/verify-dev-article.mjs | Out-Null
+  node tools/verify-dev-article.mjs | Out-Null
   node tools/verify-media-freshness.mjs | Out-Null
 
   $package = Get-Content -Raw -LiteralPath "package.json" | ConvertFrom-Json
@@ -159,6 +162,7 @@ try {
   if ($package.scripts.'audit:launch:public' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch:public script mismatch" }
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.scripts.'build:gif' -ne "python tools/build-demo-gif.py") { throw "package build:gif script mismatch" }
+  if ($package.scripts.'verify:article' -ne "node tools/verify-dev-article.mjs") { throw "package verify:article script mismatch" }
   if ($package.scripts.'verify:media' -ne "node tools/verify-media-freshness.mjs") { throw "package verify:media script mismatch" }
   if (-not ($package.scripts.check -like "*ast.parse(pathlib.Path('tools/build-demo-gif.py').read_text())*")) { throw "package check must parse GIF builder without writing pycache" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
@@ -190,6 +194,7 @@ try {
       "tools/browser-smoke-check.mjs",
       "tools/build-demo-gif.py",
       "tools/build-package.ps1",
+      "tools/verify-dev-article.mjs",
       "tools/verify-media-freshness.mjs",
       "mobile-complete-v1.png"
     )) {
@@ -403,6 +408,7 @@ try {
   Assert-Contains "dev-launch-brief.md" "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "dev-article-final.md" "tools/build-demo-gif.py"
+  Assert-Contains "dev-article-final.md" "tools/verify-dev-article.mjs"
   Assert-Contains "dev-article-final.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "README.md" "first and last target glyphs do not clip"
@@ -412,6 +418,7 @@ try {
   Assert-Contains "README.md" "package.json"
   Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "README.md" "npm run build:gif"
+  Assert-Contains "README.md" "npm run verify:article"
   Assert-Contains "README.md" "npm run verify:media"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing category route"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
@@ -563,8 +570,13 @@ try {
   Assert-Contains "tools/build-demo-webm.mjs" "helioigma-demo.webm"
   Assert-Contains "tools/build-demo-webm.mjs" "demo-frames-v3"
   Assert-Contains "README.md" "tools/build-demo-gif.py"
+  Assert-Contains "README.md" "tools/verify-dev-article.mjs"
   Assert-Contains "README.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "tools/build-demo-gif.py" "helioigma-demo.gif"
+  Assert-Contains "tools/verify-dev-article.mjs" "PASS DEV article verification"
+  Assert-Contains "tools/verify-dev-article.mjs" "judge manifest"
+  Assert-Contains "tools/verify-dev-article.mjs" "media URL has stale version"
+  Assert-Contains "tools/verify-dev-article.mjs" "DEV article public URL has no matching local artifact"
   Assert-Contains "tools/verify-media-freshness.mjs" "PASS media freshness"
   Assert-Contains "tools/capture-public-media.mjs" "clean browser contexts"
   Assert-Contains "tools/capture-public-media.mjs" "first screen inherited best score"

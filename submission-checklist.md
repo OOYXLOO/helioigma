@@ -17,7 +17,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Optional default-off Audio cue toggle with `S` shortcut and generated Web Audio tones.
 - Optional auto-demo route: `?demo=1` starts the deterministic judge path automatically.
 - Local/public preflight script: `public-preflight.ps1`.
-- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, and `npm run build:package`.
+- Clean-clone Node scripts: `package.json` with `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:media`, `npm run build:video`, `npm run build:webm`, `npm run verify:article`, `npm run verify:media`, and `npm run build:package`.
 - Dry-run-by-default push helper: `publish-after-repo.ps1`.
 - Optional user-present Pages API helper: `publish-after-repo.ps1 -Push -ConfigurePages`.
 - Optional Pages wait/public preflight helper: `publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages`.
@@ -44,6 +44,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Local package ZIP: `helioigma-dev-package.zip`, rebuilt by the package script so directory paths are preserved.
 - Verification:
   - `npm run check`
+  - `npm run verify:article`
   - `npm run preflight`
   - `npm run smoke`
   - `npm run audit:launch`

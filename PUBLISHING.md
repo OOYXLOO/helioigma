@@ -88,6 +88,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 ## Final Pre-Submit Check
 
 - [ ] `node --check game.js`
+- [ ] `npm run verify:article`
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
 - [ ] `npm run audit:launch -- --json` reports `READY_LOCALLY`
 - [ ] `publish-after-repo.ps1` prints `Launch audit status: READY_LOCALLY` before any push
@@ -109,6 +110,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 - [ ] Public auto-demo link starts Demo Solve and reaches receipt `SC-4P-2907-62-Y5VFX1`.
 - [ ] Completed public run reveals a copyable `SC-4P-...` run receipt.
 - [ ] DEV article uses the official tags plus one discovery tag: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`.
+- [ ] DEV article verification passes against `judge-manifest.json`, public media versions, and Helioigma public URLs.
 - [ ] DEV article includes a demo video asset or hosted demo video URL.
 - [ ] `dev-launch-brief.md` public URL checks, DEV article fields, and no-go gate are reviewed immediately before publishing.
 - [ ] Logged-in DEV challenge flow still accepts this June Solstice Game Jam submission despite any confusing public status label.
