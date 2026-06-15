@@ -89,6 +89,7 @@ try {
   node --check game.js | Out-Null
 
   $requiredFiles = @(
+    ".gitignore",
     ".nojekyll",
     "index.html",
     "styles.css",
@@ -278,6 +279,11 @@ try {
   }
 
   Assert-Contains "dev-article-final.md" "tags: devchallenge, gamechallenge, gamedev, javascript"
+  Assert-Contains ".gitignore" "helioigma-dev-package.zip"
+  Assert-Contains ".gitignore" "node_modules/"
+  Assert-Contains ".gitignore" "__pycache__/"
+  Assert-Contains ".gitignore" "*.log"
+  Assert-Contains ".gitignore" "*.tmp"
   Assert-Contains "dev-article-final.md" "published: true"
   Assert-NotContains "dev-article-final.md" "published: false"
   Assert-Contains "dev-article-final.md" "This is a submission for the [June Solstice Game Jam]"

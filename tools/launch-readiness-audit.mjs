@@ -17,6 +17,7 @@ const intended = {
 };
 
 const requiredFiles = [
+  ".gitignore",
   ".nojekyll",
   ".github/workflows/verify.yml",
   "CHALLENGE_COMPLIANCE.md",
@@ -60,6 +61,11 @@ const requiredFiles = [
 ];
 
 const mustContain = [
+  [".gitignore", "helioigma-dev-package.zip"],
+  [".gitignore", "node_modules/"],
+  [".gitignore", "__pycache__/"],
+  [".gitignore", "*.log"],
+  [".gitignore", "*.tmp"],
   ["dev-article-final.md", "Playability Proof"],
   ["dev-article-final.md", "published: true"],
   ["dev-article-final.md", "tags: devchallenge, gamechallenge, gamedev, javascript"],
