@@ -246,8 +246,8 @@ async function main() {
     assert(desktop.shortcutMap.canvas === "1 2 3 4 5 6 7 8 9", "node shortcuts are not exposed");
     assert(desktop.controlTextFits, "desktop quick-control text overflows");
     assert(desktop.judgeLinks.includes("Auto demo"), "judge shortcut row does not link the auto demo route");
-    assert(desktop.judgeLinks.includes("Calm review"), "judge shortcut row does not link the calm review route");
-    assert(desktop.judgeLinkHrefs.includes("./?calm=1"), "judge shortcut row calm review link is not present");
+    assert(desktop.judgeLinks.includes("No storage"), "judge shortcut row does not link the no-storage privacy route");
+    assert(desktop.judgeLinkHrefs.includes("./?nostore=1"), "judge shortcut row no-storage privacy link is not present");
     assert(desktop.judgeLinks.includes("Verify sample"), "judge shortcut row does not link the sample receipt verifier");
     assert(desktop.judgeLinkHrefs.includes("proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"), "judge shortcut row sample verifier link is not prefilled");
     assert(desktop.judgeLinks.includes("Watch video"), "judge shortcut row does not link the current WebM video");
