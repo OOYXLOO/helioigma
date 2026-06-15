@@ -432,4 +432,4 @@ jobs:
           test -s helioigma-demo.webm
           test -s helioigma-demo.gif
           npm run verify:media
-          git diff --exit-code -- cover.png helioigma-demo.gif desktop-check-v5.png mobile-check-v6.png desktop-complete-v4.png mobile-complete-v1.png demo-frames-v3
+          git diff --exit-code -- cover.png helioigma-demo.webm helioigma-demo.gif desktop-check-v5.png mobile-check-v6.png desktop-complete-v4.png mobile-complete-v1.png demo-frames-v3
