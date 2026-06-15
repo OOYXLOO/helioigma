@@ -133,6 +133,7 @@ async function readGameFacts(page) {
         match: document.querySelector("#traceMatch")?.textContent.trim(),
         next: document.querySelector("#traceNext")?.textContent.trim(),
         last: document.querySelector("#traceLast")?.textContent.trim(),
+        quality: document.querySelector("#traceQuality")?.textContent.trim(),
         exists: Boolean(tracePanel),
       },
       judgePathCards: [...document.querySelectorAll(".judge-path article strong")].map((node) => node.textContent.trim()),
@@ -204,6 +205,7 @@ async function main() {
     assert(desktop.trace.exists, "rotor trace panel is missing");
     assert(desktop.trace.phase === "1 - Crib dawn", "rotor trace initial phase changed");
     assert(desktop.trace.next === "Node 1: XOR -> SOL", "rotor trace initial mismatch changed");
+    assert(desktop.trace.quality === "Streak 0 | Clean locks 0", "rotor trace initial run quality changed");
     assert(!desktop.judgePathBeforeCanvas, "desktop Run Path should sit after the canvas so the wheel appears earlier");
     assert(desktop.judgePathCards.join("|") === "1. Match|2. Trace|3. Seal", "run path cards changed");
     assert(desktop.judgePathText?.includes("Finish all four phases") && desktop.judgePathText?.includes("verify the sample receipt"), "run path no longer keeps receipt verification after play");
@@ -240,6 +242,7 @@ async function main() {
     assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
     const activeStart = await readGameFacts(page);
     assert(activeStart.shortcutMap.startDisabled === true, "start button should lock during active manual runs");
+    assert(activeStart.trace.quality === "Streak 0 | Clean locks 0", "first-move coach changed initial run quality");
 
     await page.click("#hintButton");
     const hintPulse = await page.evaluate(() => ({
@@ -265,6 +268,14 @@ async function main() {
     assert(shiftPulse.status === "Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "manual shift status no longer names current, target glyphs, and daylight penalty");
     assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
     assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
+    const afterFirstShift = await readGameFacts(page);
+    assert(afterFirstShift.trace.quality === "Streak 0 | Clean locks 0", "manual miss changed run quality unexpectedly");
+
+    await page.keyboard.press("1");
+    await page.keyboard.press("1");
+    const lockedNode = await readGameFacts(page);
+    assert(lockedNode.trace.match === "1/6", "keyboard node rotation did not update the rotor trace match count");
+    assert(lockedNode.trace.quality === "Streak 0 | Clean locks 1", "keyboard node lock did not update run quality feedback");
 
     await page.goto(`${baseUrl}?demo=1`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });

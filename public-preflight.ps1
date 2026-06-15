@@ -357,6 +357,7 @@ try {
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
   Assert-Contains "dev-article-final.md" "phase banner"
   Assert-Contains "dev-article-final.md" "Optional default-off Web Audio cues"
+  Assert-Contains "dev-article-final.md" "live Rotor Trace with run-quality feedback"
   Assert-Contains "dev-article-final.md" "Nightfall reports failed manual runs"
   Assert-Contains "dev-article-final.md" "the losing state is inspectable"
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
@@ -399,6 +400,7 @@ try {
   Assert-Contains "dev-article-final.md" "tools/verify-media-freshness.mjs"
   Assert-Contains "README.md" 'Use `Demo Solve` or press `D`'
   Assert-Contains "README.md" "first and last target glyphs do not clip"
+  Assert-Contains "README.md" "Rotor Trace now includes a run-quality line"
   Assert-Contains "README.md" "CHALLENGE_COMPLIANCE.md"
   Assert-Contains "README.md" "package.json"
   Assert-Contains "README.md" "npm run smoke"
@@ -692,6 +694,7 @@ try {
   Assert-Contains "index.html" 'aria-keyshortcuts="S"'
   Assert-Contains "index.html" "tracePanel"
   Assert-Contains "index.html" "traceNext"
+  Assert-Contains "index.html" "traceQuality"
   Assert-Contains "index.html" "phaseAnnouncer"
   Assert-Contains "index.html" "demoButton"
   Assert-Contains "index.html" "Demo Solve full judge route"

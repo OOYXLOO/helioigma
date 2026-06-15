@@ -40,6 +40,7 @@
   const traceMatch = document.querySelector("#traceMatch");
   const traceNext = document.querySelector("#traceNext");
   const traceLast = document.querySelector("#traceLast");
+  const traceQuality = document.querySelector("#traceQuality");
   const phaseAnnouncer = document.querySelector("#phaseAnnouncer");
 
   const glyphs = ["SOL", "XOR", "LUX", "BIN"];
@@ -321,6 +322,7 @@
       ["Score", `${state.score} points`],
       ["Shifts", `${state.shifts}`],
       ["Next proof", phaseProof?.textContent || "Run the deterministic demo receipt."],
+      ["Run quality", `${aligned} current locks; streak resets at nightfall`],
     ].forEach(([label, value]) => {
       const term = document.createElement("dt");
       const detail = document.createElement("dd");
@@ -374,6 +376,7 @@
       ["Shifts", `${state.shifts} node shifts`],
       ["Receipt", state.finalProof],
       ["Verify", "Linked local receipt verifier"],
+      ["Run quality", "four-phase streak plus inspected shifts"],
       ["Award signal", "solstice loop + Turing ode + judge receipt"],
       ["Turing fit", "state alignment + checksum reasoning"],
     ];
@@ -506,7 +509,7 @@
   }
 
   function syncRotorTrace() {
-    if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast) return;
+    if (!tracePanel || !tracePhase || !traceMatch || !traceNext || !traceLast || !traceQuality) return;
     const safeLevel = currentPhaseIndex();
     const phase = state.complete ? "Receipt" : phaseNames[safeLevel];
     const matched = state.ring.filter((value, i) => value === state.target[i]).length;
@@ -519,6 +522,9 @@
         ? "All nodes aligned"
         : `Node ${nextMismatch + 1}: ${glyphs[state.ring[nextMismatch]]} -> ${glyphs[state.target[nextMismatch]]}`;
     traceLast.textContent = state.lastAction;
+    traceQuality.textContent = state.complete
+      ? `${state.solvedPhases}/${levels.length} phase streak | ${state.shifts} inspected shifts`
+      : `Streak ${state.streak} | Clean locks ${matched}`;
   }
 
   function resizeCanvas() {

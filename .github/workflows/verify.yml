@@ -181,6 +181,7 @@ jobs:
           grep -q 'Use `Audio` or press `S`' README.md
           grep -q "generated Web Audio tones" README.md
           grep -q "Score rewards held daylight, streaks, and fewer wasted shifts" README.md
+          grep -q "Rotor Trace now includes a run-quality line" README.md
           grep -q "Originality and Review Transparency" README.md
           grep -q "No third-party game template, stock-art pack, private dataset, backend service, API key, or account-local state" README.md
           grep -q "Rotor Trace" README.md
@@ -324,6 +325,7 @@ jobs:
           grep -q "play rule no longer gives the rushed-judge goal" tools/browser-smoke-check.mjs
           grep -q "audio cues should default off" tools/browser-smoke-check.mjs
           grep -q "auto demo route did not expose award signals" tools/browser-smoke-check.mjs
+          grep -q "keyboard node lock did not update run quality feedback" tools/browser-smoke-check.mjs
           grep -q "helioigma-dev-package.zip" .gitignore
           grep -q "nodeButtons" index.html
           grep -q "phaseTrack" index.html
@@ -335,6 +337,7 @@ jobs:
           grep -q "hintButton" index.html
           grep -q "tracePanel" index.html
           grep -q "traceNext" index.html
+          grep -q "traceQuality" index.html
           grep -q "phaseAnnouncer" index.html
           grep -q "demoButton" index.html
           grep -q "Demo Solve full judge route" index.html

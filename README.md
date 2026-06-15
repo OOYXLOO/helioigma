@@ -79,6 +79,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - The HUD exposes phase, score, best, shift, and timer counters, plus a four-step progress strip for the complete run.
 - A compact Run Path strip keeps the game-first sequence explicit after the playable wheel: match nodes, watch the trace, then seal the run with receipt `SC-4P-2907-62-Y5VFX1`.
 - The manual hint route is phase-specific, so later phases visibly change how the next mismatch is selected instead of only shrinking the timer.
+- Rotor Trace now includes a run-quality line, so manual judges can see clean locks and phase streaks without waiting for the final receipt.
 - `Demo Solve` provides a one-click judge path through all four phases and the final receipt state; its timer drift is paused so the sample receipt is stable: `SC-4P-2907-62-Y5VFX1`.
 - After `Demo Solve` finishes, the page scrolls the completed receipt panel into view and focuses the verifier link so the review path lands on the receipt details instead of leaving them below the fold.
 - The judge shortcut row and judge pack link directly to `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1` so a reviewer can inspect the stable Auto Demo sample checksum before or after running the demo.
