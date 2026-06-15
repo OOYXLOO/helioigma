@@ -118,6 +118,44 @@ function Write-LaunchPackageSnapshot {
   }
 }
 
+function Invoke-LaunchReadinessAudit {
+  Write-Output "> node tools/launch-readiness-audit.mjs --json"
+  $auditJson = & node tools/launch-readiness-audit.mjs --json
+  if ($LASTEXITCODE -ne 0) {
+    Write-Output ($auditJson -join "`n")
+    Write-Output "BLOCKED: Launch readiness audit failed. Fix local package issues before publishing."
+    exit 1
+  }
+
+  try {
+    $audit = ($auditJson -join "`n") | ConvertFrom-Json
+  } catch {
+    Write-Output ($auditJson -join "`n")
+    Write-Output "BLOCKED: Could not parse launch readiness audit JSON."
+    exit 1
+  }
+
+  Write-Output "Launch audit status: $($audit.status)"
+  Write-Output "Launch audit HEAD: $($audit.head.short) $($audit.head.subject)"
+  if ($audit.zip) {
+    Write-Output "Launch audit ZIP SHA256: $($audit.zip.sha256)"
+  }
+  if ($audit.deadline -and $null -ne $audit.deadline.hoursRemaining) {
+    Write-Output "Launch audit deadline hours remaining: $($audit.deadline.hoursRemaining)"
+  }
+
+  if ($audit.status -ne "READY_LOCALLY") {
+    Write-Output "BLOCKED: Expected launch audit status READY_LOCALLY before public push."
+    if ($audit.next) {
+      Write-Output "Audit next steps:"
+      foreach ($step in $audit.next) {
+        Write-Output "- $step"
+      }
+    }
+    exit 1
+  }
+}
+
 function Configure-GitHubPages {
   if (-not $ConfigurePages) {
     Write-Output "GitHub Pages API configuration was not requested."
@@ -225,6 +263,7 @@ Write-Output "Helioigma publish-after-repo helper"
   Write-LaunchPackageSnapshot
 
   powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
+  Invoke-LaunchReadinessAudit
 
   $remoteCheck = Invoke-GitCapture @("ls-remote", $repoUrl, "HEAD")
   if ($remoteCheck.ExitCode -ne 0) {

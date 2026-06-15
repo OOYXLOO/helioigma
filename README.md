@@ -151,6 +151,7 @@ These files are for the account owner and are not part of the judge's required r
 - `dev-article-final.md`: DEV-ready article draft with the final title, tags, body, media links, and category boundary.
 - `PUBLISHING.md`: repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.
+- The publish helper also parses the launch audit JSON and blocks public push unless it reports `READY_LOCALLY`, so the release path does not depend on a human noticing stale media, stale package evidence, or an unclean local tree.
 
 ## Human Gates
 

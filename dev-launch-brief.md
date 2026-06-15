@@ -66,6 +66,7 @@ Expected local review signals:
 - `PASS media freshness`
 - `PASS browser smoke`
 - `npm run audit:launch` reports `READY_LOCALLY`
+- `publish-after-repo.ps1` prints `Launch audit status: READY_LOCALLY` before any push
 - `npm run audit:launch:public -- --json` reports public URLs ready before DEV publication
 - `70 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
