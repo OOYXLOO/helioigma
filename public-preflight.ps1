@@ -119,6 +119,7 @@ try {
     "JUDGE_REVIEW_CARD.md",
     "RUBRIC_SCORECARD.md",
     "CHALLENGE_COMPLIANCE.md",
+    "DEV_SUBMISSION_TICKET.md",
     "judge.html",
     "judge-manifest.json",
     "smoke.html",
@@ -437,6 +438,18 @@ try {
   Assert-Contains "dev-launch-brief.md" "Do not publish the DEV article if"
   Assert-Contains "dev-launch-brief.md" "fake engagement"
   Assert-Contains "dev-launch-brief.md" "Any password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage, or private email content"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "Helioigma DEV Submission Ticket"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "Public Gate Before DEV"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "logged-in DEV challenge flow still accepts"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "devchallenge"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "gamechallenge"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "gamedev"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "javascript"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "published: false"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "SC-4P-2907-62-Y5VFX1"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "Do not claim Best Google AI Usage"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "Post-Publish Receipt"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "local money-goal note for Helioigma"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "dev-article-final.md" "tools/build-demo-gif.py"
   Assert-Contains "dev-article-final.md" "tools/verify-dev-article.mjs"

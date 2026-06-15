@@ -176,6 +176,7 @@ The package includes `.nojekyll` and social metadata so GitHub Pages can serve t
 These files are for the account owner and are not part of the judge's required review path:
 
 - `dev-launch-brief.md`: compact launch-day brief for the account owner after the public Pages link exists.
+- `DEV_SUBMISSION_TICKET.md`: one-page final DEV field, link, no-go, and post-publish receipt ticket.
 - `dev-article-final.md`: DEV-ready article draft with the final title, tags, body, media links, and category boundary.
 - `PUBLISHING.md`: repository, push, Pages, public URL, and preflight instructions for the human account gate.
 - `publish-after-repo.ps1`: dry-run-by-default helper that checks the repo, runs local preflight, and can push with `-Push` after the public repo exists.

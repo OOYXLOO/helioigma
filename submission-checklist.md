@@ -24,6 +24,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Optional Pages wait/public preflight helper: `publish-after-repo.ps1 -Push -ConfigurePages -WaitForPages`.
 - DEV final article: `dev-article-final.md` with `What I Built`, `Video Demo`, `Code`, `How I Built It`, and `Prize Category` sections.
 - DEV launch brief: `dev-launch-brief.md` with final article fields, public URL checks, no-go gate, and post-publish receipt.
+- DEV submission ticket: `DEV_SUBMISSION_TICKET.md` with final DEV fields, public gate checks, no-go claims, and post-publish receipt fields.
 - Verification report: `verification.html` and `verification-report.md`.
 - Local README: `README.md`.
 - License: `LICENSE`.
@@ -80,6 +81,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Use `dev-article-final.md` for the final title, tags, current WebM/GIF media, public links, and category narrative.
 - Keep the GitHub source embed in the Code section: `{% embed https://github.com/OOYXLOO/helioigma %}`, followed by the plain source URL.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.
+- Use `DEV_SUBMISSION_TICKET.md` as the one-page publish-time handoff before opening the DEV editor.
 - Use `JUDGE_REVIEW_CARD.md` as the short GitHub-readable evidence card if a judge opens the source first.
 - Use `RUBRIC_SCORECARD.md` as the source-first rubric map if a judge wants the criteria fit without reading the full article.
 - Use `PUBLISHING.md` for repository settings, push commands, Pages settings, and public URL checks.
