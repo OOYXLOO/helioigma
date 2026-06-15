@@ -68,7 +68,7 @@ Expected local URLs:
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Start Run` and `Demo Solve` share the first quick-control row, Nightfall starts hidden, and the browser smoke keeps the full playable canvas inside the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke page: `smoke.html` is the no-install judge self-test under the same static server.
-- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` as the optional clean-clone Playwright check after `npm ci` and Playwright Chromium setup; it now fails on external network requests, console errors, or page errors.
+- Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` as the optional clean-clone Playwright check after `npm ci` and Playwright Chromium setup; it now simulates system reduced-motion preference and fails on external network requests, console errors, or page errors.
 - Demo media builders: `npm run build:media`, `npm run build:gif`, and `npm run build:video` rebuild the screenshots, GIF preview, and WebM from the real browser judge path; scratch video files go under the system temp directory or `HELIOIGMA_VIDEO_WORK_DIR`.
 - Demo Solve receipt: `PASS - SC-4P-2907-62-Y5VFX1`
 - Keyboard smoke: `PASS - Longest day held across the expected 62 shifts.` Manual smoke score variance is expected because this path uses live browser timing.
@@ -180,7 +180,7 @@ After the public repository exists, `.github/workflows/verify.yml` should pass. 
 - receipt verifier page and stable demo checksum copy
 - receipt verifier parsed receipt facts
 - package scripts for clean-clone checks, optional Playwright browser smoke, and media rebuild
-- browser smoke script that opens the real pages after `npm ci`, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies first-action grace, verifies the mobile game-first threshold, fails on external network requests, console errors, or page errors, and waits for 71 PASS checks
+- browser smoke script that opens the real pages after `npm ci`, checks the WebM video response, checks receipt-verifier query prefill, verifies the judge Nightfall Recovery card, verifies first-action grace, verifies the mobile game-first threshold, simulates system reduced-motion preference, fails on external network requests, console errors, or page errors, and waits for 71 PASS checks
 - reproducible WebM demo builder and WebM media link
 
 ## Human Gates

@@ -414,6 +414,33 @@ async function main() {
       "calm review route did not reduce CSS motion duration"
     );
 
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => document.querySelector("#game")?.dataset.motionMode, { timeout: 5000 });
+    const reducedMotionInitial = await readGameFacts(page);
+    assert(reducedMotionInitial.overflowX === 0, "system reduced-motion route has horizontal overflow");
+    assert(reducedMotionInitial.motionMode === "calm", "system reduced-motion preference did not expose calm motion mode");
+    assert(reducedMotionInitial.calmClass === true, "system reduced-motion preference did not set the calm-mode class");
+    assert(reducedMotionInitial.demoVisible && reducedMotionInitial.objectiveVisible, "system reduced-motion route lost the first-screen judge controls");
+    assert(reducedMotionInitial.firstMoveCoach === "START NODE 1 x3 -> SOL", "system reduced-motion route lost the pre-start first-move preview");
+    await page.click("#demoButton");
+    await page.waitForFunction(() => document.querySelector("#proofPanel")?.hidden === false, { timeout: 25000 });
+    const reducedMotionDemo = await page.evaluate(() => ({
+      receipt: document.querySelector("#proofCode")?.textContent.trim(),
+      motionMode: document.querySelector("#game")?.dataset.motionMode || document.documentElement.dataset.motionMode || "",
+      transitionDuration: getComputedStyle(document.querySelector("#dayMeterFill")).transitionDuration,
+    }));
+    assert(reducedMotionDemo.receipt === "SC-4P-2907-62-Y5VFX1", "system reduced-motion preference changed the stable Demo Solve receipt");
+    assert(reducedMotionDemo.motionMode === "calm", "system reduced-motion preference did not preserve calm mode through Demo Solve");
+    assert(
+      reducedMotionDemo.transitionDuration.includes("0.01ms") ||
+        reducedMotionDemo.transitionDuration.includes("0.00001s") ||
+        reducedMotionDemo.transitionDuration.includes("1e-05s") ||
+        reducedMotionDemo.transitionDuration.includes("0s"),
+      "system reduced-motion preference did not reduce CSS motion duration"
+    );
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#game")?.dataset.targetRowBounds, { timeout: 5000 });
