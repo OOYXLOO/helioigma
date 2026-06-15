@@ -450,6 +450,12 @@ try {
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "Do not claim Best Google AI Usage"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "Post-Publish Receipt"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "local money-goal note for Helioigma"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "do not paste the final DEV body while any intended public link still returns 404"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "Final DEV editor publish switch is intentional"
+  Assert-Contains "dev-launch-brief.md" "Paste only after public 200s"
+  Assert-Contains "submission-checklist.md" "Confirm every public article link returns HTTP 200"
+  Assert-Contains "proof-verifier.html" "Stable demo replay evidence"
+  Assert-Contains "proof-verifier.html" "Crib dawn, XOR meridian, Carry twilight, and Checksum night"
   Assert-Contains "dev-article-final.md" 'Press `Demo Solve` or `D`'
   Assert-Contains "dev-article-final.md" "tools/build-demo-gif.py"
   Assert-Contains "dev-article-final.md" "tools/verify-dev-article.mjs"

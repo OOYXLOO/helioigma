@@ -151,14 +151,20 @@
       overflow-wrap: anywhere;
     }
 
-    .boundary-grid {
+    .boundary-grid,
+    .replay-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       margin-top: 14px;
     }
 
-    .boundary-grid div {
+    .replay-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .boundary-grid div,
+    .replay-grid div {
       min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -166,7 +172,8 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    .boundary-grid strong {
+    .boundary-grid strong,
+    .replay-grid strong {
       display: block;
       margin-bottom: 6px;
       color: var(--accent);
@@ -175,7 +182,8 @@
       text-transform: uppercase;
     }
 
-    .boundary-grid p {
+    .boundary-grid p,
+    .replay-grid p {
       margin: 0;
       font-size: 13px;
       line-height: 1.45;
@@ -186,7 +194,8 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .boundary-grid {
+      .boundary-grid,
+      .replay-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -222,7 +231,25 @@
         </div>
       </div>
       <p><strong>Sample payload:</strong> <code>solstice|4|2907|62|4</code> produces suffix <code>Y5VFX1</code> for receipt <code>SC-4P-2907-62-Y5VFX1</code>.</p>
-      <p><a href="./">Play the game</a> - <a href="smoke.html">Run smoke test</a> - <a href="verification.html">Open verification report</a></p>
+      <div class="replay-grid" aria-label="Stable demo replay evidence">
+        <div>
+          <strong>Replay route</strong>
+          <p>Use <a href="./?demo=1">Auto Demo</a> or the completed-run Verify receipt link to reproduce this same public route from the playable page.</p>
+        </div>
+        <div>
+          <strong>Phase trail</strong>
+          <p>Crib dawn, XOR meridian, Carry twilight, and Checksum night all finish before the receipt is generated.</p>
+        </div>
+        <div>
+          <strong>Summary facts</strong>
+          <p>The stable public demo summary is 4 phases, 2907 points, 62 shifts, and checksum suffix <code>Y5VFX1</code>.</p>
+        </div>
+        <div>
+          <strong>Machine check</strong>
+          <p><a href="smoke.html">smoke.html</a> verifies the public keyboard path, final status, Rotor Trace, Judge run summary, and receipt link coverage.</p>
+        </div>
+      </div>
+      <p><a href="./">Play the game</a> - <a href="./?demo=1">Replay Auto Demo</a> - <a href="smoke.html">Run smoke test</a> - <a href="verification.html">Open verification report</a></p>
     </section>
   </main>
   <script src="receipt-core.js?v=20260615-canvas-priority"></script>

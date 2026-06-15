@@ -78,6 +78,8 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - Push the prepared local `main` branch to that repository.
 - Confirm GitHub Actions `Verify Helioigma` passes after push.
 - Enable GitHub Pages from the `main` branch root.
+- Confirm every public article link returns HTTP 200 before pasting the DEV body.
+- Confirm the DEV editor publish switch is intentional while the local source remains `published: false`.
 - Use `dev-article-final.md` for the final title, tags, current WebM/GIF media, public links, and category narrative.
 - Keep the GitHub source embed in the Code section: `{% embed https://github.com/OOYXLOO/helioigma %}`, followed by the plain source URL.
 - Use `dev-launch-brief.md` for the condensed DEV field list, final public URL checks, and post-publish receipt record.

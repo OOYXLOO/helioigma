@@ -8,9 +8,11 @@ Do not publish the DEV article until all of these are true:
 
 - Public repo exists: `https://github.com/OOYXLOO/helioigma`
 - GitHub Pages play link returns HTTP 200: `https://ooyxloo.github.io/helioigma/`
+- Every public article link below has been opened or checked after Pages returned HTTP 200; do not paste the final DEV body while any intended public link still returns 404.
 - `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public` passes.
 - `npm run audit:launch:public -- --json` reports public URLs ready, not `WAIT_USER_GATE`.
 - The logged-in DEV challenge flow still accepts a June Solstice Game Jam entry.
+- Final DEV editor publish switch is intentional: keep local source as `published: false`; set or confirm live publication only inside the DEV editor after all public checks pass.
 
 ## DEV Fields
 
@@ -22,7 +24,7 @@ Do not publish the DEV article until all of these are true:
 - Source embed: `{% embed https://github.com/OOYXLOO/helioigma %}`
 - Plain source URL: `https://github.com/OOYXLOO/helioigma`
 
-Keep `published: false` in `dev-article-final.md` during every local and public preflight. Flip to `published: true` only inside the final DEV publish action if the editor requires it.
+Keep `published: false` in `dev-article-final.md` during every local and public preflight. Do not paste or publish the final body until public links return HTTP 200. Flip to `published: true` only inside the final DEV publish action if the editor requires it.
 
 ## Links That Must Work
 

@@ -25,6 +25,8 @@ Use this brief only after the public GitHub repository and GitHub Pages URL exis
 - Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media`
 - Body source: `dev-article-final.md`
 - Final publish switch: change the front matter from `published: false` to `published: true` only after every public URL below returns correctly and the logged-in challenge flow accepts the entry.
+- Paste only after public 200s: every public URL in the article, ticket, and judge manifest must return HTTP 200 before the final body is pasted into DEV.
+- DEV editor publish switch confirmed live: the local draft stays `published: false`; any live publish toggle happens only in the DEV editor after the final public checks pass.
 - Primary video asset: `https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media`
 - MP4 fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.mp4`
 - Inline GIF fallback: `https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media`
