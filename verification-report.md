@@ -63,7 +63,7 @@ Expected local URLs:
 
 ## Browser Checks
 
-- Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 473px, and about 427px of gameplay is visible in the first viewport.
+- Desktop 1280x900: no horizontal overflow; controls appear before the canvas, the canvas starts at about 406.58px, and the full 468px playable canvas is visible in the first viewport.
 - Mobile 390x844: no horizontal overflow; controls appear before the canvas, `Demo Solve` is wider than the other quick controls, Nightfall starts hidden, and the canvas starts at about 432px with about 412px visible in the first viewport.
 - Mobile completion 390x844: no horizontal overflow; Demo Solve reaches receipt `SC-4P-2907-62-Y5VFX1`, phase ledger, and Judge run summary in `mobile-complete-v1.png`.
 - Browser smoke runner: `npm run smoke` reaches `PASS browser smoke` after `npm ci` and Playwright Chromium setup.
