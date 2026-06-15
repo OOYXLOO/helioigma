@@ -43,7 +43,7 @@ powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1
 powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push
 ```
 
-The helper runs `public-preflight.ps1` and the JSON launch audit before any push. It should print `Launch audit status: READY_LOCALLY`; if it prints any other status, fix the local package before creating public judge traffic.
+The helper runs `public-preflight.ps1`, the JSON launch audit, and `npm run smoke` before any push. It should print `Launch audit status: READY_LOCALLY` and `PASS browser smoke`; if it prints any other status, fix the local package before creating public judge traffic.
 
 Optional Pages API helper, only when the account owner is present and GitHub CLI is already authenticated:
 
@@ -89,6 +89,7 @@ The account owner handles DEV login, final post, prize claim, payout, tax, and K
 
 - [ ] `node --check game.js`
 - [ ] `npm run verify:article`
+- [ ] `npm run smoke`
 - [ ] `powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1`
 - [ ] `npm run audit:launch -- --json` reports `READY_LOCALLY`
 - [ ] `publish-after-repo.ps1` prints `Launch audit status: READY_LOCALLY` before any push

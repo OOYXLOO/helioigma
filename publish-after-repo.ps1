@@ -156,6 +156,21 @@ function Invoke-LaunchReadinessAudit {
   }
 }
 
+function Invoke-BrowserSmokeForPush {
+  if (-not $Push) {
+    Write-Output "Dry run: browser smoke will run automatically before -Push."
+    Write-Output "Manual check: npm run smoke"
+    return
+  }
+
+  Write-Output "> npm run smoke"
+  & npm run smoke
+  if ($LASTEXITCODE -ne 0) {
+    Write-Output "BLOCKED: Browser smoke failed. Run npm ci if dependencies are missing, then fix the game path before pushing."
+    exit 1
+  }
+}
+
 function Configure-GitHubPages {
   if (-not $ConfigurePages) {
     Write-Output "GitHub Pages API configuration was not requested."
@@ -264,6 +279,7 @@ Write-Output "Helioigma publish-after-repo helper"
 
   powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
   Invoke-LaunchReadinessAudit
+  Invoke-BrowserSmokeForPush
 
   $remoteCheck = Invoke-GitCapture @("ls-remote", $repoUrl, "HEAD")
   if ($remoteCheck.ExitCode -ne 0) {
