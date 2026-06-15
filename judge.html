@@ -46,7 +46,7 @@
     h1 {
       max-width: 820px;
       margin: 0;
-      font-size: clamp(34px, 6vw, 58px);
+      font-size: clamp(32px, 5vw, 48px);
       line-height: 1.05;
       letter-spacing: 0;
     }
@@ -374,6 +374,11 @@
         var(--panel);
     }
 
+    .visual-judge-hero .action.primary {
+      min-height: 92px;
+      padding: 16px;
+    }
+
     .action.primary strong {
       font-size: 24px;
     }
@@ -428,14 +433,14 @@
 
     <section class="visual-judge-hero" aria-label="Visual judge hero">
       <div class="visual-copy">
+        <section class="primary-actions" aria-label="Primary judge actions">
+          <a class="action primary" href="./"><strong>Play</strong><span>Start the timed rotor puzzle.</span></a>
+          <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Run the deterministic solve.</span></a>
+        </section>
         <div>
           <p class="verdict-label">Visual judge start</p>
           <p>Open the game first: the core artifact is a playable rotor puzzle, not only a receipt packet. The media preview is from the current browser build, and the two primary actions below are the fastest way to feel the timed node-rotation loop before checking the receipt trail.</p>
         </div>
-        <section class="primary-actions" aria-label="Primary judge actions">
-          <a class="action primary" href="./"><strong>Play</strong><span>Open the playable static game with mouse, touch buttons, Hint, tactile node pulses, stable Demo Solve, and number-key controls.</span></a>
-          <a class="action primary" href="./?demo=1"><strong>Auto Demo</strong><span>Open the playable page with the deterministic Demo Solve route already running.</span></a>
-        </section>
       </div>
       <figure class="visual-media">
         <video src="helioigma-demo.webm?v=20260615-fresh-media" poster="desktop-check-v5.png?v=20260615-fresh-media" autoplay muted loop playsinline preload="metadata" aria-label="Helioigma demo video showing the current four-phase rotor puzzle and final receipt path."></video>
@@ -499,6 +504,7 @@
       <a class="action" href="helioigma-demo.gif?v=20260615-fresh-media"><strong>Watch Demo</strong><span>Open the current GIF preview of the four-phase Demo Solve path and final run receipt.</span></a>
       <a class="action" href="smoke.html"><strong>Run Smoke Test</strong><span>Starts the game in an iframe, solves all phases, and verifies final score/status, Rotor Trace, Judge run summary, and run receipt.</span></a>
       <a class="action" href="proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"><strong>Verify Receipt</strong><span>Open the stable sample receipt already filled in, then check it against the local checksum formula.</span></a>
+      <a class="action" href="./?nostore=1"><strong>No Storage</strong><span>Open the playable game without reading or writing the local best-score key.</span></a>
       <a class="action" href="verification.html"><strong>Open Verification</strong><span>Review package checks, official tags, media assets, and the post-publication CI preflight.</span></a>
       <a class="action" href="RUBRIC_SCORECARD.md"><strong>Open Scorecard</strong><span>Read the source-first rubric map for theme relevance, creativity, technical execution, writing quality, and Turing fit.</span></a>
       <a class="action" href="judge-manifest.json"><strong>Open Manifest</strong><span>Read the machine-checkable judge manifest for prize target, public links, stable receipt, assets, and human gates.</span></a>

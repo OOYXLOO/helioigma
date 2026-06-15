@@ -159,6 +159,7 @@ try {
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.scripts.'build:gif' -ne "python tools/build-demo-gif.py") { throw "package build:gif script mismatch" }
   if ($package.scripts.'verify:media' -ne "node tools/verify-media-freshness.mjs") { throw "package verify:media script mismatch" }
+  if (-not ($package.scripts.check -like "*ast.parse(pathlib.Path('tools/build-demo-gif.py').read_text())*")) { throw "package check must parse GIF builder without writing pycache" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
 
@@ -349,8 +350,8 @@ try {
   Assert-Contains "dev-article-final.md" "mobile-check-v6.png?v=20260615-fresh-media"
   Assert-Contains "dev-article-final.md" "desktop-complete-v4.png?v=20260615-fresh-media"
   Assert-Contains "dev-article-final.md" "mobile-complete-v1.png?v=20260615-fresh-media"
-  Assert-Contains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
-  Assert-Contains "dev-article-final.md" "Optional legacy MP4 fallback"
+  Assert-NotContains "dev-article-final.md" "https://ooyxloo.github.io/helioigma/helioigma-demo.mp4"
+  Assert-NotContains "dev-article-final.md" "Optional legacy MP4 fallback"
   Assert-Contains "dev-article-final.md" "Completion screenshot with receipt ledger"
   Assert-Contains "dev-article-final.md" "Mobile completion screenshot"
   Assert-Contains "dev-article-final.md" "![Helioigma four-phase demo solve]"
@@ -597,6 +598,8 @@ try {
   Assert-Contains "judge.html" "Auto Demo"
   Assert-Contains "judge.html" "Helioigma"
   Assert-Contains "judge.html" "Verify Receipt"
+  Assert-Contains "judge.html" "No Storage"
+  Assert-Contains "judge.html" "./?nostore=1"
   Assert-Contains "judge.html" '<video src="helioigma-demo.webm?v=20260615-fresh-media"'
   Assert-Contains "judge.html" 'poster="desktop-check-v5.png?v=20260615-fresh-media"'
   Assert-Contains "judge.html" "helioigma-demo.webm?v=20260615-fresh-media"

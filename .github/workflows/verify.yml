@@ -78,8 +78,8 @@ jobs:
           grep -q "That is my Best Ode to Alan Turing angle" dev-article-final.md
           grep -q "helioigma-demo.gif" dev-article-final.md
           grep -q "helioigma-demo.webm" dev-article-final.md
-          grep -q "helioigma-demo.mp4" dev-article-final.md
-          grep -q "Optional legacy MP4 fallback" dev-article-final.md
+          ! grep -q "helioigma-demo.mp4" dev-article-final.md
+          ! grep -q "Optional legacy MP4 fallback" dev-article-final.md
           grep -q "completion screenshot with receipt ledger" dev-article-final.md
           grep -q "Mobile completion screenshot" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
@@ -212,6 +212,8 @@ jobs:
           grep -q "Animated Helioigma demo preview" judge.html
           grep -q "Helioigma" judge.html
           grep -q "Verify Receipt" judge.html
+          grep -q "No Storage" judge.html
+          grep -q "./?nostore=1" judge.html
           grep -q "judge-manifest.json" judge.html
           grep -q "Open Manifest" judge.html
           grep -q "Watch Video" judge.html

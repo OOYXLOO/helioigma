@@ -1,6 +1,8 @@
 # Local-only package artifacts
 helioigma-dev-package.zip
 node_modules/
+__pycache__/
+*.pyc
 desktop-check-v3.png
 desktop-check-v4.png
 desktop-complete-v2.png

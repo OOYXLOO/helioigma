@@ -7,9 +7,10 @@ Purpose: give a rushed DEV judge one honest minute with the game before they dec
 1. Play: `https://ooyxloo.github.io/helioigma/`
 2. Auto demo: `https://ooyxloo.github.io/helioigma/?demo=1`
 3. Stable receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
-4. Source: `https://github.com/OOYXLOO/helioigma`
+4. Privacy/no-storage play: `https://ooyxloo.github.io/helioigma/?nostore=1`
+5. Source: `https://github.com/OOYXLOO/helioigma`
 
-Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and `judge.html` from the same static server.
+Local pre-publication equivalents: open `index.html`, `index.html?demo=1`, `index.html?nostore=1`, `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and `judge.html` from the same static server.
 
 ## Try This In One Minute
 

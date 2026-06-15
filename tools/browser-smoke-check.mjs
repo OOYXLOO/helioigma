@@ -405,6 +405,7 @@ async function main() {
       usesRadialGradient: getComputedStyle(document.body).backgroundImage.includes("radial-gradient"),
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
+      noStorageHref: document.querySelector('.evidence-actions a[href="./?nostore=1"]')?.getAttribute("href"),
       scorecardHref: document.querySelector(".evidence-actions a[href$='RUBRIC_SCORECARD.md']")?.getAttribute("href"),
       storyHref: document.querySelector(".evidence-actions a[href$='dev-article-final.md']")?.getAttribute("href"),
       readmeHref: document.querySelector(".evidence-actions a[href$='README.md']")?.getAttribute("href"),
@@ -427,6 +428,7 @@ async function main() {
     assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
     assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");
     assert(judge.verifyReceiptHref === "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge page verifier action is not prefilled");
+    assert(judge.noStorageHref === "./?nostore=1", "judge page is missing the no-storage review action");
     assert(judge.hasRubricSnapshot, "judge page is missing rubric snapshot");
     assert(judge.hasAwardThesis, "judge page is missing the award thesis");
     assert(judge.hasVisualJudgeHero, "judge page is missing the visual judge hero");

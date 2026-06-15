@@ -62,8 +62,6 @@ The captioned WebM records the current judge path: first-screen context, Hint/ma
 
 Watch the current captioned WebM video: https://ooyxloo.github.io/helioigma/helioigma-demo.webm?v=20260615-fresh-media
 
-Optional legacy MP4 fallback: https://ooyxloo.github.io/helioigma/helioigma-demo.mp4
-
 Watch the current GIF preview: https://ooyxloo.github.io/helioigma/helioigma-demo.gif?v=20260615-fresh-media
 
 ## Quick Links
@@ -90,7 +88,7 @@ Official route snapshot: Best Ode to Alan Turing category route in the official 
 4. Open `judge-manifest.json` for the machine-readable prize target, rubric snapshot, run receipt, public links, and human gate summary.
 5. Optional: run `smoke.html` to see the game solve all four phases automatically and report the 70-check browser run summary.
 
-Public media links: cover.png?v=20260615-fresh-media, helioigma-demo.webm?v=20260615-fresh-media, helioigma-demo.gif?v=20260615-fresh-media, desktop-check-v5.png?v=20260615-fresh-media, mobile-check-v6.png?v=20260615-fresh-media, desktop-complete-v4.png?v=20260615-fresh-media, and mobile-complete-v1.png?v=20260615-fresh-media. The strongest stills are the completion screenshot with receipt ledger and Judge run summary, plus the Mobile completion screenshot. Optional legacy MP4 fallback: [helioigma-demo.mp4](https://ooyxloo.github.io/helioigma/helioigma-demo.mp4).
+Public media links: cover.png?v=20260615-fresh-media, helioigma-demo.webm?v=20260615-fresh-media, helioigma-demo.gif?v=20260615-fresh-media, desktop-check-v5.png?v=20260615-fresh-media, mobile-check-v6.png?v=20260615-fresh-media, desktop-complete-v4.png?v=20260615-fresh-media, and mobile-complete-v1.png?v=20260615-fresh-media. The strongest stills are the completion screenshot with receipt ledger and Judge run summary, plus the Mobile completion screenshot.
 
 ## Code
 
