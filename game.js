@@ -102,6 +102,7 @@
     ledger: [],
     lastTick: 0,
     demoing: false,
+    awaitingFirstShift: false,
     hintedIndex: -1,
     recentIndex: -1,
     recentLife: 0,
@@ -848,6 +849,8 @@
 
   function rotateNode(index, x = null, y = null) {
     if (!state.running || index < 0 || index >= state.ring.length) return;
+    const wasAwaitingFirstShift = state.awaitingFirstShift;
+    state.awaitingFirstShift = false;
     if (state.hintedIndex === index) {
       state.hintedIndex = -1;
     }
@@ -875,7 +878,9 @@
       ? nextMismatch === -1
         ? "All signals aligned; sealing phase."
         : `Signal ${index + 1} locked. Next mismatch: node ${nextMismatch + 1} -> ${glyphs[state.target[nextMismatch]]}.`
-      : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}. Daylight -${shiftPenaltySeconds}s.`;
+      : wasAwaitingFirstShift
+        ? `Timer started. Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}. Daylight -${shiftPenaltySeconds}s.`
+        : `Node ${index + 1} shifted to ${glyphs[state.ring[index]]}; target ${glyphs[state.target[index]]}. Daylight -${shiftPenaltySeconds}s.`;
     updateHud();
     checkWin();
     draw();
@@ -909,7 +914,7 @@
     state.recentLife = firstMovePulseSeconds;
     state.recentLocked = false;
     state.lastAction = `First move cue: node ${index + 1} target ${glyphs[state.target[index]]}.`;
-    state.message = `First move: rotate node ${index + 1} toward ${glyphs[state.target[index]]}.`;
+    state.message = `First move: rotate node ${index + 1} toward ${glyphs[state.target[index]]}. Timer starts on first shift.`;
   }
 
   function tick(time) {
@@ -935,7 +940,7 @@
       }
     }
 
-    if (state.running && !state.demoing) {
+    if (state.running && !state.demoing && !state.awaitingFirstShift) {
       state.timeLeft -= delta;
       if (state.timeLeft <= 0) {
         state.running = false;
@@ -957,6 +962,7 @@
     const { coach = true } = options;
     state.demoing = false;
     state.running = true;
+    state.awaitingFirstShift = coach;
     state.level = 0;
     state.score = 0;
     state.streak = 0;
@@ -971,11 +977,11 @@
     state.recentLocked = false;
     state.phaseBanner = { title: "", detail: "", life: 0 };
     state.ledger = [];
-    state.lastAction = "Run started. Align the first visible mismatch.";
+    state.lastAction = coach ? "First shift grace armed." : "Run started. Align the first visible mismatch.";
     state.particles = [];
     state.lastTick = 0;
     seedLevel(0);
-    state.message = "Helioigma rotor is live.";
+    state.message = coach ? "Timer starts on your first node shift." : "Helioigma rotor is live.";
     if (coach) {
       cueFirstMove();
     }
@@ -986,6 +992,7 @@
   function resetGame() {
     state.demoing = false;
     state.running = false;
+    state.awaitingFirstShift = false;
     state.level = 0;
     state.score = 0;
     state.streak = 0;

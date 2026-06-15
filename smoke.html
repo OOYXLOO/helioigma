@@ -274,7 +274,9 @@ addCheck("demo award signals name solstice, Turing, and judge receipt", awardSig
 
       startButton.click();
       await sleep(120);
-      addCheck("start button shows the first-move coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
+      addCheck("start button shows the first-move grace coach", statusLine.textContent.includes("First move: rotate node 1 toward SOL. Timer starts on first shift.") && Boolean(doc.querySelector("#nodeButtons .node-button.hinted")) && startButton.disabled === true);
+      await sleep(900);
+      addCheck("first-action grace keeps full daylight before a node shift", dayMeterLabel.textContent.trim() === "45s");
       addCheck("phase announcer names the active phase", phaseAnnouncer.textContent.includes("Phase 1: Crib dawn"));
       press(win, "h");
       await sleep(80);

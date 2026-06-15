@@ -52,6 +52,22 @@ function Assert-PngSignature {
   }
 }
 
+function Assert-PngDimensions {
+  param([string]$Path, [int]$ExpectedWidth, [int]$ExpectedHeight)
+  $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path))
+  $widthBytes = [byte[]]$bytes[16..19]
+  $heightBytes = [byte[]]$bytes[20..23]
+  if ([BitConverter]::IsLittleEndian) {
+    [Array]::Reverse($widthBytes)
+    [Array]::Reverse($heightBytes)
+  }
+  $width = [BitConverter]::ToUInt32($widthBytes, 0)
+  $height = [BitConverter]::ToUInt32($heightBytes, 0)
+  if (($width -ne $ExpectedWidth) -or ($height -ne $ExpectedHeight)) {
+    throw "$Path dimension mismatch: expected ${ExpectedWidth}x${ExpectedHeight}, got ${width}x${height}"
+  }
+}
+
 function Assert-WebmSignature {
   param([string]$Path)
   $expected = @(0x1A, 0x45, 0xDF, 0xA3)
@@ -109,6 +125,7 @@ try {
     "dev-launch-brief.md",
     "publish-after-repo.ps1",
     "tools/build-package.ps1",
+    "tools/build-cover.py",
     "tools/build-demo-video.mjs",
     "tools/build-demo-webm.mjs",
     "tools/build-demo-gif.py",
@@ -150,6 +167,7 @@ try {
   )) {
     Assert-PngSignature $png
   }
+  Assert-PngDimensions "cover.png" 1000 420
   Assert-WebmSignature "helioigma-demo.webm"
   node --check tools/verify-dev-article.mjs | Out-Null
   node tools/verify-dev-article.mjs | Out-Null
@@ -160,11 +178,12 @@ try {
   if ($package.scripts.smoke -ne "node tools/browser-smoke-check.mjs") { throw "package smoke script mismatch" }
   if ($package.scripts.'audit:launch' -ne "node tools/launch-readiness-audit.mjs") { throw "package audit:launch script mismatch" }
   if ($package.scripts.'audit:launch:public' -ne "node tools/launch-readiness-audit.mjs --public") { throw "package audit:launch:public script mismatch" }
+  if ($package.scripts.'build:cover' -ne "python tools/build-cover.py") { throw "package build:cover script mismatch" }
   if ($package.scripts.'build:media' -ne "node tools/capture-public-media.mjs") { throw "package build:media script mismatch" }
   if ($package.scripts.'build:gif' -ne "python tools/build-demo-gif.py") { throw "package build:gif script mismatch" }
   if ($package.scripts.'verify:article' -ne "node tools/verify-dev-article.mjs") { throw "package verify:article script mismatch" }
   if ($package.scripts.'verify:media' -ne "node tools/verify-media-freshness.mjs") { throw "package verify:media script mismatch" }
-  if (-not ($package.scripts.check -like "*ast.parse(pathlib.Path('tools/build-demo-gif.py').read_text())*")) { throw "package check must parse GIF builder without writing pycache" }
+  if (-not ($package.scripts.check -like "*tools/build-cover.py*tools/build-demo-gif.py*")) { throw "package check must parse Python media builders without writing pycache" }
   if ($package.devDependencies.playwright -ne "1.60.0") { throw "package Playwright devDependency mismatch" }
   if ($package.scripts.'build:package' -ne "powershell -ExecutionPolicy Bypass -File ./tools/build-package.ps1") { throw "package build:package script mismatch" }
 
@@ -192,6 +211,7 @@ try {
       "demo-frames-v3/00-ready.png",
       "tools/capture-public-media.mjs",
       "tools/browser-smoke-check.mjs",
+      "tools/build-cover.py",
       "tools/build-demo-gif.py",
       "tools/build-package.ps1",
       "tools/verify-dev-article.mjs",
@@ -246,7 +266,7 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 70) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 71) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest Turing cue mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
@@ -374,6 +394,7 @@ try {
   Assert-Contains "dev-article-final.md" "the losing state is inspectable"
   Assert-Contains "dev-article-final.md" 'Press `Audio` or `S`'
   Assert-Contains "dev-article-final.md" "default-off Audio control"
+  Assert-Contains "dev-article-final.md" "tools/build-cover.py"
   Assert-Contains "dev-article-final.md" "Score rewards held daylight, streaks, and fewer wasted shifts"
   Assert-Contains "dev-article-final.md" "Accessibility, Fair Play, and Privacy"
   Assert-Contains "dev-article-final.md" "hidden helper text plus a phase announcer"
@@ -419,6 +440,7 @@ try {
   Assert-Contains "README.md" "package.json"
   Assert-Contains "README.md" "npm run smoke"
   Assert-Contains "README.md" "npm run build:gif"
+  Assert-Contains "README.md" "npm run build:cover"
   Assert-Contains "README.md" "npm run verify:article"
   Assert-Contains "README.md" "npm run verify:media"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing category route"
@@ -485,12 +507,12 @@ try {
   Assert-Contains "RUBRIC_SCORECARD.md" "Helioigma Rubric Scorecard"
   Assert-Contains "RUBRIC_SCORECARD.md" "Best Ode to Alan Turing"
   Assert-Contains "RUBRIC_SCORECARD.md" "No Google AI category claim"
-  Assert-Contains "RUBRIC_SCORECARD.md" "70-check browser smoke"
+  Assert-Contains "RUBRIC_SCORECARD.md" "71-check browser smoke"
   Assert-Contains "RUBRIC_SCORECARD.md" "phase-specific hint order"
   Assert-Contains "verification-report.md" "Manual smoke score variance is expected"
   Assert-NotContains "verification-report.md" "Latest live-timer score 2892"
   Assert-NotContains "verification-report.md" "currently reports 2892"
-  Assert-Contains "README.md" 'first-move coach on `Start Run`'
+  Assert-Contains "README.md" 'first-move grace coach on `Start Run`'
   Assert-Contains "README.md" "tactile node pulse feedback"
   Assert-Contains "README.md" "optional default-off Web Audio cues"
   Assert-Contains "README.md" 'Use `Audio` or press `S`'
@@ -519,7 +541,7 @@ try {
   Assert-Contains "submission-checklist.md" '`devchallenge`, `gamechallenge`, `gamedev`, `javascript`'
   Assert-Contains "submission-checklist.md" "Optional legacy MP4 fallback"
   Assert-Contains "submission-checklist.md" "sample receipt verifier URL"
-  Assert-Contains "submission-checklist.md" "70 expected smoke checks"
+  Assert-Contains "submission-checklist.md" "71 expected smoke checks"
   Assert-Contains "submission-checklist.md" "no spam, no bought reactions, no pressure, and no fake engagement"
   Assert-Contains "PUBLISHING.md" "judge-manifest.json"
   Assert-Contains "PUBLISHING.md" "RUBRIC_SCORECARD.md"
@@ -559,7 +581,7 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile visible control buttons are too short"
   Assert-Contains "tools/browser-smoke-check.mjs" "Stable Demo Solve receipt"
   Assert-Contains "tools/browser-smoke-check.mjs" "non-stable formula-valid receipt should be neutral"
-  Assert-Contains "tools/browser-smoke-check.mjs" "expected 70 smoke checks"
+  Assert-Contains "tools/browser-smoke-check.mjs" "expected 71 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
   Assert-Contains "tools/browser-smoke-check.mjs" "Turing cue initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Turing cue initial copy changed"
@@ -615,7 +637,7 @@ try {
   Assert-Contains "judge.html" "Evidence links"
   Assert-Contains "judge.html" "Watch the playable page complete all four phases"
   Assert-Contains "judge.html" "Optional Smoke."
-  Assert-Contains "judge.html" "Run the 70-check browser smoke test"
+  Assert-Contains "judge.html" "Run the 71-check browser smoke test"
   Assert-Contains "judge.html" "nightfall report"
   Assert-Contains "judge.html" "Open Manifest"
   Assert-Contains "judge.html" "Open Scorecard"
@@ -689,7 +711,7 @@ try {
   Assert-Contains "game.js" "findGuidedMismatchIndex"
   Assert-Contains "game.js" "Next mismatch: node"
   Assert-Contains "tools/browser-smoke-check.mjs" "tactile node pulse"
-  Assert-Contains "tools/browser-smoke-check.mjs" "first-move coach"
+  Assert-Contains "tools/browser-smoke-check.mjs" "first-move grace coach"
   Assert-Contains "tools/browser-smoke-check.mjs" "desktop game canvas starts too low"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Run Path should sit after the playable canvas"
   Assert-NotContains "styles.css" "radial-gradient"
@@ -790,13 +812,13 @@ try {
   Assert-Contains "smoke.html" "20260615-canvas-priority"
   Assert-NotContains ".github/workflows/verify.yml" "20260614-mobile-review"
   Assert-NotContains ".github/workflows/verify.yml" '          grep -q "Prove the daylight run."'
-  Assert-Contains "README.md" "is intentionally wider than the other quick controls"
+  Assert-Contains "README.md" 'Start Run` and `Demo Solve` share the first quick-control row'
   Assert-Contains "README.md" "Player feel matters as much as proof"
-  Assert-Contains "verification-report.md" "is wider than the other quick controls"
+  Assert-Contains "verification-report.md" 'Start Run` and `Demo Solve` share the first quick-control row'
   Assert-Contains "verification-report.md" "full 468px playable canvas is visible"
   Assert-Contains "verification-report.md" "Game feel is part of the review surface"
   Assert-Contains "verification-report.md" "Privacy review path"
-  Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile Start Run and Demo Solve should share the first row"
   Assert-Contains "styles.css" "grid-column: span 2"
   Assert-Contains "judge.html" 'href="https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"'
   Assert-Contains "judge.html" 'href="dev-article-final.md"'
@@ -807,7 +829,8 @@ try {
   Assert-Contains "smoke.html" "audio cues default off"
   Assert-Contains "smoke.html" "play rule gives opening-daylight rotate-match-survive goal"
   Assert-Contains "smoke.html" "hint shortcut is exposed"
-  Assert-Contains "smoke.html" "start button shows the first-move coach"
+  Assert-Contains "smoke.html" "start button shows the first-move grace coach"
+  Assert-Contains "smoke.html" "first-action grace keeps full daylight before a node shift"
   Assert-Contains "smoke.html" "hint shortcut names the next mismatched node"
   Assert-Contains "smoke.html" "hint highlights a node button"
   Assert-Contains "smoke.html" "rotor trace panel is present"

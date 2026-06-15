@@ -36,6 +36,7 @@ jobs:
             publish-after-repo.ps1 \
             public-preflight.ps1 \
             tools/build-package.ps1 \
+            tools/build-cover.py \
             tools/build-demo-video.mjs \
             tools/build-demo-webm.mjs \
             tools/build-demo-gif.py \
@@ -90,6 +91,7 @@ jobs:
           grep -q "What I Built" dev-article-final.md
           grep -q "Video Demo" dev-article-final.md
           grep -q "Code" dev-article-final.md
+          grep -q "tools/build-cover.py" dev-article-final.md
           grep -q "tools/build-demo-gif.py" dev-article-final.md
           grep -q "tools/verify-dev-article.mjs" dev-article-final.md
           grep -q "tools/verify-media-freshness.mjs" dev-article-final.md
@@ -315,6 +317,7 @@ jobs:
           grep -q "mobile target row is too close to the left canvas edge" tools/browser-smoke-check.mjs
           grep -q "mobile target row is too close to the right canvas edge" tools/browser-smoke-check.mjs
           grep -q "mobile target row inset is too small for glyph labels" tools/browser-smoke-check.mjs
+          grep -q "tools/build-cover.py" README.md
           grep -q "tools/build-demo-gif.py" README.md
           grep -q "tools/verify-dev-article.mjs" README.md
           grep -q "tools/verify-media-freshness.mjs" README.md
@@ -419,6 +422,7 @@ jobs:
 
       - name: Rebuild public media
         run: |
+          npm run build:cover
           npm run build:media
           npm run build:gif
           npm run build:video

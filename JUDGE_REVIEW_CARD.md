@@ -39,7 +39,7 @@ Helioigma is a playable ode, a receipt-checkable loop, and a finished static pac
 If the review queue contains several cipher or Turing-themed entries, Helioigma should still read differently:
 
 - Game-first: timed node choices, pulse feedback, and phase-specific Hint/Rotor Trace order are playable before the receipt layer matters.
-- Reproducible: Demo Solve uses the same public controls and produces receipt `SC-4P-2907-62-Y5VFX1`.
+- Reproducible: Demo Solve uses the same visible board and node-rotation logic as manual play, while smoke covers the public keyboard path; the stable route produces receipt `SC-4P-2907-62-Y5VFX1`.
 - Finished on failure: Nightfall reports aligned nodes, held phases, score, shifts, and gives Retry or Demo Solve instead of a dead end.
 - Public-safe: no backend, hidden service, account login, API key, telemetry, or private console is needed to inspect the build.
 

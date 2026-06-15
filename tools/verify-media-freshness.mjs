@@ -36,6 +36,12 @@ function assertPrefix(relativePath, bytes) {
   assert(Buffer.compare(actual, Buffer.from(bytes)) === 0, `${relativePath} has an unexpected file signature`);
 }
 
+function pngDimensions(relativePath) {
+  const bytes = readFileSync(join(root, relativePath));
+  assert(Buffer.compare(bytes.subarray(0, 8), Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) === 0, `${relativePath} has an unexpected PNG signature`);
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
+
 const newestSource = Math.max(...sourceFiles.map(mtime));
 const staleMedia = generatedFiles.filter((file) => mtime(file) + freshnessSlackMs < newestSource);
 if (staleMedia.length > 0) {
@@ -51,6 +57,9 @@ assert(frames.length >= 7, `Expected at least 7 demo frames; found ${frames.leng
 for (const png of generatedFiles.filter((file) => file.endsWith(".png"))) {
   assertPrefix(png, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 }
+const cover = pngDimensions("cover.png");
+assert(cover.width === 1000 && cover.height === 420, `cover.png must be the DEV-friendly 1000x420 size; got ${cover.width}x${cover.height}`);
+assert(mtime("cover.png") + freshnessSlackMs >= mtime("tools/build-cover.py"), "cover.png is older than tools/build-cover.py. Run npm run build:cover.");
 assertPrefix("helioigma-demo.webm", [0x1a, 0x45, 0xdf, 0xa3]);
 const gifHeader = readFileSync(join(root, "helioigma-demo.gif")).subarray(0, 6).toString("ascii");
 assert(gifHeader === "GIF87a" || gifHeader === "GIF89a", "helioigma-demo.gif has an unexpected GIF signature");

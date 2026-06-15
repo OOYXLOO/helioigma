@@ -1115,18 +1115,30 @@ button:focus-visible {
   .controls {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 5px;
-    padding: 5px;
+    gap: 4px;
+    padding: 4px;
   }
 
-  .quick-controls #startButton { order: 1; }
-  .quick-controls #hintButton { order: 2; }
+  .quick-controls #startButton {
+    order: 1;
+    grid-column: span 3;
+  }
   .quick-controls #demoButton {
+    order: 2;
+    grid-column: span 3;
+  }
+  .quick-controls #hintButton {
     order: 3;
     grid-column: span 2;
   }
-  .quick-controls #resetButton { order: 4; }
-  .quick-controls #soundButton { order: 5; }
+  .quick-controls #resetButton {
+    order: 4;
+    grid-column: span 2;
+  }
+  .quick-controls #soundButton {
+    order: 5;
+    grid-column: span 2;
+  }
 
   button {
     min-height: 44px;

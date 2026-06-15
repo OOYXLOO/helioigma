@@ -4,11 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check game.js && node --check tools/browser-smoke-check.mjs && node --check tools/build-demo-video.mjs && node --check tools/build-demo-webm.mjs && node --check tools/capture-public-media.mjs && node --check tools/launch-readiness-audit.mjs && node --check tools/verify-dev-article.mjs && node --check tools/verify-media-freshness.mjs && python -c \"import ast,pathlib; ast.parse(pathlib.Path('tools/build-demo-gif.py').read_text())\"",
+    "check": "node --check game.js && node --check tools/browser-smoke-check.mjs && node --check tools/build-demo-video.mjs && node --check tools/build-demo-webm.mjs && node --check tools/capture-public-media.mjs && node --check tools/launch-readiness-audit.mjs && node --check tools/verify-dev-article.mjs && node --check tools/verify-media-freshness.mjs && python -c \"import ast,pathlib; ast.parse(pathlib.Path('tools/build-cover.py').read_text()); ast.parse(pathlib.Path('tools/build-demo-gif.py').read_text())\"",
     "preflight": "powershell -ExecutionPolicy Bypass -File ./public-preflight.ps1",
     "smoke": "node tools/browser-smoke-check.mjs",
     "audit:launch": "node tools/launch-readiness-audit.mjs",
     "audit:launch:public": "node tools/launch-readiness-audit.mjs --public",
+    "build:cover": "python tools/build-cover.py",
     "build:media": "node tools/capture-public-media.mjs",
     "build:gif": "python tools/build-demo-gif.py",
     "build:video": "node tools/build-demo-video.mjs",

@@ -238,12 +238,15 @@ async function main() {
       recent: Boolean(document.querySelector("#nodeButtons .node-button.recent")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
     }));
-    assert(startCoach.status === "First move: rotate node 1 toward SOL.", "start button no longer gives a first-move coach");
+    assert(startCoach.status === "First move: rotate node 1 toward SOL. Timer starts on first shift.", "start button no longer gives a first-move grace coach");
     assert(startCoach.hinted && startCoach.recent, "first-move coach does not highlight the next node");
     assert(startCoach.traceLast === "First move cue: node 1 target SOL.", "first-move coach trace changed");
     const activeStart = await readGameFacts(page);
     assert(activeStart.shortcutMap.startDisabled === true, "start button should lock during active manual runs");
     assert(activeStart.trace.quality === "Streak 0 | Clean locks 0", "first-move coach changed initial run quality");
+    await page.waitForTimeout(900);
+    const graceStart = await readGameFacts(page);
+    assert(graceStart.dayMeterLabel === "45s", `first-action grace let the timer drift before a node shift: ${graceStart.dayMeterLabel}`);
 
     await page.click("#hintButton");
     const hintPulse = await page.evaluate(() => ({
@@ -266,7 +269,7 @@ async function main() {
       recentLocked: Boolean(document.querySelector("#nodeButtons .node-button.recent-locked")),
       traceLast: document.querySelector("#traceLast")?.textContent.trim(),
     }));
-    assert(shiftPulse.status === "Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "manual shift status no longer names current, target glyphs, and daylight penalty");
+    assert(shiftPulse.status === "Timer started. Node 1 shifted to LUX; target SOL. Daylight -0.45s.", "first manual shift no longer starts the timer and names current, target glyphs, and daylight penalty");
     assert(shiftPulse.recent && !shiftPulse.recentLocked, "manual shift does not create a visible tactile pulse");
     assert(shiftPulse.traceLast === "Node 1 shifted to LUX.", "manual shift trace changed");
     const afterFirstShift = await readGameFacts(page);
@@ -349,7 +352,10 @@ async function main() {
     assert(mobile.soundVisible, "mobile Audio toggle is not visible in the first viewport");
     assert(mobile.controlHeights.every((height) => height >= 40), `mobile visible control buttons are too short: ${mobile.controlHeights.join(",")}`);
     assert(mobile.controlTextFits, "mobile quick-control text overflows");
-    assert(mobile.controlWidths.demoButton >= mobile.controlWidths.startButton * 1.75, `mobile Demo Solve is not visually prioritized: ${JSON.stringify(mobile.controlWidths)}`);
+    assert(
+      Math.abs(mobile.controlWidths.demoButton - mobile.controlWidths.startButton) <= 8,
+      `mobile Start Run and Demo Solve should share the first row: ${JSON.stringify(mobile.controlWidths)}`
+    );
     assert(mobile.dayMeterVisible, "mobile daylight meter is not visible in the first viewport");
     assert(mobile.objectiveVisible, "mobile phase objective is not visible in the first viewport");
     assert(mobile.judgePathAfterCanvas, "mobile Run Path should sit after the playable canvas");
@@ -563,7 +569,7 @@ async function main() {
     assert(manifest.challenge?.playability_proof?.map((item) => item.claim).join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge manifest playability proof claims changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 70, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 71, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
@@ -631,7 +637,7 @@ async function main() {
     }));
     assert(smoke.status.startsWith("PASS - Longest day held."), `smoke failed: ${smoke.status}`);
     assert(smoke.status.includes("62 shifts"), `smoke did not report the expected shift count: ${smoke.status}`);
-    assert(smoke.checks === 70, `expected 70 smoke checks, got ${smoke.checks}`);
+    assert(smoke.checks === 71, `expected 71 smoke checks, got ${smoke.checks}`);
     assert(smoke.failures.length === 0, `smoke failures: ${smoke.failures.join("; ")}`);
     assert(smoke.overflowX === 0, "smoke page has horizontal overflow");
 

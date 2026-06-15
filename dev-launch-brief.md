@@ -71,7 +71,7 @@ Expected local review signals:
 - `npm run audit:launch` reports `READY_LOCALLY`
 - `publish-after-repo.ps1` prints `Launch audit status: READY_LOCALLY` before any push
 - `npm run audit:launch:public -- --json` reports public URLs ready before DEV publication
-- `70 PASS` inside `smoke.html`
+- `71 PASS` inside `smoke.html`
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
@@ -85,7 +85,7 @@ Do not publish the DEV article if any item is true:
 - The GitHub Pages play URL returns 404 or redirects to another project.
 - The source URL is not `https://github.com/OOYXLOO/helioigma`.
 - `public-preflight.ps1 -Public` fails.
-- `smoke.html` does not reach the expected 70 PASS checks.
+- `smoke.html` does not reach the expected 71 PASS checks.
 - `Demo Solve` does not reach receipt `SC-4P-2907-62-Y5VFX1`.
 - The post omits the play link, source link, GIF/WebM media, or judge manifest.
 - The post omits the public rubric scorecard link when the judge links are listed.

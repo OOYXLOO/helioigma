@@ -49,6 +49,7 @@ const requiredFiles = [
   "styles.css",
   "submission-checklist.md",
   "tools/browser-smoke-check.mjs",
+  "tools/build-cover.py",
   "tools/build-demo-gif.py",
   "tools/build-demo-video.mjs",
   "tools/build-demo-webm.mjs",
@@ -303,6 +304,7 @@ const packageJson = JSON.parse(fileText("package.json"));
 addCheck("package local audit script", packageJson.scripts?.["audit:launch"] === "node tools/launch-readiness-audit.mjs", packageJson.scripts?.["audit:launch"] || "");
 addCheck("package public audit script", packageJson.scripts?.["audit:launch:public"] === "node tools/launch-readiness-audit.mjs --public", packageJson.scripts?.["audit:launch:public"] || "");
 addCheck("package smoke script", packageJson.scripts?.smoke === "node tools/browser-smoke-check.mjs", packageJson.scripts?.smoke || "");
+addCheck("package cover build script", packageJson.scripts?.["build:cover"] === "python tools/build-cover.py", packageJson.scripts?.["build:cover"] || "");
 addCheck("package GIF build script", packageJson.scripts?.["build:gif"] === "python tools/build-demo-gif.py", packageJson.scripts?.["build:gif"] || "");
 addCheck("package DEV article verifier script", packageJson.scripts?.["verify:article"] === "node tools/verify-dev-article.mjs", packageJson.scripts?.["verify:article"] || "");
 addCheck("package media freshness script", packageJson.scripts?.["verify:media"] === "node tools/verify-media-freshness.mjs", packageJson.scripts?.["verify:media"] || "");
