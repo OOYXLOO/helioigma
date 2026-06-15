@@ -87,7 +87,7 @@ async function assertCleanFirstScreen(page, label) {
   assert(facts.score === "0", `${label} first screen inherited score ${facts.score}`);
   assert(facts.best === "0", `${label} first screen inherited best score ${facts.best}`);
   assert(facts.shifts === "0", `${label} first screen inherited shifts ${facts.shifts}`);
-  assert(facts.phaseProof === "Crib checks state.", `${label} first screen phase proof drifted`);
+  assert(facts.phaseProof === "Crib checks state.", `${label} first screen Turing cue drifted`);
   assert(facts.resetVisible, `${label} Reset control is not visible`);
   assert(facts.overflowX === 0, `${label} first screen has horizontal overflow`);
 }

@@ -241,7 +241,7 @@ try {
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.verification.expected_smoke_checks -ne 70) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
-  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest phase proof mismatch" }
+  if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest Turing cue mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "*distinct hint scan order*")) { throw "judge-manifest phase scan-order mismatch" }
   if (-not ($manifest.proof.judge_run_summary -like "*award signals*")) { throw "judge-manifest judge run summary mismatch" }
   if (-not ($manifest.proof.mobile_completion_proof -like "mobile-complete-v1.png captures*")) { throw "judge-manifest mobile completion proof mismatch" }
@@ -416,7 +416,7 @@ try {
   Assert-Contains "README.md" "?nostore=1"
   Assert-Contains "FIRST_MINUTE.md" "Local pre-publication equivalents"
   Assert-Contains "JUDGE_REVIEW_CARD.md" "Local pre-publication path"
-  Assert-Contains "README.md" "phase objective strip with a compact phase-proof line"
+  Assert-Contains "README.md" "phase objective strip with a compact Turing cue line"
   Assert-Contains "README.md" 'phase-guided manual `Hint` path'
   Assert-Contains "README.md" "XOR alternates mirrored nodes"
   Assert-Contains "README.md" "Seal the daylight run."
@@ -538,8 +538,8 @@ try {
   Assert-Contains "tools/browser-smoke-check.mjs" "non-stable formula-valid receipt should be neutral"
   Assert-Contains "tools/browser-smoke-check.mjs" "expected 70 smoke checks"
   Assert-Contains "tools/browser-smoke-check.mjs" "play rule no longer gives the rushed-judge goal"
-  Assert-Contains "tools/browser-smoke-check.mjs" "phase proof initial copy changed"
-  Assert-Contains "tools/browser-smoke-check.mjs" "mobile phase proof initial copy changed"
+  Assert-Contains "tools/browser-smoke-check.mjs" "Turing cue initial copy changed"
+  Assert-Contains "tools/browser-smoke-check.mjs" "mobile Turing cue initial copy changed"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row is too close to the left canvas edge"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row is too close to the right canvas edge"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile target row inset is too small for glyph labels"
@@ -856,7 +856,7 @@ try {
   Assert-Contains "judge-manifest.json" "mobile_completion_proof"
   Assert-Contains "judge-manifest.json" "mobile-complete-v1.png"
   Assert-Contains "judge-manifest.json" "phase_proof_line"
-  Assert-Contains "judge-manifest.json" "phase-proof line"
+  Assert-Contains "judge-manifest.json" "Turing cue line"
   Assert-Contains "judge-manifest.json" "ode_note"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/"
   Assert-Contains "judge-manifest.json" "sample_receipt_verifier"

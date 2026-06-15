@@ -195,8 +195,8 @@ async function main() {
     assert(desktop.objective.phase === "Crib dawn", "phase objective initial label changed");
     assert(desktop.objective.target === "SOL LUX XOR BIN SOL XOR", "phase objective target line changed");
     assert(desktop.objective.alignment === "0/6 nodes aligned", "phase objective alignment changed");
-    assert(desktop.objective.proof === "Crib checks state.", "phase proof initial copy changed");
-    assert(desktop.objective.proofFits, "desktop phase proof text is clipped");
+    assert(desktop.objective.proof === "Crib checks state.", "Turing cue initial copy changed");
+    assert(desktop.objective.proofFits, "desktop Turing cue text is clipped");
     assert(desktop.heroHook === "Seal the daylight run.", "first screen no longer leads with the game hook");
     assert(desktop.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "status line no longer exposes the first-screen node-cycle cue");
     assert(desktop.playRule?.includes("Start with 45s daylight") && desktop.playRule?.includes("Rotate numbered nodes") && desktop.playRule?.includes("match the target glyphs") && desktop.playRule?.includes("survive nightfall") && desktop.playRule?.includes("SOL -> XOR -> LUX -> BIN"), "play rule no longer gives the rushed-judge goal");
@@ -341,10 +341,10 @@ async function main() {
     assert(mobile.statusLine?.includes("Cycle SOL>XOR>LUX>BIN"), "mobile status line no longer exposes the node-cycle cue");
     assert(
       mobile.objective.proof === "Crib checks state.",
-      "mobile phase proof initial copy changed"
+      "mobile Turing cue initial copy changed"
     );
-    assert(mobile.objective.proofFits, "mobile phase proof text is clipped");
-    assert(mobile.objective.proofTextOverflow !== "ellipsis", "mobile phase proof is still ellipsized");
+    assert(mobile.objective.proofFits, "mobile Turing cue text is clipped");
+    assert(mobile.objective.proofTextOverflow !== "ellipsis", "mobile Turing cue is still ellipsized");
     assert(mobile.targetRowBounds, "mobile target row bounds were not published by the canvas renderer");
     assert(mobile.targetRowBounds.left >= 24, `mobile target row is too close to the left canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);
     assert(mobile.targetRowBounds.right <= mobile.targetRowBounds.width - 24, `mobile target row is too close to the right canvas edge: ${JSON.stringify(mobile.targetRowBounds)}`);

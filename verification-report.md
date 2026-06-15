@@ -76,7 +76,7 @@ Expected local URLs:
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
 - `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
 - The judge shortcut row stays focused on the strongest four routes: Auto demo, Judge pack, stable sample verifier `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and the current WebM video. The Judge pack then exposes smoke test, GIF fallback, source, manifest, README, story, and rubric scorecard for deeper review without turning the playable page into a link wall.
-- The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` phase-proof copy, mobile Match/Trace/Receipt cues, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
+- The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` copy, mobile Match/Trace/Receipt cues, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - First-move coaching now holds its visual pulse for a cold reviewer, and wrong shifts explicitly report `Daylight -0.45s` so the timer pressure is understandable during manual play.
 - Game feel is part of the review surface: target glyphs, a `SOL -> XOR -> LUX -> BIN` node cycle cue, short timer pressure, node pulse feedback, phase-specific Hint scans, Rotor Trace, optional audio, and Nightfall recovery are visible before the receipt verifier.
 - Playability proof is now explicit in the judge page, article, README, review card, manifest, and verification page: readable decisions, immediate feedback, and a finished Nightfall failure state are named as evidence that the project is a playable jam game before it is a receipt packet.
@@ -98,12 +98,12 @@ Expected local URLs:
   - audio cues default off
   - number-key node shortcuts exposed
   - phase objective strip present
-  - phase-proof copy present
+  - Turing cue copy present
   - phase objective names the first phase
   - phase objective shows target glyphs and alignment
   - mobile target row keeps first and last glyphs safely inset from the canvas edge
-  - phase proof strip present
-- phase proof names the first Turing cue
+  - Turing cue strip present
+  - Turing cue names the first state check
   - first-screen judge path present
   - first-phase node buttons present
   - judge shortcut links keep the strongest four review routes

@@ -49,7 +49,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
   - `npm run audit:launch`
   - `npm run audit:launch:public`
   - `.github/workflows/verify.yml`
-- `smoke.html`: 70 PASS checks including visible `Start Run`, daylight meter, score/receipt explanation, phase objective strip, phase-proof copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
+- `smoke.html`: 70 PASS checks including visible `Start Run`, daylight meter, score/receipt explanation, phase objective strip, Turing cue copy, Nightfall report, phase announcer, phase scoring ledger, Judge run summary, award signals, default-off Audio control, H-to-Hint behavior, Rotor Trace state, D-to-Demo-Solve, R-to-reset, final status, receipt format, and receipt-verifier link coverage.
   - Desktop browser check: start, number-key rotation, no console errors, no horizontal overflow.
   - Mobile 390px browser check: no console errors, no horizontal overflow.
 - Phase progress strip: four steps visible on desktop and mobile, no mobile overflow.
