@@ -63,6 +63,27 @@ function Assert-WebmSignature {
   }
 }
 
+function Get-Sha256HexFromStream {
+  param([System.IO.Stream]$Stream)
+  $sha = [System.Security.Cryptography.SHA256]::Create()
+  try {
+    $hash = $sha.ComputeHash($Stream)
+    return -join ($hash | ForEach-Object { $_.ToString("x2") })
+  } finally {
+    $sha.Dispose()
+  }
+}
+
+function Get-Sha256HexFromFile {
+  param([string]$Path)
+  $stream = [System.IO.File]::OpenRead((Resolve-Path -LiteralPath $Path))
+  try {
+    return Get-Sha256HexFromStream $stream
+  } finally {
+    $stream.Dispose()
+  }
+}
+
 Push-Location $PSScriptRoot
 try {
   node --check game.js | Out-Null
@@ -173,6 +194,33 @@ try {
       if ($zipEntries -notcontains $entry) {
         throw "Package ZIP missing required relative entry: $entry"
       }
+    }
+    $zip = [System.IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath "helioigma-dev-package.zip"))
+    try {
+      $entryByName = @{}
+      foreach ($entry in $zip.Entries) {
+        if (-not [string]::IsNullOrEmpty($entry.FullName)) {
+          $entryByName[$entry.FullName] = $entry
+        }
+      }
+      foreach ($relativePath in $trackedEntries) {
+        $entry = $entryByName[$relativePath]
+        if ($null -eq $entry) {
+          throw "Package ZIP missing tracked file during content check: $relativePath"
+        }
+        $fileHash = Get-Sha256HexFromFile ($relativePath -replace "/", [System.IO.Path]::DirectorySeparatorChar)
+        $entryStream = $entry.Open()
+        try {
+          $entryHash = Get-Sha256HexFromStream $entryStream
+        } finally {
+          $entryStream.Dispose()
+        }
+        if ($fileHash -ne $entryHash) {
+          throw "Package ZIP content drift for $relativePath; rebuild with npm run build:package"
+        }
+      }
+    } finally {
+      $zip.Dispose()
     }
   }
 
@@ -716,8 +764,9 @@ try {
   Assert-Contains "verification-report.md" "Privacy review path"
   Assert-Contains "tools/browser-smoke-check.mjs" "mobile Demo Solve is not visually prioritized"
   Assert-Contains "styles.css" "grid-column: span 2"
-  Assert-Contains "judge.html" "github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"
-  Assert-Contains "judge.html" "github.com/OOYXLOO/helioigma/blob/main/dev-article-final.md"
+  Assert-Contains "judge.html" 'href="RUBRIC_SCORECARD.md"'
+  Assert-Contains "judge.html" 'href="dev-article-final.md"'
+  Assert-Contains "judge.html" 'href="README.md"'
   Assert-Contains "verification.html" "github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md"
   Assert-Contains "smoke.html" "hint button is present"
   Assert-Contains "smoke.html" "audio cue button is present"
