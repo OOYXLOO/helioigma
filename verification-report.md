@@ -22,7 +22,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - `RUBRIC_SCORECARD.md`: source-first rubric map for the official review criteria and Turing category
 - `smoke.html`: browser smoke test
 - `dev-article-final.md`: DEV article draft with official tags
-- `cover.png`: 1200x630 cover image
+- `cover.png`: 1000x420 cover image
 - `helioigma-demo.webm`: current captioned video demo recorded from a live local browser session, including the phase banner, completed-run ledger, and demo receipt verifier
 - `helioigma-demo.gif`: current animated GIF preview ending on the receipt ledger and Judge run summary
 - `helioigma-demo.mp4`: optional legacy MP4 fallback; WebM and GIF are the current canonical demo media

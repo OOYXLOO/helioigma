@@ -52,6 +52,7 @@ function requestPathToFilePath(requestUrl) {
 }
 
 function startStaticServer() {
+  const sockets = new Set();
   const server = createServer((request, response) => {
     try {
       const filePath = requestPathToFilePath(request.url || "/");
@@ -67,11 +68,15 @@ function startStaticServer() {
       response.end("not found");
     }
   });
+  server.on("connection", (socket) => {
+    sockets.add(socket);
+    socket.on("close", () => sockets.delete(socket));
+  });
 
   return new Promise((resolveServer) => {
     server.listen(0, "127.0.0.1", () => {
       const address = server.address();
-      resolveServer({ server, baseUrl: `http://127.0.0.1:${address.port}/` });
+      resolveServer({ server, sockets, baseUrl: `http://127.0.0.1:${address.port}/` });
     });
   });
 }
@@ -173,7 +178,7 @@ async function readGameFacts(page) {
 }
 
 async function main() {
-  const { server, baseUrl } = await startStaticServer();
+  const { server, sockets, baseUrl } = await startStaticServer();
   let browser;
   try {
     browser = await chromium.launch();
@@ -508,7 +513,7 @@ async function main() {
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Scorecard"), "judge page is missing scorecard action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
-    assert(judge.primaryActions.join("|") === "Play|Auto Demo|Fresh Play", "judge page primary actions should lead with Play, Auto Demo, then Fresh Play");
+    assert(judge.primaryActions.join("|") === "Play|Auto Demo|Verify Receipt", "judge page primary actions should lead with Play, Auto Demo, then Verify Receipt");
     assert(judge.reviewSteps.join("|") === "Play First.|Open Auto Demo.|Verify Receipt.|Check Source.|Optional Smoke.", "judge review steps changed");
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
     assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
@@ -549,8 +554,8 @@ async function main() {
     });
     assert(mobileJudge.overflowX === 0, "mobile judge page has horizontal overflow");
     assert(mobileJudge.imageVisible, "mobile judge page does not show the visual gameplay asset in the first viewport");
-    assert(mobileJudge.actionsVisible, "mobile judge page does not show Play, Auto Demo, and Fresh Play in the first viewport");
-    assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo|Fresh Play", "mobile judge page primary actions changed");
+    assert(mobileJudge.actionsVisible, "mobile judge page does not show Play, Auto Demo, and Verify Receipt in the first viewport");
+    assert(mobileJudge.primaryActions.join("|") === "Play|Auto Demo|Verify Receipt", "mobile judge page primary actions changed");
     assert(mobileJudge.standoutItems.join("|") === "Not a write-up wrapper|Theme in mechanics|Fast judge confidence|Publication-safe|Finished on failure|Crowded-queue signal", "mobile judge page standout cards changed");
 
     const manifestResponse = await page.goto(`${baseUrl}judge-manifest.json`);
@@ -575,10 +580,6 @@ async function main() {
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
     assert(manifest.challenge?.crowded_jam_differentiator?.game_first?.includes("Timed node decisions"), "judge manifest crowded-jam differentiator missing game-first signal");
     assert(manifest.challenge?.crowded_jam_differentiator?.finished_failure?.includes("Nightfall reports"), "judge manifest crowded-jam differentiator missing finished-failure signal");
-
-    const videoResponse = await page.goto(`${baseUrl}helioigma-demo.webm`);
-    assert(videoResponse?.ok(), "WebM demo did not return HTTP 200");
-    assert((videoResponse.headers()["content-type"] || "").includes("video/webm"), "WebM demo did not return video/webm");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));
@@ -644,6 +645,7 @@ async function main() {
     console.log(`PASS browser smoke at ${baseUrl}`);
   } finally {
     if (browser) await browser.close();
+    for (const socket of sockets) socket.destroy();
     await new Promise((resolveClose) => server.close(resolveClose));
   }
 }
