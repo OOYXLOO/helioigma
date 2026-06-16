@@ -68,8 +68,8 @@ jobs:
         run: |
           set -euo pipefail
           grep -q "tags: devchallenge, gamechallenge, gamedev, javascript" dev-article-final.md
-          grep -q "published: true" dev-article-final.md
-          ! grep -q "published: false" dev-article-final.md
+          grep -q "published: false" dev-article-final.md
+          ! grep -q "published: true" dev-article-final.md
           grep -q "This is a submission for the \\[June Solstice Game Jam\\]" dev-article-final.md
           grep -q "It targets the Best Ode to Alan Turing category" dev-article-final.md
           grep -q "Helioigma" dev-article-final.md
@@ -82,8 +82,9 @@ jobs:
           grep -q "helioigma-demo.webm" dev-article-final.md
           ! grep -q "helioigma-demo.mp4" dev-article-final.md
           ! grep -q "Optional legacy MP4 fallback" dev-article-final.md
-          grep -q "completion screenshot with receipt ledger" dev-article-final.md
-          grep -q "Mobile completion screenshot" dev-article-final.md
+          grep -q "Helioigma desktop gameplay" dev-article-final.md
+          grep -q "Helioigma completed judge receipt" dev-article-final.md
+          grep -q "Helioigma mobile completion receipt" dev-article-final.md
           grep -q "Helioigma four-phase demo solve" dev-article-final.md
           grep -q "MIT license for the game package" dev-article-final.md
           grep -q "https://ooyxloo.github.io/helioigma/" dev-article-final.md
