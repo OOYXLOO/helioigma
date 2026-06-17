@@ -92,6 +92,7 @@
       "JUDGE_REVIEW_CARD.md",
       "proof-verifier.html",
       "judge.html",
+      "judge-decision-map.json",
       "judge-manifest.json",
       "smoke.html",
       "demo-frames-v3",
@@ -133,6 +134,7 @@
     "privacy_review": "https://ooyxloo.github.io/helioigma/?nostore=1",
     "calm_review": "https://ooyxloo.github.io/helioigma/?calm=1",
     "judge": "https://ooyxloo.github.io/helioigma/judge.html",
+    "decision_map": "https://ooyxloo.github.io/helioigma/judge-decision-map.json",
     "smoke": "https://ooyxloo.github.io/helioigma/smoke.html",
     "proof_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html",
     "sample_receipt_verifier": "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
@@ -153,6 +155,7 @@
     "JUDGE_REVIEW_CARD.md",
     "RUBRIC_SCORECARD.md",
     "judge.html",
+    "judge-decision-map.json",
     "smoke.html",
     "proof-verifier.html",
     "verification.html",
@@ -183,7 +186,7 @@
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
   },
   "verification": {
-    "expected_smoke_checks": 71,
+    "expected_smoke_checks": 73,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "browser_smoke_runtime_boundary": "Fails on external network requests, console errors, or page errors while exercising the static review paths.",

@@ -1,0 +1,91 @@
+{
+  "project": "Helioigma",
+  "purpose": "A compact judge-facing map from award criteria to public evidence, built so a rushed reviewer can verify the entry without accounts, APIs, private data, or hidden services.",
+  "target": {
+    "challenge": "DEV June Solstice Game Jam",
+    "prize_route": "Best Ode to Alan Turing",
+    "target_prize_usd": 200,
+    "deadline": "2026-06-21 23:59 PDT",
+    "winner_announcement": "2026-07-09"
+  },
+  "recommended_review_order": [
+    {
+      "step": "Play",
+      "evidence": "./",
+      "why": "Confirms the submission is a playable timed rotor puzzle before any write-up or proof layer."
+    },
+    {
+      "step": "Auto Demo",
+      "evidence": "./?demo=1",
+      "why": "Runs the same static page through the full four-phase route and produces the stable receipt."
+    },
+    {
+      "step": "Verify Receipt",
+      "evidence": "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
+      "why": "Recomputes the sample receipt fields locally: four phases, 2907 score, 62 shifts, checksum Y5VFX1."
+    },
+    {
+      "step": "Check Judge Pack",
+      "evidence": "judge.html",
+      "why": "Maps theme fit, Turing fit, playability proof, media, manifest, and source links in one page."
+    }
+  ],
+  "rubric_map": [
+    {
+      "criterion": "Theme relevance",
+      "claim": "The solstice prompt is mechanical: daylight is the shared timer, nightfall is the failure state, and the completed receipt closes the longest-day run.",
+      "primary_evidence": ["index.html", "game.js", "FIRST_MINUTE.md", "judge.html"]
+    },
+    {
+      "criterion": "Creativity",
+      "claim": "The build turns solstice and Turing into a playable rotor-alignment loop rather than a trivia page, static calendar, or proof-only wrapper.",
+      "primary_evidence": ["index.html", "helioigma-demo.webm", "helioigma-demo.gif", "JUDGE_REVIEW_CARD.md"]
+    },
+    {
+      "criterion": "Technical execution",
+      "claim": "Static HTML/CSS/JS supports touch, keyboard, auto demo, low-motion review, no-storage review, Nightfall recovery, smoke testing, and receipt verification.",
+      "primary_evidence": ["game.js", "styles.css", "smoke.html", "proof-verifier.html", "tools/browser-smoke-check.mjs"]
+    },
+    {
+      "criterion": "Writing quality",
+      "claim": "The DEV article, README, judge page, manifest, and first-minute card give a short review path without asking judges to infer category fit from source.",
+      "primary_evidence": ["dev-article-final.md", "README.md", "judge.html", "judge-manifest.json", "FIRST_MINUTE.md"]
+    },
+    {
+      "criterion": "Best Ode to Alan Turing",
+      "claim": "The ode is carried by rotor-like state, XOR/BIN glyph language, target checking, checksum reasoning, and transparent local verification.",
+      "primary_evidence": ["game.js", "receipt-core.js", "proof-verifier.html", "RUBRIC_SCORECARD.md", "CHALLENGE_COMPLIANCE.md"]
+    }
+  ],
+  "public_safety_boundary": {
+    "no_backend_required": true,
+    "no_account_login_required_for_review": true,
+    "no_api_key_required": true,
+    "no_private_data_required": true,
+    "no_telemetry_or_external_runtime_request_expected": true,
+    "browser_storage": "Only a numeric local best-score key is used by default; ?nostore=1 disables best-score reads and writes."
+  },
+  "do_not_claim": [
+    "Best Google AI Usage",
+    "anti-cheat proof",
+    "identity proof",
+    "eligibility proof",
+    "payout proof"
+  ],
+  "stable_receipt": {
+    "receipt": "SC-4P-2907-62-Y5VFX1",
+    "phases": 4,
+    "score": 2907,
+    "shifts": 62,
+    "checksum": "Y5VFX1",
+    "verifier": "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
+    "boundary": "Transparent demo-run evidence only; not identity, eligibility, tax, payout, or anti-cheat proof."
+  },
+  "human_gates": [
+    "Create public GitHub repository OOYXLOO/helioigma.",
+    "Push the local package with user approval.",
+    "Enable GitHub Pages and confirm public HTTP 200 links.",
+    "Run public-preflight.ps1 -Public after Pages is live.",
+    "Publish the DEV article only after public links are live and the logged-in challenge flow accepts the entry."
+  ]
+}

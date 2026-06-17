@@ -560,6 +560,7 @@ async function main() {
       verifyReceiptHref: document.querySelector('.evidence-actions a[href^="proof-verifier.html"]')?.getAttribute("href"),
       noStorageHref: document.querySelector('.evidence-actions a[href="./?nostore=1"]')?.getAttribute("href"),
       scorecardHref: document.querySelector(".evidence-actions a[href$='RUBRIC_SCORECARD.md']")?.getAttribute("href"),
+      decisionMapHref: document.querySelector('.evidence-actions a[href="judge-decision-map.json"]')?.getAttribute("href"),
       storyHref: document.querySelector(".evidence-actions a[href$='dev-article-final.md']")?.getAttribute("href"),
       readmeHref: document.querySelector(".evidence-actions a[href$='README.md']")?.getAttribute("href"),
     }));
@@ -611,13 +612,16 @@ async function main() {
     assert(judge.actions.includes("Verify Receipt"), "judge page is missing verifier action");
     assert(judge.actions.includes("Open Scorecard"), "judge page is missing scorecard action");
     assert(judge.actions.includes("Open Manifest"), "judge page is missing manifest action");
+    assert(judge.actions.includes("Decision Map"), "judge page is missing decision map action");
     assert(judge.primaryActions.join("|") === "Play|Auto Demo|Verify Receipt", "judge page primary actions should lead with Play, Auto Demo, then Verify Receipt");
     assert(judge.reviewSteps.join("|") === "Play First.|Open Auto Demo.|Verify Receipt.|Check Source.|Optional Smoke.", "judge review steps changed");
     assert(judge.evidenceActions.includes("Source"), "judge page evidence row is missing source");
     assert(judge.evidenceActions.includes("Open Scorecard"), "judge page evidence row is missing scorecard");
     assert(judge.evidenceActions.includes("Open Manifest"), "judge page evidence row is missing manifest");
+    assert(judge.evidenceActions.includes("Decision Map"), "judge page evidence row is missing decision map");
     assert(judge.evidenceActions.includes("Read README"), "judge page evidence row is missing README");
     assert(judge.scorecardHref === "https://github.com/OOYXLOO/helioigma/blob/main/RUBRIC_SCORECARD.md", "judge page scorecard action is not the GitHub-rendered source link");
+    assert(judge.decisionMapHref === "judge-decision-map.json", "judge page decision map action is not a local package link");
     assert(judge.storyHref === "dev-article-final.md", "judge page story action is not a local package link");
     assert(judge.readmeHref === "README.md", "judge page README action is not a local package link");
     assert(judge.primaryInsideVisualHero, "judge page primary actions are not embedded in the visual judge hero");
@@ -632,6 +636,7 @@ async function main() {
       assertLocalAssetOk(baseUrl, "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "text/html"),
       assertLocalAssetOk(baseUrl, "verification.html", "text/html"),
       assertLocalAssetOk(baseUrl, "judge-manifest.json", "application/json"),
+      assertLocalAssetOk(baseUrl, "judge-decision-map.json", "application/json"),
       assertLocalAssetOk(baseUrl, "RUBRIC_SCORECARD.md", "text/markdown"),
       assertLocalAssetOk(baseUrl, "README.md", "text/markdown"),
       assertLocalAssetOk(baseUrl, "dev-article-final.md", "text/markdown"),
@@ -673,7 +678,8 @@ async function main() {
     assert(manifest.challenge?.playability_proof?.map((item) => item.claim).join("|") === "Readable decisions|Immediate feedback|Finished failure state", "judge manifest playability proof claims changed");
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
-    assert(manifest.verification?.expected_smoke_checks === 71, "judge manifest smoke count changed");
+    assert(manifest.public_urls?.decision_map === "https://ooyxloo.github.io/helioigma/judge-decision-map.json", "judge manifest decision map URL changed");
+    assert(manifest.verification?.expected_smoke_checks === 73, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");
@@ -693,6 +699,19 @@ async function main() {
     );
     assert(manifest.challenge?.crowded_jam_differentiator?.finished_failure?.includes("Nightfall reports"), "judge manifest crowded-jam differentiator missing finished-failure signal");
     assert(manifest.challenge?.crowded_jam_differentiator?.low_motion?.includes("?calm=1"), "judge manifest crowded-jam differentiator missing low-motion signal");
+
+    const decisionMapResponse = await page.goto(`${baseUrl}judge-decision-map.json`);
+    assert(decisionMapResponse?.ok(), "judge decision map did not return HTTP 200");
+    assert((decisionMapResponse.headers()["content-type"] || "").includes("application/json"), "judge decision map did not return application/json");
+    const decisionMap = JSON.parse(await page.textContent("body"));
+    assert(decisionMap.project === "Helioigma", "judge decision map project changed");
+    assert(decisionMap.target?.target_prize_usd === 200, "judge decision map prize target changed");
+    assert(decisionMap.target?.prize_route === "Best Ode to Alan Turing", "judge decision map prize route changed");
+    assert(decisionMap.recommended_review_order?.map((item) => item.step).join("|") === "Play|Auto Demo|Verify Receipt|Check Judge Pack", "judge decision map review order changed");
+    assert(decisionMap.rubric_map?.length === 5, "judge decision map rubric coverage changed");
+    assert(decisionMap.public_safety_boundary?.no_account_login_required_for_review === true, "judge decision map account boundary changed");
+    assert(decisionMap.do_not_claim?.includes("Best Google AI Usage"), "judge decision map category boundary changed");
+    assert(decisionMap.stable_receipt?.receipt === "SC-4P-2907-62-Y5VFX1", "judge decision map stable receipt changed");
 
     await page.goto(`${baseUrl}proof-verifier.html`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));

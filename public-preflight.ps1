@@ -121,6 +121,7 @@ try {
     "CHALLENGE_COMPLIANCE.md",
     "DEV_SUBMISSION_TICKET.md",
     "judge.html",
+    "judge-decision-map.json",
     "judge-manifest.json",
     "smoke.html",
     "proof-verifier.html",
@@ -219,6 +220,7 @@ try {
       "tools/build-package.ps1",
       "tools/verify-dev-article.mjs",
       "tools/verify-media-freshness.mjs",
+      "judge-decision-map.json",
       "mobile-complete-v1.png"
     )) {
       if ($zipEntries -notcontains $entry) {
@@ -269,7 +271,8 @@ try {
   if ($manifest.challenge.rubric_snapshot[0].criterion -ne "Theme relevance") { throw "judge-manifest rubric first criterion mismatch" }
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 71) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.public_urls.decision_map -ne "https://ooyxloo.github.io/helioigma/judge-decision-map.json") { throw "judge-manifest decision map URL mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 73) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.verification.browser_smoke_runtime_boundary -like "Fails on external network requests*")) { throw "judge-manifest runtime boundary mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest Turing cue mismatch" }
