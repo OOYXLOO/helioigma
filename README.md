@@ -163,7 +163,7 @@ Helioigma is released under the MIT license in `LICENSE`.
 
 ## Public Publishing
 
-Use `PUBLISHING.md` when the account owner is ready to create or approve the public GitHub repository. Recommended public URLs:
+Use `LAUNCH_NOW.md` for the shortest human launch path, then `PUBLISHING.md` for the fuller gate checklist when the account owner is ready to create or approve the public GitHub repository. Recommended public URLs:
 
 - Source: `https://github.com/OOYXLOO/helioigma`
 - Try link: `https://ooyxloo.github.io/helioigma/`
@@ -175,6 +175,7 @@ The package includes `.nojekyll` and social metadata so GitHub Pages can serve t
 
 These files are for the account owner and are not part of the judge's required review path:
 
+- `LAUNCH_NOW.md`: shortest public repo, Pages, public preflight, and DEV publication path for the exact USD 200 prize route.
 - `dev-launch-brief.md`: compact launch-day brief for the account owner after the public Pages link exists.
 - `DEV_SUBMISSION_TICKET.md`: one-page final DEV field, link, no-go, and post-publish receipt ticket.
 - `dev-article-final.md`: DEV-ready article draft with the final title, tags, body, media links, and category boundary.

@@ -2,6 +2,8 @@
 
 Use this one-page ticket only after the account owner is present. It is the final handoff for turning the verified local package into a DEV June Solstice Game Jam submission without losing a required field or overstating evidence.
 
+If the public GitHub repository and Pages site are not live yet, start with `LAUNCH_NOW.md` before opening the DEV editor.
+
 ## Public Gate Before DEV
 
 Do not publish the DEV article until all of these are true:

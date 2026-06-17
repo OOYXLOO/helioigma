@@ -2,6 +2,8 @@
 
 Purpose: make the DEV June Solstice Game Jam package publishable with minimal human work while keeping account, payout, tax, and identity gates under the account owner's control.
 
+For the shortest account-owner checklist, start with `LAUNCH_NOW.md`. This file keeps the fuller launch gate, checklist, and fallback details.
+
 ## Current State
 
 - Local game package is complete and verified.
