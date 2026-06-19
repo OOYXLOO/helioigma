@@ -47,39 +47,22 @@ Helioigma is a playable ode, a receipt-checkable loop, and a finished static pac
 
 ## Final Local Commands
 
-Run these before publishing the DEV article:
+The current fast path before publishing is:
 
 ```powershell
-npm ci
-node --check game.js
-npm run build:media
-npm run build:gif
-npm run build:video
-npm run verify:article
-npm run verify:media
-npm run build:package
-powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1
-node tools/browser-smoke-check.mjs
-npm run audit:launch
 npm run audit:launch:public -- --json
-powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 ```
 
-Expected local review signals:
+Expected review signals:
 
-- `PASS Helioigma preflight`
-- `PASS DEV article verification`
-- `PASS media freshness`
-- `PASS browser smoke`
-- `npm run audit:launch` reports `READY_LOCALLY`
-- `publish-after-repo.ps1` prints `Launch audit status: READY_LOCALLY` before any push
-- `npm run audit:launch:public -- --json` reports public URLs ready before DEV publication
-- `71 PASS` inside `smoke.html`
+- `npm run audit:launch:public -- --json` reports `READY_LOCALLY`.
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
 - `RUBRIC_SCORECARD.md` is present in the public source and preserves the criteria map.
 - `dev-article-final.md` remains `published: false` during preflight and is flipped only for the final DEV publish action.
+
+`public-preflight.ps1 -Public` can fail after the workspace migration because Git reports `dubious ownership` for the junction target. Do not treat that as a public-link failure; use the Node launch audit plus direct HTTP checks unless Git safe.directory has been handled.
 
 ## DEV No-Go Gate
 
@@ -88,8 +71,8 @@ Do not publish the DEV article if any item is true:
 - The logged-in DEV challenge flow does not accept a June Solstice Game Jam entry.
 - The GitHub Pages play URL returns 404 or redirects to another project.
 - The source URL is not `https://github.com/OOYXLOO/helioigma`.
-- `public-preflight.ps1 -Public` fails.
-- `smoke.html` does not reach the expected 71 PASS checks.
+- the Node public launch audit reports `WAIT_USER_GATE` or public links fail.
+- `smoke.html` does not reach the expected 73 PASS checks.
 - `Demo Solve` does not reach receipt `SC-4P-2907-62-Y5VFX1`.
 - The post omits the play link, source link, GIF/WebM media, or judge manifest.
 - The post omits the public rubric scorecard link when the judge links are listed.

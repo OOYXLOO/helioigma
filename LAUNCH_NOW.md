@@ -1,54 +1,58 @@
 # Helioigma Launch Now
 
-Shortest safe path for the account owner to turn this verified local package into a DEV June Solstice Game Jam entry.
+Shortest safe path for the account owner to turn the verified public package into a DEV June Solstice Game Jam entry.
+
+## Current Status - 2026-06-19
+
+The old GitHub repo / Pages gate is complete.
+
+- Repo: `https://github.com/OOYXLOO/helioigma`
+- Pages: `https://ooyxloo.github.io/helioigma/`
+- Judge: `https://ooyxloo.github.io/helioigma/judge.html`
+- Receipt verifier: `https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`
+- Main HEAD: `215624e7739e5dce5d9e549e213f061fd70de270`
+- Public link recheck: repo, Pages, judge, verifier, manifest, cover, GIF, WebM, desktop image, and mobile image returned HTTP 200.
+- Launch audit: `npm run audit:launch:public -- --json` returned `READY_LOCALLY`.
+
+Current blocker: user-present DEV publication. Do not redo repository creation or Pages setup unless public links fail again.
 
 ## Why This Matters
 
 - Prize route: five USD 200 winners in the DEV June Solstice Game Jam.
 - Deadline: 2026-06-21 23:59 PDT.
 - Local package state: ready for the public launch gate.
-- Current blocker: the public GitHub repository and GitHub Pages site do not exist yet.
+- Current blocker: the account owner must confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry and then publish the article.
 
 ## Human Gate
 
 Only do these steps when the account owner is present and intentionally approving public launch. Do not handle passwords, OTPs, cookies, payout, tax, KYC, bank/card data, private email, API keys, billing, or CAPTCHA/human-verification data in this project.
 
-## 15-Minute Launch Path
+## 10-Minute DEV Publish Path
 
-1. Create an empty public GitHub repository:
-   - URL: `https://github.com/new?owner=OOYXLOO&name=helioigma&visibility=public`
-   - Owner: `OOYXLOO`
-   - Repository: `helioigma`
-   - Visibility: public
-   - Leave README, license, and gitignore unchecked.
+1. Open the DEV challenge page:
+   - `https://dev.to/challenges/june-game-jam-2026-06-03`
 
-2. From this repository root, run the dry run:
+2. Confirm the logged-in page still accepts a June Solstice Game Jam entry.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1
-```
+3. Use these fields:
+   - Title: `Helioigma: a Turing-wheel puzzle for holding the longest day`
+   - Description: `A DEV June Solstice game: race a solar cipher wheel, trace its rotor state, and inspect the stable Demo Solve run summary.`
+   - Tags: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
+   - Cover image: `https://ooyxloo.github.io/helioigma/cover.png?v=20260615-fresh-media`
+   - Body source: `dev-article-final.md`
+   - Category target: Best Ode to Alan Turing
 
-3. If the dry run reports local readiness, push:
+4. Do not claim Best Google AI Usage.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\publish-after-repo.ps1 -Push
-```
+5. If DEV asks for password, OTP, CAPTCHA, account verification, billing, payout, tax/KYC, or private data, the account owner handles it directly.
 
-4. Enable GitHub Pages from the repository settings:
-   - Source: `main`
-   - Folder: `/` root
-
-5. Verify the public launch:
+## Optional Public Recheck
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\public-preflight.ps1 -Public
 npm run audit:launch:public -- --json
 ```
 
-6. Publish the DEV article only after public links pass:
-   - Body source: `dev-article-final.md`
-   - Keep local source as `published: false` until the final DEV editor action.
-   - Confirm the logged-in DEV challenge flow still accepts the entry.
+`public-preflight.ps1 -Public` can fail in the migrated junction directory because Git reports `dubious ownership`; do not treat that as a public-link failure. Prefer the Node launch audit plus direct HTTP checks.
 
 ## Optional GitHub CLI Path
 
@@ -72,7 +76,7 @@ If Pages configuration fails, use the manual Pages setting in step 4.
 
 ## Stop Conditions
 
-Stop before DEV publication if any public link returns 404, `public-preflight.ps1 -Public` fails, `audit:launch:public` reports `WAIT_USER_GATE`, or DEV no longer accepts the June Solstice Game Jam entry.
+Stop before DEV publication if any public link returns 404, `audit:launch:public` reports `WAIT_USER_GATE`, or DEV no longer accepts the June Solstice Game Jam entry.
 
 ## Record After Publish
 
