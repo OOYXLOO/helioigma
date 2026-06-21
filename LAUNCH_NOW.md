@@ -14,18 +14,18 @@ The old GitHub repo / Pages gate is complete.
 - Public link recheck: repo, Pages, judge, verifier, manifest, cover, GIF, WebM, desktop image, and mobile image returned HTTP 200.
 - Launch audit: `npm run audit:launch:public -- --json` returned `READY_LOCALLY`.
 
-Current blocker: user-present DEV publication. Do not redo repository creation or Pages setup unless public links fail again.
+Current blocker: DEV publication by the account owner. Do not redo repository creation or Pages setup unless public links fail again.
 
 ## Why This Matters
 
-- Prize route: five USD 200 winners in the DEV June Solstice Game Jam.
+- Challenge route: DEV June Solstice Game Jam, Best Ode to Alan Turing category.
 - Deadline: 2026-06-21 23:59 PDT.
 - Local package state: ready for the public launch gate.
 - Current blocker: the account owner must confirm the logged-in DEV challenge flow still accepts a June Solstice Game Jam entry and then publish the article.
 
 ## Human Gate
 
-Only do these steps when the account owner is present and intentionally approving public launch. Do not handle passwords, OTPs, cookies, payout, tax, KYC, bank/card data, private email, API keys, billing, or CAPTCHA/human-verification data in this project.
+Only do these steps when the account owner is intentionally approving public launch. Do not handle passwords, OTPs, cookies, financial account data, tax, identity verification, bank/card data, private email, API keys, billing, or CAPTCHA/human-verification data in this project.
 
 ## 10-Minute DEV Publish Path
 
@@ -44,7 +44,7 @@ Only do these steps when the account owner is present and intentionally approvin
 
 4. Do not claim Best Google AI Usage.
 
-5. If DEV asks for password, OTP, CAPTCHA, account verification, billing, payout, tax/KYC, or private data, the account owner handles it directly.
+5. If DEV asks for password, OTP, CAPTCHA, account verification, billing, financial account, tax, identity verification, or private data, the account owner handles it directly.
 
 ## Optional Public Recheck
 
@@ -80,4 +80,4 @@ Stop before DEV publication if any public link returns 404, `audit:launch:public
 
 ## Record After Publish
 
-Write the DEV article URL, public repository URL, Pages URL, public preflight timestamp, and any challenge confirmation or error text into the money-goal notes.
+Write the DEV article URL, public repository URL, Pages URL, public preflight timestamp, and any challenge confirmation or error text into the local project notes.

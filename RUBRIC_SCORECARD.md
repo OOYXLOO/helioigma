@@ -31,5 +31,5 @@ The tribute is intentionally practical rather than biographical: the player make
 ## Boundary
 
 - No Google AI category claim.
-- No backend, telemetry, account login, API key, private data, payout data, tax/KYC data, or hidden judge dashboard.
-- The receipt is transparent review evidence, not anti-cheat, identity, payout, or eligibility proof.
+- No backend, telemetry, account login, API key, private data, financial account data, tax/identity data, or hidden judge dashboard.
+- The receipt is transparent review evidence, not anti-cheat, identity, financial-account, or eligibility proof.

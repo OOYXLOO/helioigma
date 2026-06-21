@@ -4,7 +4,7 @@ Purpose: give a busy DEV judge the shortest honest path from first click to revi
 
 ## Official Route Snapshot
 
-- Prize route: Best Ode to Alan Turing category route in the official challenge.
+- Category route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
 - Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
@@ -72,7 +72,7 @@ If the review queue contains several cipher or Turing-themed entries, Helioigma 
 - No backend, API key, private dataset, account login, payment data, tax/KYC data, cookie, or private email content is required.
 - Browser storage is limited to one local numeric best-score key by default; `?nostore=1` disables best-score reads/writes for stricter privacy review.
 - Motion review is explicit: `?calm=1` reduces particle/CSS motion while preserving the same controls, proof path, and stable receipt.
-- The receipt is a transparent run checksum, not anti-cheat, identity proof, or payout proof.
+- The receipt is a transparent run checksum, not anti-cheat, identity proof, or financial-account proof.
 - The submission targets Best Ode to Alan Turing and does not claim the Best Google AI Usage category.
 - Public launch is gated on a live public GitHub repo, live GitHub Pages URL, and passing `public-preflight.ps1 -Public`.
 

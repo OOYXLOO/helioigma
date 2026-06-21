@@ -259,9 +259,8 @@ try {
   $manifest = Get-Content -Raw -LiteralPath "judge-manifest.json" | ConvertFrom-Json
   if ($manifest.project -ne "Helioigma") { throw "judge-manifest project mismatch" }
   if ($manifest.challenge.name -ne "DEV June Solstice Game Jam") { throw "judge-manifest challenge mismatch" }
-  if ($manifest.challenge.target_prize_usd -ne 200) { throw "judge-manifest prize mismatch" }
   if ($manifest.challenge.target_category -ne "Best Ode to Alan Turing") { throw "judge-manifest category mismatch" }
-  if ($manifest.challenge.official_route_snapshot.prize_route -ne "Best Ode to Alan Turing category route in the official challenge.") { throw "judge-manifest official route prize mismatch" }
+  if ($manifest.challenge.official_route_snapshot.category_route -ne "Best Ode to Alan Turing category route in the official challenge.") { throw "judge-manifest official category route mismatch" }
   if ($manifest.challenge.official_route_snapshot.submit_by -ne "June 21, 2026 at 11:59 PM PDT.") { throw "judge-manifest official route deadline mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.judge_proof -like "Play, Auto Demo, receipt checker*stable summary receipt.")) { throw "judge-manifest official route proof mismatch" }
   if (-not ($manifest.challenge.official_route_snapshot.boundary -like "No Google AI claim*")) { throw "judge-manifest official route boundary mismatch" }
@@ -298,7 +297,6 @@ try {
   if (-not ($manifest.originality.asset_boundary -like "Public media is generated from this build*")) { throw "judge-manifest originality asset-boundary mismatch" }
   if ($manifest.originality.review_surface.Count -lt 8) { throw "judge-manifest originality review-surface mismatch" }
   if ($manifest.challenge_compliance.file -ne "CHALLENGE_COMPLIANCE.md") { throw "judge-manifest challenge-compliance file mismatch" }
-  if ($manifest.challenge_compliance.cash_per_winner_usd -ne 200) { throw "judge-manifest challenge-compliance prize mismatch" }
   if ($manifest.challenge_compliance.winner_slots -ne 5) { throw "judge-manifest challenge-compliance winner-slot mismatch" }
   if (-not ($manifest.challenge_compliance.submission_checks -contains "demo video and fallback media")) { throw "judge-manifest challenge-compliance submission-check mismatch" }
   if (-not ($manifest.challenge_compliance.public_launch_gate -contains "GitHub Pages returns HTTP 200")) { throw "judge-manifest challenge-compliance launch-gate mismatch" }
@@ -412,7 +410,7 @@ try {
   Assert-Contains "dev-article-final.md" "Accessibility, Fair Play, and Privacy"
   Assert-Contains "dev-article-final.md" "hidden helper text plus a phase announcer"
   Assert-Contains "dev-article-final.md" "no analytics call"
-  Assert-Contains "dev-article-final.md" "not anti-cheat, identity, payout, or eligibility proof"
+  Assert-Contains "dev-article-final.md" "not anti-cheat, identity, financial-account, or eligibility proof"
   Assert-Contains "dev-article-final.md" "On mobile the Run Path moves below the playfield"
   Assert-Contains "dev-article-final.md" "MIT license for the game package"
   Assert-Contains "dev-article-final.md" "does not claim the Best Google AI Usage category"
@@ -452,7 +450,7 @@ try {
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "SC-4P-2907-62-Y5VFX1"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "Do not claim Best Google AI Usage"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "Post-Publish Receipt"
-  Assert-Contains "DEV_SUBMISSION_TICKET.md" "local money-goal note for Helioigma"
+  Assert-Contains "DEV_SUBMISSION_TICKET.md" "local project note for Helioigma"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "do not paste the final DEV body while any intended public link still returns 404"
   Assert-Contains "DEV_SUBMISSION_TICKET.md" "Final DEV editor publish switch is intentional"
   Assert-Contains "dev-launch-brief.md" "Paste only after public 200s"
@@ -475,7 +473,7 @@ try {
   Assert-Contains "README.md" "npm run build:cover"
   Assert-Contains "README.md" "npm run verify:article"
   Assert-Contains "README.md" "npm run verify:media"
-  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Prize target: Best Ode to Alan Turing category route"
+  Assert-Contains "CHALLENGE_COMPLIANCE.md" "Category target: Best Ode to Alan Turing category route"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Official Review Snapshot"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt"
   Assert-Contains "CHALLENGE_COMPLIANCE.md" "Deadline: June 21, 2026 at 11:59 PM PDT"
@@ -931,7 +929,7 @@ try {
   Assert-Contains "proof-verifier.html" "What this checks"
   Assert-Contains "proof-verifier.html" "What this does not check"
   Assert-Contains "proof-verifier.html" "solstice|4|2907|62|4"
-  Assert-Contains "proof-verifier.html" "not anti-cheat, identity, payout, or eligibility proof"
+  Assert-Contains "proof-verifier.html" "not anti-cheat, identity, financial-account, or eligibility proof"
   Assert-Contains "proof-verifier.html" "linear-gradient(105deg"
   Assert-NotContains "proof-verifier.html" "radial-gradient"
   Assert-Contains "verification-report.md" "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
@@ -995,7 +993,7 @@ try {
     throw "Potential secret-like content found"
   }
 
-  $localPathHits = $scanFiles | Select-String -Pattern "(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]|hks-yxl|money-goal-200usd" -ErrorAction SilentlyContinue
+  $localPathHits = $scanFiles | Select-String -Pattern "(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]" -ErrorAction SilentlyContinue
   if ($localPathHits) {
     $localPathHits | ForEach-Object { Write-Output "Local staging path hit: $($_.Path):$($_.LineNumber)" }
     throw "Local staging path found in launch text"

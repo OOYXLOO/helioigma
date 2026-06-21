@@ -90,7 +90,7 @@ const requiredText = [
   stableReceipt,
   "No account, backend, Google AI claim, API key, private data, or hidden judge dashboard is needed",
   "does not claim Best Google AI Usage",
-  "not anti-cheat, identity, payout, or eligibility proof",
+  "not anti-cheat, identity, financial-account, or eligibility proof",
 ];
 for (const pattern of requiredText) assertIncludes(article, pattern);
 

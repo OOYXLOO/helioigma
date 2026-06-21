@@ -16,7 +16,7 @@ Static browser game package for the DEV June Solstice Game Jam.
 - GitHub Pages-ready static game package for the intended public URLs.
 - The checked-in judge links point to the intended public Pages locations; before publication, run the package locally with the commands below.
 - Owner-only launch notes are kept in Markdown; the public judge path is the playable game, judge page, receipt checker, manifest, media, and optional smoke test.
-- No account login, payout data, API key, or private user data is used.
+- No account login, financial account data, API key, or private user data is used.
 - The only default browser storage is the local numeric best score key for this game; `?nostore=1` disables best-score reads/writes for stricter privacy review.
 - Accessibility and fair-play signals are explicit: keyboard, touch, mouse, screen-reader helper text, phase announcements, default-off audio, `?calm=1` low-motion review, no telemetry, and a transparent receipt that is review evidence rather than anti-cheat or identity proof.
 
@@ -64,7 +64,7 @@ The playable first screen now leads with the game hook, `Seal the daylight run.`
 
 ## Official Review Snapshot
 
-- Prize route: Best Ode to Alan Turing category route in the official challenge.
+- Category route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
 - Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
@@ -113,7 +113,7 @@ The public media pack is generated from this build's browser UI and checked-in d
 - On 390px mobile, the objective strip uses a compact 2x2 layout so the phase, target, alignment, and Turing cue are easier to read while keeping the full playable canvas inside the first viewport.
 - Failed manual runs show a Nightfall report with aligned-node progress, held phases, score, shifts, and `Retry run` / `Watch Demo Solve` recovery instead of leaving the player at a dead end.
 - Optional audio cues are default-off, require a click or `S` shortcut, and use generated Web Audio tones rather than external assets.
-- Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text, phase announcements, system reduced-motion support, and the `?calm=1` low-motion route are present; browser smoke now fails on external network requests, console errors, or page errors, and also simulates system reduced-motion preference; no telemetry or network call records play; and the receipt checker is transparent review evidence rather than anti-cheat, identity, payout, or eligibility proof.
+- Accessibility / fair-play boundary: the same loop is playable with mouse, touch, on-screen buttons, and number keys; screen-reader helper text, phase announcements, system reduced-motion support, and the `?calm=1` low-motion route are present; browser smoke now fails on external network requests, console errors, or page errors, and also simulates system reduced-motion preference; no telemetry or network call records play; and the receipt checker is transparent review evidence rather than anti-cheat, identity, financial-account, or eligibility proof.
 - A four-phase ending state shows final score, local best score, solved phase count, total shifts, and a copyable run receipt instead of looping forever.
 - `.github/workflows/verify.yml` is ready to run public package checks after the repository is published.
 - `package.json` and `package-lock.json` provide clean-clone commands: `npm ci`, `npm run check`, `npm run preflight`, `npm run smoke`, `npm run audit:launch`, `npm run audit:launch:public`, `npm run build:cover`, `npm run build:media`, `npm run build:gif`, `npm run build:video`, `npm run build:webm`, `npm run verify:article`, `npm run verify:media`, and `npm run build:package`.
@@ -175,7 +175,7 @@ The package includes `.nojekyll` and social metadata so GitHub Pages can serve t
 
 These files are for the account owner and are not part of the judge's required review path:
 
-- `LAUNCH_NOW.md`: shortest public repo, Pages, public preflight, and DEV publication path for the exact USD 200 prize route.
+- `LAUNCH_NOW.md`: shortest public repo, Pages, public preflight, and DEV publication path for the challenge category route.
 - `dev-launch-brief.md`: compact launch-day brief for the account owner after the public Pages link exists.
 - `DEV_SUBMISSION_TICKET.md`: one-page final DEV field, link, no-go, and post-publish receipt ticket.
 - `dev-article-final.md`: DEV-ready article draft with the final title, tags, body, media links, and category boundary.
@@ -188,4 +188,4 @@ These files are for the account owner and are not part of the judge's required r
 - DEV account login and final challenge post.
 - Public hosting under the user's account.
 - DEV login and final article with demo video upload.
-- Any prize-claim, tax, or payout steps.
+- Any selection paperwork, tax, identity verification, or financial-account steps.

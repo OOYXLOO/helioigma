@@ -1,6 +1,6 @@
 # Helioigma Publishing Gate
 
-Purpose: make the DEV June Solstice Game Jam package publishable with minimal human work while keeping account, payout, tax, and identity gates under the account owner's control.
+Purpose: make the DEV June Solstice Game Jam package publishable with minimal human work while keeping account, financial-account, tax, and identity gates under the account owner's control.
 
 For the shortest account-owner checklist, start with `LAUNCH_NOW.md`. This file keeps the fuller launch gate, checklist, and fallback details.
 
@@ -9,7 +9,7 @@ For the shortest account-owner checklist, start with `LAUNCH_NOW.md`. This file 
 - Local game package is complete and verified.
 - Local Git repository can be pushed after a public GitHub repository exists.
 - Public repository, GitHub Pages, and DEV submission are account-owner launch gates; confirm them with `public-preflight.ps1 -Public` after they exist.
-- No payout, tax, KYC, bank, API key, password, OTP, or private account data belongs in this package.
+- No financial-account, tax, identity verification, bank, API key, password, OTP, or private account data belongs in this package.
 
 ## Recommended Public Repository
 
@@ -86,7 +86,7 @@ Use:
 - Source link: `https://github.com/OOYXLOO/helioigma`
 - Post-publish sharing: use the honest share note in `dev-launch-brief.md` after the DEV URL exists. Ask for real feedback from people who try the game. Do not spam, buy reactions, pressure people, or ask for fake engagement.
 
-The account owner handles DEV login, final post, prize claim, payout, tax, and KYC directly.
+The account owner handles DEV login, final post, selection paperwork, financial-account, tax, and identity verification steps directly.
 
 ## Final Pre-Submit Check
 

@@ -577,7 +577,7 @@ async function main() {
     assert(judge.hasPlayablePageCopy, "judge page does not describe the playable page review path");
     assert(judge.hasPrefilledVerifierCopy, "judge page does not describe the prefilled verifier path");
     assert(judge.hasOfficialRouteSnapshot, "judge page is missing the official route snapshot");
-    assert(judge.routeSnapshotItems.join("|") === "Prize route|Submit by|Judge run|Boundary", "judge page official route snapshot changed");
+    assert(judge.routeSnapshotItems.join("|") === "Category route|Submit by|Judge run|Boundary", "judge page official route snapshot changed");
     assert(judge.hasPrizeRouteCopy, "judge page does not name the Turing category route");
     assert(judge.hasDeadlineCopy, "judge page does not name the submission deadline");
     assert(judge.hasBoundaryCopy, "judge page does not state the no-Google-AI/no-private-data boundary");
@@ -669,9 +669,8 @@ async function main() {
     assert(manifest.public_urls?.auto_demo === "https://ooyxloo.github.io/helioigma/?demo=1", "judge manifest auto demo URL changed");
     assert(manifest.public_urls?.calm_review === "https://ooyxloo.github.io/helioigma/?calm=1", "judge manifest calm review URL changed");
     assert(manifest.public_urls?.sample_receipt_verifier === "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1", "judge manifest sample receipt verifier URL changed");
-    assert(manifest.challenge?.target_prize_usd === 200, "judge manifest prize target changed");
     assert(manifest.challenge?.target_category === "Best Ode to Alan Turing", "judge manifest category changed");
-    assert(manifest.challenge?.official_route_snapshot?.prize_route === "Best Ode to Alan Turing category route in the official challenge.", "judge manifest official route prize changed");
+    assert(manifest.challenge?.official_route_snapshot?.category_route === "Best Ode to Alan Turing category route in the official challenge.", "judge manifest official category route changed");
     assert(manifest.challenge?.official_route_snapshot?.boundary?.startsWith("No Google AI claim"), "judge manifest official route boundary changed");
     assert(manifest.challenge?.award_thesis?.startsWith("Helioigma is a playable ode"), "judge manifest award thesis changed");
     assert(manifest.challenge?.playability_proof?.length === 3, "judge manifest playability proof changed");
@@ -705,8 +704,7 @@ async function main() {
     assert((decisionMapResponse.headers()["content-type"] || "").includes("application/json"), "judge decision map did not return application/json");
     const decisionMap = JSON.parse(await page.textContent("body"));
     assert(decisionMap.project === "Helioigma", "judge decision map project changed");
-    assert(decisionMap.target?.target_prize_usd === 200, "judge decision map prize target changed");
-    assert(decisionMap.target?.prize_route === "Best Ode to Alan Turing", "judge decision map prize route changed");
+    assert(decisionMap.target?.category_route === "Best Ode to Alan Turing", "judge decision map category route changed");
     assert(decisionMap.recommended_review_order?.map((item) => item.step).join("|") === "Play|Auto Demo|Verify Receipt|Check Judge Pack", "judge decision map review order changed");
     assert(decisionMap.rubric_map?.length === 5, "judge decision map rubric coverage changed");
     assert(decisionMap.public_safety_boundary?.no_account_login_required_for_review === true, "judge decision map account boundary changed");
@@ -717,7 +715,7 @@ async function main() {
     await page.waitForFunction(() => document.querySelector("#result")?.textContent.includes("Stable Demo Solve receipt"));
     const proof = await page.evaluate(() => ({
       facts: [...document.querySelectorAll("#proofFacts dd")].map((node) => node.textContent.trim()),
-      hasCaveat: document.body.innerText.includes("not anti-cheat, identity, payout, or eligibility proof"),
+      hasCaveat: document.body.innerText.includes("not anti-cheat, identity, financial-account, or eligibility proof"),
       hasProofBoundary: document.body.innerText.toLowerCase().includes("what this checks") && document.body.innerText.toLowerCase().includes("what this does not check"),
       hasSamplePayload: document.body.innerText.includes("solstice|4|2907|62|4"),
       hasSourceNote: document.body.innerText.includes("Generated in game.js by buildRunProof") || document.body.innerText.includes("generated in game.js by buildRunProof"),

@@ -51,7 +51,7 @@ Press Start Run, tap node 1 three times until it reads SOL, watch Rotor Trace ex
 
 ## Do Not Claim
 
-- Do not claim prize, finalist, payout, tax, KYC, bank, eligibility, or official endorsement status.
+- Do not claim winner, finalist, financial account, tax, identity verification, bank, eligibility, or official endorsement status.
 - Do not claim Best Google AI Usage.
 - Do not claim backend AI, cloud, account automation, private user data, anti-cheat identity proof, or payment setup.
 - Do not include passwords, OTPs, API keys, cookies, localStorage, private email content, bank data, tax data, KYC data, or payment card data.
@@ -59,7 +59,7 @@ Press Start Run, tap node 1 three times until it reads SOL, watch Rotor Trace ex
 
 ## Post-Publish Receipt
 
-After the DEV post is public, record these in the local money-goal note for Helioigma:
+After the DEV post is public, record these in the local project note for Helioigma:
 
 - DEV article URL.
 - Public repo URL.

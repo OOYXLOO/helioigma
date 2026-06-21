@@ -105,7 +105,7 @@ Status: local package is GitHub Pages-ready. Public repository, GitHub Pages, an
 - DEV login.
 - Public post/submission.
 - Public repository or Pages publication under the user's account.
-- Any prize claim, tax, or payout workflow if awarded.
+- Any selection paperwork, tax, identity verification, or financial-account workflow if selected.
 
 ## Suggested DEV Post Links
 

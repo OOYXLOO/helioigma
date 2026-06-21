@@ -42,7 +42,7 @@ The one-minute ode is practical: make a guess about the wheel, test it with a no
 ## What Is Not Claimed
 
 - No Best Google AI Usage claim.
-- No backend, hidden service, API key, account login, telemetry, private dataset, payout proof, tax/KYC proof, or private account console.
+- No backend, hidden service, API key, account login, telemetry, private dataset, financial-account proof, tax/identity proof, or private account console.
 - The receipt is review evidence for a deterministic demo route, not anti-cheat, identity, eligibility, or payment proof.
 
 ## Deeper Review

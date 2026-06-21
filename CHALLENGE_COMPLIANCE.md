@@ -7,13 +7,13 @@ Purpose: make the DEV June Solstice Game Jam review path easy to validate withou
 - Challenge: DEV June Solstice Game Jam.
 - Public rules page: `https://dev.to/challenges/june-game-jam-2026-06-03`.
 - Public announcement page: `https://dev.to/devteam/join-the-june-solstice-game-jam-1000-in-prizes-3jla`.
-- Prize target: Best Ode to Alan Turing category route in the official challenge.
+- Category target: Best Ode to Alan Turing category route in the official challenge.
 - Deadline: June 21, 2026 at 11:59 PM PDT.
 - Winners announced: July 9, 2026.
 
 ## Official Review Snapshot
 
-- Prize route: Best Ode to Alan Turing category route in the official challenge.
+- Category route: Best Ode to Alan Turing category route in the official challenge.
 - Submit by: June 21, 2026 at 11:59 PM PDT.
 - Judge receipt: Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.
 - Boundary: no Google AI claim, backend, account login, API key, or private data.
@@ -48,10 +48,10 @@ Do not publish the DEV article until all of these are true:
 1. `https://github.com/OOYXLOO/helioigma` is public.
 2. `https://ooyxloo.github.io/helioigma/` returns HTTP 200.
 3. `public-preflight.ps1 -Public` passes against the live Pages URLs.
-4. The article body still includes the official challenge marker, required challenge tags, demo media, code link, build notes, prize category, and no-secret boundary.
+4. The article body still includes the official challenge marker, required challenge tags, demo media, code link, build notes, category boundary, and no-secret boundary.
 5. No password, OTP, API key, payment detail, bank data, tax/KYC data, cookie, localStorage dump, or private email content appears in the public package.
-6. The article still states that the receipt is review evidence, not anti-cheat, identity, payout, or eligibility proof.
+6. The article still states that the receipt is review evidence, not anti-cheat, identity, financial-account, or eligibility proof.
 
-## Prize-Claim Boundary
+## Selection Admin Boundary
 
-If Helioigma wins, DEV may contact the email associated with the DEV profile and may require eligibility, release, tax, and payment paperwork. Those steps are intentionally outside this package and must be handled by the account owner.
+If Helioigma is selected, DEV may contact the email associated with the DEV profile and may require eligibility, release, tax, and payment paperwork. Those steps are intentionally outside this package and must be handled by the account owner.

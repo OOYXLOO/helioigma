@@ -115,7 +115,7 @@ const mustContain = [
   ["FIRST_MINUTE.md", "tap node 1 three times until it reads `SOL`"],
   ["JUDGE_REVIEW_CARD.md", "pre-start first-move preview"],
   ["JUDGE_REVIEW_CARD.md", "tap node 1 three times until it reads `SOL`"],
-  ["LAUNCH_NOW.md", "five USD 200 winners"],
+  ["LAUNCH_NOW.md", "Best Ode to Alan Turing category"],
   ["LAUNCH_NOW.md", "2026-06-21 23:59 PDT"],
   ["LAUNCH_NOW.md", "public-preflight.ps1 -Public"],
   ["LAUNCH_NOW.md", "npm run audit:launch:public -- --json"],
@@ -161,7 +161,7 @@ const forbiddenLiterals = [
   "I target Best Google AI Usage",
   "anti-cheat guarantee",
   "identity guarantee",
-  "payout guarantee",
+  "financial-account guarantee",
 ];
 
 const sensitiveTextChecks = [
@@ -170,7 +170,7 @@ const sensitiveTextChecks = [
   ["card-like payment number", /\b(?:\d[ -]?){16}\b/],
   ["secret-key-like token", /\bsk-[A-Za-z0-9._-]{8,}\b/],
   ["password-like assignment", /\b(?:password|passwd|pwd)\s*[:=]\s*["']?[^\s"']{8,}/i],
-  ["local drive or staging path", /(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]|hks-yxl|money-goal-200usd/i],
+  ["local drive or staging path", /(?<![A-Za-z])[A-Za-z]:[\\/][^\s`"')]+|\.codex[\\/]/i],
 ];
 
 const result = {
@@ -340,7 +340,6 @@ addCheck("no forbidden credential/private/stale/public-risk strings in tracked t
 
 const manifest = JSON.parse(fileText("judge-manifest.json"));
 addCheck("manifest project", manifest.project === "Helioigma", manifest.project);
-addCheck("manifest target prize", manifest.challenge?.target_prize_usd === 200, String(manifest.challenge?.target_prize_usd));
 addCheck("manifest target category", manifest.challenge?.target_category === "Best Ode to Alan Turing", manifest.challenge?.target_category);
 addCheck("manifest playability proof", manifest.challenge?.playability_proof?.length === 3, String(manifest.challenge?.playability_proof?.length || 0));
 addCheck("manifest stable receipt", manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", manifest.proof?.stable_receipt);

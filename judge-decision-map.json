@@ -3,8 +3,7 @@
   "purpose": "A compact judge-facing map from award criteria to public evidence, built so a rushed reviewer can verify the entry without accounts, APIs, private data, or hidden services.",
   "target": {
     "challenge": "DEV June Solstice Game Jam",
-    "prize_route": "Best Ode to Alan Turing",
-    "target_prize_usd": 200,
+    "category_route": "Best Ode to Alan Turing",
     "deadline": "2026-06-21 23:59 PDT",
     "winner_announcement": "2026-07-09"
   },
@@ -70,7 +69,7 @@
     "anti-cheat proof",
     "identity proof",
     "eligibility proof",
-    "payout proof"
+    "financial-account proof"
   ],
   "stable_receipt": {
     "receipt": "SC-4P-2907-62-Y5VFX1",
@@ -79,7 +78,7 @@
     "shifts": 62,
     "checksum": "Y5VFX1",
     "verifier": "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1",
-    "boundary": "Transparent demo-run evidence only; not identity, eligibility, tax, payout, or anti-cheat proof."
+    "boundary": "Transparent demo-run evidence only; not identity, eligibility, tax, financial-account, or anti-cheat proof."
   },
   "human_gates": [
     "Create public GitHub repository OOYXLOO/helioigma.",

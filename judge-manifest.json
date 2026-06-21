@@ -3,11 +3,10 @@
   "challenge": {
     "name": "DEV June Solstice Game Jam",
     "challenge_url": "https://dev.to/challenges/june-game-jam-2026-06-03",
-    "target_prize_usd": 200,
     "target_category": "Best Ode to Alan Turing",
     "required_tags": ["devchallenge", "gamechallenge", "gamedev"],
     "official_route_snapshot": {
-      "prize_route": "Best Ode to Alan Turing category route in the official challenge.",
+      "category_route": "Best Ode to Alan Turing category route in the official challenge.",
       "submit_by": "June 21, 2026 at 11:59 PM PDT.",
       "judge_proof": "Play, Auto Demo, receipt checker, manifest, and optional smoke test inspect the published review surface and stable summary receipt.",
       "boundary": "No Google AI claim, backend, account login, API key, or private data."
@@ -80,7 +79,7 @@
     ],
     "low_motion": "?calm=1 sets a calm review mode, and prefers-reduced-motion is honored automatically; both keep the game playable and the stable receipt unchanged.",
     "privacy": "No telemetry, analytics endpoint, backend, API key, account login, external runtime request, or private console is required; only a local numeric best-score key is stored by default, and ?nostore=1 disables that read/write path.",
-    "receipt_boundary": "The receipt is transparent review evidence for the stable demo route, not anti-cheat, identity, payout, tax, eligibility, or account proof."
+    "receipt_boundary": "The receipt is transparent review evidence for the stable demo route, not anti-cheat, identity, financial-account, tax, eligibility, or account proof."
   },
   "originality": {
     "build_window": "New static game package for the DEV June Solstice Game Jam period.",
@@ -108,7 +107,6 @@
     "deadline": "2026-06-21 23:59 PDT",
     "winner_announcement": "2026-07-09",
     "winner_slots": 5,
-    "cash_per_winner_usd": 200,
     "submission_checks": [
       "DEV challenge tags present",
       "playable static game",
@@ -126,7 +124,7 @@
       "public-preflight.ps1 -Public passes",
       "article still includes tags, demo, code, build notes, category, and no-secret boundary"
     ],
-    "prize_claim_boundary": "Eligibility, release, tax, payment, and payout paperwork are account-owner steps if DEV selects the project."
+    "selection_admin_boundary": "Eligibility, release, tax, and payment paperwork are account-owner steps if DEV selects the project."
   },
   "public_urls": {
     "play": "https://ooyxloo.github.io/helioigma/",
@@ -183,7 +181,7 @@
     "judge_run_summary": "Completion panel includes a human-readable judge run summary with result, score, shifts, receipt, verification path, award signals, and Turing fit.",
     "mobile_completion_proof": "mobile-complete-v1.png captures the same stable receipt, phase ledger, and Judge run summary in a 390px mobile viewport.",
     "nightfall_recovery": "Failed manual runs show a Nightfall report with aligned nodes, held phases, score, shifts, next review cue, Retry run, and Watch Demo Solve recovery.",
-    "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, payout, or eligibility proof."
+    "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, financial-account, or eligibility proof."
   },
   "verification": {
     "expected_smoke_checks": 73,
@@ -196,6 +194,6 @@
     "Public repository and GitHub Pages publication",
     "DEV article publication",
     "Public preflight after Pages is live",
-    "Any prize, tax, or payout steps"
+    "Any selection paperwork, tax, identity verification, or financial-account steps"
   ]
 }

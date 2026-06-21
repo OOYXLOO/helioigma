@@ -2,7 +2,7 @@
 
 Generated for the local DEV June Solstice Game Jam package on 2026-06-15.
 
-This report records the public-package checks that can be repeated after `OOYXLOO/helioigma` is published. It does not use account data, private user data, API keys, payout data, tax data, or KYC data.
+This report records the public-package checks that can be repeated after `OOYXLOO/helioigma` is published. It does not use account data, private user data, API keys, financial account data, tax data, or identity verification data.
 
 ## Public Package Status
 
@@ -14,7 +14,7 @@ This report records the public-package checks that can be repeated after `OOYXLO
 - Intended source URL after publication: `https://github.com/OOYXLOO/helioigma`
 - Official DEV tags prepared in the article draft: `devchallenge`, `gamechallenge`, `gamedev`, `javascript`
 - Official route snapshot: Best Ode to Alan Turing category route in the official challenge; submit by June 21, 2026 at 11:59 PM PDT.
-- Public boundary: no Google AI claim, backend, account login, API key, private data, or payout/KYC data is required for review.
+- Public boundary: no Google AI claim, backend, account login, API key, private data, or financial-account/identity data is required for review.
 
 ## Verified Assets
 
@@ -76,7 +76,7 @@ Expected local URLs:
 - Keyboard smoke receipt format: `SC-4P-score-shifts-checksum`
 - Score variance is expected: `smoke.html` drives the public keyboard-control path with live timing, while `Demo Solve` pauses timer drift for judges and produces the deterministic 2907-point receipt above.
 - Browser CI accepts any positive manual smoke score with the expected 62 shifts because manual play keeps live timer timing; the stable judge receipt is the deterministic Demo Solve receipt above.
-- `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, payout, or eligibility proof.
+- `proof-verifier.html` recomputes the demo receipt checksum locally, accepts `?receipt=` deep links from completed runs, and shows parsed receipt facts for phases, score, shifts, and expected checksum. The page frames this as a demo checksum check, not anti-cheat, identity, financial-account, or eligibility proof.
 - The judge shortcut row stays focused on the strongest five routes: Auto demo, No storage, Judge pack, stable sample verifier `proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1`, and the current WebM video. The Judge pack then exposes calm review, smoke test, GIF fallback, source, manifest, README, story, and rubric scorecard for deeper review without turning the playable page into a link wall.
 - The playable page exposes a four-step phase progress strip, first-screen phase objective strip with compact `Turing cue` copy, mobile Match/Trace/Receipt cues, phase announcer, phase scoring ledger, Judge run summary, Nightfall recovery report, judge shortcut links, Hint, Rotor Trace, Demo Solve, optional `?demo=1` auto demo, and node-control buttons below the canvas for fast judging and mobile play.
 - The initial canvas previews `START NODE 1 x3 -> SOL`; after `Start Run`, first-move grace coaching switches to `TRY NODE 1 x3 -> SOL`, holds its visual pulse for a cold reviewer, keeps the timer full until the first node shift, and wrong shifts explicitly report `Daylight -0.45s` so the timer pressure is understandable during manual play.
@@ -190,4 +190,4 @@ These are intentionally not automated:
 - Create or approve public GitHub repository `OOYXLOO/helioigma`.
 - Enable GitHub Pages from `main` root.
 - Publish the DEV article with the user account.
-- Handle any prize claim, payout, tax, or KYC workflow if selected.
+- Handle any selection paperwork, financial-account, tax, or identity verification workflow if selected.

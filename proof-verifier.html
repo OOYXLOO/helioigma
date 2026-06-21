@@ -219,7 +219,7 @@
       <p><strong>Formula:</strong> <code>solstice|4|score|shifts|4</code> is hashed with FNV-1a and converted into a six-character base-36 suffix.</p>
       <p><strong>Source note:</strong> the receipt is generated in <code>game.js</code> by <code>buildRunProof</code>, and both the game and verifier use the shared public <code>receipt-core.js</code> checksum formula.</p>
       <p><strong>Stable demo boundary:</strong> only <code>SC-4P-2907-62-Y5VFX1</code> is marked as the published stable Demo Solve receipt. Other formula-valid receipts are shown as neutral checksum-form matches, not as the published demo route.</p>
-      <p>This is a transparent summary receipt for a public jam entry, not anti-cheat, identity, payout, or eligibility proof. It exists so judges can replay the public Demo Solve route and inspect the score, shift count, phase count, and checksum without trusting a screenshot.</p>
+      <p>This is a transparent summary receipt for a public jam entry, not anti-cheat, identity, financial-account, or eligibility proof. It exists so judges can replay the public Demo Solve route and inspect the score, shift count, phase count, and checksum without trusting a screenshot.</p>
       <div class="boundary-grid" aria-label="Receipt check boundary">
         <div>
           <strong>What this checks</strong>
@@ -227,7 +227,7 @@
         </div>
         <div>
           <strong>What this does not check</strong>
-          <p>It does not check player identity, anti-cheat integrity, payout eligibility, or that a private account action happened.</p>
+          <p>It does not check player identity, anti-cheat integrity, financial-account eligibility, or that a private account action happened.</p>
         </div>
       </div>
       <p><strong>Sample payload:</strong> <code>solstice|4|2907|62|4</code> produces suffix <code>Y5VFX1</code> for receipt <code>SC-4P-2907-62-Y5VFX1</code>.</p>
