@@ -484,6 +484,17 @@ html.calm-mode *::after {
   margin: 0 0 12px;
 }
 
+@media (min-width: 721px) {
+  .shell {
+    padding: clamp(14px, 2vw, 18px);
+  }
+
+  .stage > .quick-controls {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+  }
+}
+
 .judge-links {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
