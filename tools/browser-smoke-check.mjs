@@ -34,6 +34,13 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+function escapeActionAnnotation(value) {
+  return String(value || "")
+    .replace(/%/g, "%25")
+    .replace(/\r/g, "%0D")
+    .replace(/\n/g, "%0A");
+}
+
 async function assertLocalAssetOk(baseUrl, path, contentTypeSnippet) {
   const response = await fetch(new URL(path, baseUrl));
   assert(response.ok, `${path} did not return HTTP 200`);
@@ -785,5 +792,8 @@ async function main() {
 
 main().catch((error) => {
   console.error(error);
+  if (process.env.GITHUB_ACTIONS === "true") {
+    console.error(`::error file=tools/browser-smoke-check.mjs,title=Helioigma browser smoke::${escapeActionAnnotation(error?.stack || error?.message || error)}`);
+  }
   process.exitCode = 1;
 });
