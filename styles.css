@@ -1118,6 +1118,35 @@ button:focus-visible {
     padding: 8px;
   }
 
+  .node-buttons {
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .node-button {
+    min-width: 0;
+    column-gap: 4px;
+    padding: 6px 5px;
+    overflow: hidden;
+  }
+
+  .node-button .node-index {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .node-button .node-current {
+    font-size: 12px;
+  }
+
+  .node-button .node-target {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 9px;
+  }
+
   .trace-panel strong {
     font-size: 12px;
   }
