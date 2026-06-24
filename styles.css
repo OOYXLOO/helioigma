@@ -968,7 +968,7 @@ button:focus-visible {
 
 @media (max-width: 720px) {
   .shell {
-    padding: 6px;
+    padding: 4px;
     place-items: start center;
   }
 
@@ -1006,11 +1006,11 @@ button:focus-visible {
   }
 
   .hud {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .kicker {
@@ -1185,8 +1185,8 @@ button:focus-visible {
   .controls {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 4px;
-    padding: 4px;
+    gap: 3px;
+    padding: 3px;
   }
 
   .quick-controls #startButton {
@@ -1211,7 +1211,7 @@ button:focus-visible {
   }
 
   button {
-    min-height: 44px;
+    min-height: 40px;
     padding: 0 5px;
     font-size: 10px;
   }
@@ -1220,7 +1220,7 @@ button:focus-visible {
     order: 6;
     grid-column: 1 / -1;
     width: 100%;
-    min-height: 26px;
+    min-height: 22px;
     text-align: left;
   }
 
