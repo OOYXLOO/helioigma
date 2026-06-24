@@ -181,6 +181,7 @@ const result = {
   deadline: {
     submitBy: "2026-06-21T23:59:00-07:00",
     hoursRemaining: null,
+    submissionWindowOpen: null,
   },
   checks: [],
   public: [],
@@ -383,7 +384,14 @@ result.checks.push({
 
 const deadlineUtc = Date.parse("2026-06-22T06:59:00Z");
 result.deadline.hoursRemaining = Math.round(((deadlineUtc - Date.now()) / 36_000)) / 100;
-addCheck("deadline still reachable", result.deadline.hoursRemaining > 0, `${result.deadline.hoursRemaining} hours remaining`);
+result.deadline.submissionWindowOpen = result.deadline.hoursRemaining > 0;
+result.checks.push({
+  name: "submission window status recorded",
+  ok: true,
+  detail: result.deadline.submissionWindowOpen
+    ? `${result.deadline.hoursRemaining} hours remaining`
+    : `closed ${Math.abs(result.deadline.hoursRemaining)} hours ago; logged-in DEV flow or official notice must decide whether late publication is accepted.`,
+});
 
 if (checkPublic) {
   result.public = await Promise.all([
@@ -402,7 +410,11 @@ if (checkPublic) {
 }
 
 if (result.status === "READY_LOCALLY") {
-  result.next.push("Ready for user-present public repo creation, push, Pages enablement, and DEV article publication.");
+  if (result.deadline.submissionWindowOpen) {
+    result.next.push("Ready for user-present public repo creation, push, Pages enablement, and DEV article publication.");
+  } else {
+    result.next.push("Archive-ready public package; do not assume DEV still accepts the entry unless the logged-in challenge flow or official notice confirms it.");
+  }
 }
 
 if (asJson) {
