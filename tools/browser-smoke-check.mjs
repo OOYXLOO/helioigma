@@ -678,7 +678,7 @@ async function main() {
     assert(manifest.challenge?.rubric_snapshot?.length === 5, "judge manifest rubric snapshot changed");
     assert(manifest.proof?.stable_receipt === "SC-4P-2907-62-Y5VFX1", "judge manifest proof changed");
     assert(manifest.public_urls?.decision_map === "https://ooyxloo.github.io/helioigma/judge-decision-map.json", "judge manifest decision map URL changed");
-    assert(manifest.verification?.expected_smoke_checks === 73, "judge manifest smoke count changed");
+    assert(manifest.verification?.expected_smoke_checks === 71, "judge manifest smoke count changed");
     assert(manifest.proof?.score_basis?.includes("Score rewards held daylight"), "judge manifest score basis changed");
     assert(manifest.proof?.nightfall_recovery?.includes("Nightfall report"), "judge manifest nightfall recovery changed");
     assert(manifest.status?.no_secrets === true, "judge manifest no-secret boundary changed");

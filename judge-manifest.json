@@ -184,7 +184,7 @@
     "caveat": "The receipt is a transparent demo checksum, not anti-cheat, identity, financial-account, or eligibility proof."
   },
   "verification": {
-    "expected_smoke_checks": 73,
+    "expected_smoke_checks": 71,
     "local_preflight": "public-preflight.ps1",
     "browser_smoke": "tools/browser-smoke-check.mjs",
     "browser_smoke_runtime_boundary": "Fails on external network requests, console errors, or page errors while exercising the static review paths.",

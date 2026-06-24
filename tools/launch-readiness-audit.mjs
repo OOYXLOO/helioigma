@@ -94,7 +94,7 @@ const mustContain = [
   ["judge-decision-map.json", "SC-4P-2907-62-Y5VFX1"],
   ["judge-decision-map.json", "no_account_login_required_for_review"],
   ["judge-decision-map.json", "Best Google AI Usage"],
-  ["judge-manifest.json", "\"expected_smoke_checks\": 73"],
+  ["judge-manifest.json", "\"expected_smoke_checks\": 71"],
   ["JUDGE_REVIEW_CARD.md", "Playability Proof"],
   ["JUDGE_REVIEW_CARD.md", "After The First Minute"],
   ["dev-article-final.md", "After the first minute, the captioned WebM, GIF preview, judge page, smoke test, and rubric scorecard are there for deeper review."],

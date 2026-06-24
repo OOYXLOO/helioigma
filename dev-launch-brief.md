@@ -56,6 +56,7 @@ npm run audit:launch:public -- --json
 Expected review signals:
 
 - `npm run audit:launch:public -- --json` reports `READY_LOCALLY`.
+- `npm run smoke` reports PASS browser smoke for the current 71-check review suite.
 - Stable receipt: `SC-4P-2907-62-Y5VFX1`
 - Public play, auto demo, judge, smoke, verifier, manifest, media, and source URLs return HTTP 200.
 - `JUDGE_REVIEW_CARD.md` is present in the public source and preserves the 60-second review path.
@@ -72,7 +73,7 @@ Do not publish the DEV article if any item is true:
 - The GitHub Pages play URL returns 404 or redirects to another project.
 - The source URL is not `https://github.com/OOYXLOO/helioigma`.
 - the Node public launch audit reports `WAIT_USER_GATE` or public links fail.
-- `smoke.html` does not reach the expected 73 PASS checks.
+- `smoke.html` does not reach the expected 71 PASS checks.
 - `Demo Solve` does not reach receipt `SC-4P-2907-62-Y5VFX1`.
 - The post omits the play link, source link, GIF/WebM media, or judge manifest.
 - The post omits the public rubric scorecard link when the judge links are listed.

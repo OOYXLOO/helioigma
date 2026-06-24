@@ -243,7 +243,7 @@ jobs:
           grep -q "Award thesis" judge.html
           ! grep -q "Watch the public page complete all four phases" judge.html
           grep -q "verification.html" judge.html
-          grep -q "Run Receipt" judge.html
+          grep -q "Judge run" judge.html
           grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" judge.html
           grep -q "prefilled sample verifier" judge.html
           grep -q "Ode With Restraint" judge.html
@@ -286,7 +286,7 @@ jobs:
           grep -q "Parsed receipt facts" proof-verifier.html
           grep -q "Stable Demo Solve receipt" proof-verifier.html
           grep -q 'get("receipt")' proof-verifier.html
-          grep -q "not anti-cheat, identity, payout, or eligibility proof" proof-verifier.html
+          grep -q "not anti-cheat, identity, financial-account, or eligibility proof" proof-verifier.html
           grep -q "What this checks" proof-verifier.html
           grep -q "What this does not check" proof-verifier.html
           grep -q "solstice|4|2907|62|4" proof-verifier.html
@@ -367,7 +367,7 @@ jobs:
           grep -q "quick-controls" index.html
           grep -q "judge-links" index.html
           grep -q "Verify sample" index.html
-          grep -q "Calm review" index.html
+          grep -q "No storage" index.html
           grep -q "proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1" index.html
           grep -q "proofSummary" index.html
           grep -q "phaseLedger" index.html
@@ -399,7 +399,7 @@ jobs:
           grep -q "phase objective strip is present" smoke.html
           grep -q "phase objective names the first phase" smoke.html
           grep -q "phase objective shows target glyphs and alignment" smoke.html
-          grep -q "start button shows the first-move coach" smoke.html
+          grep -q "start button shows the first-move grace coach" smoke.html
           grep -q "judge shortcut links keep the strongest five review routes" smoke.html
           grep -q "demo shortcut reaches a deterministic judge receipt" smoke.html
           grep -q "run receipt verifier link is present" smoke.html

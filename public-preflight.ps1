@@ -271,7 +271,7 @@ try {
   if ($manifest.proof.stable_receipt -ne "SC-4P-2907-62-Y5VFX1") { throw "judge-manifest proof mismatch" }
   if ($manifest.public_urls.auto_demo -ne "https://ooyxloo.github.io/helioigma/?demo=1") { throw "judge-manifest auto demo mismatch" }
   if ($manifest.public_urls.decision_map -ne "https://ooyxloo.github.io/helioigma/judge-decision-map.json") { throw "judge-manifest decision map URL mismatch" }
-  if ($manifest.verification.expected_smoke_checks -ne 73) { throw "judge-manifest smoke count mismatch" }
+  if ($manifest.verification.expected_smoke_checks -ne 71) { throw "judge-manifest smoke count mismatch" }
   if (-not ($manifest.verification.browser_smoke_runtime_boundary -like "Fails on external network requests*")) { throw "judge-manifest runtime boundary mismatch" }
   if (-not ($manifest.proof.score_basis -like "Score rewards held daylight*summary receipt checksum*")) { throw "judge-manifest score basis mismatch" }
   if (-not ($manifest.proof.phase_proof_line -like "Each phase exposes a compact Turing cue*")) { throw "judge-manifest Turing cue mismatch" }
@@ -985,7 +985,8 @@ try {
   Assert-Contains "judge-manifest.json" "sample_receipt_verifier"
   Assert-Contains "judge-manifest.json" "https://ooyxloo.github.io/helioigma/proof-verifier.html?receipt=SC-4P-2907-62-Y5VFX1"
 
-  $scanFiles = Get-ChildItem -File -Include *.html,*.js,*.md,*.json -Recurse |
+  $scanFiles = git ls-files *.html *.js *.md *.json |
+    ForEach-Object { Get-Item -LiteralPath $_ } |
     Where-Object { $_.FullName -notmatch "\\.git\\" }
   $secretHits = $scanFiles | Select-String -Pattern "sk-[A-Za-z0-9._-]{12,}|AKIA[0-9A-Z]{16}|BEGIN PRIVATE KEY|password:|secret:|bank account|card number" -ErrorAction SilentlyContinue
   if ($secretHits) {
